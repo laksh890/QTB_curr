@@ -1,0 +1,105 @@
+# @package research
+# Institutional Feature Validation & Statistical Research Engine defaults.
+# Load via: OmegaConf.load(...) or ResearchSettings.from_hydra().
+
+enabled: true
+n_jobs: 4
+random_seed: 42
+cache_enabled: true
+cache_dir: data/cache/feature_research
+output_dir: data/reports/feature_research
+
+columns:
+  timestamp: open_time
+  close: close
+  feature_prefix: null  # if set, only columns starting with prefix
+
+targets:
+  return_horizon: 1
+  volatility_window: 20
+  drawdown_window: 20
+  direction_threshold: 0.0
+  regime_vol_window: 50
+  regime_quantiles: [0.33, 0.66]
+
+statistics:
+  entropy_bins: 20
+  jarque_bera_alpha: 0.05
+
+correlation:
+  pearson: true
+  spearman: true
+  kendall: true
+  distance: true
+  mutual_information: true
+  mic: true
+  cross_correlation_max_lag: 5
+  rolling_window: 60
+  high_correlation_threshold: 0.9
+  clustering_linkage: average
+  clustering_distance_threshold: 0.3
+  mi_bins: 16
+
+redundancy:
+  duplicate_atol: 1.0e-12
+  near_duplicate_threshold: 0.995
+  vif_threshold: 10.0
+  linear_dependence_rank_tol: 1.0e-8
+  rolling_window_name_pattern: "_(?:roll|rolling|sma|ema|window)\\d+"
+
+predictive:
+  horizons: [1, 5, 10]
+  min_train_size: 60
+  test_size: 20
+  step_size: 20
+  blocked_n_splits: 5
+  blocked_purge: 5
+  evaluation_mode: walk_forward  # rolling | expanding | walk_forward | blocked
+  classification_threshold: 0.0
+  mi_bins: 16
+
+stability:
+  rolling_window: 60
+  step: 20
+  ic_min_obs: 30
+  decay_half_life_bars: 100
+  parameter_drift_window: 80
+
+drift:
+  reference_fraction: 0.3
+  psi_bins: 10
+  psi_alert_threshold: 0.2
+  ks_alert_threshold: 0.1
+  mean_shift_z_threshold: 3.0
+  concept_ic_drop_threshold: 0.5
+
+importance:
+  n_permutations: 20
+  rfe_n_features_to_select: 5
+  sfs_n_features_to_select: 5
+  shap_enabled: true
+  model: ridge  # ridge | stump
+  ridge_alpha: 1.0
+
+scoring:
+  weight_predictive_power: 0.35
+  weight_stability: 0.20
+  weight_redundancy_penalty: 0.15
+  weight_computational_cost: 0.05
+  weight_interpretability: 0.10
+  weight_consistency_assets: 0.075
+  weight_consistency_timeframes: 0.075
+  accept_score_threshold: 60.0
+  reject_score_threshold: 35.0
+  weak_score_threshold: 50.0
+
+visualization:
+  enabled: true
+  format: svg
+  dpi: 120
+  max_features_in_charts: 40
+
+reports:
+  write_markdown: true
+  write_json: true
+  include_charts: true

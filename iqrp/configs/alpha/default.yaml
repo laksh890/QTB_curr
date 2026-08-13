@@ -1,0 +1,57 @@
+# @package alpha
+# Institutional Alpha Research foundation defaults.
+# Load via: OmegaConf.load(...) or AlphaSettings.from_hydra().
+#
+# CRITICAL RULES:
+# - Statistical significance alone ≠ alpha
+# - Historical Sharpe alone cannot approve
+# - Must track economic_hypothesis on SignalDefinition
+# - Point-in-time: no future leakage in signal computation helpers
+
+enabled: true
+seed: 42
+data_version: "1.0.0"
+model_version: "1.0.0"
+owner_default: research
+universe_default: default
+frequency_default: 1d
+output_dir: data/reports/alpha_research
+cache_dir: data/cache/alpha_research
+
+discovery:
+  momentum_lookbacks: [10, 20, 60]
+  mean_reversion_lookbacks: [5, 10, 20]
+  trend_fast: 10
+  trend_slow: 40
+  volatility_lookback: 20
+  volume_lookback: 20
+  statistical_min_abs_ic: 0.02
+  statistical_min_obs: 30
+  auto_register: true
+  publication_lag_default: 1
+
+research:
+  horizons: [1, 2, 5, 10]
+  stability_window: 60
+  stability_step: 10
+  stability_min_obs: 30
+  seasonality_period: 5
+  predictor_min_train: 60
+  predictor_test_size: 20
+  predictor_step: 20
+  ridge_alpha: 1.0
+
+scoring:
+  weight_predictive: 0.40
+  weight_stability: 0.25
+  weight_persistence: 0.15
+  weight_economic_hypothesis: 0.20
+  # Promotion gates — Sharpe is explicitly NOT a sole approval criterion
+  require_economic_hypothesis: true
+  min_hypothesis_chars: 20
+  allow_sharpe_only_approval: false
+
+governance:
+  preserve_rejected: true
+  auditable_transitions: true
+  terminal_statuses: [REJECTED, RETIRED]

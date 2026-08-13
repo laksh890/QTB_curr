@@ -1,0 +1,10 @@
+# Local coverage config for Institutional Execution Platform unit tests.
+[run]
+branch = false
+source = iqrp/app/execution
+omit = iqrp/tests/*
+
+[report]
+show_missing = true
+skip_covered = false
+include = iqrp/app/execution/*

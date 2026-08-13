@@ -1,0 +1,51 @@
+decomposition:
+  method: stl
+  period: 24
+  model: additive
+  robust: false
+
+stationarity:
+  alpha: 0.05
+  max_lag: null
+
+change_points:
+  method: pelt
+  kind: mean
+  min_size: 10
+  penalty: 3.0
+
+spectral:
+  nperseg: 64
+  detrend: true
+
+wavelet:
+  wavelet: haar
+  level: null
+  threshold: 0.1
+
+anomaly:
+  method: robust
+  contamination: 0.05
+  z_threshold: 3.0
+
+motif:
+  window: 32
+  top_k: 3
+
+transform:
+  method: log_return
+  window: 64
+  temporal_mode: rolling
+
+multiple_testing:
+  method: fdr_bh
+  alpha: 0.05
+
+features:
+  window: 64
+  include_entropy: true
+  include_hurst: true
+  include_spectral: true
+
+seed: 42
+data_version: "1.0.0"

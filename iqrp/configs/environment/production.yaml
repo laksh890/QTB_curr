@@ -1,0 +1,19 @@
+# @package _global_
+
+environment: production
+debug: false
+
+logging:
+  level: INFO
+  json_logs: true
+  console_logs: true
+  file_logs: true
+  diagnose: false
+  backtrace: false
+  retention: 90 days
+
+storage:
+  data_dir: /var/lib/iqrp/data
+  duckdb_path: /var/lib/iqrp/data/iqrp.duckdb
+  parquet_dir: /var/lib/iqrp/data/parquet
+  cache_dir: /var/lib/iqrp/data/cache

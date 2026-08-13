@@ -1,0 +1,61 @@
+# @package ensemble
+# Institutional Ensemble Regime Intelligence Engine defaults.
+
+enabled: true
+n_states: 6
+state_names:
+  - bull
+  - bear
+  - sideways
+  - high_volatility
+  - low_volatility
+  - liquidity_stress
+random_seed: 42
+store_dir: data/ensemble
+output_dir: data/reports/ensemble
+
+# Discovery: import these modules (side-effect registration), then select by name.
+# Empty member_names → use all registered regime models except the ensemble itself.
+discovery_modules:
+  - iqrp.app.regimes.models.mock
+member_names: null  # null = auto; or e.g. [mock_regime, hmm, gmm, kalman, particle]
+
+combination:
+  method: soft_voting  # majority | weighted | soft_voting | bma | stacking | confidence | dynamic | meta
+  normalize: true
+
+weighting:
+  method: equal  # equal | accuracy | recent_accuracy | log_likelihood | calibration | stability | user | rolling | adaptive
+  user_weights: null
+  lookback: 50
+  adaptive_rate: 0.05
+  min_weight: 0.01
+
+calibration:
+  enabled: true
+  method: temperature  # platt | isotonic | temperature | dirichlet | none
+  temperature: 1.0
+
+online:
+  warm_start: true
+  weight_update: true
+  recalibrate_every: 0
+
+forecasting:
+  default_horizon: 5
+  confidence_level: 0.95
+
+columns:
+  timestamp: open_time
+  feature_columns: null
+
+visualization:
+  enabled: true
+  max_points: 500
+
+serialization:
+  format: json
+
+training:
+  validation_fraction: 0.25
+  min_members: 1

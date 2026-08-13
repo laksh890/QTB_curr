@@ -1,0 +1,414 @@
+{
+  "phase": "12",
+  "title": "Institutional Execution Platform",
+  "timestamp": "2026-08-11T16:29:44.925196+00:00",
+  "status": "PASS",
+  "summary": {
+    "components_total": 24,
+    "components_passed": 24,
+    "components_failed": 0,
+    "docs_required": 14,
+    "docs_present": 14,
+    "failures": []
+  },
+  "checklist": {
+    "Order Manager": true,
+    "Lifecycle": true,
+    "Parent/Child": true,
+    "Validation": true,
+    "Fill Management": true,
+    "Position Reconciliation": true,
+    "TWAP": true,
+    "VWAP": true,
+    "POV": true,
+    "IS": true,
+    "Adaptive": true,
+    "Slippage": true,
+    "Market Impact": true,
+    "TCA": true,
+    "Smart Routing": true,
+    "Multi-Venue": true,
+    "Analytics": true,
+    "Latency": true,
+    "Failure Handling": true,
+    "Idempotency": true,
+    "Execution Risk": true,
+    "Kill Switches": true,
+    "Historical Simulation": true,
+    "Execution Engine": true
+  },
+  "components": [
+    {
+      "name": "Order Manager",
+      "category": "order_manager",
+      "import_path": "iqrp.app.execution.order_manager",
+      "symbol": "OrderManager",
+      "docs": [
+        "OrderManager.md",
+        "ExecutionPlatform.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Lifecycle",
+      "category": "order_manager",
+      "import_path": "iqrp.app.execution.order_manager.order_lifecycle",
+      "symbol": "approve",
+      "docs": [
+        "OrderLifecycle.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Parent/Child",
+      "category": "order_manager",
+      "import_path": "iqrp.app.execution.order_manager",
+      "symbol": "ParentOrder",
+      "docs": [
+        "OrderManager.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Validation",
+      "category": "order_manager",
+      "import_path": "iqrp.app.execution.order_manager",
+      "symbol": "OrderValidator",
+      "docs": [
+        "OrderManager.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Fill Management",
+      "category": "order_manager",
+      "import_path": "iqrp.app.execution.order_manager",
+      "symbol": "FillManager",
+      "docs": [
+        "OrderManager.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Position Reconciliation",
+      "category": "order_manager",
+      "import_path": "iqrp.app.execution.order_manager",
+      "symbol": "PositionReconciler",
+      "docs": [
+        "PositionReconciliation.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "TWAP",
+      "category": "algorithms",
+      "import_path": "iqrp.app.execution.algorithms",
+      "symbol": "TWAPAlgorithm",
+      "docs": [
+        "TWAP.md",
+        "ExecutionAlgorithms.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "VWAP",
+      "category": "algorithms",
+      "import_path": "iqrp.app.execution.algorithms",
+      "symbol": "VWAPAlgorithm",
+      "docs": [
+        "VWAP.md",
+        "ExecutionAlgorithms.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "POV",
+      "category": "algorithms",
+      "import_path": "iqrp.app.execution.algorithms",
+      "symbol": "POVAlgorithm",
+      "docs": [
+        "POV.md",
+        "ExecutionAlgorithms.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "IS",
+      "category": "algorithms",
+      "import_path": "iqrp.app.execution.algorithms",
+      "symbol": "ImplementationShortfallAlgorithm",
+      "docs": [
+        "ImplementationShortfall.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Adaptive",
+      "category": "algorithms",
+      "import_path": "iqrp.app.execution.algorithms",
+      "symbol": "AdaptiveAlgorithm",
+      "docs": [
+        "ExecutionAlgorithms.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Slippage",
+      "category": "slippage",
+      "import_path": "iqrp.app.execution.slippage",
+      "symbol": "estimate_slippage",
+      "docs": [
+        "Slippage.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Market Impact",
+      "category": "slippage",
+      "import_path": "iqrp.app.execution.slippage",
+      "symbol": "market_impact",
+      "docs": [
+        "Slippage.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "TCA",
+      "category": "transaction_costs",
+      "import_path": "iqrp.app.execution.transaction_costs",
+      "symbol": "pre_trade_cost_estimate",
+      "docs": [
+        "ExecutionCosts.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Smart Routing",
+      "category": "smart_routing",
+      "import_path": "iqrp.app.execution.smart_routing",
+      "symbol": "SmartRouter",
+      "docs": [
+        "SmartRouting.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Multi-Venue",
+      "category": "smart_routing",
+      "import_path": "iqrp.app.execution.smart_routing",
+      "symbol": "SimulatedVenue",
+      "docs": [
+        "SmartRouting.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Analytics",
+      "category": "engine",
+      "import_path": "iqrp.app.execution.analytics",
+      "symbol": "execution_quality_report",
+      "docs": [
+        "ExecutionPlatform.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Latency",
+      "category": "engine",
+      "import_path": "iqrp.app.execution.latency",
+      "symbol": "LatencyTracker",
+      "docs": [
+        "ExecutionPlatform.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Failure Handling",
+      "category": "engine",
+      "import_path": "iqrp.app.execution.engine",
+      "symbol": "ExecutionEngine",
+      "docs": [
+        "ExecutionRisk.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Idempotency",
+      "category": "order_manager",
+      "import_path": "iqrp.app.execution.order_manager",
+      "symbol": "OrderManager",
+      "docs": [
+        "OrderLifecycle.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Execution Risk",
+      "category": "engine",
+      "import_path": "iqrp.app.execution.engine",
+      "symbol": "ExecutionEngine",
+      "docs": [
+        "ExecutionRisk.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Kill Switches",
+      "category": "types",
+      "import_path": "iqrp.app.execution.types",
+      "symbol": "KillSwitch",
+      "docs": [
+        "ExecutionRisk.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Historical Simulation",
+      "category": "engine",
+      "import_path": "iqrp.app.execution.simulation",
+      "symbol": "simulate_execution",
+      "docs": [
+        "ExecutionPlatform.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Execution Engine",
+      "category": "engine",
+      "import_path": "iqrp.app.execution",
+      "symbol": "ExecutionEngine",
+      "docs": [
+        "ExecutionPlatform.md",
+        "Phase12_ExecutionPlatform.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    }
+  ],
+  "documentation": [
+    {
+      "doc": "ExecutionPlatform.md",
+      "exists": true
+    },
+    {
+      "doc": "OrderManager.md",
+      "exists": true
+    },
+    {
+      "doc": "ExecutionAlgorithms.md",
+      "exists": true
+    },
+    {
+      "doc": "TWAP.md",
+      "exists": true
+    },
+    {
+      "doc": "VWAP.md",
+      "exists": true
+    },
+    {
+      "doc": "POV.md",
+      "exists": true
+    },
+    {
+      "doc": "ImplementationShortfall.md",
+      "exists": true
+    },
+    {
+      "doc": "Slippage.md",
+      "exists": true
+    },
+    {
+      "doc": "ExecutionCosts.md",
+      "exists": true
+    },
+    {
+      "doc": "SmartRouting.md",
+      "exists": true
+    },
+    {
+      "doc": "OrderLifecycle.md",
+      "exists": true
+    },
+    {
+      "doc": "ExecutionRisk.md",
+      "exists": true
+    },
+    {
+      "doc": "PositionReconciliation.md",
+      "exists": true
+    },
+    {
+      "doc": "Phase12_ExecutionPlatform.md",
+      "exists": true
+    }
+  ],
+  "integration": {
+    "execution_package_exports": [
+      "ExecutionEngine",
+      "ExecutionReport",
+      "ExecutionSettings",
+      "Fill",
+      "FillManager",
+      "KillSwitch",
+      "Order",
+      "OrderManager",
+      "OrderType",
+      "OrderValidator",
+      "ParentOrder",
+      "PositionReconciler",
+      "ReconciliationResult",
+      "RoutingDecision",
+      "Side",
+      "SimulatedVenue",
+      "SmartRouter",
+      "TimeInForce",
+      "Urgency",
+      "ValidationResult",
+      "Venue",
+      "VenueState"
+    ],
+    "stubs_created": [],
+    "hydra": "/home/ashish/qtb/iqrp/configs/execution/default.yaml",
+    "integration_hooks": [
+      {
+        "file": "iqrp/app/execution/__init__.py",
+        "change": "Export ExecutionEngine, ExecutionSettings, OrderManager, KillSwitch",
+        "reason": "Canonical Phase 12 entry points"
+      }
+    ]
+  },
+  "architectural_rules": [
+    "Execution never generates alpha or invents positions",
+    "Never exceed approved target residual",
+    "Risk Intelligence is authoritative when risk_engine is provided",
+    "Kill switches are fail-safe; halt blocks new submits",
+    "Urgency never overrides hard risk or kill switches",
+    "Events and fills are idempotent",
+    "On HALT: stop new orders; cancel open if configured",
+    "Point-in-time only \u2014 no future information in execution decisions"
+  ]
+}

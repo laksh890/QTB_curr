@@ -1,0 +1,320 @@
+{
+  "phase": "09",
+  "title": "Risk Intelligence",
+  "timestamp": "2026-08-10T16:10:11.421505+00:00",
+  "status": "PASS",
+  "summary": {
+    "components_total": 15,
+    "components_passed": 15,
+    "components_failed": 0,
+    "docs_required": 17,
+    "docs_present": 17,
+    "failures": []
+  },
+  "checklist": {
+    "Risk Framework": true,
+    "Position Sizing Engine": true,
+    "Portfolio Risk Engine": true,
+    "VaR / CVaR Engine": true,
+    "Stress Testing Engine": true,
+    "Scenario Analysis": true,
+    "Monte Carlo Risk Engine": true,
+    "Correlation & Dependency Engine": true,
+    "Kelly & Capital Allocation": true,
+    "Dynamic Leverage Engine": true,
+    "Risk Limits Engine": true,
+    "Risk Intelligence Ensemble": true
+  },
+  "components": [
+    {
+      "name": "Risk Framework",
+      "category": "framework",
+      "import_path": "iqrp.app.risk",
+      "symbol": "RiskIntelligenceEngine",
+      "docs": [
+        "RiskFramework.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Position Sizing Engine",
+      "category": "sizing",
+      "import_path": "iqrp.app.risk.sizing",
+      "symbol": "volatility_target_size",
+      "docs": [
+        "PositionSizing.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Portfolio Risk Engine",
+      "category": "portfolio",
+      "import_path": "iqrp.app.risk.portfolio",
+      "symbol": "portfolio_risk",
+      "docs": [
+        "RiskFramework.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "VaR Engine",
+      "category": "tail",
+      "import_path": "iqrp.app.risk.tail",
+      "symbol": "historical_var",
+      "docs": [
+        "VaR.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "CVaR Engine",
+      "category": "tail",
+      "import_path": "iqrp.app.risk.tail",
+      "symbol": "historical_cvar",
+      "docs": [
+        "ExpectedShortfall.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Stress Testing Engine",
+      "category": "stress",
+      "import_path": "iqrp.app.risk.stress",
+      "symbol": "historical_stress",
+      "docs": [
+        "StressTesting.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Scenario Analysis",
+      "category": "stress",
+      "import_path": "iqrp.app.risk.stress.scenarios",
+      "symbol": "ScenarioSpec",
+      "docs": [
+        "StressTesting.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Monte Carlo Risk Engine",
+      "category": "simulation",
+      "import_path": "iqrp.app.risk.simulation",
+      "symbol": "parametric_monte_carlo",
+      "docs": [
+        "MonteCarloRisk.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Correlation & Dependency Engine",
+      "category": "market",
+      "import_path": "iqrp.app.risk.market",
+      "symbol": "correlation_matrix",
+      "docs": [
+        "RiskFramework.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Kelly & Capital Allocation",
+      "category": "capital",
+      "import_path": "iqrp.app.risk.capital",
+      "symbol": "CapitalAllocator",
+      "docs": [
+        "CapitalAllocation.md",
+        "PositionSizing.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Dynamic Leverage Engine",
+      "category": "leverage",
+      "import_path": "iqrp.app.risk.leverage",
+      "symbol": "recommended_leverage",
+      "docs": [
+        "RiskFramework.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Risk Limits Engine",
+      "category": "limits",
+      "import_path": "iqrp.app.risk.limits",
+      "symbol": "check_all_limits",
+      "docs": [
+        "RiskLimits.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Risk Intelligence Ensemble",
+      "category": "ensemble",
+      "import_path": "iqrp.app.risk.ensemble",
+      "symbol": "RiskIntelligenceEnsemble",
+      "docs": [
+        "RiskEnsemble.md",
+        "RiskDecision.md",
+        "RiskStateMachine.md",
+        "RiskScoring.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Risk Budgeting",
+      "category": "capital",
+      "import_path": "iqrp.app.risk.capital",
+      "symbol": "build_risk_budgets",
+      "docs": [
+        "RiskBudgeting.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Capacity Management",
+      "category": "capital",
+      "import_path": "iqrp.app.risk.capital",
+      "symbol": "estimate_capacity",
+      "docs": [
+        "CapacityManagement.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    }
+  ],
+  "documentation": [
+    {
+      "doc": "RiskFramework.md",
+      "exists": true
+    },
+    {
+      "doc": "VaR.md",
+      "exists": true
+    },
+    {
+      "doc": "ExpectedShortfall.md",
+      "exists": true
+    },
+    {
+      "doc": "MonteCarloRisk.md",
+      "exists": true
+    },
+    {
+      "doc": "PositionSizing.md",
+      "exists": true
+    },
+    {
+      "doc": "RiskLimits.md",
+      "exists": true
+    },
+    {
+      "doc": "StressTesting.md",
+      "exists": true
+    },
+    {
+      "doc": "LiquidityRisk.md",
+      "exists": true
+    },
+    {
+      "doc": "ModelRisk.md",
+      "exists": true
+    },
+    {
+      "doc": "DrawdownControl.md",
+      "exists": true
+    },
+    {
+      "doc": "CapitalAllocation.md",
+      "exists": true
+    },
+    {
+      "doc": "RiskBudgeting.md",
+      "exists": true
+    },
+    {
+      "doc": "RiskEnsemble.md",
+      "exists": true
+    },
+    {
+      "doc": "RiskScoring.md",
+      "exists": true
+    },
+    {
+      "doc": "RiskStateMachine.md",
+      "exists": true
+    },
+    {
+      "doc": "RiskDecision.md",
+      "exists": true
+    },
+    {
+      "doc": "CapacityManagement.md",
+      "exists": true
+    }
+  ],
+  "integration": {
+    "risk_package_exports": [
+      "CapitalAllocation",
+      "CapitalAllocator",
+      "CapitalSettings",
+      "DecisionAction",
+      "EnsembleDecision",
+      "EnsembleSettings",
+      "LimitBreach",
+      "LimitSeverity",
+      "RiskAssessment",
+      "RiskBudget",
+      "RiskDecision",
+      "RiskIntelligenceEngine",
+      "RiskIntelligenceEnsemble",
+      "RiskLimit",
+      "RiskMeasure",
+      "RiskModel",
+      "RiskReport",
+      "RiskScore",
+      "RiskSettings",
+      "RiskState",
+      "as_returns",
+      "as_weights",
+      "build_report",
+      "evaluate_limits"
+    ],
+    "capital_hydra": "/home/ashish/qtb/iqrp/configs/risk/capital/default.yaml",
+    "ensemble_hydra": "/home/ashish/qtb/iqrp/configs/risk/ensemble/default.yaml",
+    "integration_hooks": [
+      {
+        "file": "iqrp/app/risk/__init__.py",
+        "change": "Export CapitalAllocator, RiskIntelligenceEnsemble, and related types",
+        "reason": "Canonical Phase 09 completion entry points for portfolio/execution consumers"
+      }
+    ]
+  },
+  "architectural_rules": [
+    "Risk never generates alpha",
+    "Capital allocation never overrides hard risk limits",
+    "Forecast confidence cannot override risk limits",
+    "Kelly cannot override risk limits",
+    "Risk budgets cannot exceed portfolio-level limits",
+    "Correlated strategies must share effective risk budget",
+    "Liquidity constraints must be respected before allocation",
+    "Drawdown controls must be capable of reducing allocation automatically",
+    "Missing risk information must result in conservative behavior",
+    "Every decision must be auditable",
+    "No future information may enter allocation or risk calculations",
+    "Every live decision must be reproducible from recorded inputs"
+  ]
+}

@@ -1,0 +1,67 @@
+order:
+  p: null
+  d: null
+  q: null
+  P: null
+  D: null
+  Q: null
+  seasonal_period: 12
+  max_p: 5
+  max_d: 2
+  max_q: 5
+  max_P: 2
+  max_D: 1
+  max_Q: 2
+  max_var_lags: 5
+
+identification:
+  auto: true
+  criterion: aic
+  adf_alpha: 0.05
+  kpss_alpha: 0.05
+  seasonal_detect: true
+  trend: auto
+
+online:
+  mode: expanding
+  window: 252
+  warm_start: true
+  retrain_every: 0
+
+regime:
+  enabled: true
+  column: regime
+  condition_forecasts: true
+  use_probabilities: false
+  probability_prefix: regime_p
+
+forecast:
+  default_horizon: 5
+  strategy: recursive
+  interval_level: 0.95
+  parallel_selection: true
+  n_jobs: 4
+
+columns:
+  timestamp: open_time
+  target: target
+  feature_columns: null
+  endogenous: null
+  exogenous: null
+
+visualization:
+  enabled: true
+  max_points: 500
+
+discovery_modules:
+  - iqrp.app.forecasting.statistical.ar.ar
+  - iqrp.app.forecasting.statistical.ma.ma
+  - iqrp.app.forecasting.statistical.arma.arma
+  - iqrp.app.forecasting.statistical.arima.arima
+  - iqrp.app.forecasting.statistical.sarima.sarima
+  - iqrp.app.forecasting.statistical.var.var
+  - iqrp.app.forecasting.statistical.varmax.varmax
+  - iqrp.app.forecasting.statistical.vecm.vecm
+  - iqrp.app.forecasting.statistical.exponential.simple
+  - iqrp.app.forecasting.statistical.exponential.holt
+  - iqrp.app.forecasting.statistical.exponential.holt_winters

@@ -1,0 +1,51 @@
+# @package hmm
+# Institutional Hidden Markov Model Engine defaults.
+
+enabled: true
+n_states: 3
+n_features: 1
+state_names: null
+random_seed: 42
+store_dir: data/hmm
+output_dir: data/reports/hmm
+
+emission:
+  type: gaussian  # discrete | gaussian | multivariate_gaussian
+  covariance_type: diag  # diag | full
+
+initialization:
+  method: kmeans  # random | uniform | kmeans | user
+  n_restarts: 3
+  dirichlet_alpha: 1.0
+
+training:
+  max_iter: 100
+  tol: 1.0e-4
+  early_stopping: true
+  min_covar: 1.0e-6
+  n_jobs: 1
+
+online:
+  window_size: 0
+  update_frequency: 1
+  warm_start: true
+
+forecasting:
+  default_horizon: 5
+  confidence_level: 0.95
+
+model_selection:
+  min_states: 2
+  max_states: 5
+  criterion: bic  # aic | bic | log_likelihood
+
+columns:
+  timestamp: open_time
+  observation_columns: null
+
+visualization:
+  enabled: true
+  max_points: 500
+
+serialization:
+  format: json

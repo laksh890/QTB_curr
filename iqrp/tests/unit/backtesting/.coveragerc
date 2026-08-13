@@ -1,0 +1,23 @@
+# Coverage config for Phase 13 backtesting unit tests.
+# Use: coverage run --rcfile=iqrp/tests/unit/backtesting/.coveragerc -m pytest iqrp/tests/unit/backtesting -q --no-cov
+# (Overrides pyproject omit of iqrp/app/backtesting/*)
+
+[run]
+branch = false
+source = iqrp/app/backtesting
+omit =
+    */__pycache__/*
+    */tests/*
+
+[report]
+show_missing = true
+skip_empty = true
+omit =
+    */__pycache__/*
+exclude_lines =
+    pragma: no cover
+    if TYPE_CHECKING:
+    if __name__ == .__main__.:
+    @abstractmethod
+    @overload
+    raise NotImplementedError

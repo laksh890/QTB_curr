@@ -1,0 +1,64 @@
+order:
+  p: 1
+  q: 1
+  o: 1
+  max_p: 2
+  max_q: 2
+  ewma_lambda: 0.94
+  rolling_window: 21
+  annualization: 252.0
+
+distribution:
+  name: gaussian
+  df: 8.0
+  skew: 0.0
+  ged_nu: 1.5
+
+optimization:
+  method: L-BFGS-B
+  maxiter: 500
+  tol: 1.0e-8
+  n_restarts: 2
+  robust: true
+
+online:
+  mode: expanding
+  window: 252
+  warm_start: true
+  adaptive_rate: 0.05
+
+regime:
+  enabled: true
+  column: regime
+  condition: true
+  ensemble_weight: false
+
+forecast:
+  default_horizon: 5
+  interval_level: 0.95
+  scenario_paths: 0
+
+columns:
+  timestamp: open_time
+  target: returns
+  feature_columns: null
+  assets: null
+
+visualization:
+  enabled: true
+  max_points: 500
+
+selection_criterion: aic
+
+discovery_modules:
+  - iqrp.app.forecasting.volatility.ewma.ewma
+  - iqrp.app.forecasting.volatility.arch.arch
+  - iqrp.app.forecasting.volatility.garch.garch
+  - iqrp.app.forecasting.volatility.egarch.egarch
+  - iqrp.app.forecasting.volatility.gjr.gjr_garch
+  - iqrp.app.forecasting.volatility.figarch.figarch
+  - iqrp.app.forecasting.volatility.aparch.aparch
+  - iqrp.app.forecasting.volatility.cgarch.component_garch
+  - iqrp.app.forecasting.volatility.historical.historical
+  - iqrp.app.forecasting.volatility.multivariate.dcc_garch
+  - iqrp.app.forecasting.volatility.multivariate.bekk

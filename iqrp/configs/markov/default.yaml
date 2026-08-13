@@ -1,0 +1,37 @@
+# @package markov
+# Institutional Markov Chain Engine defaults.
+
+enabled: true
+n_states: 3
+state_names: null  # null => state_0 .. state_{K-1}
+random_seed: 42
+store_dir: data/markov
+output_dir: data/reports/markov
+
+estimation:
+  method: bayesian  # mle | bayesian | frequency | weighted
+  laplace_alpha: 1.0
+  dirichlet_alpha: 1.0
+  forgetting_factor: 1.0  # <1 for exponential forgetting in online updates
+  window_size: 0  # 0 => full history; >0 => sliding window
+  min_count_warning: 5
+
+columns:
+  timestamp: open_time
+  state_column: state_id
+  weight_column: null
+
+forecasting:
+  default_horizon: 5
+  confidence_level: 0.95
+
+online:
+  update_frequency: 1
+  adaptive: true
+
+visualization:
+  enabled: true
+  max_points: 500
+
+serialization:
+  format: json

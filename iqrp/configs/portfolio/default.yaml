@@ -1,0 +1,39 @@
+# Institutional Portfolio Construction defaults
+# Hard constraints are never silently relaxed by forecast confidence.
+
+seed: 42
+data_version: "1.0.0"
+model_version: "1.0.0"
+
+method: mean_variance
+long_only: true
+max_weight: 0.4
+max_gross: 1.5
+max_leverage: 2.0
+max_turnover: 0.5
+risk_aversion: 1.0
+fallback: current  # current | min_variance | cash
+require_risk_validation: true
+
+covariance:
+  method: shrinkage  # sample | ewma | shrinkage | ledoit_wolf | factor | robust
+  ewma_lambda: 0.94
+  shrinkage_intensity: null
+
+expected_returns:
+  method: forecast  # forecast | historical | shrinkage | black_litterman
+  confidence_shrink: true
+  bl_tau: 0.05
+  bl_risk_aversion: 1.0
+
+constraints:
+  max_net: null
+  max_long: null
+  max_short: null
+  max_concentration: null
+  dollar_neutral: false
+
+objective:
+  risk_free_rate: 0.0
+  turnover_penalty: 0.0
+  cvar_confidence: 0.95

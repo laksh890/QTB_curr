@@ -1,0 +1,391 @@
+{
+  "phase": "10",
+  "title": "Portfolio Construction",
+  "timestamp": "2026-08-11T14:43:58.108107+00:00",
+  "status": "PASS",
+  "summary": {
+    "components_total": 24,
+    "components_passed": 24,
+    "components_failed": 0,
+    "docs_required": 9,
+    "docs_present": 9,
+    "failures": []
+  },
+  "checklist": {
+    "Portfolio Construction Framework": true,
+    "Expected Return Engine": true,
+    "Covariance Engine": true,
+    "Mean-Variance Optimization": true,
+    "Minimum Variance": true,
+    "Maximum Sharpe": true,
+    "Risk Parity": true,
+    "Equal Risk Contribution": true,
+    "Hierarchical Risk Parity": true,
+    "Maximum Diversification": true,
+    "CVaR Optimization": true,
+    "Drawdown-aware Optimization": true,
+    "Black-Litterman": true,
+    "Robust Optimization": true,
+    "Transaction Cost Modeling": true,
+    "Turnover Control": true,
+    "Liquidity-aware Optimization": true,
+    "Factor Constraints": true,
+    "Currency Constraints": true,
+    "Multi-Strategy Allocation": true,
+    "Multi-Period Optimization": true,
+    "Dynamic Rebalancing": true,
+    "Portfolio Validation": true,
+    "Risk Intelligence Pre-Trade Validation": true
+  },
+  "components": [
+    {
+      "name": "Portfolio Construction Framework",
+      "category": "engine",
+      "import_path": "iqrp.app.portfolio",
+      "symbol": "PortfolioConstructionEngine",
+      "docs": [
+        "PortfolioConstruction.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Expected Return Engine",
+      "category": "estimators",
+      "import_path": "iqrp.app.portfolio.expected_returns",
+      "symbol": "forecast_expected_returns",
+      "docs": [
+        "PortfolioConstruction.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Covariance Engine",
+      "category": "estimators",
+      "import_path": "iqrp.app.portfolio.covariance",
+      "symbol": "shrinkage_covariance",
+      "docs": [
+        "PortfolioConstruction.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Mean-Variance Optimization",
+      "category": "optimization",
+      "import_path": "iqrp.app.portfolio.optimization",
+      "symbol": "optimize_mean_variance",
+      "docs": [
+        "MeanVariance.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Minimum Variance",
+      "category": "optimization",
+      "import_path": "iqrp.app.portfolio.optimization",
+      "symbol": "optimize_minimum_variance",
+      "docs": [
+        "MeanVariance.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Maximum Sharpe",
+      "category": "optimization",
+      "import_path": "iqrp.app.portfolio.optimization",
+      "symbol": "optimize_maximum_sharpe",
+      "docs": [
+        "MeanVariance.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Risk Parity",
+      "category": "optimization",
+      "import_path": "iqrp.app.portfolio.optimization",
+      "symbol": "optimize_risk_parity",
+      "docs": [
+        "RiskParity.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Equal Risk Contribution",
+      "category": "optimization",
+      "import_path": "iqrp.app.portfolio.optimization",
+      "symbol": "optimize_risk_parity",
+      "docs": [
+        "RiskParity.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Hierarchical Risk Parity",
+      "category": "optimization",
+      "import_path": "iqrp.app.portfolio.optimization",
+      "symbol": "optimize_hrp",
+      "docs": [
+        "RiskParity.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Maximum Diversification",
+      "category": "optimization",
+      "import_path": "iqrp.app.portfolio.optimization",
+      "symbol": "optimize_maximum_diversification",
+      "docs": [
+        "PortfolioConstruction.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "CVaR Optimization",
+      "category": "optimization",
+      "import_path": "iqrp.app.portfolio.optimization",
+      "symbol": "optimize_cvar",
+      "docs": [
+        "PortfolioConstruction.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Drawdown-aware Optimization",
+      "category": "optimization",
+      "import_path": "iqrp.app.portfolio.optimization",
+      "symbol": "optimize_drawdown",
+      "docs": [
+        "PortfolioConstruction.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Black-Litterman",
+      "category": "optimization",
+      "import_path": "iqrp.app.portfolio.optimization",
+      "symbol": "optimize_black_litterman",
+      "docs": [
+        "BlackLitterman.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Robust Optimization",
+      "category": "optimization",
+      "import_path": "iqrp.app.portfolio.optimization",
+      "symbol": "optimize_robust",
+      "docs": [
+        "RobustOptimization.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Transaction Cost Modeling",
+      "category": "costs",
+      "import_path": "iqrp.app.portfolio.transaction_costs",
+      "symbol": "total_transaction_cost",
+      "docs": [
+        "TransactionCosts.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Turnover Control",
+      "category": "costs",
+      "import_path": "iqrp.app.portfolio.optimization",
+      "symbol": "optimize_turnover",
+      "docs": [
+        "TurnoverControl.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Liquidity-aware Optimization",
+      "category": "constraints",
+      "import_path": "iqrp.app.portfolio.constraints",
+      "symbol": "check_liquidity_constraints",
+      "docs": [
+        "PortfolioConstraints.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Factor Constraints",
+      "category": "constraints",
+      "import_path": "iqrp.app.portfolio.constraints",
+      "symbol": "check_factor_constraints",
+      "docs": [
+        "PortfolioConstraints.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Currency Constraints",
+      "category": "constraints",
+      "import_path": "iqrp.app.portfolio.constraints",
+      "symbol": "check_currency_constraints",
+      "docs": [
+        "PortfolioConstraints.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Multi-Strategy Allocation",
+      "category": "construction",
+      "import_path": "iqrp.app.portfolio.construction",
+      "symbol": "signals_to_raw_weights",
+      "docs": [
+        "PortfolioConstruction.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Multi-Period Optimization",
+      "category": "multi_period",
+      "import_path": "iqrp.app.portfolio.multi_period",
+      "symbol": "optimize_multi_period",
+      "docs": [
+        "MultiPeriodOptimization.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Dynamic Rebalancing",
+      "category": "construction",
+      "import_path": "iqrp.app.portfolio.construction",
+      "symbol": "plan_rebalance",
+      "docs": [
+        "TurnoverControl.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Portfolio Validation",
+      "category": "engine",
+      "import_path": "iqrp.app.portfolio",
+      "symbol": "ValidationReport",
+      "docs": [
+        "PortfolioConstruction.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Risk Intelligence Pre-Trade Validation",
+      "category": "engine",
+      "import_path": "iqrp.app.portfolio",
+      "symbol": "PortfolioConstructionEngine",
+      "docs": [
+        "PortfolioConstruction.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    }
+  ],
+  "documentation": [
+    {
+      "doc": "PortfolioConstruction.md",
+      "exists": true
+    },
+    {
+      "doc": "MeanVariance.md",
+      "exists": true
+    },
+    {
+      "doc": "RiskParity.md",
+      "exists": true
+    },
+    {
+      "doc": "BlackLitterman.md",
+      "exists": true
+    },
+    {
+      "doc": "RobustOptimization.md",
+      "exists": true
+    },
+    {
+      "doc": "TransactionCosts.md",
+      "exists": true
+    },
+    {
+      "doc": "TurnoverControl.md",
+      "exists": true
+    },
+    {
+      "doc": "MultiPeriodOptimization.md",
+      "exists": true
+    },
+    {
+      "doc": "PortfolioConstraints.md",
+      "exists": true
+    }
+  ],
+  "integration": {
+    "portfolio_package_exports": [
+      "ConstraintsConfig",
+      "CovarianceConfig",
+      "ExpectedReturnsConfig",
+      "ObjectiveConfig",
+      "OptimizationFailureError",
+      "OptimizationResult",
+      "Portfolio",
+      "PortfolioConstructionEngine",
+      "PortfolioConstructor",
+      "PortfolioOptimizer",
+      "PortfolioResult",
+      "PortfolioSettings",
+      "PortfolioType",
+      "Position",
+      "RebalanceBands",
+      "RebalancePlan",
+      "RebalanceTrigger",
+      "TargetPositions",
+      "TargetWeights",
+      "ValidationReport",
+      "build_target_weights",
+      "plan_rebalance",
+      "signals_to_raw_weights",
+      "validate_phase10",
+      "write_phase10_report"
+    ],
+    "hydra": "/home/ashish/qtb/iqrp/configs/portfolio/default.yaml",
+    "integration_hooks": [
+      {
+        "file": "iqrp/app/portfolio/__init__.py",
+        "change": "Export PortfolioConstructionEngine, PortfolioSettings, Portfolio, OptimizationResult",
+        "reason": "Canonical Phase 10 entry points for Forecast \u2192 Risk \u2192 Portfolio consumers"
+      }
+    ]
+  },
+  "architectural_rules": [
+    "Portfolio construction never generates alpha \u2014 only expresses provided forecasts/signals",
+    "Hard constraints are never silently relaxed on optimization failure",
+    "Configured fallback (current|min_variance|cash) is applied explicitly with fallback_used=True",
+    "When require_risk_validation: Risk Intelligence has final authority",
+    "Forecast confidence cannot invent certainty or override hard risk/portfolio limits",
+    "Transaction costs included when configured",
+    "Point-in-time only \u2014 no future information",
+    "Every construction decision must be auditable and reproducible"
+  ]
+}

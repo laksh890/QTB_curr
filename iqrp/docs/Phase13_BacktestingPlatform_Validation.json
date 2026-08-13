@@ -1,0 +1,605 @@
+{
+  "phase": "13",
+  "title": "Institutional Backtesting Platform",
+  "timestamp": "2026-08-12T16:28:59.911407+00:00",
+  "status": "PASS",
+  "summary": {
+    "components_total": 41,
+    "components_passed": 41,
+    "components_failed": 0,
+    "docs_required": 11,
+    "docs_present": 11,
+    "failures": []
+  },
+  "checklist": {
+    "Event Engine": true,
+    "Event Queue": true,
+    "Deterministic Clock": true,
+    "Event-Driven Backtesting": true,
+    "Point-in-Time Validation": true,
+    "Survivorship-Bias Protection": true,
+    "Corporate Actions": true,
+    "Walk-Forward": true,
+    "Rolling Windows": true,
+    "Expanding Windows": true,
+    "Purged Validation": true,
+    "Embargo": true,
+    "Rolling Retraining": true,
+    "Model Versioning": true,
+    "Performance Metrics": true,
+    "Risk Metrics": true,
+    "Drawdown Metrics": true,
+    "Tail Metrics": true,
+    "Trade Metrics": true,
+    "Exposure Metrics": true,
+    "Performance Attribution": true,
+    "Benchmarking": true,
+    "Stability Analysis": true,
+    "Historical Scenarios": true,
+    "Hypothetical Scenarios": true,
+    "Monte Carlo Scenarios": true,
+    "Regime Scenarios": true,
+    "Liquidity Scenarios": true,
+    "Capacity Testing": true,
+    "Parameter Robustness": true,
+    "Ablation Testing": true,
+    "Strategy Comparison": true,
+    "Experiment Registry": true,
+    "Reproducibility": true,
+    "Strategy Validation Gates": true,
+    "Paper Trading Interface": true,
+    "Scorecard": true,
+    "Backtest Engine": true,
+    "Reports": true,
+    "Component Registry": true,
+    "Scenario Engine": true
+  },
+  "components": [
+    {
+      "name": "Event Engine",
+      "category": "engine",
+      "import_path": "iqrp.app.backtesting.event_engine",
+      "symbol": "EventDrivenEngine",
+      "docs": [
+        "EventEngine.md",
+        "BacktestingPlatform.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Event Queue",
+      "category": "engine",
+      "import_path": "iqrp.app.backtesting.event_engine",
+      "symbol": "EventQueue",
+      "docs": [
+        "EventEngine.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Deterministic Clock",
+      "category": "engine",
+      "import_path": "iqrp.app.backtesting.event_engine",
+      "symbol": "BacktestClock",
+      "docs": [
+        "EventEngine.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Event-Driven Backtesting",
+      "category": "engine",
+      "import_path": "iqrp.app.backtesting.engine",
+      "symbol": "BacktestEngine",
+      "docs": [
+        "BacktestingPlatform.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Point-in-Time Validation",
+      "category": "pit",
+      "import_path": "iqrp.app.backtesting.pit",
+      "symbol": "detect_leakage",
+      "docs": [
+        "Reproducibility.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Survivorship-Bias Protection",
+      "category": "pit",
+      "import_path": "iqrp.app.backtesting.pit",
+      "symbol": "filter_universe_asof",
+      "docs": [
+        "Reproducibility.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Corporate Actions",
+      "category": "corporate",
+      "import_path": "iqrp.app.backtesting.corporate_actions",
+      "symbol": "actions_asof",
+      "docs": [
+        "BacktestingPlatform.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Walk-Forward",
+      "category": "walk_forward",
+      "import_path": "iqrp.app.backtesting.walk_forward",
+      "symbol": "WalkForwardEngine",
+      "docs": [
+        "WalkForward.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Rolling Windows",
+      "category": "walk_forward",
+      "import_path": "iqrp.app.backtesting.walk_forward",
+      "symbol": "generate_windows",
+      "docs": [
+        "WalkForward.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Expanding Windows",
+      "category": "walk_forward",
+      "import_path": "iqrp.app.backtesting.walk_forward.windows",
+      "symbol": "generate_windows",
+      "docs": [
+        "WalkForward.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Purged Validation",
+      "category": "walk_forward",
+      "import_path": "iqrp.app.backtesting.walk_forward",
+      "symbol": "purged_kfold_splits",
+      "docs": [
+        "WalkForward.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Embargo",
+      "category": "walk_forward",
+      "import_path": "iqrp.app.backtesting.walk_forward",
+      "symbol": "apply_embargo",
+      "docs": [
+        "WalkForward.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Rolling Retraining",
+      "category": "rolling",
+      "import_path": "iqrp.app.backtesting.rolling_retraining",
+      "symbol": "RollingRetrainer",
+      "docs": [
+        "RollingRetraining.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Model Versioning",
+      "category": "rolling",
+      "import_path": "iqrp.app.backtesting.rolling_retraining",
+      "symbol": "ModelRegistry",
+      "docs": [
+        "RollingRetraining.md",
+        "Reproducibility.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Performance Metrics",
+      "category": "performance",
+      "import_path": "iqrp.app.backtesting.performance",
+      "symbol": "build_scorecard",
+      "docs": [
+        "PerformanceMetrics.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Risk Metrics",
+      "category": "performance",
+      "import_path": "iqrp.app.backtesting.performance",
+      "symbol": "sharpe_ratio",
+      "docs": [
+        "PerformanceMetrics.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Drawdown Metrics",
+      "category": "performance",
+      "import_path": "iqrp.app.backtesting.performance",
+      "symbol": "max_drawdown",
+      "docs": [
+        "PerformanceMetrics.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Tail Metrics",
+      "category": "performance",
+      "import_path": "iqrp.app.backtesting.performance",
+      "symbol": "summarize_tail",
+      "docs": [
+        "PerformanceMetrics.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Trade Metrics",
+      "category": "performance",
+      "import_path": "iqrp.app.backtesting.performance",
+      "symbol": "summarize_trades",
+      "docs": [
+        "PerformanceMetrics.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Exposure Metrics",
+      "category": "performance",
+      "import_path": "iqrp.app.backtesting.performance",
+      "symbol": "summarize_exposure",
+      "docs": [
+        "PerformanceMetrics.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Performance Attribution",
+      "category": "performance",
+      "import_path": "iqrp.app.backtesting.performance",
+      "symbol": "full_attribution",
+      "docs": [
+        "PerformanceMetrics.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Benchmarking",
+      "category": "performance",
+      "import_path": "iqrp.app.backtesting.performance",
+      "symbol": "compare_to_benchmark",
+      "docs": [
+        "PerformanceMetrics.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Stability Analysis",
+      "category": "performance",
+      "import_path": "iqrp.app.backtesting.performance",
+      "symbol": "stability_report",
+      "docs": [
+        "PerformanceMetrics.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Historical Scenarios",
+      "category": "scenarios",
+      "import_path": "iqrp.app.backtesting.scenarios",
+      "symbol": "run_historical_scenario",
+      "docs": [
+        "ScenarioTesting.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Hypothetical Scenarios",
+      "category": "scenarios",
+      "import_path": "iqrp.app.backtesting.scenarios",
+      "symbol": "run_hypothetical_scenario",
+      "docs": [
+        "ScenarioTesting.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Monte Carlo Scenarios",
+      "category": "scenarios",
+      "import_path": "iqrp.app.backtesting.scenarios",
+      "symbol": "run_monte_carlo",
+      "docs": [
+        "ScenarioTesting.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Regime Scenarios",
+      "category": "scenarios",
+      "import_path": "iqrp.app.backtesting.scenarios.regime",
+      "symbol": "evaluate_regime_robustness",
+      "docs": [
+        "ScenarioTesting.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Liquidity Scenarios",
+      "category": "scenarios",
+      "import_path": "iqrp.app.backtesting.scenarios.liquidity",
+      "symbol": "run_liquidity_scenario",
+      "docs": [
+        "ScenarioTesting.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Capacity Testing",
+      "category": "capacity",
+      "import_path": "iqrp.app.backtesting.capacity",
+      "symbol": "capacity_curve",
+      "docs": [
+        "CapacityTesting.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Parameter Robustness",
+      "category": "robustness",
+      "import_path": "iqrp.app.backtesting.robustness",
+      "symbol": "parameter_sweep",
+      "docs": [
+        "ParameterRobustness.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Ablation Testing",
+      "category": "robustness",
+      "import_path": "iqrp.app.backtesting.robustness",
+      "symbol": "ablation_test",
+      "docs": [
+        "ParameterRobustness.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Strategy Comparison",
+      "category": "comparison",
+      "import_path": "iqrp.app.backtesting.comparison",
+      "symbol": "compare_strategies",
+      "docs": [
+        "PerformanceMetrics.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Experiment Registry",
+      "category": "registry",
+      "import_path": "iqrp.app.backtesting.experiment_registry",
+      "symbol": "ExperimentRegistry",
+      "docs": [
+        "Reproducibility.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Reproducibility",
+      "category": "infra",
+      "import_path": "iqrp.app.backtesting.serializer",
+      "symbol": "serialize_result",
+      "docs": [
+        "Reproducibility.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Strategy Validation Gates",
+      "category": "gates",
+      "import_path": "iqrp.app.backtesting.validation_gates",
+      "symbol": "evaluate_gates",
+      "docs": [
+        "StrategyValidation.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Paper Trading Interface",
+      "category": "paper",
+      "import_path": "iqrp.app.backtesting.paper_trading",
+      "symbol": "PaperTradingInterface",
+      "docs": [
+        "StrategyValidation.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Scorecard",
+      "category": "performance",
+      "import_path": "iqrp.app.backtesting.performance",
+      "symbol": "StrategyScorecard",
+      "docs": [
+        "PerformanceMetrics.md",
+        "StrategyValidation.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Backtest Engine",
+      "category": "engine",
+      "import_path": "iqrp.app.backtesting.engine",
+      "symbol": "BacktestEngine",
+      "docs": [
+        "BacktestingPlatform.md",
+        "Phase13_BacktestingPlatform.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Reports",
+      "category": "reports",
+      "import_path": "iqrp.app.backtesting.reports",
+      "symbol": "full_report",
+      "docs": [
+        "BacktestingPlatform.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Component Registry",
+      "category": "infra",
+      "import_path": "iqrp.app.backtesting.registry",
+      "symbol": "default_registry",
+      "docs": [
+        "BacktestingPlatform.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Scenario Engine",
+      "category": "scenarios",
+      "import_path": "iqrp.app.backtesting.scenarios",
+      "symbol": "ScenarioEngine",
+      "docs": [
+        "ScenarioTesting.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    }
+  ],
+  "documentation": [
+    {
+      "doc": "BacktestingPlatform.md",
+      "exists": true
+    },
+    {
+      "doc": "EventEngine.md",
+      "exists": true
+    },
+    {
+      "doc": "WalkForward.md",
+      "exists": true
+    },
+    {
+      "doc": "RollingRetraining.md",
+      "exists": true
+    },
+    {
+      "doc": "PerformanceMetrics.md",
+      "exists": true
+    },
+    {
+      "doc": "ScenarioTesting.md",
+      "exists": true
+    },
+    {
+      "doc": "StrategyValidation.md",
+      "exists": true
+    },
+    {
+      "doc": "CapacityTesting.md",
+      "exists": true
+    },
+    {
+      "doc": "ParameterRobustness.md",
+      "exists": true
+    },
+    {
+      "doc": "Reproducibility.md",
+      "exists": true
+    },
+    {
+      "doc": "Phase13_BacktestingPlatform.md",
+      "exists": true
+    }
+  ],
+  "integration": {
+    "backtesting_package_exports": [
+      "BacktestEngine",
+      "BacktestResult",
+      "BacktestSettings",
+      "BacktestState",
+      "ExperimentLineage",
+      "ExperimentRegistry",
+      "GateResult",
+      "GateThresholds",
+      "PaperTradingConfig",
+      "PaperTradingInterface",
+      "StrategyScorecard",
+      "build_scorecard",
+      "evaluate_gates",
+      "sharpe_ratio",
+      "ScenarioEngine",
+      "HistoricalScenario",
+      "capacity_curve",
+      "estimate_capacity_limit",
+      "compare_strategies",
+      "parameter_sweep",
+      "ablation_test"
+    ],
+    "stubs_created": [],
+    "hydra": "/home/ashish/qtb/iqrp/configs/backtesting/default.yaml",
+    "integration_hooks": [
+      {
+        "file": "iqrp/app/backtesting/__init__.py",
+        "change": "Export BacktestEngine, BacktestSettings, ExperimentRegistry, gates, paper trading",
+        "reason": "Canonical Phase 13 entry points"
+      }
+    ],
+    "note": "No existing modules outside iqrp/app/backtesting/ were modified. Execution TCA / risk metrics imported optionally."
+  },
+  "architectural_rules": [
+    "No event handler may access data after event.timestamp (PIT)",
+    "Look-ahead / leakage / invalid universe \u2192 INVALIDATED",
+    "Every run records versions + seed for reproducibility",
+    "Never promote on highest historical return or Sharpe alone",
+    "Out-of-sample evidence is mandatory for promotion",
+    "Paper trading preserves strategy/feature/model/execution versions",
+    "Rejected / invalidated experiments are retained in the registry",
+    "Optional Execution TCA / risk imports \u2014 no hard dependency mutation"
+  ]
+}

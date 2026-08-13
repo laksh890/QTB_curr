@@ -1,0 +1,10 @@
+# Local coverage config for Institutional Portfolio Construction unit tests.
+[run]
+branch = false
+source = iqrp/app/portfolio
+omit = iqrp/tests/*
+
+[report]
+show_missing = true
+skip_covered = false
+include = iqrp/app/portfolio/*

@@ -1,0 +1,94 @@
+discovery:
+  root_package: iqrp.app.forecasting
+  include_families: null
+  exclude_families: []
+  exclude_names: []
+  max_candidates: null
+
+benchmark:
+  method: walk_forward
+  n_splits: 3
+  train_size: 80
+  test_size: 20
+  gap: 0
+  embargo: 5
+  purge: 5
+  parallel: true
+  max_workers: 4
+
+ranking:
+  primary: rmse
+  higher_is_better:
+    - directional_accuracy
+    - sharpe
+    - sortino
+    - profit_factor
+    - r2
+  weights:
+    rmse: 1.0
+    mae: 0.5
+    directional_accuracy: 0.8
+    sharpe: 0.3
+
+automl:
+  method: none
+  n_trials: 10
+  timeout: null
+  multi_objective: false
+  objectives:
+    - rmse
+    - directional_accuracy
+
+ensemble:
+  method: weighted
+  top_k: 3
+  min_weight: 0.05
+
+calibration:
+  enabled: false
+  method: none
+
+drift:
+  enabled: true
+  feature_psi_threshold: 0.2
+  prediction_ks_threshold: 0.1
+  performance_drop: 0.25
+
+retrain:
+  mode: performance
+  schedule_every: 100
+  window: 500
+  warm_start: true
+
+routing:
+  enabled: true
+  by_regime: true
+  by_volatility: true
+  by_confidence: true
+  vol_column: vol_forecast
+  regime_column: regime
+
+monitoring:
+  enabled: true
+  window: 200
+  latency_budget_ms: 100.0
+  accuracy_floor: 0.0
+  mae_alert: 1.0
+  latency_ms_alert: 100.0
+  calibration_alert: 0.25
+  stability_alert: 0.2
+
+columns:
+  timestamp: open_time
+  target: target
+  feature_columns: null
+
+forecast:
+  default_horizon: 5
+  interval_level: 0.95
+
+visualization:
+  enabled: true
+  top_n: 10
+
+seed: 42

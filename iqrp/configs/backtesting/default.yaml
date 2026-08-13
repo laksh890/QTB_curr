@@ -1,0 +1,72 @@
+# Institutional Backtesting Platform defaults
+# CRITICAL: No event handler may access data after event.timestamp.
+# Look-ahead / leakage / invalid universe → INVALIDATED.
+# Every run records versions + seed for reproducibility.
+
+enabled: true
+name: default_backtest
+initial_cash: 1000000.0
+
+clock:
+  frequency: daily
+  timezone: UTC
+  custom_step_seconds: 86400.0
+
+event_engine:
+  advance_empty_ticks: false
+  max_events: null
+  enforce_pit: true
+  invalidate_on_lookahead: true
+
+pit:
+  enforce_no_lookahead: true
+  enforce_universe_asof: true
+  detect_leakage: true
+  max_label_horizon: null
+
+corporate_actions:
+  enabled: true
+  adjust_splits: true
+  adjust_dividends: true
+  handle_mergers: true
+  handle_delistings: true
+  handle_symbol_changes: true
+  dividend_method: subtract
+
+costs:
+  commission_bps: 0.0
+  spread_bps: 0.0
+  slippage_bps: 0.0
+  financing_bps: 0.0
+  borrow_bps: 0.0
+
+latency:
+  signal_ms: 0.0
+  decision_ms: 0.0
+  order_ms: 0.0
+  execution_ms: 0.0
+  market_data_ms: 0.0
+
+walk_forward:
+  mode: rolling
+  train_periods: 252
+  validation_periods: 63
+  test_periods: 21
+  purge_periods: 0
+  embargo_periods: 0
+
+reproducibility:
+  seed: 42
+  data_version: "1.0.0"
+  feature_version: "1.0.0"
+  label_version: "1.0.0"
+  model_version: "1.0.0"
+  risk_version: "1.0.0"
+  portfolio_version: "1.0.0"
+  execution_version: "1.0.0"
+  code_version: "1.0.0"
+
+reporting:
+  write_markdown: true
+  write_json: true
+  write_scorecard: true

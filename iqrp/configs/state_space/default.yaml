@@ -1,0 +1,41 @@
+# @package state_space
+# Institutional State Space Modeling Framework defaults.
+
+enabled: true
+n_jobs: 4
+random_seed: 42
+store_dir: data/state_space
+duckdb_path: data/state_space/state_space.duckdb
+output_dir: data/reports/state_space
+default_model: mock_discrete_ssm
+
+columns:
+  timestamp: open_time
+  observation_columns: null  # null => all numeric except timestamp/OHLCV metadata
+
+filtering:
+  algorithm: forward
+  numerical_eps: 1.0e-300
+  chunk_size: 10000  # memory-efficient filtering for long series
+
+smoothing:
+  algorithm: fixed_interval
+  fixed_lag: 5
+
+forecasting:
+  default_horizon: 5
+  confidence_level: 0.95
+
+evaluation:
+  n_bootstrap: 0
+
+visualization:
+  enabled: true
+  max_points: 500
+
+storage:
+  compression: zstd
+  register_duckdb: true
+
+serialization:
+  format: json  # json | parquet_sidecar

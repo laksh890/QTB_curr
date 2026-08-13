@@ -1,0 +1,98 @@
+task:
+  type: regression
+  quantile_alphas: [0.1, 0.5, 0.9]
+  n_classes: 2
+  n_targets: 1
+
+architecture:
+  hidden_size: 64
+  num_layers: 2
+  dropout: 0.1
+  bidirectional: false
+  lookback: 32
+  horizon: 5
+  kernel_size: 3
+  n_blocks: 2
+  n_harmonics: 4
+  n_polynomials: 2
+  attention: true
+  embedding_dim: 16
+
+train:
+  epochs: 30
+  batch_size: 64
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  optimizer: adamw
+  loss: mse
+  grad_clip: 1.0
+  accumulation_steps: 1
+  mixed_precision: false
+  compile: false
+  early_stopping_patience: 8
+  seed: 42
+  device: auto
+  num_workers: 0
+  val_ratio: 0.2
+  label_smoothing: 0.0
+
+scheduler:
+  name: cosine
+  warmup_epochs: 2
+  min_lr: 1.0e-6
+  gamma: 0.95
+
+regime:
+  enabled: true
+  column: regime
+  mode: feature
+  n_regimes: 4
+
+online:
+  mode: finetune
+  window: 512
+  refresh_every: 50
+  finetune_epochs: 3
+
+optimization:
+  method: none
+  n_trials: 10
+  pruning: true
+  parallel: false
+
+probabilistic:
+  enabled: false
+  distribution: gaussian
+  n_samples: 50
+  mc_dropout: false
+
+columns:
+  timestamp: open_time
+  target: target
+  feature_columns: null
+
+forecast:
+  default_horizon: 5
+  interval_level: 0.95
+  multi_horizon: true
+
+visualization:
+  enabled: true
+  max_points: 500
+
+distributed:
+  enabled: false
+  ddp: false
+  amp: false
+  gradient_checkpointing: false
+
+discovery_modules:
+  - iqrp.app.forecasting.neural.mlp.model
+  - iqrp.app.forecasting.neural.lstm.model
+  - iqrp.app.forecasting.neural.gru.model
+  - iqrp.app.forecasting.neural.tcn.model
+  - iqrp.app.forecasting.neural.nbeats.model
+  - iqrp.app.forecasting.neural.nhits.model
+  - iqrp.app.forecasting.neural.deepar.model
+  - iqrp.app.forecasting.neural.seq2seq.model
+  - iqrp.app.forecasting.neural.variants

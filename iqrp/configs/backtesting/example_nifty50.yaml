@@ -1,0 +1,56 @@
+# REFERENCE CONFIGURATION ONLY
+# ----------------------------
+# This file does not download market data and does not claim profitability.
+# Supply your own validated historical dataset at `dataset_path` before running.
+#
+# Example:
+#   python -m iqrp.app.backtesting.run --config iqrp/configs/backtesting/example_nifty50.yaml
+
+backtest_id: example_nifty50_reference
+strategy_id: buy_and_hold
+strategy_version: "1.0.0"
+
+# USER MUST SUPPLY DATA — placeholder path only (file will not be fetched).
+dataset_path: /path/to/your/nifty50_ohlcv.parquet
+dataset_id: user_supplied_nifty50
+dataset_version: "1.0.0"
+adapter: parquet
+
+# Optional universe filter (leave empty to use all instruments in the file)
+universe: []
+
+start: "2018-01-01"
+end: "2023-12-31"
+frequency: daily
+initial_capital: 1000000.0
+currency: INR
+timezone: UTC
+seed: 42
+
+output_dir: results
+
+commission_bps: 1.0
+spread_bps: 2.0
+slippage_bps: 1.0
+financing_bps: 0.0
+
+risk_config:
+  max_gross_leverage: 1.0
+  max_drawdown: 1.0
+
+portfolio_config:
+  method: proportional
+  long_only: true
+
+execution_config:
+  mode: simulate
+
+# Walk-forward / scenarios are optional research extensions (not enabled by default)
+walk_forward_config: {}
+scenario_config: {}
+
+meta:
+  purpose: reference_only
+  disclaimer: >
+    Reference configuration for operational wiring. Not an investment
+    recommendation. No profitability is claimed or implied.

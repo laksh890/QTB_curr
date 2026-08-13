@@ -1,0 +1,83 @@
+task:
+  type: regression
+  quantile_alphas: [0.1, 0.5, 0.9]
+  n_classes: null
+
+hyperparameters:
+  n_estimators: 80
+  max_depth: 4
+  learning_rate: 0.1
+  subsample: 0.9
+  colsample_bytree: 0.9
+  min_child_weight: 1.0
+  reg_lambda: 1.0
+  reg_alpha: 0.0
+  random_state: 42
+  n_jobs: -1
+  early_stopping_rounds: 20
+  device: cpu
+
+optimization:
+  method: none
+  n_trials: 15
+  timeout: null
+  parallel: true
+  pruning: true
+  early_stopping: true
+  scoring: neg_rmse
+
+validation:
+  strategy: walk_forward
+  n_splits: 3
+  train_size: 120
+  test_size: 24
+  gap: 0
+  embargo: 5
+  purge: 5
+
+feature_selection:
+  enabled: false
+  method: none
+  max_features: null
+  correlation_threshold: 0.95
+
+calibration:
+  enabled: false
+  method: none
+
+regime:
+  enabled: true
+  column: regime
+  mode: feature
+
+online:
+  mode: warm_start
+  window: 500
+  refresh_every: 50
+
+ensemble:
+  enabled: false
+  method: none
+  n_bags: 5
+
+columns:
+  timestamp: open_time
+  target: target
+  feature_columns: null
+
+forecast:
+  default_horizon: 5
+  interval_level: 0.95
+  multi_horizon: true
+
+visualization:
+  enabled: true
+  max_points: 500
+
+discovery_modules:
+  - iqrp.app.forecasting.tree_models.xgboost.model
+  - iqrp.app.forecasting.tree_models.lightgbm.model
+  - iqrp.app.forecasting.tree_models.catboost.model
+  - iqrp.app.forecasting.tree_models.sklearn.hist_gradient_boosting
+  - iqrp.app.forecasting.tree_models.sklearn.random_forest
+  - iqrp.app.forecasting.tree_models.sklearn.extra_trees

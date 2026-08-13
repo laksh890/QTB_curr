@@ -1,0 +1,12 @@
+# Local coverage config for Institutional Risk Intelligence unit tests.
+# Project pyproject.toml omits iqrp/app/risk/* from global coverage; this rcfile
+# enables measuring that package when running risk unit tests in isolation.
+[run]
+branch = false
+source = iqrp/app/risk
+omit = iqrp/tests/*
+
+[report]
+show_missing = true
+skip_covered = false
+include = iqrp/app/risk/*

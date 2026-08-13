@@ -1,0 +1,48 @@
+# Coverage for Phase 13 operational packages + run.py only.
+# Use:
+#   coverage run --rcfile=iqrp/tests/unit/backtesting/operational/.coveragerc \
+#     -m pytest iqrp/tests/unit/backtesting/operational iqrp/tests/integration/backtesting -q --no-cov
+#   coverage report --rcfile=iqrp/tests/unit/backtesting/operational/.coveragerc --precision=2
+
+[run]
+branch = false
+source = iqrp/app/backtesting
+omit =
+    */__pycache__/*
+    */tests/*
+    */backtesting/event_engine/*
+    */backtesting/performance/*
+    */backtesting/walk_forward/*
+    */backtesting/scenarios/*
+    */backtesting/rolling_retraining/*
+    */backtesting/capacity.py
+    */backtesting/comparison.py
+    */backtesting/config.py
+    */backtesting/corporate_actions.py
+    */backtesting/engine.py
+    */backtesting/experiment_registry.py
+    */backtesting/__init__.py
+    */backtesting/operational_validation.py
+    */backtesting/paper_trading.py
+    */backtesting/phase13.py
+    */backtesting/pit.py
+    */backtesting/registry.py
+    */backtesting/reports.py
+    */backtesting/robustness.py
+    */backtesting/serializer.py
+    */backtesting/types.py
+    */backtesting/validation_gates.py
+
+[report]
+show_missing = true
+skip_empty = true
+precision = 2
+omit =
+    */__pycache__/*
+exclude_lines =
+    pragma: no cover
+    if TYPE_CHECKING:
+    if __name__ == .__main__.:
+    @abstractmethod
+    @overload
+    raise NotImplementedError

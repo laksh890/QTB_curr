@@ -1,0 +1,181 @@
+# Risk Intelligence Ensemble defaults
+# Hard limits cannot be overridden by forecast confidence / Kelly.
+# Missing critical metrics fall back to conservative risk state — never assume zero risk.
+
+seed: 42
+data_version: "1.0.0"
+model_version: "1.0.0"
+ensemble_version: "1.0.0"
+
+critical_metric_keys:
+  - volatility
+  - var
+  - cvar
+  - drawdown
+
+# Conservative fallback when critical risk information is missing
+missing_metrics_fallback_state: CAPITAL_PRESERVATION
+missing_metrics_fallback_action: REJECT
+hard_halt_on_single: false
+min_dimensions_for_halt: 2
+
+weighting_scheme: static  # static | risk_budget | regime | dynamic | calibration | stress | user_defined
+
+# Dimension identity preserved — weights scale contribution, do not erase dimensions
+static_weights:
+  market: 0.18
+  tail: 0.20
+  liquidity: 0.12
+  concentration: 0.10
+  correlation: 0.10
+  drawdown: 0.18
+  model: 0.07
+  operational: 0.05
+
+# Reference thresholds for normalization (raw → [0,1] risk; 1 = max risk)
+normalization:
+  volatility:
+    zero: 0.0
+    one: 0.50
+    invert: false
+  var:
+    zero: 0.0
+    one: 0.10
+    invert: false
+  cvar:
+    zero: 0.0
+    one: 0.15
+    invert: false
+  expected_shortfall:
+    zero: 0.0
+    one: 0.15
+    invert: false
+  drawdown:
+    zero: 0.0
+    one: 0.20
+    invert: false
+  liquidity_score:
+    zero: 1.0
+    one: 0.0
+    invert: true
+  concentration:
+    zero: 0.0
+    one: 0.50
+    invert: false
+  correlation:
+    zero: 0.0
+    one: 1.0
+    invert: false
+  model_risk:
+    zero: 0.0
+    one: 1.0
+    invert: false
+  operational:
+    zero: 0.0
+    one: 1.0
+    invert: false
+  gap_risk:
+    zero: 0.0
+    one: 0.10
+    invert: false
+
+# Align drawdown scoring with institutional drawdown config
+drawdown:
+  caution: 0.05
+  reduced_risk: 0.10
+  capital_preservation: 0.15
+  trading_halt: 0.20
+
+# Overall / dimension score → RiskState escalation thresholds
+state_thresholds:
+  caution: 0.35
+  reduced_risk: 0.55
+  capital_preservation: 0.72
+  trading_halt: 0.88
+
+# Recovery thresholds (hysteresis gap below escalation)
+recovery_thresholds:
+  caution: 0.28
+  reduced_risk: 0.45
+  capital_preservation: 0.62
+  trading_halt: 0.78
+
+hysteresis:
+  escalation_confirmations: 1
+  recovery_confirmations: 3
+  dimension_confirmation_threshold: 0.75
+
+# Per-state exposure / leverage caps (hard — confidence cannot raise these)
+state_caps:
+  NORMAL:
+    max_exposure: 1.0
+    recommended_leverage: 1.0
+    position_reduction: 0.0
+  CAUTION:
+    max_exposure: 0.75
+    recommended_leverage: 0.75
+    position_reduction: 0.25
+  REDUCED_RISK:
+    max_exposure: 0.50
+    recommended_leverage: 0.50
+    position_reduction: 0.50
+  CAPITAL_PRESERVATION:
+    max_exposure: 0.25
+    recommended_leverage: 0.25
+    position_reduction: 0.75
+  TRADING_HALT:
+    max_exposure: 0.0
+    recommended_leverage: 0.0
+    position_reduction: 1.0
+
+limits:
+  max_position: 0.10
+  max_gross_exposure: 1.5
+  max_net_exposure: 1.0
+  max_concentration: 0.25
+  max_leverage: 2.0
+  max_daily_loss: 0.03
+
+leverage:
+  base_leverage: 1.0
+  max_leverage: 2.0
+  min_leverage: 0.0
+  confidence_cap: 1.25
+  target_volatility: 0.10
+
+confidence:
+  base: 0.70
+  disagreement_penalty: 0.50
+  sample_size_floor: 30
+  sample_size_full: 252
+  missing_metric_penalty: 0.15
+  min_confidence: 0.05
+  max_confidence: 0.99
+
+disagreement:
+  relative_epsilon: 1.0e-8
+  high_disagreement: 0.35
+  pairs:
+    - [var_historical, var_monte_carlo]
+    - [garch_vol, realized_vol]
+    - [es_parametric, es_historical]
+    - [corr_normal, corr_stress]
+    - [liquidity_model, liquidity_observed]
+
+calibration:
+  var_alpha: 0.05
+  es_alpha: 0.05
+  tolerance_band: 0.02
+
+regime_scales:
+  normal: 1.0
+  low_vol: 0.9
+  high_vol: 1.2
+  stress: 1.35
+  crisis: 1.5
+  transition: 1.1
+
+budget:
+  target_risk: 0.10
+  max_budget_scale: 1.5
+  min_budget_scale: 0.25

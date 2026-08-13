@@ -1,0 +1,67 @@
+# Institutional Capital Allocation Engine defaults.
+# Hard risk limits cannot be overridden by forecast confidence or opportunity scores.
+
+seed: 42
+data_version: "1.0.0"
+model_version: "1.0.0"
+
+method: risk_parity
+
+# Portfolio / strategy hard caps (allocation always clips to these)
+max_weight: 0.40
+min_weight: 0.0
+max_gross_exposure: 1.5
+max_net_exposure: 1.0
+max_leverage: 2.0
+max_concentration: 0.40
+max_turnover: 0.50
+max_participation: 0.10
+min_adv_coverage: 0.01
+
+# Capacity / liquidity conservatism when inputs missing
+missing_capacity_scale: 0.50
+missing_liquidity_scale: 0.50
+default_adv: 1.0e6
+default_spread: 0.002
+impact_coeff: 0.10
+capacity_ttl_days: 5.0
+
+# Correlation crowding: correlated strategies share effective risk budget
+correlation_crowding_threshold: 0.60
+correlation_scale_floor: 0.25
+
+# Drawdown scaling thresholds (aligned with risk drawdown states)
+drawdown:
+  caution: 0.05
+  reduced_risk: 0.10
+  capital_preservation: 0.15
+  trading_halt: 0.20
+
+# Dynamic risk-state multipliers (confidence cannot expand beyond 1.0)
+risk_state_scales:
+  NORMAL: 1.0
+  CAUTION: 0.8
+  REDUCED_RISK: 0.5
+  CAPITAL_PRESERVATION: 0.25
+  TRADING_HALT: 0.0
+
+regime_scales:
+  normal: 1.0
+  low_vol: 1.0
+  high_vol: 0.55
+  stress: 0.35
+  crisis: 0.25
+  transition: 0.60
+
+# Volatility budgeting
+target_volatility: 0.10
+vol_floor: 1.0e-4
+
+# Hierarchical / risk parity numerics
+hrp_linkage: single
+risk_parity_max_iter: 500
+risk_parity_tol: 1.0e-8
+
+# Rebalance
+rebalance_turnover_cap: 0.50
+rebalance_participation_cap: 0.10

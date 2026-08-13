@@ -1,0 +1,68 @@
+# @package _global_
+
+defaults:
+  - _self_
+  - environment: development
+
+name: iqrp
+version: "0.1.0"
+debug: false
+seed: 42
+timezone: UTC
+
+logging:
+  level: INFO
+  json_logs: false
+  console_logs: true
+  file_logs: true
+  log_dir: logs
+  log_filename: iqrp.log
+  rotation: 100 MB
+  retention: 30 days
+  compression: gz
+  enqueue: true
+  diagnose: false
+  backtrace: false
+
+storage:
+  data_dir: data
+  duckdb_path: data/iqrp.duckdb
+  parquet_dir: data/parquet
+  cache_dir: data/cache
+
+data:
+  ingestion:
+    default_exchange: binance
+    symbols:
+      - BTCUSDT
+    timeframes:
+      - 1m
+      - 5m
+      - 1h
+    max_retries: 5
+    retry_delay_seconds: 0.5
+    retry_backoff: 2.0
+    page_limit: 1000
+    concurrency: 4
+    checkpoint_dirname: .checkpoints
+    ws_heartbeat_interval_seconds: 15.0
+    ws_reconnect_max_delay_seconds: 60.0
+    ws_reconnect_base_delay_seconds: 1.0
+    parquet_compression: zstd
+    auto_register_duckdb: true
+  exchanges:
+    - name: binance
+      rest_base_url: https://api.binance.com
+      ws_base_url: wss://stream.binance.com:9443/ws
+      rate_limit_per_second: 10.0
+      request_timeout_seconds: 30.0
+    - name: bybit
+      rest_base_url: https://api.bybit.com
+      ws_base_url: wss://stream.bybit.com/v5/public/spot
+      rate_limit_per_second: 10.0
+      request_timeout_seconds: 30.0
+    - name: coinbase
+      rest_base_url: https://api.exchange.coinbase.com
+      ws_base_url: wss://ws-feed.exchange.coinbase.com
+      rate_limit_per_second: 5.0
+      request_timeout_seconds: 30.0

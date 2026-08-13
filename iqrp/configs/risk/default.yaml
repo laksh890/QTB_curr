@@ -1,0 +1,53 @@
+# Institutional Risk Intelligence Framework defaults
+# Hard limits cannot be overridden by forecast confidence.
+
+seed: 42
+data_version: "1.0.0"
+model_version: "1.0.0"
+
+var:
+  method: historical
+  confidence: 0.95
+  horizon: 1
+  n_simulations: 5000
+
+es:
+  method: historical
+  confidence: 0.95
+
+sizing:
+  method: volatility_target
+  target_volatility: 0.10
+  kelly_fraction: 0.25
+  max_kelly: 0.5
+  max_leverage: 2.0
+  risk_per_trade: 0.01
+
+drawdown:
+  caution: 0.05
+  reduced_risk: 0.10
+  capital_preservation: 0.15
+  trading_halt: 0.20
+
+limits:
+  max_position: 0.10
+  max_gross_exposure: 1.5
+  max_net_exposure: 1.0
+  max_concentration: 0.25
+  max_daily_loss: 0.03
+  max_leverage: 2.0
+  max_participation: 0.10
+  min_adv_coverage: 0.01
+
+leverage:
+  base_leverage: 1.0
+  max_leverage: 2.0
+  min_leverage: 0.0
+  vol_scalar: 1.0
+  confidence_cap: 1.25
+
+monte_carlo:
+  n_simulations: 5000
+  horizon: 1
+  seed: 42
+  block_size: 5

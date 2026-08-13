@@ -1,0 +1,70 @@
+# @package particle
+# Institutional Particle Filter Engine defaults.
+
+enabled: true
+n_states: 2
+n_obs: 1
+n_particles: 500
+state_names: null
+random_seed: 42
+store_dir: data/particle
+output_dir: data/reports/particle
+filter_type: bootstrap  # bootstrap | sis | sir | auxiliary | rao_blackwellized | adaptive
+application: custom  # custom | nonlinear_trend | volatility | liquidity | dynamic_corr | market_stress | risk_factors
+resampling_method: systematic  # multinomial | systematic | residual | stratified
+likelihood: gaussian  # gaussian | student_t | laplace | custom
+
+system:
+  dt: 1.0
+  process_noise_scale: 1.0e-2
+  observation_noise_scale: 1.0e-1
+  initial_state_scale: 1.0
+  initial_covariance_scale: 1.0
+  student_t_df: 5.0
+
+resampling:
+  adaptive: true
+  ess_threshold: 0.5  # fraction of n_particles
+  method: systematic
+
+rejuvenation:
+  enabled: true
+  method: jitter  # jitter | mcmc | adaptive | covariance
+  scale: 0.05
+  mcmc_steps: 1
+
+adaptive:
+  enabled: true
+  min_particles: 100
+  max_particles: 5000
+  target_ess_fraction: 0.5
+  proposal_adapt: true
+
+rao_blackwellized:
+  n_linear: 1
+  kalman_process_noise: 1.0e-3
+  kalman_observation_noise: 1.0e-2
+
+training:
+  n_iterations: 1
+  tol: 1.0e-4
+
+online:
+  warm_start: true
+  checkpoint_every: 0
+
+forecasting:
+  default_horizon: 5
+  confidence_level: 0.95
+
+columns:
+  timestamp: open_time
+  observation_columns: null
+
+visualization:
+  enabled: true
+  max_points: 500
+  max_particles_plot: 200
+
+serialization:
+  format: json

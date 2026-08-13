@@ -1,0 +1,49 @@
+# Institutional Execution Order Manager defaults
+# CRITICAL: Execution never generates alpha.
+# Urgency influences aggressiveness but NEVER overrides hard risk limits.
+# Hard risk limits cannot be overridden. Idempotent fills/events. No future information.
+
+seed: 42
+data_version: "1.0.0"
+model_version: "1.0.0"
+
+default_time_in_force: DAY
+default_urgency: NORMAL
+default_venue: SIM
+
+tick_lot:
+  default_tick_size: 0.01
+  default_lot_size: 1.0
+  min_qty: 1.0
+  max_qty: 1000000.0
+
+price_bands:
+  enabled: true
+  band_pct: 0.10
+  require_reference: false
+
+capital:
+  check_enabled: true
+  max_notional: 10000000.0
+  max_order_notional: 5000000.0
+
+risk:
+  enforce_hard_limits: true
+  require_risk_callback: false
+  max_participation: 0.10
+
+kill_switch:
+  check_on_submit: true
+  check_global: true
+  check_account: true
+  check_venue: true
+  check_strategy: true
+
+reconciliation:
+  qty_tolerance: 0.0
+  notional_tolerance: 0.01
+  alert_on_diff: true
+
+fills:
+  idempotent: true
+  allow_overfill: false

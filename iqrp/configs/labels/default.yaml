@@ -1,0 +1,68 @@
+# @package labels
+# Label Engineering Platform defaults (Hydra / OmegaConf).
+
+enabled: true
+n_jobs: 4
+random_seed: 42
+output_dir: data/reports/labels
+store_dir: data/labels
+cache_enabled: true
+
+columns:
+  timestamp: open_time
+  open: open
+  high: high
+  low: low
+  close: close
+  volume: volume
+
+defaults:
+  horizon: 12
+  volatility_window: 20
+  atr_window: 14
+  return_threshold: 0.0
+  bucket_quantiles: [0.25, 0.5, 0.75]
+  stress_vol_quantile: 0.9
+
+triple_barrier:
+  horizon: 20
+  upper_mult: 1.0
+  lower_mult: 1.0
+  barrier_mode: atr  # fixed | atr | volatility
+  fixed_upper: 0.02
+  fixed_lower: 0.02
+  atr_window: 14
+  atr_multiplier: 2.0
+  vol_window: 20
+  vol_multiplier: 2.0
+  min_return: 0.0
+
+meta_labeling:
+  primary_signal_column: primary_signal
+  confirmation_column: null
+  probability_threshold: 0.5
+  side_column: null
+
+regime:
+  trend_window: 50
+  vol_window: 30
+  liquidity_window: 30
+  sideways_threshold: 0.002
+  bull_threshold: 0.01
+  bear_threshold: -0.01
+  vol_quantiles: [0.33, 0.66]
+  liquidity_quantiles: [0.33, 0.66]
+
+validation:
+  max_lookahead_tolerance: 0
+  imbalance_ratio_alert: 0.05
+  min_coverage: 0.5
+  entropy_bins: 20
+
+visualization:
+  enabled: true
+  max_points: 500
+
+reports:
+  write_markdown: true
+  write_json: true

@@ -1,0 +1,333 @@
+{
+  "phase": "13",
+  "note": "Prompt section 59 filename retained as alias; platform phase is 13",
+  "overall_status": "pass",
+  "components_passed": 19,
+  "components_failed": 0,
+  "components_skipped": 0,
+  "e2e": {
+    "status": "COMPLETED",
+    "completed": true,
+    "dq_ok": true,
+    "n_orders": 2,
+    "n_fills": 2,
+    "equity_len": 40,
+    "recon_ok": true,
+    "report_path": "/tmp/phase13_opval_87b0a2w0/results/phase13_opval/reports/report.md",
+    "report_exists": true,
+    "reproducible": true,
+    "walk_forward": {
+      "engine": "WalkForwardEngine",
+      "n_windows": 13,
+      "config": {
+        "train_periods": 15,
+        "test_periods": 5
+      }
+    },
+    "scenarios": {
+      "engine": "ScenarioEngine",
+      "config": {
+        "enabled": true
+      }
+    },
+    "diagnostics": {
+      "data_validated": true,
+      "data_detail": {
+        "dataset_id": "synthetic_bars",
+        "path": "/tmp/phase13_opval_87b0a2w0/synthetic_bars.parquet",
+        "rows": 80,
+        "ok": true,
+        "critical_failures": [],
+        "report": {
+          "dataset_id": "unnamed",
+          "dataset_version": "1.0.0",
+          "source": "local",
+          "date_range": [
+            "2020-01-01 00:00:00+00:00",
+            "2020-02-25 00:00:00+00:00"
+          ],
+          "frequency": "1d",
+          "instrument_count": 2,
+          "row_count": 80,
+          "missing_data": {
+            "per_column": {
+              "timestamp": 0,
+              "instrument": 0,
+              "open": 0,
+              "high": 0,
+              "low": 0,
+              "close": 0,
+              "volume": 0
+            },
+            "missing_cells": 0,
+            "missing_pct": 0.0
+          },
+          "duplicate_data": {
+            "duplicate_rows": 0,
+            "duplicate_keys": 0
+          },
+          "invalid_data": {
+            "invalid_ohlc": 0,
+            "negative_volume": 0
+          },
+          "coverage": {
+            "coverage_pct": 100.0,
+            "expected_bars": 80,
+            "observed_bars": 80,
+            "frequency": "1d",
+            "gap_count": 0
+          },
+          "timezone": "UTC",
+          "corporate_action_availability": false,
+          "liquidity_data_availability": true,
+          "known_limitations": [],
+          "issues": [],
+          "critical_failures": [],
+          "ok": true
+        }
+      },
+      "price_history": {
+        "AAA": 42.619396999106826,
+        "BBB": 56.29783540668436
+      },
+      "portfolio_backend": "iqrp.app.portfolio",
+      "execution_backend": "iqrp.app.execution.ExecutionEngine",
+      "event_count": 442,
+      "bar_count": 40,
+      "lifecycle": {
+        "state": "RUNNING",
+        "history": [
+          {
+            "from_state": "CREATED",
+            "to_state": "VALIDATING",
+            "timestamp": "2026-08-13T13:29:15.292377+00:00",
+            "reason": "validate",
+            "meta": {}
+          },
+          {
+            "from_state": "VALIDATING",
+            "to_state": "PREPARING",
+            "timestamp": "2026-08-13T13:29:15.302963+00:00",
+            "reason": "prepare",
+            "meta": {}
+          },
+          {
+            "from_state": "PREPARING",
+            "to_state": "RUNNING",
+            "timestamp": "2026-08-13T13:29:15.834635+00:00",
+            "reason": "run",
+            "meta": {}
+          }
+        ]
+      },
+      "integrity": {
+        "ok": true,
+        "issues": [],
+        "checks": {
+          "data_validated": true,
+          "pit_enforced": true,
+          "no_lookahead": true,
+          "strategy_ran": true,
+          "risk_state": true,
+          "portfolio_targets": true,
+          "orders_logged": true,
+          "fills_logged": true,
+          "positions_tracked": true,
+          "pnl_tracked": true,
+          "cash_tracked": true,
+          "results_persisted": true,
+          "reconciled": true
+        }
+      }
+    },
+    "execution_backend": "iqrp.app.execution.ExecutionEngine",
+    "portfolio_backend": "iqrp.app.portfolio",
+    "root": "/tmp/phase13_opval_87b0a2w0"
+  },
+  "error": null,
+  "components": {
+    "data_ingestion": {
+      "status": "pass",
+      "tests_passed": 1,
+      "tests_failed": 0,
+      "coverage": 98.58437146092865,
+      "known_limitations": [
+        "Synthetic fixture data only; not real market prices."
+      ],
+      "detail": "ParquetAdapter + write_synthetic_ohlcv"
+    },
+    "dataset_validation": {
+      "status": "pass",
+      "tests_passed": 1,
+      "tests_failed": 0,
+      "coverage": 98.58437146092865,
+      "known_limitations": [
+        "Critical failures hard-fail; no silent repair"
+      ],
+      "detail": ""
+    },
+    "point_in_time_validation": {
+      "status": "pass",
+      "tests_passed": 1,
+      "tests_failed": 0,
+      "coverage": 98.58437146092865,
+      "known_limitations": [
+        "enforce_pit=True on runner"
+      ],
+      "detail": ""
+    },
+    "backtest_runner": {
+      "status": "pass",
+      "tests_passed": 1,
+      "tests_failed": 0,
+      "coverage": 98.58437146092865,
+      "known_limitations": [],
+      "detail": "COMPLETED"
+    },
+    "event_engine": {
+      "status": "pass",
+      "tests_passed": 1,
+      "tests_failed": 0,
+      "coverage": 98.58437146092865,
+      "known_limitations": [
+        "Uses existing EventDrivenEngine unchanged"
+      ],
+      "detail": ""
+    },
+    "strategy_execution": {
+      "status": "pass",
+      "tests_passed": 1,
+      "tests_failed": 0,
+      "coverage": 98.58437146092865,
+      "known_limitations": [
+        "Reference buy_and_hold only; no profitability claim"
+      ],
+      "detail": ""
+    },
+    "risk_execution": {
+      "status": "pass",
+      "tests_passed": 1,
+      "tests_failed": 0,
+      "coverage": 98.58437146092865,
+      "known_limitations": [
+        "Gross leverage / drawdown checks in pipeline"
+      ],
+      "detail": ""
+    },
+    "portfolio_execution": {
+      "status": "pass",
+      "tests_passed": 1,
+      "tests_failed": 0,
+      "coverage": 98.58437146092865,
+      "known_limitations": [
+        "Falls back to IsolatedPortfolioFallback when production portfolio unavailable"
+      ],
+      "detail": "iqrp.app.portfolio"
+    },
+    "execution_simulation": {
+      "status": "pass",
+      "tests_passed": 1,
+      "tests_failed": 0,
+      "coverage": 98.58437146092865,
+      "known_limitations": [
+        "IsolatedExecutionFallback when production execution unavailable"
+      ],
+      "detail": "iqrp.app.execution.ExecutionEngine"
+    },
+    "position_accounting": {
+      "status": "pass",
+      "tests_passed": 1,
+      "tests_failed": 0,
+      "coverage": 98.58437146092865,
+      "known_limitations": [],
+      "detail": ""
+    },
+    "pnl_accounting": {
+      "status": "pass",
+      "tests_passed": 1,
+      "tests_failed": 0,
+      "coverage": 98.58437146092865,
+      "known_limitations": [
+        "Reconciliation identity; no profitability assertion"
+      ],
+      "detail": ""
+    },
+    "walk_forward": {
+      "status": "pass",
+      "tests_passed": 1,
+      "tests_failed": 0,
+      "coverage": 98.58437146092865,
+      "known_limitations": [
+        "Thin wrapper over existing WalkForwardEngine"
+      ],
+      "detail": ""
+    },
+    "rolling_retraining": {
+      "status": "pass",
+      "tests_passed": 1,
+      "tests_failed": 0,
+      "coverage": 98.58437146092865,
+      "known_limitations": [
+        "Hook validates RollingRetrainer import; full retrain loop is optional"
+      ],
+      "detail": ""
+    },
+    "scenario_testing": {
+      "status": "pass",
+      "tests_passed": 1,
+      "tests_failed": 0,
+      "coverage": 98.58437146092865,
+      "known_limitations": [
+        "Thin wrapper over existing ScenarioEngine"
+      ],
+      "detail": ""
+    },
+    "performance_reporting": {
+      "status": "pass",
+      "tests_passed": 1,
+      "tests_failed": 0,
+      "coverage": 98.58437146092865,
+      "known_limitations": [
+        "Reports describe simulated path only"
+      ],
+      "detail": ""
+    },
+    "result_persistence": {
+      "status": "pass",
+      "tests_passed": 1,
+      "tests_failed": 0,
+      "coverage": 98.58437146092865,
+      "known_limitations": [],
+      "detail": ""
+    },
+    "reproducibility": {
+      "status": "pass",
+      "tests_passed": 1,
+      "tests_failed": 0,
+      "coverage": 98.58437146092865,
+      "known_limitations": [
+        "Same seed + same synthetic fixture"
+      ],
+      "detail": ""
+    },
+    "leakage_detection": {
+      "status": "pass",
+      "tests_passed": 1,
+      "tests_failed": 0,
+      "coverage": 98.58437146092865,
+      "known_limitations": [
+        "PIT assert_no_lookahead on market bars; INVALIDATED on breach"
+      ],
+      "detail": ""
+    },
+    "integration_tests": {
+      "status": "pass",
+      "tests_passed": 1,
+      "tests_failed": 0,
+      "coverage": 98.58437146092865,
+      "known_limitations": [],
+      "detail": "operational e2e harness inside this module"
+    }
+  },
+  "disclaimer": "Synthetic / research validation only. No profitability claim. Figures describe simulated paths under stated assumptions."
+}

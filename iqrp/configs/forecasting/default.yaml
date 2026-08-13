@@ -1,0 +1,59 @@
+# Institutional Forecasting Framework defaults
+columns:
+  timestamp: open_time
+  target: target
+  feature_columns: null
+  regime_column: regime
+
+preprocessing:
+  scaler: standard
+  encode_categoricals: true
+  window_size: 32
+  horizon: 1
+  feature_selection: none
+  max_features: null
+  variance_threshold: 0.0
+  correlation_threshold: 0.95
+
+postprocessing:
+  calibrate: false
+  calibration_method: none
+  interval_level: 0.95
+  interval_method: residual
+  quantiles: [0.1, 0.5, 0.9]
+
+online:
+  warm_start: true
+  rolling_retrain_every: 0
+  checkpoint_every: 0
+  stream_buffer: 256
+
+training:
+  validation_fraction: 0.2
+  validation_method: holdout
+  n_splits: 5
+  walk_forward_train_size: null
+  walk_forward_test_size: 1
+  rolling_window: null
+
+evaluation:
+  primary_metric: rmse
+  include_financial: true
+  include_classification: true
+  include_probability: true
+
+visualization:
+  enabled: true
+  max_points: 500
+
+serialization:
+  format: json
+  include_npz: true
+
+inference:
+  default_horizon: 5
+  strategy: direct
+  batch_size: 1024
+
+discovery_modules:
+  - iqrp.app.forecasting.models.mock

@@ -1,0 +1,83 @@
+# @package simulation
+# Institutional Market Simulation Engine defaults.
+
+enabled: true
+random_seed: 42
+n_steps: 1000
+n_assets: 1
+dt: 0.004  # ~1 trading day in years if annualized; for bars use 1.0 as bar unit
+initial_price: 100.0
+asset_class: crypto  # stock | crypto | forex | commodity | index
+default_model: gbm
+
+market:
+  symbol: SYNTH
+  exchange: sim
+  timeframe: 1h
+  market_hours: 24  # hours/day; 24 = always open
+  tick_size: 0.01
+  lot_size: 0.001
+
+dynamics:
+  drift: 0.05
+  volatility: 0.2
+  mean_reversion_speed: 1.0
+  mean_reversion_level: 100.0
+  jump_intensity: 5.0
+  jump_mean: -0.02
+  jump_std: 0.04
+  heston_kappa: 2.0
+  heston_theta: 0.04
+  heston_xi: 0.3
+  heston_rho: -0.7
+  vg_theta: -0.1
+  vg_sigma: 0.2
+  vg_nu: 0.2
+  cir_kappa: 1.5
+  cir_theta: 0.04
+  cir_sigma: 0.1
+
+noise:
+  distribution: gaussian  # gaussian | student_t | laplace | cauchy | uniform | mixture
+  df: 5.0
+  mixture_weights: [0.9, 0.1]
+  mixture_scales: [1.0, 3.0]
+
+regimes:
+  enabled: true
+  n_states: 3
+  state_names: [bear, sideways, bull]
+  # row-stochastic transition matrix (flattened row-major if overridden in code)
+  persistence: 0.97
+  drifts: [-0.15, 0.0, 0.12]
+  volatilities: [0.35, 0.15, 0.22]
+
+liquidity:
+  base_spread_bps: 5.0
+  min_spread_bps: 1.0
+  depth_levels: 5
+  base_depth: 10.0
+  volume_scale: 100.0
+  slippage_impact: 0.1
+
+correlation:
+  rho: 0.3  # pairwise default for multi-asset
+
+events:
+  enabled: true
+  flash_crash_prob: 0.002
+  news_shock_prob: 0.01
+  gap_open_prob: 0.005
+  liquidity_collapse_prob: 0.003
+  outage_prob: 0.001
+  vol_spike_prob: 0.008
+  momentum_burst_prob: 0.01
+
+validation:
+  significance: 0.05
+  acf_lags: 20
+
+visualization:
+  enabled: true
+  max_points: 800
+  output_dir: data/reports/simulation

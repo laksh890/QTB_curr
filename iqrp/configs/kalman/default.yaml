@@ -1,0 +1,56 @@
+# @package kalman
+# Institutional Kalman Filtering Engine defaults.
+
+enabled: true
+n_states: 2
+n_obs: 1
+state_names: null
+random_seed: 42
+store_dir: data/kalman
+output_dir: data/reports/kalman
+filter_type: linear  # linear | ekf | ukf | adaptive
+application: custom  # custom | trend | denoise | dynamic_beta | volatility | spread | pairs
+
+system:
+  dt: 1.0
+  process_noise_scale: 1.0e-3
+  observation_noise_scale: 1.0e-2
+  initial_state_scale: 1.0
+  initial_covariance_scale: 1.0
+
+ukf:
+  alpha: 1.0e-3
+  beta: 2.0
+  kappa: 0.0
+
+adaptive:
+  enabled: true
+  window: 20
+  process_adapt_rate: 0.05
+  observation_adapt_rate: 0.05
+  innovation_threshold: 3.0
+
+training:
+  em_iterations: 10
+  tol: 1.0e-4
+  estimate_noise: true
+
+online:
+  warm_start: true
+  checkpoint_every: 0
+
+forecasting:
+  default_horizon: 5
+  confidence_level: 0.95
+
+columns:
+  timestamp: open_time
+  observation_columns: null
+  control_columns: null
+
+visualization:
+  enabled: true
+  max_points: 500
+
+serialization:
+  format: json

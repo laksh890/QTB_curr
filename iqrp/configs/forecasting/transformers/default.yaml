@@ -1,0 +1,104 @@
+task:
+  type: regression
+  quantile_alphas: [0.1, 0.5, 0.9]
+  n_classes: 2
+  n_targets: 1
+  n_assets: 1
+
+architecture:
+  d_model: 64
+  n_heads: 4
+  num_layers: 2
+  dropout: 0.1
+  lookback: 64
+  horizon: 8
+  ffn_dim: 128
+  patch_len: 8
+  stride: 4
+  factor: 3
+  moving_avg: 25
+  attention_type: full
+  positional: sinusoidal
+  use_regime_token: true
+  chunk_size: 512
+  max_context: 10240
+
+train:
+  epochs: 30
+  batch_size: 32
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  optimizer: adamw
+  loss: mse
+  grad_clip: 1.0
+  accumulation_steps: 1
+  mixed_precision: false
+  compile: false
+  gradient_checkpointing: false
+  early_stopping_patience: 8
+  seed: 42
+  device: auto
+  val_ratio: 0.2
+  teacher_forcing: 0.5
+  scheduled_sampling: false
+  curriculum: false
+  ema_decay: 0.0
+  label_smoothing: 0.0
+
+scheduler:
+  name: warmup_cosine
+  warmup_epochs: 2
+  min_lr: 1.0e-6
+
+regime:
+  enabled: true
+  column: regime
+  mode: embedding
+  n_regimes: 4
+
+online:
+  mode: finetune
+  window: 1024
+  refresh_every: 50
+  finetune_epochs: 2
+
+probabilistic:
+  enabled: false
+  distribution: gaussian
+  n_mixtures: 3
+  n_samples: 50
+
+columns:
+  timestamp: open_time
+  target: target
+  asset_column: null
+  feature_columns: null
+
+forecast:
+  default_horizon: 8
+  interval_level: 0.95
+  multi_horizon: true
+  streaming: false
+  sliding_context: true
+
+distributed:
+  enabled: false
+  ddp: false
+  amp: false
+
+visualization:
+  enabled: true
+  max_points: 500
+
+discovery_modules:
+  - iqrp.app.forecasting.transformers.architectures.tft.model
+  - iqrp.app.forecasting.transformers.architectures.informer.model
+  - iqrp.app.forecasting.transformers.architectures.autoformer.model
+  - iqrp.app.forecasting.transformers.architectures.fedformer.model
+  - iqrp.app.forecasting.transformers.architectures.patchtst.model
+  - iqrp.app.forecasting.transformers.architectures.crossformer.model
+  - iqrp.app.forecasting.transformers.architectures.timesnet.model
+  - iqrp.app.forecasting.transformers.architectures.itransformer.model
+  - iqrp.app.forecasting.transformers.architectures.timemixer.model
+  - iqrp.app.forecasting.transformers.architectures.tide.model
+  - iqrp.app.forecasting.transformers.architectures.moe_transformer.model

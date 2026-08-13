@@ -1,0 +1,428 @@
+{
+  "phase": "11",
+  "title": "Alpha Research",
+  "timestamp": "2026-08-11T15:15:20.707836+00:00",
+  "status": "PASS",
+  "summary": {
+    "components_total": 25,
+    "components_passed": 25,
+    "components_failed": 0,
+    "docs_required": 10,
+    "docs_present": 10,
+    "failures": []
+  },
+  "checklist": {
+    "Signal Definition": true,
+    "Discovery": true,
+    "Statistical Validation": true,
+    "IC": true,
+    "Decay": true,
+    "Regime": true,
+    "Cross-Section": true,
+    "Neutralization": true,
+    "Multiple Testing": true,
+    "Deflated Sharpe": true,
+    "PBO": true,
+    "Purged": true,
+    "Embargo": true,
+    "TC": true,
+    "Capacity": true,
+    "Correlation": true,
+    "Redundancy": true,
+    "Clustering": true,
+    "Ensemble": true,
+    "Ranking": true,
+    "Lifecycle": true,
+    "Monitoring": true,
+    "Retirement": true,
+    "Experiment Registry": true,
+    "Alpha Research Engine": true
+  },
+  "components": [
+    {
+      "name": "Signal Definition",
+      "category": "base",
+      "import_path": "iqrp.app.alpha.base.signal_definition",
+      "symbol": "SignalDefinition",
+      "docs": [
+        "AlphaResearch.md",
+        "SignalDefinition.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Discovery",
+      "category": "discovery",
+      "import_path": "iqrp.app.alpha.discovery.candidate_generator",
+      "symbol": "CandidateGenerator",
+      "docs": [
+        "AlphaResearch.md",
+        "SignalDiscovery.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Statistical Validation",
+      "category": "validation",
+      "import_path": "iqrp.app.alpha.statistical_validation",
+      "symbol": "ic_significance",
+      "docs": [
+        "AlphaResearch.md",
+        "SignalValidation.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "IC",
+      "category": "research",
+      "import_path": "iqrp.app.alpha.research.information_coefficient",
+      "symbol": "compute_ic",
+      "docs": [
+        "AlphaResearch.md",
+        "SignalValidation.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Decay",
+      "category": "research",
+      "import_path": "iqrp.app.alpha.research.decay",
+      "symbol": "analyze_decay",
+      "docs": [
+        "AlphaResearch.md",
+        "SignalDecay.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Regime",
+      "category": "regime",
+      "import_path": "iqrp.app.alpha.regime.regime_performance",
+      "symbol": "regime_performance",
+      "docs": [
+        "AlphaResearch.md",
+        "SignalValidation.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Cross-Section",
+      "category": "cross_section",
+      "import_path": "iqrp.app.alpha.cross_section.ranking",
+      "symbol": "cross_sectional_rank",
+      "docs": [
+        "AlphaResearch.md",
+        "SignalDiscovery.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Neutralization",
+      "category": "cross_section",
+      "import_path": "iqrp.app.alpha.cross_section.neutralization",
+      "symbol": "neutralize_market",
+      "docs": [
+        "AlphaResearch.md",
+        "SignalValidation.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Multiple Testing",
+      "category": "validation",
+      "import_path": "iqrp.app.alpha.statistical_validation.multiple_testing",
+      "symbol": "multiple_testing_adjustment",
+      "docs": [
+        "AlphaResearch.md",
+        "MultipleTesting.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Deflated Sharpe",
+      "category": "validation",
+      "import_path": "iqrp.app.alpha.statistical_validation.deflated_sharpe",
+      "symbol": "deflated_sharpe_ratio",
+      "docs": [
+        "AlphaResearch.md",
+        "SignalValidation.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "PBO",
+      "category": "validation",
+      "import_path": "iqrp.app.alpha.statistical_validation.probability_backtest_overfitting",
+      "symbol": "probability_backtest_overfitting",
+      "docs": [
+        "AlphaResearch.md",
+        "SignalValidation.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Purged",
+      "category": "backtesting",
+      "import_path": "iqrp.app.alpha.backtesting.purged_cv",
+      "symbol": "purged_kfold_splits",
+      "docs": [
+        "AlphaResearch.md",
+        "BacktestValidation.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Embargo",
+      "category": "backtesting",
+      "import_path": "iqrp.app.alpha.backtesting.embargo",
+      "symbol": "apply_embargo",
+      "docs": [
+        "AlphaResearch.md",
+        "BacktestValidation.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "TC",
+      "category": "economics",
+      "import_path": "iqrp.app.alpha.economics.transaction_costs",
+      "symbol": "estimate_transaction_cost",
+      "docs": [
+        "AlphaResearch.md",
+        "SignalCapacity.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Capacity",
+      "category": "economics",
+      "import_path": "iqrp.app.alpha.economics.capacity",
+      "symbol": "estimate_capacity",
+      "docs": [
+        "AlphaResearch.md",
+        "SignalCapacity.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Correlation",
+      "category": "ensemble",
+      "import_path": "iqrp.app.alpha.ensemble.correlation",
+      "symbol": "signal_correlation_matrix",
+      "docs": [
+        "AlphaResearch.md",
+        "SignalEnsemble.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Redundancy",
+      "category": "ensemble",
+      "import_path": "iqrp.app.alpha.ensemble.redundancy",
+      "symbol": "redundancy_report",
+      "docs": [
+        "AlphaResearch.md",
+        "SignalEnsemble.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Clustering",
+      "category": "ensemble",
+      "import_path": "iqrp.app.alpha.ensemble.clustering",
+      "symbol": "hierarchical_correlation_clusters",
+      "docs": [
+        "AlphaResearch.md",
+        "SignalEnsemble.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Ensemble",
+      "category": "ensemble",
+      "import_path": "iqrp.app.alpha.ensemble.signal_combination",
+      "symbol": "combine_signals",
+      "docs": [
+        "AlphaResearch.md",
+        "SignalEnsemble.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Ranking",
+      "category": "engine",
+      "import_path": "iqrp.app.alpha.ranking",
+      "symbol": "rank_candidates",
+      "docs": [
+        "AlphaResearch.md",
+        "AlphaResearch.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Lifecycle",
+      "category": "base",
+      "import_path": "iqrp.app.alpha.base.signal_result",
+      "symbol": "SignalStatus",
+      "docs": [
+        "AlphaResearch.md",
+        "SignalLifecycle.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Monitoring",
+      "category": "monitoring",
+      "import_path": "iqrp.app.alpha.monitoring.alerts",
+      "symbol": "build_alpha_alerts",
+      "docs": [
+        "AlphaResearch.md",
+        "SignalLifecycle.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Retirement",
+      "category": "monitoring",
+      "import_path": "iqrp.app.alpha.monitoring.retirement",
+      "symbol": "evaluate_retirement",
+      "docs": [
+        "AlphaResearch.md",
+        "SignalLifecycle.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Experiment Registry",
+      "category": "base",
+      "import_path": "iqrp.app.alpha.base.signal_registry",
+      "symbol": "SignalRegistry",
+      "docs": [
+        "AlphaResearch.md",
+        "AlphaResearch.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    },
+    {
+      "name": "Alpha Research Engine",
+      "category": "engine",
+      "import_path": "iqrp.app.alpha",
+      "symbol": "AlphaResearchEngine",
+      "docs": [
+        "AlphaResearch.md",
+        "Phase11_AlphaResearch.md"
+      ],
+      "status": "pass",
+      "detail": "importable and documented"
+    }
+  ],
+  "documentation": [
+    {
+      "doc": "AlphaResearch.md",
+      "exists": true
+    },
+    {
+      "doc": "SignalDiscovery.md",
+      "exists": true
+    },
+    {
+      "doc": "SignalValidation.md",
+      "exists": true
+    },
+    {
+      "doc": "MultipleTesting.md",
+      "exists": true
+    },
+    {
+      "doc": "BacktestValidation.md",
+      "exists": true
+    },
+    {
+      "doc": "SignalDecay.md",
+      "exists": true
+    },
+    {
+      "doc": "SignalCapacity.md",
+      "exists": true
+    },
+    {
+      "doc": "SignalEnsemble.md",
+      "exists": true
+    },
+    {
+      "doc": "SignalLifecycle.md",
+      "exists": true
+    },
+    {
+      "doc": "Phase11_AlphaResearch.md",
+      "exists": true
+    }
+  ],
+  "integration": {
+    "alpha_package_exports": [
+      "AlphaResearchEngine",
+      "AlphaSerializer",
+      "AlphaSettings",
+      "AlphaSignal",
+      "ApprovalError",
+      "ExperimentRecord",
+      "SignalDefinition",
+      "SignalMetadata",
+      "SignalPerformance",
+      "SignalRegistry",
+      "SignalResearchReport",
+      "SignalScore",
+      "SignalStatistics",
+      "SignalStatus",
+      "StatusTransition",
+      "get_default_registry",
+      "registry_available",
+      "registry_get",
+      "registry_register",
+      "validate_phase11",
+      "validate_transition",
+      "write_phase11_report"
+    ],
+    "stubs_created": [],
+    "integration_hooks": [
+      {
+        "file": "iqrp/app/alpha/__init__.py",
+        "change": "Export AlphaResearchEngine, AlphaSettings, key types",
+        "reason": "Canonical Phase 11 entry points"
+      }
+    ]
+  },
+  "architectural_rules": [
+    "Statistical significance alone \u2260 alpha",
+    "Historical Sharpe alone cannot approve",
+    "economic_hypothesis required for APPROVED",
+    "Alpha approval \u2260 trading approval \u2014 Risk Intelligence is not bypassed",
+    "Point-in-time only \u2014 no future leakage in signal helpers",
+    "Rejected experiments are preserved in the registry",
+    "Discovery emits candidates, not approved alpha"
+  ]
+}

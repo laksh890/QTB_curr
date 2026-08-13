@@ -1,0 +1,18 @@
+# @package _global_
+
+environment: development
+debug: true
+
+logging:
+  level: DEBUG
+  json_logs: false
+  console_logs: true
+  file_logs: true
+  diagnose: true
+  backtrace: true
+
+storage:
+  data_dir: data/dev
+  duckdb_path: data/dev/iqrp.duckdb
+  parquet_dir: data/dev/parquet
+  cache_dir: data/dev/cache

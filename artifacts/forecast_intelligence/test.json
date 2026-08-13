@@ -1,0 +1,262 @@
+{
+  "settings": {
+    "discovery": {
+      "root_package": "iqrp.app.forecasting",
+      "include_families": null,
+      "exclude_families": [],
+      "exclude_names": [],
+      "max_candidates": null
+    },
+    "benchmark": {
+      "method": "walk_forward",
+      "n_splits": 2,
+      "train_size": 50,
+      "test_size": 15,
+      "gap": 0,
+      "embargo": 5,
+      "purge": 5,
+      "parallel": false,
+      "max_workers": 4
+    },
+    "ranking": {
+      "primary": "rmse",
+      "higher_is_better": [
+        "directional_accuracy",
+        "sharpe",
+        "sortino",
+        "profit_factor",
+        "r2"
+      ],
+      "weights": {
+        "rmse": 1.0,
+        "mae": 0.5,
+        "directional_accuracy": 0.8,
+        "sharpe": 0.3
+      }
+    },
+    "automl": {
+      "method": "none",
+      "n_trials": 10,
+      "timeout": null,
+      "multi_objective": false,
+      "objectives": [
+        "rmse",
+        "directional_accuracy"
+      ]
+    },
+    "ensemble": {
+      "method": "weighted",
+      "top_k": 1,
+      "min_weight": 0.05
+    },
+    "calibration": {
+      "enabled": false,
+      "method": "none"
+    },
+    "drift": {
+      "enabled": true,
+      "feature_psi_threshold": 0.05,
+      "prediction_ks_threshold": 0.05,
+      "performance_drop": 0.1
+    },
+    "retrain": {
+      "mode": "performance",
+      "schedule_every": 100,
+      "window": 80,
+      "warm_start": true
+    },
+    "routing": {
+      "enabled": true,
+      "by_regime": true,
+      "by_volatility": true,
+      "by_confidence": true,
+      "vol_column": "vol_forecast",
+      "regime_column": "regime"
+    },
+    "monitoring": {
+      "enabled": true,
+      "window": 50,
+      "latency_budget_ms": 100.0,
+      "accuracy_floor": 0.0,
+      "mae_alert": 1.0,
+      "latency_ms_alert": 100.0,
+      "calibration_alert": 0.25,
+      "stability_alert": 0.2
+    },
+    "columns": {
+      "timestamp": "open_time",
+      "target": "target",
+      "feature_columns": null
+    },
+    "forecast": {
+      "default_horizon": 5,
+      "interval_level": 0.95
+    },
+    "visualization": {
+      "enabled": true,
+      "top_n": 10
+    },
+    "seed": 42
+  },
+  "best_model": "mock",
+  "feature_columns": [
+    "f2"
+  ],
+  "target_column": "target",
+  "leaderboard": [
+    {
+      "name": "mock",
+      "metrics": {
+        "memory_mb": 0.0,
+        "sharpe": -1.3836031840526908,
+        "latency_ms": 0.7969940002112708,
+        "n": 15.0,
+        "brier": 0.5339569343717696,
+        "mse": 7.728557793248548e-05,
+        "inference_cost": 0.0,
+        "sortino": -0.9295332463819084,
+        "r2": -0.022174826683763083,
+        "mae": 0.007249883619251543,
+        "prediction_stability": 0.9988694407965134,
+        "smape": 155.1948501686546,
+        "rmse": 0.008636526867633158,
+        "max_drawdown": 0.08647339008026034,
+        "calibration_error": 0.2011428245484266,
+        "directional_accuracy": 0.3928571428571429,
+        "mape": 94.0046315760553,
+        "log_loss": 0.7296359622281715,
+        "profit_factor": 1.1952757524241304
+      },
+      "score": 0.04348334984898147,
+      "rank": 1,
+      "family": "baseline",
+      "metadata": {
+        "n_folds": 2,
+        "method": "walk_forward"
+      }
+    }
+  ],
+  "selection": {
+    "best_model": "mock",
+    "best_horizon": 5,
+    "best_features": [
+      "f2"
+    ],
+    "best_regime_models": {
+      "0": "mock"
+    },
+    "best_volatility_model": null,
+    "best_ensemble": "weighted",
+    "ranked": [
+      {
+        "name": "mock",
+        "metrics": {
+          "memory_mb": 0.0,
+          "sharpe": -1.3836031840526908,
+          "latency_ms": 0.7969940002112708,
+          "n": 15.0,
+          "brier": 0.5339569343717696,
+          "mse": 7.728557793248548e-05,
+          "inference_cost": 0.0,
+          "sortino": -0.9295332463819084,
+          "r2": -0.022174826683763083,
+          "mae": 0.007249883619251543,
+          "prediction_stability": 0.9988694407965134,
+          "smape": 155.1948501686546,
+          "rmse": 0.008636526867633158,
+          "max_drawdown": 0.08647339008026034,
+          "calibration_error": 0.2011428245484266,
+          "directional_accuracy": 0.3928571428571429,
+          "mape": 94.0046315760553,
+          "log_loss": 0.7296359622281715,
+          "profit_factor": 1.1952757524241304
+        },
+        "score": 0.04348334984898147,
+        "rank": 1,
+        "family": "baseline",
+        "metadata": {
+          "n_folds": 2,
+          "method": "walk_forward"
+        }
+      }
+    ],
+    "metadata": {
+      "n_candidates": 1
+    }
+  },
+  "routing": {
+    "by_regime": {
+      "0": "mock"
+    },
+    "by_asset": {},
+    "by_timeframe": {},
+    "default_model": "mock",
+    "high_vol_model": "mock",
+    "low_confidence_model": "mock"
+  },
+  "best_params": {},
+  "residual_std": 0.012364220710338736,
+  "n_updates": 0,
+  "fitted": true,
+  "checkpoint": {
+    "meta": {
+      "name": "mock",
+      "version": "1.0.0",
+      "description": "Deterministic mock forecaster for framework tests",
+      "algorithm_family": "baseline",
+      "task": "regression",
+      "default_horizon": 5,
+      "supports_online": true,
+      "supports_proba": true,
+      "supports_intervals": true,
+      "supports_quantiles": false,
+      "parameters": {
+        "drift": 0.0
+      },
+      "target_names": [],
+      "feature_names": []
+    },
+    "fitted": true,
+    "feature_columns": [
+      "f2"
+    ],
+    "target_column": "target",
+    "regime_column": null,
+    "training_meta": {
+      "n_samples": 120,
+      "n_features": 1,
+      "feature_columns": [
+        "f2"
+      ],
+      "target_column": "target",
+      "regime_column": null,
+      "horizon": 5,
+      "train_start": null,
+      "train_end": null,
+      "extra": {}
+    },
+    "algorithm_state": {
+      "coef": [
+        0.021335977445267995
+      ],
+      "intercept": -0.0002737888485959389,
+      "residual_std": 0.012364220710338736,
+      "last_target": 0.009722273092158673,
+      "feature_importances": [
+        0.021335977445267995
+      ],
+      "class_centers": [
+        -0.012342456640251753,
+        -0.00040047199897376467,
+        0.011196625859794954
+      ]
+    }
+  },
+  "calibrator": {
+    "method": "platt",
+    "params": {
+      "a": 35.705900268556526,
+      "b": 0.5149533374461973
+    }
+  }
+}

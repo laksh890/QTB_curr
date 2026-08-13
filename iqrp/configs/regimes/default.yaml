@@ -1,0 +1,33 @@
+# @package regimes
+# Market Regime Detection Framework defaults.
+
+enabled: true
+n_jobs: 4
+random_seed: 42
+store_dir: data/regimes
+duckdb_path: data/regimes/regimes.duckdb
+output_dir: data/reports/regimes
+default_model: mock_regime
+
+columns:
+  timestamp: open_time
+  feature_columns: null  # null => all numeric except timestamp/OHLCV
+
+detection:
+  min_persistence_bars: 3
+  confidence_threshold: 0.55
+  smooth_window: 1
+
+evaluation:
+  n_bootstrap: 0
+
+visualization:
+  enabled: true
+  max_points: 500
+
+storage:
+  compression: zstd
+  register_duckdb: true
+
+serialization:
+  format: json  # json | parquet_sidecar

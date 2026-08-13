@@ -1,0 +1,19 @@
+# @package _global_
+
+environment: testing
+debug: true
+seed: 0
+
+logging:
+  level: WARNING
+  json_logs: false
+  console_logs: true
+  file_logs: false
+  diagnose: false
+  backtrace: false
+
+storage:
+  data_dir: data/test
+  duckdb_path: data/test/iqrp.duckdb
+  parquet_dir: data/test/parquet
+  cache_dir: data/test/cache

@@ -39,18 +39,21 @@ def classify_simple_regimes(
 
     Labels: trending / mean_reverting / high_volatility / low_volatility.
     Transitions are marked where the label changes.
+
+    Vectorized for large intraday series (e.g. multi-million crypto bars).
     """
+    import pandas as pd
+
     r = as_returns(returns)
     n = r.size
     labels = np.full(n, MEAN_REVERTING, dtype=object)
     if n == 0:
         return labels
 
-    # Rolling vol
-    vol = np.full(n, np.nan)
     vw = max(int(vol_window), 2)
-    for i in range(vw - 1, n):
-        vol[i] = float(np.std(r[i - vw + 1 : i + 1], ddof=1))
+    tw = max(int(trend_window), 2)
+    s = pd.Series(r)
+    vol = s.rolling(vw, min_periods=vw).std(ddof=1).to_numpy(dtype=np.float64)
     finite_vol = vol[np.isfinite(vol)]
     if finite_vol.size:
         hi = float(np.quantile(finite_vol, high_vol_percentile))
@@ -58,30 +61,24 @@ def classify_simple_regimes(
     else:
         hi, lo = 0.0, 0.0
 
-    tw = max(int(trend_window), 2)
-    for i in range(n):
-        if np.isfinite(vol[i]):
-            if vol[i] >= hi:
-                labels[i] = HIGH_VOL
-                continue
-            if vol[i] <= lo:
-                labels[i] = LOW_VOL
-                continue
-        if i >= tw - 1:
-            window = r[i - tw + 1 : i + 1]
-            # Autocorr proxy: sign persistence vs mean reversion
-            if window.size > 2:
-                ac = float(np.corrcoef(window[:-1], window[1:])[0, 1])
-                if np.isfinite(ac) and ac > 0.05:
-                    labels[i] = TRENDING
-                elif np.isfinite(ac) and ac < -0.05:
-                    labels[i] = MEAN_REVERTING
+    # Autocorr proxy via rolling corr of r_t vs r_{t-1}
+    ac = s.rolling(tw, min_periods=tw).corr(s.shift(1)).to_numpy(dtype=np.float64)
 
-    # Mark transitions
+    high_vol = np.isfinite(vol) & (vol >= hi)
+    low_vol = np.isfinite(vol) & (vol <= lo) & ~high_vol
+    trending = np.isfinite(ac) & (ac > 0.05) & ~high_vol & ~low_vol
+    mean_rev = np.isfinite(ac) & (ac < -0.05) & ~high_vol & ~low_vol
+
+    labels[mean_rev] = MEAN_REVERTING
+    labels[trending] = TRENDING
+    labels[low_vol] = LOW_VOL
+    labels[high_vol] = HIGH_VOL
+
     out = labels.copy()
-    for i in range(1, n):
-        if labels[i] != labels[i - 1]:
-            out[i] = REGIME_TRANSITION
+    changed = np.empty(n, dtype=bool)
+    changed[0] = False
+    changed[1:] = labels[1:] != labels[:-1]
+    out[changed] = REGIME_TRANSITION
     return out
 
 
@@ -97,7 +94,7 @@ def run_regime_scenario(
     labs = np.asarray(regimes).reshape(-1)
     n = min(r.size, labs.size)
     r = r[:n]
-    labs = np.asarray([str(x) for x in labs[:n].tolist()], dtype=object)
+    labs = labs[:n].astype(str)
 
     if regime is not None:
         mask = labs == str(regime)

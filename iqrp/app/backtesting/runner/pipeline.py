@@ -32,6 +32,13 @@ def _aware(ts: datetime) -> datetime:
     return ts
 
 
+def _stable_hex(seed: int, *parts: Any, prefix: str = "") -> str:
+    """Deterministic ID derived from seed + parts (reproducible across runs)."""
+    key = "|".join(["iqrp-bt", str(int(seed)), *[str(p) for p in parts]])
+    digest = uuid.uuid5(uuid.NAMESPACE_URL, key).hex
+    return f"{prefix}{digest}" if prefix else digest
+
+
 def _merge_strategy(
     payload: Mapping[str, Any] | None, extra: Mapping[str, Any] | None
 ) -> dict[str, Any]:
@@ -249,14 +256,26 @@ class EventPipeline:
         self.ctx.event_count += 1
         payload = _merge_strategy(event.payload, self.ctx.strategy.on_order(event, self.ctx))
         orders = list(payload.get("orders") or self.ctx.pending_orders or [])
-        for o in orders:
-            oid = str(o.get("order_id") or uuid.uuid4().hex)
+        for idx, o in enumerate(orders):
+            inst = str(o.get("instrument", ""))
+            # Always stamp a seed-derived ID so runs are reproducible (ignore
+            # non-deterministic IDs from upstream execution adapters).
+            oid = _stable_hex(
+                self.ctx.config.seed,
+                "order",
+                event.timestamp.isoformat(),
+                inst,
+                idx,
+                float(o.get("quantity", 0.0) or 0.0),
+                str(o.get("side", "buy")),
+                prefix="ord_",
+            )
             o["order_id"] = oid
             self.ctx.orders.add(
                 {
                     "order_id": oid,
                     "timestamp": event.timestamp.isoformat(),
-                    "instrument": str(o.get("instrument", "")),
+                    "instrument": inst,
                     "side": str(o.get("side", "buy")),
                     "quantity": float(o.get("quantity", 0.0)),
                     "order_type": str(o.get("order_type", "market")),
@@ -330,7 +349,16 @@ class EventPipeline:
                     break
             if qty <= 0 or px <= 0:
                 continue
-            fid = uuid.uuid4().hex
+            fid = _stable_hex(
+                self.ctx.config.seed,
+                "fill",
+                event.timestamp.isoformat(),
+                inst,
+                oid,
+                qty,
+                px,
+                prefix="fill_",
+            )
             slip_raw = row.get("slippage", 0.0)
             if isinstance(slip_raw, Mapping):
                 slip_val = float(

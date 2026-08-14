@@ -7,6 +7,7 @@ from iqrp.app.backtesting.accounting.positions import PositionBook, PositionReco
 from iqrp.app.backtesting.accounting.reconciliation import (
     ReconciliationError,
     ReconciliationResult,
+    full_accounting_audit,
     reconcile_capital,
 )
 from iqrp.app.backtesting.accounting.snapshots import PortfolioSnapshot, SnapshotBook
@@ -26,5 +27,6 @@ __all__ = [
     "SnapshotBook",
     "TradeLedger",
     "TradeRecord",
+    "full_accounting_audit",
     "reconcile_capital",
 ]

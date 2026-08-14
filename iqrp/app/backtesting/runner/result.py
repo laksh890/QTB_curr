@@ -45,15 +45,20 @@ class OperationalBacktestResult:
         return False
 
     def to_dict(self) -> dict[str, Any]:
+        ending = float(self.equity_curve[-1]) if self.equity_curve else float(self.initial_capital)
+        cfg = dict(self.config or {})
         return {
             "backtest_id": self.backtest_id,
             "status": self.status,
+            "initial_capital": float(self.initial_capital),
+            "ending_equity": ending,
             "equity_curve": list(self.equity_curve),
             "returns": list(self.returns),
             "timestamps": list(self.timestamps),
             "orders": list(self.orders),
             "fills": list(self.fills),
             "trades": list(self.trades),
+            "positions": list(self.positions_log),
             "positions_log": list(self.positions_log),
             "snapshots": list(self.snapshots),
             "capital": dict(self.capital),
@@ -61,13 +66,22 @@ class OperationalBacktestResult:
             "risk": dict(self.risk),
             "execution": dict(self.execution),
             "diagnostics": dict(self.diagnostics),
+            "reconciliation": dict(self.reconciliation),
+            "configuration": cfg,
+            "config": cfg,
+            "dataset": {
+                "path": cfg.get("dataset_path"),
+                "id": cfg.get("dataset_id"),
+                "version": cfg.get("dataset_version"),
+            },
+            "strategy": {
+                "id": cfg.get("strategy_id"),
+                "version": cfg.get("strategy_version"),
+            },
             "reports": dict(self.reports),
             "walk_forward": dict(self.walk_forward),
             "scenarios": dict(self.scenarios),
-            "reconciliation": dict(self.reconciliation),
-            "initial_capital": float(self.initial_capital),
             "seed": int(self.seed),
-            "config": dict(self.config),
             "pnl_changed": bool(self.pnl_changed),
         }
 

@@ -1,0 +1,168 @@
+{
+  "updated_at": "2026-08-14T13:51:17.639841+00:00",
+  "experiments": [
+    {
+      "experiment_id": "0aa824f3-d04a-4f65-bcbe-69d97fc38468",
+      "timestamp": "2026-08-14T13:49:37.332792+00:00",
+      "dataset_id": "btcusdt_intraday_1h",
+      "dataset_checksum": "",
+      "feature_versions": {
+        "momentum": "1.0.0"
+      },
+      "signal_id": "momentum_signal",
+      "signal_version": "1.0.0",
+      "parameters": {
+        "holding_bars": 5,
+        "lookback": 20
+      },
+      "timeframe": "1h",
+      "holding_period": 5,
+      "cost_model": {
+        "commission_bps": 1.0,
+        "spread_bps": 2.0,
+        "slippage_bps": 2.0
+      },
+      "risk_configuration": {
+        "note": "risk/execution authoritative when run via BacktestRunner"
+      },
+      "random_seed": 0,
+      "software_version": "iqrp-alpha-research-0.1.0",
+      "result_checksum": "24d8d8e0a54d0acdeb7eeb6d1d91895cbb7f1c0764b50e21c072f8c23b67f8c6",
+      "classification": "OOS_FAILURE",
+      "matrix_row": {
+        "feature": [
+          "momentum"
+        ],
+        "signal": "momentum_signal",
+        "instrument": "BTCUSDT",
+        "timeframe": "1h",
+        "holding_period": 5,
+        "trades": 2581,
+        "trades_per_day": 2581.0,
+        "gross_return": 21.416462749049927,
+        "net_return": 0.686362037609336,
+        "Sharpe": 0.2067751163619554,
+        "drawdown": 0.7511867790505886,
+        "IC": 0.01220419288174348,
+        "turnover": 173.24790195817238,
+        "cost": 2.5805000000000002,
+        "OOS_performance": -0.1798457448951926,
+        "robustness": 0.4680716851796439,
+        "classification": "OOS_FAILURE",
+        "result_class": "research_simulated",
+        "sample_flag": null,
+        "disclaimer": "Research / simulated result only. Not live performance."
+      },
+      "notes": []
+    },
+    {
+      "experiment_id": "1cd8f972-93df-4257-88fe-d9cc9b50d3e1",
+      "timestamp": "2026-08-14T13:49:47.136237+00:00",
+      "dataset_id": "btcusdt_intraday_5m",
+      "dataset_checksum": "",
+      "feature_versions": {
+        "momentum": "1.0.0"
+      },
+      "signal_id": "momentum_signal",
+      "signal_version": "1.0.0",
+      "parameters": {
+        "holding_bars": 5,
+        "lookback": 20
+      },
+      "timeframe": "5m",
+      "holding_period": 5,
+      "cost_model": {
+        "commission_bps": 1.0,
+        "spread_bps": 2.0,
+        "slippage_bps": 2.0
+      },
+      "risk_configuration": {
+        "note": "risk/execution authoritative when run via BacktestRunner"
+      },
+      "random_seed": 0,
+      "software_version": "iqrp-alpha-research-0.1.0",
+      "result_checksum": "466f471d992c146bdc87e81c7069b37df6f96c4741cab0d3ad580d33ad3892e4",
+      "classification": "OOS_FAILURE",
+      "matrix_row": {
+        "feature": [
+          "momentum"
+        ],
+        "signal": "momentum_signal",
+        "instrument": "BTCUSDT",
+        "timeframe": "5m",
+        "holding_period": 5,
+        "trades": 31975,
+        "trades_per_day": 31975.0,
+        "gross_return": -0.9603816280709815,
+        "net_return": -0.9999999999999996,
+        "Sharpe": -3.3686784481378744,
+        "drawdown": 0.9999999999999996,
+        "IC": -0.004374635286947411,
+        "turnover": 1917.003340301547,
+        "cost": 31.9745,
+        "OOS_performance": -4.426749866921666,
+        "robustness": 0.1800556342432624,
+        "classification": "OOS_FAILURE",
+        "result_class": "research_simulated",
+        "sample_flag": null,
+        "disclaimer": "Research / simulated result only. Not live performance."
+      },
+      "notes": []
+    },
+    {
+      "experiment_id": "c50b16af-ae98-4186-9128-323feb3afcf0",
+      "timestamp": "2026-08-14T13:51:17.639814+00:00",
+      "dataset_id": "btcusdt_intraday_1m",
+      "dataset_checksum": "",
+      "feature_versions": {
+        "momentum": "1.0.0"
+      },
+      "signal_id": "momentum_signal",
+      "signal_version": "1.0.0",
+      "parameters": {
+        "holding_bars": 5,
+        "lookback": 20
+      },
+      "timeframe": "1m",
+      "holding_period": 5,
+      "cost_model": {
+        "commission_bps": 1.0,
+        "spread_bps": 2.0,
+        "slippage_bps": 2.0
+      },
+      "risk_configuration": {
+        "note": "risk/execution authoritative when run via BacktestRunner"
+      },
+      "random_seed": 0,
+      "software_version": "iqrp-alpha-research-0.1.0",
+      "result_checksum": "469594752113dc43b70a736b63babef7beba95de5f23ae4c41d9bd9b732dffd7",
+      "classification": "OOS_FAILURE",
+      "matrix_row": {
+        "feature": [
+          "momentum"
+        ],
+        "signal": "momentum_signal",
+        "instrument": "BTCUSDT",
+        "timeframe": "1m",
+        "holding_period": 5,
+        "trades": 153839,
+        "trades_per_day": 153839.0,
+        "gross_return": -0.9999776023589331,
+        "net_return": -1.0,
+        "Sharpe": -15.858635067032175,
+        "drawdown": 1.0,
+        "IC": -0.007220474439417093,
+        "turnover": 9223.309069211275,
+        "cost": 153.8385,
+        "OOS_performance": -19.499035626608453,
+        "robustness": 0.17650883159091432,
+        "classification": "OOS_FAILURE",
+        "result_class": "research_simulated",
+        "sample_flag": null,
+        "disclaimer": "Research / simulated result only. Not live performance."
+      },
+      "notes": []
+    }
+  ],
+  "disclaimer": "Research experiments only \u2014 not profitability claims."
+}

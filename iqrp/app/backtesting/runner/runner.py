@@ -152,15 +152,25 @@ class BacktestRunner:
                     RunnerLifecycleState.INVALIDATED,
                     reason=ctx.invalidation_reason or "invalidated",
                 )
+                self._result = self._build_result()
+                self._finalize_result_state()
+                self._persisted_root = persist_result(self._result, self.config.output_dir)
+                self._report_paths = write_reports(self._result, self.config.output_dir)
+                persist_result(self._result, self.config.output_dir)
             elif self._cancel:  # pragma: no cover
                 self.lifecycle.transition(RunnerLifecycleState.CANCELLED, reason="cancelled")
-            else:
                 self._result = self._build_result()
+                self._finalize_result_state()
                 self._persisted_root = persist_result(self._result, self.config.output_dir)
+                self._report_paths = write_reports(self._result, self.config.output_dir)
+                persist_result(self._result, self.config.output_dir)
+            else:
+                # Build → reconcile → COMPLETED → persist → report (single authoritative status).
+                self._result = self._build_result()
                 integrity = integrity_validate(
                     ctx,
                     self._result,
-                    results_persisted=self._persisted_root is not None,
+                    results_persisted=False,
                 )
                 self._validation = integrity
                 self._result.diagnostics["integrity"] = integrity.to_dict()
@@ -170,7 +180,6 @@ class BacktestRunner:
                         reason="integrity_failed",
                     )
                 elif not integrity.ok:
-                    # Soft-fail warnings allowed; critical reconciliation still fails run
                     critical = [
                         i
                         for i in integrity.issues
@@ -181,20 +190,35 @@ class BacktestRunner:
                             RunnerLifecycleState.FAILED,
                             reason="integrity_failed",
                         )
+                        self._finalize_result_state()
+                        self._persisted_root = persist_result(self._result, self.config.output_dir)
+                        self._report_paths = write_reports(self._result, self.config.output_dir)
+                        persist_result(self._result, self.config.output_dir)
                         raise RuntimeError(f"integrity validation failed: {integrity.to_dict()}")
-                    self.lifecycle.transition(  # pragma: no cover
+                    self.lifecycle.transition(
                         RunnerLifecycleState.COMPLETED, reason="completed_with_warnings"
                     )
                 else:
                     self.lifecycle.transition(RunnerLifecycleState.COMPLETED, reason="completed")
-                # Persist lifecycle status on the result before writing reports.
-                self._result.status = self.lifecycle.state.value
+
+                self._finalize_result_state()
+                self._persisted_root = persist_result(self._result, self.config.output_dir)
+                # Mark persistence after first write, then refresh integrity check flag.
+                integrity.checks["results_persisted"] = True
+                integrity.issues = [i for i in integrity.issues if i.code != "results_persisted"]
+                integrity.ok = not any(i.severity == "critical" for i in integrity.issues)
+                self._result.diagnostics["integrity"] = integrity.to_dict()
                 self._report_paths = write_reports(self._result, self.config.output_dir)
-                # Optional extensions
+
                 if self.config.walk_forward_config:
                     self._result.walk_forward = self.walk_forward()
                 if self.config.scenario_config:
                     self._result.scenarios = self.scenarios()
+
+                # Re-persist so result.json / diagnostics match final COMPLETED + reports.
+                self._finalize_result_state()
+                persist_result(self._result, self.config.output_dir)
+                write_reports(self._result, self.config.output_dir)
         except Exception:
             if self.lifecycle.state not in {
                 RunnerLifecycleState.FAILED,
@@ -202,11 +226,47 @@ class BacktestRunner:
                 RunnerLifecycleState.CANCELLED,
             }:  # pragma: no cover
                 self.lifecycle.transition(RunnerLifecycleState.FAILED, reason="exception")
+            if self._result is not None:
+                self._finalize_result_state()
+                try:
+                    persist_result(self._result, self.config.output_dir)
+                except Exception:
+                    pass
             raise
 
         assert self._result is not None
-        self._result.status = self.lifecycle.state.value
+        self._finalize_result_state()
         return self._result
+
+    def _finalize_result_state(self) -> None:
+        """Stamp the authoritative lifecycle status onto the result and diagnostics."""
+        assert self._result is not None
+        status = self.lifecycle.state.value
+        self._result.status = status
+        ending = (
+            float(self._result.equity_curve[-1])
+            if self._result.equity_curve
+            else float(self._result.initial_capital)
+        )
+        self._result.diagnostics["status"] = status
+        self._result.diagnostics["lifecycle"] = self.lifecycle.to_dict()
+        if self._result.reconciliation:
+            self._result.diagnostics["reconciliation"] = dict(self._result.reconciliation)
+        # Convenience mirrors for consumers / report completeness.
+        self._result.diagnostics["ending_equity"] = ending
+        self._result.diagnostics["initial_capital"] = float(self._result.initial_capital)
+        self._result.diagnostics["n_orders"] = len(self._result.orders)
+        self._result.diagnostics["n_fills"] = len(self._result.fills)
+        self._result.diagnostics["n_trades"] = len(self._result.trades)
+        self._result.diagnostics["dataset"] = {
+            "path": (self._result.config or {}).get("dataset_path"),
+            "id": (self._result.config or {}).get("dataset_id"),
+            "version": (self._result.config or {}).get("dataset_version"),
+        }
+        self._result.diagnostics["strategy"] = {
+            "id": (self._result.config or {}).get("strategy_id"),
+            "version": (self._result.config or {}).get("strategy_version"),
+        }
 
     def pause(self) -> RunnerLifecycleState:
         self._pause = True

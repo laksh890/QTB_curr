@@ -6,7 +6,6 @@ from collections.abc import Mapping
 from dataclasses import dataclass, field
 from typing import Any
 
-from iqrp.app.backtesting.accounting.reconciliation import reconcile_capital
 from iqrp.app.backtesting.runner.configuration import BacktestRunConfig
 from iqrp.app.backtesting.runner.context import PipelineContext
 from iqrp.app.backtesting.runner.result import OperationalBacktestResult
@@ -132,27 +131,42 @@ def integrity_validate(
         issues.append(ValidationIssue("results_persisted", "warning", "results not persisted"))
 
     try:
-        recon = reconcile_capital(
-            context.capital,
+        from iqrp.app.backtesting.accounting.reconciliation import full_accounting_audit
+
+        final_qty = context.positions.quantities()
+        audit = full_accounting_audit(
+            capital=context.capital,
+            fills=result.fills,
+            snapshots=result.snapshots,
             ending_equity=(
                 float(result.equity_curve[-1]) if result.equity_curve else context.capital.equity
             ),
+            final_positions=final_qty,
             tolerance=float(context.config.reconciliation_tolerance),
-            fail=False,
         )
-        checks["reconciled"] = bool(recon.ok)
-        result.reconciliation = recon.to_dict()
-        if not recon.ok:
+        checks["reconciled"] = bool(audit.get("ok", False))
+        checks["cash_reconciled"] = bool(
+            (audit.get("cash_fill_replay") or {}).get("matches_ledger", False)
+        )
+        checks["positions_reconciled"] = bool(
+            (audit.get("position_fill_replay") or {}).get("ok", False)
+        )
+        result.reconciliation = audit
+        result.diagnostics["reconciliation"] = audit
+        if not audit.get("ok", False):
             issues.append(
                 ValidationIssue(
                     "reconciliation",
                     "critical",
-                    recon.detail or "capital reconciliation failed",
+                    str(audit.get("detail") or "accounting reconciliation failed"),
                 )
             )
     except Exception as exc:
         checks["reconciled"] = False
         issues.append(ValidationIssue("reconciliation", "critical", str(exc)))
+        if not result.reconciliation:
+            result.reconciliation = {"ok": False, "detail": str(exc)}
+            result.diagnostics["reconciliation"] = dict(result.reconciliation)
 
     critical = [i for i in issues if i.severity == "critical"]
     return ValidationReport(ok=len(critical) == 0, issues=issues, checks=checks)

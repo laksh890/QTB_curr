@@ -1,0 +1,227 @@
+{
+  "native_frequency": "1D",
+  "n_unavailable": 126,
+  "n_results": 129,
+  "classifications_present": [
+    "COST-INEFFICIENT",
+    "FRAGILE",
+    "UNAVAILABLE"
+  ],
+  "availability": {
+    "native": "1D",
+    "available": [
+      "1D"
+    ],
+    "unavailable": [
+      {
+        "available": false,
+        "native": "1D",
+        "requested": "1m",
+        "status": "UNAVAILABLE",
+        "reason": "requested 1m is finer than native dataset frequency 1D; intraday/finer bars are UNAVAILABLE (no fabricated data)"
+      },
+      {
+        "available": false,
+        "native": "1D",
+        "requested": "5m",
+        "status": "UNAVAILABLE",
+        "reason": "requested 5m is finer than native dataset frequency 1D; intraday/finer bars are UNAVAILABLE (no fabricated data)"
+      },
+      {
+        "available": false,
+        "native": "1D",
+        "requested": "15m",
+        "status": "UNAVAILABLE",
+        "reason": "requested 15m is finer than native dataset frequency 1D; intraday/finer bars are UNAVAILABLE (no fabricated data)"
+      },
+      {
+        "available": false,
+        "native": "1D",
+        "requested": "30m",
+        "status": "UNAVAILABLE",
+        "reason": "requested 30m is finer than native dataset frequency 1D; intraday/finer bars are UNAVAILABLE (no fabricated data)"
+      },
+      {
+        "available": false,
+        "native": "1D",
+        "requested": "1h",
+        "status": "UNAVAILABLE",
+        "reason": "requested 1h is finer than native dataset frequency 1D; intraday/finer bars are UNAVAILABLE (no fabricated data)"
+      },
+      {
+        "available": false,
+        "native": "1D",
+        "requested": "4h",
+        "status": "UNAVAILABLE",
+        "reason": "requested 4h is finer than native dataset frequency 1D; intraday/finer bars are UNAVAILABLE (no fabricated data)"
+      }
+    ]
+  },
+  "matrix_sample_1D": [
+    {
+      "strategy": "horizon_research_momentum",
+      "instrument": "NIFTY50",
+      "data_timeframe": "1D",
+      "signal_timeframe": "1D",
+      "holding": "1bar",
+      "holding_bars": 1,
+      "trades": 1238,
+      "trades_per_day": 0.30826693227091634,
+      "long_trades": 619,
+      "short_trades": 619,
+      "gross_return": 2.3158362248623967,
+      "net_return": -0.047148335994778745,
+      "gross_sharpe": 0.7692208357821472,
+      "net_sharpe": 0.0579362021964388,
+      "sortino": 0.07742042618707316,
+      "max_dd": 0.5985423894475341,
+      "turnover": 230.31757754800591,
+      "transaction_costs": 1.2375,
+      "oos_net_sharpe": 0.6926521527716115,
+      "robustness_score": 0.4018953989483087,
+      "status": "COST-INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "result_class": "research_simulated",
+      "disclaimer": "Research / simulated result only. Not live performance. Capacity estimates are ESTIMATED / MODEL-BASED when present."
+    },
+    {
+      "strategy": "horizon_research_momentum",
+      "instrument": "NIFTY50",
+      "data_timeframe": "1D",
+      "signal_timeframe": "1D",
+      "holding": "5bar",
+      "holding_bars": 5,
+      "trades": 263,
+      "trades_per_day": 0.06548804780876494,
+      "long_trades": 131,
+      "short_trades": 132,
+      "gross_return": 0.876323945779754,
+      "net_return": 0.44004947252561766,
+      "gross_sharpe": 0.4412061968110113,
+      "net_sharpe": 0.28873735082204993,
+      "sortino": 0.422795765100027,
+      "max_dd": 0.5007434070954495,
+      "turnover": 48.85524372230428,
+      "transaction_costs": 0.2625,
+      "oos_net_sharpe": 0.8847098448442176,
+      "robustness_score": 0.45692033496609463,
+      "status": "FRAGILE",
+      "reason": "performance isolated to a narrow horizon neighborhood",
+      "result_class": "research_simulated",
+      "disclaimer": "Research / simulated result only. Not live performance. Capacity estimates are ESTIMATED / MODEL-BASED when present."
+    },
+    {
+      "strategy": "horizon_research_momentum",
+      "instrument": "NIFTY50",
+      "data_timeframe": "1D",
+      "signal_timeframe": "1D",
+      "holding": "20bar",
+      "holding_bars": 20,
+      "trades": 64,
+      "trades_per_day": 0.01593625498007968,
+      "long_trades": 32,
+      "short_trades": 32,
+      "gross_return": 0.060664658763970536,
+      "net_return": -0.00503785740647511,
+      "gross_sharpe": 0.11449798885836011,
+      "net_sharpe": 0.07803829919416129,
+      "sortino": 0.11492962938913405,
+      "max_dd": 0.44929537226618466,
+      "turnover": 11.81831610044313,
+      "transaction_costs": 0.0635,
+      "oos_net_sharpe": -0.5978693581925928,
+      "robustness_score": 0.3766618348172425,
+      "status": "COST-INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "result_class": "research_simulated",
+      "disclaimer": "Research / simulated result only. Not live performance. Capacity estimates are ESTIMATED / MODEL-BASED when present."
+    }
+  ],
+  "selection": {
+    "has_best_robust": false,
+    "has_best_in_sample": true,
+    "are_identical": false
+  },
+  "disclaimers": [
+    "Research / simulated results only \u2014 not live performance.",
+    "Capacity estimates are ESTIMATED / MODEL-BASED.",
+    "Positive backtest \u2260 profitable live trading.",
+    "Intraday horizons require real intraday data; finer-than-native frequencies are UNAVAILABLE and are never fabricated.",
+    "BEST ROBUST HORIZON is gated and may differ from best in-sample."
+  ],
+  "trade_frequency": {
+    "total_trades": 1238,
+    "long_trades": 619,
+    "short_trades": 619,
+    "long_percentage": 0.5,
+    "short_percentage": 0.5,
+    "trades_per_day": 0.30826693227091634,
+    "trades_per_week": 2.1578685258964145,
+    "trades_per_month": 6.473605577689243,
+    "average_trades_per_trading_day": 1.0,
+    "median_trades_per_day": 1.0,
+    "maximum_trades_per_day": 1.0,
+    "minimum_trades_per_day": 1.0,
+    "n_trading_days_with_trades": 1238,
+    "average_holding_period_seconds": 154654.6042003231,
+    "median_holding_period_seconds": 86400.0,
+    "holding_period_p25_seconds": 0.0,
+    "holding_period_p75_seconds": 259200.0,
+    "holding_period_p90_seconds": 432000.0,
+    "note": "Trade count is a diagnostic variable, not an optimization objective."
+  },
+  "long_short": {
+    "long_trades": 619,
+    "short_trades": 619,
+    "long_percentage": 0.5,
+    "short_percentage": 0.5
+  },
+  "costs": {
+    "gross_pnl": 2.3158362248623967,
+    "net_pnl": -0.047148335994778745,
+    "transaction_costs": 1.2375,
+    "gross_sharpe": 0.7692208357821472,
+    "net_sharpe": 0.0579362021964388,
+    "cost_eroded_edge": true,
+    "cost_inefficient": false
+  },
+  "oos": {
+    "net_sharpe": 0.6926521527716115,
+    "total_return": 0.4088247411157131,
+    "evaluated": true,
+    "expectancy_per_trade": 0.0
+  },
+  "oos_train_val": {
+    "train_sharpe": -0.4036426474947139,
+    "validation_sharpe": 0.9917722216934379,
+    "oos_sharpe": 0.6926521527716115
+  },
+  "robustness": {
+    "score": 0.4018953989483087,
+    "status": "COST-INEFFICIENT",
+    "reason": "edge collapses after realistic costs",
+    "neighborhood": {
+      "center": "1D",
+      "neighbor_labels": [
+        "1D"
+      ],
+      "neighbor_values": {
+        "1D": 0.07803829919416129
+      },
+      "stability_score": 0.0,
+      "fragile": true,
+      "reason": "no neighboring horizons to compare",
+      "metric_key": "net_sharpe"
+    }
+  },
+  "metrics_snippet": {
+    "total_return_gross": 2.3158362248623967,
+    "total_return_net": -0.047148335994778745,
+    "gross_sharpe": 0.7692208357821472,
+    "net_sharpe": 0.0579362021964388,
+    "sortino": 0.07742042618707316,
+    "maximum_drawdown": 0.5985423894475341,
+    "trade_count": 1238,
+    "turnover": 230.31757754800591
+  }
+}

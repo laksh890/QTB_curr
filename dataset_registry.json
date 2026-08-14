@@ -1,0 +1,978 @@
+{
+  "updated_at": "2026-08-14T13:40:30.735235+00:00",
+  "datasets": [
+    {
+      "dataset_id": "btcusdt_intraday_15m",
+      "version": "1.0.0",
+      "source": "derived:btcusdt_intraday_1m@1.0.0",
+      "path": "data/btcusdt/btcusdt_intraday_15m.parquet",
+      "checksum": "74cc6c8ea63345b6e27e4abf2d42a48b99f3e1365d9e935bacd77e9b9997de80",
+      "frequency": "15m",
+      "timezone": "UTC",
+      "start": "2019-01-01T00:00:00+00:00",
+      "end": "2024-12-31T23:45:00+00:00",
+      "instrument_count": 1,
+      "row_count": 210163,
+      "instruments": [
+        "BTCUSDT"
+      ],
+      "coverage_pct": 100.0,
+      "corporate_actions_available": false,
+      "liquidity_data_available": true,
+      "known_limitations": [
+        "Derived bars are aggregations of source bars; not equivalent to a native vendor feed.",
+        "Missing source bars are not fabricated before aggregation."
+      ],
+      "registered_at": "2026-08-14T13:40:18.486472+00:00",
+      "extra": {
+        "provenance": {
+          "provider": "derived",
+          "source": "session_aware_ohlcv_resample",
+          "acquisition_timestamp": "2026-08-14T13:40:17.319079+00:00",
+          "original_symbol": "",
+          "normalized_symbol": "BTCUSDT",
+          "frequency": "15m",
+          "timezone": "UTC",
+          "original_timezone": "UNKNOWN",
+          "exchange_timezone": "UTC",
+          "currency": "INR",
+          "adjustment_status": "inherited",
+          "corporate_action_treatment": "inherited",
+          "contract_information": {},
+          "checksum": "74cc6c8ea63345b6e27e4abf2d42a48b99f3e1365d9e935bacd77e9b9997de80",
+          "schema_version": "ohlcv_canonical_v1",
+          "license_status": "UNKNOWN",
+          "data_class": "DEVELOPMENT DATA",
+          "availability_timestamp_available": false,
+          "source_dataset_id": "btcusdt_intraday_1m@1.0.0",
+          "source_frequency": "1m",
+          "derived_frequency": "15m",
+          "aggregation_method": "open=first,high=max,low=min,close=last,volume=sum; session-bounded",
+          "creation_timestamp": "2026-08-14T13:40:17.319079+00:00",
+          "frequency_kind": "DERIVED",
+          "requested_range": null,
+          "actual_range": null,
+          "known_limitations": [
+            "Derived bars are aggregations of source bars; not equivalent to a native vendor feed.",
+            "Missing source bars are not fabricated before aggregation."
+          ],
+          "extra": {
+            "source_checksum": "eb6c6488167b598b85e883946ea5fbedb5a9b13850c5599389cf0f18302a09fe"
+          }
+        },
+        "frequency_kind": "DERIVED",
+        "data_class": "DEVELOPMENT DATA",
+        "license_status": "UNKNOWN",
+        "provenance_checksum_field": "74cc6c8ea63345b6e27e4abf2d42a48b99f3e1365d9e935bacd77e9b9997de80",
+        "quality_status": "PASS"
+      }
+    },
+    {
+      "dataset_id": "btcusdt_intraday_1h",
+      "version": "1.0.0",
+      "source": "derived:btcusdt_intraday_1m@1.0.0",
+      "path": "data/btcusdt/btcusdt_intraday_1h.parquet",
+      "checksum": "f3ecf67059770b4d7948dec8618e8f4e28f5bd33b0556437dffb3124432f1a03",
+      "frequency": "1h",
+      "timezone": "UTC",
+      "start": "2019-01-01T00:00:00+00:00",
+      "end": "2024-12-31T23:00:00+00:00",
+      "instrument_count": 1,
+      "row_count": 52549,
+      "instruments": [
+        "BTCUSDT"
+      ],
+      "coverage_pct": 100.0,
+      "corporate_actions_available": false,
+      "liquidity_data_available": true,
+      "known_limitations": [
+        "Derived bars are aggregations of source bars; not equivalent to a native vendor feed.",
+        "Missing source bars are not fabricated before aggregation."
+      ],
+      "registered_at": "2026-08-14T13:40:30.735175+00:00",
+      "extra": {
+        "provenance": {
+          "provider": "derived",
+          "source": "session_aware_ohlcv_resample",
+          "acquisition_timestamp": "2026-08-14T13:40:30.283308+00:00",
+          "original_symbol": "",
+          "normalized_symbol": "BTCUSDT",
+          "frequency": "1h",
+          "timezone": "UTC",
+          "original_timezone": "UNKNOWN",
+          "exchange_timezone": "UTC",
+          "currency": "INR",
+          "adjustment_status": "inherited",
+          "corporate_action_treatment": "inherited",
+          "contract_information": {},
+          "checksum": "f3ecf67059770b4d7948dec8618e8f4e28f5bd33b0556437dffb3124432f1a03",
+          "schema_version": "ohlcv_canonical_v1",
+          "license_status": "UNKNOWN",
+          "data_class": "DEVELOPMENT DATA",
+          "availability_timestamp_available": false,
+          "source_dataset_id": "btcusdt_intraday_1m@1.0.0",
+          "source_frequency": "1m",
+          "derived_frequency": "1h",
+          "aggregation_method": "open=first,high=max,low=min,close=last,volume=sum; session-bounded",
+          "creation_timestamp": "2026-08-14T13:40:30.283308+00:00",
+          "frequency_kind": "DERIVED",
+          "requested_range": null,
+          "actual_range": null,
+          "known_limitations": [
+            "Derived bars are aggregations of source bars; not equivalent to a native vendor feed.",
+            "Missing source bars are not fabricated before aggregation."
+          ],
+          "extra": {
+            "source_checksum": "eb6c6488167b598b85e883946ea5fbedb5a9b13850c5599389cf0f18302a09fe"
+          }
+        },
+        "frequency_kind": "DERIVED",
+        "data_class": "DEVELOPMENT DATA",
+        "license_status": "UNKNOWN",
+        "provenance_checksum_field": "f3ecf67059770b4d7948dec8618e8f4e28f5bd33b0556437dffb3124432f1a03",
+        "quality_status": "PASS"
+      }
+    },
+    {
+      "dataset_id": "btcusdt_intraday_1m",
+      "version": "1.0.0",
+      "source": "binance_vision_public_historical",
+      "path": "data/btcusdt/btcusdt_intraday_1m.parquet",
+      "checksum": "eb6c6488167b598b85e883946ea5fbedb5a9b13850c5599389cf0f18302a09fe",
+      "frequency": "1m",
+      "timezone": "UTC",
+      "start": "2019-01-01T00:00:00+00:00",
+      "end": "2024-12-31T23:59:00+00:00",
+      "instrument_count": 1,
+      "row_count": 3152391,
+      "instruments": [
+        "BTCUSDT"
+      ],
+      "coverage_pct": 100.0,
+      "corporate_actions_available": false,
+      "liquidity_data_available": true,
+      "known_limitations": [
+        "1 month archive(s) unavailable; actual range may be shorter than requested (not fabricated).",
+        "Availability timestamps not provided by this archive; PIT of vendor revisions unknown.",
+        "DEVELOPMENT/RESEARCH data \u2014 not institutional-grade market data.",
+        "License status UNKNOWN unless independently established.",
+        "archive unavailable (404): https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1m/BTCUSDT-1m-2026-08.zip",
+        "data_tier=DEVELOPMENT/RESEARCH"
+      ],
+      "registered_at": "2026-08-14T13:40:03.274604+00:00",
+      "extra": {
+        "provenance": {
+          "provider": "binance",
+          "source": "binance_vision_public_historical",
+          "acquisition_timestamp": "2026-08-14T13:32:22.480755+00:00",
+          "original_symbol": "BTCUSDT",
+          "normalized_symbol": "BTCUSDT",
+          "frequency": "1m",
+          "timezone": "UTC",
+          "original_timezone": "UTC",
+          "exchange_timezone": "UTC",
+          "currency": "USDT",
+          "adjustment_status": "unadjusted",
+          "corporate_action_treatment": "n/a_crypto_spot",
+          "contract_information": {},
+          "checksum": "eb6c6488167b598b85e883946ea5fbedb5a9b13850c5599389cf0f18302a09fe",
+          "schema_version": "ohlcv_canonical_v1",
+          "license_status": "UNKNOWN",
+          "data_class": "DEVELOPMENT/RESEARCH",
+          "availability_timestamp_available": false,
+          "source_dataset_id": null,
+          "source_frequency": null,
+          "derived_frequency": null,
+          "aggregation_method": null,
+          "creation_timestamp": null,
+          "frequency_kind": "SOURCE",
+          "requested_range": [
+            "2019-01-01 00:00:00+00:00",
+            "2026-08-01 00:00:00+00:00"
+          ],
+          "actual_range": [
+            "2019-01-01 00:00:00+00:00",
+            "2024-12-31 23:59:00+00:00"
+          ],
+          "known_limitations": [
+            "archive unavailable (404): https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1m/BTCUSDT-1m-2026-08.zip",
+            "1 month archive(s) unavailable; actual range may be shorter than requested (not fabricated).",
+            "data_tier=DEVELOPMENT/RESEARCH",
+            "DEVELOPMENT/RESEARCH data \u2014 not institutional-grade market data.",
+            "License status UNKNOWN unless independently established.",
+            "Availability timestamps not provided by this archive; PIT of vendor revisions unknown."
+          ],
+          "extra": {
+            "market_type": "CRYPTO",
+            "continuous_market": true,
+            "session_model": "24x7",
+            "timezone": "UTC"
+          }
+        },
+        "frequency_kind": "SOURCE",
+        "data_class": "DEVELOPMENT/RESEARCH",
+        "license_status": "UNKNOWN",
+        "provenance_checksum_field": "eb6c6488167b598b85e883946ea5fbedb5a9b13850c5599389cf0f18302a09fe",
+        "quality_status": "PASS"
+      }
+    },
+    {
+      "dataset_id": "btcusdt_intraday_30m",
+      "version": "1.0.0",
+      "source": "derived:btcusdt_intraday_1m@1.0.0",
+      "path": "data/btcusdt/btcusdt_intraday_30m.parquet",
+      "checksum": "3c5f41cf8dba5f04966e2a91f481e534b1ccb167be1ca9b5d6218a4ebb4a38fa",
+      "frequency": "30m",
+      "timezone": "UTC",
+      "start": "2019-01-01T00:00:00+00:00",
+      "end": "2024-12-31T23:30:00+00:00",
+      "instrument_count": 1,
+      "row_count": 105086,
+      "instruments": [
+        "BTCUSDT"
+      ],
+      "coverage_pct": 100.0,
+      "corporate_actions_available": false,
+      "liquidity_data_available": true,
+      "known_limitations": [
+        "Derived bars are aggregations of source bars; not equivalent to a native vendor feed.",
+        "Missing source bars are not fabricated before aggregation."
+      ],
+      "registered_at": "2026-08-14T13:40:24.815292+00:00",
+      "extra": {
+        "provenance": {
+          "provider": "derived",
+          "source": "session_aware_ohlcv_resample",
+          "acquisition_timestamp": "2026-08-14T13:40:24.079323+00:00",
+          "original_symbol": "",
+          "normalized_symbol": "BTCUSDT",
+          "frequency": "30m",
+          "timezone": "UTC",
+          "original_timezone": "UNKNOWN",
+          "exchange_timezone": "UTC",
+          "currency": "INR",
+          "adjustment_status": "inherited",
+          "corporate_action_treatment": "inherited",
+          "contract_information": {},
+          "checksum": "3c5f41cf8dba5f04966e2a91f481e534b1ccb167be1ca9b5d6218a4ebb4a38fa",
+          "schema_version": "ohlcv_canonical_v1",
+          "license_status": "UNKNOWN",
+          "data_class": "DEVELOPMENT DATA",
+          "availability_timestamp_available": false,
+          "source_dataset_id": "btcusdt_intraday_1m@1.0.0",
+          "source_frequency": "1m",
+          "derived_frequency": "30m",
+          "aggregation_method": "open=first,high=max,low=min,close=last,volume=sum; session-bounded",
+          "creation_timestamp": "2026-08-14T13:40:24.079323+00:00",
+          "frequency_kind": "DERIVED",
+          "requested_range": null,
+          "actual_range": null,
+          "known_limitations": [
+            "Derived bars are aggregations of source bars; not equivalent to a native vendor feed.",
+            "Missing source bars are not fabricated before aggregation."
+          ],
+          "extra": {
+            "source_checksum": "eb6c6488167b598b85e883946ea5fbedb5a9b13850c5599389cf0f18302a09fe"
+          }
+        },
+        "frequency_kind": "DERIVED",
+        "data_class": "DEVELOPMENT DATA",
+        "license_status": "UNKNOWN",
+        "provenance_checksum_field": "3c5f41cf8dba5f04966e2a91f481e534b1ccb167be1ca9b5d6218a4ebb4a38fa",
+        "quality_status": "PASS"
+      }
+    },
+    {
+      "dataset_id": "btcusdt_intraday_5m",
+      "version": "1.0.0",
+      "source": "derived:btcusdt_intraday_1m@1.0.0",
+      "path": "data/btcusdt/btcusdt_intraday_5m.parquet",
+      "checksum": "8743b419c92b661ad94309662eab2f5696f5c68b871f094474496cd524e6688f",
+      "frequency": "5m",
+      "timezone": "UTC",
+      "start": "2019-01-01T00:00:00+00:00",
+      "end": "2024-12-31T23:55:00+00:00",
+      "instrument_count": 1,
+      "row_count": 630482,
+      "instruments": [
+        "BTCUSDT"
+      ],
+      "coverage_pct": 100.0,
+      "corporate_actions_available": false,
+      "liquidity_data_available": true,
+      "known_limitations": [
+        "Derived bars are aggregations of source bars; not equivalent to a native vendor feed.",
+        "Missing source bars are not fabricated before aggregation."
+      ],
+      "registered_at": "2026-08-14T13:40:11.844548+00:00",
+      "extra": {
+        "provenance": {
+          "provider": "derived",
+          "source": "session_aware_ohlcv_resample",
+          "acquisition_timestamp": "2026-08-14T13:40:08.806401+00:00",
+          "original_symbol": "",
+          "normalized_symbol": "BTCUSDT",
+          "frequency": "5m",
+          "timezone": "UTC",
+          "original_timezone": "UNKNOWN",
+          "exchange_timezone": "UTC",
+          "currency": "INR",
+          "adjustment_status": "inherited",
+          "corporate_action_treatment": "inherited",
+          "contract_information": {},
+          "checksum": "8743b419c92b661ad94309662eab2f5696f5c68b871f094474496cd524e6688f",
+          "schema_version": "ohlcv_canonical_v1",
+          "license_status": "UNKNOWN",
+          "data_class": "DEVELOPMENT DATA",
+          "availability_timestamp_available": false,
+          "source_dataset_id": "btcusdt_intraday_1m@1.0.0",
+          "source_frequency": "1m",
+          "derived_frequency": "5m",
+          "aggregation_method": "open=first,high=max,low=min,close=last,volume=sum; session-bounded",
+          "creation_timestamp": "2026-08-14T13:40:08.806401+00:00",
+          "frequency_kind": "DERIVED",
+          "requested_range": null,
+          "actual_range": null,
+          "known_limitations": [
+            "Derived bars are aggregations of source bars; not equivalent to a native vendor feed.",
+            "Missing source bars are not fabricated before aggregation."
+          ],
+          "extra": {
+            "source_checksum": "eb6c6488167b598b85e883946ea5fbedb5a9b13850c5599389cf0f18302a09fe"
+          }
+        },
+        "frequency_kind": "DERIVED",
+        "data_class": "DEVELOPMENT DATA",
+        "license_status": "UNKNOWN",
+        "provenance_checksum_field": "8743b419c92b661ad94309662eab2f5696f5c68b871f094474496cd524e6688f",
+        "quality_status": "PASS"
+      }
+    },
+    {
+      "dataset_id": "nifty50_daily",
+      "version": "1.0.0",
+      "source": "local",
+      "path": "data/nifty50/nifty50_daily.parquet",
+      "checksum": "b59510ac07c5a331948fa3f79db82dedd070e27d2a447a51fa50112c7f540fb4",
+      "frequency": "1d",
+      "timezone": "UTC",
+      "start": "2015-01-02T00:00:00+00:00",
+      "end": "2025-12-31T00:00:00+00:00",
+      "instrument_count": 1,
+      "row_count": 2708,
+      "instruments": [
+        "NIFTY50"
+      ],
+      "coverage_pct": 94.38828860230045,
+      "corporate_actions_available": false,
+      "liquidity_data_available": true,
+      "known_limitations": [],
+      "registered_at": "2026-08-14T11:53:43.458636+00:00",
+      "extra": {}
+    },
+    {
+      "dataset_id": "nifty50_intraday_15m",
+      "version": "1.0.0",
+      "source": "derived:nifty50_intraday_1m@1.0.0",
+      "path": "data/nifty50/nifty50_intraday_15m.parquet",
+      "checksum": "c7cad1a909a75c4b1b12f74a4fa692a0f5a671e6b1e10b86cca04cea88c8c859",
+      "frequency": "15m",
+      "timezone": "UTC",
+      "start": "2026-08-06T03:45:00+00:00",
+      "end": "2026-08-13T09:45:00+00:00",
+      "instrument_count": 1,
+      "row_count": 150,
+      "instruments": [
+        "NIFTY50"
+      ],
+      "coverage_pct": 100.0,
+      "corporate_actions_available": false,
+      "liquidity_data_available": true,
+      "known_limitations": [
+        "Derived bars are aggregations of source bars; not equivalent to a native vendor feed.",
+        "Missing source bars are not fabricated before aggregation."
+      ],
+      "registered_at": "2026-08-14T12:45:52.454630+00:00",
+      "extra": {
+        "provenance": {
+          "provider": "derived",
+          "source": "session_aware_ohlcv_resample",
+          "acquisition_timestamp": "2026-08-14T12:45:52.445702+00:00",
+          "original_symbol": "",
+          "normalized_symbol": "NIFTY50",
+          "frequency": "15m",
+          "timezone": "UTC",
+          "original_timezone": "UNKNOWN",
+          "exchange_timezone": "Asia/Kolkata",
+          "currency": "INR",
+          "adjustment_status": "inherited",
+          "corporate_action_treatment": "inherited",
+          "contract_information": {},
+          "checksum": "c7cad1a909a75c4b1b12f74a4fa692a0f5a671e6b1e10b86cca04cea88c8c859",
+          "schema_version": "ohlcv_canonical_v1",
+          "license_status": "UNKNOWN",
+          "data_class": "DEVELOPMENT DATA",
+          "availability_timestamp_available": false,
+          "source_dataset_id": "nifty50_intraday_1m@1.0.0",
+          "source_frequency": "1m",
+          "derived_frequency": "15m",
+          "aggregation_method": "open=first,high=max,low=min,close=last,volume=sum; session-bounded",
+          "creation_timestamp": "2026-08-14T12:45:52.445702+00:00",
+          "frequency_kind": "DERIVED",
+          "requested_range": null,
+          "actual_range": null,
+          "known_limitations": [
+            "Derived bars are aggregations of source bars; not equivalent to a native vendor feed.",
+            "Missing source bars are not fabricated before aggregation."
+          ],
+          "extra": {
+            "source_checksum": "e5d2c86754b774c379c299d5e351b4403529e94327aca9adfcef3d4c1676fb19"
+          }
+        },
+        "frequency_kind": "DERIVED",
+        "data_class": "DEVELOPMENT DATA",
+        "license_status": "UNKNOWN",
+        "provenance_checksum_field": "c7cad1a909a75c4b1b12f74a4fa692a0f5a671e6b1e10b86cca04cea88c8c859",
+        "quality_status": "PASS"
+      }
+    },
+    {
+      "dataset_id": "nifty50_intraday_15m",
+      "version": "1.0.1",
+      "source": "derived:nifty50_intraday_1m@1.0.0",
+      "path": "data/nifty50/nifty50_intraday_15m.parquet",
+      "checksum": "cc7fc0d249feffbb1e2c8fa1f6e7938258755867b46cb988dd36f4536d34b9e7",
+      "frequency": "15m",
+      "timezone": "UTC",
+      "start": "2026-08-06T03:45:00+00:00",
+      "end": "2026-08-13T09:45:00+00:00",
+      "instrument_count": 1,
+      "row_count": 150,
+      "instruments": [
+        "NIFTY50"
+      ],
+      "coverage_pct": 100.0,
+      "corporate_actions_available": false,
+      "liquidity_data_available": true,
+      "known_limitations": [
+        "Derived bars are aggregations of source bars; not equivalent to a native vendor feed.",
+        "Missing source bars are not fabricated before aggregation."
+      ],
+      "registered_at": "2026-08-14T12:46:33.975621+00:00",
+      "extra": {
+        "provenance": {
+          "provider": "derived",
+          "source": "session_aware_ohlcv_resample",
+          "acquisition_timestamp": "2026-08-14T12:46:33.968569+00:00",
+          "original_symbol": "",
+          "normalized_symbol": "NIFTY50",
+          "frequency": "15m",
+          "timezone": "UTC",
+          "original_timezone": "UNKNOWN",
+          "exchange_timezone": "Asia/Kolkata",
+          "currency": "INR",
+          "adjustment_status": "inherited",
+          "corporate_action_treatment": "inherited",
+          "contract_information": {},
+          "checksum": "cc7fc0d249feffbb1e2c8fa1f6e7938258755867b46cb988dd36f4536d34b9e7",
+          "schema_version": "ohlcv_canonical_v1",
+          "license_status": "UNKNOWN",
+          "data_class": "DEVELOPMENT DATA",
+          "availability_timestamp_available": false,
+          "source_dataset_id": "nifty50_intraday_1m@1.0.0",
+          "source_frequency": "1m",
+          "derived_frequency": "15m",
+          "aggregation_method": "open=first,high=max,low=min,close=last,volume=sum; session-bounded",
+          "creation_timestamp": "2026-08-14T12:46:33.968569+00:00",
+          "frequency_kind": "DERIVED",
+          "requested_range": null,
+          "actual_range": null,
+          "known_limitations": [
+            "Derived bars are aggregations of source bars; not equivalent to a native vendor feed.",
+            "Missing source bars are not fabricated before aggregation."
+          ],
+          "extra": {
+            "source_checksum": "e5d2c86754b774c379c299d5e351b4403529e94327aca9adfcef3d4c1676fb19"
+          }
+        },
+        "frequency_kind": "DERIVED",
+        "data_class": "DEVELOPMENT DATA",
+        "license_status": "UNKNOWN",
+        "provenance_checksum_field": "cc7fc0d249feffbb1e2c8fa1f6e7938258755867b46cb988dd36f4536d34b9e7",
+        "quality_status": "PASS"
+      }
+    },
+    {
+      "dataset_id": "nifty50_intraday_1h",
+      "version": "1.0.0",
+      "source": "derived:nifty50_intraday_1m@1.0.0",
+      "path": "data/nifty50/nifty50_intraday_1h.parquet",
+      "checksum": "daa3a9e7172cce75c001e8dc1e285fb320f6577986c6872d8656726098ac38dd",
+      "frequency": "1h",
+      "timezone": "UTC",
+      "start": "2026-08-06T03:00:00+00:00",
+      "end": "2026-08-13T09:00:00+00:00",
+      "instrument_count": 1,
+      "row_count": 42,
+      "instruments": [
+        "NIFTY50"
+      ],
+      "coverage_pct": 100.0,
+      "corporate_actions_available": false,
+      "liquidity_data_available": true,
+      "known_limitations": [
+        "Derived bars are aggregations of source bars; not equivalent to a native vendor feed.",
+        "Missing source bars are not fabricated before aggregation."
+      ],
+      "registered_at": "2026-08-14T12:45:52.510362+00:00",
+      "extra": {
+        "provenance": {
+          "provider": "derived",
+          "source": "session_aware_ohlcv_resample",
+          "acquisition_timestamp": "2026-08-14T12:45:52.501966+00:00",
+          "original_symbol": "",
+          "normalized_symbol": "NIFTY50",
+          "frequency": "1h",
+          "timezone": "UTC",
+          "original_timezone": "UNKNOWN",
+          "exchange_timezone": "Asia/Kolkata",
+          "currency": "INR",
+          "adjustment_status": "inherited",
+          "corporate_action_treatment": "inherited",
+          "contract_information": {},
+          "checksum": "daa3a9e7172cce75c001e8dc1e285fb320f6577986c6872d8656726098ac38dd",
+          "schema_version": "ohlcv_canonical_v1",
+          "license_status": "UNKNOWN",
+          "data_class": "DEVELOPMENT DATA",
+          "availability_timestamp_available": false,
+          "source_dataset_id": "nifty50_intraday_1m@1.0.0",
+          "source_frequency": "1m",
+          "derived_frequency": "1h",
+          "aggregation_method": "open=first,high=max,low=min,close=last,volume=sum; session-bounded",
+          "creation_timestamp": "2026-08-14T12:45:52.501966+00:00",
+          "frequency_kind": "DERIVED",
+          "requested_range": null,
+          "actual_range": null,
+          "known_limitations": [
+            "Derived bars are aggregations of source bars; not equivalent to a native vendor feed.",
+            "Missing source bars are not fabricated before aggregation."
+          ],
+          "extra": {
+            "source_checksum": "e5d2c86754b774c379c299d5e351b4403529e94327aca9adfcef3d4c1676fb19"
+          }
+        },
+        "frequency_kind": "DERIVED",
+        "data_class": "DEVELOPMENT DATA",
+        "license_status": "UNKNOWN",
+        "provenance_checksum_field": "daa3a9e7172cce75c001e8dc1e285fb320f6577986c6872d8656726098ac38dd",
+        "quality_status": "FAIL"
+      }
+    },
+    {
+      "dataset_id": "nifty50_intraday_1h",
+      "version": "1.0.1",
+      "source": "derived:nifty50_intraday_1m@1.0.0",
+      "path": "data/nifty50/nifty50_intraday_1h.parquet",
+      "checksum": "3ee8f827f17e238bc65c9bb2f572f9315da4101ba32d87906df63a1a46654da1",
+      "frequency": "1h",
+      "timezone": "UTC",
+      "start": "2026-08-06T03:45:00+00:00",
+      "end": "2026-08-13T09:45:00+00:00",
+      "instrument_count": 1,
+      "row_count": 42,
+      "instruments": [
+        "NIFTY50"
+      ],
+      "coverage_pct": 100.0,
+      "corporate_actions_available": false,
+      "liquidity_data_available": true,
+      "known_limitations": [
+        "Derived bars are aggregations of source bars; not equivalent to a native vendor feed.",
+        "Missing source bars are not fabricated before aggregation."
+      ],
+      "registered_at": "2026-08-14T12:46:34.025824+00:00",
+      "extra": {
+        "provenance": {
+          "provider": "derived",
+          "source": "session_aware_ohlcv_resample",
+          "acquisition_timestamp": "2026-08-14T12:46:34.019160+00:00",
+          "original_symbol": "",
+          "normalized_symbol": "NIFTY50",
+          "frequency": "1h",
+          "timezone": "UTC",
+          "original_timezone": "UNKNOWN",
+          "exchange_timezone": "Asia/Kolkata",
+          "currency": "INR",
+          "adjustment_status": "inherited",
+          "corporate_action_treatment": "inherited",
+          "contract_information": {},
+          "checksum": "3ee8f827f17e238bc65c9bb2f572f9315da4101ba32d87906df63a1a46654da1",
+          "schema_version": "ohlcv_canonical_v1",
+          "license_status": "UNKNOWN",
+          "data_class": "DEVELOPMENT DATA",
+          "availability_timestamp_available": false,
+          "source_dataset_id": "nifty50_intraday_1m@1.0.0",
+          "source_frequency": "1m",
+          "derived_frequency": "1h",
+          "aggregation_method": "open=first,high=max,low=min,close=last,volume=sum; session-bounded",
+          "creation_timestamp": "2026-08-14T12:46:34.019160+00:00",
+          "frequency_kind": "DERIVED",
+          "requested_range": null,
+          "actual_range": null,
+          "known_limitations": [
+            "Derived bars are aggregations of source bars; not equivalent to a native vendor feed.",
+            "Missing source bars are not fabricated before aggregation."
+          ],
+          "extra": {
+            "source_checksum": "e5d2c86754b774c379c299d5e351b4403529e94327aca9adfcef3d4c1676fb19"
+          }
+        },
+        "frequency_kind": "DERIVED",
+        "data_class": "DEVELOPMENT DATA",
+        "license_status": "UNKNOWN",
+        "provenance_checksum_field": "3ee8f827f17e238bc65c9bb2f572f9315da4101ba32d87906df63a1a46654da1",
+        "quality_status": "PASS"
+      }
+    },
+    {
+      "dataset_id": "nifty50_intraday_1m",
+      "version": "1.0.0",
+      "source": "yahoo_finance/yfinance",
+      "path": "data/nifty50/nifty50_intraday_1m.parquet",
+      "checksum": "e5d2c86754b774c379c299d5e351b4403529e94327aca9adfcef3d4c1676fb19",
+      "frequency": "1m",
+      "timezone": "UTC",
+      "start": "2026-08-06T03:45:00+00:00",
+      "end": "2026-08-13T09:59:00+00:00",
+      "instrument_count": 1,
+      "row_count": 2250,
+      "instruments": [
+        "NIFTY50"
+      ],
+      "coverage_pct": 100.0,
+      "corporate_actions_available": false,
+      "liquidity_data_available": true,
+      "known_limitations": [
+        "Availability timestamps not provided by Yahoo; PIT of vendor revisions unknown.",
+        "DEVELOPMENT DATA \u2014 not institutional-grade.",
+        "License status UNKNOWN unless explicitly documented.",
+        "NIFTY index via Yahoo: adjustment semantics are source-defined; dataset marked unadjusted (auto_adjust=False).",
+        "fell back to period=8d for 1m due to empty start/end response"
+      ],
+      "registered_at": "2026-08-14T12:45:52.395050+00:00",
+      "extra": {
+        "provenance": {
+          "provider": "yahoo_finance",
+          "source": "yahoo_finance/yfinance",
+          "acquisition_timestamp": "2026-08-14T12:45:50.105059+00:00",
+          "original_symbol": "^NSEI",
+          "normalized_symbol": "NIFTY50",
+          "frequency": "1m",
+          "timezone": "UTC",
+          "original_timezone": "Asia/Kolkata",
+          "exchange_timezone": "Asia/Kolkata",
+          "currency": "INR",
+          "adjustment_status": "unadjusted",
+          "corporate_action_treatment": "UNKNOWN",
+          "contract_information": {},
+          "checksum": "e5d2c86754b774c379c299d5e351b4403529e94327aca9adfcef3d4c1676fb19",
+          "schema_version": "ohlcv_canonical_v1",
+          "license_status": "UNKNOWN",
+          "data_class": "DEVELOPMENT DATA",
+          "availability_timestamp_available": false,
+          "source_dataset_id": null,
+          "source_frequency": null,
+          "derived_frequency": null,
+          "aggregation_method": null,
+          "creation_timestamp": null,
+          "frequency_kind": "SOURCE",
+          "requested_range": [
+            "2026-08-06 00:00:00+00:00",
+            "2026-08-14 00:00:00+00:00"
+          ],
+          "actual_range": [
+            "2026-08-06 03:45:00+00:00",
+            "2026-08-13 09:59:00+00:00"
+          ],
+          "known_limitations": [
+            "fell back to period=8d for 1m due to empty start/end response",
+            "NIFTY index via Yahoo: adjustment semantics are source-defined; dataset marked unadjusted (auto_adjust=False).",
+            "DEVELOPMENT DATA \u2014 not institutional-grade.",
+            "License status UNKNOWN unless explicitly documented.",
+            "Availability timestamps not provided by Yahoo; PIT of vendor revisions unknown."
+          ],
+          "extra": {}
+        },
+        "frequency_kind": "SOURCE",
+        "data_class": "DEVELOPMENT DATA",
+        "license_status": "UNKNOWN",
+        "provenance_checksum_field": "e5d2c86754b774c379c299d5e351b4403529e94327aca9adfcef3d4c1676fb19",
+        "quality_status": "PASS"
+      }
+    },
+    {
+      "dataset_id": "nifty50_intraday_30m",
+      "version": "1.0.0",
+      "source": "derived:nifty50_intraday_1m@1.0.0",
+      "path": "data/nifty50/nifty50_intraday_30m.parquet",
+      "checksum": "528c2e065277bd7be3eb7087f2c9f01c70df8263545b639beba560ddd0a9cb19",
+      "frequency": "30m",
+      "timezone": "UTC",
+      "start": "2026-08-06T03:30:00+00:00",
+      "end": "2026-08-13T09:30:00+00:00",
+      "instrument_count": 1,
+      "row_count": 78,
+      "instruments": [
+        "NIFTY50"
+      ],
+      "coverage_pct": 100.0,
+      "corporate_actions_available": false,
+      "liquidity_data_available": true,
+      "known_limitations": [
+        "Derived bars are aggregations of source bars; not equivalent to a native vendor feed.",
+        "Missing source bars are not fabricated before aggregation."
+      ],
+      "registered_at": "2026-08-14T12:45:52.483348+00:00",
+      "extra": {
+        "provenance": {
+          "provider": "derived",
+          "source": "session_aware_ohlcv_resample",
+          "acquisition_timestamp": "2026-08-14T12:45:52.474352+00:00",
+          "original_symbol": "",
+          "normalized_symbol": "NIFTY50",
+          "frequency": "30m",
+          "timezone": "UTC",
+          "original_timezone": "UNKNOWN",
+          "exchange_timezone": "Asia/Kolkata",
+          "currency": "INR",
+          "adjustment_status": "inherited",
+          "corporate_action_treatment": "inherited",
+          "contract_information": {},
+          "checksum": "528c2e065277bd7be3eb7087f2c9f01c70df8263545b639beba560ddd0a9cb19",
+          "schema_version": "ohlcv_canonical_v1",
+          "license_status": "UNKNOWN",
+          "data_class": "DEVELOPMENT DATA",
+          "availability_timestamp_available": false,
+          "source_dataset_id": "nifty50_intraday_1m@1.0.0",
+          "source_frequency": "1m",
+          "derived_frequency": "30m",
+          "aggregation_method": "open=first,high=max,low=min,close=last,volume=sum; session-bounded",
+          "creation_timestamp": "2026-08-14T12:45:52.474352+00:00",
+          "frequency_kind": "DERIVED",
+          "requested_range": null,
+          "actual_range": null,
+          "known_limitations": [
+            "Derived bars are aggregations of source bars; not equivalent to a native vendor feed.",
+            "Missing source bars are not fabricated before aggregation."
+          ],
+          "extra": {
+            "source_checksum": "e5d2c86754b774c379c299d5e351b4403529e94327aca9adfcef3d4c1676fb19"
+          }
+        },
+        "frequency_kind": "DERIVED",
+        "data_class": "DEVELOPMENT DATA",
+        "license_status": "UNKNOWN",
+        "provenance_checksum_field": "528c2e065277bd7be3eb7087f2c9f01c70df8263545b639beba560ddd0a9cb19",
+        "quality_status": "FAIL"
+      }
+    },
+    {
+      "dataset_id": "nifty50_intraday_30m",
+      "version": "1.0.1",
+      "source": "derived:nifty50_intraday_1m@1.0.0",
+      "path": "data/nifty50/nifty50_intraday_30m.parquet",
+      "checksum": "08138642e985279b1f1dd2f11590f7011ec5a8263d763bdfb620f1ae0463b5ec",
+      "frequency": "30m",
+      "timezone": "UTC",
+      "start": "2026-08-06T03:45:00+00:00",
+      "end": "2026-08-13T09:45:00+00:00",
+      "instrument_count": 1,
+      "row_count": 78,
+      "instruments": [
+        "NIFTY50"
+      ],
+      "coverage_pct": 100.0,
+      "corporate_actions_available": false,
+      "liquidity_data_available": true,
+      "known_limitations": [
+        "Derived bars are aggregations of source bars; not equivalent to a native vendor feed.",
+        "Missing source bars are not fabricated before aggregation."
+      ],
+      "registered_at": "2026-08-14T12:46:34.000727+00:00",
+      "extra": {
+        "provenance": {
+          "provider": "derived",
+          "source": "session_aware_ohlcv_resample",
+          "acquisition_timestamp": "2026-08-14T12:46:33.994067+00:00",
+          "original_symbol": "",
+          "normalized_symbol": "NIFTY50",
+          "frequency": "30m",
+          "timezone": "UTC",
+          "original_timezone": "UNKNOWN",
+          "exchange_timezone": "Asia/Kolkata",
+          "currency": "INR",
+          "adjustment_status": "inherited",
+          "corporate_action_treatment": "inherited",
+          "contract_information": {},
+          "checksum": "08138642e985279b1f1dd2f11590f7011ec5a8263d763bdfb620f1ae0463b5ec",
+          "schema_version": "ohlcv_canonical_v1",
+          "license_status": "UNKNOWN",
+          "data_class": "DEVELOPMENT DATA",
+          "availability_timestamp_available": false,
+          "source_dataset_id": "nifty50_intraday_1m@1.0.0",
+          "source_frequency": "1m",
+          "derived_frequency": "30m",
+          "aggregation_method": "open=first,high=max,low=min,close=last,volume=sum; session-bounded",
+          "creation_timestamp": "2026-08-14T12:46:33.994067+00:00",
+          "frequency_kind": "DERIVED",
+          "requested_range": null,
+          "actual_range": null,
+          "known_limitations": [
+            "Derived bars are aggregations of source bars; not equivalent to a native vendor feed.",
+            "Missing source bars are not fabricated before aggregation."
+          ],
+          "extra": {
+            "source_checksum": "e5d2c86754b774c379c299d5e351b4403529e94327aca9adfcef3d4c1676fb19"
+          }
+        },
+        "frequency_kind": "DERIVED",
+        "data_class": "DEVELOPMENT DATA",
+        "license_status": "UNKNOWN",
+        "provenance_checksum_field": "08138642e985279b1f1dd2f11590f7011ec5a8263d763bdfb620f1ae0463b5ec",
+        "quality_status": "PASS"
+      }
+    },
+    {
+      "dataset_id": "nifty50_intraday_5m",
+      "version": "1.0.0",
+      "source": "derived:nifty50_intraday_1m@1.0.0",
+      "path": "data/nifty50/nifty50_intraday_5m.parquet",
+      "checksum": "1270b4dfad82f27a6d19edb1428c8b415eb27fdec13150f49278e8d4e1bbed75",
+      "frequency": "5m",
+      "timezone": "UTC",
+      "start": "2026-08-06T03:45:00+00:00",
+      "end": "2026-08-13T09:55:00+00:00",
+      "instrument_count": 1,
+      "row_count": 450,
+      "instruments": [
+        "NIFTY50"
+      ],
+      "coverage_pct": 100.0,
+      "corporate_actions_available": false,
+      "liquidity_data_available": true,
+      "known_limitations": [
+        "Derived bars are aggregations of source bars; not equivalent to a native vendor feed.",
+        "Missing source bars are not fabricated before aggregation."
+      ],
+      "registered_at": "2026-08-14T12:45:52.426289+00:00",
+      "extra": {
+        "provenance": {
+          "provider": "derived",
+          "source": "session_aware_ohlcv_resample",
+          "acquisition_timestamp": "2026-08-14T12:45:52.415002+00:00",
+          "original_symbol": "",
+          "normalized_symbol": "NIFTY50",
+          "frequency": "5m",
+          "timezone": "UTC",
+          "original_timezone": "UNKNOWN",
+          "exchange_timezone": "Asia/Kolkata",
+          "currency": "INR",
+          "adjustment_status": "inherited",
+          "corporate_action_treatment": "inherited",
+          "contract_information": {},
+          "checksum": "1270b4dfad82f27a6d19edb1428c8b415eb27fdec13150f49278e8d4e1bbed75",
+          "schema_version": "ohlcv_canonical_v1",
+          "license_status": "UNKNOWN",
+          "data_class": "DEVELOPMENT DATA",
+          "availability_timestamp_available": false,
+          "source_dataset_id": "nifty50_intraday_1m@1.0.0",
+          "source_frequency": "1m",
+          "derived_frequency": "5m",
+          "aggregation_method": "open=first,high=max,low=min,close=last,volume=sum; session-bounded",
+          "creation_timestamp": "2026-08-14T12:45:52.415002+00:00",
+          "frequency_kind": "DERIVED",
+          "requested_range": null,
+          "actual_range": null,
+          "known_limitations": [
+            "Derived bars are aggregations of source bars; not equivalent to a native vendor feed.",
+            "Missing source bars are not fabricated before aggregation."
+          ],
+          "extra": {
+            "source_checksum": "e5d2c86754b774c379c299d5e351b4403529e94327aca9adfcef3d4c1676fb19"
+          }
+        },
+        "frequency_kind": "DERIVED",
+        "data_class": "DEVELOPMENT DATA",
+        "license_status": "UNKNOWN",
+        "provenance_checksum_field": "1270b4dfad82f27a6d19edb1428c8b415eb27fdec13150f49278e8d4e1bbed75",
+        "quality_status": "PASS"
+      }
+    },
+    {
+      "dataset_id": "nifty50_intraday_5m",
+      "version": "1.0.1",
+      "source": "derived:nifty50_intraday_1m@1.0.0",
+      "path": "data/nifty50/nifty50_intraday_5m.parquet",
+      "checksum": "da8c7485755de36f949ebf8ed77d76b9f76c4228b17aa195566cdb263773c006",
+      "frequency": "5m",
+      "timezone": "UTC",
+      "start": "2026-08-06T03:45:00+00:00",
+      "end": "2026-08-13T09:55:00+00:00",
+      "instrument_count": 1,
+      "row_count": 450,
+      "instruments": [
+        "NIFTY50"
+      ],
+      "coverage_pct": 100.0,
+      "corporate_actions_available": false,
+      "liquidity_data_available": true,
+      "known_limitations": [
+        "Derived bars are aggregations of source bars; not equivalent to a native vendor feed.",
+        "Missing source bars are not fabricated before aggregation."
+      ],
+      "registered_at": "2026-08-14T12:46:33.949820+00:00",
+      "extra": {
+        "provenance": {
+          "provider": "derived",
+          "source": "session_aware_ohlcv_resample",
+          "acquisition_timestamp": "2026-08-14T12:46:33.940076+00:00",
+          "original_symbol": "",
+          "normalized_symbol": "NIFTY50",
+          "frequency": "5m",
+          "timezone": "UTC",
+          "original_timezone": "UNKNOWN",
+          "exchange_timezone": "Asia/Kolkata",
+          "currency": "INR",
+          "adjustment_status": "inherited",
+          "corporate_action_treatment": "inherited",
+          "contract_information": {},
+          "checksum": "da8c7485755de36f949ebf8ed77d76b9f76c4228b17aa195566cdb263773c006",
+          "schema_version": "ohlcv_canonical_v1",
+          "license_status": "UNKNOWN",
+          "data_class": "DEVELOPMENT DATA",
+          "availability_timestamp_available": false,
+          "source_dataset_id": "nifty50_intraday_1m@1.0.0",
+          "source_frequency": "1m",
+          "derived_frequency": "5m",
+          "aggregation_method": "open=first,high=max,low=min,close=last,volume=sum; session-bounded",
+          "creation_timestamp": "2026-08-14T12:46:33.940076+00:00",
+          "frequency_kind": "DERIVED",
+          "requested_range": null,
+          "actual_range": null,
+          "known_limitations": [
+            "Derived bars are aggregations of source bars; not equivalent to a native vendor feed.",
+            "Missing source bars are not fabricated before aggregation."
+          ],
+          "extra": {
+            "source_checksum": "e5d2c86754b774c379c299d5e351b4403529e94327aca9adfcef3d4c1676fb19"
+          }
+        },
+        "frequency_kind": "DERIVED",
+        "data_class": "DEVELOPMENT DATA",
+        "license_status": "UNKNOWN",
+        "provenance_checksum_field": "da8c7485755de36f949ebf8ed77d76b9f76c4228b17aa195566cdb263773c006",
+        "quality_status": "PASS"
+      }
+    }
+  ]
+}

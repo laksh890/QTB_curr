@@ -19,7 +19,11 @@ def total_uncertainty(
     n_samples: int = 20,
     device=None,
 ) -> dict[str, np.ndarray]:
-    aleatoric = aleatoric_from_gaussian(pred) if pred.ndim >= 2 and pred.shape[-1] >= 2 else np.zeros(pred.shape[:2] if pred.ndim > 1 else pred.shape)
+    aleatoric = (
+        aleatoric_from_gaussian(pred)
+        if pred.ndim >= 2 and pred.shape[-1] >= 2
+        else np.zeros(pred.shape[:2] if pred.ndim > 1 else pred.shape)
+    )
     if mc_dropout:
         mean, epistemic = epistemic_mc_dropout(module, X, n_samples=n_samples, device=device)
     else:

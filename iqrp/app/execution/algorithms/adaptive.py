@@ -7,10 +7,10 @@ from typing import Any
 import numpy as np
 
 from iqrp.app.execution.algorithms.base import (
+    URGENCY_LIMIT_AGGRESSION,
     ChildSlice,
     ExecutionAlgorithm,
     MarketContext,
-    URGENCY_LIMIT_AGGRESSION,
     approved_quantity,
     context_float,
     context_side,

@@ -24,9 +24,7 @@ class TrainingWindow:
         if int(self.start) < 0:
             raise ValueError(f"TrainingWindow.start must be >= 0, got {self.start}")
         if int(self.end) < int(self.start):
-            raise ValueError(
-                f"TrainingWindow.end ({self.end}) must be >= start ({self.start})"
-            )
+            raise ValueError(f"TrainingWindow.end ({self.end}) must be >= start ({self.start})")
 
     @property
     def size(self) -> int:

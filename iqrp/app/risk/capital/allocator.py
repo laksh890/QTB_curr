@@ -6,8 +6,8 @@ from typing import Any
 
 import numpy as np
 
-from iqrp.app.risk.capital.capital_budget import allocate_capital_budgets
 from iqrp.app.risk.capital.capacity import estimate_capacity
+from iqrp.app.risk.capital.capital_budget import allocate_capital_budgets
 from iqrp.app.risk.capital.config import CapitalSettings
 from iqrp.app.risk.capital.constraints import (
     apply_participation_constraint,
@@ -35,8 +35,8 @@ from iqrp.app.risk.capital.risk_budget import (
 from iqrp.app.risk.capital.risk_parity import capital_risk_parity
 from iqrp.app.risk.capital.strategy_allocation import (
     allocate_strategy as _allocate_strategy,
+    build_strategy_allocations,
 )
-from iqrp.app.risk.capital.strategy_allocation import build_strategy_allocations
 from iqrp.app.risk.capital.types import CapitalAllocation, RiskBudget, _utc_now
 from iqrp.app.risk.capital.volatility import volatility_budgets
 from iqrp.app.risk.market.correlation import covariance_matrix
@@ -459,7 +459,11 @@ class CapitalAllocator:
             risk_budgets=opt["weights"],
             capital=capital,
             expected_opportunity=expected_opportunity,
-            **{k: v for k, v in kwargs.items() if k not in ("target_vol", "target_cvar", "target_drawdown", "vols")},
+            **{
+                k: v
+                for k, v in kwargs.items()
+                if k not in ("target_vol", "target_cvar", "target_drawdown", "vols")
+            },
         )
 
     def allocate_scenarios(
@@ -485,7 +489,7 @@ class CapitalAllocator:
         for kind in kinds:
             try:
                 scen = simulate_capital_scenario(kind, seed=seed)  # type: ignore[arg-type]
-            except Exception:  # noqa: BLE001
+            except Exception:
                 scen = simulate_capital_scenario("independent", seed=seed)
             names = list(scen.get("names") or [f"s{i}" for i in range(4)])
             rets = scen.get("returns")
@@ -545,9 +549,7 @@ class CapitalAllocator:
             if c_w.size != len(keys):
                 c_w = np.zeros(len(keys), dtype=np.float64)
 
-        turn_cap = float(
-            cfg.rebalance_turnover_cap if max_turnover is None else max_turnover
-        )
+        turn_cap = float(cfg.rebalance_turnover_cap if max_turnover is None else max_turnover)
         part_cap = float(
             cfg.rebalance_participation_cap if max_participation is None else max_participation
         )
@@ -589,14 +591,15 @@ class CapitalAllocator:
             risk_budgets=list(base.risk_budgets) if base else [],
             inputs={
                 "current_weights": (
-                    current_weights
-                    if isinstance(current_weights, dict)
-                    else c_w.tolist()
+                    current_weights if isinstance(current_weights, dict) else c_w.tolist()
                 ),
                 "turnover": turned.get("turnover"),
             },
             params={"max_turnover": turn_cap, "max_participation": part_cap},
-            output={"turnover_scaled": turned.get("scaled"), "participation_scaled": part.get("scaled")},
+            output={
+                "turnover_scaled": turned.get("scaled"),
+                "participation_scaled": part.get("scaled"),
+            },
             constraints_applied=constraints,
             correlation_adjustment=dict(base.correlation_adjustment) if base else {},
             capacity_adjustment=dict(base.capacity_adjustment) if base else {},

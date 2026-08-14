@@ -71,7 +71,9 @@ class KalmanEvaluator:
             # coverage: fraction of true states within 95% ellipse of filtered cov
             covered = 0
             for t in range(min(truth.shape[0], trace.covs.shape[0])):
-                d = mahalanobis(truth[t] - est[t], ensure_spd(trace.covs[t][: truth.shape[1], : truth.shape[1]]))
+                d = mahalanobis(
+                    truth[t] - est[t], ensure_spd(trace.covs[t][: truth.shape[1], : truth.shape[1]])
+                )
                 # chi2 95% approx for dim d: use 2*d as loose threshold for d dims via sqrt
                 thresh = np.sqrt(float(stats_chi2_crit(truth.shape[1])))
                 if d <= thresh:

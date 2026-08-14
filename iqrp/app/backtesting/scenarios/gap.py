@@ -26,10 +26,8 @@ def apply_gap_shock(
         return {"name": "gap", "kind": "gap", "returns": r, "gap_indices": []}
 
     if r.ndim == 1:
-        series = r
         multi = False
     else:
-        series = None
         multi = True
 
     indices: list[int] = []

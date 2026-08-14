@@ -97,9 +97,11 @@ def learning_curve(
         try:
             est = create_estimator(backend, task=task, params=params)  # type: ignore[arg-type]
             est.fit(Xtr[:m], ytr[:m])
-            train_scores.append(float(np.sqrt(np.mean((ytr[:m] - estimator_predict(est, Xtr[:m])) ** 2))))
+            train_scores.append(
+                float(np.sqrt(np.mean((ytr[:m] - estimator_predict(est, Xtr[:m])) ** 2)))
+            )
             val_scores.append(float(np.sqrt(np.mean((yte - estimator_predict(est, Xte)) ** 2))))
-        except Exception:  # noqa: BLE001
+        except Exception:
             train_scores.append(float("nan"))
             val_scores.append(float("nan"))
     return {"train_sizes": xs, "train_rmse": train_scores, "val_rmse": val_scores}
@@ -126,12 +128,14 @@ def validation_curve(
             est.fit(X[:split], y[:split])
             pred = estimator_predict(est, X[split:])
             scores.append(float(np.sqrt(np.mean((y[split:] - pred) ** 2))))
-        except Exception:  # noqa: BLE001
+        except Exception:
             scores.append(float("nan"))
     return {"param": param_name, "values": [float(v) for v in values], "val_rmse": scores}
 
 
-def calibration_curve(y: np.ndarray, pred: np.ndarray, *, n_bins: int = 10) -> dict[str, list[float]]:
+def calibration_curve(
+    y: np.ndarray, pred: np.ndarray, *, n_bins: int = 10
+) -> dict[str, list[float]]:
     # for regression: reliability of probabilistic bins of ranked predictions
     order = np.argsort(pred)
     y_s, p_s = y[order], pred[order]
@@ -166,7 +170,7 @@ def feature_stability(
             est = create_estimator(backend, task=task, params=params)  # type: ignore[arg-type]
             est.fit(X[idx], y[idx])
             mat.append(estimator_feature_importances(est, X.shape[1]))
-        except Exception:  # noqa: BLE001
+        except Exception:
             mat.append(np.ones(X.shape[1]) / X.shape[1])
     arr = np.stack(mat)
     stab = 1.0 - np.std(arr, axis=0) / (np.mean(arr, axis=0) + 1e-12)

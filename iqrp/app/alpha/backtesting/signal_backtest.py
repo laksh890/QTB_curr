@@ -24,7 +24,9 @@ def _as_1d(a: Any) -> np.ndarray:
     return np.asarray(a, dtype=np.float64).reshape(-1)
 
 
-def _align_returns(signal: np.ndarray, returns: np.ndarray, *, returns_are_forward: bool) -> tuple[np.ndarray, np.ndarray]:
+def _align_returns(
+    signal: np.ndarray, returns: np.ndarray, *, returns_are_forward: bool
+) -> tuple[np.ndarray, np.ndarray]:
     n = min(signal.size, returns.size)
     sig = signal[:n].copy()
     ret = returns[:n].copy()

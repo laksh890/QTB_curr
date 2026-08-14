@@ -23,7 +23,12 @@ def _local_adjust_pvalues(
     p = np.clip(p, 0.0, 1.0)
     m = p.size
     if m == 0 or method == "none":
-        return {"adjusted": p.copy(), "rejected": (p < alpha).astype(bool), "method": method, "alpha": alpha}
+        return {
+            "adjusted": p.copy(),
+            "rejected": (p < alpha).astype(bool),
+            "method": method,
+            "alpha": alpha,
+        }
 
     order = np.argsort(p)
     ranked = p[order]
@@ -56,7 +61,7 @@ def _resolve_adjust_pvalues():
         from iqrp.app.timeseries.multiple_testing import adjust_pvalues as adj
 
         return adj
-    except Exception:  # noqa: BLE001 — timeseries package may need optional deps
+    except Exception:
         return _local_adjust_pvalues
 
 
@@ -67,7 +72,9 @@ class ExperimentTracker:
         self.n_experiments: int = 0
         self.history: list[dict[str, Any]] = []
 
-    def record(self, n: int, *, label: str | None = None, meta: dict[str, Any] | None = None) -> None:
+    def record(
+        self, n: int, *, label: str | None = None, meta: dict[str, Any] | None = None
+    ) -> None:
         k = max(int(n), 0)
         self.n_experiments += k
         self.history.append(

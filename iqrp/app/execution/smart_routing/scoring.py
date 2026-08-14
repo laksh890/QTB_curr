@@ -7,13 +7,13 @@ Higher score is better.
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from dataclasses import dataclass, field
-from typing import Any, Mapping
+from typing import Any
 
 from iqrp.app.execution.smart_routing.cost_model import VenueCostEstimate
 from iqrp.app.execution.smart_routing.liquidity import LiquiditySnapshot
 from iqrp.app.execution.smart_routing.venue import Venue
-
 
 DEFAULT_WEIGHTS: dict[str, float] = {
     "price": 0.25,
@@ -123,11 +123,7 @@ def score_venue(
     latency_ref_ms: float = 50.0,
 ) -> VenueScore:
     """Compute weighted score for a single venue."""
-    w = (
-        weights
-        if isinstance(weights, ScoreWeights)
-        else ScoreWeights.from_mapping(weights)
-    )
+    w = weights if isinstance(weights, ScoreWeights) else ScoreWeights.from_mapping(weights)
     wn = w.normalized()
     state = venue.venue_state
 
@@ -192,6 +188,6 @@ __all__ = [
     "DEFAULT_WEIGHTS",
     "ScoreWeights",
     "VenueScore",
-    "score_venue",
     "rank_venues",
+    "score_venue",
 ]

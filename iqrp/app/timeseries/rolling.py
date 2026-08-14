@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 from collections.abc import Callable
-from typing import Any
 
 import numpy as np
 
@@ -63,7 +62,9 @@ def temporal_contract(mode: str) -> TemporalMode:
     return mapping.get(mode, TemporalMode.FULL_SAMPLE)
 
 
-def incremental_mean_var(prev_n: int, prev_mean: float, prev_m2: float, x: float) -> tuple[int, float, float]:
+def incremental_mean_var(
+    prev_n: int, prev_mean: float, prev_m2: float, x: float
+) -> tuple[int, float, float]:
     """Welford online update for streaming analysis."""
     n = prev_n + 1
     delta = x - prev_mean

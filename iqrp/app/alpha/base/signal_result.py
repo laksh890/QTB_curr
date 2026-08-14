@@ -186,8 +186,7 @@ class SignalPerformance:
             "n_splits": self.n_splits,
             "extras": dict(self.extras),
             "disclaimer": (
-                "Historical Sharpe alone cannot approve. "
-                "Statistical significance alone ≠ alpha."
+                "Historical Sharpe alone cannot approve. " "Statistical significance alone ≠ alpha."
             ),
         }
 
@@ -277,9 +276,7 @@ class SignalResearchReport:
                 min=float(stats_raw.get("min", float("nan"))),
                 max=float(stats_raw.get("max", float("nan"))),
                 missing_pct=float(stats_raw.get("missing_pct", float("nan"))),
-                autocorrelation_lag1=float(
-                    stats_raw.get("autocorrelation_lag1", float("nan"))
-                ),
+                autocorrelation_lag1=float(stats_raw.get("autocorrelation_lag1", float("nan"))),
             )
 
         performance = None

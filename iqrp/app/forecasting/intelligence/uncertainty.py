@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-from typing import Any
-
 import numpy as np
 
 from iqrp.app.forecasting.base.prediction import PredictionInterval
@@ -20,12 +18,14 @@ def prediction_intervals(
         from scipy.stats import norm
 
         z = float(norm.ppf(0.5 + level / 2.0))
-    except Exception:  # noqa: BLE001
+    except Exception:
         # common levels
         z = {0.9: 1.64485, 0.95: 1.95996, 0.99: 2.57583}.get(round(level, 2), 1.96)
     path = np.asarray(point, dtype=np.float64).reshape(-1)
     return [
-        PredictionInterval(lower=float(v - z * residual_std), upper=float(v + z * residual_std), level=level)
+        PredictionInterval(
+            lower=float(v - z * residual_std), upper=float(v + z * residual_std), level=level
+        )
         for v in path
     ]
 
@@ -38,7 +38,13 @@ def ensemble_uncertainty(preds: dict[str, np.ndarray]) -> dict[str, np.ndarray]:
     std = stack.std(axis=0)
     # agreement: fraction within 1 std of mean
     agreement = np.mean(np.abs(stack - mean) <= (std + 1e-8), axis=0)
-    return {"mean": mean, "std": std, "agreement": agreement, "epistemic": std, "aleatoric": std * 0.5}
+    return {
+        "mean": mean,
+        "std": std,
+        "agreement": agreement,
+        "epistemic": std,
+        "aleatoric": std * 0.5,
+    }
 
 
 def forecast_distribution(

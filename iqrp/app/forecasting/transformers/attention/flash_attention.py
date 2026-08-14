@@ -10,7 +10,7 @@ from iqrp.app.forecasting.neural.base.torch_utils import has_torch
 try:
     import torch
     from torch import nn
-except Exception:  # noqa: BLE001  # pragma: no cover
+except Exception:  # pragma: no cover
     torch = None  # type: ignore[assignment]
     nn = object  # type: ignore[assignment]
 
@@ -18,7 +18,9 @@ except Exception:  # noqa: BLE001  # pragma: no cover
 class FlashAttention(nn.Module if has_torch() else object):  # type: ignore[misc]
     """Uses torch SDPA when available; otherwise chunked attention."""
 
-    def __init__(self, d_model: int, n_heads: int = 4, dropout: float = 0.0, chunk_size: int = 256) -> None:
+    def __init__(
+        self, d_model: int, n_heads: int = 4, dropout: float = 0.0, chunk_size: int = 256
+    ) -> None:
         if has_torch():
             super().__init__()
         self.n_heads = n_heads

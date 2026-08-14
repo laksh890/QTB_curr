@@ -12,7 +12,11 @@ import polars as pl
 from iqrp.app.forecasting.base.forecast import Forecast
 from iqrp.app.forecasting.intelligence.automl import optimize_model
 from iqrp.app.forecasting.intelligence.benchmark import BenchmarkResult, benchmark_candidates
-from iqrp.app.forecasting.intelligence.calibration import Calibrator, apply_calibration, fit_calibrator
+from iqrp.app.forecasting.intelligence.calibration import (
+    Calibrator,
+    apply_calibration,
+    fit_calibrator,
+)
 from iqrp.app.forecasting.intelligence.config import IntelligenceSettings
 from iqrp.app.forecasting.intelligence.deployment import DeploymentManager
 from iqrp.app.forecasting.intelligence.diagnostics import diagnose_leaderboard, diagnose_residuals
@@ -122,7 +126,10 @@ class ForecastIntelligenceEngine:
                 candidates=candidates,
             )
             self._leaderboard = rank_models(
-                [{"name": b.name, "family": b.family, "metrics": b.metrics} for b in self._benchmarks],
+                [
+                    {"name": b.name, "family": b.family, "metrics": b.metrics}
+                    for b in self._benchmarks
+                ],
                 self.settings.ranking,
             )
             if self._leaderboard:
@@ -152,7 +159,7 @@ class ForecastIntelligenceEngine:
                     m = create_model(r.name, **(self._best_params if r.name == best_name else {}))
                     m.fit(frame, feature_columns=feats, target_column=tgt)
                     self._ensemble_models[r.name] = m
-                except Exception:  # noqa: BLE001
+                except Exception:
                     continue
             if best_name not in self._ensemble_models and self._model is not None:
                 self._ensemble_models[best_name] = self._model
@@ -160,7 +167,9 @@ class ForecastIntelligenceEngine:
         self._routing = build_routing_table(
             best_name,
             regime_models=None if self._selection is None else self._selection.best_regime_models,
-            high_vol_model=None if self._selection is None else self._selection.best_volatility_model,
+            high_vol_model=(
+                None if self._selection is None else self._selection.best_volatility_model
+            ),
         )
 
         preds = self._model.predict(frame, feature_columns=feats)
@@ -235,7 +244,14 @@ class ForecastIntelligenceEngine:
         self._require_fitted()
         t0 = perf_counter()
         feats = feature_columns or self._feature_columns
-        h = int(horizon or (self._selection.best_horizon if self._selection else self.settings.forecast.default_horizon))
+        h = int(
+            horizon
+            or (
+                self._selection.best_horizon
+                if self._selection
+                else self.settings.forecast.default_horizon
+            )
+        )
         model = self._resolve_active_model(frame)
         if self.settings.ensemble.method != "none" and len(self._ensemble_models) > 1:
             paths = {}
@@ -261,7 +277,9 @@ class ForecastIntelligenceEngine:
                 metadata={
                     "agreement": float(model_agreement(paths)),
                     "members": list(paths),
-                    "uncertainty": {k: v.tolist() if isinstance(v, np.ndarray) else v for k, v in unc.items()},
+                    "uncertainty": {
+                        k: v.tolist() if isinstance(v, np.ndarray) else v for k, v in unc.items()
+                    },
                 },
             )
         else:
@@ -309,14 +327,26 @@ class ForecastIntelligenceEngine:
             return rows
         # scoped leaderboards
         if by == "asset" and "asset_id" in frame.columns:
-            return [{"scope": "asset", "asset": a, "leaderboard": rows} for a in frame["asset_id"].unique().to_list()]
+            return [
+                {"scope": "asset", "asset": a, "leaderboard": rows}
+                for a in frame["asset_id"].unique().to_list()
+            ]
         if by == "regime" and self.settings.routing.regime_column in frame.columns:
             col = self.settings.routing.regime_column
-            return [{"scope": "regime", "regime": r, "leaderboard": rows} for r in frame[col].unique().to_list()]
+            return [
+                {"scope": "regime", "regime": r, "leaderboard": rows}
+                for r in frame[col].unique().to_list()
+            ]
         if by == "timeframe":
             return [{"scope": "timeframe", "timeframe": "default", "leaderboard": rows}]
         if by == "feature_set":
-            return [{"scope": "feature_set", "features": list(self._feature_columns), "leaderboard": rows}]
+            return [
+                {
+                    "scope": "feature_set",
+                    "features": list(self._feature_columns),
+                    "leaderboard": rows,
+                }
+            ]
         return rows
 
     def benchmark(
@@ -338,7 +368,10 @@ class ForecastIntelligenceEngine:
         )
         self._benchmarks = results
         self._leaderboard = rank_models(
-            [{"name": r.name, "family": r.family, "metrics": r.metrics, "metadata": r.metadata} for r in results],
+            [
+                {"name": r.name, "family": r.family, "metrics": r.metrics, "metadata": r.metadata}
+                for r in results
+            ],
             self.settings.ranking,
         )
         return [r.to_dict() for r in results]
@@ -354,7 +387,9 @@ class ForecastIntelligenceEngine:
         feats = feature_columns or self._feature_columns
         if not self._ensemble_models:
             return self.predict(frame, feature_columns=feats)
-        preds = {n: m.predict(frame, feature_columns=feats) for n, m in self._ensemble_models.items()}
+        preds = {
+            n: m.predict(frame, feature_columns=feats) for n, m in self._ensemble_models.items()
+        }
         cfg = self.settings.ensemble
         if method is not None:
             from iqrp.app.forecasting.intelligence.config import EnsembleConfig
@@ -386,7 +421,9 @@ class ForecastIntelligenceEngine:
         self._calibrator = fit_calibrator(y, scores, method=method_name)  # type: ignore[arg-type]
         return self._calibrator
 
-    def monitor(self, *, y_true: float | None = None, y_pred: float | None = None) -> MonitorSnapshot:
+    def monitor(
+        self, *, y_true: float | None = None, y_pred: float | None = None
+    ) -> MonitorSnapshot:
         if y_true is not None or y_pred is not None:
             self._monitor.record(y_true=y_true, y_pred=y_pred)
         return self._monitor.snapshot()
@@ -409,7 +446,11 @@ class ForecastIntelligenceEngine:
             y = frame[tgt].to_numpy().astype(np.float64)
             n = min(pred.size, y.size)
             cur = float(np.mean(np.abs(y[:n] - pred[:n])))
-            if self._ref_metric > 1e-12 and (cur - self._ref_metric) / self._ref_metric > self.settings.drift.performance_drop:
+            if (
+                self._ref_metric > 1e-12
+                and (cur - self._ref_metric) / self._ref_metric
+                > self.settings.drift.performance_drop
+            ):
                 perf_deg = True
         self._n_updates += 1
         decision = decide_retrain(
@@ -432,9 +473,13 @@ class ForecastIntelligenceEngine:
             for name, m in list(self._ensemble_models.items()):
                 try:
                     self._ensemble_models[name] = retrain_model(
-                        m, frame, feature_columns=feats, target_column=tgt, config=self.settings.retrain
+                        m,
+                        frame,
+                        feature_columns=feats,
+                        target_column=tgt,
+                        config=self.settings.retrain,
                     )
-                except Exception:  # noqa: BLE001
+                except Exception:
                     continue
         return decision
 
@@ -463,11 +508,21 @@ class ForecastIntelligenceEngine:
         }
 
     def visualize(self, frame: pl.DataFrame | None = None) -> dict[str, Any]:
-        out: dict[str, Any] = {"leaderboard": leaderboard_chart(self._leaderboard, config=self.settings.visualization)}
+        out: dict[str, Any] = {
+            "leaderboard": leaderboard_chart(self._leaderboard, config=self.settings.visualization)
+        }
         if frame is not None and self._fitted:
             pred = self.predict(frame)
-            y = frame[self._target_column].to_numpy() if self._target_column in frame.columns else None
-            ts = frame[self.settings.columns.timestamp].to_list() if self.settings.columns.timestamp in frame.columns else list(range(len(pred)))
+            y = (
+                frame[self._target_column].to_numpy()
+                if self._target_column in frame.columns
+                else None
+            )
+            ts = (
+                frame[self.settings.columns.timestamp].to_list()
+                if self.settings.columns.timestamp in frame.columns
+                else list(range(len(pred)))
+            )
             out["forecast"] = forecast_chart(ts, y, pred)
             drift = self.detect_drift(frame)
             out["drift"] = drift_chart(drift.feature_drift)
@@ -491,7 +546,9 @@ class ForecastIntelligenceEngine:
         return self._serializer.save(self, path)
 
     @classmethod
-    def load(cls, path: str | Path, settings: IntelligenceSettings | None = None) -> ForecastIntelligenceEngine:
+    def load(
+        cls, path: str | Path, settings: IntelligenceSettings | None = None
+    ) -> ForecastIntelligenceEngine:
         ser = IntelligenceSerializer()
         payload = ser.load(path)
         engine = cls(settings=settings or IntelligenceSettings.default())
@@ -512,14 +569,18 @@ class ForecastIntelligenceEngine:
             "n_updates": self._n_updates,
             "fitted": self._fitted,
             "checkpoint": dict(self._checkpoint),
-            "calibrator": None if self._calibrator is None else {"method": self._calibrator.method, "params": self._calibrator.params},
+            "calibrator": (
+                None
+                if self._calibrator is None
+                else {"method": self._calibrator.method, "params": self._calibrator.params}
+            ),
         }
 
     def import_state(self, payload: dict[str, Any]) -> ForecastIntelligenceEngine:
         if "settings" in payload:
             try:
                 self.settings = IntelligenceSettings.from_mapping(payload["settings"])
-            except Exception:  # noqa: BLE001
+            except Exception:
                 pass
         self._feature_columns = list(payload.get("feature_columns") or [])
         self._target_column = str(payload.get("target_column") or self.settings.columns.target)
@@ -545,12 +606,14 @@ class ForecastIntelligenceEngine:
                 self._fitted = True
             elif payload.get("fitted"):
                 self._fitted = bool(payload["fitted"])
-        except Exception:  # noqa: BLE001
+        except Exception:
             self._model = None
             self._fitted = False
         cal = payload.get("calibrator")
         if cal:
-            self._calibrator = Calibrator(method=str(cal["method"]), params=dict(cal.get("params") or {}))
+            self._calibrator = Calibrator(
+                method=str(cal["method"]), params=dict(cal.get("params") or {})
+            )
         rt = payload.get("routing")
         if rt:
             self._routing = RoutingTable(
@@ -568,7 +631,9 @@ class ForecastIntelligenceEngine:
         return [m.to_dict() for m in list_discovered_models(self.settings)]
 
     # --------------------------------------------------------------- helpers
-    def _resolve_features(self, frame: pl.DataFrame, feature_columns: list[str] | None) -> list[str]:
+    def _resolve_features(
+        self, frame: pl.DataFrame, feature_columns: list[str] | None
+    ) -> list[str]:
         if feature_columns:
             return list(feature_columns)
         if self.settings.columns.feature_columns:

@@ -2,8 +2,9 @@
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from dataclasses import dataclass, field
-from typing import Any, Mapping
+from typing import Any
 
 from iqrp.app.backtesting.accounting.reconciliation import reconcile_capital
 from iqrp.app.backtesting.runner.configuration import BacktestRunConfig
@@ -47,9 +48,7 @@ def preflight_validate(
 
     checks["strategy_id"] = bool(config.strategy_id)
     if not config.strategy_id:
-        issues.append(
-            ValidationIssue("strategy_id", "critical", "strategy_id is required")
-        )
+        issues.append(ValidationIssue("strategy_id", "critical", "strategy_id is required"))
 
     checks["strategy_registered"] = bool(strategy_registered)
     if not strategy_registered:
@@ -84,16 +83,12 @@ def preflight_validate(
 
     checks["capital"] = float(config.initial_capital) > 0
     if float(config.initial_capital) <= 0:
-        issues.append(
-            ValidationIssue("capital", "critical", "initial_capital must be positive")
-        )
+        issues.append(ValidationIssue("capital", "critical", "initial_capital must be positive"))
 
     checks["dates"] = True
     if config.start and config.end and str(config.start) > str(config.end):
         checks["dates"] = False
-        issues.append(
-            ValidationIssue("dates", "critical", "start must be <= end")
-        )
+        issues.append(ValidationIssue("dates", "critical", "start must be <= end"))
 
     critical = [i for i in issues if i.severity == "critical"]
     return ValidationReport(ok=len(critical) == 0, issues=issues, checks=checks)
@@ -122,9 +117,7 @@ def integrity_validate(
     checks["results_persisted"] = bool(results_persisted)
 
     if not checks["data_validated"]:
-        issues.append(
-            ValidationIssue("data_validated", "critical", "dataset was not validated")
-        )
+        issues.append(ValidationIssue("data_validated", "critical", "dataset was not validated"))
     if context.invalidated:
         issues.append(
             ValidationIssue(
@@ -134,18 +127,16 @@ def integrity_validate(
             )
         )
     if not checks["pnl_tracked"]:
-        issues.append(
-            ValidationIssue("pnl_tracked", "critical", "equity curve is empty")
-        )
+        issues.append(ValidationIssue("pnl_tracked", "critical", "equity curve is empty"))
     if not results_persisted:
-        issues.append(
-            ValidationIssue("results_persisted", "warning", "results not persisted")
-        )
+        issues.append(ValidationIssue("results_persisted", "warning", "results not persisted"))
 
     try:
         recon = reconcile_capital(
             context.capital,
-            ending_equity=float(result.equity_curve[-1]) if result.equity_curve else context.capital.equity,
+            ending_equity=(
+                float(result.equity_curve[-1]) if result.equity_curve else context.capital.equity
+            ),
             tolerance=float(context.config.reconciliation_tolerance),
             fail=False,
         )
@@ -159,7 +150,7 @@ def integrity_validate(
                     recon.detail or "capital reconciliation failed",
                 )
             )
-    except Exception as exc:  # noqa: BLE001
+    except Exception as exc:
         checks["reconciled"] = False
         issues.append(ValidationIssue("reconciliation", "critical", str(exc)))
 

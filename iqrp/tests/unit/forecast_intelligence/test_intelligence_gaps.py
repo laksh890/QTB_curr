@@ -5,22 +5,38 @@ from __future__ import annotations
 import numpy as np
 import pytest
 
-from iqrp.app.forecasting.intelligence.benchmark import BenchmarkResult, _aggregate_folds, make_splits
-from iqrp.app.forecasting.intelligence.calibration import Calibrator, apply_calibration, fit_calibrator
-from iqrp.app.forecasting.intelligence.config import BenchmarkConfig, EnsembleConfig, IntelligenceSettings
+from iqrp.app.forecasting.intelligence.benchmark import (
+    BenchmarkResult,
+    _aggregate_folds,
+    make_splits,
+)
+from iqrp.app.forecasting.intelligence.calibration import (
+    Calibrator,
+    apply_calibration,
+    fit_calibrator,
+)
+from iqrp.app.forecasting.intelligence.config import (
+    BenchmarkConfig,
+    EnsembleConfig,
+    IntelligenceSettings,
+    RankingConfig,
+    RetrainConfig,
+)
 from iqrp.app.forecasting.intelligence.drift import DriftReport, detect_drift
-from iqrp.app.forecasting.intelligence.ensemble import bayesian_model_averaging, dynamic_ensemble_selection, voting_ensemble
+from iqrp.app.forecasting.intelligence.ensemble import (
+    bayesian_model_averaging,
+    dynamic_ensemble_selection,
+    voting_ensemble,
+)
 from iqrp.app.forecasting.intelligence.gating import moe_combine
 from iqrp.app.forecasting.intelligence.orchestrator import ForecastIntelligenceEngine
-from iqrp.app.forecasting.intelligence.processes import simulate_market_frame, feature_names
+from iqrp.app.forecasting.intelligence.processes import feature_names, simulate_market_frame
 from iqrp.app.forecasting.intelligence.ranking import RankedModel, composite_score
 from iqrp.app.forecasting.intelligence.registry import DiscoveredModel, create_model
-from iqrp.app.forecasting.intelligence.retraining import restore_checkpoint, decide_retrain
-from iqrp.app.forecasting.intelligence.config import RetrainConfig, RankingConfig
+from iqrp.app.forecasting.intelligence.retraining import decide_retrain, restore_checkpoint
 from iqrp.app.forecasting.intelligence.selector import select_best
 from iqrp.app.forecasting.intelligence.stacking import stack_predictions
 from iqrp.app.forecasting.intelligence.uncertainty import ensemble_uncertainty, model_agreement
-
 
 FEATS = feature_names(3)
 
@@ -93,7 +109,9 @@ def test_decide_retrain_performance_drift():
     drift = DriftReport({"f0": 1.0}, 1.0, 1.0, 1.0, 1.0, True, ["feature_drift"])
     d = decide_retrain(n_updates=1, config=RetrainConfig(mode="performance"), drift=drift)
     assert d.should_retrain
-    d2 = decide_retrain(n_updates=1, config=RetrainConfig(mode="performance"), performance_degraded=True)
+    d2 = decide_retrain(
+        n_updates=1, config=RetrainConfig(mode="performance"), performance_degraded=True
+    )
     assert d2.should_retrain
 
 
@@ -103,14 +121,24 @@ def test_restore_checkpoint_noop():
 
 
 def test_select_best_with_regime():
-    frame = simulate_market_frame(120, kind="regime_switching", n_features=3, rng=np.random.default_rng(4))
+    frame = simulate_market_frame(
+        120, kind="regime_switching", n_features=3, rng=np.random.default_rng(4)
+    )
     settings = IntelligenceSettings.from_mapping(
         {
-            "benchmark": {"method": "walk_forward", "n_splits": 2, "train_size": 40, "test_size": 15, "parallel": False},
+            "benchmark": {
+                "method": "walk_forward",
+                "n_splits": 2,
+                "train_size": 40,
+                "test_size": 15,
+                "parallel": False,
+            },
             "ensemble": {"method": "none"},
         }
     )
-    sel = select_best(frame, feature_columns=FEATS, target_column="target", settings=settings, candidates=["mock"])
+    sel = select_best(
+        frame, feature_columns=FEATS, target_column="target", settings=settings, candidates=["mock"]
+    )
     assert sel.best_model == "mock"
     assert sel.to_dict()["best_horizon"] >= 1
 
@@ -119,7 +147,10 @@ def test_engine_import_export_roundtrip(tmp_path):
     frame = simulate_market_frame(100, n_features=3, rng=np.random.default_rng(5))
     eng = ForecastIntelligenceEngine(
         IntelligenceSettings.from_mapping(
-            {"benchmark": {"parallel": False, "n_splits": 2, "train_size": 40, "test_size": 15}, "ensemble": {"method": "none"}}
+            {
+                "benchmark": {"parallel": False, "n_splits": 2, "train_size": 40, "test_size": 15},
+                "ensemble": {"method": "none"},
+            }
         )
     )
     eng.fit(frame, feature_columns=FEATS, candidates=["mock"], run_selection=False)

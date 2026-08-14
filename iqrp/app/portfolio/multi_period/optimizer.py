@@ -112,7 +112,14 @@ def optimize_multi_period(
             names = cstr.get("names")
         ok, reason, conflicts = check_feasibility(cstr)
         if not ok:
-            return infeasible_result(name, n, method=method, reason=reason or "infeasible", conflicts=conflicts, names=names)
+            return infeasible_result(
+                name,
+                n,
+                method=method,
+                reason=reason or "infeasible",
+                conflicts=conflicts,
+                names=names,
+            )
 
         sched = rebalance_schedule(h, frequency=rebalance_every, threshold=turnover_threshold)
         w = (
@@ -130,7 +137,13 @@ def optimize_multi_period(
 
         for t in range(h):
             drifted = w if t == 0 else apply_drift(w, rp[t - 1])
-            drifted = project_weights(drifted, {**cstr, "ub": max(cstr["ub"], float(np.max(drifted)) + 1e-9)}) if cstr["lb"] >= 0 else drifted
+            drifted = (
+                project_weights(
+                    drifted, {**cstr, "ub": max(cstr["ub"], float(np.max(drifted)) + 1e-9)}
+                )
+                if cstr["lb"] >= 0
+                else drifted
+            )
             # keep drifted as book; do not force box on drift (market moves) — trade decision projects
             if not sched["flags"][t]:
                 w = drifted

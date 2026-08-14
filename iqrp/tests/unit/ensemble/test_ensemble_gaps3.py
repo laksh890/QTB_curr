@@ -44,7 +44,7 @@ from iqrp.app.regimes.ensemble.visualization import (
     plot_regime_timeline,
 )
 from iqrp.app.regimes.ensemble.weighting import compute_weights, rolling_weights
-from iqrp.tests.unit.ensemble.test_ensemble_core import _StubRegimeA, _StubRegimeB  # noqa: F401
+from iqrp.tests.unit.ensemble.test_ensemble_core import _StubRegimeA, _StubRegimeB
 
 
 def _settings(**kw: object) -> EnsembleSettings:
@@ -77,7 +77,9 @@ def test_default_names_and_as_frame() -> None:
 @pytest.mark.unit
 def test_partial_fit_cold_and_member_partial() -> None:
     frame = pl.DataFrame({"open_time": list(range(30)), "close": np.linspace(1, 2, 30)})
-    cold = EnsembleRegimeModel(settings=_settings(online={"warm_start": False, "weight_update": False}))
+    cold = EnsembleRegimeModel(
+        settings=_settings(online={"warm_start": False, "weight_update": False})
+    )
     cold.partial_fit(frame)  # routes to fit
     assert cold.is_fitted
 
@@ -116,8 +118,12 @@ def test_partial_fit_cold_and_member_partial() -> None:
     model = EnsembleRegimeModel(settings=_settings())
     model.fit(frame)
     model.members = [
-        EnsembleMember(name="ok", model=WithPartial().fit(frame, ["close"]), metadata={"fitted": True}),
-        EnsembleMember(name="bad", model=BrokenPartial().fit(frame, ["close"]), metadata={"fitted": True}),
+        EnsembleMember(
+            name="ok", model=WithPartial().fit(frame, ["close"]), metadata={"fitted": True}
+        ),
+        EnsembleMember(
+            name="bad", model=BrokenPartial().fit(frame, ["close"]), metadata={"fitted": True}
+        ),
     ]
     model._train_frame = None
     model.partial_fit(frame.slice(20, 10), ["close"])
@@ -127,7 +133,9 @@ def test_partial_fit_cold_and_member_partial() -> None:
 @pytest.mark.unit
 def test_weights_mismatch_and_resolve_features() -> None:
     frame = pl.DataFrame({"open_time": list(range(25)), "close": np.linspace(1, 2, 25)})
-    model = EnsembleRegimeModel(settings=_settings(columns={"timestamp": "open_time", "feature_columns": ()}))
+    model = EnsembleRegimeModel(
+        settings=_settings(columns={"timestamp": "open_time", "feature_columns": ()})
+    )
     model.fit(frame, ["close"])
     model._weights = np.array([1.0])  # mismatch vs members
     w = model.weights()
@@ -276,7 +284,9 @@ def test_weighting_rolling_recent_fallback() -> None:
         truth=np.array([0, 1, 1]),
     )
     assert w.sum() == pytest.approx(1)
-    w2 = compute_weights("rolling", names=["a", "b"], score_matrix=np.array([[0.1, 0.9], [0.4, 0.6]]))
+    w2 = compute_weights(
+        "rolling", names=["a", "b"], score_matrix=np.array([[0.1, 0.9], [0.4, 0.6]])
+    )
     assert w2.sum() == pytest.approx(1)
     # fallback equal
     assert compute_weights("accuracy", names=["a", "b"]).sum() == pytest.approx(1)
@@ -288,7 +298,9 @@ def test_trainer_with_truth_serializer_json_viz(tmp_path: Path) -> None:
     truth = np.array([0, 1, 2] * 13 + [0])
     settings = _settings()
     members = EnsembleRegistry(settings).create_members()
-    result = EnsembleTrainer(settings).fit(frame, ["close"], true_states=truth[:40], members=members)
+    result = EnsembleTrainer(settings).fit(
+        frame, ["close"], true_states=truth[:40], members=members
+    )
     assert result.ensemble_proba.shape[0] > 0
     assert _json_default(np.float64(1.5)) == 1.5
     assert _json_default(np.int64(3)) == 3

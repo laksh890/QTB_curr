@@ -108,8 +108,7 @@ def liquidity_risk(
     # Penalize high participation, long liquidation, wide spread
     score = float(
         np.clip(
-            1.0
-            / (1.0 + participation + 0.1 * time_to_liquidate + 10.0 * spr + 5.0 * temp_impact),
+            1.0 / (1.0 + participation + 0.1 * time_to_liquidate + 10.0 * spr + 5.0 * temp_impact),
             0.0,
             1.0,
         )

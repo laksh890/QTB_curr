@@ -2,17 +2,16 @@
 
 from __future__ import annotations
 
+from collections.abc import Callable
 from dataclasses import dataclass, field
-from typing import Any, Callable, Literal
+from typing import Any, Literal
 
 import numpy as np
 
 from iqrp.app.regimes.kalman.config import KalmanSettings
 from iqrp.app.regimes.kalman.covariance import ensure_spd
 
-Application = Literal[
-    "custom", "trend", "denoise", "dynamic_beta", "volatility", "spread", "pairs"
-]
+Application = Literal["custom", "trend", "denoise", "dynamic_beta", "volatility", "spread", "pairs"]
 
 
 @dataclass
@@ -90,9 +89,7 @@ def build_system(
         # local linear trend: state = [level, slope]
         f = np.array([[1.0, dt], [0.0, 1.0]], dtype=np.float64)
         h = np.array([[1.0, 0.0]], dtype=np.float64)
-        q = q_scale * np.array(
-            [[dt**3 / 3, dt**2 / 2], [dt**2 / 2, dt]], dtype=np.float64
-        )
+        q = q_scale * np.array([[dt**3 / 3, dt**2 / 2], [dt**2 / 2, dt]], dtype=np.float64)
         r = np.array([[r_scale]], dtype=np.float64)
         x0 = np.zeros(2)
         p0 = p_scale * np.eye(2)
@@ -103,7 +100,9 @@ def build_system(
         h = np.array([[1.0]], dtype=np.float64)
         q = np.array([[q_scale]], dtype=np.float64)
         r = np.array([[r_scale]], dtype=np.float64)
-        return LinearGaussianSSM(f, h, q, r, np.zeros(1), p_scale * np.eye(1), application="denoise")
+        return LinearGaussianSSM(
+            f, h, q, r, np.zeros(1), p_scale * np.eye(1), application="denoise"
+        )
 
     if app == "dynamic_beta":
         # state = [alpha, beta]; observation = alpha + beta * market (+ noise)
@@ -157,9 +156,7 @@ def build_system(
         h = np.array([[1.0]], dtype=np.float64)
         q = np.array([[q_scale]], dtype=np.float64)
         r = np.array([[r_scale]], dtype=np.float64)
-        return LinearGaussianSSM(
-            f, h, q, r, np.zeros(1), p_scale * np.eye(1), application=app
-        )
+        return LinearGaussianSSM(f, h, q, r, np.zeros(1), p_scale * np.eye(1), application=app)
 
     # custom random-walk / identity defaults
     n = max(n, 1)

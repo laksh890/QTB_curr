@@ -36,9 +36,7 @@ def create_child_order(
     if quantity <= 0:
         raise ValueError("child quantity must be positive")
     if quantity > parent.residual_qty + 1e-9:
-        raise ValueError(
-            f"child quantity {quantity} exceeds parent residual {parent.residual_qty}"
-        )
+        raise ValueError(f"child quantity {quantity} exceeds parent residual {parent.residual_qty}")
 
     child = Order(
         instrument=parent.instrument,

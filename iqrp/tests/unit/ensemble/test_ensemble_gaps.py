@@ -8,16 +8,16 @@ import numpy as np
 import polars as pl
 import pytest
 
-import iqrp.app.regimes.ensemble  # noqa: F401
+import iqrp.app.regimes.ensemble
 from iqrp.app.regimes.base.registry import get_registry as get_regime_registry
 from iqrp.app.regimes.ensemble import EnsembleRegimeModel, EnsembleSettings
 from iqrp.app.regimes.ensemble.combiner import combine
 from iqrp.app.regimes.ensemble.orchestrator import fit_members, predict_members
 from iqrp.app.regimes.ensemble.registry import EnsembleMember, EnsembleRegistry, _default_map
-from iqrp.app.regimes.ensemble.weighting import normalize_weights
 from iqrp.app.regimes.ensemble.visualization import plot_regime_timeline, plot_weight_evolution
+from iqrp.app.regimes.ensemble.weighting import normalize_weights
 from iqrp.app.state_space import get_registry as get_ss_registry
-from iqrp.tests.unit.ensemble.test_ensemble_core import _StubRegimeA, _StubRegimeB  # noqa: F401
+from iqrp.tests.unit.ensemble.test_ensemble_core import _StubRegimeA, _StubRegimeB
 
 
 def _settings(**kw: object) -> EnsembleSettings:
@@ -79,9 +79,7 @@ def test_parallel_and_failing_member() -> None:
     frame = pl.DataFrame({"close": np.linspace(1, 2, 30)})
     fitted = fit_members(members, frame, ["close"], parallel=True)
     assert any(m.metadata.get("fitted") for m in fitted)
-    mapped, hards, names = predict_members(
-        fitted, frame, ["close"], n_canonical=3, parallel=False
-    )
+    mapped, hards, names = predict_members(fitted, frame, ["close"], n_canonical=3, parallel=False)
     assert len(mapped) == len(names)
 
 

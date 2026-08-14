@@ -9,11 +9,21 @@ import pytest
 
 from iqrp.app.forecasting.tree_models import TreeSettings, TreeTrainer, create_tree_model
 from iqrp.app.forecasting.tree_models.base import backends as backend_mod
-from iqrp.app.forecasting.tree_models.base.backends import create_estimator, estimator_feature_importances
+from iqrp.app.forecasting.tree_models.base.backends import (
+    create_estimator,
+    estimator_feature_importances,
+)
 from iqrp.app.forecasting.tree_models.base.ensemble import stacking_predict, weighted_average
 from iqrp.app.forecasting.tree_models.base.native import NativeForest, NativeGBM
-from iqrp.app.forecasting.tree_models.base.processes import feature_names, simulate_nonlinear_returns
-from iqrp.app.forecasting.tree_models.calibration.calibrators import Calibrator, apply_calibration, fit_calibrator
+from iqrp.app.forecasting.tree_models.base.processes import (
+    feature_names,
+    simulate_nonlinear_returns,
+)
+from iqrp.app.forecasting.tree_models.calibration.calibrators import (
+    Calibrator,
+    apply_calibration,
+    fit_calibrator,
+)
 from iqrp.app.forecasting.tree_models.diagnostics.report import (
     calibration_curve,
     feature_stability,
@@ -54,7 +64,9 @@ def test_backend_native_fallbacks() -> None:
             est.fit(X, y)
             assert est.predict(X).size == 60
     # xgb gain path
-    est = create_estimator("xgboost", task="regression", params={"n_estimators": 10, "max_depth": 2})
+    est = create_estimator(
+        "xgboost", task="regression", params={"n_estimators": 10, "max_depth": 2}
+    )
     est.fit(X, y)
     if hasattr(est, "get_booster"):
         assert estimator_feature_importances(est, 3).size == 3
@@ -115,7 +127,12 @@ def test_hpo_exception_and_pruning_paths() -> None:
     cfg = ValidationConfig(strategy="walk_forward", train_size=1000, test_size=500)
     assert make_time_splits(50, cfg) == [] or True
     s = hpo_mod._score_params(
-        "random_forest", X, y, task="regression", params={"n_estimators": 5, "max_depth": 2}, validation=cfg
+        "random_forest",
+        X,
+        y,
+        task="regression",
+        params={"n_estimators": 5, "max_depth": 2},
+        validation=cfg,
     )
     assert s >= 0
     # optuna prune path via n_trials=1
@@ -146,7 +163,9 @@ def test_diagnostics_exception_branches() -> None:
         assert "train_rmse" in lc
         vc = validation_curve("random_forest", X, y, task="regression", params={})
         assert "val_rmse" in vc
-        stab = feature_stability("random_forest", X, y, ["a", "b", "c"], task="regression", params={})
+        stab = feature_stability(
+            "random_forest", X, y, ["a", "b", "c"], task="regression", params={}
+        )
         assert len(stab) == 3
     assert calibration_curve(y, y + 0.1, n_bins=5)["mean_predicted"]
 
@@ -155,7 +174,9 @@ def test_diagnostics_exception_branches() -> None:
 def test_explain_decision_paths_and_shap_fallback() -> None:
     X = np.random.default_rng(4).normal(size=(40, 3))
     y = X[:, 0]
-    est = create_estimator("random_forest", task="regression", params={"n_estimators": 8, "max_depth": 2})
+    est = create_estimator(
+        "random_forest", task="regression", params={"n_estimators": 8, "max_depth": 2}
+    )
     est.fit(X, y)
     paths = decision_paths(est, X)
     assert paths
@@ -164,6 +185,7 @@ def test_explain_decision_paths_and_shap_fallback() -> None:
         sv = shap_values(est, X[:10])
         assert sv.shape == (10, 3)
     assert compute_feature_importance(est, ["a", "b", "c"], kind="shap", X=X, y=y)
+
     # estimator without importances
     class Dummy:
         def predict(self, X):
@@ -191,7 +213,9 @@ def test_calibration_to_dict_and_multiclass_labels() -> None:
 
 @pytest.mark.unit
 def test_metrics_edge_cases() -> None:
-    assert evaluate_tree_predictions(np.array([1.0]), np.array([1.0]))["directional_accuracy"] != 999
+    assert (
+        evaluate_tree_predictions(np.array([1.0]), np.array([1.0]))["directional_accuracy"] != 999
+    )
     pnl = np.array([0.0, 0.0])
     m = evaluate_tree_predictions(np.array([0.1, -0.1, 0.2]), np.array([0.0, 0.0, 0.0]))
     assert "profit_factor" in m
@@ -214,12 +238,17 @@ def test_preprocess_edges_and_cv_default() -> None:
     assert select_features(X, y, list("abcd"), method="none")
     # unknown method falls through
     assert select_features(X, y, list("abcd"), method="nope", max_features=2)  # type: ignore[arg-type]
-    from iqrp.app.forecasting.tree_models.config import ValidationConfig
-
     # unknown strategy falls back via getattr on a simple namespace
     from types import SimpleNamespace
 
-    splits = make_time_splits(100, SimpleNamespace(strategy="unknown", train_size=40, test_size=10, gap=0, n_splits=3, embargo=5, purge=5))
+    from iqrp.app.forecasting.tree_models.config import ValidationConfig
+
+    splits = make_time_splits(
+        100,
+        SimpleNamespace(
+            strategy="unknown", train_size=40, test_size=10, gap=0, n_splits=3, embargo=5, purge=5
+        ),
+    )
     assert splits
 
 
@@ -261,18 +290,27 @@ def test_tree_model_remaining_branches() -> None:
     # forecast interval without intervals
     from iqrp.app.forecasting.base.forecast import Forecast
 
-    with patch.object(m, "forecast", return_value=Forecast.from_values([0.1, 0.2], horizon=2, intervals=None)):
+    with patch.object(
+        m, "forecast", return_value=Forecast.from_values([0.1, 0.2], horizon=2, intervals=None)
+    ):
         assert len(m.forecast_interval(frame, horizon=2)) == 2
     # settings dict init
-    m2 = create_tree_model("xgboost", settings={"hyperparameters": {"n_estimators": 8, "max_depth": 2}})
+    m2 = create_tree_model(
+        "xgboost", settings={"hyperparameters": {"n_estimators": 8, "max_depth": 2}}
+    )
     m2.fit(frame, feature_columns=cols)
     # trainer serial exception
     trainer = TreeTrainer(
         TreeSettings.from_mapping(
-            {"hyperparameters": {"n_estimators": 8, "max_depth": 2}, "visualization": {"enabled": False}}
+            {
+                "hyperparameters": {"n_estimators": 8, "max_depth": 2},
+                "visualization": {"enabled": False},
+            }
         )
     )
-    rows = trainer.compare(["random_forest", "missing"], frame, feature_columns=cols, parallel=False)
+    rows = trainer.compare(
+        ["random_forest", "missing"], frame, feature_columns=cols, parallel=False
+    )
     assert rows
 
 

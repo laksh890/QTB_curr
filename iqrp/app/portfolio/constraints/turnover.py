@@ -35,7 +35,7 @@ def check_turnover_constraints(
 ) -> list[ConstraintViolation]:
     """Hard turnover caps are reported only — never silently scaled."""
     prev = weights_old if weights_old is not None else current_weights
-    if prev is None or max_turnover is None and min_trade is None:
+    if prev is None or (max_turnover is None and min_trade is None):
         return []
 
     new = as_weights(weights)
@@ -70,9 +70,11 @@ def check_turnover_constraints(
                         "min_trade",
                         observed=ad,
                         threshold=thr,
-                        severity=ConstraintSeverity.SOFT
-                        if str(getattr(severity, "value", severity)).lower() != "hard"
-                        else severity,
+                        severity=(
+                            ConstraintSeverity.SOFT
+                            if str(getattr(severity, "value", severity)).lower() != "hard"
+                            else severity
+                        ),
                         reason=(
                             f"|delta_w[{i}]|={ad:.6g} is below min_trade {thr:.6g} "
                             "(no-trade region)"

@@ -52,9 +52,7 @@ def estimate_slippage(
         horizon_seconds=horizon_seconds or delay_seconds,
         delay_seconds=delay_seconds,
     )
-    liq_c = liquidity_slippage(
-        mid=mid, quantity=quantity, adv=adv, liquidity=liquidity
-    )
+    liq_c = liquidity_slippage(mid=mid, quantity=quantity, adv=adv, liquidity=liquidity)
     if use_nonlinear:
         impact_c = nonlinear_impact(
             quantity=quantity,

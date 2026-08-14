@@ -84,7 +84,11 @@ def dominant_frequencies(
     k = min(int(top_k), f.size)
     order = np.argsort(a)[::-1][:k]
     peaks = [
-        {"frequency": float(f[i]), "amplitude": float(a[i]), "period": float(1.0 / f[i]) if f[i] > 1e-15 else np.inf}
+        {
+            "frequency": float(f[i]),
+            "amplitude": float(a[i]),
+            "period": float(1.0 / f[i]) if f[i] > 1e-15 else np.inf,
+        }
         for i in order
     ]
     # significance vs mean amplitude

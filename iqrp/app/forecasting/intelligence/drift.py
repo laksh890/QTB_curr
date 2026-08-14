@@ -34,7 +34,9 @@ class DriftReport:
         }
 
 
-def population_stability_index(expected: np.ndarray, actual: np.ndarray, *, bins: int = 10) -> float:
+def population_stability_index(
+    expected: np.ndarray, actual: np.ndarray, *, bins: int = 10
+) -> float:
     e = np.asarray(expected, dtype=np.float64).reshape(-1)
     a = np.asarray(actual, dtype=np.float64).reshape(-1)
     qs = np.linspace(0, 100, bins + 1)

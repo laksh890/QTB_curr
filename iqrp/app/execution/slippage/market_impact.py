@@ -17,7 +17,7 @@ def _load_simulation_slippage_model() -> type | None:
         from iqrp.app.simulation.liquidity.slippage import SlippageModel as SimulationSlippageModel
 
         return SimulationSlippageModel
-    except Exception:  # noqa: BLE001 — optional dependency surface
+    except Exception:
         return None
 
 
@@ -49,7 +49,11 @@ def market_impact(
     vol = max(float(volatility), 0.0)
     participation = qty / adv_f
 
-    sim_cls = SimulationSlippageModel if SimulationSlippageModel is not None else _load_simulation_slippage_model()
+    sim_cls = (
+        SimulationSlippageModel
+        if SimulationSlippageModel is not None
+        else _load_simulation_slippage_model()
+    )
     if use_simulation_model and sim_cls is not None:
         sim = sim_cls(impact=impact_coeff, rng=rng)
         out = sim.execution_price(
@@ -96,7 +100,11 @@ def path_impact(
     impact_coeff: float = 0.1,
 ) -> np.ndarray:
     """Vectorized temporary impact series (price units), simulation-aligned."""
-    sim_cls = SimulationSlippageModel if SimulationSlippageModel is not None else _load_simulation_slippage_model()
+    sim_cls = (
+        SimulationSlippageModel
+        if SimulationSlippageModel is not None
+        else _load_simulation_slippage_model()
+    )
     if sim_cls is not None:
         return sim_cls(impact=impact_coeff).path_impact(mids, volumes, trade_sizes, volatility)
 

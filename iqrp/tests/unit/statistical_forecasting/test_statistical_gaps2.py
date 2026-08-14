@@ -44,7 +44,15 @@ def test_save_load_all_heavy_models(tmp_path: Path) -> None:
     settings = StatisticalSettings.from_mapping(
         {
             "identification": {"auto": True},
-            "order": {"max_p": 1, "max_q": 1, "max_d": 0, "seasonal_period": 4, "max_P": 1, "max_D": 0, "max_Q": 0},
+            "order": {
+                "max_p": 1,
+                "max_q": 1,
+                "max_d": 0,
+                "seasonal_period": 4,
+                "max_P": 1,
+                "max_D": 0,
+                "max_Q": 0,
+            },
             "columns": {"endogenous": ("target", "f0"), "exogenous": ("x0",), "target": "target"},
         }
     )
@@ -159,7 +167,9 @@ def test_var_auto_endog_and_vecm_single() -> None:
     Y = simulate_var(80, np.array([[[0.3, 0.0], [0.0, 0.3]]]), rng=np.random.default_rng(2))
     frame = to_frame(Y, prefix="y")
     # no feature columns → auto numeric
-    var = VARModel(settings=StatisticalSettings.from_mapping({"identification": {"auto": False}}), p=1)
+    var = VARModel(
+        settings=StatisticalSettings.from_mapping({"identification": {"auto": False}}), p=1
+    )
     var.fit(frame, target_column="y0")
     assert var.predict(frame).shape[0] == frame.height
     # vecm with single column duplicates
@@ -182,7 +192,13 @@ def test_var_auto_endog_and_vecm_single() -> None:
         step=10,
     )
     # viz lower/upper
-    plot_forecast(np.arange(10.0), np.arange(10.0), Path("/tmp/fc_lu.svg"), lower=np.arange(10.0)-1, upper=np.arange(10.0)+1)
+    plot_forecast(
+        np.arange(10.0),
+        np.arange(10.0),
+        Path("/tmp/fc_lu.svg"),
+        lower=np.arange(10.0) - 1,
+        upper=np.arange(10.0) + 1,
+    )
     plot_irf(np.ones((5, 2, 2)), Path("/tmp/irf.svg"))
 
 
@@ -201,7 +217,9 @@ def test_sarima_manual_order_and_omega() -> None:
     m2.import_state(st)
     assert m2.forecast(frame, horizon=3).values.size == 3
     # varmax without exog names uses feature split
-    settings2 = StatisticalSettings.from_mapping({"identification": {"auto": False}, "order": {"p": 1}})
+    settings2 = StatisticalSettings.from_mapping(
+        {"identification": {"auto": False}, "order": {"p": 1}}
+    )
     f2 = frame.with_columns(pl.Series("f1", np.linspace(0, 1, 80)))
     vx = VARMAXModel(settings=settings2, p=1, q=0)
     vx.fit(f2, feature_columns=["target", "f0", "f1"], target_column="target")

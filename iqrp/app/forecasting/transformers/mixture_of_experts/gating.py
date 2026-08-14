@@ -9,7 +9,7 @@ from iqrp.app.forecasting.neural.base.torch_utils import has_torch
 try:
     import torch
     from torch import nn
-except Exception:  # noqa: BLE001  # pragma: no cover
+except Exception:  # pragma: no cover
     torch = None  # type: ignore[assignment]
     nn = object  # type: ignore[assignment]
 
@@ -52,7 +52,9 @@ class MoEGating(nn.Module if has_torch() else object):  # type: ignore[misc]
         if has_torch():
             super().__init__()
         self.router = MoERouter(d_model, n_experts, top_k=2)
-        self.experts = nn.ModuleList([ExpertFFN(d_model, ffn_dim, dropout) for _ in range(max(n_experts, 1))])
+        self.experts = nn.ModuleList(
+            [ExpertFFN(d_model, ffn_dim, dropout) for _ in range(max(n_experts, 1))]
+        )
 
     def forward(self, x: Any, regime_ids: Any | None = None) -> Any:
         weights, _ = self.router(x)
@@ -62,4 +64,4 @@ class MoEGating(nn.Module if has_torch() else object):  # type: ignore[misc]
         return (outs * w).sum(dim=-1)
 
 
-__all__ = ["ExpertFFN", "MoERouter", "MoEGating"]
+__all__ = ["ExpertFFN", "MoEGating", "MoERouter"]

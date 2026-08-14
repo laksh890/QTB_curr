@@ -7,7 +7,8 @@ Historical Sharpe alone cannot approve.
 
 from __future__ import annotations
 
-from typing import Any, Callable
+from collections.abc import Callable
+from typing import Any
 
 from iqrp.app.alpha.discovery.alternative import (
     alternative_change_signal,

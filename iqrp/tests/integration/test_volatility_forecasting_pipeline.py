@@ -15,7 +15,11 @@ from iqrp.app.forecasting.volatility import (
     create_volatility_model,
     ensure_volatility_models_loaded,
 )
-from iqrp.app.forecasting.volatility.base.processes import simulate_dcc, simulate_garch, to_returns_frame
+from iqrp.app.forecasting.volatility.base.processes import (
+    simulate_dcc,
+    simulate_garch,
+    to_returns_frame,
+)
 
 
 @pytest.mark.integration

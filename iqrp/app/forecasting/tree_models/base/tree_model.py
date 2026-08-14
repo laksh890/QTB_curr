@@ -22,7 +22,10 @@ from iqrp.app.forecasting.tree_models.base.backends import (
     estimator_predict,
     estimator_predict_proba,
 )
-from iqrp.app.forecasting.tree_models.calibration.calibrators import apply_calibration, fit_calibrator
+from iqrp.app.forecasting.tree_models.calibration.calibrators import (
+    apply_calibration,
+    fit_calibrator,
+)
 from iqrp.app.forecasting.tree_models.config import TreeSettings
 from iqrp.app.forecasting.tree_models.evaluation.metrics import evaluate_tree_predictions
 from iqrp.app.forecasting.tree_models.explainability.importance import (
@@ -135,7 +138,9 @@ class TreeForecastModel(ForecastModel):
         if task == "quantile":
             self._quantile_estimators = {}
             for alpha in self._tree_settings.task.quantile_alphas:
-                est = create_estimator(self.backend, task="quantile", params=hp, quantile_alpha=alpha)
+                est = create_estimator(
+                    self.backend, task="quantile", params=hp, quantile_alpha=alpha
+                )
                 self._fit_estimator(est, X, y)
                 self._quantile_estimators[float(alpha)] = est
             self._estimator = self._quantile_estimators.get(0.5) or next(
@@ -161,7 +166,11 @@ class TreeForecastModel(ForecastModel):
             self._fit_estimator(self._estimator, X, y)
         # calibration
         train_pred = estimator_predict(self._estimator, X)
-        if self._tree_settings.calibration.enabled and task in {"binary", "probability", "multiclass"}:
+        if self._tree_settings.calibration.enabled and task in {
+            "binary",
+            "probability",
+            "multiclass",
+        }:
             proba = estimator_predict_proba(self._estimator, X)
             self._calibrator = fit_calibrator(
                 y, proba, method=self._tree_settings.calibration.method
@@ -178,7 +187,11 @@ class TreeForecastModel(ForecastModel):
             target_column=tgt,
             regime_column=self._regime_column,
             horizon=self._tree_settings.forecast.default_horizon,
-            extra={"backend": self.backend, "best_params": self._best_params, "cv_scores": self._cv_scores},
+            extra={
+                "backend": self.backend,
+                "best_params": self._best_params,
+                "cv_scores": self._cv_scores,
+            },
         )
         self._fitted = True
         self._update_count = 0
@@ -200,7 +213,8 @@ class TreeForecastModel(ForecastModel):
         self._update_count += 1
         if self._update_count % max(int(self._tree_settings.online.refresh_every), 1) == 0:
             return self.fit(
-                frame, feature_columns or self._feature_columns,
+                frame,
+                feature_columns or self._feature_columns,
                 target_column=target_column or self._target_column,
                 regime_column=regime_column or self._regime_column,
             )
@@ -220,7 +234,7 @@ class TreeForecastModel(ForecastModel):
         if mode == "warm_start" and hasattr(self._estimator, "set_params"):
             try:
                 self._estimator.set_params(warm_start=True)
-            except Exception:  # noqa: BLE001
+            except Exception:
                 pass
         self._fit_estimator(self._estimator, X_all, y_all)
         self._X, self._y = X_all, y_all
@@ -228,9 +242,7 @@ class TreeForecastModel(ForecastModel):
         self._residuals = y_all - self._train_pred
         return self
 
-    def predict(
-        self, frame: pl.DataFrame, feature_columns: list[str] | None = None
-    ) -> np.ndarray:
+    def predict(self, frame: pl.DataFrame, feature_columns: list[str] | None = None) -> np.ndarray:
         self._require_fitted()
         cols = list(feature_columns or self._feature_columns)
         # always prefer fitted schema when caller passes a superset / different set
@@ -248,7 +260,7 @@ class TreeForecastModel(ForecastModel):
             if mode == "weighted" and self._regime_estimators:
                 preds = {k: estimator_predict(est, X) for k, est in self._regime_estimators.items()}
                 # frequency weights from training regimes if available
-                weights = {k: 1.0 for k in preds}
+                weights = dict.fromkeys(preds, 1.0)
                 total = sum(weights.values()) or 1.0
                 out = sum(weights[k] / total * preds[k] for k in preds)
                 return np.asarray(out, dtype=np.float64)
@@ -285,12 +297,18 @@ class TreeForecastModel(ForecastModel):
         feature_columns: list[str] | None = None,
     ) -> Forecast:
         self._require_fitted()
-        h = max(int(horizon if horizon is not None else self._tree_settings.forecast.default_horizon), 1)
+        h = max(
+            int(horizon if horizon is not None else self._tree_settings.forecast.default_horizon), 1
+        )
         pred = self.predict(frame, feature_columns)
         # multi-horizon: repeat last prediction with residual growth
         last = float(pred[-1]) if pred.size else 0.0
         path = np.full(h, last)
-        if self._tree_settings.forecast.multi_horizon and self._residuals is not None and self._residuals.size:
+        if (
+            self._tree_settings.forecast.multi_horizon
+            and self._residuals is not None
+            and self._residuals.size
+        ):
             # direct-style: use residual std drift
             sig = float(np.std(self._residuals))
             path = path + sig * np.linspace(0, 0.1 * h, h)
@@ -302,11 +320,12 @@ class TreeForecastModel(ForecastModel):
             ),
             level=self._tree_settings.forecast.interval_level,
         )
-        quantiles = None
         meta: dict[str, Any] = {"backend": self.backend, "best_params": self._best_params}
         if self._quantile_estimators:
             qdict = {
-                str(a): float(estimator_predict(est, self._transform(frame, self._feature_columns))[-1])
+                str(a): float(
+                    estimator_predict(est, self._transform(frame, self._feature_columns))[-1]
+                )
                 for a, est in self._quantile_estimators.items()
             }
             meta["quantiles"] = qdict
@@ -316,9 +335,11 @@ class TreeForecastModel(ForecastModel):
             model_name=self.meta.name,
             model_version=self.meta.version,
             features_used=tuple(self._feature_columns),
-            regime_used=frame[self._regime_column].to_numpy()[-1]
-            if self._regime_column and self._regime_column in frame.columns
-            else None,
+            regime_used=(
+                frame[self._regime_column].to_numpy()[-1]
+                if self._regime_column and self._regime_column in frame.columns
+                else None
+            ),
             strategy="direct",
             intervals=intervals,
             metadata=meta,
@@ -354,7 +375,7 @@ class TreeForecastModel(ForecastModel):
         if proba is None and self.meta.supports_proba:
             try:
                 proba = self.predict_proba(frame, feature_columns)
-            except Exception:  # noqa: BLE001
+            except Exception:
                 proba = None
         metrics = evaluate_tree_predictions(
             y_true, y_pred, proba=proba, task=self._tree_settings.task.type
@@ -417,12 +438,17 @@ class TreeForecastModel(ForecastModel):
         scores = []
         for tr, te in splits:
             est = create_estimator(
-                self.backend, task=self._tree_settings.task.type, params=self._best_params or self._hyperparams()
+                self.backend,
+                task=self._tree_settings.task.type,
+                params=self._best_params or self._hyperparams(),
             )
             self._fit_estimator(est, self._X[tr], self._y[tr])
             pred = estimator_predict(est, self._X[te])
             scores.append(float(np.sqrt(np.mean((self._y[te] - pred) ** 2))))
-        return {"rmse_folds": scores, "rmse_mean": float(np.mean(scores)) if scores else float("nan")}
+        return {
+            "rmse_folds": scores,
+            "rmse_mean": float(np.mean(scores)) if scores else float("nan"),
+        }
 
     def diagnostics(self) -> Any:
         self._require_fitted()
@@ -462,7 +488,7 @@ class TreeForecastModel(ForecastModel):
                 return
             except TypeError:
                 pass
-            except Exception:  # noqa: BLE001
+            except Exception:
                 pass
         est.fit(X, y, **kwargs)
 
@@ -531,11 +557,13 @@ class TreeForecastModel(ForecastModel):
             "preprocessor": None if self._preprocessor is None else self._preprocessor.to_dict(),
             "params_kw": dict(self._params_kw),
             # store predictions for cold restore without pickling estimators
-            "estimator_importances": None
-            if self._estimator is None
-            else estimator_feature_importances(
-                self._estimator, len(self._feature_columns) or 1
-            ).tolist(),
+            "estimator_importances": (
+                None
+                if self._estimator is None
+                else estimator_feature_importances(
+                    self._estimator, len(self._feature_columns) or 1
+                ).tolist()
+            ),
         }
 
     def _load_algorithm_state(self, state: dict[str, Any]) -> None:
@@ -545,10 +573,14 @@ class TreeForecastModel(ForecastModel):
         self._X = None if state.get("X") is None else np.asarray(state["X"], dtype=np.float64)
         self._y = None if state.get("y") is None else np.asarray(state["y"], dtype=np.float64)
         self._residuals = (
-            None if state.get("residuals") is None else np.asarray(state["residuals"], dtype=np.float64)
+            None
+            if state.get("residuals") is None
+            else np.asarray(state["residuals"], dtype=np.float64)
         )
         self._train_pred = (
-            None if state.get("train_pred") is None else np.asarray(state["train_pred"], dtype=np.float64)
+            None
+            if state.get("train_pred") is None
+            else np.asarray(state["train_pred"], dtype=np.float64)
         )
         self._cv_scores = list(state.get("cv_scores") or [])
         self._update_count = int(state.get("update_count", 0))
@@ -564,5 +596,4 @@ class TreeForecastModel(ForecastModel):
             self._fit_estimator(self._estimator, self._X, self._y)
 
     @abstractmethod
-    def _backend_name(self) -> BackendName:
-        ...
+    def _backend_name(self) -> BackendName: ...

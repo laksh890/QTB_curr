@@ -62,9 +62,7 @@ class TWAPAlgorithm(ExecutionAlgorithm):
             self.n_slices = max(int(np.ceil(self.horizon_seconds / self.interval_seconds)), 1)
         else:
             self.n_slices = max(int(n_slices or 1), 1)
-        self.participation_cap = (
-            float(participation_cap) if participation_cap is not None else None
-        )
+        self.participation_cap = float(participation_cap) if participation_cap is not None else None
         self.jitter = max(float(jitter), 0.0)
         self.seed = seed
         self._rng = np.random.default_rng(seed)
@@ -113,9 +111,11 @@ class TWAPAlgorithm(ExecutionAlgorithm):
         capped = apply_participation_cap(
             raw,
             adv=adv,
-            participation_cap=self.participation_cap
-            if self.participation_cap is not None
-            else ctx.get("participation_cap"),
+            participation_cap=(
+                self.participation_cap
+                if self.participation_cap is not None
+                else ctx.get("participation_cap")
+            ),
             horizon_fraction=horizon_frac,
         )
         # Residual handling: redistribute unmet qty into uncapped capacity without exceeding parent

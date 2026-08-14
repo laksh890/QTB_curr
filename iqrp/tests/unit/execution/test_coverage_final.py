@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from datetime import UTC
 from pathlib import Path
 from typing import Any
 from unittest.mock import MagicMock, patch
@@ -49,13 +50,21 @@ from iqrp.app.execution.order_manager.order import Order, target_to_orders
 from iqrp.app.execution.order_manager.order_group import GroupType, OrderGroup
 from iqrp.app.execution.order_manager.order_lifecycle import apply_fill_state, mark_expired
 from iqrp.app.execution.order_manager.order_manager import OrderManager
-from iqrp.app.execution.order_manager.order_state import OrderState, can_transition, transition_order
+from iqrp.app.execution.order_manager.order_state import (
+    OrderState,
+    can_transition,
+    transition_order,
+)
 from iqrp.app.execution.order_manager.order_validator import InstrumentMeta, OrderValidator
 from iqrp.app.execution.order_manager.parent_order import ParentOrder
 from iqrp.app.execution.order_manager.position_reconciliation import PositionReconciler
 from iqrp.app.execution.phase12 import ComponentCheck, validate_phase12, write_phase12_report
 from iqrp.app.execution.serializer import ExecutionSerializer, _to_jsonable
-from iqrp.app.execution.simulation import simulate_execution, simulate_fill_path, simulate_with_market_simulator
+from iqrp.app.execution.simulation import (
+    simulate_execution,
+    simulate_fill_path,
+    simulate_with_market_simulator,
+)
 from iqrp.app.execution.slippage.historical import HistoricalSlippageModel
 from iqrp.app.execution.slippage.liquidity import liquidity_slippage
 from iqrp.app.execution.slippage.market_impact import market_impact, path_impact
@@ -73,7 +82,12 @@ from iqrp.app.execution.smart_routing.fallback import (
 )
 from iqrp.app.execution.smart_routing.liquidity import assess_liquidity
 from iqrp.app.execution.smart_routing.router import SmartRouter, normalize_order
-from iqrp.app.execution.smart_routing.scoring import DEFAULT_WEIGHTS, ScoreWeights, rank_venues, score_venue
+from iqrp.app.execution.smart_routing.scoring import (
+    DEFAULT_WEIGHTS,
+    ScoreWeights,
+    rank_venues,
+    score_venue,
+)
 from iqrp.app.execution.smart_routing.venue import (
     Venue,
     VenueOrderRequest,
@@ -147,7 +161,10 @@ def test_vwap_adaptive_and_cap_residual():
     assert sum(s.quantity for s in slices) <= 5000.0 + 1e-6
     # no cap path
     algo2 = VWAPAlgorithm(n_slices=3, participation_cap=None)
-    assert abs(sum(s.quantity for s in algo2.plan(90.0, _ctx(residual=90, approved_quantity=90))) - 90) < 1e-6
+    assert (
+        abs(sum(s.quantity for s in algo2.plan(90.0, _ctx(residual=90, approved_quantity=90))) - 90)
+        < 1e-6
+    )
     assert VWAPAlgorithm().plan(0.0, _ctx()) == []
 
 
@@ -173,7 +190,9 @@ def test_twap_depth_and_cap_residual():
 
 
 def test_adaptive_is_opportunistic_arrival_edges():
-    AdaptiveAlgorithm().plan(100.0, _ctx(urgency="LOW", fill_rate=0.1, imbalance=-0.5, vol_ref=0.01))
+    AdaptiveAlgorithm().plan(
+        100.0, _ctx(urgency="LOW", fill_rate=0.1, imbalance=-0.5, vol_ref=0.01)
+    )
     AdaptiveAlgorithm().plan(0.0, _ctx())
     ImplementationShortfallAlgorithm(risk_aversion=2.0).plan(
         100.0, _ctx(urgency="CRITICAL", n_slices=6)
@@ -281,7 +300,9 @@ def test_child_order_edges():
 
 def test_cancel_replace_and_audit_edges():
     audit = AuditLog()
-    order = Order(instrument="AAPL", side=Side.BUY, quantity=50, order_type=OrderType.LIMIT, price=100.0)
+    order = Order(
+        instrument="AAPL", side=Side.BUY, quantity=50, order_type=OrderType.LIMIT, price=100.0
+    )
     order.state = OrderState.ACKNOWLEDGED
     # replace with only stop / tif / urgency / type
     req = ReplaceRequest(
@@ -314,7 +335,9 @@ def test_validator_and_lifecycle_edges(execution_settings):
     o = Order(instrument="AAPL", side=Side.BUY, quantity=1, order_type=OrderType.LIMIT, price=100.0)
     o.side = "NOT_A_SIDE"  # type: ignore
     assert not v.validate(o).ok
-    o2 = Order(instrument="AAPL", side=Side.BUY, quantity=1, order_type=OrderType.LIMIT, price=100.0)
+    o2 = Order(
+        instrument="AAPL", side=Side.BUY, quantity=1, order_type=OrderType.LIMIT, price=100.0
+    )
     o2.order_type = "NOPE"  # type: ignore
     assert not v.validate(o2).ok
     # stop price tick/sign
@@ -335,6 +358,7 @@ def test_validator_and_lifecycle_edges(execution_settings):
         stop_price=-1.0,
     )
     assert not v.validate(o4).ok
+
     # risk callback exception
     def boom(_):
         raise RuntimeError("x")
@@ -377,13 +401,17 @@ def test_order_manager_error_paths(execution_settings, kill_switch):
     )
     assert om2.validator.validate_risk is risk_ok or om2.validator.validate_risk is not None
 
-    order = om.create_order(instrument="AAPL", side=Side.BUY, quantity=10, order_type="LIMIT", price=100)
+    order = om.create_order(
+        instrument="AAPL", side=Side.BUY, quantity=10, order_type="LIMIT", price=100
+    )
     # force validation exception path
     with patch.object(om.validator, "validate", side_effect=RuntimeError("boom")):
         with pytest.raises(ExecutionError):
             om.validate_and_approve(order.order_id)
 
-    order2 = om.create_order(instrument="AAPL", side=Side.BUY, quantity=5, order_type="LIMIT", price=100)
+    order2 = om.create_order(
+        instrument="AAPL", side=Side.BUY, quantity=5, order_type="LIMIT", price=100
+    )
     om.validate_and_approve(order2.order_id)
     om.submit(order2.order_id)
     om.acknowledge(order2.order_id)
@@ -395,7 +423,9 @@ def test_order_manager_error_paths(execution_settings, kill_switch):
     assert again.filled_qty == 5.0
 
     # cancel event via process_event
-    order3 = om.create_order(instrument="AAPL", side=Side.BUY, quantity=3, order_type="LIMIT", price=100)
+    order3 = om.create_order(
+        instrument="AAPL", side=Side.BUY, quantity=3, order_type="LIMIT", price=100
+    )
     om.validate_and_approve(order3.order_id)
     om.submit(order3.order_id)
     om.acknowledge(order3.order_id)
@@ -413,11 +443,15 @@ def test_order_target_min_qty_and_terminal():
 
 # ----------------------------- smart routing ------------------------------
 def test_router_rejection_and_urgency_branches(kill_switch, market_context):
-    router = SmartRouter(kill_switch=kill_switch, mode="multi", allow_partial_route=False, max_venues=1)
+    router = SmartRouter(
+        kill_switch=kill_switch, mode="multi", allow_partial_route=False, max_venues=1
+    )
     # invalid side/type via normalize
     bad = {"instrument": "AAPL", "side": "NOPE", "quantity": 10, "order_type": "MARKET"}
     assert not router.route(bad, []).accepted  # no venues
-    v = SimulatedVenue(venue_id="A", instruments={"AAPL"}, mode="fill", mid=100, spread=0.02, available_qty=5)
+    v = SimulatedVenue(
+        venue_id="A", instruments={"AAPL"}, mode="fill", mid=100, spread=0.02, available_qty=5
+    )
     # insufficient aggregate with allow_partial_route=False
     d = router.route(
         Order(instrument="AAPL", side=Side.BUY, quantity=1_000_000, order_type=OrderType.MARKET),
@@ -428,12 +462,16 @@ def test_router_rejection_and_urgency_branches(kill_switch, market_context):
     # urgency weight branches
     for urg in (Urgency.LOW, Urgency.HIGH, Urgency.CRITICAL):
         r = SmartRouter(kill_switch=KillSwitch())
-        o = Order(instrument="AAPL", side=Side.BUY, quantity=10, order_type=OrderType.MARKET, urgency=urg)
+        o = Order(
+            instrument="AAPL", side=Side.BUY, quantity=10, order_type=OrderType.MARKET, urgency=urg
+        )
         vv = SimulatedVenue(venue_id="S", instruments={"AAPL"}, mode="fill", mid=100, spread=0.02)
         assert r.route(o, [vv]).accepted
 
     # no liquidity path
-    dry = SimulatedVenue(venue_id="DRY", instruments={"AAPL"}, mode="fill", mid=100, spread=0.02, available_qty=0)
+    dry = SimulatedVenue(
+        venue_id="DRY", instruments={"AAPL"}, mode="fill", mid=100, spread=0.02, available_qty=0
+    )
     dry.get_state().adv = 0
     dry.get_state().liquidity_score = 0.0
     d2 = SmartRouter(kill_switch=KillSwitch()).route(
@@ -446,61 +484,109 @@ def test_router_rejection_and_urgency_branches(kill_switch, market_context):
     v3 = SimulatedVenue(venue_id="T", instruments={"AAPL"}, mode="fill", mid=100, spread=0.02)
     st = v3.get_state()
     st.trading_enabled = False
-    assert not SmartRouter(kill_switch=KillSwitch()).route(
-        Order(instrument="AAPL", side=Side.BUY, quantity=10, order_type=OrderType.MARKET),
-        [v3],
-    ).accepted
+    assert (
+        not SmartRouter(kill_switch=KillSwitch())
+        .route(
+            Order(instrument="AAPL", side=Side.BUY, quantity=10, order_type=OrderType.MARKET),
+            [v3],
+        )
+        .accepted
+    )
     st.trading_enabled = True
     st.min_qty = 100
-    assert not SmartRouter(kill_switch=KillSwitch()).route(
-        Order(instrument="AAPL", side=Side.BUY, quantity=10, order_type=OrderType.MARKET),
-        [v3],
-    ).accepted
+    assert (
+        not SmartRouter(kill_switch=KillSwitch())
+        .route(
+            Order(instrument="AAPL", side=Side.BUY, quantity=10, order_type=OrderType.MARKET),
+            [v3],
+        )
+        .accepted
+    )
     st.min_qty = 1
     st.max_qty = 5
-    assert not SmartRouter(kill_switch=KillSwitch()).route(
-        Order(instrument="AAPL", side=Side.BUY, quantity=10, order_type=OrderType.MARKET),
-        [v3],
-    ).accepted
+    assert (
+        not SmartRouter(kill_switch=KillSwitch())
+        .route(
+            Order(instrument="AAPL", side=Side.BUY, quantity=10, order_type=OrderType.MARKET),
+            [v3],
+        )
+        .accepted
+    )
     st.max_qty = 1e12
     st.lot_size = 100
-    assert not SmartRouter(kill_switch=KillSwitch()).route(
-        Order(instrument="AAPL", side=Side.BUY, quantity=10, order_type=OrderType.MARKET),
-        [v3],
-    ).accepted
+    assert (
+        not SmartRouter(kill_switch=KillSwitch())
+        .route(
+            Order(instrument="AAPL", side=Side.BUY, quantity=10, order_type=OrderType.MARKET),
+            [v3],
+        )
+        .accepted
+    )
     st.lot_size = 1
     st.tick_size = 0.05
-    assert not SmartRouter(kill_switch=KillSwitch()).route(
-        Order(instrument="AAPL", side=Side.BUY, quantity=10, order_type=OrderType.LIMIT, price=100.01),
-        [v3],
-    ).accepted
+    assert (
+        not SmartRouter(kill_switch=KillSwitch())
+        .route(
+            Order(
+                instrument="AAPL",
+                side=Side.BUY,
+                quantity=10,
+                order_type=OrderType.LIMIT,
+                price=100.01,
+            ),
+            [v3],
+        )
+        .accepted
+    )
     # venue kill via KillSwitch.venues
     ks = KillSwitch()
     ks.engage_venue("T")
     st.tick_size = 0.01
-    assert not SmartRouter(kill_switch=ks).route(
-        Order(instrument="AAPL", side=Side.BUY, quantity=10, order_type=OrderType.MARKET),
-        [v3],
-    ).accepted
+    assert (
+        not SmartRouter(kill_switch=ks)
+        .route(
+            Order(instrument="AAPL", side=Side.BUY, quantity=10, order_type=OrderType.MARKET),
+            [v3],
+        )
+        .accepted
+    )
     # risk_check returns False (bool)
-    assert not SmartRouter(kill_switch=KillSwitch(), risk_check=lambda o, v: False).route(
-        Order(instrument="AAPL", side=Side.BUY, quantity=10, order_type=OrderType.MARKET),
-        [SimulatedVenue(venue_id="R", instruments={"AAPL"}, mode="fill", mid=100)],
-    ).accepted
+    assert (
+        not SmartRouter(kill_switch=KillSwitch(), risk_check=lambda o, v: False)
+        .route(
+            Order(instrument="AAPL", side=Side.BUY, quantity=10, order_type=OrderType.MARKET),
+            [SimulatedVenue(venue_id="R", instruments={"AAPL"}, mode="fill", mid=100)],
+        )
+        .accepted
+    )
     # invalid order type / qty nan
-    assert not SmartRouter(kill_switch=KillSwitch()).route(
-        {"instrument": "AAPL", "side": "BUY", "quantity": float("nan"), "order_type": "MARKET"},
-        [v3],
-    ).accepted
-    assert not SmartRouter(kill_switch=KillSwitch()).route(
-        {"instrument": "AAPL", "side": "BUY", "quantity": 10, "order_type": "BADTYPE"},
-        [v3],
-    ).accepted
+    assert (
+        not SmartRouter(kill_switch=KillSwitch())
+        .route(
+            {"instrument": "AAPL", "side": "BUY", "quantity": float("nan"), "order_type": "MARKET"},
+            [v3],
+        )
+        .accepted
+    )
+    assert (
+        not SmartRouter(kill_switch=KillSwitch())
+        .route(
+            {"instrument": "AAPL", "side": "BUY", "quantity": 10, "order_type": "BADTYPE"},
+            [v3],
+        )
+        .accepted
+    )
     # priced order with bad price
-    assert not SmartRouter(kill_switch=KillSwitch()).route(
-        Order(instrument="AAPL", side=Side.BUY, quantity=10, order_type=OrderType.LIMIT, price=-1),
-        [v3],
-    ).accepted
+    assert (
+        not SmartRouter(kill_switch=KillSwitch())
+        .route(
+            Order(
+                instrument="AAPL", side=Side.BUY, quantity=10, order_type=OrderType.LIMIT, price=-1
+            ),
+            [v3],
+        )
+        .accepted
+    )
     # global_kill_switch property
     r = SmartRouter()
     assert r.global_kill_switch is False
@@ -510,7 +596,9 @@ def test_router_rejection_and_urgency_branches(kill_switch, market_context):
     # normalize mapping
     assert normalize_order({"instrument": "AAPL", "side": "BUY", "quantity": 1}).quantity == 1
     # RoutingDecision.plan property
-    good = SimulatedVenue(venue_id="G", instruments={"AAPL"}, mode="fill", mid=100, available_qty=1e6)
+    good = SimulatedVenue(
+        venue_id="G", instruments={"AAPL"}, mode="fill", mid=100, available_qty=1e6
+    )
     dec = SmartRouter().route(
         Order(instrument="AAPL", side=Side.BUY, quantity=10, order_type=OrderType.MARKET),
         [good],
@@ -549,13 +637,18 @@ def test_allocation_fallback_cost_liquidity_scoring():
         ),
     )
     # no liquidity data branch
-    v0 = Venue(venue_id="Z", state=VenueState(venue_id="Z", available_qty=0, adv=0, liquidity_score=0.5))
+    v0 = Venue(
+        venue_id="Z", state=VenueState(venue_id="Z", available_qty=0, adv=0, liquidity_score=0.5)
+    )
     snap0 = assess_liquidity(v0, instrument="AAPL", quantity=10)
     assert "no_liquidity_data" in snap0.reasons or snap0.fillable_qty >= 0
     snap_low = assess_liquidity(v2, instrument="AAPL", quantity=1000, max_participation=0.0001)
     assert snap_low.reasons
     snap_zero = assess_liquidity(
-        Venue(venue_id="Q", state=VenueState(venue_id="Q", available_qty=100, adv=1e6, liquidity_score=0.0)),
+        Venue(
+            venue_id="Q",
+            state=VenueState(venue_id="Q", available_qty=100, adv=1e6, liquidity_score=0.0),
+        ),
         instrument="AAPL",
         quantity=10,
     )
@@ -563,7 +656,9 @@ def test_allocation_fallback_cost_liquidity_scoring():
 
     liq = {v.venue_id: assess_liquidity(v, instrument="AAPL", quantity=100) for v in (v1, v2)}
     costs = {
-        v.venue_id: estimate_venue_cost(v, side=Side.BUY, quantity=100, order_type=OrderType.LIMIT, price=100.0)
+        v.venue_id: estimate_venue_cost(
+            v, side=Side.BUY, quantity=100, order_type=OrderType.LIMIT, price=100.0
+        )
         for v in (v1, v2)
     }
     # sell side + market
@@ -580,10 +675,20 @@ def test_allocation_fallback_cost_liquidity_scoring():
         for v in (v1, v2)
     ]
     ranked = rank_venues(scores)
-    plan = allocate_quantity(100, ranked, liq, mode="multi", lot_sizes={"A": 1, "B": 1}, min_qty={"A": 1, "B": 1}, max_venues=2)
+    plan = allocate_quantity(
+        100,
+        ranked,
+        liq,
+        mode="multi",
+        lot_sizes={"A": 1, "B": 1},
+        min_qty={"A": 1, "B": 1},
+        max_venues=2,
+    )
     assert plan.allocations
     # single mode empty / residual
-    allocate_quantity(100, ranked, liq, mode="single", lot_sizes={"A": 10, "B": 10}, min_qty={"A": 1, "B": 1})
+    allocate_quantity(
+        100, ranked, liq, mode="single", lot_sizes={"A": 10, "B": 10}, min_qty={"A": 1, "B": 1}
+    )
     fb = build_fallback_chain(ranked, primary_venue_id="A", max_fallbacks=2)
     assert fb.to_dict()
     venues = {"A": v1, "B": v2}
@@ -605,7 +710,9 @@ def test_allocation_fallback_cost_liquidity_scoring():
 def test_venue_extra_branches():
     # state provided + instruments merge + mid/spread post_init
     st = VenueState(venue_id="X", mid=None, bid=10, ask=12, instruments=set())
-    v = SimulatedVenue(venue_id="X", state=st, instruments=["AAPL"], mid=11.0, spread=0.2, mode="fill")
+    v = SimulatedVenue(
+        venue_id="X", state=st, instruments=["AAPL"], mid=11.0, spread=0.2, mode="fill"
+    )
     assert "AAPL" in v.get_state().instruments
     st2 = VenueState(venue_id="Y", supported_order_types={"MARKET"})
     assert not st2.supports_order_type(OrderType.LIMIT)
@@ -615,7 +722,9 @@ def test_venue_extra_branches():
     st3.ensure_quotes()  # no bid/ask
     # unsupported instrument / order type on submit
     sim = SimulatedVenue(venue_id="S", instruments={"MSFT"}, mode="fill", mid=100)
-    req = VenueOrderRequest(instrument="AAPL", side=Side.BUY, quantity=1, order_type=OrderType.MARKET)
+    req = VenueOrderRequest(
+        instrument="AAPL", side=Side.BUY, quantity=1, order_type=OrderType.MARKET
+    )
     assert sim.submit(req).status is VenueResponseStatus.REJECT
     sim2 = SimulatedVenue(venue_id="S2", instruments={"AAPL"}, mode="fill", mid=100)
     sim2.get_state().supported_order_types = {"LIMIT"}
@@ -665,8 +774,18 @@ def test_engine_risk_variants_and_nested_ctx(execution_settings, kill_switch, ma
         def validate_position(self, *_a, **_k):
             raise RuntimeError("x")
 
-    for risk in (TupleRisk(), DictRisk(), FalseRisk(), LimitsRisk(), LimitsListRisk(), LimitsTupleRisk(), ExplodingRisk()):
-        eng = ExecutionEngine(settings=execution_settings, kill_switch=KillSwitch(), risk_engine=risk)
+    for risk in (
+        TupleRisk(),
+        DictRisk(),
+        FalseRisk(),
+        LimitsRisk(),
+        LimitsListRisk(),
+        LimitsTupleRisk(),
+        ExplodingRisk(),
+    ):
+        eng = ExecutionEngine(
+            settings=execution_settings, kill_switch=KillSwitch(), risk_engine=risk
+        )
         # exercise _check_risk via execute or validate
         try:
             eng.execute(
@@ -739,7 +858,7 @@ def test_engine_risk_variants_and_nested_ctx(execution_settings, kill_switch, ma
     ser = ExecutionSerializer()
     path = Path("/tmp/exec_bad_state.json") if False else None
     # use tmp via save/load with bad state string
-    p = Path(".")
+    p = Path()
     # covered via engine.save in other tests — force bad state
     eng3.state = ExecutionState.COMPLETED
     payload_path = eng3.save("/tmp/qtb_exec_cov.json")
@@ -788,7 +907,9 @@ def test_simulation_and_slippage_edges():
         assert out["filled_qty"] <= 20 + 1e-6 or out.get("source")
 
     # use_market_simulator True default on simulate_execution single
-    simulate_execution(side="sell", quantity=5, market_context={"mid": 50}, use_market_simulator=False, seed=0)
+    simulate_execution(
+        side="sell", quantity=5, market_context={"mid": 50}, use_market_simulator=False, seed=0
+    )
     simulate_execution(
         orders=[{"side": "buy", "qty": 5, "instrument": "AAPL"}],
         market_context={"AAPL": {"mid": 100, "spread": 0.01}},
@@ -822,7 +943,7 @@ def test_latency_parse_and_serializer_edges(tmp_path: Path):
     assert _parse_ts("not-a-date") is None
     from datetime import datetime, timezone
 
-    assert _parse_ts(datetime.now(timezone.utc)) is not None
+    assert _parse_ts(datetime.now(UTC)) is not None
     assert _parse_ts(datetime.now().isoformat()) is not None
     tr = LatencyTracker()
     tr.start("x", at="bad")
@@ -830,6 +951,7 @@ def test_latency_parse_and_serializer_edges(tmp_path: Path):
     tr.to_dict()
 
     ser = ExecutionSerializer()
+
     class TD:
         def to_dict(self):
             return {"k": 1}

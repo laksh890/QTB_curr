@@ -33,7 +33,9 @@ class IntelligenceSerializer:
     def save(self, engine: Any, path: str | Path) -> Path:
         p = Path(path)
         p.parent.mkdir(parents=True, exist_ok=True)
-        payload = engine.export_state() if hasattr(engine, "export_state") else {"engine": str(engine)}
+        payload = (
+            engine.export_state() if hasattr(engine, "export_state") else {"engine": str(engine)}
+        )
         p.write_text(json.dumps(_to_jsonable(payload), indent=2), encoding="utf-8")
         return p
 
@@ -42,7 +44,9 @@ class IntelligenceSerializer:
         return json.loads(p.read_text(encoding="utf-8"))
 
     def dump_bytes(self, engine: Any) -> bytes:
-        payload = engine.export_state() if hasattr(engine, "export_state") else {"engine": str(engine)}
+        payload = (
+            engine.export_state() if hasattr(engine, "export_state") else {"engine": str(engine)}
+        )
         return json.dumps(_to_jsonable(payload)).encode("utf-8")
 
     def load_bytes(self, data: bytes) -> dict[str, Any]:

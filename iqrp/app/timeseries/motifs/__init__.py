@@ -7,8 +7,8 @@ from iqrp.app.timeseries.motifs.similarity import nearest_neighbors, subsequence
 
 __all__ = [
     "compute_matrix_profile",
-    "find_motifs",
     "find_discords",
-    "subsequence_distance",
+    "find_motifs",
     "nearest_neighbors",
+    "subsequence_distance",
 ]

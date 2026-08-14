@@ -6,18 +6,28 @@ import math
 from typing import Any
 
 from iqrp.app.forecasting.neural.base.torch_utils import has_torch
-from iqrp.app.forecasting.transformers.base.masking import apply_mask_to_scores, local_attention_mask
+from iqrp.app.forecasting.transformers.base.masking import (
+    apply_mask_to_scores,
+    local_attention_mask,
+)
 
 try:
     import torch
     from torch import nn
-except Exception:  # noqa: BLE001  # pragma: no cover
+except Exception:  # pragma: no cover
     torch = None  # type: ignore[assignment]
     nn = object  # type: ignore[assignment]
 
 
 class SparseAttention(nn.Module if has_torch() else object):  # type: ignore[misc]
-    def __init__(self, d_model: int, n_heads: int = 4, dropout: float = 0.1, window: int = 16, n_global: int = 4) -> None:
+    def __init__(
+        self,
+        d_model: int,
+        n_heads: int = 4,
+        dropout: float = 0.1,
+        window: int = 16,
+        n_global: int = 4,
+    ) -> None:
         if has_torch():
             super().__init__()
         self.n_heads = n_heads

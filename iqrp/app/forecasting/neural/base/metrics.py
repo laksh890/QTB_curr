@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-from typing import Any
-
 import numpy as np
 
 
@@ -67,7 +65,11 @@ def evaluate_predictions(
         scores = P[:, -1] if P.ndim == 2 and P.shape[1] >= 2 else P.reshape(-1)
         yt = np.asarray(y_true, dtype=np.float64).reshape(-1)[: scores.size]
         classes = np.unique(yt)
-        yb = (yt == classes.max()).astype(np.float64) if classes.size >= 2 else (yt > 0).astype(np.float64)
+        yb = (
+            (yt == classes.max()).astype(np.float64)
+            if classes.size >= 2
+            else (yt > 0).astype(np.float64)
+        )
         out["brier"] = float(np.mean((scores[: yb.size] - yb) ** 2))
         p = np.clip(scores[: yb.size], 1e-6, 1 - 1e-6)
         out["log_loss"] = float(-np.mean(yb * np.log(p) + (1 - yb) * np.log(1 - p)))

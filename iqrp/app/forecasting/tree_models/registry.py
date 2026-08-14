@@ -28,7 +28,7 @@ def ensure_tree_models_loaded(modules: Iterable[str] | None = None) -> list[str]
         try:
             importlib.import_module(mod)
             loaded.append(mod)
-        except Exception:  # noqa: BLE001
+        except Exception:
             continue
     return loaded
 

@@ -8,9 +8,9 @@ from iqrp.app.forecasting.neural.base.torch_utils import has_torch
 
 try:
     import torch
-    from torch import nn
     import torch.nn.functional as F
-except Exception:  # noqa: BLE001  # pragma: no cover
+    from torch import nn
+except Exception:  # pragma: no cover
     torch = None  # type: ignore[assignment]
     nn = object  # type: ignore[assignment]
     F = None  # type: ignore[assignment]
@@ -41,14 +41,18 @@ class NHitsBlock(nn.Module if has_torch() else object):  # type: ignore[misc]
                 x = F.pad(x, (0, pad))
             x_p = x.view(b, -1, self.pool_size).mean(-1)
             # upsample back to lookback via interpolate
-            x_p = F.interpolate(x_p.unsqueeze(1), size=l, mode="linear", align_corners=False).squeeze(1)
+            x_p = F.interpolate(
+                x_p.unsqueeze(1), size=l, mode="linear", align_corners=False
+            ).squeeze(1)
         else:
             x_p = x
         h = self.fc(x_p)
         backcast = self.backcast(h)
         f = self.forecast(h)
         if f.shape[-1] != self.horizon:
-            f = F.interpolate(f.unsqueeze(1), size=self.horizon, mode="linear", align_corners=False).squeeze(1)
+            f = F.interpolate(
+                f.unsqueeze(1), size=self.horizon, mode="linear", align_corners=False
+            ).squeeze(1)
         return backcast, f
 
 

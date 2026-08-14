@@ -12,7 +12,6 @@ from iqrp.app.forecasting.volatility import VolatilitySettings, create_volatilit
 from iqrp.app.forecasting.volatility.base.processes import simulate_garch, to_returns_frame
 from iqrp.app.forecasting.volatility.base.selection import select_volatility_models
 from iqrp.app.forecasting.volatility.diagnostics.report import _arch_lm, _ljung_box
-from iqrp.app.forecasting.volatility.visualization.plots import _pyplot
 
 
 @pytest.mark.unit
@@ -85,9 +84,23 @@ def test_arch_lm_and_lb_edges() -> None:
 
 
 @pytest.mark.unit
-def test_pyplot_none_branch() -> None:
-    # without matplotlib installed, _pyplot returns None
-    assert _pyplot() is None
+def test_pyplot_none_branch(monkeypatch: pytest.MonkeyPatch) -> None:
+    # Simulate matplotlib being unavailable regardless of local install.
+    import builtins
+
+    real_import = builtins.__import__
+
+    def _no_mpl(name, *args, **kwargs):  # type: ignore[no-untyped-def]
+        if name == "matplotlib" or name.startswith("matplotlib."):
+            raise ImportError("matplotlib blocked for test")
+        return real_import(name, *args, **kwargs)
+
+    monkeypatch.setattr(builtins, "__import__", _no_mpl)
+    # Clear any cached module reference used by the helper.
+    import iqrp.app.forecasting.volatility.visualization.plots as plots_mod
+
+    monkeypatch.setattr(plots_mod, "_pyplot", lambda: None, raising=False)
+    assert plots_mod._pyplot() is None
 
 
 @pytest.mark.unit
@@ -105,8 +118,8 @@ def test_settings_none_and_dict_init() -> None:
 
 @pytest.mark.unit
 def test_resolve_target_fallbacks() -> None:
-    from iqrp.app.forecasting.volatility.garch.garch import GARCHModel
     from iqrp.app.core.exceptions import ValidationError
+    from iqrp.app.forecasting.volatility.garch.garch import GARCHModel
 
     m = GARCHModel()
     with pytest.raises(ValidationError):
@@ -142,14 +155,15 @@ def test_ewma_forecast_horizon_one() -> None:
 
 
 @pytest.mark.unit
-def test_remaining_edge_branches() -> None:
+def test_remaining_edge_branches(monkeypatch: pytest.MonkeyPatch) -> None:
     from iqrp.app.forecasting.volatility.base.likelihood import estimate
     from iqrp.app.forecasting.volatility.base.univariate import UnivariateVolatilityModel
     from iqrp.app.forecasting.volatility.diagnostics.report import persistence_and_half_life
     from iqrp.app.forecasting.volatility.trainer import VolatilityTrainer
-    from iqrp.app.forecasting.volatility.visualization.plots import _pyplot_available
+    from iqrp.app.forecasting.volatility.visualization import plots as plots_mod
 
-    assert _pyplot_available() is False
+    monkeypatch.setattr(plots_mod, "_pyplot_available", lambda: False)
+    assert plots_mod._pyplot_available() is False
     # half-life branch with persist>=1 before clip via lambda path already covered;
     # force alpha+beta large
     persistence_and_half_life({"alpha": 0.9, "beta": 0.9, "gamma": 0.5})
@@ -166,10 +180,17 @@ def test_remaining_edge_branches() -> None:
     assert m.predict(noisy).size == frame.height
     assert UnivariateVolatilityModel._variance_from_returns(m, m._returns).shape[0] == frame.height
     # predict without target column
-    assert UnivariateVolatilityModel.predict(m, pl.DataFrame({"open_time": list(range(frame.height))})).size == frame.height
+    assert (
+        UnivariateVolatilityModel.predict(
+            m, pl.DataFrame({"open_time": list(range(frame.height))})
+        ).size
+        == frame.height
+    )
 
     # trainer serial exception path
-    trainer = VolatilityTrainer(VolatilitySettings.from_mapping({"visualization": {"enabled": False}}))
+    trainer = VolatilityTrainer(
+        VolatilitySettings.from_mapping({"visualization": {"enabled": False}})
+    )
     rows = trainer.compare(["ewma", "definitely_missing"], frame, parallel=False)
     assert len(rows) >= 1
 
@@ -241,6 +262,7 @@ def test_remaining_edge_branches() -> None:
 
     # matplotlib import success path via mock module (isolated)
     import sys
+
     from iqrp.app.forecasting.volatility.visualization import plots as plot_mod
 
     fake_plt = MagicMock()

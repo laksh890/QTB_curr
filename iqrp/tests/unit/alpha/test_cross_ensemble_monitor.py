@@ -121,9 +121,7 @@ from iqrp.app.alpha.regime.regime_stability import (
 )
 
 
-def test_cross_sectional_ranking_neutralization(
-    panel: np.ndarray, sectors: np.ndarray
-) -> None:
+def test_cross_sectional_ranking_neutralization(panel: np.ndarray, sectors: np.ndarray) -> None:
     r = cross_sectional_rank(panel, pct=False)
     assert r.shape == panel.shape
     p = cross_sectional_percentile(panel)
@@ -154,9 +152,7 @@ def test_cross_sectional_ranking_neutralization(
     assert cw.shape == panel.shape
 
 
-def test_residualization_and_factor_adj(
-    panel: np.ndarray, rng: np.random.Generator
-) -> None:
+def test_residualization_and_factor_adj(panel: np.ndarray, rng: np.random.Generator) -> None:
     t, n = panel.shape
     factors_nk = rng.normal(size=(n, 2))
     factors_tn = rng.normal(size=(t, n))
@@ -291,7 +287,11 @@ def test_correlation_redundancy_clustering_combine(
         assert dist.shape[0] == dist.shape[1]
     metrics = {k: {"ic": 0.05} for k in series}
     cluster_map = clusters.get("clusters") or {"0": list(series)}
-    if isinstance(cluster_map, dict) and cluster_map and isinstance(next(iter(cluster_map.values())), (list, tuple)):
+    if (
+        isinstance(cluster_map, dict)
+        and cluster_map
+        and isinstance(next(iter(cluster_map.values())), (list, tuple))
+    ):
         reps = representative_per_cluster(cluster_map, metrics)
         assert isinstance(reps, list)
 
@@ -308,15 +308,30 @@ def test_correlation_redundancy_clustering_combine(
 
 def test_rank_candidates_not_sharpe() -> None:
     cands = [
-        {"name": "a", "ic": 0.08, "hit_rate": 0.55, "stability": 0.7, "economic_hypothesis": "x" * 30},
-        {"name": "b", "ic": 0.02, "hit_rate": 0.51, "stability": 0.4, "economic_hypothesis": "y" * 30, "sharpe": 5.0},
+        {
+            "name": "a",
+            "ic": 0.08,
+            "hit_rate": 0.55,
+            "stability": 0.7,
+            "economic_hypothesis": "x" * 30,
+        },
+        {
+            "name": "b",
+            "ic": 0.02,
+            "hit_rate": 0.51,
+            "stability": 0.4,
+            "economic_hypothesis": "y" * 30,
+            "sharpe": 5.0,
+        },
     ]
     ranked = rank_candidates(cands)
     assert ranked[0]["name"] == "a"  # higher IC/stability beats sharpe-only peer
     assert "disclaimer" in ranked[0]
 
 
-def test_monitoring_retirement_alerts(signal: np.ndarray, returns: np.ndarray, fwd: np.ndarray) -> None:
+def test_monitoring_retirement_alerts(
+    signal: np.ndarray, returns: np.ndarray, fwd: np.ndarray
+) -> None:
     half = signal.size // 2
     drift = signal_distribution_drift(signal[:half], signal[half:])
     assert "psi" in drift or "drifted" in drift
@@ -416,9 +431,7 @@ def test_regime_performance(
     assert gated.shape == signal.shape
     cmp = compare_unconditional_vs_conditional(signal, fwd, labels)
     assert isinstance(cmp, dict)
-    applied = apply_condition_fn(
-        signal, fwd, lambda s, r: np.where(s > 0, s, 0.0)
-    )
+    applied = apply_condition_fn(signal, fwd, lambda s, r: np.where(s > 0, s, 0.0))
     assert isinstance(applied, dict)
 
     stab = regime_stability_score(signal, fwd, labels)

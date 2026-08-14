@@ -7,24 +7,38 @@ from unittest.mock import patch
 import numpy as np
 import pytest
 
+from iqrp.app.timeseries.alignment.shapelets import discover_shapelets
 from iqrp.app.timeseries.anomaly import isolation_forest_anomalies
 from iqrp.app.timeseries.anomaly.isolation_forest import _numpy_isolation_forest
 from iqrp.app.timeseries.autocorrelation.acf import acf, bartlett_bands, rolling_acf
 from iqrp.app.timeseries.autocorrelation.cross_correlation import ccf, lead_lag
 from iqrp.app.timeseries.autocorrelation.pacf import pacf
+from iqrp.app.timeseries.change_points.bayesian import bayesian_online_changepoint
+from iqrp.app.timeseries.change_points.cusum import cusum_detect
+from iqrp.app.timeseries.change_points.online import online_cusum
+from iqrp.app.timeseries.change_points.pelt import pelt_detect
 from iqrp.app.timeseries.decomposition.classical import classical_decompose
-from iqrp.app.timeseries.diagnostics import distribution_shift as ds_mod
-from iqrp.app.timeseries.diagnostics import heteroskedasticity as het_mod
-from iqrp.app.timeseries.diagnostics import seasonality as seas_mod
+from iqrp.app.timeseries.dependence.cointegration import engle_granger, johansen_trace
+from iqrp.app.timeseries.dependence.distance_correlation import distance_correlation
+from iqrp.app.timeseries.dependence.granger import granger_causality
+from iqrp.app.timeseries.dependence.mutual_information import mutual_information
+from iqrp.app.timeseries.dependence.tail_dependence import empirical_tail_dependence
+from iqrp.app.timeseries.diagnostics import (
+    distribution_shift as ds_mod,
+    heteroskedasticity as het_mod,
+    seasonality as seas_mod,
+)
 from iqrp.app.timeseries.diagnostics.distribution_shift import distribution_shift
 from iqrp.app.timeseries.diagnostics.heteroskedasticity import heteroskedasticity
 from iqrp.app.timeseries.diagnostics.seasonality import seasonality_diagnostics
 from iqrp.app.timeseries.diagnostics.structural_breaks import distribution_shift as ds2
-from iqrp.app.timeseries.features import cycle_features as cf_mod
-from iqrp.app.timeseries.features import entropy_features as ef_mod
-from iqrp.app.timeseries.features import memory_features as mf_mod
-from iqrp.app.timeseries.features import spectral_features as sf_mod
-from iqrp.app.timeseries.features import volatility_features as vf_mod
+from iqrp.app.timeseries.features import (
+    cycle_features as cf_mod,
+    entropy_features as ef_mod,
+    memory_features as mf_mod,
+    spectral_features as sf_mod,
+    volatility_features as vf_mod,
+)
 from iqrp.app.timeseries.features.cycle_features import cycle_features
 from iqrp.app.timeseries.features.entropy_features import entropy_features
 from iqrp.app.timeseries.features.memory_features import memory_features
@@ -58,16 +72,6 @@ from iqrp.app.timeseries.transforms.rank_transform import rank_transform
 from iqrp.app.timeseries.wavelets.continuous import cwt_morlet
 from iqrp.app.timeseries.wavelets.denoising import wavelet_denoise
 from iqrp.app.timeseries.wavelets.discrete import dwt_haar
-from iqrp.app.timeseries.alignment.shapelets import discover_shapelets
-from iqrp.app.timeseries.dependence.cointegration import engle_granger, johansen_trace
-from iqrp.app.timeseries.dependence.distance_correlation import distance_correlation
-from iqrp.app.timeseries.dependence.granger import granger_causality
-from iqrp.app.timeseries.dependence.mutual_information import mutual_information
-from iqrp.app.timeseries.dependence.tail_dependence import empirical_tail_dependence
-from iqrp.app.timeseries.change_points.bayesian import bayesian_online_changepoint
-from iqrp.app.timeseries.change_points.cusum import cusum_detect
-from iqrp.app.timeseries.change_points.online import online_cusum
-from iqrp.app.timeseries.change_points.pelt import pelt_detect
 
 
 def test_import_facades():
@@ -129,7 +133,10 @@ def test_short_series_and_edge_methods():
     assert fft_spectrum(short).value == "insufficient_data"
     assert dominant_frequencies(short).value == "insufficient_data"
     assert periodogram(tiny).method
-    assert welch_psd(tiny, nperseg=64).value == "insufficient_data" or welch_psd(np.random.randn(80), nperseg=16).method
+    assert (
+        welch_psd(tiny, nperseg=64).value == "insufficient_data"
+        or welch_psd(np.random.randn(80), nperseg=16).method
+    )
     assert spectral_density(tiny, method="periodogram").method
     assert period_from_frequency([]).value == "insufficient_data"
     assert dwt_haar(np.arange(32.0)).method

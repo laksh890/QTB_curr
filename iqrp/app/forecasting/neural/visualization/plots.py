@@ -12,11 +12,16 @@ def _pyplot():
         import matplotlib.pyplot as plt
 
         return plt
-    except Exception:  # noqa: BLE001  # pragma: no cover
+    except Exception:  # pragma: no cover
         return None
 
 
-def plot_forecast(y_true: np.ndarray | None, y_pred: np.ndarray, *, intervals: tuple[np.ndarray, np.ndarray] | None = None) -> dict[str, Any]:
+def plot_forecast(
+    y_true: np.ndarray | None,
+    y_pred: np.ndarray,
+    *,
+    intervals: tuple[np.ndarray, np.ndarray] | None = None,
+) -> dict[str, Any]:
     payload: dict[str, Any] = {
         "y_pred": np.asarray(y_pred).reshape(-1).tolist(),
         "y_true": None if y_true is None else np.asarray(y_true).reshape(-1).tolist(),

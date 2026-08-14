@@ -91,7 +91,7 @@ class CapitalState:
         }
 
     @classmethod
-    def from_dict(cls, data: dict[str, Any]) -> "CapitalState":
+    def from_dict(cls, data: dict[str, Any]) -> CapitalState:
         obj = cls(
             initial_capital=float(data.get("initial_capital", 0.0)),
             currency=str(data.get("currency", "USD")),

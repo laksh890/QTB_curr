@@ -8,14 +8,14 @@ import numpy as np
 import pytest
 
 from iqrp.app.core.exceptions import ValidationError
+from iqrp.app.regimes.particle.config import ParticleSettings
 from iqrp.app.regimes.particle.diagnostics import ParticleDiagnostics
 from iqrp.app.regimes.particle.evaluator import ParticleEvaluator
 from iqrp.app.regimes.particle.model import ParticleFilterModel
 from iqrp.app.regimes.particle.particle import FilterTrace, ParticleCloud
 from iqrp.app.regimes.particle.propagation import TransitionModel, build_transition
 from iqrp.app.regimes.particle.resampling import resample_indices, residual_resample
-from iqrp.app.regimes.particle.smoothing import trajectory_smooth
-from iqrp.app.regimes.particle.config import ParticleSettings
+from iqrp.app.regimes.particle.smoothing import SmoothTrace, trajectory_smooth
 from iqrp.app.regimes.particle.trainer import (
     filter_adaptive,
     filter_bootstrap,
@@ -24,13 +24,20 @@ from iqrp.app.regimes.particle.trainer import (
     run_filter,
     simulate_nonlinear,
 )
+from iqrp.app.regimes.particle.visualization import (
+    _line_plot,
+    plot_particle_cloud,
+    plot_weight_histogram,
+)
 from iqrp.app.regimes.particle.weighting import log_likelihood
-from iqrp.app.regimes.particle.visualization import plot_particle_cloud, plot_weight_histogram, _line_plot
-from iqrp.app.regimes.particle.smoothing import SmoothTrace
 
 
 def _settings(**kw: object) -> ParticleSettings:
-    data = {**ParticleSettings.default().model_dump(), "n_particles": 30, "training": {"n_iterations": 1, "tol": 1e-3}}
+    data = {
+        **ParticleSettings.default().model_dump(),
+        "n_particles": 30,
+        "training": {"n_iterations": 1, "tol": 1e-3},
+    }
     data.update(kw)
     return ParticleSettings.from_mapping(data)
 
@@ -102,7 +109,9 @@ def test_propagation_hooks_and_1d_cloud() -> None:
     out = m.propagate(np.zeros(3), rng=rng)  # 1d input
     assert out.shape[0] >= 1
     assert m.observe(np.zeros(3)).shape[-1] == 1
-    cloud = ParticleCloud(states=np.linspace(0, 1, 5), log_weights=np.zeros(5), likelihoods=np.ones(5))
+    cloud = ParticleCloud(
+        states=np.linspace(0, 1, 5), log_weights=np.zeros(5), likelihoods=np.ones(5)
+    )
     assert cloud.states.ndim == 2
 
 

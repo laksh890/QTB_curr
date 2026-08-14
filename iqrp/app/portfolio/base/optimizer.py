@@ -3,19 +3,24 @@
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
+from collections.abc import Sequence
 from dataclasses import dataclass, field
-from datetime import datetime, timezone
-from typing import Any, Sequence
+from datetime import UTC, datetime
+from typing import Any
 
 import numpy as np
 
-from iqrp.app.portfolio.base.constraints import ConstraintSet, ConstraintViolation, conflicting_constraints
+from iqrp.app.portfolio.base.constraints import (
+    ConstraintSet,
+    ConstraintViolation,
+    conflicting_constraints,
+)
 from iqrp.app.portfolio.base.objective import ObjectiveSpec
 from iqrp.app.portfolio.base.portfolio import Portfolio
 
 
 def _utc_now() -> str:
-    return datetime.now(timezone.utc).isoformat()
+    return datetime.now(UTC).isoformat()
 
 
 class OptimizationFailureError(Exception):
@@ -97,9 +102,15 @@ class OptimizationResult:
             "diagnostics": dict(self.diagnostics),
             "fallback_used": bool(self.fallback_used),
             "fallback_kind": self.fallback_kind,
-            "objective_value": float(self.objective_value) if self.objective_value is not None else None,
-            "expected_return": float(self.expected_return) if self.expected_return is not None else None,
-            "expected_variance": float(self.expected_variance) if self.expected_variance is not None else None,
+            "objective_value": (
+                float(self.objective_value) if self.objective_value is not None else None
+            ),
+            "expected_return": (
+                float(self.expected_return) if self.expected_return is not None else None
+            ),
+            "expected_variance": (
+                float(self.expected_variance) if self.expected_variance is not None else None
+            ),
             "violations": [v.to_dict() for v in self.violations],
             "objective": dict(self.objective),
             "constraints": dict(self.constraints),
@@ -125,10 +136,16 @@ class OptimizationResult:
             diagnostics=dict(data.get("diagnostics") or {}),
             fallback_used=bool(data.get("fallback_used", False)),
             fallback_kind=data.get("fallback_kind"),
-            objective_value=float(data["objective_value"]) if data.get("objective_value") is not None else None,
-            expected_return=float(data["expected_return"]) if data.get("expected_return") is not None else None,
+            objective_value=(
+                float(data["objective_value"]) if data.get("objective_value") is not None else None
+            ),
+            expected_return=(
+                float(data["expected_return"]) if data.get("expected_return") is not None else None
+            ),
             expected_variance=(
-                float(data["expected_variance"]) if data.get("expected_variance") is not None else None
+                float(data["expected_variance"])
+                if data.get("expected_variance") is not None
+                else None
             ),
             violations=[ConstraintViolation.from_dict(v) for v in (data.get("violations") or [])],
             objective=dict(data.get("objective") or {}),

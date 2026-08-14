@@ -30,7 +30,9 @@ def long_exposure(weights: Any) -> RiskMeasure:
 def short_exposure(weights: Any) -> RiskMeasure:
     w = as_weights(weights)
     value = float(np.sum(np.abs(w[w < 0]))) if w.size else 0.0
-    return RiskMeasure(name="short_exposure", value=value, unit="fraction", method="abs_negative_sum")
+    return RiskMeasure(
+        name="short_exposure", value=value, unit="fraction", method="abs_negative_sum"
+    )
 
 
 def exposure_summary(weights: Any) -> dict[str, Any]:

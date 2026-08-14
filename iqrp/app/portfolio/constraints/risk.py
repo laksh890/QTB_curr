@@ -5,14 +5,14 @@ Evaluates *precomputed* risk metrics — this module does not recompute VaR/CVaR
 
 from __future__ import annotations
 
-from typing import Any, Mapping, Sequence
+from collections.abc import Mapping, Sequence
+from typing import Any
 
 import numpy as np
 
 from iqrp.app.portfolio.constraints._types import (
     ConstraintSeverity,
     ConstraintViolation,
-    as_weights,
     make_violation,
 )
 
@@ -107,8 +107,7 @@ def check_risk_constraints(
                         threshold=float(thr),
                         severity=severity,
                         reason=(
-                            f"risk_contribution[{i}]={float(obs):.6g} exceeds "
-                            f"{float(thr):.6g}"
+                            f"risk_contribution[{i}]={float(obs):.6g} exceeds " f"{float(thr):.6g}"
                         ),
                         scope="position",
                         metadata={"index": int(i)},

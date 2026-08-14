@@ -13,9 +13,10 @@ from iqrp.app.forecasting.transformers.base.positional_encoding import build_pos
 try:
     import torch
     from torch import nn
-except Exception:  # noqa: BLE001  # pragma: no cover
+except Exception:  # pragma: no cover
     torch = None  # type: ignore[assignment]
     nn = object  # type: ignore[assignment]
+
 
 class InformerNet(nn.Module if has_torch() else object):  # type: ignore[misc]
     def __init__(
@@ -72,6 +73,11 @@ class InformerNet(nn.Module if has_torch() else object):  # type: ignore[misc]
         pooled = h.mean(dim=1)
         out = self.head(pooled)
         return reshape_forecast(
-            out, x.shape[0], self.horizon, task=self.task, n_classes=self.n_classes,
-            n_quantiles=self.n_quantiles, dist=self.dist,
+            out,
+            x.shape[0],
+            self.horizon,
+            task=self.task,
+            n_classes=self.n_classes,
+            n_quantiles=self.n_quantiles,
+            dist=self.dist,
         )

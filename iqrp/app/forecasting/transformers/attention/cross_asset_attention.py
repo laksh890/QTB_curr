@@ -9,7 +9,7 @@ from iqrp.app.forecasting.transformers.attention.multihead import MultiHeadAtten
 
 try:
     from torch import nn
-except Exception:  # noqa: BLE001  # pragma: no cover
+except Exception:  # pragma: no cover
     nn = object  # type: ignore[assignment]
 
 

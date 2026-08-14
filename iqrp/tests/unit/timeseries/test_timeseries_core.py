@@ -9,6 +9,12 @@ import pytest
 
 from iqrp.app.core.exceptions import ConfigurationError
 from iqrp.app.timeseries import TimeSeriesAnalyticsEngine, TimeSeriesSettings, adjust_pvalues
+from iqrp.app.timeseries.alignment import dtw_distance, soft_dtw
+from iqrp.app.timeseries.anomaly import (
+    isolation_forest_anomalies,
+    robust_zscore_anomalies,
+    zscore_anomalies,
+)
 from iqrp.app.timeseries.autocorrelation import acf, pacf
 from iqrp.app.timeseries.autocorrelation.cross_correlation import ccf
 from iqrp.app.timeseries.base import AnalysisResult, TemporalMode
@@ -16,7 +22,12 @@ from iqrp.app.timeseries.change_points import binseg_detect, cusum_detect, pelt_
 from iqrp.app.timeseries.change_points.bayesian import bayesian_online_changepoint
 from iqrp.app.timeseries.change_points.online import online_cusum
 from iqrp.app.timeseries.decomposition import classical_decompose, mstl_decompose, stl_decompose
-from iqrp.app.timeseries.dependence import distance_correlation, engle_granger, granger_causality, mutual_information
+from iqrp.app.timeseries.dependence import (
+    distance_correlation,
+    engle_granger,
+    granger_causality,
+    mutual_information,
+)
 from iqrp.app.timeseries.dependence.cointegration import johansen_trace
 from iqrp.app.timeseries.dependence.tail_dependence import empirical_tail_dependence
 from iqrp.app.timeseries.diagnostics import full_diagnostics
@@ -38,8 +49,6 @@ from iqrp.app.timeseries.spectral import dominant_frequencies, fft_spectrum, per
 from iqrp.app.timeseries.stationarity import adf, kpss, phillips_perron, variance_ratio
 from iqrp.app.timeseries.transforms import TimeSeriesTransformer, log_returns, normalize
 from iqrp.app.timeseries.wavelets import cwt_morlet, dwt_haar, wavelet_denoise
-from iqrp.app.timeseries.alignment import dtw_distance, soft_dtw
-from iqrp.app.timeseries.anomaly import isolation_forest_anomalies, robust_zscore_anomalies, zscore_anomalies
 
 
 @pytest.fixture
@@ -75,7 +84,16 @@ def test_transformer_leakage_safe(white):
     # causal: changing future shouldn't affect past — check rolling contract metadata
     res = tr.analyze(white)
     assert res.temporal_mode == TemporalMode.ROLLING
-    for method in ("log_return", "simple_return", "diff", "seasonal_diff", "robust", "rank", "winsorize", "log"):
+    for method in (
+        "log_return",
+        "simple_return",
+        "diff",
+        "seasonal_diff",
+        "robust",
+        "rank",
+        "winsorize",
+        "log",
+    ):
         TimeSeriesTransformer(method=method, window=16).fit_transform(white)
 
 

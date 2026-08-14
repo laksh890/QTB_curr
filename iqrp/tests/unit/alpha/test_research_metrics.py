@@ -72,9 +72,7 @@ def test_decay_stability_persistence_seasonality(
     assert "half_life" in decay
     assert "optimal_hold" in decay
 
-    d2 = analyze_decay(
-        decay_scen["signal"], decay_scen["returns"], horizons=(1, 2, 5, 10)
-    )
+    d2 = analyze_decay(decay_scen["signal"], decay_scen["returns"], horizons=(1, 2, 5, 10))
     assert np.isfinite(d2["half_life"]) or True
 
     stab = analyze_stability(signal, returns, horizon=1, window=60, step=10, min_obs=30)

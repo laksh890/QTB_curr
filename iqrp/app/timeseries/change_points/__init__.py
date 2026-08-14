@@ -7,10 +7,10 @@ from iqrp.app.timeseries.change_points.online import OnlineCUSUMState, online_cu
 from iqrp.app.timeseries.change_points.pelt import pelt_detect
 
 __all__ = [
-    "cusum_detect",
-    "binseg_detect",
-    "pelt_detect",
-    "bayesian_online_changepoint",
-    "online_cusum",
     "OnlineCUSUMState",
+    "bayesian_online_changepoint",
+    "binseg_detect",
+    "cusum_detect",
+    "online_cusum",
+    "pelt_detect",
 ]

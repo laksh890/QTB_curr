@@ -78,17 +78,11 @@ class PerformanceTrigger(RetrainTrigger):
                 # Treat series as returns → simple Sharpe proxy if metric is sharpe.
                 if self.metric == "sharpe":
                     sd = float(np.std(window, ddof=1)) if window.size > 1 else 0.0
-                    metric_val = (
-                        float(np.mean(window) / sd * np.sqrt(252.0))
-                        if sd > 1e-15
-                        else 0.0
-                    )
+                    metric_val = float(np.mean(window) / sd * np.sqrt(252.0)) if sd > 1e-15 else 0.0
                 else:
                     metric_val = float(np.mean(window))
         if metric_val is None:
-            return TriggerDecision(
-                False, self.kind, "metric_unavailable", {"metric": self.metric}
-            )
+            return TriggerDecision(False, self.kind, "metric_unavailable", {"metric": self.metric})
         val = float(metric_val)
         fire = val < float(self.min_value)
         return TriggerDecision(
@@ -217,7 +211,7 @@ class RetrainSchedule:
                 {"max_retrains": self.max_retrains, "count": self._retrain_count},
             )
         t = int(context.get("t", context.get("index", 0)))
-        last = int(context.get("last_retrain_t", -10**18))
+        last = int(context.get("last_retrain_t", -(10**18)))
         if self.min_bars_between > 0 and (t - last) < self.min_bars_between:
             return TriggerDecision(
                 False,

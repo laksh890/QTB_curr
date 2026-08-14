@@ -9,15 +9,29 @@ import numpy as np
 import pytest
 
 from iqrp.app.forecasting.tree_models import TreeSettings, create_tree_model
-from iqrp.app.forecasting.tree_models.base.backends import create_estimator, estimator_feature_importances
+from iqrp.app.forecasting.tree_models.base.backends import (
+    create_estimator,
+    estimator_feature_importances,
+)
 from iqrp.app.forecasting.tree_models.base.ensemble import ensemble_fit_predict
-from iqrp.app.forecasting.tree_models.base.native import NativeGBM, NativeForest
-from iqrp.app.forecasting.tree_models.base.processes import feature_names, simulate_nonlinear_returns
-from iqrp.app.forecasting.tree_models.evaluation.metrics import _max_drawdown, _pr_auc, _profit_factor
+from iqrp.app.forecasting.tree_models.base.native import NativeForest, NativeGBM
+from iqrp.app.forecasting.tree_models.base.processes import (
+    feature_names,
+    simulate_nonlinear_returns,
+)
+from iqrp.app.forecasting.tree_models.evaluation.metrics import (
+    _max_drawdown,
+    _pr_auc,
+    _profit_factor,
+)
 from iqrp.app.forecasting.tree_models.explainability import importance as imp_mod
-from iqrp.app.forecasting.tree_models.optimization.hpo import optimize_hyperparameters
 from iqrp.app.forecasting.tree_models.optimization.cv import expanding_splits
-from iqrp.app.forecasting.tree_models.preprocessing.pipeline import _corr_xy, _mi_discrete, select_features
+from iqrp.app.forecasting.tree_models.optimization.hpo import optimize_hyperparameters
+from iqrp.app.forecasting.tree_models.preprocessing.pipeline import (
+    _corr_xy,
+    _mi_discrete,
+    select_features,
+)
 from iqrp.app.forecasting.tree_models.visualization import plots as plot_mod
 
 
@@ -51,7 +65,9 @@ def test_device_gpu_flags_and_booster_scores() -> None:
 def test_shap_tree_explainer_and_decision_path_except() -> None:
     X = np.random.default_rng(1).normal(size=(30, 3))
     y = X[:, 0]
-    est = create_estimator("random_forest", task="regression", params={"n_estimators": 8, "max_depth": 2})
+    est = create_estimator(
+        "random_forest", task="regression", params={"n_estimators": 8, "max_depth": 2}
+    )
     est.fit(X, y)
     # fake shap module success path
     fake_shap = MagicMock()
@@ -117,7 +133,9 @@ def test_hpo_grid_parallel_exceptions_and_optuna_fallback() -> None:
 
 @pytest.mark.unit
 def test_tree_model_proba_errors_and_regime_weighted() -> None:
-    frame = simulate_nonlinear_returns(100, n_features=4, classification=True, rng=np.random.default_rng(3))
+    frame = simulate_nonlinear_returns(
+        100, n_features=4, classification=True, rng=np.random.default_rng(3)
+    )
     cols = feature_names(4)
     # supports_proba false via meta patch
     m = create_tree_model(
@@ -151,7 +169,10 @@ def test_tree_model_proba_errors_and_regime_weighted() -> None:
             }
         ),
     )
-    m2.fit(simulate_nonlinear_returns(120, n_features=3, rng=np.random.default_rng(4)), feature_columns=feature_names(3))
+    m2.fit(
+        simulate_nonlinear_returns(120, n_features=3, rng=np.random.default_rng(4)),
+        feature_columns=feature_names(3),
+    )
 
 
 @pytest.mark.unit
@@ -206,7 +227,10 @@ def test_native_classification_predict_branches() -> None:
 
 @pytest.mark.unit
 def test_calibrator_else_branch() -> None:
-    from iqrp.app.forecasting.tree_models.calibration.calibrators import apply_calibration, Calibrator
+    from iqrp.app.forecasting.tree_models.calibration.calibrators import (
+        Calibrator,
+        apply_calibration,
+    )
 
     P = np.array([[0.2], [0.8]])
     cal = Calibrator(method="platt", params={"a": 1.0, "b": 0.0})

@@ -12,7 +12,7 @@ def _import_pyplot():
         import matplotlib.pyplot as plt
 
         return plt
-    except Exception:  # noqa: BLE001
+    except Exception:
         return None
 
 

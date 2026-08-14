@@ -41,7 +41,9 @@ def soft_dtw(
             r1 = -R[i - 1, j] / g
             r2 = -R[i, j - 1] / g
             rmax = max(r0, r1, r2)
-            softmin = -g * (rmax + np.log(np.exp(r0 - rmax) + np.exp(r1 - rmax) + np.exp(r2 - rmax)))
+            softmin = -g * (
+                rmax + np.log(np.exp(r0 - rmax) + np.exp(r1 - rmax) + np.exp(r2 - rmax))
+            )
             R[i, j] = C[i - 1, j - 1] + softmin
     val = float(R[n, m])
     if normalize:

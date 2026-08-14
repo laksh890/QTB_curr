@@ -279,24 +279,16 @@ def as_venue(obj: Venue | VenueInterface | dict[str, Any]) -> Venue:
             ask=state_data.get("ask", obj.get("ask")),
             mid=state_data.get("mid", obj.get("mid")),
             spread_bps=state_data.get("spread_bps", obj.get("spread_bps")),
-            available_qty=float(
-                state_data.get("available_qty", obj.get("available_qty", 0.0))
-            ),
+            available_qty=float(state_data.get("available_qty", obj.get("available_qty", 0.0))),
             adv=float(state_data.get("adv", obj.get("adv", 0.0))),
             volatility=float(state_data.get("volatility", obj.get("volatility", 0.0))),
             instruments=set(state_data.get("instruments") or obj.get("instruments") or []),
             supported_order_types=set(
-                state_data.get("supported_order_types")
-                or obj.get("supported_order_types")
-                or []
+                state_data.get("supported_order_types") or obj.get("supported_order_types") or []
             ),
             fee_bps=float(state_data.get("fee_bps", obj.get("fee_bps", 1.0))),
-            maker_fee_bps=float(
-                state_data.get("maker_fee_bps", obj.get("maker_fee_bps", 0.5))
-            ),
-            taker_fee_bps=float(
-                state_data.get("taker_fee_bps", obj.get("taker_fee_bps", 1.0))
-            ),
+            maker_fee_bps=float(state_data.get("maker_fee_bps", obj.get("maker_fee_bps", 0.5))),
+            taker_fee_bps=float(state_data.get("taker_fee_bps", obj.get("taker_fee_bps", 1.0))),
             tick_size=float(state_data.get("tick_size", obj.get("tick_size", 0.01))),
             lot_size=float(state_data.get("lot_size", obj.get("lot_size", 1.0))),
             min_qty=float(state_data.get("min_qty", obj.get("min_qty", 1.0))),
@@ -317,11 +309,11 @@ def as_venue(obj: Venue | VenueInterface | dict[str, Any]) -> Venue:
 
 
 __all__ = [
+    "SimulatedVenue",
     "Venue",
     "VenueInterface",
     "VenueOrderRequest",
     "VenueResponse",
     "VenueResponseStatus",
-    "SimulatedVenue",
     "as_venue",
 ]

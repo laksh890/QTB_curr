@@ -55,7 +55,9 @@ class ObjectiveSpec:
             "objective_type": self.name,
             "risk_aversion": float(self.risk_aversion),
             "target_return": float(self.target_return) if self.target_return is not None else None,
-            "target_volatility": float(self.target_volatility) if self.target_volatility is not None else None,
+            "target_volatility": (
+                float(self.target_volatility) if self.target_volatility is not None else None
+            ),
             "risk_free_rate": float(self.risk_free_rate),
             "turnover_penalty": float(self.turnover_penalty),
             "transaction_cost_penalty": float(self.transaction_cost_penalty),
@@ -72,9 +74,13 @@ class ObjectiveSpec:
         return cls(
             objective_type=data.get("objective_type", ObjectiveType.MEAN_VARIANCE),
             risk_aversion=float(data.get("risk_aversion", 1.0)),
-            target_return=float(data["target_return"]) if data.get("target_return") is not None else None,
+            target_return=(
+                float(data["target_return"]) if data.get("target_return") is not None else None
+            ),
             target_volatility=(
-                float(data["target_volatility"]) if data.get("target_volatility") is not None else None
+                float(data["target_volatility"])
+                if data.get("target_volatility") is not None
+                else None
             ),
             risk_free_rate=float(data.get("risk_free_rate", 0.0)),
             turnover_penalty=float(data.get("turnover_penalty", 0.0)),

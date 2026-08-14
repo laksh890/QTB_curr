@@ -5,7 +5,11 @@ The sole regime interface for downstream forecasting, risk, portfolio, and execu
 
 from __future__ import annotations
 
-from iqrp.app.regimes.ensemble.calibration import Calibrator, brier_score, expected_calibration_error
+from iqrp.app.regimes.ensemble.calibration import (
+    Calibrator,
+    brier_score,
+    expected_calibration_error,
+)
 from iqrp.app.regimes.ensemble.combiner import combine
 from iqrp.app.regimes.ensemble.config import EnsembleSettings
 from iqrp.app.regimes.ensemble.diagnostics import EnsembleDiagnostics
@@ -21,8 +25,8 @@ __all__ = [
     "EnsembleDiagnostics",
     "EnsembleEvaluator",
     "EnsembleMember",
-    "EnsembleRegistry",
     "EnsembleRegimeModel",
+    "EnsembleRegistry",
     "EnsembleSerializer",
     "EnsembleSettings",
     "EnsembleStateSpaceModel",

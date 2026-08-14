@@ -320,7 +320,7 @@ def validate_phase11(*, write_stubs: bool = True) -> dict[str, Any]:
                 # Lazy module __getattr__ support
                 try:
                     getattr(mod, comp.symbol)
-                except Exception as exc:  # noqa: BLE001
+                except Exception as exc:
                     item.status = "fail"
                     item.detail = f"symbol '{comp.symbol}' missing from {comp.import_path}: {exc}"
                     failures.append(item.detail)
@@ -334,7 +334,7 @@ def validate_phase11(*, write_stubs: bool = True) -> dict[str, Any]:
             else:
                 item.status = "pass"
                 item.detail = "importable and documented"
-        except Exception as exc:  # noqa: BLE001
+        except Exception as exc:
             item.status = "fail"
             item.detail = f"import error: {exc}"
             failures.append(item.detail)
@@ -373,7 +373,7 @@ def validate_phase11(*, write_stubs: bool = True) -> dict[str, Any]:
         missing_api = [m for m in api_methods if not hasattr(AlphaResearchEngine, m)]
         if missing_api:
             failures.append(f"AlphaResearchEngine missing methods: {missing_api}")
-    except Exception as exc:  # noqa: BLE001
+    except Exception as exc:
         failures.append(f"AlphaResearchEngine import failed: {exc}")
 
     integration = {
@@ -399,7 +399,7 @@ def validate_phase11(*, write_stubs: bool = True) -> dict[str, Any]:
         ):
             if required not in getattr(alpha_pkg, "__all__", []):
                 failures.append(f"alpha.__all__ missing {required}")
-    except Exception as exc:  # noqa: BLE001
+    except Exception as exc:
         failures.append(f"alpha package import failed: {exc}")
 
     passed = sum(1 for c in components if c["status"] == "pass")
@@ -437,8 +437,12 @@ def validate_phase11(*, write_stubs: bool = True) -> dict[str, Any]:
 
 def write_phase11_report(path: str | Path | None = None) -> Path:
     report = validate_phase11(write_stubs=True)
-    out = Path(path) if path else (
-        Path(__file__).resolve().parents[2] / "docs" / "Phase11_AlphaResearch_Validation.json"
+    out = (
+        Path(path)
+        if path
+        else (
+            Path(__file__).resolve().parents[2] / "docs" / "Phase11_AlphaResearch_Validation.json"
+        )
     )
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(report, indent=2), encoding="utf-8")
@@ -453,10 +457,7 @@ def write_phase11_report(path: str | Path | None = None) -> Path:
         f"- Docs present: {report['summary']['docs_present']}/"
         f"{report['summary']['docs_required']}\n\n"
         "## Checklist\n\n"
-        + "\n".join(
-            f"- [{'x' if ok else ' '}] {name}"
-            for name, ok in report["checklist"].items()
-        )
+        + "\n".join(f"- [{'x' if ok else ' '}] {name}" for name, ok in report["checklist"].items())
         + "\n\n## Architectural rules\n\n"
         + "\n".join(f"- {r}" for r in report["architectural_rules"])
         + "\n\nMachine-readable report: `Phase11_AlphaResearch_Validation.json`.\n"

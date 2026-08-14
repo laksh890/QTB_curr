@@ -7,8 +7,6 @@ from typing import Any
 import numpy as np
 from scipy import stats
 
-from iqrp.app.risk.base import as_returns
-
 
 def gaussian_copula_simulate(
     returns: Any,

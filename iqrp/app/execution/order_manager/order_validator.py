@@ -12,8 +12,9 @@ CRITICAL RULES
 
 from __future__ import annotations
 
+from collections.abc import Callable
 from dataclasses import dataclass, field
-from typing import Any, Callable, Protocol
+from typing import Any, Protocol
 
 from iqrp.app.core.exceptions import ValidationError
 from iqrp.app.execution.config import ExecutionSettings
@@ -101,20 +102,20 @@ class OrderValidator:
         if not isinstance(order.side, Side):
             try:
                 Side(order.side)
-            except Exception:  # noqa: BLE001
+            except Exception:
                 errors.append(f"invalid side: {order.side!r}")
 
         if not isinstance(order.order_type, OrderType):
             try:
                 OrderType(order.order_type)
-            except Exception:  # noqa: BLE001
+            except Exception:
                 errors.append(f"invalid order_type: {order.order_type!r}")
 
         meta = self.instruments.get(str(order.instrument).upper()) if order.instrument else None
         tick = meta.tick_size if meta else tl.default_tick_size
         lot = meta.lot_size if meta else tl.default_lot_size
         min_qty = meta.min_qty if meta else tl.min_qty
-        max_qty = (meta.max_qty if meta and meta.max_qty is not None else tl.max_qty)
+        max_qty = meta.max_qty if meta and meta.max_qty is not None else tl.max_qty
 
         if meta is not None and not meta.trading_enabled:
             errors.append(f"instrument {order.instrument} is not tradeable (trading halted)")
@@ -182,16 +183,14 @@ class OrderValidator:
         if self.validate_risk is not None and self.settings.risk.enforce_hard_limits:
             try:
                 ok, reason = self.validate_risk(order)
-            except Exception as exc:  # noqa: BLE001
+            except Exception as exc:
                 ok, reason = False, f"risk callback error: {exc}"
             if not ok:
                 errors.append(reason or "rejected by risk engine (hard limit)")
 
         # Urgency never bypasses — informational warning only
         if order.urgency.value == "CRITICAL" and errors:
-            warnings.append(
-                "CRITICAL urgency does not override hard risk/validation failures"
-            )
+            warnings.append("CRITICAL urgency does not override hard risk/validation failures")
 
         return ValidationResult(ok=len(errors) == 0, errors=errors, warnings=warnings)
 

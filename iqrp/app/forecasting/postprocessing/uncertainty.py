@@ -36,9 +36,7 @@ def quantile_from_samples(
     return out
 
 
-def distribution_from_samples(
-    samples: np.ndarray, *, horizon: int = 1
-) -> DistributionForecast:
+def distribution_from_samples(samples: np.ndarray, *, horizon: int = 1) -> DistributionForecast:
     arr = np.asarray(samples, dtype=np.float64)
     if arr.ndim == 1:
         mean = float(np.mean(arr))

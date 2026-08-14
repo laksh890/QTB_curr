@@ -23,7 +23,6 @@ from iqrp.app.alpha.processes import (
 from iqrp.app.alpha.research.decay import forward_returns
 from iqrp.app.alpha.statistical_validation.multiple_testing import get_experiment_tracker
 
-
 SEED = 42
 N = 300
 N_TRIALS = 20

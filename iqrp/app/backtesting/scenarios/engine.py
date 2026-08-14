@@ -120,9 +120,7 @@ class ScenarioEngine:
                 returns, periods_per_year=self.periods_per_year, **kwargs
             )
         elif k == "correlation":
-            result = run_correlation_scenario(
-                returns, seed=kwargs.pop("seed", self.seed), **kwargs
-            )
+            result = run_correlation_scenario(returns, seed=kwargs.pop("seed", self.seed), **kwargs)
         elif k == "gap":
             result = run_gap_scenario(returns, **kwargs)
         else:
@@ -154,6 +152,6 @@ class ScenarioEngine:
                     scenario=historical,
                     **kwargs,
                 )
-            except Exception as exc:  # noqa: BLE001 — suite continues on partial failure
+            except Exception as exc:
                 reports[kind] = {"error": str(exc), "kind": kind}
         return {"name": "scenario_suite", "reports": reports}

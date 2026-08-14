@@ -2,9 +2,10 @@
 
 from __future__ import annotations
 
+from collections.abc import Iterable
 from dataclasses import dataclass, field
 from enum import Enum
-from typing import Any, Iterable
+from typing import Any
 
 import numpy as np
 
@@ -119,7 +120,11 @@ class Portfolio:
         )
 
     def to_dict(self) -> dict[str, Any]:
-        pt = self.portfolio_type.value if isinstance(self.portfolio_type, PortfolioType) else str(self.portfolio_type)
+        pt = (
+            self.portfolio_type.value
+            if isinstance(self.portfolio_type, PortfolioType)
+            else str(self.portfolio_type)
+        )
         return {
             "names": list(self.names),
             "weights": [float(w) for w in self.weights],

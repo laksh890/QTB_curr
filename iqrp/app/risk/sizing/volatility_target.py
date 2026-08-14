@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-from typing import Any
-
 import numpy as np
 
 from iqrp.app.risk.base import RiskMeasure
@@ -89,7 +87,12 @@ def confidence_adjusted_size(
         unit="size",
         method="confidence_scale",
         confidence=conf,
-        parameters={"base_size": float(base_size), "scale": scale, "min_scale": lo, "max_scale": hi},
+        parameters={
+            "base_size": float(base_size),
+            "scale": scale,
+            "min_scale": lo,
+            "max_scale": hi,
+        },
     )
 
 

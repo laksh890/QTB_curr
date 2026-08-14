@@ -200,9 +200,9 @@ def test_posterior_predictive_and_model_api_edges() -> None:
 
     empty_report = BayesianDiagnostics().report(Posterior(draws=[]))
     assert empty_report["n_draws"] == 0
-    plot_trace(np.array([1.0]), Path("/tmp/t_bayes.svg"))  # noqa: S108
-    plot_posterior_histogram(np.linspace(0, 1, 50), Path("/tmp/h_bayes.svg"))  # noqa: S108
-    plot_regime_timeline(np.array([0.5, 0.5]), Path("/tmp/r_bayes.svg"))  # noqa: S108
+    plot_trace(np.array([1.0]), Path("/tmp/t_bayes.svg"))
+    plot_posterior_histogram(np.linspace(0, 1, 50), Path("/tmp/h_bayes.svg"))
+    plot_regime_timeline(np.array([0.5, 0.5]), Path("/tmp/r_bayes.svg"))
     # adapter predict_proba / forecast already tested; hit export via save roundtrip already
     import polars as pl
 

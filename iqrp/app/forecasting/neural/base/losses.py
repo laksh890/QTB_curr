@@ -2,7 +2,8 @@
 
 from __future__ import annotations
 
-from typing import Any, Callable
+from collections.abc import Callable
+from typing import Any
 
 import numpy as np
 
@@ -10,9 +11,9 @@ from iqrp.app.forecasting.neural.base.torch_utils import has_torch
 
 try:
     import torch
-    from torch import nn
     import torch.nn.functional as F
-except Exception:  # noqa: BLE001  # pragma: no cover
+    from torch import nn
+except Exception:  # pragma: no cover
     torch = None  # type: ignore[assignment]
     nn = None  # type: ignore[assignment]
     F = None  # type: ignore[assignment]
@@ -25,7 +26,9 @@ def register_custom_loss(name: str, fn: Callable[..., Any]) -> None:
     _CUSTOM[name] = fn
 
 
-def get_loss(name: str, *, alphas: tuple[float, ...] | None = None, label_smoothing: float = 0.0) -> Any:
+def get_loss(
+    name: str, *, alphas: tuple[float, ...] | None = None, label_smoothing: float = 0.0
+) -> Any:
     if not has_torch():
         return _NumpyLoss(name, alphas=alphas)
     key = name.lower()
@@ -121,10 +124,7 @@ class StudentTNLLLoss(nn.Module if has_torch() else object):  # type: ignore[mis
         scale = torch.exp(log_scale).clamp(1e-6, 1e6)
         z = (target - mu) / scale
         # student-t nll up to constants
-        return torch.mean(
-            log_scale
-            + 0.5 * (self.df + 1) * torch.log1p(z**2 / self.df)
-        )
+        return torch.mean(log_scale + 0.5 * (self.df + 1) * torch.log1p(z**2 / self.df))
 
 
 class _NumpyLoss:

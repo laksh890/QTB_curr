@@ -44,9 +44,12 @@ from iqrp.app.alpha.processes import (
     simulate_alpha_scenario,
 )
 from iqrp.app.alpha.ranking import rank_candidates
-from iqrp.app.alpha.registry import available as reg_available
-from iqrp.app.alpha.registry import clear_custom, get as reg_get
-from iqrp.app.alpha.registry import register as reg_register
+from iqrp.app.alpha.registry import (
+    available as reg_available,
+    clear_custom,
+    get as reg_get,
+    register as reg_register,
+)
 from iqrp.app.alpha.serializer import AlphaSerializer
 from iqrp.app.alpha.visualization import (
     alpha_viz_bundle,
@@ -59,7 +62,6 @@ from iqrp.app.alpha.visualization import (
     weight_bars_payload,
 )
 
-
 # ---------------------------------------------------------------------------
 # Base types
 # ---------------------------------------------------------------------------
@@ -68,32 +70,77 @@ from iqrp.app.alpha.visualization import (
 def test_signal_definition_validation_and_aliases() -> None:
     with pytest.raises(ValueError):
         SignalDefinition(
-            name="", version="1", formula="x", features=(), lookback=1, horizon=1,
-            universe="u", frequency="1d", direction="long_short",
-            expected_relationship="unknown", economic_hypothesis="", owner="o",
+            name="",
+            version="1",
+            formula="x",
+            features=(),
+            lookback=1,
+            horizon=1,
+            universe="u",
+            frequency="1d",
+            direction="long_short",
+            expected_relationship="unknown",
+            economic_hypothesis="",
+            owner="o",
         )
     with pytest.raises(ValueError):
         SignalDefinition(
-            name="a", version="", formula="x", features=(), lookback=1, horizon=1,
-            universe="u", frequency="1d", direction="long_short",
-            expected_relationship="unknown", economic_hypothesis="", owner="o",
+            name="a",
+            version="",
+            formula="x",
+            features=(),
+            lookback=1,
+            horizon=1,
+            universe="u",
+            frequency="1d",
+            direction="long_short",
+            expected_relationship="unknown",
+            economic_hypothesis="",
+            owner="o",
         )
     with pytest.raises(ValueError):
         SignalDefinition(
-            name="a", version="1", formula="x", features=(), lookback=0, horizon=1,
-            universe="u", frequency="1d", direction="long_short",
-            expected_relationship="unknown", economic_hypothesis="", owner="o",
+            name="a",
+            version="1",
+            formula="x",
+            features=(),
+            lookback=0,
+            horizon=1,
+            universe="u",
+            frequency="1d",
+            direction="long_short",
+            expected_relationship="unknown",
+            economic_hypothesis="",
+            owner="o",
         )
     with pytest.raises(ValueError):
         SignalDefinition(
-            name="a", version="1", formula="x", features=(), lookback=1, horizon=0,
-            universe="u", frequency="1d", direction="long_short",
-            expected_relationship="unknown", economic_hypothesis="", owner="o",
+            name="a",
+            version="1",
+            formula="x",
+            features=(),
+            lookback=1,
+            horizon=0,
+            universe="u",
+            frequency="1d",
+            direction="long_short",
+            expected_relationship="unknown",
+            economic_hypothesis="",
+            owner="o",
         )
     d = SignalDefinition(
-        name="a", version="1.0.0", formula="x", features=["f"], lookback=5, horizon=1,
-        universe="u", frequency="1d", direction="long",
-        expected_relationship="positive", economic_hypothesis="", owner="o",
+        name="a",
+        version="1.0.0",
+        formula="x",
+        features=["f"],
+        lookback=5,
+        horizon=1,
+        universe="u",
+        frequency="1d",
+        direction="long",
+        expected_relationship="positive",
+        economic_hypothesis="",
+        owner="o",
         tags=["t"],
     )
     assert d.direction == "long_only"
@@ -152,19 +199,34 @@ def test_signal_metadata_and_results() -> None:
     assert tr.to_dict()["reason"] == "go"
 
     stats = SignalStatistics(
-        n_obs=10, n_finite=9, mean=0.0, std=1.0, skew=0.0, kurtosis=3.0,
-        min=-1.0, max=1.0, missing_pct=0.1, autocorrelation_lag1=0.2,
+        n_obs=10,
+        n_finite=9,
+        mean=0.0,
+        std=1.0,
+        skew=0.0,
+        kurtosis=3.0,
+        min=-1.0,
+        max=1.0,
+        missing_pct=0.1,
+        autocorrelation_lag1=0.2,
     )
     assert stats.to_dict()["n_obs"] == 10
     perf = SignalPerformance(ic_mean=0.05, ic_std=0.02, rank_ic_mean=0.04, hit_rate=0.52)
     assert "disclaimer" in perf.to_dict()
-    score = SignalScore(overall=50, predictive=40, stability=30, persistence=20,
-                        economic_hypothesis_score=60)
+    score = SignalScore(
+        overall=50, predictive=40, stability=30, persistence=20, economic_hypothesis_score=60
+    )
     assert score.to_dict()["overall"] == 50
     report = SignalResearchReport(
-        signal_name="s", version="1", status=SignalStatus.RESEARCHING,
-        economic_hypothesis="h" * 25, statistics=stats, performance=perf, score=score,
-        diagnostics={"evaluate": True}, warnings=["w"],
+        signal_name="s",
+        version="1",
+        status=SignalStatus.RESEARCHING,
+        economic_hypothesis="h" * 25,
+        statistics=stats,
+        performance=perf,
+        score=score,
+        diagnostics={"evaluate": True},
+        warnings=["w"],
     )
     rd = report.to_dict()
     assert rd["rules"]["economic_hypothesis_required"] is True
@@ -175,8 +237,15 @@ def test_signal_metadata_and_results() -> None:
 def test_registry_lifecycle_and_rejected() -> None:
     reg = SignalRegistry()
     d = SignalDefinition(
-        name="r", version="1.0.0", formula="x", features=("x",), lookback=5, horizon=1,
-        universe="u", frequency="1d", direction="long_short",
+        name="r",
+        version="1.0.0",
+        formula="x",
+        features=("x",),
+        lookback=5,
+        horizon=1,
+        universe="u",
+        frequency="1d",
+        direction="long_short",
         expected_relationship="positive",
         economic_hypothesis="Substantive economic rationale for inventory risk premia.",
         owner="o",
@@ -194,9 +263,18 @@ def test_registry_lifecycle_and_rejected() -> None:
     reg.transition("e1", SignalStatus.PROVISIONAL, reason="prov")
     # thin hyp fails at APPROVED via registry
     thin = SignalDefinition(
-        name="t", version="1", formula="x", features=(), lookback=1, horizon=1,
-        universe="u", frequency="1d", direction="long_short",
-        expected_relationship="unknown", economic_hypothesis="short", owner="o",
+        name="t",
+        version="1",
+        formula="x",
+        features=(),
+        lookback=1,
+        horizon=1,
+        universe="u",
+        frequency="1d",
+        direction="long_short",
+        expected_relationship="unknown",
+        economic_hypothesis="short",
+        owner="o",
     )
     t_rec = reg.register(thin, experiment_id="thin")
     for st in (SignalStatus.RESEARCHING, SignalStatus.VALIDATING, SignalStatus.PROVISIONAL):
@@ -210,7 +288,9 @@ def test_registry_lifecycle_and_rejected() -> None:
     sig = AlphaSignal(values=np.arange(5.0), name="r")
     reg.attach_signal("e1", sig)
     rep = SignalResearchReport(
-        signal_name="r", version="1.0.0", status=SignalStatus.APPROVED,
+        signal_name="r",
+        version="1.0.0",
+        status=SignalStatus.APPROVED,
         economic_hypothesis=d.economic_hypothesis,
     )
     reg.attach_report("e1", rep)
@@ -276,7 +356,9 @@ def test_alpha_settings_and_function_registry(tmp_path: Path) -> None:
     _ = names_before
 
 
-def test_serializer_roundtrip(tmp_path: Path, definition: SignalDefinition, signal: np.ndarray) -> None:
+def test_serializer_roundtrip(
+    tmp_path: Path, definition: SignalDefinition, signal: np.ndarray
+) -> None:
     ser = AlphaSerializer()
     sig = AlphaSignal(values=signal, name="s", definition_id=definition.definition_id)
     p = ser.save_signal(sig, tmp_path / "sig.json")
@@ -285,7 +367,9 @@ def test_serializer_roundtrip(tmp_path: Path, definition: SignalDefinition, sign
     p2 = ser.save_definition(definition, tmp_path / "d.json")
     assert ser.load_definition(p2).name == definition.name
     report = SignalResearchReport(
-        signal_name="s", version="1", status=SignalStatus.CANDIDATE,
+        signal_name="s",
+        version="1",
+        status=SignalStatus.CANDIDATE,
         economic_hypothesis=definition.economic_hypothesis,
     )
     p3 = ser.save_report(report, tmp_path / "r.json")
@@ -299,6 +383,7 @@ def test_serializer_roundtrip(tmp_path: Path, definition: SignalDefinition, sign
 
 def test_rank_candidates_variants() -> None:
     assert rank_candidates([]) == []
+
     class Obj:
         def to_dict(self) -> dict[str, Any]:
             return {"name": "obj", "ic": 0.1, "score": {"overall": 80}}
@@ -311,7 +396,10 @@ def test_rank_candidates_variants() -> None:
 
 def test_processes_edges() -> None:
     assert set(available_scenarios()) >= {
-        "genuine_momentum", "random_noise", "regime_specific", "decaying_signal"
+        "genuine_momentum",
+        "random_noise",
+        "regime_specific",
+        "decaying_signal",
     }
     with pytest.raises(ValueError):
         simulate_alpha_scenario("nope", n=50, seed=0)
@@ -371,9 +459,18 @@ def test_engine_research_report_missing_signal() -> None:
     reg = SignalRegistry()
     eng = AlphaResearchEngine(registry=reg)
     d = SignalDefinition(
-        name="ns", version="1", formula="x", features=(), lookback=1, horizon=1,
-        universe="u", frequency="1d", direction="long_short",
-        expected_relationship="unknown", economic_hypothesis="h" * 25, owner="o",
+        name="ns",
+        version="1",
+        formula="x",
+        features=(),
+        lookback=1,
+        horizon=1,
+        universe="u",
+        frequency="1d",
+        direction="long_short",
+        expected_relationship="unknown",
+        economic_hypothesis="h" * 25,
+        owner="o",
     )
     rec = eng.register(d, signal=None)
     with pytest.raises(KeyError):
@@ -390,9 +487,7 @@ def test_engine_validate_returns_are_forward(
     assert out["n_trials"] == 10
 
 
-def test_engine_jsonable_path_and_numpy(
-    engine: AlphaResearchEngine, tmp_path: Path
-) -> None:
+def test_engine_jsonable_path_and_numpy(engine: AlphaResearchEngine, tmp_path: Path) -> None:
     engine._store["p"] = tmp_path
     engine._store["arr"] = np.float64(1.5)
     engine._store["i"] = np.int64(3)
@@ -443,7 +538,9 @@ def test_backtest_empty_and_nan_signal() -> None:
     assert empty.get("n", 0) == 0 or "net_sharpe" in empty
 
 
-def test_discovery_from_methods(returns: np.ndarray, panel: np.ndarray, rng: np.random.Generator) -> None:
+def test_discovery_from_methods(
+    returns: np.ndarray, panel: np.ndarray, rng: np.random.Generator
+) -> None:
     from iqrp.app.alpha.discovery.candidate_generator import CandidateGenerator
 
     gen = CandidateGenerator(registry=SignalRegistry(), auto_register=False)
@@ -486,8 +583,8 @@ def test_pbo_insufficient() -> None:
 
 
 def test_monitoring_edge_short_series() -> None:
-    from iqrp.app.alpha.monitoring.signal_drift import signal_distribution_drift
     from iqrp.app.alpha.monitoring.performance_decay import performance_decay_score
+    from iqrp.app.alpha.monitoring.signal_drift import signal_distribution_drift
 
     d = signal_distribution_drift(np.ones(3), np.ones(3))
     assert "psi" in d or "drifted" in d
@@ -520,8 +617,8 @@ def test_regime_stability_empty() -> None:
 
 
 def test_economics_negative_participation() -> None:
-    from iqrp.app.alpha.economics.slippage import slippage_bps
     from iqrp.app.alpha.economics.capacity import estimate_capacity
+    from iqrp.app.alpha.economics.slippage import slippage_bps
 
     assert slippage_bps(-0.1) >= 0
     c = estimate_capacity(turnover=0.0, adv=1e6)

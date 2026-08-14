@@ -3,9 +3,8 @@
 from __future__ import annotations
 
 from collections import defaultdict
-from typing import Any, Mapping, Sequence
-
-import numpy as np
+from collections.abc import Mapping, Sequence
+from typing import Any
 
 from iqrp.app.portfolio.constraints._types import (
     ConstraintSeverity,

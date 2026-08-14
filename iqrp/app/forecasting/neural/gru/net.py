@@ -9,7 +9,7 @@ from iqrp.app.forecasting.neural.base.torch_utils import has_torch
 
 try:
     from torch import nn
-except Exception:  # noqa: BLE001  # pragma: no cover
+except Exception:  # pragma: no cover
     nn = object  # type: ignore[assignment]
 
 
@@ -63,5 +63,11 @@ class GRUNet(nn.Module if has_torch() else object):  # type: ignore[misc]
         last = self.drop(self.norm(out[:, -1, :]))
         pred = self.head(last)
         return reshape_head(
-            pred, b, self.horizon, task=self.task, n_classes=self.n_classes, n_quantiles=self.n_quantiles, dist=self.dist
+            pred,
+            b,
+            self.horizon,
+            task=self.task,
+            n_classes=self.n_classes,
+            n_quantiles=self.n_quantiles,
+            dist=self.dist,
         )

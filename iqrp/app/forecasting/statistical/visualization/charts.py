@@ -53,7 +53,9 @@ def plot_residuals(resid: Any, path: Path, settings: StatisticalSettings | None 
     )
 
 
-def plot_acf(acf_vals: list[float] | np.ndarray, path: Path, settings: StatisticalSettings | None = None) -> Path:
+def plot_acf(
+    acf_vals: list[float] | np.ndarray, path: Path, settings: StatisticalSettings | None = None
+) -> Path:
     settings = settings or StatisticalSettings.default()
     path = Path(path)
     if not _ensure(path, settings):
@@ -69,7 +71,9 @@ def plot_acf(acf_vals: list[float] | np.ndarray, path: Path, settings: Statistic
     for i, v in enumerate(vals):
         x = 40 + i * (width - 60) / n
         y2 = height / 2 - v * (height / 2 - 30)
-        parts.append(f'<line x1="{x:.1f}" y1="{height/2}" x2="{x:.1f}" y2="{y2:.1f}" stroke="#1d3557" stroke-width="2"/>')
+        parts.append(
+            f'<line x1="{x:.1f}" y1="{height/2}" x2="{x:.1f}" y2="{y2:.1f}" stroke="#1d3557" stroke-width="2"/>'
+        )
     parts.append("</svg>")
     path.write_text("\n".join(parts), encoding="utf-8")
     return path

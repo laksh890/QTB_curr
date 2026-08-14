@@ -2,7 +2,8 @@
 
 from __future__ import annotations
 
-from typing import Any, Callable, Type
+from collections.abc import Callable
+from typing import Any
 
 from iqrp.app.execution.algorithms.adaptive import AdaptiveAlgorithm
 from iqrp.app.execution.algorithms.arrival_price import ArrivalPriceAlgorithm
@@ -18,7 +19,7 @@ from iqrp.app.execution.algorithms.vwap import VWAPAlgorithm
 
 AlgoFactory = Callable[..., ExecutionAlgorithm]
 
-_ALGO_REGISTRY: dict[str, Type[ExecutionAlgorithm] | AlgoFactory] = {
+_ALGO_REGISTRY: dict[str, type[ExecutionAlgorithm] | AlgoFactory] = {
     "twap": TWAPAlgorithm,
     "vwap": VWAPAlgorithm,
     "pov": POVAlgorithm,
@@ -36,7 +37,7 @@ _ALGO_REGISTRY: dict[str, Type[ExecutionAlgorithm] | AlgoFactory] = {
 _BUILTINS = frozenset(_ALGO_REGISTRY)
 
 
-def register_algorithm(name: str, factory: Type[ExecutionAlgorithm] | AlgoFactory) -> None:
+def register_algorithm(name: str, factory: type[ExecutionAlgorithm] | AlgoFactory) -> None:
     key = str(name).strip().lower()
     if not key:
         raise ValueError("empty algorithm name")

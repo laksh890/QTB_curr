@@ -12,8 +12,8 @@ at every data access boundary. Violations should invalidate the backtest.
 from __future__ import annotations
 
 from collections import defaultdict
+from collections.abc import Callable
 from datetime import datetime
-from typing import Callable
 
 from iqrp.app.backtesting.event_engine.clock import BacktestClock
 from iqrp.app.backtesting.event_engine.event import Event, EventType
@@ -43,14 +43,14 @@ class EventDrivenEngine:
     """
 
     __slots__ = (
+        "_handlers",
+        "_on_invalidate",
+        "_processed",
+        "_state",
+        "_wildcard_handlers",
         "clock",
         "queue",
         "scheduler",
-        "_handlers",
-        "_wildcard_handlers",
-        "_state",
-        "_processed",
-        "_on_invalidate",
     )
 
     def __init__(
@@ -199,9 +199,7 @@ class EventDrivenEngine:
 
         try:
             # Materialize recurring jobs up front for determinism.
-            self.scheduler.seed_until(
-                self.queue, start=self.clock.now, end=end, clock=self.clock
-            )
+            self.scheduler.seed_until(self.queue, start=self.clock.now, end=end, clock=self.clock)
 
             while self._state is BacktestState.RUNNING:
                 if max_events is not None and self._processed >= max_events:

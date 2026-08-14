@@ -9,7 +9,6 @@ import numpy as np
 from iqrp.app.regimes.particle.particle import FilterTrace
 from iqrp.app.regimes.particle.prediction import particle_diversity
 from iqrp.app.regimes.particle.smoothing import SmoothTrace
-from iqrp.app.regimes.particle.weighting import effective_sample_size
 
 
 class ParticleEvaluator:

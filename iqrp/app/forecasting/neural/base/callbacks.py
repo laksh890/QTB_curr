@@ -45,12 +45,18 @@ class EarlyStopping:
             self.best = float(metric)
             self.bad_epochs = 0
             if model is not None and hasattr(model, "state_dict"):
-                self.best_state = {k: v.detach().cpu().clone() for k, v in model.state_dict().items()}
+                self.best_state = {
+                    k: v.detach().cpu().clone() for k, v in model.state_dict().items()
+                }
             return False
         self.bad_epochs += 1
         if self.bad_epochs >= self.patience:
             self.should_stop = True
-            if self.best_state is not None and model is not None and hasattr(model, "load_state_dict"):
+            if (
+                self.best_state is not None
+                and model is not None
+                and hasattr(model, "load_state_dict")
+            ):
                 model.load_state_dict(self.best_state)
             return True
         return False
@@ -66,6 +72,6 @@ class GradientMonitor:
             for p in model.parameters():
                 if p.grad is not None:
                     total += float(p.grad.data.norm(2).item() ** 2)
-        norm = total ** 0.5
+        norm = total**0.5
         self.norms.append(norm)
         return norm

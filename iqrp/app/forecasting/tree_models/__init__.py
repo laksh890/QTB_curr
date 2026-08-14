@@ -17,8 +17,8 @@ ensure_tree_models_loaded()
 
 __all__ = [
     "TreeSettings",
-    "TreeTrainer",
     "TreeTrainResult",
+    "TreeTrainer",
     "create_tree_model",
     "ensure_tree_models_loaded",
     "list_tree_models",

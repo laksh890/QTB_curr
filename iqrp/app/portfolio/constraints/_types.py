@@ -99,8 +99,6 @@ def filter_by_severity(
     out: list[ConstraintViolation] = []
     for v in violations:
         is_hard = bool(getattr(v, "hard", True))
-        if is_hard and include_hard:
-            out.append(v)
-        elif (not is_hard) and include_soft:
+        if (is_hard and include_hard) or ((not is_hard) and include_soft):
             out.append(v)
     return out

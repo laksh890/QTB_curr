@@ -30,9 +30,7 @@ def scalability_curve(
     dividing by a unit-vol assumption (vol).
     """
     caps = np.asarray(capitals, dtype=np.float64).reshape(-1)
-    cap_info = estimate_capacity(
-        turnover=turnover, adv=adv, max_participation=max_participation
-    )
+    cap_info = estimate_capacity(turnover=turnover, adv=adv, max_participation=max_participation)
     max_cap = float(cap_info["max_capital"])
     to = max(float(turnover), 1e-12)
     participation = (caps * to) / max(float(adv), 1e-12)
@@ -54,7 +52,9 @@ def scalability_curve(
         "net_sharpe": net_sharpe,
         "decay": decay,
         "max_capital": max_cap,
-        "breakeven_capital": float(caps[np.nanargmin(np.abs(net_sharpe))]) if caps.size else float("nan"),
+        "breakeven_capital": (
+            float(caps[np.nanargmin(np.abs(net_sharpe))]) if caps.size else float("nan")
+        ),
     }
 
 
@@ -68,9 +68,7 @@ def scalability_report(
     **kwargs: Any,
 ) -> dict[str, Any]:
     """Convenience report over a log-spaced capital grid up to 2× capacity."""
-    info = estimate_capacity(
-        turnover=turnover, adv=adv, max_participation=max_participation
-    )
+    info = estimate_capacity(turnover=turnover, adv=adv, max_participation=max_participation)
     max_cap = max(float(info["max_capital"]), 1.0)
     capitals = np.geomspace(max_cap / 100.0, max_cap * 2.0, num=max(int(n_points), 3))
     curve = scalability_curve(

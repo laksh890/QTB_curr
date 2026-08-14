@@ -158,9 +158,7 @@ def test_invalid_ack_from_approved(order_manager, make_limit_order):
 def test_fill_bad_state_raises(order_manager, make_limit_order):
     order = make_limit_order()
     with pytest.raises(ExecutionError) as ei:
-        order_manager.apply_fill(
-            order.order_id, fill_qty=1.0, fill_price=100.0, event_id="f1"
-        )
+        order_manager.apply_fill(order.order_id, fill_qty=1.0, fill_price=100.0, event_id="f1")
     assert ei.value.code == "ORDER_FILL_BAD_STATE"
 
 
@@ -178,7 +176,9 @@ def test_process_event_dispatcher(order_manager, make_limit_order):
     order = make_limit_order(quantity=20.0)
     om.validate_and_approve(order.order_id)
     om.submit(order.order_id)
-    om.process_event("e-ack", "acknowledge", order_id=order.order_id, payload={"venue_order_id": "V"})
+    om.process_event(
+        "e-ack", "acknowledge", order_id=order.order_id, payload={"venue_order_id": "V"}
+    )
     om.process_event(
         "e-fill",
         "fill",
@@ -187,7 +187,9 @@ def test_process_event_dispatcher(order_manager, make_limit_order):
     )
     assert om.get(order.order_id).state is OrderState.FILLED
     # duplicate process_event
-    om.process_event("e-fill", "fill", order_id=order.order_id, payload={"fill_qty": 20.0, "fill_price": 100.0})
+    om.process_event(
+        "e-fill", "fill", order_id=order.order_id, payload={"fill_qty": 20.0, "fill_price": 100.0}
+    )
     assert om.get(order.order_id).filled_qty == 20.0
 
 

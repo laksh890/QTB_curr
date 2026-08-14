@@ -144,5 +144,7 @@ class MetricNormalizer:
     def __init__(self, settings: EnsembleSettings) -> None:
         self.settings = settings
 
-    def normalize(self, metrics: dict[str, Any], *, timestamp: str | None = None) -> dict[str, NormalizedMetric]:
+    def normalize(
+        self, metrics: dict[str, Any], *, timestamp: str | None = None
+    ) -> dict[str, NormalizedMetric]:
         return normalize_metrics(metrics, settings=self.settings, timestamp=timestamp)

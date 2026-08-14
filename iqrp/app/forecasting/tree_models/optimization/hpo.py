@@ -15,7 +15,11 @@ Method = Literal["none", "grid", "random", "bayesian", "optuna"]
 
 def _search_space(base: dict[str, Any]) -> dict[str, list[Any]]:
     return {
-        "max_depth": [max(2, int(base.get("max_depth", 4)) - 1), int(base.get("max_depth", 4)), int(base.get("max_depth", 4)) + 1],
+        "max_depth": [
+            max(2, int(base.get("max_depth", 4)) - 1),
+            int(base.get("max_depth", 4)),
+            int(base.get("max_depth", 4)) + 1,
+        ],
         "learning_rate": [0.03, 0.1, 0.2],
         "n_estimators": [
             max(20, int(base.get("n_estimators", 100)) // 2),
@@ -48,7 +52,7 @@ def _score_params(
             est.fit(X[tr], y[tr])
             pred = estimator_predict(est, X[te])
             rmses.append(float(np.sqrt(np.mean((y[te] - pred) ** 2))))
-        except Exception:  # noqa: BLE001
+        except Exception:
             rmses.append(1e6)
     return float(np.mean(rmses)) if rmses else 1e6
 
@@ -75,8 +79,15 @@ def optimize_hyperparameters(
     space = _search_space(base_params)
     if method == "optuna" or method == "bayesian":
         return _optuna_or_bayes(
-            backend, X, y, task=task, base_params=base_params, space=space,
-            n_trials=n_trials, validation=validation, pruning=pruning,
+            backend,
+            X,
+            y,
+            task=task,
+            base_params=base_params,
+            space=space,
+            n_trials=n_trials,
+            validation=validation,
+            pruning=pruning,
         )
     candidates = _expand_candidates(base_params, space, method=method, n_trials=n_trials)
     scores: list[float] = []
@@ -96,7 +107,7 @@ def optimize_hyperparameters(
                     scores.append(s)
                     if pruning and len(scores) >= 3 and s > np.median(scores) * 2:
                         continue
-                except Exception:  # noqa: BLE001
+                except Exception:
                     continue
     else:
         for c in candidates:
@@ -179,7 +190,7 @@ def _optuna_or_bayes(
         best = dict(base_params)
         best.update(study.best_params)
         return best, scores
-    except Exception:  # noqa: BLE001
+    except Exception:
         # simple TPE-like random search fallback
         return optimize_hyperparameters(
             backend,

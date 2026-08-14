@@ -36,7 +36,7 @@ def _to_jsonable(obj: Any) -> Any:
 
             if isinstance(obj, Enum):
                 return obj.value
-        except Exception:  # noqa: BLE001
+        except Exception:
             pass
     return str(obj)
 

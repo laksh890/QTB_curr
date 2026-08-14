@@ -2,8 +2,9 @@
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from dataclasses import dataclass, field
-from typing import Any, Mapping
+from typing import Any
 
 import numpy as np
 
@@ -99,9 +100,7 @@ class ExecutionSlippageModel:
         part_px = self.participation_coeff * vol * mid_f * participation
         delay_px = self.delay_coeff * vol * mid_f * np.sqrt(delay / day) if delay > 0 else 0.0
 
-        total = float(
-            spread_px + temp + vol_px + liq_px + size_px + part_px + delay_px
-        )
+        total = float(spread_px + temp + vol_px + liq_px + size_px + part_px + delay_px)
         # permanent tracked separately (informational; included partially via temp path)
         total_with_perm_info = total  # permanent is subset attribution of temp for TCA
         bps = total_with_perm_info / mid_f * 1e4

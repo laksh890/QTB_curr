@@ -2,8 +2,9 @@
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from dataclasses import dataclass, field
-from typing import Any, Mapping
+from typing import Any
 
 
 @dataclass
@@ -46,7 +47,7 @@ class PortfolioSnapshot:
         }
 
     @classmethod
-    def from_dict(cls, data: Mapping[str, Any]) -> "PortfolioSnapshot":
+    def from_dict(cls, data: Mapping[str, Any]) -> PortfolioSnapshot:
         return cls(
             timestamp=str(data.get("timestamp", "")),
             equity=float(data.get("equity", 0.0)),
@@ -89,7 +90,7 @@ class SnapshotBook:
         return {"snapshots": self.to_list()}
 
     @classmethod
-    def from_dict(cls, data: Mapping[str, Any]) -> "SnapshotBook":
+    def from_dict(cls, data: Mapping[str, Any]) -> SnapshotBook:
         book = cls()
         for row in list(data.get("snapshots") or []):
             book.add(row)

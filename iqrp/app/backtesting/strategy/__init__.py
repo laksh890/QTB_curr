@@ -6,9 +6,9 @@ from iqrp.app.backtesting.strategy.cross_sectional_momentum import CrossSectiona
 from iqrp.app.backtesting.strategy.registry import StrategyRegistry, StrategyRegistryError
 
 __all__ = [
+    "BuyAndHoldStrategy",
+    "CrossSectionalMomentumStrategy",
     "Strategy",
     "StrategyRegistry",
     "StrategyRegistryError",
-    "BuyAndHoldStrategy",
-    "CrossSectionalMomentumStrategy",
 ]

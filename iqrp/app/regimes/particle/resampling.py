@@ -13,9 +13,7 @@ from iqrp.app.regimes.particle.weighting import effective_sample_size
 ResampleMethod = Literal["multinomial", "systematic", "residual", "stratified"]
 
 
-def multinomial_resample(
-    weights: np.ndarray, *, rng: np.random.Generator
-) -> np.ndarray:
+def multinomial_resample(weights: np.ndarray, *, rng: np.random.Generator) -> np.ndarray:
     w = np.asarray(weights, dtype=np.float64).reshape(-1)
     w = w / max(float(w.sum()), 1e-300)
     n = w.size
@@ -80,9 +78,7 @@ def apply_resampling(
         states=cloud.states[idx].copy(),
         log_weights=log_w,
         likelihoods=cloud.likelihoods[idx].copy(),
-        timestamps=(
-            None if cloud.timestamps is None else cloud.timestamps[idx].copy()
-        ),
+        timestamps=(None if cloud.timestamps is None else cloud.timestamps[idx].copy()),
         metadata={**cloud.metadata, "resample_indices": idx.tolist()},
     )
 

@@ -34,7 +34,7 @@ from iqrp.app.execution.slippage.market_impact import _load_simulation_slippage_
 from iqrp.app.execution.smart_routing.allocation import allocate_quantity
 from iqrp.app.execution.smart_routing.cost_model import estimate_venue_cost
 from iqrp.app.execution.smart_routing.liquidity import assess_liquidity
-from iqrp.app.execution.smart_routing.scoring import VenueScore, score_venue, ScoreWeights
+from iqrp.app.execution.smart_routing.scoring import ScoreWeights, VenueScore, score_venue
 from iqrp.app.execution.smart_routing.venue import SimulatedVenue, Venue
 from iqrp.app.execution.smart_routing.venue_state import VenueState
 from iqrp.app.execution.transaction_costs.commissions import commission_cost
@@ -97,9 +97,9 @@ def test_algo_sell_and_wide_spread_branches():
         40.0, {**ctx, "urgency": "HIGH", "arrival_price": 98.0, "mid": 100.0, "side": "buy"}
     )
     # kappa_ac * T < 1e-8 path via tiny horizon / risk
-    ImplementationShortfallAlgorithm(impact_coeff=0.0, temporary_impact=0.0, risk_aversion=1e-20).plan(
-        20.0, {**ctx, "horizon_seconds": 1e-12, "n_slices": 3, "urgency": "LOW"}
-    )
+    ImplementationShortfallAlgorithm(
+        impact_coeff=0.0, temporary_impact=0.0, risk_aversion=1e-20
+    ).plan(20.0, {**ctx, "horizon_seconds": 1e-12, "n_slices": 3, "urgency": "LOW"})
 
     ArrivalPriceAlgorithm().plan(
         30.0,
@@ -194,8 +194,8 @@ def test_serializer_enum_and_to_dict_paths():
 
 
 def test_phase12_missing_doc_api_export_hydra(tmp_path, monkeypatch):
-    import iqrp.app.execution.phase12 as p12
     import iqrp.app.execution as exec_pkg
+    import iqrp.app.execution.phase12 as p12
 
     # missing required doc
     real_docs = list(p12.REQUIRED_DOCS)
@@ -210,13 +210,16 @@ def test_phase12_missing_doc_api_export_hydra(tmp_path, monkeypatch):
     real_hasattr = hasattr
 
     def fake_hasattr(obj, name):
-        if name == "plan_from_targets" and obj is type(exec_pkg.ExecutionEngine) or (
+        if (name == "plan_from_targets" and obj is type(exec_pkg.ExecutionEngine)) or (
             name == "plan_from_targets" and obj is exec_pkg.ExecutionEngine
         ):
             return False
         return real_hasattr(obj, name)
 
-    with patch("iqrp.app.execution.phase12.hasattr", side_effect=lambda o, n: False if n == "plan_from_targets" else real_hasattr(o, n)):
+    with patch(
+        "iqrp.app.execution.phase12.hasattr",
+        side_effect=lambda o, n: False if n == "plan_from_targets" else real_hasattr(o, n),
+    ):
         rep2 = validate_phase12(write_stubs=True)
         assert rep2["status"] == "FAIL" or True  # may still pass if check uses different path
 
@@ -259,7 +262,9 @@ def test_phase12_missing_doc_api_export_hydra(tmp_path, monkeypatch):
 def test_slippage_costs_routing_sim_edges():
     liquidity_slippage(mid=100, quantity=10, adv=1e6, depth=5.0)
     _load_simulation_slippage_model()
-    commission_cost(quantity=1, price=100, commission_bps=0, commission_per_share=0, min_commission=5.0)
+    commission_cost(
+        quantity=1, price=100, commission_bps=0, commission_per_share=0, min_commission=5.0
+    )
     exchange_fees(quantity=1, price=100, fee_bps=0.1, maker_bps=0.2, liquidity_role="maker")
     exchange_fees(quantity=1, price=100, fee_bps=0.1, taker_bps=0.5, liquidity_role="taker")
     exchange_fees(quantity=1, price=100, fee_bps=0.01, min_fee=10.0)
@@ -274,7 +279,10 @@ def test_slippage_costs_routing_sim_edges():
     )
 
     # cost model mid from bid/ask; price fallback; GTC fee path
-    v = Venue(venue_id="C", state=VenueState(venue_id="C", mid=None, bid=99.0, ask=101.0, adv=0, volatility=0.02))
+    v = Venue(
+        venue_id="C",
+        state=VenueState(venue_id="C", mid=None, bid=99.0, ask=101.0, adv=0, volatility=0.02),
+    )
     estimate_venue_cost(v, side="BUY", quantity=10, order_type="LIMIT", price=100.0)
     v2 = Venue(venue_id="C2", state=VenueState(venue_id="C2", mid=None, bid=None, ask=None))
     estimate_venue_cost(v2, side="BUY", quantity=10, order_type="MARKET", price=50.0)
@@ -308,18 +316,27 @@ def test_slippage_costs_routing_sim_edges():
 
     # liquidity participation_cap / adv else / available<=0 elif
     assess_liquidity(
-        Venue(venue_id="L", state=VenueState(venue_id="L", available_qty=5, adv=100, liquidity_score=0.5)),
+        Venue(
+            venue_id="L",
+            state=VenueState(venue_id="L", available_qty=5, adv=100, liquidity_score=0.5),
+        ),
         instrument="AAPL",
         quantity=50,
         max_participation=0.01,
     )
     assess_liquidity(
-        Venue(venue_id="L2", state=VenueState(venue_id="L2", available_qty=100, adv=0, liquidity_score=0.5)),
+        Venue(
+            venue_id="L2",
+            state=VenueState(venue_id="L2", available_qty=100, adv=0, liquidity_score=0.5),
+        ),
         instrument="AAPL",
         quantity=10,
     )
     assess_liquidity(
-        Venue(venue_id="L3", state=VenueState(venue_id="L3", available_qty=0, adv=0, liquidity_score=0.5)),
+        Venue(
+            venue_id="L3",
+            state=VenueState(venue_id="L3", available_qty=0, adv=0, liquidity_score=0.5),
+        ),
         instrument="AAPL",
         quantity=10,
     )
@@ -328,9 +345,13 @@ def test_slippage_costs_routing_sim_edges():
     v3 = Venue(venue_id="S", state=VenueState(venue_id="S", mid=100, available_qty=1e6, adv=1e6))
     cost = estimate_venue_cost(v3, side=Side.BUY, quantity=1, order_type=OrderType.MARKET)
     li = assess_liquidity(v3, instrument="AAPL", quantity=1)
-    score_venue(v3, cost=cost, liquidity=li, weights=ScoreWeights(), is_buy=True, peer_prices=[100.0, 100.0])
+    score_venue(
+        v3, cost=cost, liquidity=li, weights=ScoreWeights(), is_buy=True, peer_prices=[100.0, 100.0]
+    )
     cost.expected_price = 0.0
-    score_venue(v3, cost=cost, liquidity=li, weights={"price": 1}, is_buy=False, peer_prices=[90.0, 110.0])
+    score_venue(
+        v3, cost=cost, liquidity=li, weights={"price": 1}, is_buy=False, peer_prices=[90.0, 110.0]
+    )
 
     # venue mid/spread post_init branches
     st = VenueState(venue_id="V", mid=None, bid=None, ask=None)
@@ -341,7 +362,9 @@ def test_slippage_costs_routing_sim_edges():
     sim.get_state().bid = None
     sim.get_state().ask = None
     sim.submit(
-        __import__("iqrp.app.execution.smart_routing.venue", fromlist=["VenueOrderRequest"]).VenueOrderRequest(
+        __import__(
+            "iqrp.app.execution.smart_routing.venue", fromlist=["VenueOrderRequest"]
+        ).VenueOrderRequest(
             instrument="AAPL", side=Side.BUY, quantity=1, order_type=OrderType.MARKET, price=None
         )
     )
@@ -350,26 +373,31 @@ def test_slippage_costs_routing_sim_edges():
     st2.ensure_quotes()
 
     # simulation rescale + cover side + use_market_simulator true orders nested
-    simulate_fill_path(side="buy", quantity=100, mid=100, adv=10, participation=0.01, n_slices=4, seed=0)
+    simulate_fill_path(
+        side="buy", quantity=100, mid=100, adv=10, participation=0.01, n_slices=4, seed=0
+    )
     simulate_execution(
         orders=[{"side": "buy", "quantity": 5, "instrument": "AAPL"}],
         market_context={"mid": 100},
         use_market_simulator=True,
         seed=0,
     )
-    simulate_execution(side="buy", quantity=5, market_context={"mid": 100}, use_market_simulator=True, seed=0)
+    simulate_execution(
+        side="buy", quantity=5, market_context={"mid": 100}, use_market_simulator=True, seed=0
+    )
 
     # types Side.parse BUY via LONG already; COVER done — try "b"
     assert Side.parse("b") is Side.BUY
 
 
 def test_push_past_98():
+    import importlib
     from unittest.mock import patch
 
+    import iqrp.app.execution.phase12 as p12
     from iqrp.app.execution.algorithms.base import ExecutionAlgorithm
     from iqrp.app.execution.smart_routing.scoring import ScoreWeights, _normalize_side_price
-    import iqrp.app.execution.phase12 as p12
-    import importlib
+
     mi_mod = importlib.import_module("iqrp.app.execution.slippage.market_impact")
 
     w = ScoreWeights(

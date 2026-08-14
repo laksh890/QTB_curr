@@ -16,23 +16,45 @@ from iqrp.app.forecasting.intelligence import (
     load_discovered_engines,
 )
 from iqrp.app.forecasting.intelligence.automl import optimize_model
-from iqrp.app.forecasting.intelligence.benchmark import make_splits, benchmark_model, benchmark_candidates
+from iqrp.app.forecasting.intelligence.benchmark import (
+    benchmark_candidates,
+    benchmark_model,
+    make_splits,
+)
 from iqrp.app.forecasting.intelligence.blending import blend_predictions, holdout_blend_weights
 from iqrp.app.forecasting.intelligence.calibration import apply_calibration, fit_calibrator
-from iqrp.app.forecasting.intelligence.config import BenchmarkConfig, IntelligenceSettings as Settings
+from iqrp.app.forecasting.intelligence.config import (
+    BenchmarkConfig,
+    IntelligenceSettings as Settings,
+    RankingConfig,
+    RetrainConfig,
+)
 from iqrp.app.forecasting.intelligence.deployment import DeploymentManager
-from iqrp.app.forecasting.intelligence.diagnostics import diagnose_residuals, diagnose_leaderboard
-from iqrp.app.forecasting.intelligence.drift import detect_drift, ks_statistic, population_stability_index
-from iqrp.app.forecasting.intelligence.ensemble import build_ensemble, weighted_average, median_ensemble
+from iqrp.app.forecasting.intelligence.diagnostics import diagnose_leaderboard, diagnose_residuals
+from iqrp.app.forecasting.intelligence.drift import (
+    detect_drift,
+    ks_statistic,
+    population_stability_index,
+)
+from iqrp.app.forecasting.intelligence.ensemble import (
+    build_ensemble,
+    median_ensemble,
+    weighted_average,
+)
 from iqrp.app.forecasting.intelligence.gating import moe_combine, regime_gate_logits, softmax
 from iqrp.app.forecasting.intelligence.monitoring import ForecastMonitor
 from iqrp.app.forecasting.intelligence.optimization import run_optimization
 from iqrp.app.forecasting.intelligence.processes import feature_names, simulate_market_frame
-from iqrp.app.forecasting.intelligence.ranking import compute_metrics, composite_score, rank_models
-from iqrp.app.forecasting.intelligence.retraining import decide_retrain, retrain_model, checkpoint_model
+from iqrp.app.forecasting.intelligence.ranking import composite_score, compute_metrics, rank_models
+from iqrp.app.forecasting.intelligence.registry import create_model
+from iqrp.app.forecasting.intelligence.retraining import (
+    checkpoint_model,
+    decide_retrain,
+    retrain_model,
+)
 from iqrp.app.forecasting.intelligence.routing import build_routing_table, route_model
 from iqrp.app.forecasting.intelligence.serializer import IntelligenceSerializer
-from iqrp.app.forecasting.intelligence.stacking import stack_predictions, fit_stacker
+from iqrp.app.forecasting.intelligence.stacking import fit_stacker, stack_predictions
 from iqrp.app.forecasting.intelligence.tuning import TuningHistory, TuningTrial, build_search_space
 from iqrp.app.forecasting.intelligence.uncertainty import (
     ensemble_uncertainty,
@@ -46,9 +68,6 @@ from iqrp.app.forecasting.intelligence.visualization import (
     leaderboard_chart,
     residual_hist,
 )
-from iqrp.app.forecasting.intelligence.config import RetrainConfig, RankingConfig
-from iqrp.app.forecasting.intelligence.registry import create_model
-
 
 FEATS = feature_names(3)
 
@@ -66,7 +85,12 @@ def _settings(**overrides) -> IntelligenceSettings:
         "automl": {"method": "none"},
         "calibration": {"enabled": False, "method": "none"},
         "retrain": {"mode": "performance", "window": 80, "warm_start": True},
-        "drift": {"enabled": True, "feature_psi_threshold": 0.05, "prediction_ks_threshold": 0.05, "performance_drop": 0.1},
+        "drift": {
+            "enabled": True,
+            "feature_psi_threshold": 0.05,
+            "prediction_ks_threshold": 0.05,
+            "performance_drop": 0.1,
+        },
         "monitoring": {"enabled": True, "window": 50},
     }
     base.update(overrides)
@@ -105,19 +129,32 @@ def test_settings_hydra_and_invalid():
 
 
 def test_splits_all_methods():
-    for method in ("walk_forward", "rolling", "time_series_split", "nested_cv", "purged_kfold", "embargo"):
-        splits = make_splits(100, BenchmarkConfig(method=method, n_splits=3, train_size=40, test_size=10))
+    for method in (
+        "walk_forward",
+        "rolling",
+        "time_series_split",
+        "nested_cv",
+        "purged_kfold",
+        "embargo",
+    ):
+        splits = make_splits(
+            100, BenchmarkConfig(method=method, n_splits=3, train_size=40, test_size=10)
+        )
         assert isinstance(splits, list)
 
 
 def test_ranking_and_metrics(frame):
     y = frame["target"].to_numpy()
     p = y + 0.01
-    m = compute_metrics(y, p, probabilities=np.column_stack([1 - (p > 0), (p > 0).astype(float)]), latency_ms=1.0)
+    m = compute_metrics(
+        y, p, probabilities=np.column_stack([1 - (p > 0), (p > 0).astype(float)]), latency_ms=1.0
+    )
     assert "rmse" in m and "brier" in m
     score = composite_score(m, RankingConfig())
     assert np.isfinite(score)
-    ranked = rank_models([{"name": "a", "metrics": m}, {"name": "b", "metrics": {**m, "rmse": m["rmse"] + 1}}])
+    ranked = rank_models(
+        [{"name": "a", "metrics": m}, {"name": "b", "metrics": {**m, "rmse": m["rmse"] + 1}}]
+    )
     assert ranked[0].name == "a"
     assert ranked[0].to_dict()["rank"] == 1
 
@@ -189,16 +226,26 @@ def test_retrain_and_checkpoint(engine, frame):
     assert not d3.should_retrain
     d4 = decide_retrain(n_updates=1, config=RetrainConfig(mode="rolling"))
     assert d4.should_retrain
-    retrain_model(model, frame, feature_columns=FEATS, target_column="target", config=RetrainConfig(warm_start=True))
+    retrain_model(
+        model,
+        frame,
+        feature_columns=FEATS,
+        target_column="target",
+        config=RetrainConfig(warm_start=True),
+    )
 
 
 def test_automl_methods(frame):
     s = _settings(automl={"method": "random", "n_trials": 3})
-    params = optimize_model("mock", frame, feature_columns=FEATS, target_column="target", settings=s)
+    params = optimize_model(
+        "mock", frame, feature_columns=FEATS, target_column="target", settings=s
+    )
     assert isinstance(params, dict)
     for method in ("grid", "hyperband", "successive_halving", "pbt", "bayesian"):
         s2 = _settings(automl={"method": method, "n_trials": 3})
-        out = run_optimization("mock", frame, feature_columns=FEATS, target_column="target", settings=s2)
+        out = run_optimization(
+            "mock", frame, feature_columns=FEATS, target_column="target", settings=s2
+        )
         assert isinstance(out, dict)
     hist = TuningHistory()
     hist.add(TuningTrial(params={"drift": 0.0}, score=1.0))
@@ -217,10 +264,14 @@ def test_ensemble_stack_blend_gate():
     from iqrp.app.forecasting.intelligence.config import EnsembleConfig
 
     for method in ("weighted", "median", "bma", "voting", "stacking", "blending", "moe", "dynamic"):
-        out = build_ensemble(preds, config=EnsembleConfig(method=method), scores={"a": 1.0, "b": 2.0})
+        out = build_ensemble(
+            preds, config=EnsembleConfig(method=method), scores={"a": 1.0, "b": 2.0}
+        )
         assert out.size == 3
     assert stack_predictions(preds, meta_features=np.array([1.0, 2.0, 3.0])).size == 3
-    assert fit_stacker(np.column_stack([preds["a"], preds["b"]]), np.array([1.0, 2.0, 3.0])).size == 2
+    assert (
+        fit_stacker(np.column_stack([preds["a"], preds["b"]]), np.array([1.0, 2.0, 3.0])).size == 2
+    )
     assert blend_predictions(preds, scores={"a": 1.0, "b": 2.0}).size == 3
     assert holdout_blend_weights(preds, np.array([1.0, 2.0, 3.0]))
     assert moe_combine(preds, gate_logits=np.array([1.0, 0.0])).size == 3
@@ -278,7 +329,9 @@ def test_drift_psi_ks():
 
 
 def test_routing():
-    frame = simulate_market_frame(60, kind="regime_switching", n_features=3, rng=np.random.default_rng(2))
+    frame = simulate_market_frame(
+        60, kind="regime_switching", n_features=3, rng=np.random.default_rng(2)
+    )
     table = build_routing_table("mock", regime_models={"0": "mock"}, high_vol_model="mock")
     name = route_model(frame, table, config=_settings().routing, confidence=0.1)
     assert name == "mock"
@@ -318,8 +371,14 @@ def test_market_kinds():
 
 
 def test_parallel_benchmark(frame):
-    s = _settings(benchmark={"method": "time_series_split", "n_splits": 2, "parallel": True, "max_workers": 2})
+    s = _settings(
+        benchmark={"method": "time_series_split", "n_splits": 2, "parallel": True, "max_workers": 2}
+    )
     results = benchmark_candidates(
-        frame, feature_columns=FEATS, target_column="target", settings=s, candidates=["mock", "mock"]
+        frame,
+        feature_columns=FEATS,
+        target_column="target",
+        settings=s,
+        candidates=["mock", "mock"],
     )
     assert len(results) == 2

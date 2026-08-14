@@ -76,7 +76,11 @@ class ForecastMonitor:
             yt = np.asarray(list(self._y_true)[-n:], dtype=np.float64)
             yp = np.asarray(list(self._y_pred)[-n:], dtype=np.float64)
             metrics = compute_metrics(yt, yp)
-        lat = np.asarray(list(self._latencies), dtype=np.float64) if self._latencies else np.asarray([0.0])
+        lat = (
+            np.asarray(list(self._latencies), dtype=np.float64)
+            if self._latencies
+            else np.asarray([0.0])
+        )
         elapsed = max(perf_counter() - self._t0, 1e-6)
         throughput = self._n / elapsed
         cal_err = float(metrics.get("calibration_error", metrics.get("brier", 0.0)))

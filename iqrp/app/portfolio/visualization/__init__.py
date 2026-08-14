@@ -2,7 +2,8 @@
 
 from __future__ import annotations
 
-from typing import Any, Sequence
+from collections.abc import Sequence
+from typing import Any
 
 import numpy as np
 
@@ -36,10 +37,15 @@ def risk_contribution_payload(
     percent: bool = False,
 ) -> dict[str, Any]:
     if isinstance(contributions, dict):
-        vals = contributions.get("percent" if percent else "values", contributions.get("values", []))
-        if percent and "percent" in contributions and contributions["percent"] and max(
-            abs(float(x)) for x in contributions["percent"]
-        ) <= 1.0 + 1e-9:
+        vals = contributions.get(
+            "percent" if percent else "values", contributions.get("values", [])
+        )
+        if (
+            percent
+            and "percent" in contributions
+            and contributions["percent"]
+            and max(abs(float(x)) for x in contributions["percent"]) <= 1.0 + 1e-9
+        ):
             # values already fractions — scale for display if requested as percent points
             c = np.asarray(contributions["percent"], dtype=np.float64)
             values = (c * 100.0).tolist() if percent else c.tolist()
@@ -102,9 +108,7 @@ def portfolio_viz_bundle(
         "weights": weights_payload(weights, names=names),
     }
     if risk_contribution is not None:
-        out["risk_contribution"] = risk_contribution_payload(
-            risk_contribution, names=names
-        )
+        out["risk_contribution"] = risk_contribution_payload(risk_contribution, names=names)
     if weights_old is not None:
         out["turnover"] = turnover_payload(weights_old, weights, names=names)
     return out

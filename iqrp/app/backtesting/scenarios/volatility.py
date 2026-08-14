@@ -53,16 +53,20 @@ def run_volatility_scenario(
     results = []
     for s in grid:
         out = apply_volatility_shock(returns, scale=float(s))
-        rr = as_returns(out["returns"] if np.asarray(out["returns"]).ndim == 1 else np.mean(out["returns"], axis=1))
+        rr = as_returns(
+            out["returns"]
+            if np.asarray(out["returns"]).ndim == 1
+            else np.mean(out["returns"], axis=1)
+        )
         results.append(
             {
                 "scale": float(s),
                 "total_return": total_return(rr),
                 "sharpe": sharpe_ratio(rr, periods_per_year=periods_per_year),
                 "max_drawdown": max_drawdown(rr),
-                "realized_vol": float(np.std(rr, ddof=1) * np.sqrt(periods_per_year))
-                if rr.size > 1
-                else 0.0,
+                "realized_vol": (
+                    float(np.std(rr, ddof=1) * np.sqrt(periods_per_year)) if rr.size > 1 else 0.0
+                ),
             }
         )
     return {"name": "volatility_grid", "kind": "volatility", "results": results}

@@ -6,6 +6,6 @@ from iqrp.app.risk.aggregation.risk_aggregator import aggregate_risks
 
 __all__ = [
     "aggregate_risks",
-    "hierarchical_aggregate",
     "cross_asset_risk",
+    "hierarchical_aggregate",
 ]

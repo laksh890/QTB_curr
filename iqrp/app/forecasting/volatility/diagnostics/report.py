@@ -67,7 +67,7 @@ def _arch_lm(resid2: np.ndarray, lags: int = 5) -> tuple[float, float]:
         lm = float(y.size * r2)
         p = float(1 - stats.chi2.cdf(lm, lags))
         return lm, p
-    except Exception:  # noqa: BLE001
+    except Exception:
         return 0.0, 1.0
 
 

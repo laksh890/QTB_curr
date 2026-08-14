@@ -2,8 +2,9 @@
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from dataclasses import dataclass, field
-from typing import Any, Mapping
+from typing import Any
 
 
 @dataclass
@@ -38,7 +39,7 @@ class TradeRecord:
         }
 
     @classmethod
-    def from_dict(cls, data: Mapping[str, Any]) -> "TradeRecord":
+    def from_dict(cls, data: Mapping[str, Any]) -> TradeRecord:
         return cls(
             trade_id=str(data["trade_id"]),
             instrument=str(data.get("instrument", "")),
@@ -144,7 +145,7 @@ class TradeLedger:
         return {"trades": self.to_list()}
 
     @classmethod
-    def from_dict(cls, data: Mapping[str, Any]) -> "TradeLedger":
+    def from_dict(cls, data: Mapping[str, Any]) -> TradeLedger:
         ledger = cls()
         for row in list(data.get("trades") or []):
             rec = TradeRecord.from_dict(row)

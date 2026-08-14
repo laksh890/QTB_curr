@@ -14,7 +14,11 @@ from iqrp.app.forecasting.statistical import (
     create_statistical_model,
     list_statistical_models,
 )
-from iqrp.app.forecasting.statistical.base.fitting import fit_arma_css, fit_ar_ols, information_criteria
+from iqrp.app.forecasting.statistical.base.fitting import (
+    fit_ar_ols,
+    fit_arma_css,
+    information_criteria,
+)
 from iqrp.app.forecasting.statistical.base.multivariate import (
     engle_granger,
     fevd,
@@ -64,7 +68,19 @@ from iqrp.app.forecasting.statistical.visualization import (
 @pytest.mark.unit
 def test_registry_lists_all_models() -> None:
     names = set(list_statistical_models())
-    assert names >= {"ar", "ma", "arma", "arima", "sarima", "var", "varmax", "vecm", "ses", "holt", "holt_winters"}
+    assert names >= {
+        "ar",
+        "ma",
+        "arma",
+        "arima",
+        "sarima",
+        "var",
+        "varmax",
+        "vecm",
+        "ses",
+        "holt",
+        "holt_winters",
+    }
 
 
 @pytest.mark.unit
@@ -168,7 +184,12 @@ def test_multivariate_models() -> None:
     frame2 = frame.with_columns(pl.Series("x0", np.linspace(0, 1, frame.height)))
     settings = StatisticalSettings.from_mapping(
         {
-            "columns": {"endogenous": ("y0", "y1"), "exogenous": ("x0",), "target": "y0", "timestamp": "open_time"},
+            "columns": {
+                "endogenous": ("y0", "y1"),
+                "exogenous": ("x0",),
+                "target": "y0",
+                "timestamp": "open_time",
+            },
             "identification": {"auto": False},
             "order": {"p": 1},
         }
@@ -216,7 +237,9 @@ def test_trainer_and_viz(tmp_path: Path) -> None:
     plot_acf(model.diagnostics().acf, tmp_path / "a.svg", settings=settings)
     plot_qq(model.residuals(), tmp_path / "q.svg", settings=settings)
     plot_seasonal_decomposition(y, 12, tmp_path / "s.svg", settings=settings)
-    plot_rolling_comparison(y[-40:], {"m": model.predict(frame)[-40:]}, tmp_path / "c.svg", settings=settings)
+    plot_rolling_comparison(
+        y[-40:], {"m": model.predict(frame)[-40:]}, tmp_path / "c.svg", settings=settings
+    )
     # IRF plot
     coefs = np.array([[[0.4, 0.0], [0.1, 0.3]]])
     plot_irf(impulse_response(coefs, np.eye(2), horizon=6), tmp_path / "i.svg", settings=settings)

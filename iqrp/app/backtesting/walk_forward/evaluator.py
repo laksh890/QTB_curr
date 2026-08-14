@@ -10,7 +10,6 @@ import numpy as np
 
 from iqrp.app.backtesting.walk_forward.windows import WalkForwardWindow
 
-
 FoldFn = Callable[[np.ndarray, np.ndarray], Mapping[str, Any]]
 
 
@@ -98,9 +97,7 @@ class WalkForwardEvaluator:
         agg = aggregate_fold_metrics([f.metrics for f in folds])
         mode_s = mode if mode is not None else (windows[0].mode if windows else "rolling")
         purge_v = int(purge if purge is not None else (windows[0].purge if windows else 0))
-        embargo_v = int(
-            embargo if embargo is not None else (windows[0].embargo if windows else 0)
-        )
+        embargo_v = int(embargo if embargo is not None else (windows[0].embargo if windows else 0))
         return WalkForwardReport(
             n_folds=len(folds),
             folds=folds,

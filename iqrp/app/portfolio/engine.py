@@ -3,10 +3,11 @@
 from __future__ import annotations
 
 import logging
+from collections.abc import Callable, Sequence
 from dataclasses import dataclass, field
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
-from typing import Any, Callable, Sequence
+from typing import Any
 
 import numpy as np
 
@@ -14,13 +15,13 @@ from iqrp.app.portfolio.base.optimizer import OptimizationResult
 from iqrp.app.portfolio.base.portfolio import Portfolio
 from iqrp.app.portfolio.base.position import Position
 from iqrp.app.portfolio.config import PortfolioSettings
+from iqrp.app.portfolio.constraints import check_all_constraints
+from iqrp.app.portfolio.constraints.turnover import turnover as one_way_turnover
 from iqrp.app.portfolio.construction.constructor import PortfolioConstructor, PortfolioResult
 from iqrp.app.portfolio.construction.rebalance import RebalanceBands, RebalancePlan, plan_rebalance
 from iqrp.app.portfolio.construction.signal_to_weight import signals_to_raw_weights
 from iqrp.app.portfolio.construction.target_positions import TargetPositions, weights_to_positions
 from iqrp.app.portfolio.construction.target_weights import TargetWeights, build_target_weights
-from iqrp.app.portfolio.constraints import check_all_constraints
-from iqrp.app.portfolio.constraints.turnover import turnover as one_way_turnover
 from iqrp.app.portfolio.covariance import (
     ewma_covariance,
     factor_covariance,
@@ -59,7 +60,7 @@ logger = logging.getLogger(__name__)
 
 
 def _utc_now() -> str:
-    return datetime.now(timezone.utc).isoformat()
+    return datetime.now(UTC).isoformat()
 
 
 @dataclass(slots=True)
@@ -181,7 +182,7 @@ def dict_to_optimization_result(
             c = np.asarray(cov, dtype=np.float64)
             if c.ndim == 2 and c.shape[0] == w_arr.size:
                 expected_variance = float(w_arr @ c @ w_arr)
-    except Exception:  # noqa: BLE001
+    except Exception:
         pass
 
     if expected_return is None and raw.get("expected_return") is not None:
@@ -244,7 +245,11 @@ class PortfolioConstructionEngine:
         self._risk_init_attempted = False
         self._risk_skip_reason: str | None = None
 
-        if self.settings.require_risk_validation and self.risk_engine is None and self.risk_ensemble is None:
+        if (
+            self.settings.require_risk_validation
+            and self.risk_engine is None
+            and self.risk_ensemble is None
+        ):
             self._ensure_risk_engine()
 
     def _ensure_risk_engine(self) -> None:
@@ -257,10 +262,14 @@ class PortfolioConstructionEngine:
             from iqrp.app.risk import RiskIntelligenceEngine
 
             self.risk_engine = RiskIntelligenceEngine()
-            logger.info("PortfolioConstructionEngine: constructed RiskIntelligenceEngine for validation")
-        except Exception as exc:  # noqa: BLE001
+            logger.info(
+                "PortfolioConstructionEngine: constructed RiskIntelligenceEngine for validation"
+            )
+        except Exception as exc:
             self._risk_skip_reason = f"RiskIntelligenceEngine unavailable: {exc}"
-            logger.warning("require_risk_validation set but risk engine missing: %s", self._risk_skip_reason)
+            logger.warning(
+                "require_risk_validation set but risk engine missing: %s", self._risk_skip_reason
+            )
 
     # ------------------------------------------------------------------ optimize
     def optimize(
@@ -284,14 +293,19 @@ class PortfolioConstructionEngine:
         if cov is None and returns is not None:
             cov_out = self.covariance(returns=returns)
             cov = np.asarray(cov_out["matrix"], dtype=np.float64)
-        if mu is None and returns is not None and method_key in (
-            "mean_variance",
-            "max_sharpe",
-            "maximum_sharpe",
-            "turnover_aware",
-            "turnover",
-            "black_litterman",
-            "entropy",
+        if (
+            mu is None
+            and returns is not None
+            and method_key
+            in (
+                "mean_variance",
+                "max_sharpe",
+                "maximum_sharpe",
+                "turnover_aware",
+                "turnover",
+                "black_litterman",
+                "entropy",
+            )
         ):
             mu_out = self.expected_returns(returns=returns)
             mu = np.asarray(mu_out.get("mu") or mu_out.get("vector"), dtype=np.float64)
@@ -324,9 +338,7 @@ class PortfolioConstructionEngine:
 
         # method-specific
         if method_key in ("min_cvar", "cvar"):
-            opt_kwargs["alpha"] = float(
-                kwargs.get("alpha", settings.objective.cvar_confidence)
-            )
+            opt_kwargs["alpha"] = float(kwargs.get("alpha", settings.objective.cvar_confidence))
             if kwargs.get("scenarios") is not None:
                 opt_kwargs["scenarios"] = kwargs["scenarios"]
             elif returns is not None:
@@ -340,7 +352,9 @@ class PortfolioConstructionEngine:
                     kwargs.get("max_turnover", settings.max_turnover)
                 )
         if method_key == "risk_parity" or method_key == "erc":
-            opt_kwargs["method"] = "erc" if method_key == "erc" else kwargs.get("rp_method", "risk_parity")
+            opt_kwargs["method"] = (
+                "erc" if method_key == "erc" else kwargs.get("rp_method", "risk_parity")
+            )
         if method_key == "black_litterman":
             for k in ("P", "Q", "omega", "tau", "market_weights", "views"):
                 if k in kwargs:
@@ -393,7 +407,7 @@ class PortfolioConstructionEngine:
             }
             try:
                 raw = fn(mu=mu, cov=cov, **filtered)
-            except Exception as exc:  # noqa: BLE001
+            except Exception as exc:
                 return self._apply_optimize_fallback(
                     reason=f"optimizer error: {exc}",
                     mu=mu,
@@ -402,7 +416,7 @@ class PortfolioConstructionEngine:
                     names=names,
                     method=method_key,
                 )
-        except Exception as exc:  # noqa: BLE001
+        except Exception as exc:
             return self._apply_optimize_fallback(
                 reason=f"optimizer error: {exc}",
                 mu=mu,
@@ -413,7 +427,11 @@ class PortfolioConstructionEngine:
             )
 
         result = dict_to_optimization_result(
-            raw if isinstance(raw, dict) else {"success": False, "weights": [], "failure_reason": "non-dict"},
+            (
+                raw
+                if isinstance(raw, dict)
+                else {"success": False, "weights": [], "failure_reason": "non-dict"}
+            ),
             names=names,
             method=method_key,
             data_version=settings.data_version,
@@ -474,7 +492,10 @@ class PortfolioConstructionEngine:
                 data_version=self.settings.data_version,
                 model_version=self.settings.model_version,
                 seed=self.settings.seed,
-                diagnostics={"fallback_reasons": reasons, "prior": prior.to_dict() if prior else None},
+                diagnostics={
+                    "fallback_reasons": reasons,
+                    "prior": prior.to_dict() if prior else None,
+                },
                 audit={"fallback_reasons": reasons},
             )
 
@@ -507,7 +528,7 @@ class PortfolioConstructionEngine:
                 if res.success:
                     return res
                 reasons.append(res.failure_reason or "min_variance fallback failed")
-            except Exception as exc:  # noqa: BLE001
+            except Exception as exc:
                 reasons.append(f"min_variance fallback error: {exc}")
 
         # cash fallback (also when current unavailable)
@@ -570,8 +591,10 @@ class PortfolioConstructionEngine:
                 conf = None  # forecast_expected_returns defaults to ones
             er = forecast_expected_returns(
                 forecasts,
-                confidence=conf if settings.expected_returns.confidence_shrink else np.ones(
-                    np.asarray(forecasts).reshape(-1).size
+                confidence=(
+                    conf
+                    if settings.expected_returns.confidence_shrink
+                    else np.ones(np.asarray(forecasts).reshape(-1).size)
                 ),
                 prior=kwargs.get("prior"),
                 uncertainty=kwargs.get("uncertainty"),
@@ -791,7 +814,7 @@ class PortfolioConstructionEngine:
         if cov is not None and w.size:
             try:
                 rc = pr_risk_contribution(w, cov)
-            except Exception as exc:  # noqa: BLE001
+            except Exception as exc:
                 rc = {"error": str(exc)}
 
         to = 0.0
@@ -826,9 +849,11 @@ class PortfolioConstructionEngine:
                 from iqrp.app.portfolio.constraints.factor import portfolio_factor_exposures
 
                 factor_exp = portfolio_factor_exposures(
-                    w, factor_loadings=kwargs["factor_loadings"], factor_names=kwargs.get("factor_names")
+                    w,
+                    factor_loadings=kwargs["factor_loadings"],
+                    factor_names=kwargs.get("factor_names"),
                 )
-            except Exception as exc:  # noqa: BLE001
+            except Exception as exc:
                 factor_exp = {"error": str(exc)}
 
         liq_exp: dict[str, Any] = {}
@@ -883,7 +908,11 @@ class PortfolioConstructionEngine:
             model_version=settings.model_version,
             seed=settings.seed,
             audit={
-                "mu_meta": {k: v for k, v in mu_meta.items() if k not in ("mu", "vector", "forecasts", "prior")},
+                "mu_meta": {
+                    k: v
+                    for k, v in mu_meta.items()
+                    if k not in ("mu", "vector", "forecasts", "prior")
+                },
                 "cov_method": cov_meta.get("method") or cov_meta.get("name"),
                 "require_risk_validation": settings.require_risk_validation,
                 "risk_skip_reason": self._risk_skip_reason,
@@ -928,8 +957,10 @@ class PortfolioConstructionEngine:
         if self.risk_engine is not None and hasattr(self.risk_engine, "check_limits"):
             try:
                 breaches = list(self.risk_engine.check_limits(weights=weights) or [])
-                out["breaches"] = [b.to_dict() if hasattr(b, "to_dict") else str(b) for b in breaches]
-            except Exception as exc:  # noqa: BLE001
+                out["breaches"] = [
+                    b.to_dict() if hasattr(b, "to_dict") else str(b) for b in breaches
+                ]
+            except Exception as exc:
                 out["check_limits_error"] = str(exc)
 
         # Pre-trade validate_position on max-weight name
@@ -945,7 +976,9 @@ class PortfolioConstructionEngine:
                 r_in = R @ weights if R.shape[1] == weights.size else R[:, 0]
 
             try:
-                if self.risk_ensemble is not None and hasattr(self.risk_ensemble, "validate_position"):
+                if self.risk_ensemble is not None and hasattr(
+                    self.risk_ensemble, "validate_position"
+                ):
                     dec = self.risk_ensemble.validate_position(
                         proposed_weight=proposed,
                         weights=weights,
@@ -954,7 +987,9 @@ class PortfolioConstructionEngine:
                         asset_index=idx,
                     )
                     decision_payload = dec.to_dict() if hasattr(dec, "to_dict") else dict(dec)
-                elif self.risk_engine is not None and hasattr(self.risk_engine, "validate_position"):
+                elif self.risk_engine is not None and hasattr(
+                    self.risk_engine, "validate_position"
+                ):
                     dec = self.risk_engine.validate_position(
                         proposed_weight=proposed,
                         weights=weights,
@@ -963,7 +998,7 @@ class PortfolioConstructionEngine:
                         asset_index=idx,
                     )
                     decision_payload = dec.to_dict() if hasattr(dec, "to_dict") else dict(dec)
-            except Exception as exc:  # noqa: BLE001
+            except Exception as exc:
                 out["validate_position_error"] = str(exc)
 
         if decision_payload is not None:
@@ -1015,7 +1050,11 @@ class PortfolioConstructionEngine:
             else:
                 out["action"] = "APPROVE"
                 out["approved"] = True
-                out["reason"] = "limits clear" if returns is not None else "limits clear (no returns for position gate)"
+                out["reason"] = (
+                    "limits clear"
+                    if returns is not None
+                    else "limits clear (no returns for position gate)"
+                )
 
         return out
 
@@ -1140,7 +1179,9 @@ class PortfolioConstructionEngine:
         if current_weights is None or target_weights is None:
             raise ValueError("rebalance requires current_weights and target_weights")
         bands = kwargs.pop("bands", None)
-        if bands is None and any(k in kwargs for k in ("absolute_band", "relative_band", "min_trade")):
+        if bands is None and any(
+            k in kwargs for k in ("absolute_band", "relative_band", "min_trade")
+        ):
             bands = RebalanceBands(
                 absolute=float(kwargs.pop("absolute_band", 0.0)),
                 relative=float(kwargs.pop("relative_band", 0.0)),
@@ -1195,7 +1236,10 @@ class PortfolioConstructionEngine:
             risk_decision=risk_decision,
             risk_breaches=risk_breaches,
             messages=messages,
-            meta={"constraints": {k: v for k, v in ckwargs.items() if not callable(v)}, "risk_validation": risk_flag},
+            meta={
+                "constraints": {k: v for k, v in ckwargs.items() if not callable(v)},
+                "risk_validation": risk_flag,
+            },
         )
 
     # --------------------------------------------------------------- costs etc
@@ -1258,6 +1302,6 @@ class PortfolioConstructionEngine:
         if "settings" in data:
             try:
                 self.settings = PortfolioSettings.from_mapping(data["settings"])
-            except Exception:  # noqa: BLE001
+            except Exception:
                 pass
         return data

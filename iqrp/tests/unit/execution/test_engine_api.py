@@ -80,7 +80,9 @@ def test_execute_empty_targets(engine, market_context):
     assert report.status == "EMPTY"
 
 
-def test_halt_blocks_new_submits(engine, market_context, simulated_venue, make_limit_order, order_manager):
+def test_halt_blocks_new_submits(
+    engine, market_context, simulated_venue, make_limit_order, order_manager
+):
     # Seed an open order then halt
     om = engine.order_manager
     order = om.create_order(
@@ -227,7 +229,9 @@ def test_validate_order(engine):
     assert engine.validate_order(order).ok
 
 
-def test_risk_engine_blocks_execute(execution_settings, kill_switch, rejecting_risk, market_context, simulated_venue):
+def test_risk_engine_blocks_execute(
+    execution_settings, kill_switch, rejecting_risk, market_context, simulated_venue
+):
     eng = ExecutionEngine(
         settings=execution_settings,
         kill_switch=kill_switch,

@@ -9,7 +9,7 @@ from iqrp.app.forecasting.neural.base.torch_utils import has_torch
 try:
     import torch
     from torch import nn
-except Exception:  # noqa: BLE001  # pragma: no cover
+except Exception:  # pragma: no cover
     torch = None  # type: ignore[assignment]
     nn = object  # type: ignore[assignment]
 
@@ -30,8 +30,16 @@ class LinearAttention(nn.Module if has_torch() else object):  # type: ignore[mis
 
     def forward(self, query: Any, key: Any, value: Any, mask: Any = None) -> Any:
         b, t, _ = query.shape
-        q = torch.nn.functional.elu(self.q(query).view(b, t, self.n_heads, self.d_k).transpose(1, 2)) + 1
-        k = torch.nn.functional.elu(self.k(key).view(b, -1, self.n_heads, self.d_k).transpose(1, 2)) + 1
+        q = (
+            torch.nn.functional.elu(
+                self.q(query).view(b, t, self.n_heads, self.d_k).transpose(1, 2)
+            )
+            + 1
+        )
+        k = (
+            torch.nn.functional.elu(self.k(key).view(b, -1, self.n_heads, self.d_k).transpose(1, 2))
+            + 1
+        )
         v = self.v(value).view(b, -1, self.n_heads, self.d_k).transpose(1, 2)
         kv = torch.einsum("bhnd,bhne->bhde", k, v)
         z = 1.0 / (torch.einsum("bhnd,bhd->bhn", q, k.sum(dim=2)) + 1e-6)

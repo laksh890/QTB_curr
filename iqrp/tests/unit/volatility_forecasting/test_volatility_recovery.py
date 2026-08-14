@@ -33,7 +33,6 @@ def test_garch_parameter_recovery() -> None:
     assert qlike(true_var, hat) < qlike(true_var, np.full_like(true_var, np.mean(r**2)))
 
 
-
 @pytest.mark.unit
 def test_ewma_stress_large() -> None:
     r, _ = simulate_garch(2500, rng=np.random.default_rng(5))

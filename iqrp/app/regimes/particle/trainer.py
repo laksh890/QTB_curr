@@ -38,11 +38,7 @@ def initialize_cloud(
     x0: np.ndarray | None = None,
 ) -> ParticleCloud:
     scale = float(settings.system.initial_covariance_scale) ** 0.5
-    center = (
-        np.asarray(x0, dtype=np.float64).reshape(-1)
-        if x0 is not None
-        else np.zeros(n_states)
-    )
+    center = np.asarray(x0, dtype=np.float64).reshape(-1) if x0 is not None else np.zeros(n_states)
     if center.size < n_states:
         center = np.pad(center, (0, n_states - center.size))
     states = center[:n_states] + rng.normal(0.0, scale, size=(n_particles, n_states))
@@ -187,9 +183,7 @@ def _run_sir(
     means, covs, clouds, ess_hist, resamp = [], [], [], [], []
     ll = 0.0
     for t in range(z.shape[0]):
-        cloud, ratio = propose(
-            cloud, model, z[t], kind=proposal_kind, rng=rng, t=t
-        )
+        cloud, ratio = propose(cloud, model, z[t], kind=proposal_kind, rng=rng, t=t)
         cloud = _weight_and_stats(cloud, z[t], model, settings, ratio)
         ll += cloud.log_likelihood_increment()
         did = False
@@ -521,4 +515,9 @@ class ParticleTrainer:
             history.append(trace.log_likelihood)
             if abs(history[-1] - history[-2]) < self.settings.training.tol:
                 break
-        return TrainResult(model=mod, trace=trace, history=history, metadata={"filter_type": self.settings.filter_type})
+        return TrainResult(
+            model=mod,
+            trace=trace,
+            history=history,
+            metadata={"filter_type": self.settings.filter_type},
+        )

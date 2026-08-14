@@ -180,7 +180,7 @@ def expected_calibration_error(
         mask = (conf >= lo) & (conf < hi if i < n_bins - 1 else conf <= hi)
         if not np.any(mask):
             continue
-        ece += (np.sum(mask) / n) * abs(float(np.mean((pred[mask] == y[mask])) - np.mean(conf[mask])))
+        ece += (np.sum(mask) / n) * abs(float(np.mean(pred[mask] == y[mask]) - np.mean(conf[mask])))
     return float(ece)
 
 
@@ -394,7 +394,9 @@ class ForecastEvaluator:
         for i, (tr, te) in enumerate(folds_idx):
             # evaluate on test segment using aligned predictions
             m = self.evaluate_regression(yt[te], yp[te])
-            fold_reports.append({"fold": i, "n_train": int(tr.size), "n_test": int(te.size), "metrics": m})
+            fold_reports.append(
+                {"fold": i, "n_train": int(tr.size), "n_test": int(te.size), "metrics": m}
+            )
             for k, v in m.items():
                 if np.isfinite(v):
                     agg.setdefault(k, []).append(float(v))

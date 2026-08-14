@@ -6,7 +6,8 @@ Never invents alpha or exceeds approved residual quantity.
 
 from __future__ import annotations
 
-from typing import Any, Mapping, Sequence
+from collections.abc import Mapping, Sequence
+from typing import Any
 
 import numpy as np
 
@@ -136,7 +137,7 @@ def simulate_fill_path(
     try:
         path_imp = path_impact(mids_arr, vols_arr, sizes, vol_arr, impact_coeff=impact_coeff)
         path_imp_out: Any = path_imp.tolist() if hasattr(path_imp, "tolist") else list(path_imp)
-    except Exception:  # noqa: BLE001
+    except Exception:
         path_imp_out = []
 
     return {
@@ -212,7 +213,7 @@ def simulate_with_market_simulator(
                 "source": "MarketSimulator",
                 "instrument": instrument,
             }
-    except Exception:  # noqa: BLE001
+    except Exception:
         pass
 
     result = simulate_fill_path(
@@ -270,7 +271,11 @@ def simulate_execution(
                         adv=float(o_ctx.get("adv", 1e6)),
                         volatility=float(o_ctx.get("volatility", 0.02)),
                         seed=seed,
-                        **{k: v for k, v in kwargs.items() if k in {"n_slices", "participation", "impact_coeff"}},
+                        **{
+                            k: v
+                            for k, v in kwargs.items()
+                            if k in {"n_slices", "participation", "impact_coeff"}
+                        },
                     )
                 )
         return {"orders": results, "n": len(results)}

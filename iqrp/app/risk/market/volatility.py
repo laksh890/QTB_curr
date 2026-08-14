@@ -68,7 +68,12 @@ def ewma_volatility(
             value=0.0,
             unit="volatility",
             method="ewma",
-            parameters={"lambda": lam, "annualize": annualize, "trading_days": trading_days, "n_obs": 0},
+            parameters={
+                "lambda": lam,
+                "annualize": annualize,
+                "trading_days": trading_days,
+                "n_obs": 0,
+            },
         )
 
     if initial_variance is not None and np.isfinite(initial_variance) and initial_variance >= 0:

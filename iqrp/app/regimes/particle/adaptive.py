@@ -47,9 +47,7 @@ def resize_cloud(
         states=cloud.states[idx].copy(),
         log_weights=log_w,
         likelihoods=cloud.likelihoods[idx].copy(),
-        timestamps=(
-            None if cloud.timestamps is None else cloud.timestamps[idx].copy()
-        ),
+        timestamps=(None if cloud.timestamps is None else cloud.timestamps[idx].copy()),
         metadata={**cloud.metadata, "resized_to": n_new},
     )
 

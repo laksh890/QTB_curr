@@ -165,9 +165,7 @@ class ParticleFilterModel(StateSpaceModel):
         assert self.transition is not None
         z = np.asarray(observation, dtype=np.float64).reshape(1, -1)
         cloud0 = self._cloud
-        trace = run_filter(
-            z, self.transition, self._pf_settings, rng=self._rng, cloud0=cloud0
-        )
+        trace = run_filter(z, self.transition, self._pf_settings, rng=self._rng, cloud0=cloud0)
         self._cloud = trace.clouds[-1] if trace.clouds else cloud0
         if self._trace is None:
             self._trace = trace
@@ -351,9 +349,7 @@ class ParticleFilterModel(StateSpaceModel):
     def posterior(self) -> dict[str, Any]:
         self._require_fitted()
         assert self._cloud is not None
-        return posterior_summary(
-            self._cloud, level=self._pf_settings.forecasting.confidence_level
-        )
+        return posterior_summary(self._cloud, level=self._pf_settings.forecasting.confidence_level)
 
     def credible_interval(self, *, level: float | None = None, dim: int = 0) -> tuple[float, float]:
         self._require_fitted()
@@ -415,9 +411,7 @@ class ParticleFilterModel(StateSpaceModel):
             from iqrp.app.core.exceptions import ValidationError
 
             raise ValidationError("No observations for diagnostics", code="PF_NO_OBS")
-        return ParticleDiagnostics().report(
-            self.transition, self._trace, history=self._history
-        )
+        return ParticleDiagnostics().report(self.transition, self._trace, history=self._history)
 
     def save(self, path: Path | str) -> Path:
         return ParticleSerializer().save(self, Path(path))
@@ -570,8 +564,7 @@ class ParticleFilterModel(StateSpaceModel):
                     states=np.asarray(state["cloud_states"], dtype=np.float64),
                     log_weights=np.asarray(state["cloud_log_weights"], dtype=np.float64),
                     likelihoods=np.asarray(
-                        state.get("cloud_likelihoods")
-                        or np.ones(len(state["cloud_states"])),
+                        state.get("cloud_likelihoods") or np.ones(len(state["cloud_states"])),
                         dtype=np.float64,
                     ),
                 )

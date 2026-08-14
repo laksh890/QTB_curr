@@ -88,7 +88,11 @@ class SARIMAModel(StatisticalForecastModel):
         y_fit = self._regime_conditioned_y(y, regimes)
         s = int(self._s or self._stat_settings.order.seasonal_period)
         if self._stat_settings.identification.auto:
-            d = int(self._d if self._d is not None else suggest_differencing(y_fit, max_d=self._stat_settings.order.max_d))
+            d = int(
+                self._d
+                if self._d is not None
+                else suggest_differencing(y_fit, max_d=self._stat_settings.order.max_d)
+            )
             D = int(
                 self._D
                 if self._D is not None
@@ -121,7 +125,6 @@ class SARIMAModel(StatisticalForecastModel):
         self._intercept = fit.intercept
         # seasonal AR on residuals of nonseasonal
         if P > 0 and z.size > s * P + 5:
-            from iqrp.app.forecasting.statistical.base.fitting import fit_ar_ols
 
             # use every s-th lag of z
             zs = z[::1]
@@ -149,7 +152,9 @@ class SARIMAModel(StatisticalForecastModel):
             e = z - fitted_z
         recon = fitted_z
         if d:
-            recon = integrate(recon, seasonal_difference(y_fit, period=s, order=D) if D else y_fit, order=d)
+            recon = integrate(
+                recon, seasonal_difference(y_fit, period=s, order=D) if D else y_fit, order=d
+            )
         if D:
             hist_for_seas = y_fit if not d else y_fit
             recon = seasonal_integrate(recon, hist_for_seas, period=s, order=D)
@@ -169,13 +174,15 @@ class SARIMAModel(StatisticalForecastModel):
         )
         return self
 
-    def predict(
-        self, frame: pl.DataFrame, feature_columns: list[str] | None = None
-    ) -> np.ndarray:
+    def predict(self, frame: pl.DataFrame, feature_columns: list[str] | None = None) -> np.ndarray:
         self._require_fitted()
         # use stored fitted if same length else recompute via forecast of length 0 path
         tgt = self._target_column or self._stat_settings.columns.target
-        y = frame[tgt].to_numpy().astype(np.float64) if tgt in frame.columns else self._extract_target(frame, None)
+        y = (
+            frame[tgt].to_numpy().astype(np.float64)
+            if tgt in frame.columns
+            else self._extract_target(frame, None)
+        )
         if self._fitted_values is not None and self._fitted_values.size == y.size:
             return self._fitted_values.copy()
         # one-step recursive in-sample
@@ -219,7 +226,11 @@ class SARIMAModel(StatisticalForecastModel):
             path = integrate(path, base, order=d)
         if D:
             path = seasonal_integrate(path, self._y, period=s, order=D)
-        regime = frame[self._regime_column][-1] if self._regime_column and self._regime_column in frame.columns else None
+        regime = (
+            frame[self._regime_column][-1]
+            if self._regime_column and self._regime_column in frame.columns
+            else None
+        )
         return self._build_forecast(path, horizon=h, regime_used=regime)
 
     def _algorithm_state(self) -> dict[str, Any]:
@@ -257,7 +268,9 @@ class SARIMAModel(StatisticalForecastModel):
         self._intercept = float(state.get("intercept", 0.0))
         self._y = None if state.get("y") is None else np.asarray(state["y"], dtype=np.float64)
         self._residuals = (
-            None if state.get("residuals") is None else np.asarray(state["residuals"], dtype=np.float64)
+            None
+            if state.get("residuals") is None
+            else np.asarray(state["residuals"], dtype=np.float64)
         )
         self._fitted_values = (
             None if state.get("fitted") is None else np.asarray(state["fitted"], dtype=np.float64)

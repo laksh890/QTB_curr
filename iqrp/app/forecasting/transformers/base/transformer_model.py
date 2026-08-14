@@ -16,9 +16,20 @@ from iqrp.app.forecasting.base.metadata import TrainingMetadata
 from iqrp.app.forecasting.base.prediction import PredictionInterval
 from iqrp.app.forecasting.explainability.importance import ExplanationResult
 from iqrp.app.forecasting.neural.base.callbacks import History
-from iqrp.app.forecasting.neural.base.data import make_sequences, standardize_apply, standardize_fit, train_val_split
+from iqrp.app.forecasting.neural.base.data import (
+    make_sequences,
+    standardize_apply,
+    standardize_fit,
+    train_val_split,
+)
 from iqrp.app.forecasting.neural.base.metrics import evaluate_predictions
-from iqrp.app.forecasting.neural.base.torch_utils import count_parameters, from_tensor, has_torch, resolve_device, to_tensor
+from iqrp.app.forecasting.neural.base.torch_utils import (
+    count_parameters,
+    from_tensor,
+    has_torch,
+    resolve_device,
+    to_tensor,
+)
 from iqrp.app.forecasting.neural.probabilistic.quantiles import (
     extract_point_forecast,
     interval_from_prediction,
@@ -67,7 +78,9 @@ class TransformerForecastModel(ForecastModel):
         if not has_torch():
             from iqrp.app.core.exceptions import ValidationError
 
-            raise ValidationError("PyTorch is required for transformer forecasting", code="TX_NO_TORCH")
+            raise ValidationError(
+                "PyTorch is required for transformer forecasting", code="TX_NO_TORCH"
+            )
         tgt = self._resolve_target(frame, target_column)
         cols = self._resolve_feature_columns(frame, feature_columns)
         cols = [c for c in cols if c != tgt]
@@ -93,15 +106,21 @@ class TransformerForecastModel(ForecastModel):
         if Xs.shape[0] > max_ctx and self._tx_settings.forecast.sliding_context:
             Xs, y = Xs[-max_ctx:], y[-max_ctx:]
         X_seq, y_seq = make_sequences(Xs, y, lookback=self._lookback, horizon=self._horizon)
-        X_tr, y_tr, X_va, y_va = train_val_split(X_seq, y_seq, val_ratio=self._tx_settings.train.val_ratio)
+        X_tr, y_tr, X_va, y_va = train_val_split(
+            X_seq, y_seq, val_ratio=self._tx_settings.train.val_ratio
+        )
         task = self._tx_settings.task.type
         self._module = self._build_module(n_features=X.shape[1], task=task)
         trainer = TransformerTrainer(self._tx_settings)
         self._module, self._history = trainer.fit(self._module, X_tr, y_tr, X_va, y_va)
         self._device = trainer.device
         pred = trainer.predict(self._module, X_seq)
-        point = extract_point_forecast(pred, task=task, alphas=self._tx_settings.task.quantile_alphas)
-        self._residuals = y_seq.reshape(point.shape[0], -1)[:, 0] - point.reshape(point.shape[0], -1)[:, 0]
+        point = extract_point_forecast(
+            pred, task=task, alphas=self._tx_settings.task.quantile_alphas
+        )
+        self._residuals = (
+            y_seq.reshape(point.shape[0], -1)[:, 0] - point.reshape(point.shape[0], -1)[:, 0]
+        )
         self._X_seq, self._y_seq = X_seq, y_seq
         self._feature_columns = list(cols)
         self._target_column = tgt
@@ -133,9 +152,14 @@ class TransformerForecastModel(ForecastModel):
     ) -> TransformerForecastModel:
         mode = self._tx_settings.online.mode
         if not self._fitted or mode == "refit" or self._module is None:
-            return self.fit(frame, feature_columns, target_column=target_column, regime_column=regime_column)
+            return self.fit(
+                frame, feature_columns, target_column=target_column, regime_column=regime_column
+            )
         self._update_count += 1
-        if self._update_count % max(int(self._tx_settings.online.refresh_every), 1) == 0 and mode != "finetune":
+        if (
+            self._update_count % max(int(self._tx_settings.online.refresh_every), 1) == 0
+            and mode != "finetune"
+        ):
             return self.fit(
                 frame,
                 feature_columns or self._feature_columns,
@@ -152,7 +176,10 @@ class TransformerForecastModel(ForecastModel):
         s = TransformerSettings.from_mapping(
             {
                 **self._tx_settings.model_dump(),
-                "train": {**self._tx_settings.train.model_dump(), "epochs": self._tx_settings.online.finetune_epochs},
+                "train": {
+                    **self._tx_settings.train.model_dump(),
+                    "epochs": self._tx_settings.online.finetune_epochs,
+                },
             }
         )
         trainer = TransformerTrainer(s)
@@ -170,7 +197,9 @@ class TransformerForecastModel(ForecastModel):
         last = point[:, -1] if point.ndim == 2 else point.reshape(-1)
         return self._align_to_frame(last, frame.height)
 
-    def predict_proba(self, frame: pl.DataFrame, feature_columns: list[str] | None = None) -> np.ndarray:
+    def predict_proba(
+        self, frame: pl.DataFrame, feature_columns: list[str] | None = None
+    ) -> np.ndarray:
         self._require_fitted()
         if not self.meta.supports_proba:
             from iqrp.app.core.exceptions import ValidationError
@@ -209,14 +238,18 @@ class TransformerForecastModel(ForecastModel):
         else:
             path = point[-1, :h]
             if path.size < h:
-                path = np.pad(path, (0, h - path.size), constant_values=path[-1] if path.size else 0.0)
+                path = np.pad(
+                    path, (0, h - path.size), constant_values=path[-1] if path.size else 0.0
+                )
         lo, hi = interval_from_prediction(
             pred[-1:],
             task=self._tx_settings.task.type,
             alphas=self._tx_settings.task.quantile_alphas,
-            distribution=self._tx_settings.probabilistic.distribution
-            if self._tx_settings.probabilistic.distribution != "mixture"
-            else "gaussian",
+            distribution=(
+                self._tx_settings.probabilistic.distribution
+                if self._tx_settings.probabilistic.distribution != "mixture"
+                else "gaussian"
+            ),
         )
         lo_p = lo.reshape(-1)[:h] if lo.size else path - 1e-3
         hi_p = hi.reshape(-1)[:h] if hi.size else path + 1e-3
@@ -243,9 +276,11 @@ class TransformerForecastModel(ForecastModel):
             model_name=self.meta.name,
             model_version=self.meta.version,
             features_used=tuple(self._feature_columns),
-            regime_used=frame[self._regime_column].to_numpy()[-1]
-            if self._regime_column and self._regime_column in frame.columns
-            else None,
+            regime_used=(
+                frame[self._regime_column].to_numpy()[-1]
+                if self._regime_column and self._regime_column in frame.columns
+                else None
+            ),
             strategy="transformer",
             intervals=intervals,
             metadata={
@@ -306,7 +341,7 @@ class TransformerForecastModel(ForecastModel):
         if proba is None and self.meta.supports_proba:
             try:
                 proba = self.predict_proba(frame, feature_columns)
-            except Exception:  # noqa: BLE001  # pragma: no cover
+            except Exception:  # pragma: no cover
                 proba = None
         metrics = evaluate_predictions(
             y_true[-n:],
@@ -314,7 +349,9 @@ class TransformerForecastModel(ForecastModel):
             proba=None if proba is None else proba[-n:],
             task=self._tx_settings.task.type,
         )
-        return EvaluationReport(metrics=metrics, method=f"transformer_{self.architecture_name}", n_samples=n)
+        return EvaluationReport(
+            metrics=metrics, method=f"transformer_{self.architecture_name}", n_samples=n
+        )
 
     def explain(
         self,
@@ -351,7 +388,9 @@ class TransformerForecastModel(ForecastModel):
         cpu_mod = self._module.to("cpu")
         try:
             try:
-                torch.onnx.export(cpu_mod, dummy, str(path), input_names=["x"], output_names=["y"], dynamo=False)
+                torch.onnx.export(
+                    cpu_mod, dummy, str(path), input_names=["x"], output_names=["y"], dynamo=False
+                )
             except TypeError:
                 torch.onnx.export(cpu_mod, dummy, str(path), input_names=["x"], output_names=["y"])
         except Exception:
@@ -370,7 +409,9 @@ class TransformerForecastModel(ForecastModel):
 
         return run_transformer_diagnostics(self).to_dict()
 
-    def _predict_raw(self, frame: pl.DataFrame, feature_columns: list[str] | None = None) -> np.ndarray:
+    def _predict_raw(
+        self, frame: pl.DataFrame, feature_columns: list[str] | None = None
+    ) -> np.ndarray:
         assert self._module is not None and self._mu is not None and self._sd is not None
         cols = list(self._feature_columns)
         X = standardize_apply(frame.select(cols).to_numpy().astype(np.float64), self._mu, self._sd)
@@ -409,7 +450,9 @@ class TransformerForecastModel(ForecastModel):
             if attn is not None:
                 self._last_attn = from_tensor(attn)
 
-    def _last_window(self, frame: pl.DataFrame, feature_columns: list[str] | None = None) -> np.ndarray:
+    def _last_window(
+        self, frame: pl.DataFrame, feature_columns: list[str] | None = None
+    ) -> np.ndarray:
         cols = list(self._feature_columns)
         X = standardize_apply(frame.select(cols).to_numpy().astype(np.float64), self._mu, self._sd)  # type: ignore[arg-type]
         y_proxy = (
@@ -502,7 +545,9 @@ class TransformerForecastModel(ForecastModel):
             "y_seq": None if self._y_seq is None else self._y_seq.tolist(),
         }
         if self._module is not None and has_torch():
-            state["state_dict"] = {k: v.detach().cpu().tolist() for k, v in self._module.state_dict().items()}
+            state["state_dict"] = {
+                k: v.detach().cpu().tolist() for k, v in self._module.state_dict().items()
+            }
             state["n_features"] = len(self._feature_columns)
         return state
 
@@ -517,24 +562,31 @@ class TransformerForecastModel(ForecastModel):
         self._sd = None if state.get("sd") is None else np.asarray(state["sd"], dtype=np.float64)
         self._history = History.from_dict(state.get("history") or {})
         self._residuals = (
-            None if state.get("residuals") is None else np.asarray(state["residuals"], dtype=np.float64)
+            None
+            if state.get("residuals") is None
+            else np.asarray(state["residuals"], dtype=np.float64)
         )
         self._params_kw = dict(state.get("params_kw") or {})
         for k, v in (state.get("arch_kwargs") or {}).items():
             if k in {"d_model", "n_heads", "num_layers", "dropout"}:
                 self._params_kw.setdefault(k, v)
         self._update_count = int(state.get("update_count", 0))
-        self._X_seq = None if state.get("X_seq") is None else np.asarray(state["X_seq"], dtype=np.float64)
-        self._y_seq = None if state.get("y_seq") is None else np.asarray(state["y_seq"], dtype=np.float64)
+        self._X_seq = (
+            None if state.get("X_seq") is None else np.asarray(state["X_seq"], dtype=np.float64)
+        )
+        self._y_seq = (
+            None if state.get("y_seq") is None else np.asarray(state["y_seq"], dtype=np.float64)
+        )
         n_features = int(state.get("n_features") or max(len(self._feature_columns), 1))
         if has_torch() and state.get("state_dict") is not None:
             import torch
 
-            self._module = self._build_module(n_features=n_features, task=self._tx_settings.task.type)
+            self._module = self._build_module(
+                n_features=n_features, task=self._tx_settings.task.type
+            )
             sd = {k: torch.tensor(v) for k, v in state["state_dict"].items()}
             self._module.load_state_dict(sd)
             self._module.to(self._device)
 
     @abstractmethod
-    def _build_module(self, *, n_features: int, task: str) -> Any:
-        ...
+    def _build_module(self, *, n_features: int, task: str) -> Any: ...

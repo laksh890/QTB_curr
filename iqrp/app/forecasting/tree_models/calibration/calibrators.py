@@ -122,7 +122,7 @@ def _fit_isotonic(y: np.ndarray, p: np.ndarray) -> Calibrator:
     # merge violators
     w = np.ones(n)
     i = 0
-    blocks = list(range(n))
+    list(range(n))
     while i < len(y_hat) - 1:
         if y_hat[i] > y_hat[i + 1]:
             # merge

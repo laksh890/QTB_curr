@@ -14,8 +14,8 @@ from iqrp.app.execution import ExecutionEngine, ExecutionSettings, KillSwitch, S
 from iqrp.app.execution.algorithms.adaptive import AdaptiveAlgorithm
 from iqrp.app.execution.algorithms.arrival_price import ArrivalPriceAlgorithm
 from iqrp.app.execution.algorithms.base import (
-    ExecutionAlgorithm,
     ChildSlice,
+    ExecutionAlgorithm,
     apply_participation_cap,
     approved_quantity,
     context_float,
@@ -50,7 +50,7 @@ from iqrp.app.execution.order_manager.parent_order import ParentOrder
 from iqrp.app.execution.order_manager.position_reconciliation import PositionReconciler
 from iqrp.app.execution.phase12 import validate_phase12
 from iqrp.app.execution.serializer import _to_jsonable
-from iqrp.app.execution.simulation import simulate_fill_path, simulate_execution
+from iqrp.app.execution.simulation import simulate_execution, simulate_fill_path
 from iqrp.app.execution.slippage.liquidity import liquidity_slippage
 from iqrp.app.execution.slippage.market_impact import path_impact
 from iqrp.app.execution.slippage.realized import realized_slippage
@@ -64,7 +64,12 @@ from iqrp.app.execution.smart_routing.fallback import (
 )
 from iqrp.app.execution.smart_routing.liquidity import assess_liquidity
 from iqrp.app.execution.smart_routing.router import SmartRouter
-from iqrp.app.execution.smart_routing.scoring import VenueScore, score_venue, ScoreWeights, DEFAULT_WEIGHTS
+from iqrp.app.execution.smart_routing.scoring import (
+    DEFAULT_WEIGHTS,
+    ScoreWeights,
+    VenueScore,
+    score_venue,
+)
 from iqrp.app.execution.smart_routing.venue import Venue, VenueOrderRequest, as_venue
 from iqrp.app.execution.smart_routing.venue_state import VenueState
 from iqrp.app.execution.transaction_costs.commissions import commission_cost
@@ -218,6 +223,7 @@ def test_engine_validation_residual_route_reject_and_defaults(execution_settings
     eng8 = ExecutionEngine(settings=execution_settings, kill_switch=KillSwitch())
     # monkeypatch algorithm to return zero after residual clip
     with patch("iqrp.app.execution.engine.get_algorithm") as ga:
+
         class ZeroAlgo(ExecutionAlgorithm):
             name = "z"
 
@@ -268,7 +274,11 @@ def test_engine_state_transition_except_paths(execution_settings, market_context
     )
 
     def flaky2(new_state):
-        if new_state in {ExecutionState.PARTIALLY_EXECUTED, ExecutionState.COMPLETED, ExecutionState.FAILED}:
+        if new_state in {
+            ExecutionState.PARTIALLY_EXECUTED,
+            ExecutionState.COMPLETED,
+            ExecutionState.FAILED,
+        }:
             raise ExecutionError("x", code="X")
         eng2.state = new_state
 
@@ -445,7 +455,12 @@ def test_algo_remaining_branches():
                 [5, 5, 5],
                 [0, 1],
                 parent_qty=10,
-                market_context={"mid": 100, "spread": 0.02, "residual": 10, "approved_quantity": 10},
+                market_context={
+                    "mid": 100,
+                    "spread": 0.02,
+                    "residual": 10,
+                    "approved_quantity": 10,
+                },
                 limit_prices=[None],
                 metadata=[{}],
             )
@@ -472,7 +487,9 @@ def test_routing_allocation_fallback_cost_edges():
     }
     plan = allocate_quantity(0, scores, liq)
     assert plan.residual_qty == 0
-    plan2 = allocate_quantity(50, scores, liq, mode="single", lot_sizes={"A": 100}, min_qty={"A": 1})
+    plan2 = allocate_quantity(
+        50, scores, liq, mode="single", lot_sizes={"A": 100}, min_qty={"A": 1}
+    )
     assert plan2.total_allocated == 0 or plan2.residual_qty >= 0
     # multi top-up / min skip
     scores2 = [
@@ -528,19 +545,33 @@ def test_routing_allocation_fallback_cost_edges():
     # cost model branches
     v = Venue(
         venue_id="X",
-        state=VenueState(venue_id="X", mid=None, bid=None, ask=None, fee_bps=1, maker_fee_bps=0.5, taker_fee_bps=1),
+        state=VenueState(
+            venue_id="X",
+            mid=None,
+            bid=None,
+            ask=None,
+            fee_bps=1,
+            maker_fee_bps=0.5,
+            taker_fee_bps=1,
+        ),
     )
     estimate_venue_cost(v, side=Side.BUY, quantity=10, order_type=OrderType.LIMIT, price=100.0)
     estimate_venue_cost(v, side=Side.SELL, quantity=10, order_type=OrderType.POST_ONLY, price=100.0)
 
     # liquidity adv-only / available<=0 with adv
     assess_liquidity(
-        Venue(venue_id="L", state=VenueState(venue_id="L", available_qty=0, adv=1e6, liquidity_score=0.5)),
+        Venue(
+            venue_id="L",
+            state=VenueState(venue_id="L", available_qty=0, adv=1e6, liquidity_score=0.5),
+        ),
         instrument="AAPL",
         quantity=10,
     )
     assess_liquidity(
-        Venue(venue_id="L2", state=VenueState(venue_id="L2", available_qty=0, adv=0, liquidity_score=0.5)),
+        Venue(
+            venue_id="L2",
+            state=VenueState(venue_id="L2", available_qty=0, adv=0, liquidity_score=0.5),
+        ),
         instrument="AAPL",
         quantity=10,
     )
@@ -551,23 +582,47 @@ def test_routing_allocation_fallback_cost_edges():
     assert _price_on_tick(1.0, 0) is True
     assert _qty_on_lot(1.0, 0) is True
     # unsupported order type on venue
-    st = VenueState(venue_id="U", instruments={"AAPL"}, supported_order_types={"LIMIT"}, available_qty=1e6, adv=1e6, mid=100)
-    assert not SmartRouter().route(
-        Order(instrument="AAPL", side=Side.BUY, quantity=10, order_type=OrderType.MARKET),
-        [Venue(venue_id="U", state=st)],
-    ).accepted
+    st = VenueState(
+        venue_id="U",
+        instruments={"AAPL"},
+        supported_order_types={"LIMIT"},
+        available_qty=1e6,
+        adv=1e6,
+        mid=100,
+    )
+    assert (
+        not SmartRouter()
+        .route(
+            Order(instrument="AAPL", side=Side.BUY, quantity=10, order_type=OrderType.MARKET),
+            [Venue(venue_id="U", state=st)],
+        )
+        .accepted
+    )
     # invalid price on market with bad optional price
-    assert not SmartRouter().route(
-        {"instrument": "AAPL", "side": "BUY", "quantity": 10, "order_type": "MARKET", "price": float("nan")},
-        [SimulatedVenue(venue_id="S", instruments={"AAPL"}, mode="fill", mid=100)],
-    ).accepted
+    assert (
+        not SmartRouter()
+        .route(
+            {
+                "instrument": "AAPL",
+                "side": "BUY",
+                "quantity": 10,
+                "order_type": "MARKET",
+                "price": float("nan"),
+            },
+            [SimulatedVenue(venue_id="S", instruments={"AAPL"}, mode="fill", mid=100)],
+        )
+        .accepted
+    )
 
     # scoring edges
     from iqrp.app.execution.smart_routing import scoring as scmod
 
     w = ScoreWeights.from_mapping(DEFAULT_WEIGHTS)
     # empty peer prices / sell
-    v2 = Venue(venue_id="S", state=VenueState(venue_id="S", mid=100, available_qty=1e6, adv=1e6, latency_ms=5))
+    v2 = Venue(
+        venue_id="S",
+        state=VenueState(venue_id="S", mid=100, available_qty=1e6, adv=1e6, latency_ms=5),
+    )
     cost = estimate_venue_cost(v2, side=Side.SELL, quantity=10, order_type=OrderType.MARKET)
     li = assess_liquidity(v2, instrument="AAPL", quantity=10)
     score_venue(v2, cost=cost, liquidity=li, weights=w, is_buy=False, peer_prices=[])
@@ -580,7 +635,7 @@ def test_misc_serializer_phase_slippage_costs_lifecycle():
         value = "X"
 
     assert _to_jsonable([1, {"a": np.int64(2)}])
-    assert isinstance(_to_jsonable({"k": Path(".")}), dict)
+    assert isinstance(_to_jsonable({"k": Path()}), dict)
 
     # phase12 missing docs without write
     import iqrp.app.execution.phase12 as p12
@@ -611,7 +666,10 @@ def test_misc_serializer_phase_slippage_costs_lifecycle():
     liquidity_slippage(mid=0.0, quantity=1, adv=1)
     # path_impact analytic (sim None)
     with patch("iqrp.app.execution.slippage.market_impact.SimulationSlippageModel", None):
-        with patch("iqrp.app.execution.slippage.market_impact._load_simulation_slippage_model", return_value=None):
+        with patch(
+            "iqrp.app.execution.slippage.market_impact._load_simulation_slippage_model",
+            return_value=None,
+        ):
             path_impact([100.0, 101.0], [1e6, 1e6], [1.0, 1.0], [0.02, 0.02])
 
     realized_slippage([{"qty": 1, "price": 100}], side="sell", arrival_price=100)
@@ -628,13 +686,17 @@ def test_misc_serializer_phase_slippage_costs_lifecycle():
     o.state = OrderState.CREATED
     begin_cancel(o, audit=audit)  # pre-submit cancel
     assert o.state is OrderState.CANCELLED
-    o_bad = Order(instrument="AAPL", side=Side.BUY, quantity=10, order_type=OrderType.LIMIT, price=100)
+    o_bad = Order(
+        instrument="AAPL", side=Side.BUY, quantity=10, order_type=OrderType.LIMIT, price=100
+    )
     o_bad.state = OrderState.FILLED
     with pytest.raises(ExecutionError):
         begin_cancel(o_bad, audit=audit)
     o.state = OrderState.ACKNOWLEDGED
     # already cancelled — use fresh
-    o_ack = Order(instrument="AAPL", side=Side.BUY, quantity=10, order_type=OrderType.LIMIT, price=100)
+    o_ack = Order(
+        instrument="AAPL", side=Side.BUY, quantity=10, order_type=OrderType.LIMIT, price=100
+    )
     o_ack.state = OrderState.ACKNOWLEDGED
     begin_cancel(o_ack, audit=audit, reason="r")
     begin_cancel(o_ack, audit=audit, reason="r")  # CANCEL_PENDING idempotent
@@ -644,7 +706,9 @@ def test_misc_serializer_phase_slippage_costs_lifecycle():
     with pytest.raises(ExecutionError):
         build_replacement(o2, ReplaceRequest(order_id=o2.order_id, quantity=5), audit=audit)
     # replace qty <= 0 after fills
-    o3r = Order(instrument="AAPL", side=Side.BUY, quantity=10, order_type=OrderType.LIMIT, price=100)
+    o3r = Order(
+        instrument="AAPL", side=Side.BUY, quantity=10, order_type=OrderType.LIMIT, price=100
+    )
     o3r.state = OrderState.PARTIALLY_FILLED
     o3r.filled_qty = 10
     with pytest.raises(ExecutionError):
@@ -667,11 +731,15 @@ def test_misc_serializer_phase_slippage_costs_lifecycle():
     assert _signed_slippage_bps("buy", 0.0, 100.0) == 0.0
 
     # simulation rescale + sell path
-    simulate_fill_path(side="sell", quantity=100, mid=100, adv=1, participation=0.001, n_slices=3, seed=0)
+    simulate_fill_path(
+        side="sell", quantity=100, mid=100, adv=1, participation=0.001, n_slices=3, seed=0
+    )
     simulate_execution(side="buy", quantity=0, use_market_simulator=False)
 
     # config default when file missing
-    with patch("iqrp.app.execution.config._default_config_path", return_value=Path("/no/such/file.yaml")):
+    with patch(
+        "iqrp.app.execution.config._default_config_path", return_value=Path("/no/such/file.yaml")
+    ):
         ES.default()
 
     # types Side.parse LONG, strategy kill message
@@ -683,7 +751,11 @@ def test_misc_serializer_phase_slippage_costs_lifecycle():
     # venue sell fill via bid
     sim = SimulatedVenue(venue_id="S", instruments={"AAPL"}, mode="fill", mid=100, spread=0.02)
     sim.get_state().ask = None
-    sim.submit(VenueOrderRequest(instrument="AAPL", side=Side.SELL, quantity=1, order_type=OrderType.MARKET))
+    sim.submit(
+        VenueOrderRequest(
+            instrument="AAPL", side=Side.SELL, quantity=1, order_type=OrderType.MARKET
+        )
+    )
     # no mid/bid/ask → price fallback
     sim2 = SimulatedVenue(venue_id="S2", instruments={"AAPL"}, mode="fill", mid=100)
     sim2.get_state().mid = None
@@ -707,7 +779,9 @@ def test_misc_serializer_phase_slippage_costs_lifecycle():
 
     # OM validate ValidationError path (not just RuntimeError)
     om = OrderManager(ExecutionSettings(seed=42))
-    order = om.create_order(instrument="AAPL", side=Side.BUY, quantity=1, order_type="LIMIT", price=100)
+    order = om.create_order(
+        instrument="AAPL", side=Side.BUY, quantity=1, order_type="LIMIT", price=100
+    )
     with patch.object(om.validator, "validate", side_effect=ValidationError("x", code="Y")):
         with pytest.raises(ValidationError):
             om.validate_and_approve(order.order_id)

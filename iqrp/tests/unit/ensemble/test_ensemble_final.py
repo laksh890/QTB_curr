@@ -9,13 +9,13 @@ import polars as pl
 import pytest
 
 from iqrp.app.regimes.ensemble.calibration import Calibrator
-from iqrp.app.regimes.ensemble.config import EnsembleSettings
 from iqrp.app.regimes.ensemble.confidence import posterior_confidence
+from iqrp.app.regimes.ensemble.config import EnsembleSettings
 from iqrp.app.regimes.ensemble.model import EnsembleRegimeModel
 from iqrp.app.regimes.ensemble.orchestrator import member_log_likelihoods
 from iqrp.app.regimes.ensemble.registry import EnsembleRegistry
 from iqrp.app.regimes.ensemble.weighting import compute_weights
-from iqrp.tests.unit.ensemble.test_ensemble_core import _StubRegimeA, _StubRegimeB  # noqa: F401
+from iqrp.tests.unit.ensemble.test_ensemble_core import _StubRegimeA, _StubRegimeB
 
 
 def _settings(**kw: object) -> EnsembleSettings:
@@ -42,7 +42,9 @@ def _settings(**kw: object) -> EnsembleSettings:
 @pytest.mark.unit
 def test_final_lines(tmp_path: Path) -> None:
     assert posterior_confidence(np.array([0.2, 0.8])).shape[0] == 1
-    frame = pl.DataFrame({"close": np.linspace(1, 3, 50), "f1": np.random.default_rng(0).normal(size=50)})
+    frame = pl.DataFrame(
+        {"close": np.linspace(1, 3, 50), "f1": np.random.default_rng(0).normal(size=50)}
+    )
     # empty discovery_modules but stubs already registered
     model = EnsembleRegimeModel(settings=_settings(), random_seed=1)
     model.fit(frame, feature_columns=["close", "f1"])

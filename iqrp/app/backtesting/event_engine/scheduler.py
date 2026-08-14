@@ -2,9 +2,10 @@
 
 from __future__ import annotations
 
+from collections.abc import Callable, Mapping
 from dataclasses import dataclass, field
 from datetime import datetime, timedelta
-from typing import Any, Callable, Mapping
+from typing import Any
 from uuid import uuid4
 
 from iqrp.app.backtesting.event_engine.clock import BacktestClock

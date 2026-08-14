@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-from typing import Any
-
 import numpy as np
 
 from iqrp.app.risk.capital.config import CapitalSettings
@@ -39,7 +37,7 @@ def build_strategy_allocations(
     rb = risk_budgets or {}
     if not rb and n:
         share = 1.0 / n
-        rb = {nm: share for nm in names}
+        rb = dict.fromkeys(names, share)
 
     out: dict[str, StrategyAllocation] = {}
     for i, nm in enumerate(names):

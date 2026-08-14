@@ -2,9 +2,10 @@
 
 from __future__ import annotations
 
+from collections.abc import Sequence
 from dataclasses import dataclass, field
-from datetime import datetime, timezone
-from typing import Any, Literal, Sequence
+from datetime import UTC, datetime
+from typing import Any, Literal
 
 import numpy as np
 
@@ -21,7 +22,7 @@ TriggerKind = Literal[
 
 
 def _utc_now() -> str:
-    return datetime.now(timezone.utc).isoformat()
+    return datetime.now(UTC).isoformat()
 
 
 def _as_w(x: Any, n: int | None = None) -> np.ndarray:
@@ -124,9 +125,7 @@ def apply_rebalance_bands(
 
     for i in range(n):
         band = abs_band + rel_band * abs(float(tgt[i]))
-        if abs(float(trades[i])) <= band + 1e-15:
-            trades[i] = 0.0
-        elif abs(float(trades[i])) < min_t:
+        if abs(float(trades[i])) <= band + 1e-15 or abs(float(trades[i])) < min_t:
             trades[i] = 0.0
     return trades
 
@@ -243,9 +242,7 @@ def evaluate_triggers(
     )
 
     if force:
-        triggers.append(
-            RebalanceTrigger(kind="manual", fired=True, reason="forced rebalance")
-        )
+        triggers.append(RebalanceTrigger(kind="manual", fired=True, reason="forced rebalance"))
 
     return triggers
 
@@ -300,8 +297,10 @@ def plan_rebalance(
         name_list = [f"a{i}" for i in range(n)]
 
     # If drift_threshold not set, use absolute band as drift trigger
-    d_thr = drift_threshold if drift_threshold is not None else (
-        band_obj.absolute if band_obj.absolute > 0 else None
+    d_thr = (
+        drift_threshold
+        if drift_threshold is not None
+        else (band_obj.absolute if band_obj.absolute > 0 else None)
     )
 
     triggers = evaluate_triggers(
@@ -334,7 +333,8 @@ def plan_rebalance(
         )
         # If all trades zeroed by bands but a hard trigger fired, allow full trade
         if float(np.sum(np.abs(trades))) < 1e-15 and any(
-            t.fired and t.kind in ("risk", "drawdown", "regime", "manual", "scheduled") for t in triggers
+            t.fired and t.kind in ("risk", "drawdown", "regime", "manual", "scheduled")
+            for t in triggers
         ):
             trades = tgt - cur
             if band_obj.min_trade > 0:

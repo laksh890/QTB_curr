@@ -6,8 +6,9 @@ eligible venue after a failure (reject, timeout, halt, etc.).
 
 from __future__ import annotations
 
+from collections.abc import Iterable
 from dataclasses import dataclass, field
-from typing import Any, Iterable
+from typing import Any
 
 from iqrp.app.execution.smart_routing.scoring import VenueScore
 from iqrp.app.execution.smart_routing.venue import Venue
@@ -127,8 +128,8 @@ def select_fallback(
 
 
 __all__ = [
-    "FallbackStep",
     "FallbackChain",
+    "FallbackStep",
     "build_fallback_chain",
     "select_fallback",
 ]

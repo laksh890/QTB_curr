@@ -2,7 +2,8 @@
 
 from __future__ import annotations
 
-from typing import Any, Mapping, Sequence
+from collections.abc import Mapping, Sequence
+from typing import Any
 
 
 class IsolatedPortfolioFallback:
@@ -53,7 +54,9 @@ class IsolatedPortfolioFallback:
     ) -> dict[str, float]:
         if isinstance(weights, Mapping):
             return {str(k): float(v) for k, v in weights.items()}
-        name_list = list(names) if names is not None else [f"a{i}" for i in range(len(list(weights)))]
+        name_list = (
+            list(names) if names is not None else [f"a{i}" for i in range(len(list(weights)))]
+        )
         return {str(n): float(w) for n, w in zip(name_list, weights)}
 
 
@@ -64,7 +67,7 @@ class PortfolioConstructionAdapter:
         self.backend = IsolatedPortfolioFallback.name
         self._prod = None
         try:
-            from iqrp.app.portfolio import (  # noqa: F401
+            from iqrp.app.portfolio import (
                 PortfolioConstructionEngine,
                 build_target_weights,
                 signals_to_raw_weights,
@@ -76,7 +79,7 @@ class PortfolioConstructionAdapter:
                 "PortfolioConstructionEngine": PortfolioConstructionEngine,
             }
             self.backend = "iqrp.app.portfolio"
-        except Exception:  # noqa: BLE001
+        except Exception:
             self._prod = None
             self.backend = IsolatedPortfolioFallback.name
 
@@ -114,26 +117,22 @@ class PortfolioConstructionAdapter:
                     return {str(n): float(w) for n, w in zip(tw.names, tw.weights)}
                 if isinstance(tw, Mapping):  # pragma: no cover
                     return {str(k): float(v) for k, v in tw.items()}
-        except Exception:  # noqa: BLE001  # pragma: no cover
+        except Exception:  # pragma: no cover
             self.backend = IsolatedPortfolioFallback.name
         raw = IsolatedPortfolioFallback.signals_to_raw_weights(
             signals, budget=budget, long_only=long_only
         )
-        return IsolatedPortfolioFallback.build_target_weights(
-            raw["weights"], names=raw["names"]
-        )
+        return IsolatedPortfolioFallback.build_target_weights(raw["weights"], names=raw["names"])
 
     def targets_from_weights(self, weights: Mapping[str, float]) -> dict[str, float]:
         try:
             if self._prod is not None:
-                tw = self._prod["build_target_weights"](
-                    dict(weights), source="backtest_runner"
-                )
+                tw = self._prod["build_target_weights"](dict(weights), source="backtest_runner")
                 if hasattr(tw, "as_dict"):
                     return {str(k): float(v) for k, v in tw.as_dict().items()}
                 if hasattr(tw, "weights") and hasattr(tw, "names"):
                     return {str(n): float(w) for n, w in zip(tw.names, tw.weights)}
-        except Exception:  # noqa: BLE001
+        except Exception:
             self.backend = IsolatedPortfolioFallback.name
         return IsolatedPortfolioFallback.build_target_weights(weights)
 
@@ -253,7 +252,7 @@ class ExecutionSimulationAdapter:
 
             self._engine = ExecutionEngine()
             self.backend = "iqrp.app.execution.ExecutionEngine"
-        except Exception:  # noqa: BLE001
+        except Exception:
             self._engine = None
             self.backend = IsolatedExecutionFallback.name
 
@@ -285,7 +284,9 @@ class ExecutionSimulationAdapter:
                     else:
                         d = {
                             "instrument": getattr(o, "instrument", ""),
-                            "side": getattr(getattr(o, "side", None), "value", getattr(o, "side", "buy")),
+                            "side": getattr(
+                                getattr(o, "side", None), "value", getattr(o, "side", "buy")
+                            ),
                             "quantity": float(getattr(o, "quantity", 0.0) or 0.0),
                             "order_type": "market",
                             "order_id": getattr(o, "order_id", None),
@@ -301,7 +302,7 @@ class ExecutionSimulationAdapter:
                     out.append(d)
                 if out:
                     return out
-        except Exception:  # noqa: BLE001  # pragma: no cover
+        except Exception:  # pragma: no cover
             self.backend = IsolatedExecutionFallback.name
 
         return IsolatedExecutionFallback.plan_from_targets(
@@ -321,8 +322,10 @@ class ExecutionSimulationAdapter:
         # production engine expects Order objects and may reject dict specs.
         try:
             if self._engine is not None and orders and hasattr(orders[0], "instrument"):
-                return dict(self._engine.estimate_costs(list(orders), market_context=market_context))
-        except Exception:  # noqa: BLE001  # pragma: no cover
+                return dict(
+                    self._engine.estimate_costs(list(orders), market_context=market_context)
+                )
+        except Exception:  # pragma: no cover
             self.backend = IsolatedExecutionFallback.name
         return IsolatedExecutionFallback.estimate_costs(
             orders,
@@ -358,7 +361,9 @@ class ExecutionSimulationAdapter:
                     fills = list(row.get("fills") or [])
                     qty = float(row.get("filled_qty", row.get("quantity", 0.0)) or 0.0)
                     if qty <= 0 and fills:
-                        qty = float(sum(float(f.get("quantity", f.get("qty", 0.0)) or 0.0) for f in fills))
+                        qty = float(
+                            sum(float(f.get("quantity", f.get("qty", 0.0)) or 0.0) for f in fills)
+                        )
                     px = float(row.get("exec_vwap", row.get("price", 0.0)) or 0.0)
                     if px <= 0 and fills:
                         px = float(fills[0].get("price", fills[0].get("fill_price", 0.0)) or 0.0)
@@ -397,7 +402,7 @@ class ExecutionSimulationAdapter:
                     )
                 if normalized:
                     return {"orders": normalized, "n": len(normalized), "backend": self.backend}
-        except Exception:  # noqa: BLE001
+        except Exception:
             self.backend = IsolatedExecutionFallback.name
 
         return IsolatedExecutionFallback.simulate_execution(

@@ -20,13 +20,16 @@ def herfindahl(weights: Any) -> RiskMeasure:
         shares = np.zeros_like(abs_w)
     else:
         shares = abs_w / total
-    value = float(np.sum(shares ** 2))
+    value = float(np.sum(shares**2))
     return RiskMeasure(
         name="herfindahl",
         value=value,
         unit="index",
         method="hhi",
-        parameters={"n_assets": int(w.size), "effective_n": float(1.0 / value) if value > 0 else 0.0},
+        parameters={
+            "n_assets": int(w.size),
+            "effective_n": float(1.0 / value) if value > 0 else 0.0,
+        },
     )
 
 

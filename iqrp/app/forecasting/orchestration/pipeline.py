@@ -72,7 +72,9 @@ class ForecastingPipeline:
             if fit:
                 self._encoders = enc
         cols, tgt = self.trainer.resolve_columns(
-            out, list(s.columns.feature_columns) if s.columns.feature_columns else None, s.columns.target
+            out,
+            list(s.columns.feature_columns) if s.columns.feature_columns else None,
+            s.columns.target,
         )
         if not cols:
             return out

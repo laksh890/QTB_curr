@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-from typing import Any
-
 import numpy as np
 
 from iqrp.app.forecasting.intelligence.blending import blend_predictions
@@ -12,7 +10,9 @@ from iqrp.app.forecasting.intelligence.gating import moe_combine
 from iqrp.app.forecasting.intelligence.stacking import stack_predictions
 
 
-def weighted_average(preds: dict[str, np.ndarray], weights: dict[str, float] | None = None) -> np.ndarray:
+def weighted_average(
+    preds: dict[str, np.ndarray], weights: dict[str, float] | None = None
+) -> np.ndarray:
     names = list(preds)
     if not names:
         return np.asarray([])
@@ -43,7 +43,9 @@ def bayesian_model_averaging(
 ) -> np.ndarray:
     # convert errors to weights via softmax(-score/T)
     names = list(preds)
-    logits = np.asarray([-float(scores.get(n, 1e6)) / max(temperature, 1e-6) for n in names], dtype=np.float64)
+    logits = np.asarray(
+        [-float(scores.get(n, 1e6)) / max(temperature, 1e-6) for n in names], dtype=np.float64
+    )
     logits -= logits.max()
     w = np.exp(logits)
     w = w / w.sum()
@@ -54,7 +56,13 @@ def voting_ensemble(preds: dict[str, np.ndarray], *, threshold: float = 0.0) -> 
     """Majority vote on sign / binary direction."""
     if not preds:
         return np.asarray([])
-    stack = np.stack([(np.asarray(v, dtype=np.float64).reshape(-1) > threshold).astype(float) for v in preds.values()], axis=0)
+    stack = np.stack(
+        [
+            (np.asarray(v, dtype=np.float64).reshape(-1) > threshold).astype(float)
+            for v in preds.values()
+        ],
+        axis=0,
+    )
     return (stack.mean(axis=0) >= 0.5).astype(np.float64)
 
 
@@ -87,7 +95,7 @@ def build_ensemble(
     if method == "median":
         return median_ensemble(preds)
     if method == "bma":
-        return bayesian_model_averaging(preds, scores or {n: 1.0 for n in preds})
+        return bayesian_model_averaging(preds, scores or dict.fromkeys(preds, 1.0))
     if method == "voting":
         return voting_ensemble(preds)
     if method == "stacking":
@@ -97,7 +105,9 @@ def build_ensemble(
     if method == "moe":
         return moe_combine(preds, gate_weights=gate_weights)
     if method == "dynamic":
-        return dynamic_ensemble_selection(preds, scores or {n: 1.0 for n in preds}, top_k=config.top_k)
+        return dynamic_ensemble_selection(
+            preds, scores or dict.fromkeys(preds, 1.0), top_k=config.top_k
+        )
     # weighted default — invert rmse-like scores
     if scores:
         inv = {n: 1.0 / max(float(scores.get(n, 1.0)), 1e-6) for n in preds}

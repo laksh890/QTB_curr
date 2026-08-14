@@ -15,7 +15,6 @@ from dataclasses import dataclass, field
 from datetime import UTC, datetime
 from typing import Any, Literal
 
-
 SignalDirection = Literal["long_short", "long_only", "short_only", "neutral"]
 ExpectedRelationship = Literal["positive", "negative", "nonmonotonic", "unknown"]
 SignalType = Literal[

@@ -2,7 +2,8 @@
 
 from __future__ import annotations
 
-from typing import Any, Mapping, Sequence
+from collections.abc import Mapping, Sequence
+from typing import Any
 
 import numpy as np
 
@@ -47,7 +48,12 @@ def hierarchical_correlation_clusters(
     labs, mat = _corr_matrix_from_input(corr, labels)
     n = len(labs)
     if n == 0:
-        return {"name": "hierarchical_correlation_clusters", "clusters": [], "labels": [], "assignment": {}}
+        return {
+            "name": "hierarchical_correlation_clusters",
+            "clusters": [],
+            "labels": [],
+            "assignment": {},
+        }
 
     dist = correlation_distance(mat)
     # start with each signal its own cluster

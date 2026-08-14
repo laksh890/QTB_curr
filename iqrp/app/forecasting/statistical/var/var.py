@@ -10,8 +10,16 @@ import polars as pl
 from iqrp.app.forecasting.base.forecast import Forecast
 from iqrp.app.forecasting.base.metadata import ForecastModelMeta
 from iqrp.app.forecasting.base.registry import register_forecast_model
-from iqrp.app.forecasting.statistical.base.fitting import forecast_var, fit_var_ols, information_criteria
-from iqrp.app.forecasting.statistical.base.multivariate import fevd, granger_causality, impulse_response
+from iqrp.app.forecasting.statistical.base.fitting import (
+    fit_var_ols,
+    forecast_var,
+    information_criteria,
+)
+from iqrp.app.forecasting.statistical.base.multivariate import (
+    fevd,
+    granger_causality,
+    impulse_response,
+)
 from iqrp.app.forecasting.statistical.base.selection import select_var_lags
 from iqrp.app.forecasting.statistical.base.statistical_model import StatisticalForecastModel
 
@@ -37,7 +45,9 @@ class VARModel(StatisticalForecastModel):
         self._sigma = np.eye(1)
         self._Y: np.ndarray | None = None
 
-    def _endog_matrix(self, frame: pl.DataFrame, feature_columns: list[str] | None) -> tuple[np.ndarray, list[str]]:
+    def _endog_matrix(
+        self, frame: pl.DataFrame, feature_columns: list[str] | None
+    ) -> tuple[np.ndarray, list[str]]:
         names = list(feature_columns or [])
         if not names:
             endog = self._stat_settings.columns.endogenous
@@ -107,9 +117,7 @@ class VARModel(StatisticalForecastModel):
         self._residuals = resid_full[:, 0]
         return self
 
-    def predict(
-        self, frame: pl.DataFrame, feature_columns: list[str] | None = None
-    ) -> np.ndarray:
+    def predict(self, frame: pl.DataFrame, feature_columns: list[str] | None = None) -> np.ndarray:
         self._require_fitted()
         Y, _ = self._endog_matrix(frame, feature_columns or self._endog_names)
         assert self._coefs is not None
@@ -137,7 +145,11 @@ class VARModel(StatisticalForecastModel):
         assert self._Y is not None and self._coefs is not None
         path_m = forecast_var(self._Y, self._coefs, self._intercept, horizon=h)
         path = path_m[:, 0]
-        regime = frame[self._regime_column][-1] if self._regime_column and self._regime_column in frame.columns else None
+        regime = (
+            frame[self._regime_column][-1]
+            if self._regime_column and self._regime_column in frame.columns
+            else None
+        )
         fc = self._build_forecast(path, horizon=h, regime_used=regime)
         fc.metadata["multivariate_path"] = path_m.tolist()
         return fc
@@ -178,13 +190,17 @@ class VARModel(StatisticalForecastModel):
 
     def _load_algorithm_state(self, state: dict[str, Any]) -> None:
         self._p = state.get("p")
-        self._coefs = None if state.get("coefs") is None else np.asarray(state["coefs"], dtype=np.float64)
+        self._coefs = (
+            None if state.get("coefs") is None else np.asarray(state["coefs"], dtype=np.float64)
+        )
         self._intercept = np.asarray(state.get("intercept") or [0.0], dtype=np.float64)
         self._sigma = np.asarray(state.get("sigma") or [[1.0]], dtype=np.float64)
         self._Y = None if state.get("Y") is None else np.asarray(state["Y"], dtype=np.float64)
         self._endog_names = list(state.get("endog_names") or [])
         self._residuals = (
-            None if state.get("residuals") is None else np.asarray(state["residuals"], dtype=np.float64)
+            None
+            if state.get("residuals") is None
+            else np.asarray(state["residuals"], dtype=np.float64)
         )
         self._fitted_values = (
             None if state.get("fitted") is None else np.asarray(state["fitted"], dtype=np.float64)

@@ -6,11 +6,13 @@ import builtins
 import sys
 from datetime import UTC, datetime
 from pathlib import Path
+from types import SimpleNamespace
 
 import numpy as np
 import pandas as pd
 import pytest
 
+from iqrp.app.backtesting.accounting import CapitalState
 from iqrp.app.backtesting.data import (
     AdjustmentMethod,
     ContinuousContractBuilder,
@@ -22,17 +24,19 @@ from iqrp.app.backtesting.data import (
 from iqrp.app.backtesting.data.schema import infer_frequency, normalize_frame
 from iqrp.app.backtesting.data.synthetic import generate_synthetic_ohlcv, write_synthetic_ohlcv
 from iqrp.app.backtesting.data.universe import UniverseKind, UniverseSpec, resolve_universe
+from iqrp.app.backtesting.runner import BacktestRunConfig, BacktestRunner
 from iqrp.app.backtesting.runner.adapters import (
     ExecutionSimulationAdapter,
     PortfolioConstructionAdapter,
 )
-from iqrp.app.backtesting.runner import BacktestRunConfig, BacktestRunner
-from iqrp.app.backtesting.runner.lifecycle import Lifecycle, RunnerLifecycleState, map_runner_to_engine
+from iqrp.app.backtesting.runner.lifecycle import (
+    Lifecycle,
+    RunnerLifecycleState,
+    map_runner_to_engine,
+)
 from iqrp.app.backtesting.runner.result import OperationalBacktestResult
 from iqrp.app.backtesting.runner.validation import integrity_validate
-from iqrp.app.backtesting.accounting import CapitalState
 from iqrp.app.backtesting.strategy import BuyAndHoldStrategy
-from types import SimpleNamespace
 
 
 def test_portfolio_execution_import_failure(monkeypatch):
@@ -62,7 +66,9 @@ def test_portfolio_execution_import_failure(monkeypatch):
             raise ImportError("blocked execution")
         return real_import(name, globals, locals, fromlist, level)
 
-    saved2 = {k: sys.modules.pop(k) for k in list(sys.modules) if k.startswith("iqrp.app.execution")}
+    saved2 = {
+        k: sys.modules.pop(k) for k in list(sys.modules) if k.startswith("iqrp.app.execution")
+    }
     monkeypatch.setattr(builtins, "__import__", blocker_exec)
     try:
         exe = ExecutionSimulationAdapter()
@@ -195,9 +201,7 @@ def test_schema_more():
     s = pd.Series([pd.Timestamp("2020-01-01", tz="UTC")])
     infer_frequency(s)
     # irregular
-    s2 = pd.to_datetime(
-        ["2020-01-01", "2020-01-02", "2020-01-10", "2020-02-01"], utc=True
-    )
+    s2 = pd.to_datetime(["2020-01-01", "2020-01-02", "2020-01-10", "2020-02-01"], utc=True)
     infer_frequency(s2)
     # normalize with duplicate rename collision path
     df = pd.DataFrame(
@@ -291,9 +295,7 @@ def test_integrity_exception_and_lifecycle_same(tmp_path: Path, registered_strat
 def test_validator_gap_warning_and_build_report():
     v = DatasetValidator()
     # Create intentional gaps > 4 days
-    ts = pd.to_datetime(
-        ["2020-01-01", "2020-01-02", "2020-01-20", "2020-01-21"], utc=True
-    )
+    ts = pd.to_datetime(["2020-01-01", "2020-01-02", "2020-01-20", "2020-01-21"], utc=True)
     df = pd.DataFrame(
         {
             "timestamp": ts,

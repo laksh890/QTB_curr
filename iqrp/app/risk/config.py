@@ -104,10 +104,12 @@ class RiskSettings(BaseModel):
             if hasattr(data, "items") and not isinstance(data, dict):
                 data = OmegaConf.to_container(data, resolve=True)
             return cls.model_validate(dict(data or {}))
-        except Exception as exc:  # noqa: BLE001
+        except Exception as exc:
             from iqrp.app.core.exceptions import ConfigurationError
 
-            raise ConfigurationError(f"Invalid risk settings: {exc}", code="RISK_CONFIG_INVALID") from exc
+            raise ConfigurationError(
+                f"Invalid risk settings: {exc}", code="RISK_CONFIG_INVALID"
+            ) from exc
 
     @classmethod
     def from_hydra(

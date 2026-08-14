@@ -9,6 +9,8 @@ from unittest import mock
 import numpy as np
 import pytest
 
+from iqrp.app.alpha.backtesting.portfolio_backtest import portfolio_backtest
+from iqrp.app.alpha.backtesting.signal_backtest import signal_backtest, signal_to_weights
 from iqrp.app.alpha.base.alpha_signal import AlphaSignal
 from iqrp.app.alpha.base.signal_definition import SignalDefinition
 from iqrp.app.alpha.base.signal_registry import SignalRegistry
@@ -18,7 +20,46 @@ from iqrp.app.alpha.base.signal_result import (
     SignalScore,
     SignalStatus,
 )
+from iqrp.app.alpha.discovery.alternative import alternative_zscore_signal, apply_publication_lag
+from iqrp.app.alpha.discovery.cross_sectional import (
+    cross_sectional_rank_signal,
+    cross_sectional_zscore_signal,
+    long_short_spread,
+)
+from iqrp.app.alpha.discovery.event_based import event_impulse_signal, surprise_signal
+from iqrp.app.alpha.discovery.statistical import screen_features
+from iqrp.app.alpha.discovery.symbolic import evaluate_expression, rank as sym_rank, rolling_apply
+from iqrp.app.alpha.discovery.time_series import (
+    mean_reversion_signal,
+    trend_signal,
+    volatility_signal,
+    volume_signal,
+)
+from iqrp.app.alpha.economics.transaction_costs import estimate_transaction_cost
 from iqrp.app.alpha.engine import AlphaResearchEngine, ApprovalError
+from iqrp.app.alpha.ensemble.clustering import (
+    hierarchical_correlation_clusters,
+    representative_per_cluster,
+)
+from iqrp.app.alpha.ensemble.correlation import signal_correlation_matrix
+from iqrp.app.alpha.ensemble.signal_combination import (
+    combine_from_metrics,
+    combine_signals,
+    majority_sign_combine,
+)
+from iqrp.app.alpha.ensemble.weighting import normalize_weights, signal_quality_score
+from iqrp.app.alpha.monitoring.alerts import build_alpha_alerts
+from iqrp.app.alpha.monitoring.performance_decay import (
+    monitor_performance_decay,
+    performance_decay_score,
+)
+from iqrp.app.alpha.monitoring.retirement import evaluate_retirement
+from iqrp.app.alpha.monitoring.signal_decay import (
+    estimate_ic_half_life,
+    ic_decay_curve,
+    rolling_ic,
+)
+from iqrp.app.alpha.monitoring.signal_drift import concept_drift_ic, monitor_signal_drift
 from iqrp.app.alpha.ranking import rank_candidates
 from iqrp.app.alpha.regime.conditional_alpha import (
     compare_unconditional_vs_conditional,
@@ -32,40 +73,14 @@ from iqrp.app.alpha.regime.regime_performance import (
     regime_performance,
     regime_returns,
 )
-from iqrp.app.alpha.monitoring.retirement import evaluate_retirement
-from iqrp.app.alpha.monitoring.signal_decay import (
-    estimate_ic_half_life,
-    ic_decay_curve,
-    rolling_ic,
-)
+from iqrp.app.alpha.research.decay import analyze_decay, forward_returns
 from iqrp.app.alpha.research.evaluator import SignalEvaluator
-from iqrp.app.alpha.discovery.cross_sectional import (
-    cross_sectional_rank_signal,
-    cross_sectional_zscore_signal,
-    long_short_spread,
-)
-from iqrp.app.alpha.discovery.time_series import (
-    mean_reversion_signal,
-    trend_signal,
-    volatility_signal,
-    volume_signal,
-)
-from iqrp.app.alpha.discovery.event_based import event_impulse_signal, surprise_signal
-from iqrp.app.alpha.discovery.alternative import apply_publication_lag, alternative_zscore_signal
-from iqrp.app.alpha.discovery.statistical import screen_features
-from iqrp.app.alpha.discovery.symbolic import evaluate_expression, rank as sym_rank, rolling_apply
-from iqrp.app.alpha.backtesting.signal_backtest import signal_backtest, signal_to_weights
-from iqrp.app.alpha.backtesting.portfolio_backtest import portfolio_backtest
-from iqrp.app.alpha.ensemble.clustering import hierarchical_correlation_clusters, representative_per_cluster
-from iqrp.app.alpha.ensemble.correlation import signal_correlation_matrix
-from iqrp.app.alpha.ensemble.signal_combination import combine_from_metrics, combine_signals, majority_sign_combine
-from iqrp.app.alpha.ensemble.weighting import normalize_weights, signal_quality_score
-from iqrp.app.alpha.monitoring.alerts import build_alpha_alerts
-from iqrp.app.alpha.monitoring.performance_decay import monitor_performance_decay, performance_decay_score
-from iqrp.app.alpha.monitoring.signal_drift import concept_drift_ic, monitor_signal_drift
-from iqrp.app.alpha.economics.transaction_costs import estimate_transaction_cost
+from iqrp.app.alpha.serializer import _to_jsonable
 from iqrp.app.alpha.statistical_validation.bootstrap import block_bootstrap_ci, iid_bootstrap_ci
-from iqrp.app.alpha.statistical_validation.multiple_testing import _local_adjust_pvalues, _resolve_adjust_pvalues
+from iqrp.app.alpha.statistical_validation.multiple_testing import (
+    _local_adjust_pvalues,
+    _resolve_adjust_pvalues,
+)
 from iqrp.app.alpha.statistical_validation.permutation import permutation_ic_test
 from iqrp.app.alpha.statistical_validation.probability_backtest_overfitting import (
     probability_backtest_overfitting,
@@ -75,9 +90,6 @@ from iqrp.app.alpha.statistical_validation.significance import (
     newey_west_ic_significance,
     newey_west_variance,
 )
-from iqrp.app.alpha.research.decay import analyze_decay, forward_returns
-from iqrp.app.alpha.serializer import _to_jsonable
-
 
 HYP = "Slow incorporation of public information creates short-horizon continuation research candidates."
 
@@ -96,7 +108,9 @@ def test_conditional_alpha_panel_paths(panel: np.ndarray, rng: np.random.Generat
     conditional_alpha_profile(panel, fwd, {})
     with pytest.raises(ValueError):
         regime_gated_signal(panel, np.array(["a"] * 5), ["a"])
-    gated = regime_gated_signal(panel, np.array(["a", "b"] * (panel.shape[0] // 2)), ["a"], inactive_value=0.0)
+    gated = regime_gated_signal(
+        panel, np.array(["a", "b"] * (panel.shape[0] // 2)), ["a"], inactive_value=0.0
+    )
     assert gated.shape == panel.shape
     compare_unconditional_vs_conditional(panel, fwd, np.array(["a", "b"] * (panel.shape[0] // 2)))
 
@@ -218,9 +232,18 @@ def test_engine_approve_stub_report_and_evidence(
     # approve with NO report → stub creation path: clear report after attaching evidence then...
     rec2 = eng.register(
         SignalDefinition(
-            name="stub2", version="1.0.0", formula="x", features=("r",), lookback=5,
-            horizon=1, universe="u", frequency="1d", direction="long_short",
-            expected_relationship="positive", economic_hypothesis=HYP, owner="r",
+            name="stub2",
+            version="1.0.0",
+            formula="x",
+            features=("r",),
+            lookback=5,
+            horizon=1,
+            universe="u",
+            frequency="1d",
+            direction="long_short",
+            expected_relationship="positive",
+            economic_hypothesis=HYP,
+            owner="r",
         ),
         signal=sig,
     )
@@ -230,8 +253,11 @@ def test_engine_approve_stub_report_and_evidence(
     eng.registry.attach_report(
         rec2.experiment_id,
         SignalResearchReport(
-            signal_name="stub2", version="1.0.0", status=SignalStatus.CANDIDATE,
-            economic_hypothesis=HYP, diagnostics={"bootstrap": {"ok": True}},
+            signal_name="stub2",
+            version="1.0.0",
+            status=SignalStatus.CANDIDATE,
+            economic_hypothesis=HYP,
+            diagnostics={"bootstrap": {"ok": True}},
         ),
     )
     # Manually clear report after evidence check by monkeypatching _has_validation_evidence
@@ -252,10 +278,14 @@ def test_engine_approve_stub_report_and_evidence(
         eng.approve(rec2.experiment_id, reason="IC validation + economic hypothesis")
 
     # validate with tiny pnl
-    eng.validate(np.array([1.0, np.nan]), np.array([0.0, 0.0]), n_trials=5, returns_are_forward=True)
+    eng.validate(
+        np.array([1.0, np.nan]), np.array([0.0, 0.0]), n_trials=5, returns_are_forward=True
+    )
 
 
-def test_signal_decay_half_life_and_rank(signal: np.ndarray, returns: np.ndarray, fwd: np.ndarray) -> None:
+def test_signal_decay_half_life_and_rank(
+    signal: np.ndarray, returns: np.ndarray, fwd: np.ndarray
+) -> None:
     rolling_ic(signal, fwd, window=40, rank=True)
     # shape mismatch
     with pytest.raises(ValueError):
@@ -276,7 +306,9 @@ def test_evaluator_nan_signal_path(returns: np.ndarray) -> None:
     ev.evaluate(AlphaSignal(values=returns, name="r"), returns)
 
 
-def test_discovery_error_and_edge_branches(returns: np.ndarray, panel: np.ndarray, rng: np.random.Generator) -> None:
+def test_discovery_error_and_edge_branches(
+    returns: np.ndarray, panel: np.ndarray, rng: np.random.Generator
+) -> None:
     with pytest.raises(ValueError):
         mean_reversion_signal(returns, lookback=0)
     prices = 100 * np.cumprod(1 + returns)
@@ -325,7 +357,9 @@ def test_backtest_ann_sharpe_and_modes(rng: np.random.Generator) -> None:
     # empty / zero vol returns for ann sharpe
     signal_backtest(np.ones(5), np.zeros(5), cost_bps=0.0)
     w = np.ones((20, 2)) / 2
-    portfolio_backtest(w, rng.normal(0, 0.01, size=(20, 2)), cost_bps=0.0, returns_are_forward=False)
+    portfolio_backtest(
+        w, rng.normal(0, 0.01, size=(20, 2)), cost_bps=0.0, returns_are_forward=False
+    )
     portfolio_backtest(np.zeros((0, 2)), np.zeros((0, 2)))
 
 
@@ -375,7 +409,7 @@ def test_stat_val_edge_branches(rng: np.random.Generator) -> None:
     # lazy getattr remaining
     import iqrp.app.alpha.statistical_validation as sv
 
-    sv.probability_backtest_overfitting
+    _ = sv.probability_backtest_overfitting
 
 
 def test_phase11_doc_and_symbol_fail_paths(tmp_path: Path) -> None:
@@ -390,9 +424,7 @@ def test_phase11_doc_and_symbol_fail_paths(tmp_path: Path) -> None:
         report = phase11.validate_phase11(write_stubs=False)
         assert report["status"] == "FAIL"
     # missing symbol
-    fake2 = phase11.ComponentCheck(
-        "Fake2", "x", "iqrp.app.alpha", "NotARealSymbolXYZ", docs=[]
-    )
+    fake2 = phase11.ComponentCheck("Fake2", "x", "iqrp.app.alpha", "NotARealSymbolXYZ", docs=[])
     with mock.patch.object(phase11, "PHASE11_COMPONENTS", [fake2]):
         with mock.patch.object(phase11, "REQUIRED_DOCS", []):
             report2 = phase11.validate_phase11(write_stubs=False)
@@ -409,17 +441,17 @@ def test_serializer_enum_and_model_dump() -> None:
 
 
 def test_cs_and_econ_remaining(panel: np.ndarray, sectors: np.ndarray) -> None:
-    from iqrp.app.alpha.cross_section.ranking import cross_sectional_rank, winsorize_cross_section
+    from iqrp.app.alpha.cross_section.factor_adjustment import factor_exposure_summary
     from iqrp.app.alpha.cross_section.neutralization import demean_by_group, neutralize_weighted
+    from iqrp.app.alpha.cross_section.ranking import cross_sectional_rank, winsorize_cross_section
     from iqrp.app.alpha.cross_section.sector_adjustment import (
         cap_weighted_sector_neutral,
         industry_neutralize,
         sector_neutral_zscore,
     )
-    from iqrp.app.alpha.cross_section.factor_adjustment import factor_exposure_summary
     from iqrp.app.alpha.economics.capacity import estimate_capacity
-    from iqrp.app.alpha.economics.slippage import slippage_bps
     from iqrp.app.alpha.economics.market_impact import market_impact_bps
+    from iqrp.app.alpha.economics.slippage import slippage_bps
     from iqrp.app.alpha.economics.turnover import turnover_series
 
     cross_sectional_rank(np.asarray([[1.0]]), pct=True)
@@ -439,12 +471,12 @@ def test_cs_and_econ_remaining(panel: np.ndarray, sectors: np.ndarray) -> None:
 
 
 def test_research_decay_and_info_edges(rng: np.random.Generator) -> None:
-    from iqrp.app.alpha.research.information_coefficient import rolling_ic as ric
-    from iqrp.app.alpha.research.rank_ic import compute_rank_ic
     from iqrp.app.alpha.research.hit_rate import compute_hit_rate
+    from iqrp.app.alpha.research.information_coefficient import rolling_ic as ric
     from iqrp.app.alpha.research.persistence import autocorrelation, signal_half_life
-    from iqrp.app.alpha.research.seasonality import analyze_seasonality
     from iqrp.app.alpha.research.predictor import SignalPredictor
+    from iqrp.app.alpha.research.rank_ic import compute_rank_ic
+    from iqrp.app.alpha.research.seasonality import analyze_seasonality
 
     s = rng.normal(size=100)
     r = rng.normal(size=100)

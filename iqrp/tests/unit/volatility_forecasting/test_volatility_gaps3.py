@@ -10,8 +10,7 @@ import pytest
 
 from iqrp.app.forecasting.volatility import create_volatility_model
 from iqrp.app.forecasting.volatility.base.processes import simulate_dcc, to_returns_frame
-from iqrp.app.forecasting.volatility.multivariate import bekk as bekk_mod
-from iqrp.app.forecasting.volatility.multivariate import dcc_garch as dcc_mod
+from iqrp.app.forecasting.volatility.multivariate import bekk as bekk_mod, dcc_garch as dcc_mod
 
 
 @pytest.mark.unit

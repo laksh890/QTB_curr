@@ -6,7 +6,10 @@ from typing import Any, Literal
 
 import numpy as np
 
-from iqrp.app.risk.market.correlation import covariance_matrix, shrinkage_covariance as risk_shrinkage
+from iqrp.app.risk.market.correlation import (
+    covariance_matrix,
+    shrinkage_covariance as risk_shrinkage,
+)
 
 __VERSION__ = "1.0.0"
 

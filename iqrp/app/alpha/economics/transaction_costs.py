@@ -12,7 +12,7 @@ import numpy as np
 
 try:
     from iqrp.app.portfolio.transaction_costs import total_transaction_cost as _portfolio_tc
-except Exception:  # noqa: BLE001 — optional integration
+except Exception:
     _portfolio_tc = None
 
 
@@ -66,6 +66,6 @@ def estimate_transaction_cost(
             )
             out["source"] = "portfolio"
             return out
-        except Exception:  # noqa: BLE001
+        except Exception:
             pass
     return _local_cost(weights_old, weights_new, capital=capital, cost_bps=cost_bps)

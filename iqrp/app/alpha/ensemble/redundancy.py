@@ -2,7 +2,8 @@
 
 from __future__ import annotations
 
-from typing import Any, Mapping, Sequence
+from collections.abc import Mapping, Sequence
+from typing import Any
 
 import numpy as np
 
@@ -133,8 +134,7 @@ def redundancy_report(
     suggested: list[str] = []
     # suggest dropping the lower-|mean| member of each high-corr pair
     means = {
-        k: float(np.nanmean(np.abs(np.asarray(v, dtype=np.float64))))
-        for k, v in signals.items()
+        k: float(np.nanmean(np.abs(np.asarray(v, dtype=np.float64)))) for k, v in signals.items()
     }
     for p in pairs:
         drop = p["a"] if means.get(p["a"], 0) < means.get(p["b"], 0) else p["b"]

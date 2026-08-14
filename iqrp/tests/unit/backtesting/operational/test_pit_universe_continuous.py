@@ -56,9 +56,9 @@ def test_ensure_effective_rejects_leak():
     frame = generate_synthetic_ohlcv(n_days=5, instruments=["A"], seed=1)
     frame = ensure_effective_timestamps(frame)
     bad = frame.copy()
-    bad.loc[bad.index[0], "effective_timestamp"] = bad.loc[bad.index[0], "timestamp"] + pd.Timedelta(
-        days=1
-    )
+    bad.loc[bad.index[0], "effective_timestamp"] = bad.loc[
+        bad.index[0], "timestamp"
+    ] + pd.Timedelta(days=1)
     with pytest.raises(LookaheadViolation):
         ensure_effective_timestamps(bad)
     with pytest.raises(ValueError):
@@ -70,7 +70,11 @@ def test_universe_helpers():
     assert resolve_universe(instrument_list(["AAA", "BBB"])) == ["AAA", "BBB"]
 
     membership = [
-        {"instrument": "AAA", "start": datetime(2020, 1, 1, tzinfo=UTC), "end": datetime(2020, 2, 1, tzinfo=UTC)},
+        {
+            "instrument": "AAA",
+            "start": datetime(2020, 1, 1, tzinfo=UTC),
+            "end": datetime(2020, 2, 1, tzinfo=UTC),
+        },
         {"instrument": "BBB", "start": datetime(2020, 1, 15, tzinfo=UTC), "end": None},
     ]
     hist = historical_universe(membership)
@@ -101,14 +105,22 @@ def test_universe_helpers():
 def test_filter_universe_membership_dataframe():
     df = pd.DataFrame(
         [
-            {"instrument": "AAA", "start": datetime(2020, 1, 1, tzinfo=UTC), "end": datetime(2020, 3, 1, tzinfo=UTC)},
+            {
+                "instrument": "AAA",
+                "start": datetime(2020, 1, 1, tzinfo=UTC),
+                "end": datetime(2020, 3, 1, tzinfo=UTC),
+            },
             {"symbol": "BBB", "start": datetime(2020, 2, 1, tzinfo=UTC), "end": pd.NaT},
         ]
     )
     # second row uses symbol — helper should handle mixed via column pick
     df2 = pd.DataFrame(
         [
-            {"instrument": "AAA", "start": datetime(2020, 1, 1, tzinfo=UTC), "end": datetime(2020, 3, 1, tzinfo=UTC)},
+            {
+                "instrument": "AAA",
+                "start": datetime(2020, 1, 1, tzinfo=UTC),
+                "end": datetime(2020, 3, 1, tzinfo=UTC),
+            },
             {"instrument": "BBB", "start": datetime(2020, 2, 1, tzinfo=UTC), "end": pd.NaT},
         ]
     )

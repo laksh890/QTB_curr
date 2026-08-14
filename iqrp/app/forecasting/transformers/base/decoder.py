@@ -9,12 +9,14 @@ from iqrp.app.forecasting.transformers.attention.multihead import MultiHeadAtten
 
 try:
     from torch import nn
-except Exception:  # noqa: BLE001  # pragma: no cover
+except Exception:  # pragma: no cover
     nn = object  # type: ignore[assignment]
 
 
 class TransformerDecoderLayer(nn.Module if has_torch() else object):  # type: ignore[misc]
-    def __init__(self, d_model: int, n_heads: int = 4, ffn_dim: int = 128, dropout: float = 0.1) -> None:
+    def __init__(
+        self, d_model: int, n_heads: int = 4, ffn_dim: int = 128, dropout: float = 0.1
+    ) -> None:
         if has_torch():
             super().__init__()
         self.self_attn = MultiHeadAttention(d_model, n_heads, dropout)
@@ -48,7 +50,10 @@ class TransformerDecoder(nn.Module if has_torch() else object):  # type: ignore[
         if has_torch():
             super().__init__()
         self.layers = nn.ModuleList(
-            [TransformerDecoderLayer(d_model, n_heads, ffn_dim, dropout) for _ in range(max(num_layers, 1))]
+            [
+                TransformerDecoderLayer(d_model, n_heads, ffn_dim, dropout)
+                for _ in range(max(num_layers, 1))
+            ]
         )
 
     def forward(self, x: Any, memory: Any, tgt_mask: Any = None, mem_mask: Any = None) -> Any:

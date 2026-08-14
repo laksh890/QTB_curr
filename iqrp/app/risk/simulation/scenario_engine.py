@@ -60,7 +60,7 @@ class ScenarioEngine:
             else:
                 mu = mean if mean is not None else np.array([float(np.mean(as_returns(r)))])
                 sig = float(np.std(as_returns(r), ddof=1)) if as_returns(r).size > 1 else 0.0
-                c = cov if cov is not None else np.array([[sig ** 2]])
+                c = cov if cov is not None else np.array([[sig**2]])
             sim = correlated_monte_carlo(
                 mu, c, n_simulations=self.n_simulations, horizon=self.horizon, seed=self.seed
             )

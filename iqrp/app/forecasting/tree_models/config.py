@@ -166,7 +166,7 @@ class TreeSettings(BaseModel):
             if hasattr(data, "items") and not isinstance(data, dict):
                 data = OmegaConf.to_container(data, resolve=True)
             return cls.model_validate(dict(data or {}))
-        except Exception as exc:  # noqa: BLE001
+        except Exception as exc:
             from iqrp.app.core.exceptions import ConfigurationError
 
             raise ConfigurationError(
@@ -197,4 +197,10 @@ class TreeSettings(BaseModel):
 
 
 def _default_config_path() -> Path:
-    return Path(__file__).resolve().parents[3] / "configs" / "forecasting" / "tree_models" / "default.yaml"
+    return (
+        Path(__file__).resolve().parents[3]
+        / "configs"
+        / "forecasting"
+        / "tree_models"
+        / "default.yaml"
+    )

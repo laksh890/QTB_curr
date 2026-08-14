@@ -16,8 +16,8 @@ ensure_volatility_models_loaded()
 
 __all__ = [
     "VolatilitySettings",
-    "VolatilityTrainer",
     "VolatilityTrainResult",
+    "VolatilityTrainer",
     "create_volatility_model",
     "ensure_volatility_models_loaded",
     "list_volatility_models",

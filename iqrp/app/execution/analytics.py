@@ -8,7 +8,8 @@ CRITICAL RULES
 
 from __future__ import annotations
 
-from typing import Any, Mapping, Sequence
+from collections.abc import Mapping, Sequence
+from typing import Any
 
 
 def _fill_qty(f: Mapping[str, Any]) -> float:
@@ -129,9 +130,7 @@ def execution_quality_report(
 ) -> dict[str, Any]:
     """Compose a post-trade execution quality report."""
     vwap, filled = _vwap(fills)
-    is_report = implementation_shortfall(
-        side=side, arrival_price=arrival_price, fills=fills
-    )
+    is_report = implementation_shortfall(side=side, arrival_price=arrival_price, fills=fills)
     arr = arrival_slippage(side=side, arrival_price=arrival_price, fills=fills)
     fr = fill_rate(ordered_qty=ordered_qty, filled_qty=filled)
     report: dict[str, Any] = {

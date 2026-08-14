@@ -88,7 +88,7 @@ def johansen_trace(
     Z = Z[mask]
     T = Z.shape[0]
     k = max(int(lag), 1)
-    if T < 30 + k:
+    if 30 + k > T:
         return AnalysisResult(
             method="johansen_trace",
             value="insufficient_data",
@@ -112,7 +112,7 @@ def johansen_trace(
     for i in range(1, k + 1):
         cols.append(dZ[k - i : k - i + rows, 0])
         cols.append(dZ[k - i : k - i + rows, 1])
-    X = np.column_stack(cols)
+    np.column_stack(cols)
     # residuals from dy ~ X without Z_lag (restricted) and with — Johansen uses
     # R0t = residuals of dY on lags only; R1t = residuals of Y_{t-1} on lags only
     X_lags = np.column_stack([np.ones(rows)] + cols[3:])

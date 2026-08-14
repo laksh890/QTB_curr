@@ -49,9 +49,11 @@ def market_impact_cost(
         "name": "market_impact_cost",
         "total": float(qty * px),
         "impact_px": px,
-        "impact_bps": float(impact["slippage_bps"])
-        if not include_permanent
-        else float(px / max(float(mid), 1e-12) * 1e4),
+        "impact_bps": (
+            float(impact["slippage_bps"])
+            if not include_permanent
+            else float(px / max(float(mid), 1e-12) * 1e4)
+        ),
         "temporary_impact": float(impact["temporary_impact"]),
         "permanent_impact": float(impact["permanent_impact"]),
         "participation": float(impact["participation"]),

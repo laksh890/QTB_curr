@@ -9,17 +9,17 @@ import numpy as np
 from iqrp.app.backtesting.performance.returns import as_returns, wealth_index
 
 __all__ = [
+    "average_drawdown",
+    "average_drawdown_duration",
+    "drawdown_episodes",
     "drawdown_series",
     "max_drawdown",
-    "average_drawdown",
-    "drawdown_episodes",
     "max_drawdown_duration",
-    "average_drawdown_duration",
-    "recovery_time",
-    "ulcer_index",
     "pain_index",
-    "time_underwater",
+    "recovery_time",
     "summarize_drawdown",
+    "time_underwater",
+    "ulcer_index",
 ]
 
 
@@ -117,7 +117,7 @@ def ulcer_index(returns: Any) -> float:
     dd = drawdown_series(returns)
     if dd.size == 0:
         return 0.0
-    return float(np.sqrt(np.mean(dd ** 2)))
+    return float(np.sqrt(np.mean(dd**2)))
 
 
 def pain_index(returns: Any) -> float:

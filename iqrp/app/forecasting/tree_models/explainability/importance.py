@@ -73,10 +73,9 @@ def shap_values(
             if isinstance(vals, list):
                 vals = vals[-1]
             return np.asarray(vals, dtype=np.float64)
-    except Exception:  # noqa: BLE001
+    except Exception:
         pass
     return _kernel_shap_approx(estimator, X, background=background)
-
 
 
 def shap_interaction_values(estimator: Any, X: np.ndarray, *, max_rows: int = 50) -> np.ndarray:
@@ -137,9 +136,15 @@ def decision_paths(estimator: Any, X: np.ndarray, *, max_rows: int = 5) -> list[
             node_indicator = tree.decision_path(X)
             for i in range(X.shape[0]):
                 nodes = node_indicator[i].indices.tolist()
-                paths.append({"row": i, "nodes": nodes, "prediction": float(estimator_predict(estimator, X[i : i + 1])[0])})
+                paths.append(
+                    {
+                        "row": i,
+                        "nodes": nodes,
+                        "prediction": float(estimator_predict(estimator, X[i : i + 1])[0]),
+                    }
+                )
             return paths
-        except Exception:  # noqa: BLE001
+        except Exception:
             pass
     for i in range(X.shape[0]):
         paths.append(

@@ -7,7 +7,7 @@ when specified). Statistical significance of a formula alone ≠ alpha.
 
 from __future__ import annotations
 
-from typing import Callable
+from collections.abc import Callable
 
 import numpy as np
 from scipy import stats  # type: ignore[import-untyped]
@@ -140,7 +140,9 @@ def rank(x: np.ndarray, window: int | None = None) -> np.ndarray:
         vals = chunk[finite_idx]
         ranks = stats.rankdata(vals, method="average")
         # rank of the last finite observation in the window (current bar if finite)
-        last_pos = int(np.where(finite_idx == len(chunk) - 1)[0][0]) if np.isfinite(chunk[-1]) else -1
+        last_pos = (
+            int(np.where(finite_idx == len(chunk) - 1)[0][0]) if np.isfinite(chunk[-1]) else -1
+        )
         if last_pos < 0:
             continue
         out[t] = (ranks[last_pos] - 1.0) / max(len(vals) - 1, 1)

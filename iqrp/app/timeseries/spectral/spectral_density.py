@@ -81,8 +81,12 @@ def period_from_frequency(
         periods_samples = np.where(np.abs(f) > 1e-15, fs / f, np.inf)
     return AnalysisResult(
         method="period_from_frequency",
-        value={"period": periods if periods.size > 1 else float(periods[0]),
-               "period_samples": periods_samples if periods_samples.size > 1 else float(periods_samples[0])},
+        value={
+            "period": periods if periods.size > 1 else float(periods[0]),
+            "period_samples": (
+                periods_samples if periods_samples.size > 1 else float(periods_samples[0])
+            ),
+        },
         temporal_mode=TemporalMode.FULL_SAMPLE,
         parameters={"sample_rate": fs},
         metadata={"frequencies": f.tolist()},

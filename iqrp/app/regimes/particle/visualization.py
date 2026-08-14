@@ -41,7 +41,9 @@ def _line_plot(
         hi_b = np.asarray(bands[1], dtype=np.float64).reshape(-1)[:max_n]
         if lo_b.size and hi_b.size:
             all_vals = (
-                np.concatenate([all_vals, lo_b, hi_b]) if all_vals.size else np.concatenate([lo_b, hi_b])
+                np.concatenate([all_vals, lo_b, hi_b])
+                if all_vals.size
+                else np.concatenate([lo_b, hi_b])
             )
     if all_vals.size == 0:
         path.write_text(
@@ -77,7 +79,9 @@ def _line_plot(
     for idx, (v, name) in enumerate(cleaned):
         if not v.size:
             continue
-        pts = [f"{_xy(i, float(val))[0]:.1f},{_xy(i, float(val))[1]:.1f}" for i, val in enumerate(v)]
+        pts = [
+            f"{_xy(i, float(val))[0]:.1f},{_xy(i, float(val))[1]:.1f}" for i, val in enumerate(v)
+        ]
         col = colors[idx % len(colors)]
         parts.append(
             f'<polyline fill="none" stroke="{col}" stroke-width="1.5" points="{" ".join(pts)}"/>'

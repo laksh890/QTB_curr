@@ -12,10 +12,10 @@ from iqrp.app.regimes.particle import (
     filter_bootstrap,
     simulate_nonlinear,
 )
-from iqrp.app.regimes.particle.resampling import adaptive_resample
 from iqrp.app.regimes.particle.particle import ParticleCloud
-from iqrp.app.simulation.stochastic.ou import OrnsteinUhlenbeck
+from iqrp.app.regimes.particle.resampling import adaptive_resample
 from iqrp.app.simulation.stochastic.jump_diffusion import MertonJumpDiffusion
+from iqrp.app.simulation.stochastic.ou import OrnsteinUhlenbeck
 
 
 def _settings(**kw: object) -> ParticleSettings:

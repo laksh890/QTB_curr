@@ -115,7 +115,7 @@ def _row_norm(p: np.ndarray) -> np.ndarray:
 def _fit_temperature(p: np.ndarray, y: np.ndarray) -> float:
     try:
         from scipy.optimize import minimize_scalar
-    except Exception:  # noqa: BLE001
+    except Exception:
         return 1.0
 
     def nll(t: float) -> float:
@@ -130,7 +130,7 @@ def _fit_temperature(p: np.ndarray, y: np.ndarray) -> float:
 
     try:
         res = minimize_scalar(nll, bounds=(0.05, 10.0), method="bounded")
-    except Exception:  # noqa: BLE001
+    except Exception:
         return 1.0
     return float(res.x) if getattr(res, "success", False) else 1.0
 
@@ -138,7 +138,7 @@ def _fit_temperature(p: np.ndarray, y: np.ndarray) -> float:
 def _fit_platt(conf: np.ndarray, correct: np.ndarray) -> tuple[float, float]:
     try:
         from scipy.optimize import minimize
-    except Exception:  # noqa: BLE001
+    except Exception:
         return 1.0, 0.0
 
     def loss(theta: np.ndarray) -> float:
@@ -181,9 +181,7 @@ def _isotonic(y: np.ndarray) -> np.ndarray:
     return level
 
 
-def _isotonic_predict(
-    conf: np.ndarray, x: np.ndarray | None, y: np.ndarray | None
-) -> np.ndarray:
+def _isotonic_predict(conf: np.ndarray, x: np.ndarray | None, y: np.ndarray | None) -> np.ndarray:
     if x is None or y is None or x.size == 0:
         return np.clip(conf, 0.0, 1.0)
     return np.interp(conf, x, y, left=float(y[0]), right=float(y[-1]))

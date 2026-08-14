@@ -37,21 +37,101 @@ class ComponentCheck:
 
 
 PHASE09_COMPONENTS: list[ComponentCheck] = [
-    ComponentCheck("Risk Framework", "framework", "iqrp.app.risk", "RiskIntelligenceEngine", ["RiskFramework.md"]),
-    ComponentCheck("Position Sizing Engine", "sizing", "iqrp.app.risk.sizing", "volatility_target_size", ["PositionSizing.md"]),
-    ComponentCheck("Portfolio Risk Engine", "portfolio", "iqrp.app.risk.portfolio", "portfolio_risk", ["RiskFramework.md"]),
+    ComponentCheck(
+        "Risk Framework",
+        "framework",
+        "iqrp.app.risk",
+        "RiskIntelligenceEngine",
+        ["RiskFramework.md"],
+    ),
+    ComponentCheck(
+        "Position Sizing Engine",
+        "sizing",
+        "iqrp.app.risk.sizing",
+        "volatility_target_size",
+        ["PositionSizing.md"],
+    ),
+    ComponentCheck(
+        "Portfolio Risk Engine",
+        "portfolio",
+        "iqrp.app.risk.portfolio",
+        "portfolio_risk",
+        ["RiskFramework.md"],
+    ),
     ComponentCheck("VaR Engine", "tail", "iqrp.app.risk.tail", "historical_var", ["VaR.md"]),
-    ComponentCheck("CVaR Engine", "tail", "iqrp.app.risk.tail", "historical_cvar", ["ExpectedShortfall.md"]),
-    ComponentCheck("Stress Testing Engine", "stress", "iqrp.app.risk.stress", "historical_stress", ["StressTesting.md"]),
-    ComponentCheck("Scenario Analysis", "stress", "iqrp.app.risk.stress.scenarios", "ScenarioSpec", ["StressTesting.md"]),
-    ComponentCheck("Monte Carlo Risk Engine", "simulation", "iqrp.app.risk.simulation", "parametric_monte_carlo", ["MonteCarloRisk.md"]),
-    ComponentCheck("Correlation & Dependency Engine", "market", "iqrp.app.risk.market", "correlation_matrix", ["RiskFramework.md"]),
-    ComponentCheck("Kelly & Capital Allocation", "capital", "iqrp.app.risk.capital", "CapitalAllocator", ["CapitalAllocation.md", "PositionSizing.md"]),
-    ComponentCheck("Dynamic Leverage Engine", "leverage", "iqrp.app.risk.leverage", "recommended_leverage", ["RiskFramework.md"]),
-    ComponentCheck("Risk Limits Engine", "limits", "iqrp.app.risk.limits", "check_all_limits", ["RiskLimits.md"]),
-    ComponentCheck("Risk Intelligence Ensemble", "ensemble", "iqrp.app.risk.ensemble", "RiskIntelligenceEnsemble", ["RiskEnsemble.md", "RiskDecision.md", "RiskStateMachine.md", "RiskScoring.md"]),
-    ComponentCheck("Risk Budgeting", "capital", "iqrp.app.risk.capital", "build_risk_budgets", ["RiskBudgeting.md"]),
-    ComponentCheck("Capacity Management", "capital", "iqrp.app.risk.capital", "estimate_capacity", ["CapacityManagement.md"]),
+    ComponentCheck(
+        "CVaR Engine", "tail", "iqrp.app.risk.tail", "historical_cvar", ["ExpectedShortfall.md"]
+    ),
+    ComponentCheck(
+        "Stress Testing Engine",
+        "stress",
+        "iqrp.app.risk.stress",
+        "historical_stress",
+        ["StressTesting.md"],
+    ),
+    ComponentCheck(
+        "Scenario Analysis",
+        "stress",
+        "iqrp.app.risk.stress.scenarios",
+        "ScenarioSpec",
+        ["StressTesting.md"],
+    ),
+    ComponentCheck(
+        "Monte Carlo Risk Engine",
+        "simulation",
+        "iqrp.app.risk.simulation",
+        "parametric_monte_carlo",
+        ["MonteCarloRisk.md"],
+    ),
+    ComponentCheck(
+        "Correlation & Dependency Engine",
+        "market",
+        "iqrp.app.risk.market",
+        "correlation_matrix",
+        ["RiskFramework.md"],
+    ),
+    ComponentCheck(
+        "Kelly & Capital Allocation",
+        "capital",
+        "iqrp.app.risk.capital",
+        "CapitalAllocator",
+        ["CapitalAllocation.md", "PositionSizing.md"],
+    ),
+    ComponentCheck(
+        "Dynamic Leverage Engine",
+        "leverage",
+        "iqrp.app.risk.leverage",
+        "recommended_leverage",
+        ["RiskFramework.md"],
+    ),
+    ComponentCheck(
+        "Risk Limits Engine",
+        "limits",
+        "iqrp.app.risk.limits",
+        "check_all_limits",
+        ["RiskLimits.md"],
+    ),
+    ComponentCheck(
+        "Risk Intelligence Ensemble",
+        "ensemble",
+        "iqrp.app.risk.ensemble",
+        "RiskIntelligenceEnsemble",
+        ["RiskEnsemble.md", "RiskDecision.md", "RiskStateMachine.md", "RiskScoring.md"],
+    ),
+    ComponentCheck(
+        "Risk Budgeting",
+        "capital",
+        "iqrp.app.risk.capital",
+        "build_risk_budgets",
+        ["RiskBudgeting.md"],
+    ),
+    ComponentCheck(
+        "Capacity Management",
+        "capital",
+        "iqrp.app.risk.capital",
+        "estimate_capacity",
+        ["CapacityManagement.md"],
+    ),
 ]
 
 
@@ -109,7 +189,7 @@ def validate_phase09() -> dict[str, Any]:
                 else:
                     item.status = "pass"
                     item.detail = "importable and documented"
-        except Exception as exc:  # noqa: BLE001
+        except Exception as exc:
             item.status = "fail"
             item.detail = f"import error: {exc}"
             failures.append(item.detail)
@@ -125,8 +205,12 @@ def validate_phase09() -> dict[str, Any]:
     # Integration surface
     integration = {
         "risk_package_exports": [],
-        "capital_hydra": str(Path(__file__).resolve().parents[2] / "configs" / "risk" / "capital" / "default.yaml"),
-        "ensemble_hydra": str(Path(__file__).resolve().parents[2] / "configs" / "risk" / "ensemble" / "default.yaml"),
+        "capital_hydra": str(
+            Path(__file__).resolve().parents[2] / "configs" / "risk" / "capital" / "default.yaml"
+        ),
+        "ensemble_hydra": str(
+            Path(__file__).resolve().parents[2] / "configs" / "risk" / "ensemble" / "default.yaml"
+        ),
         "integration_hooks": [
             {
                 "file": "iqrp/app/risk/__init__.py",
@@ -147,7 +231,7 @@ def validate_phase09() -> dict[str, Any]:
         ):
             if required not in risk_pkg.__all__:
                 failures.append(f"risk.__all__ missing {required}")
-    except Exception as exc:  # noqa: BLE001
+    except Exception as exc:
         failures.append(f"risk package import failed: {exc}")
 
     capital_cfg = Path(integration["capital_hydra"])
@@ -208,8 +292,14 @@ def validate_phase09() -> dict[str, Any]:
 
 def write_phase09_report(path: str | Path | None = None) -> Path:
     report = validate_phase09()
-    out = Path(path) if path else (
-        Path(__file__).resolve().parents[2] / "docs" / "Phase09_RiskIntelligence_Validation.json"
+    out = (
+        Path(path)
+        if path
+        else (
+            Path(__file__).resolve().parents[2]
+            / "docs"
+            / "Phase09_RiskIntelligence_Validation.json"
+        )
     )
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(report, indent=2), encoding="utf-8")

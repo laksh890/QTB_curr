@@ -39,7 +39,7 @@ def _to_jsonable(obj: Any) -> Any:
 
             if isinstance(obj, Enum):
                 return obj.value
-        except Exception:  # noqa: BLE001
+        except Exception:
             pass
     return str(obj)
 
@@ -71,9 +71,7 @@ class AlphaSerializer:
         data = json.loads(Path(path).read_text(encoding="utf-8"))
         return SignalDefinition.from_dict(data)
 
-    def save_report(
-        self, report: SignalResearchReport | dict[str, Any], path: str | Path
-    ) -> Path:
+    def save_report(self, report: SignalResearchReport | dict[str, Any], path: str | Path) -> Path:
         p = Path(path)
         p.parent.mkdir(parents=True, exist_ok=True)
         payload = report.to_dict() if hasattr(report, "to_dict") else dict(report)
@@ -84,9 +82,7 @@ class AlphaSerializer:
         data = json.loads(Path(path).read_text(encoding="utf-8"))
         return SignalResearchReport.from_dict(data)
 
-    def save_metadata(
-        self, metadata: SignalMetadata | dict[str, Any], path: str | Path
-    ) -> Path:
+    def save_metadata(self, metadata: SignalMetadata | dict[str, Any], path: str | Path) -> Path:
         p = Path(path)
         p.parent.mkdir(parents=True, exist_ok=True)
         payload = metadata.to_dict() if hasattr(metadata, "to_dict") else dict(metadata)

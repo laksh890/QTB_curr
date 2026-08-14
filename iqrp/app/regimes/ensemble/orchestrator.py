@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from typing import Any
 
 import numpy as np
 import polars as pl
@@ -25,7 +24,7 @@ def fit_members(
             m.model.fit(frame, feature_columns)
             m.metadata["fitted"] = True
             m.metadata["error"] = None
-        except Exception as exc:  # noqa: BLE001 - isolate member failures
+        except Exception as exc:
             m.metadata["fitted"] = False
             m.metadata["error"] = str(exc)
         return m
@@ -62,7 +61,7 @@ def predict_members(
             mapped = m.map_proba(proba, n_canonical)
             hard = np.argmax(mapped, axis=1).astype(np.int64)
             return m.name, mapped, hard
-        except Exception:  # noqa: BLE001
+        except Exception:
             return None
 
     results: list[tuple[str, np.ndarray, np.ndarray]] = []
@@ -105,7 +104,7 @@ def member_log_likelihoods(
         try:
             p = m.model.predict_proba(frame, feature_columns)
             out[m.name] = float(np.sum(np.log(np.clip(np.max(p, axis=1), 1e-300, None))))
-        except Exception:  # noqa: BLE001
+        except Exception:
             out[m.name] = -1e9
     return out
 
@@ -130,7 +129,7 @@ def collect_transition(members: list[EnsembleMember], n_canonical: int) -> np.nd
                 mapped = np.clip(mapped, 0, None)
                 row = np.clip(mapped.sum(axis=1, keepdims=True), 1e-300, None)
                 mats.append(mapped / row)
-        except Exception:  # noqa: BLE001
+        except Exception:
             continue
     if not mats:
         # sticky default

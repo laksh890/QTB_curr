@@ -2,23 +2,24 @@
 
 from __future__ import annotations
 
+from collections.abc import Sequence
 from dataclasses import dataclass, field
-from datetime import datetime, timezone
-from typing import Any, Sequence
+from datetime import UTC, datetime
+from typing import Any
 
 import numpy as np
 
 from iqrp.app.portfolio.base.optimizer import OptimizationResult
 from iqrp.app.portfolio.base.portfolio import Portfolio
 from iqrp.app.portfolio.base.position import Position
+from iqrp.app.portfolio.config import PortfolioSettings
 from iqrp.app.portfolio.construction.signal_to_weight import signals_to_raw_weights
 from iqrp.app.portfolio.construction.target_positions import TargetPositions, weights_to_positions
 from iqrp.app.portfolio.construction.target_weights import TargetWeights, build_target_weights
-from iqrp.app.portfolio.config import PortfolioSettings
 
 
 def _utc_now() -> str:
-    return datetime.now(timezone.utc).isoformat()
+    return datetime.now(UTC).isoformat()
 
 
 @dataclass(slots=True)
@@ -66,7 +67,9 @@ class PortfolioResult:
         else:
             pos_payload = None
         return {
-            "portfolio_weights": self.portfolio_weights.to_dict() if self.portfolio_weights else None,
+            "portfolio_weights": (
+                self.portfolio_weights.to_dict() if self.portfolio_weights else None
+            ),
             "target_positions": pos_payload,
             "expected_return": self.expected_return,
             "expected_volatility": self.expected_volatility,

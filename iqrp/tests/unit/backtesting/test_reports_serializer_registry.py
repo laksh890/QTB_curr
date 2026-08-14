@@ -87,7 +87,9 @@ def test_default_registry() -> None:
     assert reg.list(category="engine")
     assert reg.to_list()[0]["name"]
 
-    spec = ComponentSpec("T", "test", "iqrp.app.backtesting", "BacktestEngine", ["BacktestingPlatform.md"])
+    spec = ComponentSpec(
+        "T", "test", "iqrp.app.backtesting", "BacktestEngine", ["BacktestingPlatform.md"]
+    )
     custom = BacktestingRegistry([spec])
     custom.register(ComponentSpec("U", "test", "iqrp.app.backtesting", "BacktestSettings"))
     assert custom.get("T").to_dict()["symbol"] == "BacktestEngine"

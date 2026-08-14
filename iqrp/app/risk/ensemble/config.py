@@ -196,12 +196,18 @@ class EnsembleSettings(BaseModel):
     state_caps: dict[str, StateCap] = Field(
         default_factory=lambda: {
             "NORMAL": StateCap(max_exposure=1.0, recommended_leverage=1.0, position_reduction=0.0),
-            "CAUTION": StateCap(max_exposure=0.75, recommended_leverage=0.75, position_reduction=0.25),
-            "REDUCED_RISK": StateCap(max_exposure=0.50, recommended_leverage=0.50, position_reduction=0.50),
+            "CAUTION": StateCap(
+                max_exposure=0.75, recommended_leverage=0.75, position_reduction=0.25
+            ),
+            "REDUCED_RISK": StateCap(
+                max_exposure=0.50, recommended_leverage=0.50, position_reduction=0.50
+            ),
             "CAPITAL_PRESERVATION": StateCap(
                 max_exposure=0.25, recommended_leverage=0.25, position_reduction=0.75
             ),
-            "TRADING_HALT": StateCap(max_exposure=0.0, recommended_leverage=0.0, position_reduction=1.0),
+            "TRADING_HALT": StateCap(
+                max_exposure=0.0, recommended_leverage=0.0, position_reduction=1.0
+            ),
         }
     )
     limits: EnsembleLimitConfig = Field(default_factory=EnsembleLimitConfig)
@@ -229,7 +235,9 @@ class EnsembleSettings(BaseModel):
             raw = dict(data or {})
             if "normalization" in raw and isinstance(raw["normalization"], dict):
                 raw["normalization"] = {
-                    str(k): (v if isinstance(v, NormalizationRef) else NormalizationRef.model_validate(v))
+                    str(k): (
+                        v if isinstance(v, NormalizationRef) else NormalizationRef.model_validate(v)
+                    )
                     for k, v in raw["normalization"].items()
                 }
             if "state_caps" in raw and isinstance(raw["state_caps"], dict):
@@ -238,7 +246,7 @@ class EnsembleSettings(BaseModel):
                     for k, v in raw["state_caps"].items()
                 }
             return cls.model_validate(raw)
-        except Exception as exc:  # noqa: BLE001
+        except Exception as exc:
             from iqrp.app.core.exceptions import ConfigurationError
 
             raise ConfigurationError(

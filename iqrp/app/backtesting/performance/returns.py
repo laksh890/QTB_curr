@@ -7,17 +7,17 @@ from typing import Any
 import numpy as np
 
 __all__ = [
-    "as_returns",
-    "wealth_index",
-    "total_return",
-    "compounded_return",
-    "cagr",
     "annualized_return",
     "annualized_volatility",
+    "as_returns",
+    "cagr",
+    "compounded_return",
     "daily_returns",
     "monthly_returns",
     "rolling_return",
     "summarize_returns",
+    "total_return",
+    "wealth_index",
 ]
 
 

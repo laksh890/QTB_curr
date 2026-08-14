@@ -68,9 +68,7 @@ def test_walk_forward(signal: np.ndarray, returns: np.ndarray) -> None:
     )
     assert len(exp) >= 1
 
-    wf = walk_forward_backtest(
-        signal, returns, train_size=100, test_size=30, gap=5, cost_bps=5.0
-    )
+    wf = walk_forward_backtest(signal, returns, train_size=100, test_size=30, gap=5, cost_bps=5.0)
     assert "n_folds" in wf
     assert wf["n_folds"] >= 1
     assert "folds" in wf
@@ -117,9 +115,7 @@ def test_turnover_and_transaction_costs(rng: np.random.Generator) -> None:
     ann = annualized_turnover(w, periods_per_year=252)
     assert ann >= 0
 
-    tc = estimate_transaction_cost(
-        w[24], w[25], capital=1e6, cost_bps=5.0, prefer_portfolio=True
-    )
+    tc = estimate_transaction_cost(w[24], w[25], capital=1e6, cost_bps=5.0, prefer_portfolio=True)
     assert "total" in tc and tc["total"] >= 0
     tc_local = estimate_transaction_cost(
         w[24], w[25], capital=1e6, cost_bps=5.0, prefer_portfolio=False
@@ -144,13 +140,9 @@ def test_slippage_impact_capacity_scalability() -> None:
     assert np.all(decay <= 1.0 + 1e-9)
 
     capitals = np.array([1e5, 1e6, 1e7, 5e7])
-    curve = scalability_curve(
-        capitals=capitals, turnover=0.2, adv=5e7, gross_sharpe=1.5
-    )
+    curve = scalability_curve(capitals=capitals, turnover=0.2, adv=5e7, gross_sharpe=1.5)
     assert "capitals" in curve or "net_sharpe" in curve
-    report = scalability_report(
-        turnover=0.2, adv=5e7, gross_sharpe=1.5, n_points=10
-    )
+    report = scalability_report(turnover=0.2, adv=5e7, gross_sharpe=1.5, n_points=10)
     assert "capacity" in report or "max_viable_capital" in report
 
 

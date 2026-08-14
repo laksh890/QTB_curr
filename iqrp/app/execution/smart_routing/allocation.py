@@ -13,7 +13,6 @@ from typing import Any, Literal
 from iqrp.app.execution.smart_routing.liquidity import LiquiditySnapshot
 from iqrp.app.execution.smart_routing.scoring import VenueScore
 
-
 AllocationMode = Literal["single", "multi"]
 
 
@@ -203,7 +202,7 @@ def allocate_quantity(
 
 __all__ = [
     "AllocationMode",
-    "VenueAllocation",
     "AllocationPlan",
+    "VenueAllocation",
     "allocate_quantity",
 ]

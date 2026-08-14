@@ -11,7 +11,9 @@ from iqrp.app.forecasting.neural.probabilistic.distributions import (
 )
 
 
-def extract_point_forecast(pred: np.ndarray, *, task: str, alphas: tuple[float, ...] = (0.1, 0.5, 0.9)) -> np.ndarray:
+def extract_point_forecast(
+    pred: np.ndarray, *, task: str, alphas: tuple[float, ...] = (0.1, 0.5, 0.9)
+) -> np.ndarray:
     p = np.asarray(pred, dtype=np.float64)
     if task == "quantile" and p.ndim >= 2:
         # median quantile

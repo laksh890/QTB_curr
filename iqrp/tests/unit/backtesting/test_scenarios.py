@@ -34,7 +34,10 @@ from iqrp.app.backtesting.scenarios.regime import (
     evaluate_regime_robustness,
     run_regime_scenario,
 )
-from iqrp.app.backtesting.scenarios.volatility import apply_volatility_shock, run_volatility_scenario
+from iqrp.app.backtesting.scenarios.volatility import (
+    apply_volatility_shock,
+    run_volatility_scenario,
+)
 
 
 def test_historical_user_defined_no_hardcoded_crises(short_returns) -> None:
@@ -54,7 +57,9 @@ def test_historical_user_defined_no_hardcoded_crises(short_returns) -> None:
 
     # multi-asset
     assets = np.column_stack([short_returns, short_returns * 0.8])
-    out3 = run_historical_scenario(assets, HistoricalScenario("m", start=0, end=20), weights=[0.5, 0.5])
+    out3 = run_historical_scenario(
+        assets, HistoricalScenario("m", start=0, end=20), weights=[0.5, 0.5]
+    )
     assert out3["n_obs"] == 20
 
     w = slice_window(short_returns, start=0, end=10)

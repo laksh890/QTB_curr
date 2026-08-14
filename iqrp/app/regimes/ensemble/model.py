@@ -13,21 +13,20 @@ from iqrp.app.regimes.base.regime_model import RegimeModel, RegimeModelMeta
 from iqrp.app.regimes.base.registry import register_regime_model
 from iqrp.app.regimes.ensemble.calibration import Calibrator
 from iqrp.app.regimes.ensemble.combiner import combine
-from iqrp.app.regimes.ensemble.confidence import confidence_report, posterior_confidence
+from iqrp.app.regimes.ensemble.confidence import confidence_report
 from iqrp.app.regimes.ensemble.config import EnsembleSettings
 from iqrp.app.regimes.ensemble.diagnostics import EnsembleDiagnostics
-from iqrp.app.regimes.ensemble.disagreement import consensus_score, disagreement_report
+from iqrp.app.regimes.ensemble.disagreement import disagreement_report
 from iqrp.app.regimes.ensemble.evaluator import EnsembleEvaluator
 from iqrp.app.regimes.ensemble.orchestrator import (
     collect_transition,
-    fit_members,
     member_log_likelihoods,
     predict_members,
 )
 from iqrp.app.regimes.ensemble.registry import EnsembleMember, EnsembleRegistry
 from iqrp.app.regimes.ensemble.serializer import EnsembleSerializer
 from iqrp.app.regimes.ensemble.trainer import EnsembleTrainer
-from iqrp.app.regimes.ensemble.weighting import adaptive_update, compute_weights, equal_weights
+from iqrp.app.regimes.ensemble.weighting import adaptive_update, equal_weights
 from iqrp.app.state_space.base.filter_result import FilterResult
 from iqrp.app.state_space.base.forecast_result import ForecastResult
 from iqrp.app.state_space.base.registry import register_state_space_model
@@ -113,9 +112,7 @@ class EnsembleRegimeModel(RegimeModel):
         self, frame: pl.DataFrame, feature_columns: list[str] | None = None
     ) -> EnsembleRegimeModel:
         cols = feature_columns or self._resolve_features(frame)
-        result = EnsembleTrainer(self._ens_settings).fit(
-            frame, cols, members=self.members or None
-        )
+        result = EnsembleTrainer(self._ens_settings).fit(frame, cols, members=self.members or None)
         self.members = result.members
         self._weights = result.weights
         self._calibrator = result.calibrator
@@ -126,7 +123,9 @@ class EnsembleRegimeModel(RegimeModel):
         self._train_frame = frame
         self._feature_columns = cols
         self._fitted = True
-        self._state_names = _default_names(self._ens_settings.n_states, self._ens_settings.state_names)
+        self._state_names = _default_names(
+            self._ens_settings.n_states, self._ens_settings.state_names
+        )
         return self
 
     def partial_fit(
@@ -142,7 +141,7 @@ class EnsembleRegimeModel(RegimeModel):
             if hasattr(m.model, "partial_fit"):
                 try:
                     m.model.partial_fit(frame, cols)  # type: ignore[attr-defined]
-                except Exception:  # noqa: BLE001
+                except Exception:
                     m.model.fit(frame, cols)
             else:
                 m.model.fit(frame, cols)
@@ -196,9 +195,7 @@ class EnsembleRegimeModel(RegimeModel):
             dist = dist @ tm
             dist = dist / max(float(dist.sum()), 1e-300)
             step[t] = dist
-        persist = {
-            i: float(1.0 / max(1.0 - tm[i, i], 1e-12)) for i in range(self.meta.n_states)
-        }
+        persist = {i: float(1.0 / max(1.0 - tm[i, i], 1e-12)) for i in range(self.meta.n_states)}
         return RegimeForecast.from_probabilities(
             step,
             state_names=self._state_names,
@@ -233,11 +230,13 @@ class EnsembleRegimeModel(RegimeModel):
         if frame is not None:
             self.predict_proba(frame)
         assert self._ensemble_proba is not None
-        hard = {n: np.argmax(p, axis=1) for n, p in zip(self._member_names, self._member_probas, strict=False)}
+        hard = {
+            n: np.argmax(p, axis=1)
+            for n, p in zip(self._member_names, self._member_probas, strict=False)
+        }
         proba = {n: p for n, p in zip(self._member_names, self._member_probas, strict=False)}
         ll = {
-            n: float(np.sum(np.log(np.clip(p.max(axis=1), 1e-300, None))))
-            for n, p in proba.items()
+            n: float(np.sum(np.log(np.clip(p.max(axis=1), 1e-300, None)))) for n, p in proba.items()
         }
         return EnsembleEvaluator().leaderboard(
             member_probas=proba,
@@ -316,9 +315,7 @@ class EnsembleRegimeModel(RegimeModel):
     def load(cls, path: Path | str) -> EnsembleRegimeModel:
         return EnsembleSerializer().load(Path(path), model_cls=cls)
 
-    def _predict_cache(
-        self, frame: pl.DataFrame, feature_columns: list[str] | None
-    ) -> np.ndarray:
+    def _predict_cache(self, frame: pl.DataFrame, feature_columns: list[str] | None) -> np.ndarray:
         mapped, _hards, names = predict_members(
             self.members,
             frame,
@@ -371,8 +368,12 @@ class EnsembleRegimeModel(RegimeModel):
                 for m in self.members
             ],
             "calibrator": self._calibrator.to_dict(),
-            "transition": None if self._transition_matrix is None else self._transition_matrix.tolist(),
-            "ensemble_proba": None if self._ensemble_proba is None else self._ensemble_proba.tolist(),
+            "transition": (
+                None if self._transition_matrix is None else self._transition_matrix.tolist()
+            ),
+            "ensemble_proba": (
+                None if self._ensemble_proba is None else self._ensemble_proba.tolist()
+            ),
             "history": list(self._history),
             "feature_columns": self._feature_columns,
         }
@@ -396,7 +397,7 @@ class EnsembleRegimeModel(RegimeModel):
         registry = EnsembleRegistry(self._ens_settings)
         try:
             discovered = registry.create_members()
-        except Exception:  # noqa: BLE001
+        except Exception:
             discovered = []
         by_name = {m.name: m for m in discovered}
         restored: list[EnsembleMember] = []
@@ -415,7 +416,7 @@ class EnsembleRegimeModel(RegimeModel):
                 try:
                     m.model.import_state(payload)
                     m.metadata["fitted"] = m.model.is_fitted
-                except Exception:  # noqa: BLE001
+                except Exception:
                     m.metadata["fitted"] = False
             restored.append(m)
         self.members = restored or discovered
@@ -549,7 +550,11 @@ class EnsembleStateSpaceModel(StateSpaceModel):
         horizon: int | None = None,
     ) -> ForecastResult:
         frame = _as_frame(observations, observation_columns)
-        h = int(horizon if horizon is not None else self._engine._ens_settings.forecasting.default_horizon)
+        h = int(
+            horizon
+            if horizon is not None
+            else self._engine._ens_settings.forecasting.default_horizon
+        )
         fc = self._engine.forecast(frame, steps=h)
         probs = np.asarray(fc.probabilities, dtype=np.float64)
         if probs.ndim == 1:

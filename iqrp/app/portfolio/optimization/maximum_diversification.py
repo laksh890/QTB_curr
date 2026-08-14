@@ -10,7 +10,6 @@ from iqrp.app.portfolio.optimization.projection import (
     as_cov,
     as_vector,
     check_feasibility,
-    equal_weights,
     failed_result,
     format_weights,
     infeasible_result,
@@ -65,13 +64,20 @@ def optimize_maximum_diversification(
             names = cstr.get("names")
         ok, reason, conflicts = check_feasibility(cstr)
         if not ok:
-            return infeasible_result(name, n, method=method, reason=reason or "infeasible", conflicts=conflicts, names=names)
+            return infeasible_result(
+                name,
+                n,
+                method=method,
+                reason=reason or "infeasible",
+                conflicts=conflicts,
+                names=names,
+            )
 
         def project(w: np.ndarray) -> np.ndarray:
             return project_weights(w, cstr)
 
         # Inverse-vol seed is a strong diversification prior
-        seed = (1.0 / vols)
+        seed = 1.0 / vols
         seed = seed / float(np.sum(seed)) * cstr["budget"]
         x0 = project(as_vector(current_weights, n) if current_weights is not None else seed)
 
@@ -94,7 +100,9 @@ def optimize_maximum_diversification(
             bounds = [(cstr["lb"], cstr["ub"])] * n
             cons = {"type": "eq", "fun": lambda ww: float(np.sum(ww) - cstr["budget"])}
             try:
-                res = minimize_scipy(neg_dr, x0, jac=grad_ndr, bounds=bounds, constraints=[cons], method="SLSQP")
+                res = minimize_scipy(
+                    neg_dr, x0, jac=grad_ndr, bounds=bounds, constraints=[cons], method="SLSQP"
+                )
                 if bool(res.success):
                     w = project(np.asarray(res.x, dtype=np.float64))
                     fval = float(neg_dr(w))
@@ -102,16 +110,24 @@ def optimize_maximum_diversification(
                     success_opt = True
                     iters = int(getattr(res, "nit", 0) or 0)
                 else:
-                    w, fval, success_opt, iters = projected_gradient(neg_dr, grad_ndr, x0, project, lr=0.05)
+                    w, fval, success_opt, iters = projected_gradient(
+                        neg_dr, grad_ndr, x0, project, lr=0.05
+                    )
             except Exception:
-                w, fval, success_opt, iters = projected_gradient(neg_dr, grad_ndr, x0, project, lr=0.05)
+                w, fval, success_opt, iters = projected_gradient(
+                    neg_dr, grad_ndr, x0, project, lr=0.05
+                )
         else:
             w, fval, success_opt, iters = projected_gradient(neg_dr, grad_ndr, x0, project, lr=0.05)
 
         if float(np.min(w)) < cstr["lb"] - 1e-8 or float(np.max(w)) > cstr["ub"] + 1e-8:
-            return infeasible_result(name, n, method=used, reason="box violation", conflicts=["box"], names=names)
+            return infeasible_result(
+                name, n, method=used, reason="box violation", conflicts=["box"], names=names
+            )
         if abs(float(np.sum(w)) - cstr["budget"]) > 1e-6:
-            return infeasible_result(name, n, method=used, reason="budget violation", conflicts=["budget"], names=names)
+            return infeasible_result(
+                name, n, method=used, reason="budget violation", conflicts=["budget"], names=names
+            )
 
         dr = -fval
         return make_result(

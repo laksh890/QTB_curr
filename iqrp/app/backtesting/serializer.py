@@ -3,17 +3,18 @@
 from __future__ import annotations
 
 import json
+from collections.abc import Mapping
 from pathlib import Path
-from typing import Any, Mapping
+from typing import Any
 
 import numpy as np
 
 __all__ = [
-    "to_jsonable",
-    "serialize_result",
     "deserialize_result",
-    "save_json",
     "load_json",
+    "save_json",
+    "serialize_result",
+    "to_jsonable",
 ]
 
 
@@ -35,7 +36,7 @@ def to_jsonable(obj: Any) -> Any:
         # Enum-like
         try:
             return to_jsonable(obj.value)
-        except Exception:  # noqa: BLE001
+        except Exception:
             pass
     if hasattr(obj, "__dict__"):
         return to_jsonable({k: v for k, v in vars(obj).items() if not k.startswith("_")})

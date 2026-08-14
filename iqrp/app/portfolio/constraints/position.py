@@ -2,7 +2,8 @@
 
 from __future__ import annotations
 
-from typing import Any, Sequence
+from collections.abc import Sequence
+from typing import Any
 
 import numpy as np
 
@@ -72,8 +73,7 @@ def check_position_constraints(
                     threshold=float(hi[i]),
                     severity=severity,
                     reason=(
-                        f"|weight[{i}]|={abs(val):.6g} exceeds "
-                        f"max_position {float(hi[i]):.6g}"
+                        f"|weight[{i}]|={abs(val):.6g} exceeds " f"max_position {float(hi[i]):.6g}"
                     ),
                     scope="position",
                     metadata={"index": int(i), "weight": val},

@@ -12,7 +12,11 @@ import pytest
 from iqrp.app.core.exceptions import ValidationError
 from iqrp.app.regimes.base.regime_model import RegimeModel, RegimeModelMeta
 from iqrp.app.regimes.ensemble.calibration import Calibrator, expected_calibration_error
-from iqrp.app.regimes.ensemble.confidence import expected_persistence, forecast_uncertainty, posterior_confidence
+from iqrp.app.regimes.ensemble.confidence import (
+    expected_persistence,
+    forecast_uncertainty,
+    posterior_confidence,
+)
 from iqrp.app.regimes.ensemble.config import EnsembleSettings
 from iqrp.app.regimes.ensemble.disagreement import pairwise_disagreement
 from iqrp.app.regimes.ensemble.evaluator import EnsembleEvaluator
@@ -26,9 +30,12 @@ from iqrp.app.regimes.ensemble.orchestrator import (
 from iqrp.app.regimes.ensemble.registry import EnsembleMember, EnsembleRegistry, build_state_map
 from iqrp.app.regimes.ensemble.serializer import EnsembleSerializer
 from iqrp.app.regimes.ensemble.trainer import EnsembleTrainer
+from iqrp.app.regimes.ensemble.visualization import (
+    plot_agreement_heatmap,
+    plot_probability_dashboard,
+)
 from iqrp.app.regimes.ensemble.weighting import compute_weights, stability_weights, user_weights
-from iqrp.app.regimes.ensemble.visualization import plot_agreement_heatmap, plot_probability_dashboard
-from iqrp.tests.unit.ensemble.test_ensemble_core import _StubRegimeA, _StubRegimeB  # noqa: F401
+from iqrp.tests.unit.ensemble.test_ensemble_core import _StubRegimeA, _StubRegimeB
 
 
 def _settings(**kw: object) -> EnsembleSettings:
@@ -51,6 +58,7 @@ def _settings(**kw: object) -> EnsembleSettings:
 def test_orchestrator_failure_paths() -> None:
     settings = _settings()
     members = EnsembleRegistry(settings).create_members()
+
     # inject a broken member
     class BadModel:
         is_fitted = False
@@ -147,7 +155,9 @@ def test_model_branches_and_ssm_smooth() -> None:
 @pytest.mark.unit
 def test_weighting_registry_viz_gaps(tmp_path: Path) -> None:
     assert user_weights(None, ["a", "b"]).sum() == pytest.approx(1)
-    assert stability_weights({"a": np.ones(2), "b": np.eye(2)}, ["a", "b"]).sum() == pytest.approx(1)
+    assert stability_weights({"a": np.ones(2), "b": np.eye(2)}, ["a", "b"]).sum() == pytest.approx(
+        1
+    )
     # compute_weights branches
     assert compute_weights("calibration", names=["a"], ece_scores={"a": 0.2}).shape[0] == 1
     assert compute_weights("stability", names=["a"], proba_histories={"a": np.eye(2)}).shape[0] == 1
@@ -166,6 +176,8 @@ def test_weighting_registry_viz_gaps(tmp_path: Path) -> None:
     for m in members:
         m.model.fit = MagicMock(side_effect=RuntimeError("x"))  # type: ignore[method-assign]
     with pytest.raises(ValidationError):
-        EnsembleTrainer(settings).fit(pl.DataFrame({"close": [1.0, 2.0, 3.0]}), ["close"], members=members)
+        EnsembleTrainer(settings).fit(
+            pl.DataFrame({"close": [1.0, 2.0, 3.0]}), ["close"], members=members
+        )
     plot_agreement_heatmap(np.eye(1), ["a"], tmp_path / "h.svg")
     plot_probability_dashboard(np.array([0.5, 0.5]), ("a", "b"), tmp_path / "p.svg")

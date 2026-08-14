@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Callable
+from collections.abc import Callable
 
 import numpy as np
 
@@ -49,7 +49,9 @@ def unscented_transform(
 ) -> tuple[np.ndarray, np.ndarray]:
     mean = np.sum(wm[:, None] * pts, axis=0)
     diff = pts - mean
-    cov = ensure_spd((wc[:, None, None] * (diff[:, :, None] @ diff[:, None, :])).sum(axis=0) + noise)
+    cov = ensure_spd(
+        (wc[:, None, None] * (diff[:, :, None] @ diff[:, None, :])).sum(axis=0) + noise
+    )
     return mean, cov
 
 

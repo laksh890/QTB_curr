@@ -2,7 +2,8 @@
 
 from __future__ import annotations
 
-from typing import Any, Callable, Literal
+from collections.abc import Callable
+from typing import Any, Literal
 
 import numpy as np
 from scipy import special
@@ -25,8 +26,13 @@ def logpdf_skew_t(z: np.ndarray, *, df: float = 8.0, skew: float = 0.0) -> np.nd
     """Hansen (1994) skewed-t approximation via two-piece scaling."""
     nu = max(float(df), 2.01)
     lam = float(np.clip(skew, -0.99, 0.99))
-    a = 4 * lam * (nu - 2) / ((nu - 1) * np.sqrt(np.pi * (nu - 2))) * gamma_fn((nu + 1) / 2) / max(
-        gamma_fn(nu / 2), 1e-300
+    a = (
+        4
+        * lam
+        * (nu - 2)
+        / ((nu - 1) * np.sqrt(np.pi * (nu - 2)))
+        * gamma_fn((nu + 1) / 2)
+        / max(gamma_fn(nu / 2), 1e-300)
     )
     a = float(a) if np.isfinite(a) else 0.0
     b = np.sqrt(1 + 3 * lam**2 - a**2)

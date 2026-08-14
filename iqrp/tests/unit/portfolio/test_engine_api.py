@@ -205,9 +205,7 @@ def test_construct_with_forecasts(engine, forecasts, returns, names, prices):
 def test_construct_no_alpha_without_inputs(engine, names):
     """Without forecasts/signals/mu/cov/returns — no invented alpha; fallback."""
     result = engine.construct(names=names, method="mean_variance")
-    assert result.fallback_used or not result.success or all(
-        abs(w) < 1e-12 for w in result.weights
-    )
+    assert result.fallback_used or not result.success or all(abs(w) < 1e-12 for w in result.weights)
 
 
 def test_construct_signals_path(engine, signals, returns, names):
@@ -287,9 +285,7 @@ def test_risk_validation_reject_fallback(
         assert result.fallback_used or "risk_validation_reject" in result.fallback_reasons
 
 
-def test_risk_validation_approve(
-    risk_settings_on, approving_risk_engine, mu, cov, names, returns
-):
+def test_risk_validation_approve(risk_settings_on, approving_risk_engine, mu, cov, names, returns):
     eng = PortfolioConstructionEngine(
         settings=risk_settings_on,
         risk_engine=approving_risk_engine,
@@ -343,7 +339,9 @@ def test_validate_with_risk_reject(risk_settings_on, rejecting_risk_engine, name
         risk_engine=rejecting_risk_engine,
     )
     w = np.array([0.7, 0.1, 0.1, 0.1][: len(names)])
-    report = eng.validate(w, max_weight=0.9, returns=np.random.default_rng(0).normal(0, 0.01, (50, len(names))))
+    report = eng.validate(
+        w, max_weight=0.9, returns=np.random.default_rng(0).normal(0, 0.01, (50, len(names)))
+    )
     assert report.valid is False or report.risk_decision is not None
 
 
@@ -451,9 +449,7 @@ def test_target_positions_helpers(engine, weights, names, prices):
     assert tp is not None
     tp2 = engine.target_positions(weights=weights, capital=1e6, prices=prices, names=names)
     assert tp2 is not None
-    lst = engine.target_positions(
-        weights, capital=1e6, prices=prices, names=names, as_list=True
-    )
+    lst = engine.target_positions(weights, capital=1e6, prices=prices, names=names, as_list=True)
     assert isinstance(lst, list)
 
 
@@ -473,7 +469,7 @@ def test_save_load(engine, tmp_path: Path, weights, names):
 def test_dict_to_optimization_result_variants(names, mu, cov):
     raw = {
         "success": True,
-        "weights": {n: 0.25 for n in names},
+        "weights": dict.fromkeys(names, 0.25),
         "expected_return": 0.01,
         "diagnostics": {"variance": 0.02},
         "objective_value": -0.5,
@@ -492,9 +488,7 @@ def test_dict_to_optimization_result_variants(names, mu, cov):
     r3 = dict_to_optimization_result({"success": True, "weights": None}, names=names)
     # None weights → empty or zeros; names alone do not invent holdings
     assert isinstance(r3.weights, list)
-    r4 = dict_to_optimization_result(
-        {"success": True, "weights": [0.25] * len(names)}, names=names
-    )
+    r4 = dict_to_optimization_result({"success": True, "weights": [0.25] * len(names)}, names=names)
     assert len(r4.weights) == len(names)
 
 

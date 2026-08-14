@@ -8,7 +8,15 @@ import numpy as np
 import pytest
 
 from iqrp.app.core.exceptions import ConfigurationError
-from iqrp.app.risk import RiskIntelligenceEngine, RiskModel, RiskSettings, as_returns, as_weights, build_report
+from iqrp.app.risk import (
+    RiskIntelligenceEngine,
+    RiskModel,
+    RiskSettings,
+    as_returns,
+    as_weights,
+    build_report,
+    registry,
+)
 from iqrp.app.risk.aggregation.cross_asset import cross_asset_risk
 from iqrp.app.risk.aggregation.hierarchical import hierarchical_aggregate
 from iqrp.app.risk.aggregation.risk_aggregator import aggregate_risks
@@ -28,7 +36,6 @@ from iqrp.app.risk.monitoring.breaches import summarize_breaches
 from iqrp.app.risk.monitoring.dashboards import dashboard_payload
 from iqrp.app.risk.monitoring.risk_monitor import RiskMonitor
 from iqrp.app.risk.processes import from_market_simulator, simulate_risk_scenario
-from iqrp.app.risk import registry
 from iqrp.app.risk.serializer import RiskSerializer
 from iqrp.app.risk.visualization import (
     drawdown_chart,
@@ -194,7 +201,12 @@ class TestMonitoring:
             {"limit_name": "b", "severity": "SOFT", "observed": 1, "threshold": 0, "reason": "x"},
         ]
         summary = summarize_breaches(breaches)
-        assert summary["count"] == 2 or summary.get("n") == 2 or "hard" in summary or "by_severity" in summary
+        assert (
+            summary["count"] == 2
+            or summary.get("n") == 2
+            or "hard" in summary
+            or "by_severity" in summary
+        )
 
     def test_dashboard_payload(self) -> None:
         payload = dashboard_payload(
@@ -208,7 +220,9 @@ class TestMonitoring:
 
 
 class TestDiagnosticsAndVisualization:
-    def test_diagnostics_healthy(self, returns_1d: np.ndarray, weights_4: np.ndarray, cov_4: np.ndarray) -> None:
+    def test_diagnostics_healthy(
+        self, returns_1d: np.ndarray, weights_4: np.ndarray, cov_4: np.ndarray
+    ) -> None:
         out = risk_diagnostics(returns=returns_1d, weights=weights_4, cov=cov_4)
         assert out["healthy"] is True or len(out["issues"]) == 0
 
@@ -253,7 +267,9 @@ class TestDiagnosticsAndVisualization:
         tl = risk_state_timeline([RiskState.NORMAL, "CAUTION", RiskState.REDUCED_RISK])
         assert tl["n"] == 3
 
-    def test_viz_report_panels(self, engine: RiskIntelligenceEngine, returns_1d: np.ndarray) -> None:
+    def test_viz_report_panels(
+        self, engine: RiskIntelligenceEngine, returns_1d: np.ndarray
+    ) -> None:
         report = engine.calculate_risk(returns_1d)
         panels = report_panels(report)
         assert "panels" in panels
@@ -416,8 +432,8 @@ class TestBaseHelpers:
 class TestNumericalStability:
     def test_constant_returns(self) -> None:
         r = np.full(100, 0.001)
-        from iqrp.app.risk.tail.var import historical_var, parametric_var
         from iqrp.app.risk.market.volatility import realized_volatility
+        from iqrp.app.risk.tail.var import historical_var, parametric_var
 
         assert historical_var(r).value >= 0.0
         assert parametric_var(r).value >= 0.0

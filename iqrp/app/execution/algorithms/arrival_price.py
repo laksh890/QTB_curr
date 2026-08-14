@@ -2,7 +2,8 @@
 
 from __future__ import annotations
 
-from typing import Any, Mapping, Sequence
+from collections.abc import Mapping, Sequence
+from typing import Any
 
 import numpy as np
 
@@ -90,21 +91,21 @@ def track_arrival_performance(
         "arrival_price": float(arrival_price),
         "decision_price": decision,
         "benchmark_price": bench,
-        "arrival_slippage_bps": arrival_slippage_bps(
-            side=side, fill_price=vwap, arrival_price=arrival_price
-        )
-        if vwap > 0
-        else 0.0,
-        "decision_slippage_bps": decision_slippage_bps(
-            side=side, fill_price=vwap, decision_price=decision
-        )
-        if vwap > 0
-        else 0.0,
-        "benchmark_slippage_bps": benchmark_slippage_bps(
-            side=side, fill_price=vwap, benchmark_price=bench
-        )
-        if vwap > 0
-        else 0.0,
+        "arrival_slippage_bps": (
+            arrival_slippage_bps(side=side, fill_price=vwap, arrival_price=arrival_price)
+            if vwap > 0
+            else 0.0
+        ),
+        "decision_slippage_bps": (
+            decision_slippage_bps(side=side, fill_price=vwap, decision_price=decision)
+            if vwap > 0
+            else 0.0
+        ),
+        "benchmark_slippage_bps": (
+            benchmark_slippage_bps(side=side, fill_price=vwap, benchmark_price=bench)
+            if vwap > 0
+            else 0.0
+        ),
     }
 
 
@@ -162,7 +163,7 @@ class ArrivalPriceAlgorithm(ExecutionAlgorithm):
             if urg == Urgency.CRITICAL:
                 weights = np.ones(n, dtype=np.float64)
             else:
-                weights = np.array([1.15 ** i for i in range(n)], dtype=np.float64)
+                weights = np.array([1.15**i for i in range(n)], dtype=np.float64)
         else:
             weights = np.ones(n, dtype=np.float64)
 

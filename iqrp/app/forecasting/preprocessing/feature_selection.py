@@ -82,6 +82,7 @@ def _mutual_info_score(x: np.ndarray, y: np.ndarray, *, n_bins: int = 10) -> flo
     if n < 2:
         return 0.0
     a, b = a[:n], b[:n]
+
     # digitize
     def _bins(v: np.ndarray) -> np.ndarray:
         qs = np.linspace(0, 100, n_bins + 1)

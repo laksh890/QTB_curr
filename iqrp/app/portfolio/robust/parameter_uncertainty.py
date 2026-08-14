@@ -6,7 +6,6 @@ from typing import Any
 
 import numpy as np
 
-from iqrp.app.portfolio.optimization.mean_variance import optimize_mean_variance
 from iqrp.app.portfolio.optimization.projection import (
     as_cov,
     as_vector,
@@ -15,7 +14,10 @@ from iqrp.app.portfolio.optimization.projection import (
     stabilize_mu,
 )
 from iqrp.app.portfolio.robust.distributional_robust import optimize_distributional_robust
-from iqrp.app.portfolio.robust.uncertainty_sets import box_uncertainty_mu, ellipsoidal_uncertainty_mu
+from iqrp.app.portfolio.robust.uncertainty_sets import (
+    box_uncertainty_mu,
+    ellipsoidal_uncertainty_mu,
+)
 
 
 def shrink_covariance(cov: Any, *, intensity: float = 0.2) -> np.ndarray:

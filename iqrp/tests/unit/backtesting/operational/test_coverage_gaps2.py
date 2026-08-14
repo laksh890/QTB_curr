@@ -36,7 +36,11 @@ from iqrp.app.backtesting.data.point_in_time import (
 )
 from iqrp.app.backtesting.data.provider import LocalFileProvider
 from iqrp.app.backtesting.data.schema import infer_frequency, normalize_frame
-from iqrp.app.backtesting.data.synthetic import create_synthetic_ohlcv, generate_synthetic_ohlcv, write_synthetic_ohlcv
+from iqrp.app.backtesting.data.synthetic import (
+    create_synthetic_ohlcv,
+    generate_synthetic_ohlcv,
+    write_synthetic_ohlcv,
+)
 from iqrp.app.backtesting.data.universe import UniverseKind, UniverseSpec
 from iqrp.app.backtesting.event_engine import BacktestClock, ClockFrequency, MarketEvent
 from iqrp.app.backtesting.event_engine.engine import EventDrivenEngine
@@ -52,7 +56,11 @@ from iqrp.app.backtesting.runner.lifecycle import map_runner_to_engine
 from iqrp.app.backtesting.runner.pipeline import EventPipeline, _aware, _merge_strategy
 from iqrp.app.backtesting.runner.result import OperationalBacktestResult
 from iqrp.app.backtesting.runner.validation import integrity_validate
-from iqrp.app.backtesting.strategy import BuyAndHoldStrategy, CrossSectionalMomentumStrategy, Strategy
+from iqrp.app.backtesting.strategy import (
+    BuyAndHoldStrategy,
+    CrossSectionalMomentumStrategy,
+    Strategy,
+)
 from iqrp.app.backtesting.types import BacktestState
 
 
@@ -93,6 +101,7 @@ def test_adapter_production_exception_fallbacks(monkeypatch):
     assert port2.targets_from_weights({"A": 1.0})["A"] == 1.0
 
     exe = ExecutionSimulationAdapter()
+
     # Force engine path with weird results then fallback
     class Eng:
         def plan_from_targets(self, *a, **k):
@@ -127,7 +136,9 @@ def test_adapter_production_exception_fallbacks(monkeypatch):
             }
 
         def plan_from_targets(self, cur, tgt):
-            o = SimpleNamespace(instrument="A", side=SimpleNamespace(value="buy"), quantity=1, order_id="1")
+            o = SimpleNamespace(
+                instrument="A", side=SimpleNamespace(value="buy"), quantity=1, order_id="1"
+            )
             return [o]
 
         def estimate_costs(self, orders, market_context=None):
@@ -149,7 +160,9 @@ def test_adapter_production_exception_fallbacks(monkeypatch):
     assert sim.get("orders")
 
 
-def test_runner_integrity_critical_and_perf_fallback(tmp_path: Path, registered_strategies, monkeypatch):
+def test_runner_integrity_critical_and_perf_fallback(
+    tmp_path: Path, registered_strategies, monkeypatch
+):
     path = tmp_path / "bars.parquet"
     write_synthetic_ohlcv(path, n_days=25, instruments=["AAA", "BBB"], seed=4)
 
@@ -320,14 +333,20 @@ def test_pipeline_edges(tmp_path: Path, registered_strategies):
     )
     # enforce_pit False skips check
     ex.context.config = ex.context.config.with_updates(enforce_pit=False)
-    pipe._pit_check(ts + pd.Timedelta(days=1).to_pytimedelta(), MarketEvent(timestamp=ts, payload={}), context="x")
+    pipe._pit_check(
+        ts + pd.Timedelta(days=1).to_pytimedelta(),
+        MarketEvent(timestamp=ts, payload={}),
+        context="x",
+    )
     assert _merge_strategy({"a": 1}, {"b": 2})["b"] == 2
     with pytest.raises(Exception):
         _aware(datetime(2020, 1, 1))
 
     # FEATURE event path
     pipe.on_feature(
-        Event(timestamp=ts, event_type=EventType.FEATURE, payload={"bars": {"AAA": {"close": 11.0}}})
+        Event(
+            timestamp=ts, event_type=EventType.FEATURE, payload={"bars": {"AAA": {"close": 11.0}}}
+        )
     )
 
 
@@ -501,7 +520,12 @@ def test_misc_remaining(tmp_path: Path):
     ensure_effective_timestamps(frame)
     # effective tz none path hard to hit after to_datetime utc=True
     with pytest.raises(Exception):
-        filter_frame_asof_df(frame, datetime(2020, 1, 2, tzinfo=UTC), timestamp_col="missing", fallback_col="missing2")
+        filter_frame_asof_df(
+            frame,
+            datetime(2020, 1, 2, tzinfo=UTC),
+            timestamp_col="missing",
+            fallback_col="missing2",
+        )
     # membership KeyError fallback
     try:
         filter_universe_membership_asof(
@@ -521,11 +545,20 @@ def test_misc_remaining(tmp_path: Path):
 
     # corporate tz convert path + missing file already tested
     normalize_corporate_actions(
-        [{"instrument": "A", "ex_date": pd.Timestamp("2020-01-01", tz="US/Eastern"), "action_type": "SPLIT", "ratio": 2}]
+        [
+            {
+                "instrument": "A",
+                "ex_date": pd.Timestamp("2020-01-01", tz="US/Eastern"),
+                "action_type": "SPLIT",
+                "ratio": 2,
+            }
+        ]
     )
     assert actions_to_frame([]) is not None
     # empty load list sequence of mappings
-    load_corporate_actions([{"instrument": "A", "ex_date": "2020-01-01", "action_type": "SPLIT", "ratio": 2}])
+    load_corporate_actions(
+        [{"instrument": "A", "ex_date": "2020-01-01", "action_type": "SPLIT", "ratio": 2}]
+    )
 
     # create_synthetic path returns dataset when path set — already; frame-only branch via synthetic.create
     assert create_synthetic_ohlcv(n_days=2) is not None
@@ -533,7 +566,12 @@ def test_misc_remaining(tmp_path: Path):
     # result pnl_changed empty / fills flat
     assert not OperationalBacktestResult(backtest_id="x", status="COMPLETED").pnl_changed
     assert OperationalBacktestResult(
-        backtest_id="x", status="COMPLETED", equity_curve=[100, 100], fills=[{"a": 1}], positions_log=[{"p": 1}], initial_capital=100
+        backtest_id="x",
+        status="COMPLETED",
+        equity_curve=[100, 100],
+        fills=[{"a": 1}],
+        positions_log=[{"p": 1}],
+        initial_capital=100,
     ).pnl_changed
 
     # lifecycle map cancel already; PREPARING mapped
@@ -548,7 +586,12 @@ def test_misc_remaining(tmp_path: Path):
     bh.initialize(ctx)
     assert bh.on_signal(SimpleNamespace(payload={}), ctx) is None
     # empty instruments → None
-    assert bh.on_market_data(SimpleNamespace(payload={}, timestamp=datetime(2020, 1, 1, tzinfo=UTC)), ctx) is None
+    assert (
+        bh.on_market_data(
+            SimpleNamespace(payload={}, timestamp=datetime(2020, 1, 1, tzinfo=UTC)), ctx
+        )
+        is None
+    )
 
     mom = CrossSectionalMomentumStrategy(lookback=2)
     mom._update_history({"A": None})  # type: ignore[arg-type]
@@ -562,7 +605,9 @@ def test_misc_remaining(tmp_path: Path):
         config=cfg,
         strategy=BuyAndHoldStrategy(),
         capital=CapitalState(1000),
-        positions=__import__("iqrp.app.backtesting.accounting", fromlist=["PositionBook"]).PositionBook(),
+        positions=__import__(
+            "iqrp.app.backtesting.accounting", fromlist=["PositionBook"]
+        ).PositionBook(),
     )
     ctxp.load_checkpoint(
         {
@@ -597,6 +642,7 @@ def test_misc_remaining(tmp_path: Path):
         orders=[1],
         capital=BadCap(),
     )
+
     # capital is used in reconcile - need object that breaks
     class CapBoom(CapitalState):
         @property
@@ -606,7 +652,9 @@ def test_misc_remaining(tmp_path: Path):
     ns.capital = CapBoom(1000)
     integrity_validate(
         ns,  # type: ignore[arg-type]
-        OperationalBacktestResult(backtest_id="x", status="COMPLETED", equity_curve=[1.0], capital={}),
+        OperationalBacktestResult(
+            backtest_id="x", status="COMPLETED", equity_curve=[1.0], capital={}
+        ),
         results_persisted=True,
     )
 

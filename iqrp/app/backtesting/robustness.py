@@ -2,8 +2,9 @@
 
 from __future__ import annotations
 
+from collections.abc import Callable, Mapping, Sequence
 from itertools import product
-from typing import Any, Callable, Mapping, Sequence
+from typing import Any
 
 import numpy as np
 
@@ -12,11 +13,11 @@ from iqrp.app.backtesting.performance.returns import as_returns, total_return
 from iqrp.app.backtesting.performance.risk_adjusted import sharpe_ratio
 
 __all__ = [
+    "ablation_test",
+    "overfitting_risk",
     "parameter_sweep",
     "sensitivity_analysis",
-    "ablation_test",
     "stability_regions",
-    "overfitting_risk",
 ]
 
 
@@ -145,11 +146,13 @@ def ablation_test(
     results: list[dict[str, Any]] = []
 
     # Full configuration
-    full_flags = {k: True for k in components}
+    full_flags = dict.fromkeys(components, True)
     full_flags.update({k: bool(v) for k, v in components.items()})
     out = objective(**{**base, **full_flags})
     r = as_returns(out["returns"] if isinstance(out, Mapping) else out)
-    results.append({"ablation": "none", **full_flags, **_default_metrics(r, periods_per_year=periods_per_year)})
+    results.append(
+        {"ablation": "none", **full_flags, **_default_metrics(r, periods_per_year=periods_per_year)}
+    )
 
     for key in components:
         flags = dict(full_flags)

@@ -35,7 +35,10 @@ class TransformerDiagnosticReport:
 
 
 def run_transformer_diagnostics(model: Any) -> TransformerDiagnosticReport:
-    resid = np.asarray(model._residuals if getattr(model, "_residuals", None) is not None else [0.0], dtype=np.float64)
+    resid = np.asarray(
+        model._residuals if getattr(model, "_residuals", None) is not None else [0.0],
+        dtype=np.float64,
+    )
     if resid.size == 0:
         resid = np.asarray([0.0], dtype=np.float64)
     mean = float(np.mean(resid))
@@ -43,7 +46,9 @@ def run_transformer_diagnostics(model: Any) -> TransformerDiagnosticReport:
     skew = float(np.mean(((resid - mean) / std) ** 3)) if std > 1e-12 else 0.0
     hist = model._history.to_dict() if hasattr(model, "_history") else {}
     attn_ent = _attention_entropy(getattr(model, "_last_attn", None))
-    emb_drift = _embedding_drift(getattr(model, "_last_embeddings", None), getattr(model, "_X_seq", None))
+    emb_drift = _embedding_drift(
+        getattr(model, "_last_embeddings", None), getattr(model, "_X_seq", None)
+    )
     wstats = _weight_stats(getattr(model, "_module", None))
     cal = _calibration(resid)
     return TransformerDiagnosticReport(
@@ -89,7 +94,12 @@ def _weight_stats(module: Any) -> dict[str, float]:
     w = np.concatenate(vals)
     if w.size == 0:
         return {}
-    return {"mean": float(np.mean(w)), "std": float(np.std(w)), "abs_max": float(np.max(np.abs(w))), "n": float(w.size)}
+    return {
+        "mean": float(np.mean(w)),
+        "std": float(np.std(w)),
+        "abs_max": float(np.max(np.abs(w))),
+        "n": float(w.size),
+    }
 
 
 def _calibration(resid: np.ndarray, n_bins: int = 10) -> dict[str, list[float]]:

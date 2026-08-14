@@ -71,7 +71,10 @@ def test_config_error_and_default_fallback(tmp_path: Path) -> None:
     bad.write_text("- just\n- a\n- list\n", encoding="utf-8")
     with pytest.raises(ConfigurationError):
         KalmanSettings.from_hydra(bad)
-    with patch("iqrp.app.regimes.kalman.config._default_config_path", return_value=tmp_path / "missing.yaml"):
+    with patch(
+        "iqrp.app.regimes.kalman.config._default_config_path",
+        return_value=tmp_path / "missing.yaml",
+    ):
         s = KalmanSettings.default()
         assert s.n_states == 2
     assert _default_config_path().name == "default.yaml"
@@ -126,7 +129,9 @@ def test_update_pinv_and_1d_innov_stats() -> None:
 
 @pytest.mark.unit
 def test_ukf_cholesky_and_gain_pinv() -> None:
-    with patch("numpy.linalg.cholesky", side_effect=[np.linalg.LinAlgError("fail"), np.array([[0.1]])]):
+    with patch(
+        "numpy.linalg.cholesky", side_effect=[np.linalg.LinAlgError("fail"), np.array([[0.1]])]
+    ):
         pts, wm, wc = sigma_points(np.zeros(1), np.eye(1) * 0.01, alpha=0.5)
         assert pts.shape[0] == 3
     sys = build_system(_settings(application="denoise"), application="denoise")
@@ -219,17 +224,29 @@ def test_model_branches_online_state_diag(tmp_path: Path) -> None:
 
 @pytest.mark.unit
 def test_trainer_seed_x0_and_adaptive_qr() -> None:
-    settings = _settings(application="denoise", filter_type="adaptive", training={"em_iterations": 3, "tol": 1e-12, "estimate_noise": True})
+    settings = _settings(
+        application="denoise",
+        filter_type="adaptive",
+        training={"em_iterations": 3, "tol": 1e-12, "estimate_noise": True},
+    )
     trainer = KalmanTrainer(settings)
     sys = build_system(settings, application="denoise")
     # zero x0 triggers seeding
-    sys = LinearGaussianSSM(f=sys.f, h=sys.h, q=sys.q, r=sys.r, x0=np.zeros(1), p0=sys.p0, application="denoise")
+    sys = LinearGaussianSSM(
+        f=sys.f, h=sys.h, q=sys.q, r=sys.r, x0=np.zeros(1), p0=sys.p0, application="denoise"
+    )
     y = np.linspace(5.0, 6.0, 25)
     res = trainer.fit(y, system=sys)
     assert res.system.x0[0] != 0.0 or True
     # simulate with zero p0
     sys2 = LinearGaussianSSM(
-        f=sys.f, h=sys.h, q=sys.q, r=sys.r, x0=np.array([1.0]), p0=np.zeros((1, 1)), application="denoise"
+        f=sys.f,
+        h=sys.h,
+        q=sys.q,
+        r=sys.r,
+        x0=np.array([1.0]),
+        p0=np.zeros((1, 1)),
+        application="denoise",
     )
     st, ob = simulate_lds(sys2, 5, rng=np.random.default_rng(7))
     assert st.shape[0] == 5

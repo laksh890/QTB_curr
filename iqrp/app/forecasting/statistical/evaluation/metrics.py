@@ -37,7 +37,9 @@ def evaluate_forecast(
     return metrics
 
 
-def summary_table(results: dict[str, dict[str, float]], *, primary: str = "rmse") -> list[dict[str, Any]]:
+def summary_table(
+    results: dict[str, dict[str, float]], *, primary: str = "rmse"
+) -> list[dict[str, Any]]:
     return ForecastEvaluator().benchmark(results, primary=primary)
 
 

@@ -49,10 +49,14 @@ def check_liquidity_limits(
     min_adv_coverage: float = 0.01,
     max_time_to_liquidate: float = 5.0,
 ) -> list[LimitBreach]:
-    lims = limits if limits is not None else build_liquidity_limits(
-        max_participation=max_participation,
-        min_adv_coverage=min_adv_coverage,
-        max_time_to_liquidate=max_time_to_liquidate,
+    lims = (
+        limits
+        if limits is not None
+        else build_liquidity_limits(
+            max_participation=max_participation,
+            min_adv_coverage=min_adv_coverage,
+            max_time_to_liquidate=max_time_to_liquidate,
+        )
     )
     values = {
         "max_participation": float(participation),

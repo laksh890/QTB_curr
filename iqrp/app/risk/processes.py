@@ -107,7 +107,9 @@ def from_market_simulator(
 
         sim = MarketSimulator()
         market = sim.simulate_preset(preset, n_steps=max(n + 5, 50))
-        prices = np.asarray(getattr(market, "prices", None) or market.get("prices"), dtype=np.float64)
+        prices = np.asarray(
+            getattr(market, "prices", None) or market.get("prices"), dtype=np.float64
+        )
         if prices.ndim == 1:
             rets = np.diff(np.log(np.maximum(prices, 1e-12)))
             rets = rets.reshape(-1, 1)
@@ -123,7 +125,7 @@ def from_market_simulator(
             "truth": {"kind": "market_simulator", "preset": preset, "seed": seed},
             "source": "iqrp.app.simulation",
         }
-    except Exception as exc:  # noqa: BLE001
+    except Exception as exc:
         out = simulate_risk_scenario("normal", n=n, n_assets=1, seed=seed)
         out["truth"]["fallback"] = str(exc)
         out["source"] = "local_fallback"

@@ -74,7 +74,9 @@ class NeuralTrainer:
         )
         stopper = EarlyStopping(patience=self.settings.train.early_stopping_patience)
         use_amp = bool(self.settings.train.mixed_precision or self.settings.distributed.amp)
-        scaler = torch.amp.GradScaler("cuda", enabled=use_amp and str(self.device).startswith("cuda"))
+        scaler = torch.amp.GradScaler(
+            "cuda", enabled=use_amp and str(self.device).startswith("cuda")
+        )
         accum = max(int(self.settings.train.accumulation_steps), 1)
         self.history = History()
 
@@ -85,14 +87,18 @@ class NeuralTrainer:
             for step, (xb, yb) in enumerate(loader):
                 xb_t = to_tensor(xb, self.device)
                 yb_t = to_tensor(yb, self.device)
-                with torch.amp.autocast("cuda", enabled=use_amp and str(self.device).startswith("cuda")):
+                with torch.amp.autocast(
+                    "cuda", enabled=use_amp and str(self.device).startswith("cuda")
+                ):
                     out = module(xb_t)
                     loss = _compute_loss(loss_fn, out, yb_t, task=self.settings.task.type) / accum
                 scaler.scale(loss).backward()
                 if (step + 1) % accum == 0:
                     if self.settings.train.grad_clip > 0:
                         scaler.unscale_(opt)
-                        torch.nn.utils.clip_grad_norm_(module.parameters(), self.settings.train.grad_clip)
+                        torch.nn.utils.clip_grad_norm_(
+                            module.parameters(), self.settings.train.grad_clip
+                        )
                     gnorm = self.grad_monitor.record(module)
                     self.history.grad_norms.append(gnorm)
                     scaler.step(opt)
@@ -118,11 +124,15 @@ class NeuralTrainer:
                 break
         return module, self.history
 
-    def evaluate_loss(self, module: Any, X: np.ndarray, y: np.ndarray, loss_fn: Any | None = None) -> float:
+    def evaluate_loss(
+        self, module: Any, X: np.ndarray, y: np.ndarray, loss_fn: Any | None = None
+    ) -> float:
         import torch
 
         module.eval()
-        loss_fn = loss_fn or get_loss(self.settings.train.loss, alphas=self.settings.task.quantile_alphas)
+        loss_fn = loss_fn or get_loss(
+            self.settings.train.loss, alphas=self.settings.task.quantile_alphas
+        )
         with torch.no_grad():
             xb = to_tensor(X, self.device)
             yb = to_tensor(y, self.device)
@@ -142,7 +152,6 @@ class NeuralTrainer:
 
 
 def _compute_loss(loss_fn: Any, out: Any, target: Any, *, task: str) -> Any:
-    import torch
 
     pred = out[0] if isinstance(out, (tuple, list)) else out
     if task in {"classification", "multiclass"} and pred.dim() > 1 and pred.shape[-1] > 1:
@@ -157,7 +166,13 @@ def _compute_loss(loss_fn: Any, out: Any, target: Any, *, task: str) -> Any:
     # regression / quantile / distribution
     if pred.shape == target.shape:
         return loss_fn(pred, target)
-    if pred.dim() >= 2 and target.dim() == 2 and pred.shape[:2] == target.shape[:2] and pred.shape == (*target.shape, pred.shape[-1]) and pred.shape[-1] > 1:
+    if (
+        pred.dim() >= 2
+        and target.dim() == 2
+        and pred.shape[:2] == target.shape[:2]
+        and pred.shape == (*target.shape, pred.shape[-1])
+        and pred.shape[-1] > 1
+    ):
         return loss_fn(pred, target)
     # squeeze trailing singleton
     if pred.dim() >= 2 and pred.shape[-1] == 1 and pred.shape[:-1] == target.shape:

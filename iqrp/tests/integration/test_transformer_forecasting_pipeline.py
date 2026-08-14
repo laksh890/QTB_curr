@@ -14,7 +14,10 @@ from iqrp.app.forecasting.transformers import (
     create_transformer_model,
     ensure_transformer_models_loaded,
 )
-from iqrp.app.forecasting.transformers.base.processes import feature_names, simulate_long_range_series
+from iqrp.app.forecasting.transformers.base.processes import (
+    feature_names,
+    simulate_long_range_series,
+)
 
 
 @pytest.mark.integration
@@ -93,7 +96,13 @@ def test_quantile_probabilistic_and_regime() -> None:
     settings = TransformerSettings.from_mapping(
         {
             "task": {"type": "quantile", "quantile_alphas": [0.1, 0.5, 0.9]},
-            "architecture": {"lookback": 16, "horizon": 4, "d_model": 32, "n_heads": 4, "num_layers": 1},
+            "architecture": {
+                "lookback": 16,
+                "horizon": 4,
+                "d_model": 32,
+                "n_heads": 4,
+                "num_layers": 1,
+            },
             "train": {"epochs": 3, "batch_size": 16, "device": "cpu", "loss": "quantile"},
             "probabilistic": {"enabled": True, "distribution": "quantile"},
             "regime": {"enabled": True, "mode": "embedding"},

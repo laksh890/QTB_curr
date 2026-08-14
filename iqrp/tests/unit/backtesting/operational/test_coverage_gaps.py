@@ -12,6 +12,7 @@ import pyarrow.feather as feather
 import pyarrow.ipc as ipc
 import pytest
 
+import iqrp.app.backtesting.run as run_mod
 from iqrp.app.backtesting.accounting import (
     CapitalState,
     FillLog,
@@ -22,6 +23,7 @@ from iqrp.app.backtesting.accounting import (
 )
 from iqrp.app.backtesting.corporate_actions import CorporateAction, CorporateActionType
 from iqrp.app.backtesting.data import (
+    AdjustmentMethod,
     ContinuousContractBuilder,
     ContinuousContractConfig,
     ContractSpec,
@@ -34,8 +36,8 @@ from iqrp.app.backtesting.data import (
     LookaheadViolation,
     ParquetAdapter,
     RollRule,
-    AdjustmentMethod,
     corporate_actions_asof,
+    custom_universe,
     ensure_effective_timestamps,
     filter_universe_membership_asof,
     historical_universe,
@@ -43,7 +45,6 @@ from iqrp.app.backtesting.data import (
     metadata_from_frame,
     normalize_corporate_actions,
     resolve_universe,
-    custom_universe,
 )
 from iqrp.app.backtesting.data.corporate_actions import actions_to_frame, corporate_actions_frame
 from iqrp.app.backtesting.data.point_in_time import effective_timestamp
@@ -80,7 +81,6 @@ from iqrp.app.backtesting.strategy import (
     StrategyRegistry,
 )
 from iqrp.app.backtesting.types import BacktestState
-import iqrp.app.backtesting.run as run_mod
 
 
 # --------------------------------------------------------------------------- data
@@ -88,9 +88,7 @@ def test_synthetic_hourly_and_create_path(tmp_path: Path):
     frame = generate_synthetic_ohlcv(n_days=5, freq="1h", seed=2, start="2020-01-01")
     assert len(frame) > 0
     # tz-aware start
-    frame2 = generate_synthetic_ohlcv(
-        n_days=3, seed=1, start=pd.Timestamp("2020-01-01", tz="UTC")
-    )
+    frame2 = generate_synthetic_ohlcv(n_days=3, seed=1, start=pd.Timestamp("2020-01-01", tz="UTC"))
     assert not frame2.empty
     ds = create_synthetic_ohlcv(tmp_path / "out", n_days=4, seed=1)
     assert isinstance(ds, HistoricalDataset)
@@ -108,9 +106,7 @@ def test_schema_infer_and_normalize_edges():
     ts3 = pd.Series(pd.to_datetime(["2020-01-01", "2020-01-03"], utc=True))
     infer_frequency(ts3)
     empty = normalize_frame(
-        pd.DataFrame(
-            columns=["timestamp", "instrument", "open", "high", "low", "close", "volume"]
-        )
+        pd.DataFrame(columns=["timestamp", "instrument", "open", "high", "low", "close", "volume"])
     )
     assert frame_coverage(empty)["coverage_pct"] == 0.0
     frame = generate_synthetic_ohlcv(n_days=5, seed=1)
@@ -132,13 +128,17 @@ def test_metadata_roundtrip_and_empty():
     meta = metadata_from_frame(
         frame,
         dataset_id="m",
-        instrument_metadata={"AAA": {"instrument": "AAA", "expiry": "2020-06-01T00:00:00+00:00", "foo": 1}},
+        instrument_metadata={
+            "AAA": {"instrument": "AAA", "expiry": "2020-06-01T00:00:00+00:00", "foo": 1}
+        },
     )
     d = meta.to_dict()
     restored = DatasetMetadata.from_dict(d)
     assert restored.dataset_id == "m"
     assert restored.coverage.instrument_count >= 0
-    im = InstrumentMetadata.from_dict({"instrument": "Z", "expiry": "2020-01-01T00:00:00+00:00", "x": 1})
+    im = InstrumentMetadata.from_dict(
+        {"instrument": "Z", "expiry": "2020-01-01T00:00:00+00:00", "x": 1}
+    )
     assert im.to_dict()["instrument"] == "Z"
     assert CoverageInfo().to_dict()["frequency"] == "unknown"
 
@@ -146,7 +146,13 @@ def test_metadata_roundtrip_and_empty():
 def test_corporate_actions_all_paths(tmp_path: Path):
     assert load_corporate_actions([]) == []
     rows = [
-        {"symbol": "AAA", "ex_date": "2020-01-15", "type": "SPLIT", "ratio": 2.0, "action_id": "a1"},
+        {
+            "symbol": "AAA",
+            "ex_date": "2020-01-15",
+            "type": "SPLIT",
+            "ratio": 2.0,
+            "action_id": "a1",
+        },
         {"instrument": "BBB", "ex_date": "2020-02-01", "action_type": "DIVIDEND", "dividend": 0.25},
     ]
     acts = normalize_corporate_actions(rows)
@@ -156,7 +162,12 @@ def test_corporate_actions_all_paths(tmp_path: Path):
     pd.DataFrame(
         [
             {"instrument": "AAA", "ex_date": "2020-01-15", "action_type": "SPLIT", "ratio": 2.0},
-            {"instrument": "BBB", "ex_date": "2020-02-01", "action_type": "DIVIDEND", "dividend": 0.25},
+            {
+                "instrument": "BBB",
+                "ex_date": "2020-02-01",
+                "action_type": "DIVIDEND",
+                "dividend": 0.25,
+            },
         ]
     ).to_parquet(pq, index=False)
     assert load_corporate_actions(pq)
@@ -185,7 +196,12 @@ def test_corporate_actions_all_paths(tmp_path: Path):
 def test_point_in_time_effective_timestamp_paths():
     row = {"timestamp": datetime(2020, 1, 2, tzinfo=UTC)}
     assert effective_timestamp(row).year == 2020
-    s = pd.Series({"timestamp": datetime(2020, 1, 2, tzinfo=UTC), "effective_timestamp": datetime(2020, 1, 1, tzinfo=UTC)})
+    s = pd.Series(
+        {
+            "timestamp": datetime(2020, 1, 2, tzinfo=UTC),
+            "effective_timestamp": datetime(2020, 1, 1, tzinfo=UTC),
+        }
+    )
     assert effective_timestamp(s).day == 1
     with pytest.raises(LookaheadViolation):
         effective_timestamp({"timestamp": datetime(2020, 1, 2)})
@@ -199,7 +215,9 @@ def test_point_in_time_effective_timestamp_paths():
         pass
     mem2 = {"AAA": {"start": datetime(2020, 1, 1, tzinfo=UTC), "end": None}}
     try:
-        filter_universe_membership_asof(mem2, datetime(2020, 1, 15, tzinfo=UTC), symbol_key="symbol")
+        filter_universe_membership_asof(
+            mem2, datetime(2020, 1, 15, tzinfo=UTC), symbol_key="symbol"
+        )
     except Exception:
         filter_universe_membership_asof(
             [{"symbol": "AAA", "start": datetime(2020, 1, 1, tzinfo=UTC), "end": None}],
@@ -226,9 +244,7 @@ def test_universe_membership_dataframe_and_errors():
         historical_universe([{"start": "2020-01-01"}])  # missing instrument
     # custom with membership + asof
     custom = custom_universe(
-        membership=[
-            {"instrument": "AAA", "start": datetime(2020, 1, 1, tzinfo=UTC), "end": None}
-        ]
+        membership=[{"instrument": "AAA", "start": datetime(2020, 1, 1, tzinfo=UTC), "end": None}]
     )
     assert resolve_universe(custom, asof=datetime(2020, 1, 10, tzinfo=UTC)) == ["AAA"]
     # dict spec
@@ -447,7 +463,9 @@ def test_strategy_base_hooks_and_registry_empty_version():
 
     # buy and hold empty universe from prices
     bh = BuyAndHoldStrategy()
-    ctx2 = SimpleNamespace(universe=[], latest_prices={"ZZZ": 1.0}, strategy_state={}, positions=None)
+    ctx2 = SimpleNamespace(
+        universe=[], latest_prices={"ZZZ": 1.0}, strategy_state={}, positions=None
+    )
     bh.initialize(ctx2)
     ev = SimpleNamespace(timestamp=datetime(2020, 1, 2, tzinfo=UTC), payload={"bars": {}})
     assert bh.on_market_data(ev, ctx2)
@@ -469,7 +487,9 @@ def test_strategy_base_hooks_and_registry_empty_version():
     assert bh3.on_market_data(ev3, ctx4)
     # on_features before entered
     bh4 = BuyAndHoldStrategy()
-    ctx5 = SimpleNamespace(universe=["AAA"], latest_prices={"AAA": 1.0}, strategy_state={}, positions=None)
+    ctx5 = SimpleNamespace(
+        universe=["AAA"], latest_prices={"AAA": 1.0}, strategy_state={}, positions=None
+    )
     bh4.initialize(ctx5)
     assert bh4.on_features(ev, ctx5)
 
@@ -507,6 +527,7 @@ def test_accounting_edge_branches():
 def test_configuration_omegaconf_and_plain():
     cfg = BRC.from_dict({"universe": None, "capital": 10, "id": "x"})
     assert cfg.universe == []
+
     # from_omegaconf with plain mapping-like
     class NS:
         def items(self):
@@ -543,7 +564,9 @@ def test_adapters_fallback_paths():
         market_context={},
     )
     IsolatedExecutionFallback.plan_from_targets({"A": 1}, {"A": 1}, equity=100, prices={"A": 0})
-    IsolatedExecutionFallback.estimate_costs([{"instrument": "A", "quantity": 1, "price": 10}], commission_bps=1)
+    IsolatedExecutionFallback.estimate_costs(
+        [{"instrument": "A", "quantity": 1, "price": 10}], commission_bps=1
+    )
     port = PortfolioConstructionAdapter()
     port.targets_from_weights({"A": 0.5})
     # force fallback by clearing prod

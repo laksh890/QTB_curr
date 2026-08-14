@@ -5,8 +5,7 @@ from __future__ import annotations
 import numpy as np
 
 from iqrp.app.timeseries.base import AnalysisResult, TemporalMode
-from iqrp.app.timeseries.transforms import TimeSeriesTransformer
-from iqrp.app.timeseries.transforms import differencing as _differencing
+from iqrp.app.timeseries.transforms import TimeSeriesTransformer, differencing as _differencing
 
 
 def differencing(

@@ -8,7 +8,7 @@ import numpy as np
 import polars as pl
 import pytest
 
-import iqrp.app.regimes.bayesian  # noqa: F401
+import iqrp.app.regimes.bayesian
 from iqrp.app.regimes.bayesian import BayesianRegimeSwitchingModel, BayesianSettings
 from iqrp.app.regimes.bayesian.visualization import (
     plot_regime_timeline,

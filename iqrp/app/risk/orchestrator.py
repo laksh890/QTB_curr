@@ -137,7 +137,9 @@ class RiskIntelligenceEngine:
             portfolio_risk=port if isinstance(port, dict) else {"value": port},
             position_risk={"weights": w.tolist()},
             tail_risk=tail,
-            liquidity_risk={"note": "call liquidity_risk() with ADV/spread for position-level metrics"},
+            liquidity_risk={
+                "note": "call liquidity_risk() with ADV/spread for position-level metrics"
+            },
             concentration=conc if isinstance(conc, dict) else {},
             factor_exposure={},
             drawdown=dd,
@@ -148,7 +150,10 @@ class RiskIntelligenceEngine:
             timestamp=datetime.now(UTC).isoformat(),
             data_version=self.settings.data_version,
             model_version=self.settings.model_version,
-            metadata={"exposure": exp if isinstance(exp, dict) else {}, "volatility": vol.to_dict()},
+            metadata={
+                "exposure": exp if isinstance(exp, dict) else {},
+                "volatility": vol.to_dict(),
+            },
         )
         self._last_report = report
         if r.size:
@@ -231,7 +236,9 @@ class RiskIntelligenceEngine:
             out["hypothetical"] = hypothetical_stress(weights, cov, shocks)
         elif shocks is not None:
             w = as_weights(weights)
-            shock_vec = np.asarray(list(shocks.values()) if isinstance(shocks, dict) else shocks, dtype=np.float64)
+            shock_vec = np.asarray(
+                list(shocks.values()) if isinstance(shocks, dict) else shocks, dtype=np.float64
+            )
             if shock_vec.size == 1:
                 shock_vec = np.full(w.size, float(shock_vec[0]))
             out["hypothetical"] = hypothetical_stress(weights, np.eye(w.size), shock_vec)
@@ -245,11 +252,17 @@ class RiskIntelligenceEngine:
         direction: Any | None = None,
     ) -> dict[str, Any]:
         w = as_weights(weights)
-        u = np.asarray(direction, dtype=np.float64).reshape(-1) if direction is not None else np.ones(w.size)
+        u = (
+            np.asarray(direction, dtype=np.float64).reshape(-1)
+            if direction is not None
+            else np.ones(w.size)
+        )
         return reverse_stress(
             w,
             u,
-            loss_limit=loss_limit if loss_limit is not None else self.settings.limits.max_daily_loss,
+            loss_limit=(
+                loss_limit if loss_limit is not None else self.settings.limits.max_daily_loss
+            ),
         )
 
     def position_size(
@@ -327,7 +340,11 @@ class RiskIntelligenceEngine:
         max_participation: float | None = None,
         impact_coeff: float = 0.1,
     ) -> dict[str, Any]:
-        size = float(position_size if position_size is not None else (notional if notional is not None else 0.0))
+        size = float(
+            position_size
+            if position_size is not None
+            else (notional if notional is not None else 0.0)
+        )
         return liquidity_risk(
             position_size=size,
             adv=adv,
@@ -493,7 +510,9 @@ class RiskIntelligenceEngine:
         regime: str = "normal",
     ) -> Any:
         cfg = self.settings.leverage
-        vol = max(float(realized_vol), float(forecast_vol if forecast_vol is not None else realized_vol))
+        vol = max(
+            float(realized_vol), float(forecast_vol if forecast_vol is not None else realized_vol)
+        )
         rec = recommended_leverage(
             realized_vol=vol,
             target_vol=self.settings.sizing.target_volatility,
@@ -507,7 +526,9 @@ class RiskIntelligenceEngine:
             min_leverage=cfg.min_leverage,
             confidence_cap=cfg.confidence_cap,
         )
-        return clip_leverage(rec.value, min_leverage=cfg.min_leverage, max_leverage=cfg.max_leverage)
+        return clip_leverage(
+            rec.value, min_leverage=cfg.min_leverage, max_leverage=cfg.max_leverage
+        )
 
     def model_risk_assessment(
         self,
@@ -519,7 +540,10 @@ class RiskIntelligenceEngine:
         out: dict[str, Any] = {}
         if forecasts is not None:
             if isinstance(forecasts, dict):
-                stack = np.stack([np.asarray(v, dtype=np.float64).reshape(-1) for v in forecasts.values()], axis=0)
+                stack = np.stack(
+                    [np.asarray(v, dtype=np.float64).reshape(-1) for v in forecasts.values()],
+                    axis=0,
+                )
             else:
                 stack = np.asarray(forecasts, dtype=np.float64)
             out["disagreement"] = model_disagreement(stack).to_dict()
@@ -590,7 +614,7 @@ class RiskIntelligenceEngine:
         if "settings" in payload:
             try:
                 self.settings = RiskSettings.from_mapping(payload["settings"])
-            except Exception:  # noqa: BLE001
+            except Exception:
                 pass
         self._audit_log = list(payload.get("audit_log") or [])
         return self

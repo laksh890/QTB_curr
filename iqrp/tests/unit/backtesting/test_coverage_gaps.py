@@ -25,7 +25,12 @@ from iqrp.app.backtesting.corporate_actions import (
     apply_corporate_actions,
     build_action,
 )
-from iqrp.app.backtesting.engine import BacktestEngine, BacktestResult, _optional_execution_cost, _signals_to_weights
+from iqrp.app.backtesting.engine import (
+    BacktestEngine,
+    BacktestResult,
+    _optional_execution_cost,
+    _signals_to_weights,
+)
 from iqrp.app.backtesting.event_engine import (
     BacktestClock,
     Event,
@@ -134,8 +139,16 @@ from iqrp.app.backtesting.rolling_retraining.evaluator import (
 from iqrp.app.backtesting.scenarios.correlation import apply_correlation_shock, stress_correlation
 from iqrp.app.backtesting.scenarios.engine import ScenarioEngine
 from iqrp.app.backtesting.scenarios.gap import apply_gap_shock, run_gap_scenario
-from iqrp.app.backtesting.scenarios.historical import HistoricalScenario, run_historical_scenario, slice_window
-from iqrp.app.backtesting.scenarios.hypothetical import HypotheticalShock, apply_hypothetical_shock, run_hypothetical_scenario
+from iqrp.app.backtesting.scenarios.historical import (
+    HistoricalScenario,
+    run_historical_scenario,
+    slice_window,
+)
+from iqrp.app.backtesting.scenarios.hypothetical import (
+    HypotheticalShock,
+    apply_hypothetical_shock,
+    run_hypothetical_scenario,
+)
 from iqrp.app.backtesting.scenarios.liquidity import apply_liquidity_shock, run_liquidity_scenario
 from iqrp.app.backtesting.scenarios.monte_carlo import (
     correlated_paths,
@@ -143,13 +156,24 @@ from iqrp.app.backtesting.scenarios.monte_carlo import (
     residual_bootstrap_paths,
     run_monte_carlo,
 )
-from iqrp.app.backtesting.scenarios.regime import classify_simple_regimes, evaluate_regime_robustness, run_regime_scenario
-from iqrp.app.backtesting.scenarios.volatility import apply_volatility_shock, run_volatility_scenario
+from iqrp.app.backtesting.scenarios.regime import (
+    classify_simple_regimes,
+    evaluate_regime_robustness,
+    run_regime_scenario,
+)
+from iqrp.app.backtesting.scenarios.volatility import (
+    apply_volatility_shock,
+    run_volatility_scenario,
+)
 from iqrp.app.backtesting.serializer import serialize_result, to_jsonable
 from iqrp.app.backtesting.types import BacktestState
 from iqrp.app.backtesting.validation_gates import GateThresholds, evaluate_gates, require_oos
 from iqrp.app.backtesting.walk_forward import WalkForwardEngine, generate_windows
-from iqrp.app.backtesting.walk_forward.embargo import apply_embargo, embargo_after_test, embargo_splits
+from iqrp.app.backtesting.walk_forward.embargo import (
+    apply_embargo,
+    embargo_after_test,
+    embargo_splits,
+)
 from iqrp.app.backtesting.walk_forward.purge import purge_train_indices, purged_kfold_splits
 from iqrp.app.backtesting.walk_forward.test_window import TestWindow as WFTestWindow
 from iqrp.app.backtesting.walk_forward.training_window import TrainingWindow
@@ -233,7 +257,9 @@ def test_engine_branches(tmp_path: Path) -> None:
     eng.run(returns=r, signal_fn=sig_kw, seed=4)
 
     # corporate actions with int timestamps → skip ca block early
-    eng.run(returns=r, corporate_actions=[build_action("DIVIDEND", "A", _ts(1), amount=0.1)], seed=5)
+    eng.run(
+        returns=r, corporate_actions=[build_action("DIVIDEND", "A", _ts(1), amount=0.1)], seed=5
+    )
 
     # datetime timestamps + dividends
     settings = BacktestSettings(name="ca")
@@ -243,7 +269,10 @@ def test_engine_branches(tmp_path: Path) -> None:
     # filter_universe_asof won't raise LookaheadViolation for inactive — just empty
     # Force leakage invalidation with horizon
     settings2 = BacktestSettings.model_validate(
-        {**BacktestSettings.default().model_dump(), "pit": {"detect_leakage": True, "max_label_horizon": 0}}
+        {
+            **BacktestSettings.default().model_dump(),
+            "pit": {"detect_leakage": True, "max_label_horizon": 0},
+        }
     )
     eng3 = BacktestEngine(settings2)
     bad = eng3.run(
@@ -352,7 +381,9 @@ def test_clock_range_edge_and_scheduler_fast_forward() -> None:
         job_id="j1",
     )
     q = EventQueue()
-    n = sched.seed_until(q, start=_ts(5), end=_ts(7), clock=BacktestClock(_ts(5), frequency="daily"))
+    n = sched.seed_until(
+        q, start=_ts(5), end=_ts(7), clock=BacktestClock(_ts(5), frequency="daily")
+    )
     assert n >= 1
     sched.cancel(jid)
     # enqueue disabled job
@@ -390,9 +421,21 @@ def test_corporate_merge_into_existing_and_symbol_merge() -> None:
         "NEW": PositionState("NEW", 1.0),
     }
     actions = [
-        CorporateAction(CorporateActionType.MERGER, "A", datetime(2020, 1, 5, tzinfo=UTC), {"new_symbol": "B", "exchange_ratio": 2.0}),
-        CorporateAction(CorporateActionType.SYMBOL_CHANGE, "B", datetime(2020, 1, 6, tzinfo=UTC), {"new_symbol": "NEW"}),
-        CorporateAction(CorporateActionType.SPLIT, "MISSING", datetime(2020, 1, 7, tzinfo=UTC), {"ratio": 2.0}),
+        CorporateAction(
+            CorporateActionType.MERGER,
+            "A",
+            datetime(2020, 1, 5, tzinfo=UTC),
+            {"new_symbol": "B", "exchange_ratio": 2.0},
+        ),
+        CorporateAction(
+            CorporateActionType.SYMBOL_CHANGE,
+            "B",
+            datetime(2020, 1, 6, tzinfo=UTC),
+            {"new_symbol": "NEW"},
+        ),
+        CorporateAction(
+            CorporateActionType.SPLIT, "MISSING", datetime(2020, 1, 7, tzinfo=UTC), {"ratio": 2.0}
+        ),
         CorporateAction("DIVIDEND", "A", datetime(2020, 1, 4, tzinfo=UTC), {"amount": 1.0}),
     ]
     res = apply_corporate_actions(positions, actions, asof=asof)
@@ -597,7 +640,9 @@ def test_scenario_edge_cases(short_returns) -> None:
 
     apply_hypothetical_shock(short_returns, {"kind": "price", "magnitude": -0.01})
     apply_hypothetical_shock(multi, HypotheticalShock("correlation", 0.5), cov=np.eye(2))
-    apply_hypothetical_shock(multi, HypotheticalShock("liquidity", 0.2), liquidity=np.array([1.0, 1.0]))
+    apply_hypothetical_shock(
+        multi, HypotheticalShock("liquidity", 0.2), liquidity=np.array([1.0, 1.0])
+    )
     apply_hypothetical_shock(multi, HypotheticalShock("spread", 0.01), spreads=0.01)
     apply_hypothetical_shock(multi, HypotheticalShock("cost", 0.001), costs=0.001)
     run_hypothetical_scenario(multi, [HypotheticalShock("price", -0.01)], weights=[0.5, 0.5])
@@ -606,7 +651,9 @@ def test_scenario_edge_cases(short_returns) -> None:
         run_monte_carlo(np.array([]))
     residual_bootstrap_paths(short_returns, fitted=short_returns[:10], n_simulations=3, seed=1)
     labs = np.where(short_returns > 0, "up", "down")
-    regime_conditioned_paths(short_returns, labs, regime_path=labs[:10], n_simulations=3, seed=1, horizon=10)
+    regime_conditioned_paths(
+        short_returns, labs, regime_path=labs[:10], n_simulations=3, seed=1, horizon=10
+    )
     correlated_paths(multi, n_simulations=3, seed=1)
 
     apply_liquidity_shock(multi, shock=0.2, liquidity_scores=np.array([0.5, 0.5]))
@@ -713,6 +760,7 @@ def test_gates_and_paper_edge_cases(short_returns) -> None:
         }
     )
     assert cfg.experiment_id == "e1"
+
     # object without to_dict lineage
     class R:
         experiment_id = "e2"
@@ -727,7 +775,9 @@ def test_gates_and_paper_edge_cases(short_returns) -> None:
 
 def test_phase13_failure_paths(monkeypatch, tmp_path: Path) -> None:
     # ComponentCheck fail path via missing symbol
-    bad = ComponentCheck("Bad", "x", "iqrp.app.backtesting", "DoesNotExist", docs=["BacktestingPlatform.md"])
+    bad = ComponentCheck(
+        "Bad", "x", "iqrp.app.backtesting", "DoesNotExist", docs=["BacktestingPlatform.md"]
+    )
     from iqrp.app.backtesting import phase13 as p13
 
     monkeypatch.setattr(p13, "PHASE13_COMPONENTS", [bad])
@@ -776,7 +826,9 @@ def test_lineage_from_settings_none() -> None:
     with pytest.raises(KeyError):
         reg.require("missing")
     rec = reg.create(name="x")
-    reg.register_result(rec.experiment_id, state="COMPLETED", invalidated=True, invalidation_reason="r")
+    reg.register_result(
+        rec.experiment_id, state="COMPLETED", invalidated=True, invalidation_reason="r"
+    )
 
 
 def test_robustness_empty_and_non_numeric() -> None:
@@ -801,7 +853,11 @@ def test_stability_full_report(short_returns) -> None:
         realized=short_returns,
     )
     rolling_volatility(short_returns[:1], window=5)
-    rolling_ic(np.array([1.0, np.nan, 1.0, 2.0, 3.0, 4.0]), np.array([1.0, 1.0, np.nan, 2.0, 3.0, 4.0]), window=3)
+    rolling_ic(
+        np.array([1.0, np.nan, 1.0, 2.0, 3.0, 4.0]),
+        np.array([1.0, 1.0, np.nan, 2.0, 3.0, 4.0]),
+        window=3,
+    )
     with pytest.raises(ValueError):
         rolling_turnover(np.ones((2, 2, 2)), window=2)
 
@@ -872,19 +928,27 @@ def test_phase13_more_failures(monkeypatch, tmp_path: Path) -> None:
     docs.mkdir()
     monkeypatch.setattr(p13, "_docs_root", lambda: docs)
     monkeypatch.setattr(p13, "PHASE13_COMPONENTS", [])
-    monkeypatch.setattr(p13, "REQUIRED_DOCS", list(p13.REQUIRED_DOCS) if False else [
-        "BacktestingPlatform.md",
-        "EventEngine.md",
-        "WalkForward.md",
-        "RollingRetraining.md",
-        "PerformanceMetrics.md",
-        "ScenarioTesting.md",
-        "StrategyValidation.md",
-        "CapacityTesting.md",
-        "ParameterRobustness.md",
-        "Reproducibility.md",
-        "Phase13_BacktestingPlatform.md",
-    ])
+    monkeypatch.setattr(
+        p13,
+        "REQUIRED_DOCS",
+        (
+            list(p13.REQUIRED_DOCS)
+            if False
+            else [
+                "BacktestingPlatform.md",
+                "EventEngine.md",
+                "WalkForward.md",
+                "RollingRetraining.md",
+                "PerformanceMetrics.md",
+                "ScenarioTesting.md",
+                "StrategyValidation.md",
+                "CapacityTesting.md",
+                "ParameterRobustness.md",
+                "Reproducibility.md",
+                "Phase13_BacktestingPlatform.md",
+            ]
+        ),
+    )
     # write tiny Phase13 md then refresh
     (docs / "Phase13_BacktestingPlatform.md").write_text("x", encoding="utf-8")
     created = p13._ensure_stub_docs(docs)
@@ -960,13 +1024,17 @@ def test_clock_range_partial_and_scheduler_end() -> None:
     list(clock2.range(start + timedelta(microseconds=3), inclusive=False))
 
     sched = EventScheduler()
-    sched.schedule_event_type(EventType.MARKET, interval=timedelta(days=1), start=_ts(1), end=_ts(2))
+    sched.schedule_event_type(
+        EventType.MARKET, interval=timedelta(days=1), start=_ts(1), end=_ts(2)
+    )
     q = EventQueue()
     # enqueue past end disables job
     sched.enqueue_due(q, _ts(5))
     # seed without clock
     sched2 = EventScheduler()
-    sched2.schedule_event_type(EventType.SIGNAL, interval=timedelta(days=2), start=_ts(1), end=_ts(5))
+    sched2.schedule_event_type(
+        EventType.SIGNAL, interval=timedelta(days=2), start=_ts(1), end=_ts(5)
+    )
     q2 = EventQueue()
     sched2.seed_until(q2, start=_ts(1), end=_ts(5), clock=None)
 
@@ -988,7 +1056,9 @@ def test_windows_more_modes() -> None:
         ValidationWindow(5, 2)
 
     # window properties without idx
-    w = WalkForwardWindow(0, "rolling", TrainingWindow(0, 8), WFTestWindow(10, 15), ValidationWindow(8, 10))
+    w = WalkForwardWindow(
+        0, "rolling", TrainingWindow(0, 8), WFTestWindow(10, 15), ValidationWindow(8, 10)
+    )
     assert w.train_indices.size and w.test_indices.size and w.validation_indices.size
     assert "val=" in repr(w)
 
@@ -1005,7 +1075,9 @@ def test_corporate_delist_no_position_and_split_bad() -> None:
     ]
     with pytest.raises(ValueError):
         apply_corporate_actions({"A": 1.0}, actions, asof=asof)
-    apply_corporate_actions({"Z": 2.0}, [build_action("DELISTING", "Z", datetime(2020, 1, 5, tzinfo=UTC))], asof=asof)
+    apply_corporate_actions(
+        {"Z": 2.0}, [build_action("DELISTING", "Z", datetime(2020, 1, 5, tzinfo=UTC))], asof=asof
+    )
 
 
 def test_misc_remaining(short_returns) -> None:
@@ -1021,7 +1093,9 @@ def test_misc_remaining(short_returns) -> None:
     factor_exposure(np.array([0.5, 0.5]), np.ones((2, 3)))
 
     buy_and_hold_returns(short_returns)  # 1d
-    buy_and_hold_returns(np.column_stack([short_returns, short_returns]), weights=np.array([0.0, 0.0]))
+    buy_and_hold_returns(
+        np.column_stack([short_returns, short_returns]), weights=np.array([0.0, 0.0])
+    )
 
     cagr(np.array([-2.0]))  # base <= 0 → nan
     annualized_return(np.array([]))
@@ -1062,7 +1136,9 @@ def test_misc_remaining(short_returns) -> None:
     # walk forward fit_predict without y
     eng = WalkForwardEngine()
     X = np.arange(40).reshape(40, 1).astype(float)
-    eng.run_arrays(X=X, train_size=15, test_size=5, fit_predict=lambda X_tr, X_te: {"n": float(len(X_te))})
+    eng.run_arrays(
+        X=X, train_size=15, test_size=5, fit_predict=lambda X_tr, X_te: {"n": float(len(X_te))}
+    )
 
     # monte carlo empty trade / residual empty
     with pytest.raises(ValueError):
@@ -1176,7 +1252,12 @@ def test_final_gaps_push_98(short_returns, monkeypatch, tmp_path: Path) -> None:
     monkeypatch.setattr(Path, "is_file", is_file_patch)
     rep = p13.validate_phase13(write_stubs=False)
     assert rep["status"] == "FAIL"
-    assert any("validation_gates incorrectly approved" in f or "out_of_sample_ok" in f or "default.yaml" in f for f in rep["summary"]["failures"])
+    assert any(
+        "validation_gates incorrectly approved" in f
+        or "out_of_sample_ok" in f
+        or "default.yaml" in f
+        for f in rep["summary"]["failures"]
+    )
 
     # attribution / exposure / risk_adjusted edges
     with pytest.raises(ValueError):
@@ -1218,7 +1299,9 @@ def test_final_gaps_push_98(short_returns, monkeypatch, tmp_path: Path) -> None:
         raise ImportError("no risk")
 
     # cover except return None — already covered by _try_risk_tail returning None
-    monkeypatch.setattr(tail_mod, "_try_risk_tail", lambda: (_ for _ in ()).throw(Exception("x")) if False else None)
+    monkeypatch.setattr(
+        tail_mod, "_try_risk_tail", lambda: (_ for _ in ()).throw(Exception("x")) if False else None
+    )
     # actually call the real function with patched importlib inside
     import iqrp.app.backtesting.performance.tail as t2
 
@@ -1291,7 +1374,9 @@ def test_final_gaps_push_98(short_returns, monkeypatch, tmp_path: Path) -> None:
 
     # liquidity size mismatch
     with pytest.raises(ValueError):
-        apply_liquidity_shock(np.ones((5, 2)), liquidity_scores=np.array([0.1, 0.2, 0.3]), shock=0.1)
+        apply_liquidity_shock(
+            np.ones((5, 2)), liquidity_scores=np.array([0.1, 0.2, 0.3]), shock=0.1
+        )
 
 
 def test_extra_lines_for_gt98(short_returns) -> None:
@@ -1309,7 +1394,12 @@ def test_extra_lines_for_gt98(short_returns) -> None:
 
     # assert_no_future empty indices
     empty_w = WalkForwardWindow(
-        0, "rolling", TrainingWindow(0, 1), WFTestWindow(5, 6), train_idx=np.array([], dtype=int), test_idx=np.arange(5, 6)
+        0,
+        "rolling",
+        TrainingWindow(0, 1),
+        WFTestWindow(5, 6),
+        train_idx=np.array([], dtype=int),
+        test_idx=np.arange(5, 6),
     )
     assert_no_future_training([empty_w])
 
@@ -1369,7 +1459,11 @@ def test_extra_lines_for_gt98(short_returns) -> None:
     regime_conditioned_paths(short_returns, labs, n_simulations=2, seed=1)
 
     # risk_adjusted zero paths
-    from iqrp.app.backtesting.performance.risk_adjusted import information_ratio, omega_ratio, sortino_ratio
+    from iqrp.app.backtesting.performance.risk_adjusted import (
+        information_ratio,
+        omega_ratio,
+        sortino_ratio,
+    )
 
     sortino_ratio(np.array([0.01, 0.02, 0.03]))  # no downside
     omega_ratio(np.zeros(5))
@@ -1381,7 +1475,9 @@ def test_extra_lines_for_gt98(short_returns) -> None:
     # validation gates no checks approved false
     from iqrp.app.backtesting.validation_gates import GateResult
 
-    thr = GateThresholds(require_out_of_sample=False, reject_in_sample_only=False, min_sharpe=None, max_drawdown=None)
+    thr = GateThresholds(
+        require_out_of_sample=False, reject_in_sample_only=False, min_sharpe=None, max_drawdown=None
+    )
     # scorecard with oos so oos_present
     sc = StrategyScorecard(out_of_sample=0.5)
     evaluate_gates(sc, thr)

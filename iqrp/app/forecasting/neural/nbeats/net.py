@@ -9,7 +9,7 @@ from iqrp.app.forecasting.neural.base.torch_utils import has_torch
 try:
     import torch
     from torch import nn
-except Exception:  # noqa: BLE001  # pragma: no cover
+except Exception:  # pragma: no cover
     torch = None  # type: ignore[assignment]
     nn = object  # type: ignore[assignment]
 
@@ -56,7 +56,10 @@ class NBeatsNet(nn.Module if has_torch() else object):  # type: ignore[misc]
         self.dist = dist
         self.n_features = n_features
         self.blocks = nn.ModuleList(
-            [NBeatsBlock(lookback * n_features, horizon, hidden_size) for _ in range(max(n_blocks, 1))]
+            [
+                NBeatsBlock(lookback * n_features, horizon, hidden_size)
+                for _ in range(max(n_blocks, 1))
+            ]
         )
         out_dim = horizon
         if task == "quantile":

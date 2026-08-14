@@ -8,6 +8,6 @@ from iqrp.app.risk.monitoring.risk_monitor import RiskMonitor
 __all__ = [
     "RiskMonitor",
     "build_alerts",
-    "summarize_breaches",
     "dashboard_payload",
+    "summarize_breaches",
 ]

@@ -8,7 +8,7 @@ import numpy as np
 import polars as pl
 import pytest
 
-import iqrp.app.regimes.markov  # noqa: F401 — register models
+import iqrp.app.regimes.markov
 from iqrp.app.regimes.markov import (
     MarkovChainModel,
     MarkovSettings,

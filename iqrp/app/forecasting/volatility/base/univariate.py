@@ -2,7 +2,8 @@
 
 from __future__ import annotations
 
-from typing import Any, Callable
+from collections.abc import Callable
+from typing import Any
 
 import numpy as np
 import polars as pl
@@ -45,7 +46,9 @@ class UnivariateVolatilityModel(VolatilityModel):
         self,
         returns: np.ndarray,
         regimes: np.ndarray | None,
-        fit_subset: Callable[[np.ndarray], tuple[dict[str, float], np.ndarray, float, float, float]],
+        fit_subset: Callable[
+            [np.ndarray], tuple[dict[str, float], np.ndarray, float, float, float]
+        ],
     ) -> tuple[dict[str, float], np.ndarray, float, float, float]:
         """Fit globally; optionally store per-regime params for adaptive switching."""
         params, var, ll, aic, bic = fit_subset(returns)
@@ -62,7 +65,7 @@ class UnivariateVolatilityModel(VolatilityModel):
                 try:
                     p_r, _, _, _, _ = fit_subset(returns[mask])
                     self._regime_params[reg] = p_r
-                except Exception:  # noqa: BLE001
+                except Exception:
                     continue
             if self._vol_settings.regime.ensemble_weight and self._regime_params:
                 # ensemble-weighted variance using last regime frequency
@@ -71,15 +74,15 @@ class UnivariateVolatilityModel(VolatilityModel):
                 params = {**params, **{f"w_{k}": w for k, w in weights.items()}}
         return params, var, ll, aic, bic
 
-    def predict(
-        self, frame: pl.DataFrame, feature_columns: list[str] | None = None
-    ) -> np.ndarray:
+    def predict(self, frame: pl.DataFrame, feature_columns: list[str] | None = None) -> np.ndarray:
         self._require_fitted()
         assert self._variance is not None
         tgt = self._target_column or self._vol_settings.columns.target
         if tgt in frame.columns and self._returns is not None:
             r = frame[tgt].to_numpy().astype(np.float64)
-            if r.size == self._variance.size and np.allclose(r[: min(10, r.size)], self._returns[: min(10, r.size)]):
+            if r.size == self._variance.size and np.allclose(
+                r[: min(10, r.size)], self._returns[: min(10, r.size)]
+            ):
                 return np.sqrt(self._variance)
             # recompute on new series with frozen params
             return np.sqrt(self._variance_from_returns(r))

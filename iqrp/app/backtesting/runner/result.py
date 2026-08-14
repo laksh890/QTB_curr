@@ -72,7 +72,7 @@ class OperationalBacktestResult:
         }
 
     @classmethod
-    def from_dict(cls, data: dict[str, Any]) -> "OperationalBacktestResult":
+    def from_dict(cls, data: dict[str, Any]) -> OperationalBacktestResult:
         return cls(
             backtest_id=str(data.get("backtest_id", "")),
             status=str(data.get("status", "")),

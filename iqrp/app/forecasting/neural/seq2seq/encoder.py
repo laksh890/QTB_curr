@@ -8,12 +8,14 @@ from iqrp.app.forecasting.neural.base.torch_utils import has_torch
 
 try:
     from torch import nn
-except Exception:  # noqa: BLE001  # pragma: no cover
+except Exception:  # pragma: no cover
     nn = object  # type: ignore[assignment]
 
 
 class Encoder(nn.Module if has_torch() else object):  # type: ignore[misc]
-    def __init__(self, n_features: int, hidden_size: int = 64, num_layers: int = 1, dropout: float = 0.0) -> None:
+    def __init__(
+        self, n_features: int, hidden_size: int = 64, num_layers: int = 1, dropout: float = 0.0
+    ) -> None:
         if has_torch():
             super().__init__()
         self.rnn = nn.LSTM(

@@ -85,6 +85,7 @@ class HoltWintersModel(StatisticalForecastModel):
         s = int(self._s or self._stat_settings.order.seasonal_period)
         self._s = s
         if self._alpha is None or self._beta is None or self._gamma is None:
+
             def obj(theta: np.ndarray) -> float:
                 _, r, _, _, _ = _hw(y, float(theta[0]), float(theta[1]), float(theta[2]), s)
                 return float(np.dot(r, r))
@@ -117,14 +118,20 @@ class HoltWintersModel(StatisticalForecastModel):
         )
         return self
 
-    def predict(
-        self, frame: pl.DataFrame, feature_columns: list[str] | None = None
-    ) -> np.ndarray:
+    def predict(self, frame: pl.DataFrame, feature_columns: list[str] | None = None) -> np.ndarray:
         self._require_fitted()
         tgt = self._target_column or self._stat_settings.columns.target
-        y = frame[tgt].to_numpy().astype(np.float64) if tgt in frame.columns else self._extract_target(frame, None)
+        y = (
+            frame[tgt].to_numpy().astype(np.float64)
+            if tgt in frame.columns
+            else self._extract_target(frame, None)
+        )
         fitted, _, _, _, _ = _hw(
-            y, float(self._alpha or 0.3), float(self._beta or 0.1), float(self._gamma or 0.1), int(self._s or 12)
+            y,
+            float(self._alpha or 0.3),
+            float(self._beta or 0.1),
+            float(self._gamma or 0.1),
+            int(self._s or 12),
         )
         return fitted
 
@@ -141,7 +148,11 @@ class HoltWintersModel(StatisticalForecastModel):
         path = np.empty(h, dtype=np.float64)
         for i in range(h):
             path[i] = self._level + (i + 1) * self._trend + float(self._season[i % s])
-        regime = frame[self._regime_column][-1] if self._regime_column and self._regime_column in frame.columns else None
+        regime = (
+            frame[self._regime_column][-1]
+            if self._regime_column and self._regime_column in frame.columns
+            else None
+        )
         return self._build_forecast(path, horizon=h, strategy="direct", regime_used=regime)
 
     def _algorithm_state(self) -> dict[str, Any]:
@@ -173,7 +184,9 @@ class HoltWintersModel(StatisticalForecastModel):
         self._season = np.asarray(state.get("season") or [0.0], dtype=np.float64)
         self._y = None if state.get("y") is None else np.asarray(state["y"], dtype=np.float64)
         self._residuals = (
-            None if state.get("residuals") is None else np.asarray(state["residuals"], dtype=np.float64)
+            None
+            if state.get("residuals") is None
+            else np.asarray(state["residuals"], dtype=np.float64)
         )
         self._fitted_values = (
             None if state.get("fitted") is None else np.asarray(state["fitted"], dtype=np.float64)

@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-from typing import Any
-
 import numpy as np
 
 
@@ -48,7 +46,10 @@ def evaluate_volatility(
     n = min(r.size, fv.size, rv.size)
     r, fv, rv = r[:n], fv[:n], rv[:n]
     # gaussian loglik of returns under forecast variance
-    ll = float(-0.5 * np.sum(np.log(2 * np.pi * np.clip(fv, 1e-12, None)) + r**2 / np.clip(fv, 1e-12, None)))
+    ll = float(
+        -0.5
+        * np.sum(np.log(2 * np.pi * np.clip(fv, 1e-12, None)) + r**2 / np.clip(fv, 1e-12, None))
+    )
     return {
         "qlike": qlike(rv, fv),
         "rmse": rmse(rv, fv),
@@ -60,7 +61,9 @@ def evaluate_volatility(
     }
 
 
-def realized_volatility(returns: np.ndarray, *, window: int = 21, annualization: float = 252.0) -> np.ndarray:
+def realized_volatility(
+    returns: np.ndarray, *, window: int = 21, annualization: float = 252.0
+) -> np.ndarray:
     r = np.asarray(returns, dtype=np.float64).reshape(-1)
     w = max(int(window), 1)
     out = np.empty(r.size)

@@ -103,9 +103,7 @@ class _StubRegimeB(RegimeModel):
 
     def fit(self, frame: pl.DataFrame, feature_columns: list[str] | None = None) -> _StubRegimeB:
         n = frame.height
-        cols = feature_columns or [
-            c for c in frame.columns if frame[c].dtype.is_numeric()
-        ]
+        cols = feature_columns or [c for c in frame.columns if frame[c].dtype.is_numeric()]
         primary = cols[0] if cols else frame.columns[0]
         series = frame[primary].to_numpy().astype(np.float64).reshape(-1)
         z = (series - series.mean()) / (series.std() + 1e-9)
@@ -153,7 +151,9 @@ def _settings(**kw: object) -> EnsembleSettings:
 def _frame(n: int = 90, seed: int = 0) -> pl.DataFrame:
     rng = np.random.default_rng(seed)
     close = 100 + np.cumsum(rng.normal(0, 1, size=n))
-    return pl.DataFrame({"open_time": list(range(n)), "close": close, "f1": np.diff(close, prepend=close[0])})
+    return pl.DataFrame(
+        {"open_time": list(range(n)), "close": close, "f1": np.diff(close, prepend=close[0])}
+    )
 
 
 @pytest.mark.unit
@@ -178,8 +178,12 @@ def test_combine_and_weights() -> None:
     truth = np.argmax(probs[0], axis=1)
     preds = {n: np.argmax(p, axis=1) for n, p in zip(names, probs, strict=False)}
     assert compute_weights("equal", names=names).shape[0] == 3
-    assert compute_weights("accuracy", names=names, predictions=preds, truth=truth).sum() == pytest.approx(1.0)
-    assert compute_weights("user", names=names, user={"a": 2, "b": 1, "c": 1}).sum() == pytest.approx(1.0)
+    assert compute_weights(
+        "accuracy", names=names, predictions=preds, truth=truth
+    ).sum() == pytest.approx(1.0)
+    assert compute_weights(
+        "user", names=names, user={"a": 2, "b": 1, "c": 1}
+    ).sum() == pytest.approx(1.0)
 
 
 @pytest.mark.unit

@@ -7,14 +7,13 @@ from typing import Any
 
 import numpy as np
 
-from iqrp.app.regimes.kalman.adaptive import adapt_noise_from_trace
+from iqrp.app.regimes.kalman.adaptive import adapt_noise_from_trace, filter_adaptive
 from iqrp.app.regimes.kalman.config import KalmanSettings
 from iqrp.app.regimes.kalman.covariance import ensure_spd
 from iqrp.app.regimes.kalman.ekf import filter_ekf
 from iqrp.app.regimes.kalman.initialization import LinearGaussianSSM, build_system
 from iqrp.app.regimes.kalman.linear import FilterTrace, filter_linear
 from iqrp.app.regimes.kalman.ukf import filter_ukf
-from iqrp.app.regimes.kalman.adaptive import filter_adaptive
 
 
 @dataclass

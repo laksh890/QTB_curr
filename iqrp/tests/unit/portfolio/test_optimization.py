@@ -126,7 +126,9 @@ def test_optimize_turnover_hard_cap_infeasible(mu, cov, names, current_weights):
         assert res["status"] in ("infeasible", "failed")
         assert res.get("failure_reason")
         # weights should not violate by relaxing — zeros or within turnover of current
-        w = np.asarray(list(res["weights"].values()) if isinstance(res["weights"], dict) else res["weights"])
+        w = np.asarray(
+            list(res["weights"].values()) if isinstance(res["weights"], dict) else res["weights"]
+        )
         # either zeros or within tiny turnover of current
         to = 0.5 * np.sum(np.abs(w - current_weights))
         assert to <= 1e-6 + 1e-9 or np.allclose(w, 0.0)
@@ -181,7 +183,9 @@ def test_infeasible_max_weight_does_not_relax(cov, names):
     assert res["success"] is False
     assert res["status"] == "infeasible"
     assert res.get("conflicting_constraints") or res.get("failure_reason")
-    w = np.asarray(list(res["weights"].values()) if isinstance(res["weights"], dict) else res["weights"])
+    w = np.asarray(
+        list(res["weights"].values()) if isinstance(res["weights"], dict) else res["weights"]
+    )
     # zeros — not a silently relaxed portfolio that sums to 1 with max>0.1
     assert np.allclose(w, 0.0) or max(w) <= 0.1 + 1e-8
 
@@ -211,9 +215,9 @@ def test_unsupported_hard_constraint_extras(cov, names):
     assert res["success"] is False
     assert res["status"] == "infeasible"
     conflicts = res.get("conflicting_constraints") or []
-    assert any("unsupported" in str(c).lower() or "sector" in str(c).lower() for c in conflicts) or res.get(
-        "failure_reason"
-    )
+    assert any(
+        "unsupported" in str(c).lower() or "sector" in str(c).lower() for c in conflicts
+    ) or res.get("failure_reason")
 
 
 def test_risk_parity_rejects_shorts(cov, names):

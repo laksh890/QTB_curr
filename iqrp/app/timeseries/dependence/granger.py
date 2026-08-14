@@ -80,5 +80,11 @@ def granger_causality(
         significant=sig,
         temporal_mode=TemporalMode.FULL_SAMPLE,
         parameters={"max_lag": p, "alpha": alpha},
-        metadata={"n": n, "ssr_restricted": ssr_r, "ssr_unrestricted": ssr_u, "df1": df1, "df2": df2},
+        metadata={
+            "n": n,
+            "ssr_restricted": ssr_r,
+            "ssr_unrestricted": ssr_u,
+            "df1": df1,
+            "df2": df2,
+        },
     )

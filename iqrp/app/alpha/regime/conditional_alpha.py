@@ -2,7 +2,8 @@
 
 from __future__ import annotations
 
-from typing import Any, Callable, Mapping
+from collections.abc import Callable, Mapping
+from typing import Any
 
 import numpy as np
 
@@ -77,9 +78,11 @@ def conditional_alpha_profile(
     return {
         "name": "conditional_alpha_profile",
         "conditions": profiles,
-        "best_condition": max(profiles.items(), key=lambda kv: abs(kv[1].get("ic") or 0.0))[0]
-        if profiles
-        else None,
+        "best_condition": (
+            max(profiles.items(), key=lambda kv: abs(kv[1].get("ic") or 0.0))[0]
+            if profiles
+            else None
+        ),
         "ic_range": float(np.ptp(ics)) if ics else float("nan"),
     }
 
@@ -138,7 +141,11 @@ def compare_unconditional_vs_conditional(
         "unconditional_ic": unc,
         "conditional": cond,
         "lift": {
-            k: (float(v["ic"]) - unc) if np.isfinite(v.get("ic", np.nan)) and np.isfinite(unc) else float("nan")
+            k: (
+                (float(v["ic"]) - unc)
+                if np.isfinite(v.get("ic", np.nan)) and np.isfinite(unc)
+                else float("nan")
+            )
             for k, v in cond["by_regime"].items()
         },
     }

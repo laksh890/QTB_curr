@@ -61,7 +61,9 @@ class ARCHModel(UnivariateVolatilityModel):
 
         params, var, ll, aic, bic = self._regime_fit(r, regimes, _fit_subset)
         self._p = p
-        self._finalize(r, var, target_column=tgt, params=params, loglik=ll, aic=aic, bic=bic, extras={"p": p})
+        self._finalize(
+            r, var, target_column=tgt, params=params, loglik=ll, aic=aic, bic=bic, extras={"p": p}
+        )
         return self
 
     def _variance_from_returns(self, returns: np.ndarray) -> np.ndarray:
@@ -73,7 +75,11 @@ class ARCHModel(UnivariateVolatilityModel):
     def _forecast_path(self, horizon: int) -> tuple[np.ndarray, np.ndarray]:
         assert self._returns is not None and self._variance is not None
         omega = float(self._params["omega"])
-        alpha = float(self._params.get("alpha_0", sum(v for k, v in self._params.items() if k.startswith("alpha_"))))
+        alpha = float(
+            self._params.get(
+                "alpha_0", sum(v for k, v in self._params.items() if k.startswith("alpha_"))
+            )
+        )
         var = forecast_garch_path(
             float(self._returns[-1] ** 2),
             float(self._variance[-1]),

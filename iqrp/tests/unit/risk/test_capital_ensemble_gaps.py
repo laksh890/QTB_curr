@@ -64,16 +64,13 @@ from iqrp.app.risk.ensemble.state_machine import EnsembleStateMachine
 from iqrp.app.risk.ensemble.weighting import _normalize_weights, resolve_weights
 from iqrp.app.risk.phase09 import validate_phase09, write_phase09_report
 
-
 # ---------------------------------------------------------------------------
 # Capital gaps
 # ---------------------------------------------------------------------------
 
 
 class TestCapitalGaps:
-    def test_allocator_participation_zero_and_cov_fallback(
-        self, strategy_names: list[str]
-    ) -> None:
+    def test_allocator_participation_zero_and_cov_fallback(self, strategy_names: list[str]) -> None:
         settings = CapitalSettings(
             max_participation=1e-6,
             capacity_ttl_days=1e-6,
@@ -184,7 +181,9 @@ class TestCapitalGaps:
         clipped = clip_capital_to_limits({"a": 10.0, "b": 10.0}, max_gross=None)
         assert clipped["a"] == 10.0
 
-    def test_config_default_without_file(self, tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    def test_config_default_without_file(
+        self, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+    ) -> None:
         monkeypatch.setattr(
             "iqrp.app.risk.capital.config._default_config_path",
             lambda: tmp_path / "missing.yaml",
@@ -200,7 +199,10 @@ class TestCapitalGaps:
             max_concentration=0.0,
             n_iter=3,
         )
-        assert "zero_after_box_clip" in proj["constraints_applied"] or float(np.sum(proj["weights"])) == 0.0
+        assert (
+            "zero_after_box_clip" in proj["constraints_applied"]
+            or float(np.sum(proj["weights"])) == 0.0
+        )
         # Leverage cap after renorm to 1.0
         proj2 = project_weights(
             [0.5, 0.5],
@@ -219,7 +221,11 @@ class TestCapitalGaps:
             max_gross=0.25,
             max_leverage=10.0,
         )
-        assert proj3["gross"] <= 0.25 + 1e-6 or "gross_cap" in proj3["constraints_applied"] or "simplex_renorm" in proj3["constraints_applied"]
+        assert (
+            proj3["gross"] <= 0.25 + 1e-6
+            or "gross_cap" in proj3["constraints_applied"]
+            or "simplex_renorm" in proj3["constraints_applied"]
+        )
         assert apply_participation_constraint([0.5, 0.5], capital=1.0, adv=[1.0])["scaled"] is False
 
     def test_correlation_empty_paths(self) -> None:
@@ -284,7 +290,9 @@ class TestCapitalGaps:
             rp = capital_risk_parity(cov, names=["a", "b", "c"], risk_budgets=[0.5, 0.5])
             assert rp["budget_applied"] is True or len(rp["weights"]) == 3
 
-    def test_evaluate_allocation_branches(self, strategy_names: list[str], capital_cov: np.ndarray) -> None:
+    def test_evaluate_allocation_branches(
+        self, strategy_names: list[str], capital_cov: np.ndarray
+    ) -> None:
         # list risk budgets wrong size
         ev = evaluate_allocation(
             np.full(4, 0.25),
@@ -298,7 +306,7 @@ class TestCapitalGaps:
             np.full(4, 0.25),
             names=strategy_names,
             cov=np.eye(2),
-            risk_budgets={n: 0.25 for n in strategy_names},
+            risk_budgets=dict.fromkeys(strategy_names, 0.25),
         )
         assert ev2["risk_budget_error"] is not None
         # zero port var
@@ -307,26 +315,28 @@ class TestCapitalGaps:
             np.full(4, 0.25),
             names=strategy_names,
             cov=zcov,
-            risk_budgets={n: 0.25 for n in strategy_names},
+            risk_budgets=dict.fromkeys(strategy_names, 0.25),
         )
         assert "realized_risk_contribution" in ev3
         # capacity scales only
         ev4 = evaluate_allocation(
-            {n: 0.25 for n in strategy_names},
+            dict.fromkeys(strategy_names, 0.25),
             names=strategy_names,
-            capacity_scales={n: 0.5 for n in strategy_names},
+            capacity_scales=dict.fromkeys(strategy_names, 0.5),
         )
         assert ev4["capacity_utilization"] is not None
         # max_notional all zero → util None
         ev5 = evaluate_allocation(
             np.full(4, 0.25),
             names=strategy_names,
-            max_notional={n: 0.0 for n in strategy_names},
+            max_notional=dict.fromkeys(strategy_names, 0.0),
             capital=1.0,
         )
         assert ev5["capacity_utilization"] is None
 
-    def test_hierarchical_numpy_backend(self, capital_cov: np.ndarray, strategy_names: list[str]) -> None:
+    def test_hierarchical_numpy_backend(
+        self, capital_cov: np.ndarray, strategy_names: list[str]
+    ) -> None:
         # Direct numpy agglomerative + linkage methods
         dist = np.array(
             [
@@ -364,7 +374,9 @@ class TestCapitalGaps:
         hrp_z = hrp_weights(zero_cov, names=strategy_names)
         assert abs(sum(hrp_z["weight_vector"]) - 1.0) < 1e-9 or sum(hrp_z["weight_vector"]) == 0.0
 
-    def test_optimizer_edge_objectives(self, capital_cov: np.ndarray, strategy_names: list[str], capital_returns: np.ndarray) -> None:
+    def test_optimizer_edge_objectives(
+        self, capital_cov: np.ndarray, strategy_names: list[str], capital_returns: np.ndarray
+    ) -> None:
         # risk_budgets wrong size
         out = optimize_risk_budgets(
             capital_cov,
@@ -383,7 +395,10 @@ class TestCapitalGaps:
             max_iter=2,
         )
         assert "weights" in out_corr
-        assert abs(sum(out_corr["weight_vector"]) - 1.0) < 1e-6 or sum(out_corr["weight_vector"]) == 0.0
+        assert (
+            abs(sum(out_corr["weight_vector"]) - 1.0) < 1e-6
+            or sum(out_corr["weight_vector"]) == 0.0
+        )
         # seed size mismatch from risk_parity
         with patch(
             "iqrp.app.risk.capital.optimizer.risk_parity_weights",
@@ -409,7 +424,9 @@ class TestCapitalGaps:
             expected_opportunity=[-1.0, -1.0, -1.0, -1.0],
             names=strategy_names,
         )
-        assert "opportunity_nonpositive" in " ".join(out5["reasons"]) or sum(out5["weight_vector"]) > 0
+        assert (
+            "opportunity_nonpositive" in " ".join(out5["reasons"]) or sum(out5["weight_vector"]) > 0
+        )
         out6 = optimize_risk_budgets(
             capital_cov,
             objective="max_risk_adjusted_opportunity",
@@ -435,7 +452,9 @@ class TestCapitalGaps:
             names=strategy_names,
             target_cvar=0.05,
         )
-        assert max(out9["weights"].values()) <= 0.4 + 1e-6 or out9["constraints"]["max_weight"] == 0.4
+        assert (
+            max(out9["weights"].values()) <= 0.4 + 1e-6 or out9["constraints"]["max_weight"] == 0.4
+        )
         # Force weight_vector size mismatch + leverage renorm branches
         with patch(
             "iqrp.app.risk.capital.optimizer.project_weights",
@@ -479,8 +498,11 @@ class TestCapitalGaps:
         )
         assert vec == {"a": 0.5, "b": 0.5}
 
-    def test_serializer_jsonable_branches(self, tmp_path: Path, capital_allocator: CapitalAllocator) -> None:
+    def test_serializer_jsonable_branches(
+        self, tmp_path: Path, capital_allocator: CapitalAllocator
+    ) -> None:
         ser = CapitalSerializer()
+
         # ndarray / Path / numpy scalar / model_dump via export_state
         class _Obj:
             def model_dump(self):
@@ -510,7 +532,9 @@ class TestCapitalGaps:
         built2 = build_strategy_allocations(strategy_names, [1.0, 0.0], capital=10.0)
         assert abs(sum(s.weight for s in built2.values()) - 1.0) < 1e-9
 
-    def test_volatility_resolve_paths(self, strategy_names: list[str], capital_returns: np.ndarray) -> None:
+    def test_volatility_resolve_paths(
+        self, strategy_names: list[str], capital_returns: np.ndarray
+    ) -> None:
         # from returns via realized_volatility
         vb = volatility_budgets(strategy_names, returns=capital_returns)
         assert abs(sum(vb["weights"].values()) - 1.0) < 1e-9
@@ -592,13 +616,18 @@ class TestEnsembleGaps:
         assert dec.recommended_leverage <= 1.0 + 1e-9
 
     def test_missing_critical_dict_value_branch(self, ensemble_settings: EnsembleSettings) -> None:
-        assert "var" in missing_critical_keys(
-            {"volatility": 0.1, "var": {"value": 0.02}, "cvar": 0.03, "drawdown": 0.01},
-            ensemble_settings,
-        ) or missing_critical_keys(
-            {"volatility": 0.1, "var": {"value": 0.02}, "cvar": 0.03, "drawdown": 0.01},
-            ensemble_settings,
-        ) == []
+        assert (
+            "var"
+            in missing_critical_keys(
+                {"volatility": 0.1, "var": {"value": 0.02}, "cvar": 0.03, "drawdown": 0.01},
+                ensemble_settings,
+            )
+            or missing_critical_keys(
+                {"volatility": 0.1, "var": {"value": 0.02}, "cvar": 0.03, "drawdown": 0.01},
+                ensemble_settings,
+            )
+            == []
+        )
         # dict with numeric nested without value/score but with float field
         keys = missing_critical_keys(
             {
@@ -612,7 +641,9 @@ class TestEnsembleGaps:
         # custom path may count as present if any float in dict — depending on logic
         assert isinstance(keys, list)
 
-    def test_calibration_drawdown_from_returns(self, ensemble_settings: EnsembleSettings, rng: np.random.Generator) -> None:
+    def test_calibration_drawdown_from_returns(
+        self, ensemble_settings: EnsembleSettings, rng: np.random.Generator
+    ) -> None:
         rets = rng.normal(0, 0.01, 80)
         out = run_calibration(
             settings=ensemble_settings,
@@ -657,7 +688,11 @@ class TestEnsembleGaps:
         # Non-extractable dict values
         assert pair_disagreement({"a": {"x": "y"}, "b": 1.0}, "a", "b") is None
         settings = ensemble_settings.model_copy(
-            update={"disagreement": ensemble_settings.disagreement.model_copy(update={"pairs": [["only"], ["a", "b"]]})}
+            update={
+                "disagreement": ensemble_settings.disagreement.model_copy(
+                    update={"pairs": [["only"], ["a", "b"]]}
+                )
+            }
         )
         d = compute_disagreement({"a": 1.0, "b": 2.0}, settings=settings)
         assert "overall_disagreement" in d
@@ -698,9 +733,10 @@ class TestEnsembleGaps:
         assert scores.model >= 0.0
 
     def test_serializer_jsonable(self) -> None:
-        from iqrp.app.risk.ensemble.serializer import _to_jsonable
-        import iqrp.app.risk.ensemble.serializer as ser_mod
         import builtins
+
+        import iqrp.app.risk.ensemble.serializer as ser_mod
+        from iqrp.app.risk.ensemble.serializer import _to_jsonable
 
         assert _to_jsonable(Path("/x")) == "/x"
         assert _to_jsonable(np.array([1])) == [1]
@@ -729,7 +765,10 @@ class TestEnsembleGaps:
 
         with patch("builtins.__import__", side_effect=_import):
             # Re-load path: call _to_jsonable which does `from enum import Enum`
-            assert _to_jsonable(object()) == str(object()) or isinstance(_to_jsonable(123), (int, str))
+            assert _to_jsonable(object()) == str(object()) or isinstance(
+                _to_jsonable(123), (int, str)
+            )
+
             # Plain object hits str fallback after except
             class Z:
                 pass
@@ -737,7 +776,9 @@ class TestEnsembleGaps:
             z = Z()
             assert _to_jsonable(z) == str(z)
 
-    def test_ensemble_config_default_without_file(self, tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    def test_ensemble_config_default_without_file(
+        self, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+    ) -> None:
         monkeypatch.setattr(
             "iqrp.app.risk.ensemble.config._default_config_path",
             lambda: tmp_path / "missing.yaml",
@@ -758,7 +799,10 @@ class TestEnsembleGaps:
     def test_normalizer_nested_and_invert_span(self, ensemble_settings: EnsembleSettings) -> None:
         from iqrp.app.risk.ensemble.normalizer import _as_float, normalize_metric
 
-        assert _as_float({"nested": {"value": 1.0}}) is None or _as_float({"value": {"score": 1.0}}) is not None
+        assert (
+            _as_float({"nested": {"value": 1.0}}) is None
+            or _as_float({"value": {"score": 1.0}}) is not None
+        )
         # Recurse into value key that is itself a dict with value
         assert _as_float({"value": {"value": 0.25}}) == pytest.approx(0.25)
         # invert with nearly-equal bounds → early return 0.0 (line 46 is unreachable dead code)
@@ -916,7 +960,7 @@ class TestEnsembleGaps:
         assert isinstance(dec2.decision, DecisionAction)
 
     def test_weighting_zero_mass(self) -> None:
-        w = _normalize_weights({d: 0.0 for d in RiskScore.DIMENSIONS})
+        w = _normalize_weights(dict.fromkeys(RiskScore.DIMENSIONS, 0.0))
         assert abs(sum(w.values()) - 1.0) < 1e-9
 
 
@@ -926,7 +970,9 @@ class TestEnsembleGaps:
 
 
 class TestPhase09Gaps:
-    def test_validate_and_write_default(self, tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    def test_validate_and_write_default(
+        self, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+    ) -> None:
         report = validate_phase09()
         assert report["status"] == "PASS"
         target = tmp_path / "docs" / "Phase09_RiskIntelligence_Validation.json"
@@ -987,8 +1033,8 @@ class TestPhase09Gaps:
     def test_phase09_missing_docs_exports_configs(
         self, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
     ) -> None:
-        from iqrp.app.risk import phase09 as p09
         import iqrp.app.risk as risk_pkg
+        from iqrp.app.risk import phase09 as p09
 
         docs_root = Path(p09.__file__).resolve().parents[2] / "docs"
         real_is_file = Path.is_file
@@ -1005,7 +1051,9 @@ class TestPhase09Gaps:
         try:
             risk_pkg.__all__ = [x for x in saved if x != "CapitalAllocator"]
             r2 = p09.validate_phase09()
-            assert any("risk.__all__ missing CapitalAllocator" in f for f in r2["summary"]["failures"])
+            assert any(
+                "risk.__all__ missing CapitalAllocator" in f for f in r2["summary"]["failures"]
+            )
         finally:
             risk_pkg.__all__ = saved
 
@@ -1018,8 +1066,12 @@ class TestPhase09Gaps:
 
         monkeypatch.setattr(Path, "is_file", selective_is_file)
         r3 = p09.validate_phase09()
-        assert any("missing configs/risk/capital/default.yaml" in f for f in r3["summary"]["failures"])
-        assert any("missing configs/risk/ensemble/default.yaml" in f for f in r3["summary"]["failures"])
+        assert any(
+            "missing configs/risk/capital/default.yaml" in f for f in r3["summary"]["failures"]
+        )
+        assert any(
+            "missing configs/risk/ensemble/default.yaml" in f for f in r3["summary"]["failures"]
+        )
         monkeypatch.setattr(Path, "is_file", real_is_file)
 
         # risk package import failure (lines 150-151): make __all__ access raise

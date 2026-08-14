@@ -79,16 +79,15 @@ def select_volatility_models(
             for fut in as_completed(futs):
                 try:
                     board.append(fut.result())
-                except Exception:  # noqa: BLE001
+                except Exception:
                     continue
     else:
         for n in names:
             try:
                 board.append(_one(n))
-            except Exception:  # noqa: BLE001
+            except Exception:
                 continue
     key = criterion
-    reverse = False
     if key == "loglik":
         # scores store -loglik for min sort; convert display later
         board.sort(key=lambda c: c.scores.get("loglik", np.inf))
@@ -106,7 +105,7 @@ def rolling_vol_validation(
     horizon: int = 1,
     step: int = 5,
 ) -> dict[str, float]:
-    from iqrp.app.forecasting.volatility.evaluation.metrics import qlike, rmse
+    from iqrp.app.forecasting.volatility.evaluation.metrics import qlike
 
     r = np.asarray(returns, dtype=np.float64).reshape(-1)
     errs = []
@@ -125,4 +124,8 @@ def rolling_vol_validation(
     if not errs:
         return {"rmse": float("nan"), "qlike": float("nan"), "n": 0}
     e = np.asarray(errs)
-    return {"rmse": float(np.sqrt(np.mean(e**2))), "qlike": float(np.mean(qlikes)), "n": int(e.size)}
+    return {
+        "rmse": float(np.sqrt(np.mean(e**2))),
+        "qlike": float(np.mean(qlikes)),
+        "n": int(e.size),
+    }

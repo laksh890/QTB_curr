@@ -38,8 +38,21 @@ from iqrp.app.forecasting.neural.visualization.plots import (
 
 def _fast(**extra):
     base = {
-        "architecture": {"lookback": 8, "horizon": 2, "hidden_size": 8, "num_layers": 1, "n_blocks": 3, "dropout": 0.0},
-        "train": {"epochs": 1, "batch_size": 16, "device": "cpu", "early_stopping_patience": 20, "seed": 0},
+        "architecture": {
+            "lookback": 8,
+            "horizon": 2,
+            "hidden_size": 8,
+            "num_layers": 1,
+            "n_blocks": 3,
+            "dropout": 0.0,
+        },
+        "train": {
+            "epochs": 1,
+            "batch_size": 16,
+            "device": "cpu",
+            "early_stopping_patience": 20,
+            "seed": 0,
+        },
         "scheduler": {"name": "none"},
         "regime": {"enabled": False},
         "visualization": {"enabled": False},
@@ -80,8 +93,13 @@ def test_no_target_and_align_proba(frame) -> None:
 @pytest.mark.unit
 def test_classification_3d_proba(frame) -> None:
     cols = feature_names(3)
-    cls = simulate_nonlinear_returns(90, n_features=3, classification=True, rng=np.random.default_rng(4))
-    s = _fast(task={"type": "classification", "n_classes": 2}, train={"loss": "cross_entropy", "epochs": 2, "device": "cpu"})
+    cls = simulate_nonlinear_returns(
+        90, n_features=3, classification=True, rng=np.random.default_rng(4)
+    )
+    s = _fast(
+        task={"type": "classification", "n_classes": 2},
+        train={"loss": "cross_entropy", "epochs": 2, "device": "cpu"},
+    )
     m = create_neural_model("lstm", settings=s)
     m.fit(cls, feature_columns=cols)
     proba = m.predict_proba(cls)
@@ -110,10 +128,14 @@ def test_trainer_no_torch_and_tuple_out() -> None:
     with patch("iqrp.app.forecasting.neural.base.trainer.has_torch", return_value=False):
         with pytest.raises(RuntimeError):
             trainer.fit(nn.Linear(2, 1), np.ones((4, 2)), np.ones(4))
+
     class Tup(nn.Module):
         def forward(self, x):
             return torch.randn(x.shape[0], 2), torch.zeros(1)
-    pred = trainer.predict(Tup(), np.random.randn(4, 3, 2).astype(np.float32) if False else np.random.randn(4, 8))
+
+    pred = trainer.predict(
+        Tup(), np.random.randn(4, 3, 2).astype(np.float32) if False else np.random.randn(4, 8)
+    )
     # wrong shape - use proper
     mod = Tup()
     X = np.random.randn(4, 8).astype(np.float32)
@@ -191,7 +213,9 @@ def test_quantiles_task_quantile_path() -> None:
 
 @pytest.mark.unit
 def test_epistemic_no_torch() -> None:
-    with patch("iqrp.app.forecasting.neural.probabilistic.distributions.has_torch", return_value=False):
+    with patch(
+        "iqrp.app.forecasting.neural.probabilistic.distributions.has_torch", return_value=False
+    ):
         mean, std = epistemic_mc_dropout(lambda x: x.mean(axis=1), np.ones((2, 3, 1)), n_samples=2)
         assert mean.shape[0] == 2
 
@@ -199,10 +223,11 @@ def test_epistemic_no_torch() -> None:
 @pytest.mark.unit
 def test_wrap_ddp_initialized() -> None:
     lin = nn.Linear(2, 1)
-    with patch("torch.distributed.is_available", return_value=True), patch(
-        "torch.distributed.is_initialized", return_value=True
-    ), patch("torch.distributed.get_world_size", return_value=2), patch(
-        "torch.nn.parallel.DistributedDataParallel", side_effect=lambda m, **k: m
+    with (
+        patch("torch.distributed.is_available", return_value=True),
+        patch("torch.distributed.is_initialized", return_value=True),
+        patch("torch.distributed.get_world_size", return_value=2),
+        patch("torch.nn.parallel.DistributedDataParallel", side_effect=lambda m, **k: m),
     ):
         assert wrap_ddp(lin, enabled=True) is lin
 
@@ -279,7 +304,9 @@ def test_shap_fallback(frame) -> None:
     m = create_neural_model("mlp", settings=_fast())
     m.fit(frame, feature_columns=cols)
     X = m._last_window(frame, cols)
-    with patch.dict("sys.modules", {"shap": MagicMock(DeepExplainer=MagicMock(side_effect=RuntimeError("no")))}):
+    with patch.dict(
+        "sys.modules", {"shap": MagicMock(DeepExplainer=MagicMock(side_effect=RuntimeError("no")))}
+    ):
         attr = explain_neural(m._module, X, method="shap", device=m._device)
         assert np.asarray(attr).size > 0
 
@@ -287,7 +314,9 @@ def test_shap_fallback(frame) -> None:
 @pytest.mark.unit
 def test_forecast_pad_short_horizon(frame) -> None:
     cols = feature_names(3)
-    m = create_neural_model("mlp", settings=_fast(architecture={"horizon": 2, "lookback": 8, "hidden_size": 8}))
+    m = create_neural_model(
+        "mlp", settings=_fast(architecture={"horizon": 2, "lookback": 8, "hidden_size": 8})
+    )
     m.fit(frame, feature_columns=cols)
     fc = m.forecast(frame, horizon=6)
     assert fc.path().size == 6

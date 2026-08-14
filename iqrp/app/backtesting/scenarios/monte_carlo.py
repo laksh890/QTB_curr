@@ -20,13 +20,13 @@ Method = Literal[
 ]
 
 __all__ = [
-    "bootstrap_paths",
     "block_bootstrap_paths",
-    "trade_bootstrap_paths",
-    "residual_bootstrap_paths",
-    "regime_conditioned_paths",
+    "bootstrap_paths",
     "correlated_paths",
+    "regime_conditioned_paths",
+    "residual_bootstrap_paths",
     "run_monte_carlo",
+    "trade_bootstrap_paths",
 ]
 
 
@@ -154,7 +154,7 @@ def regime_conditioned_paths(
         rp = np.resize(rp, h)
 
     buckets: dict[str, np.ndarray] = {}
-    for lab in set(str(x) for x in labs.tolist()):
+    for lab in {str(x) for x in labs.tolist()}:
         buckets[lab] = r[np.asarray([str(x) == lab for x in labs.tolist()])]
 
     rng = np.random.default_rng(int(seed))
@@ -258,13 +258,9 @@ def run_monte_carlo(
             seed=seed,
         )
     elif m == "correlated":
-        paths = correlated_paths(
-            returns, n_simulations=n_simulations, horizon=horizon, seed=seed
-        )
+        paths = correlated_paths(returns, n_simulations=n_simulations, horizon=horizon, seed=seed)
     else:
-        paths = bootstrap_paths(
-            returns, n_simulations=n_simulations, horizon=horizon, seed=seed
-        )
+        paths = bootstrap_paths(returns, n_simulations=n_simulations, horizon=horizon, seed=seed)
         m = "bootstrap"
 
     totals = np.array([total_return(p) for p in paths], dtype=np.float64)

@@ -109,7 +109,7 @@ def vol_calibration(predicted_vol: Any, realized_vol: Any) -> dict[str, Any]:
             "calibrated": None,
         }
     err = p - r
-    rmse = float(np.sqrt(np.mean(err ** 2)))
+    rmse = float(np.sqrt(np.mean(err**2)))
     bias = float(np.mean(err))
     rel = float(np.mean(np.abs(err) / np.maximum(np.abs(r), 1e-12)))
     return {

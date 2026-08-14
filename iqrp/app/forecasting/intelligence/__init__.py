@@ -15,8 +15,8 @@ from iqrp.app.forecasting.intelligence.registry import (
 )
 
 __all__ = [
-    "IntelligenceSettings",
     "ForecastIntelligenceEngine",
+    "IntelligenceSettings",
     "create_model",
     "discover_engine_modules",
     "list_discovered_models",

@@ -18,7 +18,7 @@ from iqrp.app.regimes.ensemble.orchestrator import (
     predict_members,
 )
 from iqrp.app.regimes.ensemble.registry import EnsembleMember, EnsembleRegistry
-from iqrp.app.regimes.ensemble.weighting import compute_weights, equal_weights
+from iqrp.app.regimes.ensemble.weighting import compute_weights
 
 
 @dataclass

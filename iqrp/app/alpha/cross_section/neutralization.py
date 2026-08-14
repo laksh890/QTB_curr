@@ -2,7 +2,8 @@
 
 from __future__ import annotations
 
-from typing import Any, Sequence
+from collections.abc import Sequence
+from typing import Any
 
 import numpy as np
 
@@ -36,11 +37,11 @@ def demean_by_group(
         raise ValueError("demean_by_group currently supports axis=1 (T x N)")
     labels = np.asarray(groups)
     if labels.shape[0] != panel.shape[1]:
-        raise ValueError(
-            f"groups length {labels.shape[0]} != n_assets {panel.shape[1]}"
-        )
+        raise ValueError(f"groups length {labels.shape[0]} != n_assets {panel.shape[1]}")
     out = panel.copy()
-    uniq = {g for g in labels.tolist() if g is not None and (not isinstance(g, float) or np.isfinite(g))}
+    uniq = {
+        g for g in labels.tolist() if g is not None and (not isinstance(g, float) or np.isfinite(g))
+    }
     # Also keep NaN/None groups as their own bucket skipped for demeaning
     for g in uniq:
         mask = labels == g

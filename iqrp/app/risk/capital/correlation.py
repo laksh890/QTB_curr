@@ -126,7 +126,7 @@ def correlation_crowding_scales(
     if c.ndim != 2 or c.shape[0] != c.shape[1]:
         n = len(names) if names else 0
         keys = names or [f"s{i}" for i in range(n)]
-        return {k: 1.0 for k in keys}
+        return dict.fromkeys(keys, 1.0)
     n = c.shape[0]
     keys = names if names and len(names) == n else [f"s{i}" for i in range(n)]
     thr = float(threshold)
@@ -159,9 +159,7 @@ def effective_risk_budgets(
     else:
         raw = np.asarray(risk_budgets, dtype=np.float64).ravel()
         keys = names if names and len(names) == raw.size else [f"s{i}" for i in range(raw.size)]
-    scales = correlation_crowding_scales(
-        corr, threshold=threshold, floor=floor, names=keys
-    )
+    scales = correlation_crowding_scales(corr, threshold=threshold, floor=floor, names=keys)
     effective = {k: float(raw[i]) * scales[k] for i, k in enumerate(keys)}
     # Renormalize to preserve total budget mass when possible
     total_raw = float(np.sum(raw))

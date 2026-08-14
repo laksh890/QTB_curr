@@ -16,8 +16,14 @@ from iqrp.app.forecasting.tree_models.base.backends import (
 )
 from iqrp.app.forecasting.tree_models.base.ensemble import ensemble_fit_predict
 from iqrp.app.forecasting.tree_models.base.native import NativeForest, NativeGBM, _Tree
-from iqrp.app.forecasting.tree_models.base.processes import feature_names, simulate_nonlinear_returns
-from iqrp.app.forecasting.tree_models.calibration.calibrators import apply_calibration, fit_calibrator
+from iqrp.app.forecasting.tree_models.base.processes import (
+    feature_names,
+    simulate_nonlinear_returns,
+)
+from iqrp.app.forecasting.tree_models.calibration.calibrators import (
+    apply_calibration,
+    fit_calibrator,
+)
 from iqrp.app.forecasting.tree_models.explainability.importance import compute_feature_importance
 from iqrp.app.forecasting.tree_models.optimization.hpo import optimize_hyperparameters
 from iqrp.app.forecasting.tree_models.registry import ensure_tree_models_loaded
@@ -42,7 +48,9 @@ def test_backend_fallbacks_and_importances() -> None:
         assert imp.size == 4
     # classification proba
     yb = (y > 0).astype(float)
-    est = create_estimator("random_forest", task="binary", params={"n_estimators": 15, "max_depth": 2})
+    est = create_estimator(
+        "random_forest", task="binary", params={"n_estimators": 15, "max_depth": 2}
+    )
     est.fit(X, yb)
     assert estimator_predict_proba(est, X).shape[1] >= 2
     # unknown backend
@@ -56,7 +64,9 @@ def test_native_tree_edges() -> None:
     y = np.ones(40)
     t = _Tree(max_depth=2, min_leaf=5, random_state=0, extra=True).fit(X, y)
     assert t.predict(X).size == 40
-    nf = NativeForest(n_estimators=5, max_depth=2, task="classification", extra=True).fit(X, (X[:, 0] > 0).astype(float))
+    nf = NativeForest(n_estimators=5, max_depth=2, task="classification", extra=True).fit(
+        X, (X[:, 0] > 0).astype(float)
+    )
     assert nf.predict_proba(X).shape[1] == 2
     gbm = NativeGBM(n_estimators=8, max_depth=2, task="classification", quantile_alpha=None).fit(
         X, (X[:, 0] > 0).astype(float)
@@ -82,7 +92,10 @@ def test_model_error_paths_and_online_modes() -> None:
     m2.fit(frame[:60], feature_columns=cols)
     m2.partial_fit(frame[60:], feature_columns=cols)
     settings3 = TreeSettings.from_mapping(
-        {"online": {"mode": "incremental", "refresh_every": 1}, "hyperparameters": {"n_estimators": 15, "max_depth": 2}}
+        {
+            "online": {"mode": "incremental", "refresh_every": 1},
+            "hyperparameters": {"n_estimators": 15, "max_depth": 2},
+        }
     )
     m3 = create_tree_model("random_forest", settings=settings3)
     m3.fit(frame[:50], feature_columns=cols)
@@ -98,7 +111,9 @@ def test_model_error_paths_and_online_modes() -> None:
 
 @pytest.mark.unit
 def test_predict_proba_gate_and_explain_shap() -> None:
-    frame = simulate_nonlinear_returns(120, n_features=4, classification=True, rng=np.random.default_rng(5))
+    frame = simulate_nonlinear_returns(
+        120, n_features=4, classification=True, rng=np.random.default_rng(5)
+    )
     cols = feature_names(4)
     # regression model still has supports_proba True on meta — use binary task
     settings = TreeSettings.from_mapping(
@@ -178,7 +193,10 @@ def test_trainer_parallel_failures_and_registry() -> None:
     frame = simulate_nonlinear_returns(80, n_features=3, rng=np.random.default_rng(8))
     trainer = TreeTrainer(
         TreeSettings.from_mapping(
-            {"hyperparameters": {"n_estimators": 12, "max_depth": 2}, "visualization": {"enabled": False}}
+            {
+                "hyperparameters": {"n_estimators": 12, "max_depth": 2},
+                "visualization": {"enabled": False},
+            }
         )
     )
     rows = trainer.compare(
@@ -219,7 +237,9 @@ def test_compute_importance_and_missing_cols() -> None:
     cols = feature_names(3)
     m = create_tree_model(
         "random_forest",
-        settings=TreeSettings.from_mapping({"hyperparameters": {"n_estimators": 10, "max_depth": 2}}),
+        settings=TreeSettings.from_mapping(
+            {"hyperparameters": {"n_estimators": 10, "max_depth": 2}}
+        ),
     )
     m.fit(frame, feature_columns=cols)
     assert compute_feature_importance(m._estimator, cols, kind="gain")

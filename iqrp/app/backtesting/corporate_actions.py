@@ -9,10 +9,11 @@ look-ahead and must be excluded via :func:`actions_asof`.
 
 from __future__ import annotations
 
+from collections.abc import Mapping, Sequence
 from dataclasses import dataclass, field
 from datetime import datetime
 from enum import Enum
-from typing import Any, Iterable, Mapping, Sequence
+from typing import Any
 
 from iqrp.app.backtesting.pit import LookaheadViolation, assert_no_lookahead
 
@@ -44,9 +45,7 @@ class CorporateAction:
                 CorporateActionType(str(self.action_type)),
             )
         if self.ex_date.tzinfo is None:
-            raise ValueError(
-                f"CorporateAction.ex_date must be timezone-aware ({self.symbol})"
-            )
+            raise ValueError(f"CorporateAction.ex_date must be timezone-aware ({self.symbol})")
         object.__setattr__(self, "payload", dict(self.payload))
         object.__setattr__(self, "symbol", str(self.symbol))
 
@@ -158,9 +157,7 @@ def apply_corporate_actions(
 
     eligible = actions_asof(list(actions), asof)
     # Sort for determinism: ex_date, action_type value, symbol, action_id
-    eligible.sort(
-        key=lambda a: (a.ex_date, a.action_type.value, a.symbol, a.action_id)
-    )
+    eligible.sort(key=lambda a: (a.ex_date, a.action_type.value, a.symbol, a.action_id))
 
     cash_delta = 0.0
     notes: list[str] = []
@@ -215,9 +212,7 @@ def apply_corporate_actions(
             else:
                 survivor.quantity += converted
             del book[action.symbol]
-            notes.append(
-                f"merger {action.symbol}->{new_symbol} ratio={ratio} qty={converted}"
-            )
+            notes.append(f"merger {action.symbol}->{new_symbol} ratio={ratio} qty={converted}")
 
         elif action.action_type is CorporateActionType.DELISTING:
             if pos is None:
@@ -228,9 +223,7 @@ def apply_corporate_actions(
             if liq is not None:
                 proceeds = float(liq) * pos.quantity
                 cash_delta += proceeds
-                notes.append(
-                    f"delist {action.symbol} liquidated @ {liq} proceeds={proceeds}"
-                )
+                notes.append(f"delist {action.symbol} liquidated @ {liq} proceeds={proceeds}")
             else:
                 notes.append(f"delist {action.symbol} quantity zeroed (no liq price)")
             del book[action.symbol]

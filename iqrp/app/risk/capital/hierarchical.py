@@ -29,7 +29,7 @@ def _scipy_linkage(dist: np.ndarray, method: str = "single") -> np.ndarray | Non
         # Condensed distance
         condensed = squareform(dist, checks=False)
         return np.asarray(linkage(condensed, method=method), dtype=np.float64)
-    except Exception:  # noqa: BLE001
+    except Exception:
         return None
 
 
@@ -41,7 +41,7 @@ def _numpy_agglomerative(dist: np.ndarray, method: str = "single") -> np.ndarray
     active = set(range(n))
     next_id = n
     # Pairwise cluster distances (initialize with leaf distances)
-    cd = dist.copy()
+    dist.copy()
     # Expandable matrix indexed by cluster id — use dict of pairs
     pair_dist: dict[tuple[int, int], float] = {}
     for i in range(n):

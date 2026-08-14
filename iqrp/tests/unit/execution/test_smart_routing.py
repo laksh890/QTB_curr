@@ -6,8 +6,8 @@ import pytest
 
 from iqrp.app.execution.order_manager.order import Order
 from iqrp.app.execution.smart_routing import (
-    SmartRouter,
     SimulatedVenue,
+    SmartRouter,
     Venue,
     VenueOrderRequest,
     VenueResponseStatus,
@@ -22,7 +22,9 @@ from iqrp.app.execution.smart_routing.scoring import VenueScore, rank_venues, sc
 from iqrp.app.execution.types import KillSwitch, OrderType, Side, Urgency
 
 
-def _order(qty: float = 100.0, otype: OrderType = OrderType.MARKET, price: float | None = None) -> Order:
+def _order(
+    qty: float = 100.0, otype: OrderType = OrderType.MARKET, price: float | None = None
+) -> Order:
     return Order(
         instrument="AAPL",
         side=Side.BUY,
@@ -60,7 +62,13 @@ def test_unavailable_venue_reject(kill_switch, market_context):
     router = SmartRouter(kill_switch=kill_switch)
     decision = router.route(_order(), [bad])
     assert not decision.accepted
-    assert any(r.code in {"venue_unavailable", "no_venues"} or "unavailable" in r.message for r in decision.rejections) or decision.rejections
+    assert (
+        any(
+            r.code in {"venue_unavailable", "no_venues"} or "unavailable" in r.message
+            for r in decision.rejections
+        )
+        or decision.rejections
+    )
 
 
 def test_halted_and_instrument_unavailable(kill_switch):

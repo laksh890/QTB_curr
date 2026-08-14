@@ -14,8 +14,8 @@ from iqrp.app.risk.capital import (
     CapitalAllocator,
     CapitalSerializer,
     CapitalSettings,
-    allocate_capital_budgets,
     all_capital_scenarios,
+    allocate_capital_budgets,
     build_risk_budgets,
     capital_risk_parity,
     correlation_crowding_scales,
@@ -36,8 +36,8 @@ from iqrp.app.risk.capital import (
     tail_dependence_matrix,
     volatility_budgets,
 )
-from iqrp.app.risk.capital.capital_budget import clip_capital_to_limits
 from iqrp.app.risk.capital.capacity import apply_capacity_scales
+from iqrp.app.risk.capital.capital_budget import clip_capital_to_limits
 from iqrp.app.risk.capital.constraints import (
     apply_participation_constraint,
     apply_turnover_constraint,
@@ -53,7 +53,6 @@ from iqrp.app.risk.capital.processes import CapitalScenario
 from iqrp.app.risk.capital.risk_budget import mark_budgets_used, strategy_budget_vector
 from iqrp.app.risk.capital.strategy_allocation import allocate_strategy, build_strategy_allocations
 from iqrp.app.risk.capital.types import CapitalAllocation, RiskBudget, StrategyAllocation
-
 
 METHODS = [
     "equal_capital",
@@ -154,7 +153,7 @@ class TestAllocateMethods:
         assert abs(sum(a.capital_amounts.values()) - 100.0) < 1e-6
         b = capital_allocator.allocate_risk_budget(
             strategy_names,
-            risk_budgets={n: 0.25 for n in strategy_names},
+            risk_budgets=dict.fromkeys(strategy_names, 0.25),
             cov=capital_cov,
         )
         assert b.method == "risk_budget"
@@ -351,7 +350,9 @@ class TestOptimizeRebalanceScenarios:
         assert isinstance(alloc, CapitalAllocation)
         _assert_weights_within_caps(alloc, capital_settings)
 
-    def test_optimize_risk_budgets_direct(self, capital_cov: np.ndarray, strategy_names: list[str]) -> None:
+    def test_optimize_risk_budgets_direct(
+        self, capital_cov: np.ndarray, strategy_names: list[str]
+    ) -> None:
         out = optimize_risk_budgets(
             capital_cov,
             objective="risk_budget_match",
@@ -375,7 +376,7 @@ class TestOptimizeRebalanceScenarios:
         target = capital_allocator.allocate(
             strategy_names, method="equal_capital", cov=capital_cov, capital=1.0
         )
-        current = {n: 0.0 for n in strategy_names}
+        current = dict.fromkeys(strategy_names, 0.0)
         current["alpha"] = 1.0
         reb = capital_allocator.rebalance(
             current,
@@ -385,7 +386,10 @@ class TestOptimizeRebalanceScenarios:
             max_turnover=0.2,
         )
         assert reb.method == "rebalance"
-        assert "turnover_cap" in reb.constraints_applied or reb.output.get("turnover_scaled") is not None
+        assert (
+            "turnover_cap" in reb.constraints_applied
+            or reb.output.get("turnover_scaled") is not None
+        )
         assert sum(reb.weights.values()) == pytest.approx(1.0, abs=1e-6)
 
     def test_rebalance_dict_target(
@@ -393,15 +397,13 @@ class TestOptimizeRebalanceScenarios:
     ) -> None:
         reb = capital_allocator.rebalance(
             np.array([0.5, 0.5, 0.0, 0.0]),
-            {n: 0.25 for n in strategy_names},
+            dict.fromkeys(strategy_names, 0.25),
             names=strategy_names,
             max_turnover=0.5,
         )
         assert set(reb.weights) == set(strategy_names)
 
-    def test_allocate_scenarios(
-        self, capital_allocator: CapitalAllocator
-    ) -> None:
+    def test_allocate_scenarios(self, capital_allocator: CapitalAllocator) -> None:
         out = capital_allocator.allocate_scenarios(
             method="risk_parity",
             scenarios=["independent", "correlated", "bogus_kind"],
@@ -443,7 +445,7 @@ class TestCapacityRiskBudgetCorrelation:
     def test_apply_capacity_scales(self, strategy_names: list[str]) -> None:
         w = apply_capacity_scales(
             np.full(4, 0.25),
-            {n: 0.5 for n in strategy_names},
+            dict.fromkeys(strategy_names, 0.5),
             names=strategy_names,
         )
         assert abs(w.sum() - 1.0) < 1e-9
@@ -451,7 +453,7 @@ class TestCapacityRiskBudgetCorrelation:
     def test_build_risk_budgets_scopes_types(self, strategy_names: list[str]) -> None:
         budgets = build_risk_budgets(
             strategy_names,
-            risk_budgets={n: 0.25 for n in strategy_names},
+            risk_budgets=dict.fromkeys(strategy_names, 0.25),
             scopes={"sector": {"tech": 0.4, "fin": 0.6}, "market": 1.0},
             risk_types={"var": 0.5, "cvar": {"p1": 0.3}, "bogus": 0.1},
             confidence=0.9,
@@ -460,7 +462,7 @@ class TestCapacityRiskBudgetCorrelation:
         assert any(b.risk_type == "var" for b in budgets)
         vec = strategy_budget_vector(strategy_names, budgets)
         assert abs(sum(vec.values()) - 1.0) < 1e-9 or all(v == 0.25 for v in vec.values())
-        mark_budgets_used(budgets, {n: 0.1 for n in strategy_names})
+        mark_budgets_used(budgets, dict.fromkeys(strategy_names, 0.1))
         port = next(b for b in budgets if b.name == "portfolio" and b.scope == "portfolio")
         assert port.used == pytest.approx(0.4)
         assert port.remaining() == pytest.approx(port.budget - port.used)
@@ -479,7 +481,9 @@ class TestCapacityRiskBudgetCorrelation:
         # Invalid corr → identity scales
         scales = correlation_crowding_scales(np.array([1.0, 2.0]), names=["a", "b"])
         assert scales == {"a": 1.0, "b": 1.0}
-        eff = effective_risk_budgets([0.25, 0.25, 0.25, 0.25], np.eye(4), names=["a", "b", "c", "d"])
+        eff = effective_risk_budgets(
+            [0.25, 0.25, 0.25, 0.25], np.eye(4), names=["a", "b", "c", "d"]
+        )
         assert abs(sum(eff["effective"].values()) - 1.0) < 1e-9
 
     def test_hrp_herc(self, capital_cov: np.ndarray, strategy_names: list[str]) -> None:
@@ -551,14 +555,16 @@ class TestDrawdownDynamicVolConstraints:
         assert sum(halt["weight_vector"]) == pytest.approx(0.0)
         assert dynamic_risk_scales([], settings=capital_settings)["scales"] == {}
 
-    def test_volatility_and_parity(self, capital_cov: np.ndarray, strategy_names: list[str]) -> None:
+    def test_volatility_and_parity(
+        self, capital_cov: np.ndarray, strategy_names: list[str]
+    ) -> None:
         vb = volatility_budgets(strategy_names, cov=capital_cov, vols=np.sqrt(np.diag(capital_cov)))
         assert abs(sum(vb["weights"].values()) - 1.0) < 1e-9
         assert volatility_budgets([])["weights"] == {}
         erc = equal_risk_weights(capital_cov, names=strategy_names)
         assert abs(sum(erc["weights"].values()) - 1.0) < 1e-6
         rp = capital_risk_parity(
-            capital_cov, names=strategy_names, risk_budgets={n: 0.25 for n in strategy_names}
+            capital_cov, names=strategy_names, risk_budgets=dict.fromkeys(strategy_names, 0.25)
         )
         assert rp["budget_applied"] is True
         with pytest.raises(ValueError):
@@ -566,13 +572,14 @@ class TestDrawdownDynamicVolConstraints:
         with pytest.raises(ValueError):
             capital_risk_parity(np.ones((2, 3)))
 
-    def test_project_and_turnover_participation(
-        self, capital_settings: CapitalSettings
-    ) -> None:
+    def test_project_and_turnover_participation(self, capital_settings: CapitalSettings) -> None:
         # Diversified seed — box/concentration projection binds
         proj = project_weights([0.5, 0.3, 0.15, 0.05], settings=capital_settings)
         assert proj["max_weight"] <= capital_settings.max_weight + 1e-9
-        assert "box_clip" in proj["constraints_applied"] or "simplex_renorm" in proj["constraints_applied"]
+        assert (
+            "box_clip" in proj["constraints_applied"]
+            or "simplex_renorm" in proj["constraints_applied"]
+        )
         # Two-name concentration can leave max > max_weight after renorm (documented numerical limit);
         # allocate() starts from diversified method weights and still respects caps in practice.
         two = project_weights([0.9, 0.1, 0.0, 0.0], settings=capital_settings)
@@ -615,25 +622,31 @@ class TestDiagnosticsEvaluatorSerializerConfig:
         assert "zero_mass" in diagnose_weights([0.0, 0.0])["issues"]
         assert "negative_weights" in diagnose_weights([-0.1, 1.1])["issues"]
         assert diagnose_weights([])["ok"] is True
-        da = diagnose_allocation(capital_cov, {n: 0.25 for n in strategy_names}, names=strategy_names)
+        da = diagnose_allocation(
+            capital_cov, dict.fromkeys(strategy_names, 0.25), names=strategy_names
+        )
         assert "ok" in da
 
-    def test_evaluate_allocation(
-        self, capital_cov: np.ndarray, strategy_names: list[str]
-    ) -> None:
+    def test_evaluate_allocation(self, capital_cov: np.ndarray, strategy_names: list[str]) -> None:
         ev = evaluate_allocation(
-            {n: 0.25 for n in strategy_names},
+            dict.fromkeys(strategy_names, 0.25),
             names=strategy_names,
             cov=capital_cov,
-            risk_budgets={n: 0.25 for n in strategy_names},
-            capacity_scales={n: 0.8 for n in strategy_names},
+            risk_budgets=dict.fromkeys(strategy_names, 0.25),
+            capacity_scales=dict.fromkeys(strategy_names, 0.8),
             capital=1.0,
-            max_notional={n: 1.0 for n in strategy_names},
+            max_notional=dict.fromkeys(strategy_names, 1.0),
         )
         assert "score" in ev
         assert "alpha" not in ev["notes"].lower() or "excludes alpha" in ev["notes"].lower()
 
-    def test_serializer(self, capital_allocator: CapitalAllocator, strategy_names: list[str], capital_cov: np.ndarray, tmp_path: Path) -> None:
+    def test_serializer(
+        self,
+        capital_allocator: CapitalAllocator,
+        strategy_names: list[str],
+        capital_cov: np.ndarray,
+        tmp_path: Path,
+    ) -> None:
         alloc = capital_allocator.allocate(strategy_names, method="equal_capital", cov=capital_cov)
         ser = CapitalSerializer()
         p = ser.save_allocation(alloc, tmp_path / "alloc.json")
@@ -646,9 +659,11 @@ class TestDiagnosticsEvaluatorSerializerConfig:
         assert isinstance(ser.load_bytes(raw), dict)
         # dict path + fallback allocator-like
         ser.save_allocation(alloc.to_dict(), tmp_path / "alloc2.json")
+
         class _Bare:
             settings = capital_allocator.settings
             last_allocation = None
+
         ser.save_state(_Bare(), tmp_path / "bare.json")
         ser.save_state("plain", tmp_path / "plain.json")
         assert b"value" in ser.dump_bytes("x")
@@ -669,7 +684,9 @@ class TestDiagnosticsEvaluatorSerializerConfig:
             max_participation=0.1,
         )
         assert StrategyAllocation.from_dict(sa.to_dict()).name == "a"
-        ca = CapitalAllocation(names=["a"], weights={"a": 1.0}, strategies={"a": sa}, risk_budgets=[rb])
+        ca = CapitalAllocation(
+            names=["a"], weights={"a": 1.0}, strategies={"a": sa}, risk_budgets=[rb]
+        )
         assert CapitalAllocation.from_dict(ca.to_dict()).weights["a"] == 1.0
 
     def test_config_hydra_and_invalid(self, tmp_path: Path) -> None:
@@ -686,7 +703,9 @@ class TestDiagnosticsEvaluatorSerializerConfig:
             CapitalSettings.from_mapping({"max_weight": "not-a-float"})
 
     def test_clip_capital_and_allocate_budgets(self, strategy_names: list[str]) -> None:
-        caps = allocate_capital_budgets(strategy_names, {n: 0.25 for n in strategy_names}, capital=100.0)
+        caps = allocate_capital_budgets(
+            strategy_names, dict.fromkeys(strategy_names, 0.25), capital=100.0
+        )
         assert caps["total_allocated"] == pytest.approx(100.0)
         clipped = clip_capital_to_limits(caps["amounts"], max_position_capital=20.0, max_gross=50.0)
         assert sum(clipped.values()) <= 50.0 + 1e-9
@@ -697,13 +716,18 @@ class TestDiagnosticsEvaluatorSerializerConfig:
             strategy_names,
             np.full(4, 0.25),
             capital=100.0,
-            capacity_scales={n: 0.5 for n in strategy_names},
-            correlation_scales={n: 0.8 for n in strategy_names},
-            drawdown_scales={n: 0.9 for n in strategy_names},
+            capacity_scales=dict.fromkeys(strategy_names, 0.5),
+            correlation_scales=dict.fromkeys(strategy_names, 0.8),
+            drawdown_scales=dict.fromkeys(strategy_names, 0.9),
         )
         assert all(s.capacity_scale == 0.5 for s in built.values())
 
-    def test_export_state(self, capital_allocator: CapitalAllocator, strategy_names: list[str], capital_cov: np.ndarray) -> None:
+    def test_export_state(
+        self,
+        capital_allocator: CapitalAllocator,
+        strategy_names: list[str],
+        capital_cov: np.ndarray,
+    ) -> None:
         capital_allocator.allocate(strategy_names, cov=capital_cov)
         state = capital_allocator.export_state()
         assert state["last_allocation"] is not None
@@ -724,7 +748,10 @@ class TestCapitalFailureCases:
         assert isinstance(alloc.weights, dict)
 
     def test_nan_adv_conservative(
-        self, capital_allocator: CapitalAllocator, strategy_names: list[str], capital_cov: np.ndarray
+        self,
+        capital_allocator: CapitalAllocator,
+        strategy_names: list[str],
+        capital_cov: np.ndarray,
     ) -> None:
         alloc = capital_allocator.allocate(
             strategy_names,
@@ -737,7 +764,10 @@ class TestCapitalFailureCases:
         assert any(v <= 1.0 for v in alloc.capacity_adjustment.values())
 
     def test_resolve_cov_from_vols_and_returns(
-        self, capital_allocator: CapitalAllocator, strategy_names: list[str], capital_returns: np.ndarray
+        self,
+        capital_allocator: CapitalAllocator,
+        strategy_names: list[str],
+        capital_returns: np.ndarray,
     ) -> None:
         a = capital_allocator.allocate(
             strategy_names, method="volatility", vols=[0.02, 0.03, 0.01, 0.04]
@@ -754,7 +784,10 @@ class TestCapitalFailureCases:
         assert c.weights["only"] == pytest.approx(1.0)
 
     def test_drawdown_method_halts(
-        self, capital_allocator: CapitalAllocator, strategy_names: list[str], capital_cov: np.ndarray
+        self,
+        capital_allocator: CapitalAllocator,
+        strategy_names: list[str],
+        capital_cov: np.ndarray,
     ) -> None:
         alloc = capital_allocator.allocate(
             strategy_names,

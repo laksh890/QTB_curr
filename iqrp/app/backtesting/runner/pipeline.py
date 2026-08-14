@@ -3,17 +3,18 @@
 from __future__ import annotations
 
 import uuid
+from collections.abc import Mapping
 from datetime import datetime
-from typing import Any, Mapping
+from typing import Any
 
 import numpy as np
 
+from iqrp.app.backtesting.accounting.snapshots import PortfolioSnapshot
 from iqrp.app.backtesting.event_engine import (
     Event,
     EventDrivenEngine,
     EventType,
     FillEvent,
-    MarketEvent,
     OrderEvent,
     PortfolioEvent,
     RiskEvent,
@@ -23,7 +24,6 @@ from iqrp.app.backtesting.event_engine import (
 from iqrp.app.backtesting.event_engine.forecast_event import ForecastEvent
 from iqrp.app.backtesting.pit import LookaheadViolation, assert_no_lookahead
 from iqrp.app.backtesting.runner.context import PipelineContext
-from iqrp.app.backtesting.accounting.snapshots import PortfolioSnapshot
 
 
 def _aware(ts: datetime) -> datetime:
@@ -32,7 +32,9 @@ def _aware(ts: datetime) -> datetime:
     return ts
 
 
-def _merge_strategy(payload: Mapping[str, Any] | None, extra: Mapping[str, Any] | None) -> dict[str, Any]:
+def _merge_strategy(
+    payload: Mapping[str, Any] | None, extra: Mapping[str, Any] | None
+) -> dict[str, Any]:
     out = dict(payload or {})
     if extra:
         out.update(dict(extra))
@@ -165,7 +167,11 @@ class EventPipeline:
         self.engine.submit(
             ForecastEvent(
                 timestamp=event.timestamp,
-                payload={**payload, "signals": signals, "target_weights": dict(self.ctx.target_weights)},
+                payload={
+                    **payload,
+                    "signals": signals,
+                    "target_weights": dict(self.ctx.target_weights),
+                },
             )
         )
 
@@ -423,7 +429,11 @@ class EventPipeline:
         self.ctx.event_count += 1
         self.ctx.bar_count += 1
         equity = self.ctx.current_equity()
-        prev = self.ctx.equity_curve[-1] if self.ctx.equity_curve else float(self.ctx.capital.initial_capital)
+        prev = (
+            self.ctx.equity_curve[-1]
+            if self.ctx.equity_curve
+            else float(self.ctx.capital.initial_capital)
+        )
         ret = 0.0 if prev <= 0 else equity / prev - 1.0
         self.ctx.equity_curve.append(float(equity))
         self.ctx.returns.append(float(ret))

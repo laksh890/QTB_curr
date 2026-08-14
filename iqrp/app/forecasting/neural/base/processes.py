@@ -52,7 +52,9 @@ def feature_names(n_features: int = 6) -> list[str]:
     return [f"f{j}" for j in range(n_features)]
 
 
-def multi_horizon_frame(n: int = 300, horizon: int = 5, rng: np.random.Generator | None = None) -> pl.DataFrame:
+def multi_horizon_frame(
+    n: int = 300, horizon: int = 5, rng: np.random.Generator | None = None
+) -> pl.DataFrame:
     """Frame with explicit multi-step target columns for multi-target tests."""
     frame = simulate_nonlinear_returns(n, n_features=4, rng=rng)
     y = frame["target"].to_numpy()

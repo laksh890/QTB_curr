@@ -12,7 +12,7 @@ from iqrp.app.simulation.regimes.hidden_regime import HiddenRegimeSimulator
 from iqrp.app.simulation.regimes.regime_switching import RegimeSwitchingSimulator
 
 # import stubs from core tests
-from iqrp.tests.unit.ensemble.test_ensemble_core import _StubRegimeA, _StubRegimeB  # noqa: F401
+from iqrp.tests.unit.ensemble.test_ensemble_core import _StubRegimeA, _StubRegimeB
 
 
 def _settings(**kw: object) -> EnsembleSettings:

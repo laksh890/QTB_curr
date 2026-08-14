@@ -33,7 +33,7 @@ def _softmin_cvar(losses: np.ndarray, alpha: float, temperature: float) -> tuple
     t = losses.size
     if t == 0:
         return 0.0, losses
-    k = max(int(np.ceil((1.0 - alpha) * t)), 1)
+    max(int(np.ceil((1.0 - alpha) * t)), 1)
     # temperature softmin over the worst k via softmax on losses
     # Use full softplus-style: VaR level via quantile, ES via soft weights above
     q = float(np.quantile(losses, alpha))
@@ -46,7 +46,9 @@ def _softmin_cvar(losses: np.ndarray, alpha: float, temperature: float) -> tuple
     hard = losses >= q - 1e-15
     if not np.any(hard):
         hard = losses >= float(np.max(losses)) - 1e-15
-    mix = 0.7 * (w / max(float(np.sum(w)), 1e-18)) + 0.3 * (hard.astype(np.float64) / max(float(np.sum(hard)), 1.0))
+    mix = 0.7 * (w / max(float(np.sum(w)), 1e-18)) + 0.3 * (
+        hard.astype(np.float64) / max(float(np.sum(hard)), 1.0)
+    )
     # CVaR ≈ weighted mean of losses in soft tail; also blend VaR
     cvar = float(np.dot(mix, losses))
     # gradient of soft weighted mean wrt losses (approx: mix, ignoring mix dependence)
@@ -116,7 +118,14 @@ def optimize_cvar(
             names = cstr.get("names")
         ok, reason, conflicts = check_feasibility(cstr)
         if not ok:
-            return infeasible_result(name, n, method=method, reason=reason or "infeasible", conflicts=conflicts, names=names)
+            return infeasible_result(
+                name,
+                n,
+                method=method,
+                reason=reason or "infeasible",
+                conflicts=conflicts,
+                names=names,
+            )
 
         conf = float(alpha)
         if not (0.5 < conf < 1.0):
@@ -161,7 +170,9 @@ def optimize_cvar(
             bounds = [(cstr["lb"], cstr["ub"])] * n
             cons = {"type": "eq", "fun": lambda ww: float(np.sum(ww) - cstr["budget"])}
             try:
-                res = minimize_scipy(obj, x0, jac=grad, bounds=bounds, constraints=[cons], method="SLSQP")
+                res = minimize_scipy(
+                    obj, x0, jac=grad, bounds=bounds, constraints=[cons], method="SLSQP"
+                )
                 if bool(res.success):
                     w = project(np.asarray(res.x, dtype=np.float64))
                     used = "scipy_slsqp_softmin"
@@ -179,7 +190,9 @@ def optimize_cvar(
                         iters = it
                     used = "iterative_softmin"
             except Exception:
-                w, _, success_opt, iters = projected_gradient(obj, grad, x0, project, lr=0.05, max_iter=max_iter)
+                w, _, success_opt, iters = projected_gradient(
+                    obj, grad, x0, project, lr=0.05, max_iter=max_iter
+                )
                 used = "numpy_pgd"
         else:
             # pure iterative softmin reweighting
@@ -196,14 +209,20 @@ def optimize_cvar(
                 w = w_new
                 iters = it
             # polish with PGD
-            w, _, success_opt, it2 = projected_gradient(obj, grad, w, project, lr=0.03, max_iter=max(100, max_iter // 3))
+            w, _, success_opt, it2 = projected_gradient(
+                obj, grad, w, project, lr=0.03, max_iter=max(100, max_iter // 3)
+            )
             iters += it2
             used = "iterative_softmin"
 
         if float(np.min(w)) < cstr["lb"] - 1e-8 or float(np.max(w)) > cstr["ub"] + 1e-8:
-            return infeasible_result(name, n, method=used, reason="box violation", conflicts=["box"], names=names)
+            return infeasible_result(
+                name, n, method=used, reason="box violation", conflicts=["box"], names=names
+            )
         if abs(float(np.sum(w)) - cstr["budget"]) > 1e-6:
-            return infeasible_result(name, n, method=used, reason="budget violation", conflicts=["budget"], names=names)
+            return infeasible_result(
+                name, n, method=used, reason="budget violation", conflicts=["budget"], names=names
+            )
 
         port = scenarios_m @ w
         losses = -port

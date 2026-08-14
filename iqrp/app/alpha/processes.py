@@ -174,9 +174,7 @@ def simulate_alpha_scenario(
     """Dispatch synthetic scenario by name; always includes ``truth`` metadata."""
     key = str(name).strip().lower()
     if key not in _SCENARIOS:
-        raise ValueError(
-            f"Unknown scenario '{name}'. Available: {sorted(_SCENARIOS)}"
-        )
+        raise ValueError(f"Unknown scenario '{name}'. Available: {sorted(_SCENARIOS)}")
     out = _SCENARIOS[key](n, seed=seed, **kwargs)
     out.setdefault("n", int(n))
     out.setdefault("seed", seed)

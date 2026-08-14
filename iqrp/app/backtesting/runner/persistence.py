@@ -3,13 +3,13 @@
 from __future__ import annotations
 
 import json
+from collections.abc import Mapping
 from pathlib import Path
-from typing import Any, Mapping
+from typing import Any
 
 import pandas as pd
 
 from iqrp.app.backtesting.runner.result import OperationalBacktestResult
-
 
 ARTIFACT_DIRS = (
     "configuration",
@@ -44,7 +44,7 @@ def _write_table(path: Path, rows: list[Mapping[str, Any]]) -> Path | None:
     try:
         df.to_parquet(path.with_suffix(".parquet"), index=False)
         return path.with_suffix(".parquet")
-    except Exception:  # noqa: BLE001
+    except Exception:
         df.to_csv(path.with_suffix(".csv"), index=False)
         return path.with_suffix(".csv")
 

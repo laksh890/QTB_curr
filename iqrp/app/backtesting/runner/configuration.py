@@ -2,9 +2,10 @@
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from dataclasses import asdict, dataclass, field, fields
 from pathlib import Path
-from typing import Any, Mapping
+from typing import Any
 
 
 def _to_plain(obj: Any) -> Any:
@@ -20,14 +21,10 @@ def _to_plain(obj: Any) -> Any:
     if hasattr(obj, "items") and callable(obj.items):
         try:
             return {str(k): _to_plain(v) for k, v in obj.items()}
-        except Exception:  # noqa: BLE001
+        except Exception:
             pass
     if hasattr(obj, "__dict__"):
-        return {
-            str(k): _to_plain(v)
-            for k, v in vars(obj).items()
-            if not str(k).startswith("_")
-        }
+        return {str(k): _to_plain(v) for k, v in vars(obj).items() if not str(k).startswith("_")}
     return obj
 
 
@@ -140,7 +137,7 @@ class BacktestRunConfig:
         return asdict(self)
 
     @classmethod
-    def from_dict(cls, data: Mapping[str, Any] | None) -> "BacktestRunConfig":
+    def from_dict(cls, data: Mapping[str, Any] | None) -> BacktestRunConfig:
         raw = _to_plain(dict(data or {}))
         raw = _flatten_nested_config(raw)
         if "capital" in raw and "initial_capital" not in raw:
@@ -163,7 +160,7 @@ class BacktestRunConfig:
         return cls(**kwargs)
 
     @classmethod
-    def from_yaml(cls, path: str | Path) -> "BacktestRunConfig":
+    def from_yaml(cls, path: str | Path) -> BacktestRunConfig:
         path = Path(path)
         text = path.read_text(encoding="utf-8")
         try:
@@ -174,21 +171,21 @@ class BacktestRunConfig:
             if not isinstance(plain, Mapping):
                 raise TypeError("YAML root must be a mapping")
             return cls.from_dict(plain)
-        except Exception:  # noqa: BLE001
+        except Exception:
             import yaml
 
             plain = yaml.safe_load(text) or {}
             if not isinstance(plain, Mapping):
-                raise TypeError("YAML root must be a mapping")
+                raise TypeError("YAML root must be a mapping") from None
             return cls.from_dict(plain)
 
     @classmethod
-    def from_omegaconf(cls, cfg: Any) -> "BacktestRunConfig":
+    def from_omegaconf(cls, cfg: Any) -> BacktestRunConfig:
         try:
             from omegaconf import OmegaConf
 
             plain = OmegaConf.to_container(cfg, resolve=True)
-        except Exception:  # noqa: BLE001
+        except Exception:
             plain = _to_plain(cfg)
         if not isinstance(plain, Mapping):
             raise TypeError("OmegaConf root must be a mapping")
@@ -197,7 +194,7 @@ class BacktestRunConfig:
     def results_root(self) -> Path:
         return Path(self.output_dir) / str(self.backtest_id)
 
-    def with_updates(self, **kwargs: Any) -> "BacktestRunConfig":
+    def with_updates(self, **kwargs: Any) -> BacktestRunConfig:
         base = self.to_dict()
         base.update(kwargs)
         return BacktestRunConfig.from_dict(base)

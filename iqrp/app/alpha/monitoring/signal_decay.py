@@ -2,7 +2,8 @@
 
 from __future__ import annotations
 
-from typing import Any, Mapping, Sequence
+from collections.abc import Mapping, Sequence
+from typing import Any
 
 import numpy as np
 
@@ -42,14 +43,30 @@ def rolling_ic(
                     return float("nan")
                 a = s[m].argsort().argsort().astype(np.float64)
                 b = r[m].argsort().argsort().astype(np.float64)
-                return float(np.corrcoef(a, b)[0, 1]) if np.std(a) > 0 and np.std(b) > 0 else float("nan")
+                return (
+                    float(np.corrcoef(a, b)[0, 1])
+                    if np.std(a) > 0 and np.std(b) > 0
+                    else float("nan")
+                )
             return _pearson(s, r)
         daily = []
         for i in range(s.shape[0]):
-            daily.append(_pearson(s[i], r[i]) if not rank else _pearson(
-                s[i].argsort().argsort().astype(np.float64) if np.isfinite(s[i]).any() else s[i],
-                r[i].argsort().argsort().astype(np.float64) if np.isfinite(r[i]).any() else r[i],
-            ))
+            daily.append(
+                _pearson(s[i], r[i])
+                if not rank
+                else _pearson(
+                    (
+                        s[i].argsort().argsort().astype(np.float64)
+                        if np.isfinite(s[i]).any()
+                        else s[i]
+                    ),
+                    (
+                        r[i].argsort().argsort().astype(np.float64)
+                        if np.isfinite(r[i]).any()
+                        else r[i]
+                    ),
+                )
+            )
         arr = np.asarray(daily, dtype=np.float64)
         return float(np.nanmean(arr)) if arr.size else float("nan")
 
@@ -172,9 +189,7 @@ def monitor_ic_decay(
     base = abs(float(baseline_ic)) + 1e-12
     ratio = abs(last) / base if np.isfinite(last) else 0.0
     if ratio <= collapse_ratio or (
-        np.isfinite(last)
-        and np.sign(last) != np.sign(baseline_ic)
-        and abs(baseline_ic) > 1e-6
+        np.isfinite(last) and np.sign(last) != np.sign(baseline_ic) and abs(baseline_ic) > 1e-6
     ):
         status = "COLLAPSED"
     elif ratio <= warn_ratio:

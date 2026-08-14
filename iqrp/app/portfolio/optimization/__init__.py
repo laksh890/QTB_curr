@@ -4,7 +4,11 @@ from iqrp.app.portfolio.optimization.black_litterman import optimize_black_litte
 from iqrp.app.portfolio.optimization.cvar import optimize_cvar
 from iqrp.app.portfolio.optimization.drawdown import optimize_drawdown
 from iqrp.app.portfolio.optimization.entropy import optimize_entropy
-from iqrp.app.portfolio.optimization.hierarchical import optimize_herc, optimize_hierarchical, optimize_hrp
+from iqrp.app.portfolio.optimization.hierarchical import (
+    optimize_herc,
+    optimize_hierarchical,
+    optimize_hrp,
+)
 from iqrp.app.portfolio.optimization.maximum_diversification import optimize_maximum_diversification
 from iqrp.app.portfolio.optimization.maximum_sharpe import optimize_maximum_sharpe
 from iqrp.app.portfolio.optimization.mean_variance import optimize_mean_variance

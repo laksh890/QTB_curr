@@ -6,8 +6,9 @@ to ``INVALIDATED``. Handlers must never observe data after the event clock.
 
 from __future__ import annotations
 
+from collections.abc import Mapping, MutableMapping, Sequence
 from enum import Enum
-from typing import Any, Mapping, MutableMapping, Sequence
+from typing import Any
 
 
 class BacktestState(str, Enum):

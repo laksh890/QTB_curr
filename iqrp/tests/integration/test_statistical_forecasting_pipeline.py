@@ -7,7 +7,11 @@ from pathlib import Path
 import numpy as np
 import pytest
 
-from iqrp.app.forecasting.statistical import StatisticalSettings, StatisticalTrainer, create_statistical_model
+from iqrp.app.forecasting.statistical import (
+    StatisticalSettings,
+    StatisticalTrainer,
+    create_statistical_model,
+)
 from iqrp.app.forecasting.statistical.base.processes import (
     simulate_ar,
     simulate_arima,

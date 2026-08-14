@@ -261,7 +261,9 @@ def test_event_scheduler_seed_and_cancel() -> None:
     assert sched.remove(jid) is True
     assert len(sched.jobs()) == 0
     with pytest.raises(ValueError):
-        sched.schedule(interval=timedelta(0), factory=lambda t: Event(t, EventType.MARKET), start=start)
+        sched.schedule(
+            interval=timedelta(0), factory=lambda t: Event(t, EventType.MARKET), start=start
+        )
     with pytest.raises(ValueError):
         sched.schedule(
             interval=timedelta(days=1),
@@ -294,7 +296,12 @@ def test_event_driven_engine_run() -> None:
     assert state == BacktestState.COMPLETED
     assert eng.processed_count >= 2
     assert EventType.MARKET in seen
-    assert eng.unregister(EventType.MARKET, eng._handlers[EventType.MARKET][0] if False else (lambda e: None)) is False
+    assert (
+        eng.unregister(
+            EventType.MARKET, eng._handlers[EventType.MARKET][0] if False else (lambda e: None)
+        )
+        is False
+    )
 
 
 def test_event_driven_engine_invalidate_and_lookahead() -> None:

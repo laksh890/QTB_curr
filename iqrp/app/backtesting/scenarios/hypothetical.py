@@ -96,7 +96,11 @@ def apply_hypothetical_shock(
         # Keep historical path but report cov shock; returns unchanged except metadata
         aux["correlation_shift"] = alpha
     elif kind == "liquidity":
-        base = np.ones(r.shape[1]) if liquidity is None else np.asarray(liquidity, dtype=np.float64).reshape(-1)
+        base = (
+            np.ones(r.shape[1])
+            if liquidity is None
+            else np.asarray(liquidity, dtype=np.float64).reshape(-1)
+        )
         if base.size == 1:
             base = np.full(r.shape[1], float(base[0]))
         # Liquidity deterioration increases effective cost drag
@@ -106,14 +110,22 @@ def apply_hypothetical_shock(
         aux["liquidity"] = liq
         aux["liquidity_drag"] = drag
     elif kind == "spread":
-        base = np.zeros(r.shape[1]) if spreads is None else np.asarray(spreads, dtype=np.float64).reshape(-1)
+        base = (
+            np.zeros(r.shape[1])
+            if spreads is None
+            else np.asarray(spreads, dtype=np.float64).reshape(-1)
+        )
         if base.size == 1:
             base = np.full(r.shape[1], float(base[0]))
         spread = base + mag
         stressed = stressed - 0.5 * spread.reshape(1, -1) / max(r.shape[0], 1)
         aux["spreads"] = spread
     elif kind in ("cost", "interest_rate", "fx"):
-        base = np.zeros(r.shape[0]) if costs is None else np.asarray(costs, dtype=np.float64).reshape(-1)
+        base = (
+            np.zeros(r.shape[0])
+            if costs is None
+            else np.asarray(costs, dtype=np.float64).reshape(-1)
+        )
         if base.size == 1:
             base = np.full(r.shape[0], float(base[0]))
         if base.size != r.shape[0]:

@@ -76,7 +76,9 @@ def nearest_neighbors(
     neighbors: list[dict] = []
     for i in order:
         i = int(i)
-        neighbors.append({"index": i, "distance": float(dists[i]), "subsequence": y[i : i + m].tolist()})
+        neighbors.append(
+            {"index": i, "distance": float(dists[i]), "subsequence": y[i : i + m].tolist()}
+        )
         if len(neighbors) >= k:
             break
     return AnalysisResult(

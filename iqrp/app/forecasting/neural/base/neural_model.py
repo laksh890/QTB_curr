@@ -23,7 +23,13 @@ from iqrp.app.forecasting.neural.base.data import (
     train_val_split,
 )
 from iqrp.app.forecasting.neural.base.metrics import evaluate_predictions
-from iqrp.app.forecasting.neural.base.torch_utils import count_parameters, from_tensor, has_torch, resolve_device, to_tensor
+from iqrp.app.forecasting.neural.base.torch_utils import (
+    count_parameters,
+    from_tensor,
+    has_torch,
+    resolve_device,
+    to_tensor,
+)
 from iqrp.app.forecasting.neural.base.trainer import NeuralTrainer
 from iqrp.app.forecasting.neural.config import NeuralSettings
 from iqrp.app.forecasting.neural.probabilistic.quantiles import (
@@ -73,7 +79,9 @@ class NeuralForecastModel(ForecastModel):
         if not has_torch():
             from iqrp.app.core.exceptions import ValidationError
 
-            raise ValidationError("PyTorch is required for neural forecasting", code="NEURAL_NO_TORCH")
+            raise ValidationError(
+                "PyTorch is required for neural forecasting", code="NEURAL_NO_TORCH"
+            )
         tgt = self._resolve_target(frame, target_column)
         cols = self._resolve_feature_columns(frame, feature_columns)
         cols = [c for c in cols if c != tgt]
@@ -94,9 +102,7 @@ class NeuralForecastModel(ForecastModel):
         y = frame[tgt].to_numpy().astype(np.float64)
         self._mu, self._sd = standardize_fit(X)
         Xs = standardize_apply(X, self._mu, self._sd)
-        X_seq, y_seq = make_sequences(
-            Xs, y, lookback=self._lookback, horizon=self._horizon
-        )
+        X_seq, y_seq = make_sequences(Xs, y, lookback=self._lookback, horizon=self._horizon)
         # optional HPO
         if self._neural_settings.optimization.method != "none":
             from iqrp.app.forecasting.neural.optimization.hpo import optimize_neural
@@ -104,11 +110,17 @@ class NeuralForecastModel(ForecastModel):
             best = optimize_neural(self, X_seq, y_seq, settings=self._neural_settings)
             # apply best into params
             for k, v in best.items():
-                if hasattr(self._neural_settings.architecture, k):
+                if hasattr(self._neural_settings.architecture, k) or k in {
+                    "learning_rate",
+                    "batch_size",
+                    "hidden_size",
+                    "num_layers",
+                    "dropout",
+                }:
                     self._params_kw[k] = v
-                elif k in {"learning_rate", "batch_size", "hidden_size", "num_layers", "dropout"}:
-                    self._params_kw[k] = v
-        X_tr, y_tr, X_va, y_va = train_val_split(X_seq, y_seq, val_ratio=self._neural_settings.train.val_ratio)
+        X_tr, y_tr, X_va, y_va = train_val_split(
+            X_seq, y_seq, val_ratio=self._neural_settings.train.val_ratio
+        )
         task = self._neural_settings.task.type
         if (
             regimes is not None
@@ -127,10 +139,12 @@ class NeuralForecastModel(ForecastModel):
                 mod, _ = trainer.fit(mod, X_seq[mask], y_seq[mask])
                 self._regime_modules[reg] = mod
         self._module = self._build_module(n_features=X.shape[1], task=task)
-        if self._neural_settings.distributed.gradient_checkpointing and hasattr(self._module, "gradient_checkpointing_enable"):
+        if self._neural_settings.distributed.gradient_checkpointing and hasattr(
+            self._module, "gradient_checkpointing_enable"
+        ):
             try:
                 self._module.gradient_checkpointing_enable()
-            except Exception:  # noqa: BLE001  # pragma: no cover
+            except Exception:  # pragma: no cover
                 pass
         trainer = NeuralTrainer(self._neural_settings)
         self._module, self._history = trainer.fit(self._module, X_tr, y_tr, X_va, y_va)
@@ -140,7 +154,9 @@ class NeuralForecastModel(ForecastModel):
         point = extract_point_forecast(
             pred, task=task, alphas=self._neural_settings.task.quantile_alphas
         )
-        self._residuals = y_seq.reshape(point.shape[0], -1)[:, 0] - point.reshape(point.shape[0], -1)[:, 0]
+        self._residuals = (
+            y_seq.reshape(point.shape[0], -1)[:, 0] - point.reshape(point.shape[0], -1)[:, 0]
+        )
         self._X_seq, self._y_seq, self._y_raw = X_seq, y_seq, y
         self._feature_columns = list(cols)
         self._target_column = tgt
@@ -172,9 +188,14 @@ class NeuralForecastModel(ForecastModel):
     ) -> NeuralForecastModel:
         mode = self._neural_settings.online.mode
         if not self._fitted or mode == "refit" or self._module is None:
-            return self.fit(frame, feature_columns, target_column=target_column, regime_column=regime_column)
+            return self.fit(
+                frame, feature_columns, target_column=target_column, regime_column=regime_column
+            )
         self._update_count += 1
-        if self._update_count % max(int(self._neural_settings.online.refresh_every), 1) == 0 and mode != "finetune":
+        if (
+            self._update_count % max(int(self._neural_settings.online.refresh_every), 1) == 0
+            and mode != "finetune"
+        ):
             return self.fit(
                 frame,
                 feature_columns or self._feature_columns,
@@ -190,7 +211,6 @@ class NeuralForecastModel(ForecastModel):
         w = int(self._neural_settings.online.window)
         X_seq, y_seq = X_seq[-w:], y_seq[-w:]
         # temporarily reduce epochs for finetune
-        from copy import deepcopy
 
         # pydantic frozen — override via mapping
         s = NeuralSettings.from_mapping(
@@ -208,13 +228,13 @@ class NeuralForecastModel(ForecastModel):
         self._history.val_loss.extend(hist.val_loss)
         return self
 
-    def predict(
-        self, frame: pl.DataFrame, feature_columns: list[str] | None = None
-    ) -> np.ndarray:
+    def predict(self, frame: pl.DataFrame, feature_columns: list[str] | None = None) -> np.ndarray:
         self._require_fitted()
         pred = self._predict_raw(frame, feature_columns)
         point = extract_point_forecast(
-            pred, task=self._neural_settings.task.type, alphas=self._neural_settings.task.quantile_alphas
+            pred,
+            task=self._neural_settings.task.type,
+            alphas=self._neural_settings.task.quantile_alphas,
         )
         # return last-horizon step per window, pad to frame length
         last = point[:, -1] if point.ndim == 2 else point.reshape(-1)
@@ -256,7 +276,9 @@ class NeuralForecastModel(ForecastModel):
         h = max(int(horizon if horizon is not None else self._horizon), 1)
         pred = self._predict_raw(frame, feature_columns)
         point = extract_point_forecast(
-            pred, task=self._neural_settings.task.type, alphas=self._neural_settings.task.quantile_alphas
+            pred,
+            task=self._neural_settings.task.type,
+            alphas=self._neural_settings.task.quantile_alphas,
         )
         # use last window's multi-horizon path
         if point.ndim == 1:
@@ -264,7 +286,9 @@ class NeuralForecastModel(ForecastModel):
         else:
             path = point[-1, :h]
             if path.size < h:
-                path = np.pad(path, (0, h - path.size), constant_values=path[-1] if path.size else 0.0)
+                path = np.pad(
+                    path, (0, h - path.size), constant_values=path[-1] if path.size else 0.0
+                )
         lo, hi = interval_from_prediction(
             pred[-1:],
             task=self._neural_settings.task.type,
@@ -278,7 +302,11 @@ class NeuralForecastModel(ForecastModel):
             lo_p = np.resize(lo_p, h)
             hi_p = np.resize(hi_p, h)
         intervals = [
-            PredictionInterval(lower=float(lo_p[i]), upper=float(hi_p[i]), level=self._neural_settings.forecast.interval_level)
+            PredictionInterval(
+                lower=float(lo_p[i]),
+                upper=float(hi_p[i]),
+                level=self._neural_settings.forecast.interval_level,
+            )
             for i in range(h)
         ]
         q = quantiles_from_prediction(
@@ -308,9 +336,11 @@ class NeuralForecastModel(ForecastModel):
             model_name=self.meta.name,
             model_version=self.meta.version,
             features_used=tuple(self._feature_columns),
-            regime_used=frame[self._regime_column].to_numpy()[-1]
-            if self._regime_column and self._regime_column in frame.columns
-            else None,
+            regime_used=(
+                frame[self._regime_column].to_numpy()[-1]
+                if self._regime_column and self._regime_column in frame.columns
+                else None
+            ),
             strategy="sequence",
             intervals=intervals,
             metadata=meta,
@@ -329,7 +359,9 @@ class NeuralForecastModel(ForecastModel):
             return fc.intervals
         return residual_intervals(
             fc.path(),
-            level=float(level if level is not None else self._neural_settings.forecast.interval_level),
+            level=float(
+                level if level is not None else self._neural_settings.forecast.interval_level
+            ),
         )
 
     def evaluate(
@@ -349,12 +381,17 @@ class NeuralForecastModel(ForecastModel):
         if proba is None and self.meta.supports_proba:
             try:
                 proba = self.predict_proba(frame, feature_columns)
-            except Exception:  # noqa: BLE001  # pragma: no cover
+            except Exception:  # pragma: no cover
                 proba = None
         metrics = evaluate_predictions(
-            y_true[-n:], y_pred[-n:], proba=None if proba is None else proba[-n:], task=self._neural_settings.task.type
+            y_true[-n:],
+            y_pred[-n:],
+            proba=None if proba is None else proba[-n:],
+            task=self._neural_settings.task.type,
         )
-        return EvaluationReport(metrics=metrics, method=f"neural_{self.architecture_name}", n_samples=n)
+        return EvaluationReport(
+            metrics=metrics, method=f"neural_{self.architecture_name}", n_samples=n
+        )
 
     def explain(
         self,
@@ -409,7 +446,14 @@ class NeuralForecastModel(ForecastModel):
                 scripted = torch.jit.trace(cpu_mod, dummy)
                 scripted.save(str(pt_path))
             except Exception:
-                torch.save({"state_dict": cpu_mod.state_dict(), "lookback": self._lookback, "n_features": n_features}, pt_path)
+                torch.save(
+                    {
+                        "state_dict": cpu_mod.state_dict(),
+                        "lookback": self._lookback,
+                        "n_features": n_features,
+                    },
+                    pt_path,
+                )
             path = pt_path
         self._module.to(self._device)
         return path
@@ -420,11 +464,17 @@ class NeuralForecastModel(ForecastModel):
 
         return run_neural_diagnostics(self).to_dict()
 
-    def _predict_raw(self, frame: pl.DataFrame, feature_columns: list[str] | None = None) -> np.ndarray:
+    def _predict_raw(
+        self, frame: pl.DataFrame, feature_columns: list[str] | None = None
+    ) -> np.ndarray:
         assert self._module is not None and self._mu is not None and self._sd is not None
         cols = list(self._feature_columns)
         X = standardize_apply(frame.select(cols).to_numpy().astype(np.float64), self._mu, self._sd)
-        y_proxy = frame[self._target_column].to_numpy().astype(np.float64) if self._target_column in frame.columns else X[:, 0]
+        y_proxy = (
+            frame[self._target_column].to_numpy().astype(np.float64)
+            if self._target_column in frame.columns
+            else X[:, 0]
+        )
         X_seq, _ = make_sequences(X, y_proxy, lookback=self._lookback, horizon=self._horizon)
         # regime routing
         if self._regime_modules and self._regime_column and self._regime_column in frame.columns:
@@ -440,10 +490,16 @@ class NeuralForecastModel(ForecastModel):
         trainer.device = self._device
         return trainer.predict(self._module, X_seq)
 
-    def _last_window(self, frame: pl.DataFrame, feature_columns: list[str] | None = None) -> np.ndarray:
+    def _last_window(
+        self, frame: pl.DataFrame, feature_columns: list[str] | None = None
+    ) -> np.ndarray:
         cols = list(self._feature_columns)
         X = standardize_apply(frame.select(cols).to_numpy().astype(np.float64), self._mu, self._sd)  # type: ignore[arg-type]
-        y_proxy = frame[self._target_column].to_numpy().astype(np.float64) if self._target_column in frame.columns else X[:, 0]
+        y_proxy = (
+            frame[self._target_column].to_numpy().astype(np.float64)
+            if self._target_column in frame.columns
+            else X[:, 0]
+        )
         X_seq, _ = make_sequences(X, y_proxy, lookback=self._lookback, horizon=self._horizon)
         return X_seq[-1:]
 
@@ -523,7 +579,9 @@ class NeuralForecastModel(ForecastModel):
             "y_seq": None if self._y_seq is None else self._y_seq.tolist(),
         }
         if self._module is not None and has_torch():
-            state["state_dict"] = {k: v.detach().cpu().tolist() for k, v in self._module.state_dict().items()}
+            state["state_dict"] = {
+                k: v.detach().cpu().tolist() for k, v in self._module.state_dict().items()
+            }
             state["n_features"] = len(self._feature_columns)
         return state
 
@@ -538,24 +596,40 @@ class NeuralForecastModel(ForecastModel):
         self._sd = None if state.get("sd") is None else np.asarray(state["sd"], dtype=np.float64)
         self._history = History.from_dict(state.get("history") or {})
         self._residuals = (
-            None if state.get("residuals") is None else np.asarray(state["residuals"], dtype=np.float64)
+            None
+            if state.get("residuals") is None
+            else np.asarray(state["residuals"], dtype=np.float64)
         )
         self._params_kw = dict(state.get("params_kw") or {})
         # ensure architecture dims used at train time win over defaults
         for k, v in (state.get("arch_kwargs") or {}).items():
-            if k in {"hidden_size", "num_layers", "dropout", "bidirectional", "kernel_size", "n_blocks", "use_attention"}:
+            if k in {
+                "hidden_size",
+                "num_layers",
+                "dropout",
+                "bidirectional",
+                "kernel_size",
+                "n_blocks",
+                "use_attention",
+            }:
                 self._params_kw.setdefault(k, v)
         self._update_count = int(state.get("update_count", 0))
-        self._X_seq = None if state.get("X_seq") is None else np.asarray(state["X_seq"], dtype=np.float64)
-        self._y_seq = None if state.get("y_seq") is None else np.asarray(state["y_seq"], dtype=np.float64)
+        self._X_seq = (
+            None if state.get("X_seq") is None else np.asarray(state["X_seq"], dtype=np.float64)
+        )
+        self._y_seq = (
+            None if state.get("y_seq") is None else np.asarray(state["y_seq"], dtype=np.float64)
+        )
         n_features = int(state.get("n_features") or max(len(self._feature_columns), 1))
         if has_torch() and state.get("state_dict") is not None:
             import torch
 
-            self._module = self._build_module(n_features=n_features, task=self._neural_settings.task.type)
+            self._module = self._build_module(
+                n_features=n_features, task=self._neural_settings.task.type
+            )
             sd = {k: torch.tensor(v) for k, v in state["state_dict"].items()}
             self._module.load_state_dict(sd)
             self._module.to(self._device)
+
     @abstractmethod
-    def _build_module(self, *, n_features: int, task: str) -> Any:
-        ...
+    def _build_module(self, *, n_features: int, task: str) -> Any: ...

@@ -50,7 +50,7 @@ def expected_drawdown(returns: Any) -> RiskMeasure:
 def ulcer_index(returns: Any) -> RiskMeasure:
     """Ulcer index: RMS of drawdowns."""
     dd = drawdown_series(returns)
-    value = float(np.sqrt(np.mean(dd ** 2))) if dd.size else 0.0
+    value = float(np.sqrt(np.mean(dd**2))) if dd.size else 0.0
     return RiskMeasure(
         name="ulcer_index",
         value=value,
@@ -71,7 +71,7 @@ def downside_deviation(
         value = 0.0
     else:
         downside = np.minimum(r - float(mar), 0.0)
-        value = float(np.sqrt(np.mean(downside ** 2)))
+        value = float(np.sqrt(np.mean(downside**2)))
     return RiskMeasure(
         name="downside_deviation",
         value=value,

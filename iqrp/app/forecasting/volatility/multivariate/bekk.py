@@ -102,7 +102,7 @@ class BEKKModel(VolatilityModel):
             c, am, bm = unpack(theta)
             try:
                 h = _bekk_path(mat, c, am, bm)
-            except Exception:  # noqa: BLE001
+            except Exception:
                 return 1e20
             ll = 0.0
             for i in range(t):
@@ -112,7 +112,7 @@ class BEKKModel(VolatilityModel):
                         return 1e20
                     inv = np.linalg.inv(h[i])
                     ll += logdet + float(mat[i] @ inv @ mat[i])
-                except Exception:  # noqa: BLE001
+                except Exception:
                     return 1e20
             return 0.5 * ll
 
@@ -153,9 +153,7 @@ class BEKKModel(VolatilityModel):
         self._feature_columns = assets
         return self
 
-    def predict(
-        self, frame: pl.DataFrame, feature_columns: list[str] | None = None
-    ) -> np.ndarray:
+    def predict(self, frame: pl.DataFrame, feature_columns: list[str] | None = None) -> np.ndarray:
         self._require_fitted()
         assert self._variance is not None
         return np.sqrt(self._variance)

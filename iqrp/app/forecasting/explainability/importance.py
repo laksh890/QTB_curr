@@ -140,9 +140,7 @@ def integrated_gradients_interface(
     if callable(hook):
         vals = np.asarray(hook(frame, feature_columns, steps=steps), dtype=np.float64)
         mean_abs = np.mean(np.abs(vals), axis=0) if vals.ndim > 1 else np.abs(vals)
-        imp = {
-            c: float(mean_abs[i]) for i, c in enumerate(feature_columns) if i < mean_abs.size
-        }
+        imp = {c: float(mean_abs[i]) for i, c in enumerate(feature_columns) if i < mean_abs.size}
         total = sum(imp.values()) or 1.0
         return ExplanationResult(
             method="integrated_gradients",

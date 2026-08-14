@@ -6,7 +6,7 @@ from typing import Any
 
 import numpy as np
 
-__all__ = ["stress_correlation", "apply_correlation_shock", "run_correlation_scenario"]
+__all__ = ["apply_correlation_shock", "run_correlation_scenario", "stress_correlation"]
 
 
 def stress_correlation(

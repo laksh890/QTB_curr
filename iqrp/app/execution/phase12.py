@@ -39,30 +39,162 @@ class ComponentCheck:
 
 
 PHASE12_COMPONENTS: list[ComponentCheck] = [
-    ComponentCheck("Order Manager", "order_manager", "iqrp.app.execution.order_manager", "OrderManager", ["OrderManager.md", "ExecutionPlatform.md"]),
-    ComponentCheck("Lifecycle", "order_manager", "iqrp.app.execution.order_manager.order_lifecycle", "approve", ["OrderLifecycle.md"]),
-    ComponentCheck("Parent/Child", "order_manager", "iqrp.app.execution.order_manager", "ParentOrder", ["OrderManager.md"]),
-    ComponentCheck("Validation", "order_manager", "iqrp.app.execution.order_manager", "OrderValidator", ["OrderManager.md"]),
-    ComponentCheck("Fill Management", "order_manager", "iqrp.app.execution.order_manager", "FillManager", ["OrderManager.md"]),
-    ComponentCheck("Position Reconciliation", "order_manager", "iqrp.app.execution.order_manager", "PositionReconciler", ["PositionReconciliation.md"]),
-    ComponentCheck("TWAP", "algorithms", "iqrp.app.execution.algorithms", "TWAPAlgorithm", ["TWAP.md", "ExecutionAlgorithms.md"]),
-    ComponentCheck("VWAP", "algorithms", "iqrp.app.execution.algorithms", "VWAPAlgorithm", ["VWAP.md", "ExecutionAlgorithms.md"]),
-    ComponentCheck("POV", "algorithms", "iqrp.app.execution.algorithms", "POVAlgorithm", ["POV.md", "ExecutionAlgorithms.md"]),
-    ComponentCheck("IS", "algorithms", "iqrp.app.execution.algorithms", "ImplementationShortfallAlgorithm", ["ImplementationShortfall.md"]),
-    ComponentCheck("Adaptive", "algorithms", "iqrp.app.execution.algorithms", "AdaptiveAlgorithm", ["ExecutionAlgorithms.md"]),
-    ComponentCheck("Slippage", "slippage", "iqrp.app.execution.slippage", "estimate_slippage", ["Slippage.md"]),
-    ComponentCheck("Market Impact", "slippage", "iqrp.app.execution.slippage", "market_impact", ["Slippage.md"]),
-    ComponentCheck("TCA", "transaction_costs", "iqrp.app.execution.transaction_costs", "pre_trade_cost_estimate", ["ExecutionCosts.md"]),
-    ComponentCheck("Smart Routing", "smart_routing", "iqrp.app.execution.smart_routing", "SmartRouter", ["SmartRouting.md"]),
-    ComponentCheck("Multi-Venue", "smart_routing", "iqrp.app.execution.smart_routing", "SimulatedVenue", ["SmartRouting.md"]),
-    ComponentCheck("Analytics", "engine", "iqrp.app.execution.analytics", "execution_quality_report", ["ExecutionPlatform.md"]),
-    ComponentCheck("Latency", "engine", "iqrp.app.execution.latency", "LatencyTracker", ["ExecutionPlatform.md"]),
-    ComponentCheck("Failure Handling", "engine", "iqrp.app.execution.engine", "ExecutionEngine", ["ExecutionRisk.md"]),
-    ComponentCheck("Idempotency", "order_manager", "iqrp.app.execution.order_manager", "OrderManager", ["OrderLifecycle.md"]),
-    ComponentCheck("Execution Risk", "engine", "iqrp.app.execution.engine", "ExecutionEngine", ["ExecutionRisk.md"]),
-    ComponentCheck("Kill Switches", "types", "iqrp.app.execution.types", "KillSwitch", ["ExecutionRisk.md"]),
-    ComponentCheck("Historical Simulation", "engine", "iqrp.app.execution.simulation", "simulate_execution", ["ExecutionPlatform.md"]),
-    ComponentCheck("Execution Engine", "engine", "iqrp.app.execution", "ExecutionEngine", ["ExecutionPlatform.md", "Phase12_ExecutionPlatform.md"]),
+    ComponentCheck(
+        "Order Manager",
+        "order_manager",
+        "iqrp.app.execution.order_manager",
+        "OrderManager",
+        ["OrderManager.md", "ExecutionPlatform.md"],
+    ),
+    ComponentCheck(
+        "Lifecycle",
+        "order_manager",
+        "iqrp.app.execution.order_manager.order_lifecycle",
+        "approve",
+        ["OrderLifecycle.md"],
+    ),
+    ComponentCheck(
+        "Parent/Child",
+        "order_manager",
+        "iqrp.app.execution.order_manager",
+        "ParentOrder",
+        ["OrderManager.md"],
+    ),
+    ComponentCheck(
+        "Validation",
+        "order_manager",
+        "iqrp.app.execution.order_manager",
+        "OrderValidator",
+        ["OrderManager.md"],
+    ),
+    ComponentCheck(
+        "Fill Management",
+        "order_manager",
+        "iqrp.app.execution.order_manager",
+        "FillManager",
+        ["OrderManager.md"],
+    ),
+    ComponentCheck(
+        "Position Reconciliation",
+        "order_manager",
+        "iqrp.app.execution.order_manager",
+        "PositionReconciler",
+        ["PositionReconciliation.md"],
+    ),
+    ComponentCheck(
+        "TWAP",
+        "algorithms",
+        "iqrp.app.execution.algorithms",
+        "TWAPAlgorithm",
+        ["TWAP.md", "ExecutionAlgorithms.md"],
+    ),
+    ComponentCheck(
+        "VWAP",
+        "algorithms",
+        "iqrp.app.execution.algorithms",
+        "VWAPAlgorithm",
+        ["VWAP.md", "ExecutionAlgorithms.md"],
+    ),
+    ComponentCheck(
+        "POV",
+        "algorithms",
+        "iqrp.app.execution.algorithms",
+        "POVAlgorithm",
+        ["POV.md", "ExecutionAlgorithms.md"],
+    ),
+    ComponentCheck(
+        "IS",
+        "algorithms",
+        "iqrp.app.execution.algorithms",
+        "ImplementationShortfallAlgorithm",
+        ["ImplementationShortfall.md"],
+    ),
+    ComponentCheck(
+        "Adaptive",
+        "algorithms",
+        "iqrp.app.execution.algorithms",
+        "AdaptiveAlgorithm",
+        ["ExecutionAlgorithms.md"],
+    ),
+    ComponentCheck(
+        "Slippage", "slippage", "iqrp.app.execution.slippage", "estimate_slippage", ["Slippage.md"]
+    ),
+    ComponentCheck(
+        "Market Impact", "slippage", "iqrp.app.execution.slippage", "market_impact", ["Slippage.md"]
+    ),
+    ComponentCheck(
+        "TCA",
+        "transaction_costs",
+        "iqrp.app.execution.transaction_costs",
+        "pre_trade_cost_estimate",
+        ["ExecutionCosts.md"],
+    ),
+    ComponentCheck(
+        "Smart Routing",
+        "smart_routing",
+        "iqrp.app.execution.smart_routing",
+        "SmartRouter",
+        ["SmartRouting.md"],
+    ),
+    ComponentCheck(
+        "Multi-Venue",
+        "smart_routing",
+        "iqrp.app.execution.smart_routing",
+        "SimulatedVenue",
+        ["SmartRouting.md"],
+    ),
+    ComponentCheck(
+        "Analytics",
+        "engine",
+        "iqrp.app.execution.analytics",
+        "execution_quality_report",
+        ["ExecutionPlatform.md"],
+    ),
+    ComponentCheck(
+        "Latency",
+        "engine",
+        "iqrp.app.execution.latency",
+        "LatencyTracker",
+        ["ExecutionPlatform.md"],
+    ),
+    ComponentCheck(
+        "Failure Handling",
+        "engine",
+        "iqrp.app.execution.engine",
+        "ExecutionEngine",
+        ["ExecutionRisk.md"],
+    ),
+    ComponentCheck(
+        "Idempotency",
+        "order_manager",
+        "iqrp.app.execution.order_manager",
+        "OrderManager",
+        ["OrderLifecycle.md"],
+    ),
+    ComponentCheck(
+        "Execution Risk",
+        "engine",
+        "iqrp.app.execution.engine",
+        "ExecutionEngine",
+        ["ExecutionRisk.md"],
+    ),
+    ComponentCheck(
+        "Kill Switches", "types", "iqrp.app.execution.types", "KillSwitch", ["ExecutionRisk.md"]
+    ),
+    ComponentCheck(
+        "Historical Simulation",
+        "engine",
+        "iqrp.app.execution.simulation",
+        "simulate_execution",
+        ["ExecutionPlatform.md"],
+    ),
+    ComponentCheck(
+        "Execution Engine",
+        "engine",
+        "iqrp.app.execution",
+        "ExecutionEngine",
+        ["ExecutionPlatform.md", "Phase12_ExecutionPlatform.md"],
+    ),
 ]
 
 
@@ -197,7 +329,7 @@ def validate_phase12(*, write_stubs: bool = True) -> dict[str, Any]:
             if not hasattr(mod, comp.symbol):
                 try:
                     getattr(mod, comp.symbol)
-                except Exception as exc:  # noqa: BLE001
+                except Exception as exc:
                     item.status = "fail"
                     item.detail = f"symbol '{comp.symbol}' missing from {comp.import_path}: {exc}"
                     failures.append(item.detail)
@@ -211,7 +343,7 @@ def validate_phase12(*, write_stubs: bool = True) -> dict[str, Any]:
             else:
                 item.status = "pass"
                 item.detail = "importable and documented"
-        except Exception as exc:  # noqa: BLE001
+        except Exception as exc:
             item.status = "fail"
             item.detail = f"import error: {exc}"
             failures.append(item.detail)
@@ -246,7 +378,7 @@ def validate_phase12(*, write_stubs: bool = True) -> dict[str, Any]:
         missing_api = [m for m in api_methods if not hasattr(ExecutionEngine, m)]
         if missing_api:
             failures.append(f"ExecutionEngine missing methods: {missing_api}")
-    except Exception as exc:  # noqa: BLE001
+    except Exception as exc:
         failures.append(f"ExecutionEngine import failed: {exc}")
 
     integration = {
@@ -275,7 +407,7 @@ def validate_phase12(*, write_stubs: bool = True) -> dict[str, Any]:
         ):
             if required not in getattr(exec_pkg, "__all__", []):
                 failures.append(f"execution.__all__ missing {required}")
-    except Exception as exc:  # noqa: BLE001
+    except Exception as exc:
         failures.append(f"execution package import failed: {exc}")
 
     cfg = Path(integration["hydra"])
@@ -347,8 +479,14 @@ def validate_phase12(*, write_stubs: bool = True) -> dict[str, Any]:
 
 def write_phase12_report(path: str | Path | None = None) -> Path:
     report = validate_phase12(write_stubs=True)
-    out = Path(path) if path else (
-        Path(__file__).resolve().parents[2] / "docs" / "Phase12_ExecutionPlatform_Validation.json"
+    out = (
+        Path(path)
+        if path
+        else (
+            Path(__file__).resolve().parents[2]
+            / "docs"
+            / "Phase12_ExecutionPlatform_Validation.json"
+        )
     )
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(report, indent=2), encoding="utf-8")
@@ -362,10 +500,7 @@ def write_phase12_report(path: str | Path | None = None) -> Path:
         f"- Docs present: {report['summary']['docs_present']}/"
         f"{report['summary']['docs_required']}\n\n"
         "## Checklist\n\n"
-        + "\n".join(
-            f"- [{'x' if ok else ' '}] {name}"
-            for name, ok in report["checklist"].items()
-        )
+        + "\n".join(f"- [{'x' if ok else ' '}] {name}" for name, ok in report["checklist"].items())
         + "\n\n## Architectural rules\n\n"
         + "\n".join(f"- {r}" for r in report["architectural_rules"])
         + "\n\nMachine-readable report: `Phase12_ExecutionPlatform_Validation.json`.\n"

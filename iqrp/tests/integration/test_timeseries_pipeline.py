@@ -6,11 +6,11 @@ import numpy as np
 import pytest
 
 from iqrp.app.timeseries import TimeSeriesAnalyticsEngine, TimeSeriesSettings
-from iqrp.app.timeseries.processes import simulate_process
-from iqrp.app.timeseries.stationarity import adf, kpss
 from iqrp.app.timeseries.anomaly import robust_zscore_anomalies
 from iqrp.app.timeseries.change_points import pelt_detect
+from iqrp.app.timeseries.processes import simulate_process
 from iqrp.app.timeseries.spectral import dominant_frequencies
+from iqrp.app.timeseries.stationarity import adf, kpss
 
 
 @pytest.mark.parametrize(
@@ -81,7 +81,9 @@ def test_stationary_vs_walk_adf():
 
 def test_leakage_rolling_zscore_causal():
     eng = TimeSeriesAnalyticsEngine(
-        TimeSeriesSettings.from_mapping({"transform": {"method": "zscore", "window": 20, "temporal_mode": "rolling"}})
+        TimeSeriesSettings.from_mapping(
+            {"transform": {"method": "zscore", "window": 20, "temporal_mode": "rolling"}}
+        )
     )
     x = np.random.default_rng(17).normal(size=100)
     a = eng.fit_transform(x).copy()

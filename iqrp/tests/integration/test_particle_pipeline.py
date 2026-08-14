@@ -8,7 +8,7 @@ import numpy as np
 import polars as pl
 import pytest
 
-import iqrp.app.regimes.particle  # noqa: F401
+import iqrp.app.regimes.particle
 from iqrp.app.regimes.particle import (
     ParticleFilterModel,
     ParticleSettings,
@@ -50,7 +50,9 @@ def test_particle_end_to_end(tmp_path: Path) -> None:
     diag = pf.diagnostics(frame, observation_columns=["close"])
     charts = Path(settings.output_dir)
     charts.mkdir(parents=True, exist_ok=True)
-    plot_state_trajectory(pf.filtered_means(), charts / "traj.svg", settings, observations=obs[:, 0])
+    plot_state_trajectory(
+        pf.filtered_means(), charts / "traj.svg", settings, observations=obs[:, 0]
+    )
     plot_particle_cloud(pf._cloud.states, pf._cloud.weights, charts / "cloud.svg", settings)  # type: ignore[union-attr]
     plot_weight_histogram(pf._cloud.weights, charts / "weights.svg", settings)  # type: ignore[union-attr]
     plot_ess_timeline(pf._trace.ess, charts / "ess.svg", settings)  # type: ignore[union-attr]

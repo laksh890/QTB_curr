@@ -2,14 +2,17 @@
 
 from __future__ import annotations
 
-from typing import Any, Literal, Mapping, Sequence
+from collections.abc import Mapping, Sequence
+from typing import Any, Literal
 
 import numpy as np
 
 CorrKind = Literal["return", "position", "prediction", "ic", "drawdown"]
 
 
-def _as_cols(data: Mapping[str, Any] | np.ndarray, names: Sequence[str] | None = None) -> tuple[list[str], np.ndarray]:
+def _as_cols(
+    data: Mapping[str, Any] | np.ndarray, names: Sequence[str] | None = None
+) -> tuple[list[str], np.ndarray]:
     """Build ``(T, K)`` matrix of series."""
     if isinstance(data, Mapping):
         keys = list(data.keys()) if names is None else list(names)

@@ -41,7 +41,7 @@ def simulate_portfolio_scenario(
         out = dict(out)
         out.setdefault("source", "iqrp.app.risk.processes")
         return out
-    except Exception as exc:  # noqa: BLE001
+    except Exception as exc:
         rng = np.random.default_rng(int(seed))
         na = max(int(n_assets), 1)
         t = max(int(n), 10)
@@ -89,7 +89,9 @@ def monte_carlo_portfolio_paths(
     if R.ndim == 1:
         R = R.reshape(-1, 1)
     t, n = R.shape
-    w = np.asarray(weights if weights is not None else np.full(n, 1.0 / max(n, 1)), dtype=np.float64)
+    w = np.asarray(
+        weights if weights is not None else np.full(n, 1.0 / max(n, 1)), dtype=np.float64
+    )
     if w.size != n:
         w = np.resize(w, n)
         s = float(np.sum(np.abs(w)))
@@ -114,7 +116,7 @@ def monte_carlo_portfolio_paths(
         out["weights"] = w.tolist()
         out["source"] = "iqrp.app.risk.simulation"
         return out
-    except Exception as exc:  # noqa: BLE001
+    except Exception as exc:
         rng = np.random.default_rng(int(seed))
         mu = R.mean(axis=0)
         cov = np.cov(R.T) if t > 1 else np.eye(n) * 1e-4

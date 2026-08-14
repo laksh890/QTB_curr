@@ -20,7 +20,7 @@ def wrap_ddp(module: Any, *, enabled: bool = False) -> Any:
             return module
         device_ids = [torch.cuda.current_device()] if torch.cuda.is_available() else None
         return DDP(module, device_ids=device_ids)
-    except Exception:  # noqa: BLE001  # pragma: no cover
+    except Exception:  # pragma: no cover
         return module
 
 
@@ -28,7 +28,7 @@ def enable_gradient_checkpointing(module: Any) -> Any:
     if hasattr(module, "gradient_checkpointing_enable"):
         try:
             module.gradient_checkpointing_enable()
-        except Exception:  # noqa: BLE001  # pragma: no cover
+        except Exception:  # pragma: no cover
             pass
     return module
 

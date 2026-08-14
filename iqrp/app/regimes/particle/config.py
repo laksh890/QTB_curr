@@ -120,9 +120,7 @@ class ParticleSettings(BaseModel):
         "market_stress",
         "risk_factors",
     ] = "custom"
-    resampling_method: Literal[
-        "multinomial", "systematic", "residual", "stratified"
-    ] = "systematic"
+    resampling_method: Literal["multinomial", "systematic", "residual", "stratified"] = "systematic"
     likelihood: Literal["gaussian", "student_t", "laplace", "custom"] = "gaussian"
     system: SystemConfig = Field(default_factory=SystemConfig)
     resampling: ResamplingConfig = Field(default_factory=ResamplingConfig)

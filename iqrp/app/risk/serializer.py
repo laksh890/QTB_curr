@@ -32,7 +32,7 @@ def _to_jsonable(obj: Any) -> Any:
 
             if isinstance(obj, Enum):
                 return obj.value
-        except Exception:  # noqa: BLE001
+        except Exception:
             pass
     return str(obj)
 
@@ -41,7 +41,9 @@ class RiskSerializer:
     def save(self, engine: Any, path: str | Path) -> Path:
         p = Path(path)
         p.parent.mkdir(parents=True, exist_ok=True)
-        payload = engine.export_state() if hasattr(engine, "export_state") else {"engine": str(engine)}
+        payload = (
+            engine.export_state() if hasattr(engine, "export_state") else {"engine": str(engine)}
+        )
         p.write_text(json.dumps(_to_jsonable(payload), indent=2), encoding="utf-8")
         return p
 

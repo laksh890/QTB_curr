@@ -2,7 +2,8 @@
 
 from __future__ import annotations
 
-from typing import Any, Mapping, Sequence
+from collections.abc import Mapping, Sequence
+from typing import Any
 
 import numpy as np
 
@@ -120,9 +121,7 @@ def correlation_heatmap_payload(
         "title": title,
         "type": "heatmap",
         "labels": labs,
-        "matrix": [
-            [float(v) if np.isfinite(v) else None for v in row] for row in mat.tolist()
-        ],
+        "matrix": [[float(v) if np.isfinite(v) else None for v in row] for row in mat.tolist()],
     }
 
 

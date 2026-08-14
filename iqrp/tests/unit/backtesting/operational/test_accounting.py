@@ -86,7 +86,9 @@ def test_orders_fills_trades_logs():
         )
     )
     assert len(orders) == 1
-    orders.add({"order_id": "o2", "timestamp": "t", "instrument": "BBB", "side": "sell", "quantity": 1})
+    orders.add(
+        {"order_id": "o2", "timestamp": "t", "instrument": "BBB", "side": "sell", "quantity": 1}
+    )
     assert OrderLog.from_dict(orders.to_dict()).to_list()
 
     fills = FillLog()
@@ -102,7 +104,17 @@ def test_orders_fills_trades_logs():
             fee=1.0,
         )
     )
-    fills.add({"fill_id": "f2", "order_id": "o2", "timestamp": "t", "instrument": "BBB", "side": "sell", "quantity": 1, "price": 50})
+    fills.add(
+        {
+            "fill_id": "f2",
+            "order_id": "o2",
+            "timestamp": "t",
+            "instrument": "BBB",
+            "side": "sell",
+            "quantity": 1,
+            "price": 50,
+        }
+    )
     assert len(fills) == 2
     assert FillLog.from_dict(fills.to_dict()).to_list()
 

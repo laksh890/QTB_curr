@@ -12,8 +12,8 @@ from iqrp.app.forecasting.neural.embeddings.temporal import TemporalEmbedding
 __all__ = [
     "CategoricalEmbedding",
     "MixtureOfExperts",
+    "PositionalEncoding",
     "RegimeEmbedding",
     "RegimeGate",
-    "PositionalEncoding",
     "TemporalEmbedding",
 ]

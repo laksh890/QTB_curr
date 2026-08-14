@@ -32,7 +32,13 @@ def test_recover_latent_trend() -> None:
     sys = build_system(settings, application="trend")
     # lower observation noise for recovery
     sys = type(sys)(
-        f=sys.f, h=sys.h, q=sys.q * 0.5, r=np.array([[1e-3]]), x0=sys.x0, p0=sys.p0, application="trend"
+        f=sys.f,
+        h=sys.h,
+        q=sys.q * 0.5,
+        r=np.array([[1e-3]]),
+        x0=sys.x0,
+        p0=sys.p0,
+        application="trend",
     )
     states, obs = simulate_lds(sys, 400, rng=np.random.default_rng(11))
     model = KalmanFilterModel(settings=settings, system=sys, random_seed=11)
@@ -46,7 +52,9 @@ def test_recover_latent_trend() -> None:
 @pytest.mark.unit
 def test_simulation_engine_ou_denoise() -> None:
     ou = OrnsteinUhlenbeck(rng=np.random.default_rng(7))
-    path = ou.generate(300, x0=100.0, dt=0.01, mean_reversion_speed=0.5, mean_reversion_level=100.0, volatility=2.0)
+    path = ou.generate(
+        300, x0=100.0, dt=0.01, mean_reversion_speed=0.5, mean_reversion_level=100.0, volatility=2.0
+    )
     prices = np.asarray(path.prices, dtype=np.float64).reshape(-1)
     # add sensor noise
     noisy = prices + np.random.default_rng(7).normal(0, 0.5, size=prices.size)
@@ -55,7 +63,9 @@ def test_simulation_engine_ou_denoise() -> None:
     model.fit(noisy)
     filt = model.filtered_means()[:, 0]
     # filtered closer to clean than noisy
-    assert float(np.mean((filt - prices[: filt.size]) ** 2)) < float(np.mean((noisy[: filt.size] - prices[: filt.size]) ** 2))
+    assert float(np.mean((filt - prices[: filt.size]) ** 2)) < float(
+        np.mean((noisy[: filt.size] - prices[: filt.size]) ** 2)
+    )
 
 
 @pytest.mark.unit
@@ -84,7 +94,11 @@ def test_numerical_stability_extreme() -> None:
 
 @pytest.mark.unit
 def test_stress_large_series() -> None:
-    settings = _settings(application="denoise", filter_type="linear", training={"em_iterations": 1, "tol": 1e-2, "estimate_noise": False})
+    settings = _settings(
+        application="denoise",
+        filter_type="linear",
+        training={"em_iterations": 1, "tol": 1e-2, "estimate_noise": False},
+    )
     sys = build_system(settings, application="denoise")
     n = 200_000
     states, obs = simulate_lds(sys, n, rng=np.random.default_rng(3))

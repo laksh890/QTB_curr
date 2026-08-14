@@ -72,7 +72,7 @@ def select_features(
     n_feat = X.shape[1]
     k = int(max_features) if max_features is not None else n_feat
     k = max(1, min(k, n_feat))
-    if method in {"none", None} or n_feat <= k and method == "none":
+    if method in {"none", None} or (n_feat <= k and method == "none"):
         if method == "correlation":
             return _correlation_filter(X, names, correlation_threshold)[:k]
         return names[:k] if max_features is not None else names

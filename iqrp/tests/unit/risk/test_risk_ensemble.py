@@ -21,7 +21,6 @@ from iqrp.app.risk.ensemble import (
     RiskIntelligenceEnsemble,
     RiskScore,
 )
-from iqrp.app.risk.ensemble.config import HysteresisConfig
 from iqrp.app.risk.ensemble.aggregator import (
     RiskAggregator,
     aggregate_metrics,
@@ -38,6 +37,7 @@ from iqrp.app.risk.ensemble.calibration import (
     vol_calibration,
 )
 from iqrp.app.risk.ensemble.confidence import ConfidenceEstimator, estimate_confidence
+from iqrp.app.risk.ensemble.config import HysteresisConfig
 from iqrp.app.risk.ensemble.decision import (
     action_for_state,
     apply_confidence_within_caps,
@@ -95,7 +95,6 @@ from iqrp.app.risk.ensemble.weighting import (
     stress_weights,
     user_defined_weights,
 )
-
 
 WEIGHTING_MODES = [
     "static",
@@ -171,7 +170,10 @@ class TestEnsembleCoreAPI:
             DecisionAction.APPROVE_REDUCED,
         )
         # Forecast confidence cannot expand past state/leverage hard caps
-        assert dec.recommended_leverage <= state_cap(ensemble.settings, dec.risk_state).recommended_leverage + 1e-12
+        assert (
+            dec.recommended_leverage
+            <= state_cap(ensemble.settings, dec.risk_state).recommended_leverage + 1e-12
+        )
 
     def test_decision_requires_assessment_or_metrics(
         self, ensemble: RiskIntelligenceEnsemble
@@ -192,13 +194,15 @@ class TestEnsembleCoreAPI:
 
 
 class TestEnsembleInvariants:
-    def test_missing_critical_never_approve(
-        self, ensemble: RiskIntelligenceEnsemble
-    ) -> None:
+    def test_missing_critical_never_approve(self, ensemble: RiskIntelligenceEnsemble) -> None:
         # Incomplete critical metrics
         dec = ensemble.decision(metrics={"volatility": 0.1}, proposed_exposure=0.1)
         assert dec.decision != DecisionAction.APPROVE
-        assert dec.decision in (DecisionAction.REJECT, DecisionAction.HALT, DecisionAction.APPROVE_REDUCED)
+        assert dec.decision in (
+            DecisionAction.REJECT,
+            DecisionAction.HALT,
+            DecisionAction.APPROVE_REDUCED,
+        )
         # Default fallback action is REJECT
         assert dec.decision == DecisionAction.REJECT
         ass = ensemble.aggregate({})
@@ -510,7 +514,7 @@ class TestNormalizerScorerWeightingCalibration:
         w = resolve_weights(
             settings,
             scheme=scheme,  # type: ignore[arg-type]
-            dimension_scores={d: 0.5 for d in RiskScore.DIMENSIONS},
+            dimension_scores=dict.fromkeys(RiskScore.DIMENSIONS, 0.5),
             disagreement={"overall_disagreement": 0.5},
             calibration_stats={"var_exceedance_bias": 0.1, "vol_calibration_error": 0.1},
             regime="stress",
@@ -522,14 +526,44 @@ class TestNormalizerScorerWeightingCalibration:
 
     def test_weight_helpers(self, ensemble_settings: EnsembleSettings) -> None:
         assert abs(sum(static_weights(ensemble_settings).values()) - 1.0) < 1e-9
-        assert abs(sum(user_defined_weights(ensemble_settings, {"tail": 1.0}).values()) - 1.0) < 1e-9
-        assert abs(sum(risk_budget_weights(ensemble_settings, dimension_scores={"tail": 1.0}).values()) - 1.0) < 1e-9
+        assert (
+            abs(sum(user_defined_weights(ensemble_settings, {"tail": 1.0}).values()) - 1.0) < 1e-9
+        )
+        assert (
+            abs(
+                sum(risk_budget_weights(ensemble_settings, dimension_scores={"tail": 1.0}).values())
+                - 1.0
+            )
+            < 1e-9
+        )
         assert abs(sum(regime_weights(ensemble_settings, regime="crisis").values()) - 1.0) < 1e-9
-        assert abs(sum(dynamic_weights(ensemble_settings, disagreement={"overall_disagreement": 0.9}).values()) - 1.0) < 1e-9
-        assert abs(sum(calibration_weights(ensemble_settings, calibration_stats={"var_exceedance_bias": 0.5}).values()) - 1.0) < 1e-9
+        assert (
+            abs(
+                sum(
+                    dynamic_weights(
+                        ensemble_settings, disagreement={"overall_disagreement": 0.9}
+                    ).values()
+                )
+                - 1.0
+            )
+            < 1e-9
+        )
+        assert (
+            abs(
+                sum(
+                    calibration_weights(
+                        ensemble_settings, calibration_stats={"var_exceedance_bias": 0.5}
+                    ).values()
+                )
+                - 1.0
+            )
+            < 1e-9
+        )
         assert abs(sum(stress_weights(ensemble_settings).values()) - 1.0) < 1e-9
 
-    def test_calibration(self, ensemble_settings: EnsembleSettings, rng: np.random.Generator) -> None:
+    def test_calibration(
+        self, ensemble_settings: EnsembleSettings, rng: np.random.Generator
+    ) -> None:
         rets = rng.normal(0, 0.01, size=100)
         var_p = np.full(100, 0.02)
         es_p = np.full(100, 0.03)
@@ -566,22 +600,36 @@ class TestNormalizerScorerWeightingCalibration:
 
 class TestDecisionHelpersAndSubmodules:
     def test_action_for_state_and_caps(self, ensemble_settings: EnsembleSettings) -> None:
-        assert action_for_state(RiskState.TRADING_HALT, proposed_exposure=0.1, max_exposure=0.0) == DecisionAction.HALT
-        assert action_for_state(
-            RiskState.NORMAL, proposed_exposure=2.0, max_exposure=1.0, hard_reject=True
-        ) == DecisionAction.REJECT
-        assert action_for_state(
-            RiskState.CAPITAL_PRESERVATION, proposed_exposure=0.5, max_exposure=0.25
-        ) == DecisionAction.REJECT
-        assert action_for_state(
-            RiskState.CAPITAL_PRESERVATION, proposed_exposure=0.1, max_exposure=0.25
-        ) == DecisionAction.APPROVE_REDUCED
-        assert action_for_state(
-            RiskState.REDUCED_RISK, proposed_exposure=0.1, max_exposure=0.5
-        ) == DecisionAction.APPROVE_REDUCED
-        assert action_for_state(
-            RiskState.CAUTION, proposed_exposure=0.9, max_exposure=0.75
-        ) == DecisionAction.APPROVE_REDUCED
+        assert (
+            action_for_state(RiskState.TRADING_HALT, proposed_exposure=0.1, max_exposure=0.0)
+            == DecisionAction.HALT
+        )
+        assert (
+            action_for_state(
+                RiskState.NORMAL, proposed_exposure=2.0, max_exposure=1.0, hard_reject=True
+            )
+            == DecisionAction.REJECT
+        )
+        assert (
+            action_for_state(
+                RiskState.CAPITAL_PRESERVATION, proposed_exposure=0.5, max_exposure=0.25
+            )
+            == DecisionAction.REJECT
+        )
+        assert (
+            action_for_state(
+                RiskState.CAPITAL_PRESERVATION, proposed_exposure=0.1, max_exposure=0.25
+            )
+            == DecisionAction.APPROVE_REDUCED
+        )
+        assert (
+            action_for_state(RiskState.REDUCED_RISK, proposed_exposure=0.1, max_exposure=0.5)
+            == DecisionAction.APPROVE_REDUCED
+        )
+        assert (
+            action_for_state(RiskState.CAUTION, proposed_exposure=0.9, max_exposure=0.75)
+            == DecisionAction.APPROVE_REDUCED
+        )
         # Misconfigured state_caps → conservative zero
         empty_settings = ensemble_settings.model_copy(update={"state_caps": {}})
         cap = state_cap(empty_settings, RiskState.NORMAL)
@@ -625,7 +673,9 @@ class TestDecisionHelpersAndSubmodules:
         )
         assert dec2.decision in (DecisionAction.REJECT, DecisionAction.HALT)
 
-    def test_confidence_estimator(self, ensemble_settings: EnsembleSettings, healthy_metrics: dict) -> None:
+    def test_confidence_estimator(
+        self, ensemble_settings: EnsembleSettings, healthy_metrics: dict
+    ) -> None:
         c = estimate_confidence(
             healthy_metrics,
             settings=ensemble_settings,
@@ -662,7 +712,9 @@ class TestDecisionHelpersAndSubmodules:
         da = DisagreementAnalyzer(ensemble_settings)
         assert da.analyze(metrics)["overall_disagreement"] >= 0.0
 
-    def test_aggregator_class(self, ensemble_settings: EnsembleSettings, healthy_metrics: dict) -> None:
+    def test_aggregator_class(
+        self, ensemble_settings: EnsembleSettings, healthy_metrics: dict
+    ) -> None:
         sm = EnsembleStateMachine(ensemble_settings)
         agg = RiskAggregator(ensemble_settings, sm)
         ass = agg.aggregate(healthy_metrics, regime="stress", weighting_scheme="dynamic")
@@ -701,9 +753,7 @@ class TestSerializerVizDiagnosticsConfig:
         assert "ensemble_version" in ensemble.to_json()
         assert "ensemble_version" in ensemble.to_json(ensemble.export_state())
 
-    def test_visualization(
-        self, ensemble: RiskIntelligenceEnsemble, healthy_metrics: dict
-    ) -> None:
+    def test_visualization(self, ensemble: RiskIntelligenceEnsemble, healthy_metrics: dict) -> None:
         ass = ensemble.aggregate(healthy_metrics)
         dec = ensemble.decision(assessment=ass, proposed_exposure=0.2)
         viz = EnsembleVisualization()
@@ -730,7 +780,9 @@ class TestSerializerVizDiagnosticsConfig:
         assert diag.for_assessment(ass)["risk_state"]
         assert diag.for_decision(dec)["decision"]
         health = diag.health(
-            assessment=ass, decision=dec, state_machine_state=ensemble.export_state()["state_machine"]
+            assessment=ass,
+            decision=dec,
+            state_machine_state=ensemble.export_state()["state_machine"],
         )
         assert health["status"] in ("ok", "degraded")
         assert ensemble.diagnostics()["status"] in ("ok", "degraded")
@@ -815,9 +867,7 @@ class TestSerializerVizDiagnosticsConfig:
 
 
 class TestEnsembleFailureCases:
-    def test_stale_missing_conflicting_metrics(
-        self, ensemble: RiskIntelligenceEnsemble
-    ) -> None:
+    def test_stale_missing_conflicting_metrics(self, ensemble: RiskIntelligenceEnsemble) -> None:
         # Missing critical
         d1 = ensemble.decision(metrics={"volatility": 0.1}, proposed_exposure=0.1)
         assert d1.decision != DecisionAction.APPROVE
@@ -876,7 +926,10 @@ class TestEnsembleFailureCases:
         # ensemble.decision guard only rewrites when decision == APPROVE under fallback.
         guarded = ens_bad.decision(assessment=ass, proposed_exposure=0.0)
         if raw.decision == DecisionAction.APPROVE:
-            assert guarded.audit.get("approve_blocked_missing_critical") is True or guarded.decision == DecisionAction.APPROVE
+            assert (
+                guarded.audit.get("approve_blocked_missing_critical") is True
+                or guarded.decision == DecisionAction.APPROVE
+            )
         # Hard invariant with production defaults:
         default_ens = RiskIntelligenceEnsemble(settings=EnsembleSettings())
         d_default = default_ens.decision(metrics={}, proposed_exposure=0.0)

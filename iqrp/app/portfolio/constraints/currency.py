@@ -3,7 +3,8 @@
 from __future__ import annotations
 
 from collections import defaultdict
-from typing import Any, Mapping, Sequence
+from collections.abc import Mapping, Sequence
+from typing import Any
 
 from iqrp.app.portfolio.constraints._types import (
     ConstraintSeverity,
@@ -38,9 +39,7 @@ def check_currency_constraints(
     min_currency_exposure: float | Mapping[str, float] | None = None,
     severity: ConstraintSeverity | str = ConstraintSeverity.HARD,
 ) -> list[ConstraintViolation]:
-    if currencies is None or (
-        max_currency_exposure is None and min_currency_exposure is None
-    ):
+    if currencies is None or (max_currency_exposure is None and min_currency_exposure is None):
         return []
     exposures = currency_exposures(weights, currencies)
     out: list[ConstraintViolation] = []

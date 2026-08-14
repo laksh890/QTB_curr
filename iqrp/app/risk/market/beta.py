@@ -48,7 +48,7 @@ def beta(
             cov = float(np.cov(a, b, ddof=1)[0, 1])
             beta_val = cov / b_var
             corr = float(np.corrcoef(a, b)[0, 1]) if np.std(a) > 0 else 0.0
-            r2 = float(corr ** 2) if np.isfinite(corr) else 0.0
+            r2 = float(corr**2) if np.isfinite(corr) else 0.0
 
     return RiskMeasure(
         name="beta",

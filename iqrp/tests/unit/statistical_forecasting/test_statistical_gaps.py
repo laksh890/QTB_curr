@@ -10,6 +10,7 @@ import polars as pl
 import pytest
 
 from iqrp.app.core.exceptions import ConfigurationError, ValidationError
+from iqrp.app.forecasting.statistical import create_statistical_model
 from iqrp.app.forecasting.statistical.base.fitting import (
     FitResult,
     fit_arma_css,
@@ -56,7 +57,10 @@ from iqrp.app.forecasting.statistical.diagnostics.report import (
     run_diagnostics,
 )
 from iqrp.app.forecasting.statistical.evaluation.metrics import evaluate_forecast, summary_table
-from iqrp.app.forecasting.statistical.registry import ensure_statistical_models_loaded, list_statistical_models
+from iqrp.app.forecasting.statistical.registry import (
+    ensure_statistical_models_loaded,
+    list_statistical_models,
+)
 from iqrp.app.forecasting.statistical.trainer import StatisticalTrainer
 from iqrp.app.forecasting.statistical.visualization.charts import (
     plot_acf,
@@ -65,7 +69,6 @@ from iqrp.app.forecasting.statistical.visualization.charts import (
     plot_residuals,
     plot_seasonal_decomposition,
 )
-from iqrp.app.forecasting.statistical import create_statistical_model
 
 
 @pytest.mark.unit
@@ -96,17 +99,23 @@ def test_fitting_selection_edges() -> None:
     assert fr2.aicc == fr2.aic or fr2.aicc
     empty = fit_var_ols(np.ones((2, 2)), 3)
     assert empty["nobs"] == 0
-    path = forecast_arma(np.array([1.0, 2.0]), np.zeros(2), np.array([0.5]), np.array([0.1]), horizon=3)
+    path = forecast_arma(
+        np.array([1.0, 2.0]), np.zeros(2), np.array([0.5]), np.array([0.1]), horizon=3
+    )
     assert path.size == 3
     Y = np.random.default_rng(0).normal(size=(40, 2))
     fv = forecast_var(Y, np.array([[[0.2, 0.0], [0.0, 0.2]]]), np.zeros(2), horizon=2)
     assert fv.shape == (2, 2)
     # univariate history path in forecast_var
     forecast_var(np.array([1.0, 2.0, 3.0]), np.array([[[0.5]]]), np.array([0.0]), horizon=1)
-    sel = select_arma_order(np.random.default_rng(0).normal(size=60), max_p=1, max_q=1, parallel=False)
+    sel = select_arma_order(
+        np.random.default_rng(0).normal(size=60), max_p=1, max_q=1, parallel=False
+    )
     assert SelectionResult(sel.best_order, "aic", sel.leaderboard).to_dict()
     assert CandidateScore({"p": 1}, {"aic": 1.0}).to_dict()
-    assert rolling_validation_score(np.arange(5.0), lambda t, h: np.zeros(h), train_size=10)["n"] == 0
+    assert (
+        rolling_validation_score(np.arange(5.0), lambda t, h: np.zeros(h), train_size=10)["n"] == 0
+    )
 
 
 @pytest.mark.unit
@@ -140,7 +149,10 @@ def test_model_online_modes_and_errors() -> None:
     frame = to_frame(y)
     for mode in ("expanding", "sliding", "rolling"):
         settings = StatisticalSettings.from_mapping(
-            {"online": {"mode": mode, "window": 30, "warm_start": True}, "identification": {"auto": False}}
+            {
+                "online": {"mode": mode, "window": 30, "warm_start": True},
+                "identification": {"auto": False},
+            }
         )
         m = create_statistical_model("ar", settings=settings, p=1)
         m.fit(frame.slice(0, 40), target_column="target")
@@ -151,7 +163,9 @@ def test_model_online_modes_and_errors() -> None:
     with pytest.raises(ValidationError):
         m2.evaluate(pl.DataFrame({"x": [1.0]}), target_column="missing")
     # warm_start false
-    settings = StatisticalSettings.from_mapping({"online": {"warm_start": False}, "identification": {"auto": False}})
+    settings = StatisticalSettings.from_mapping(
+        {"online": {"warm_start": False}, "identification": {"auto": False}}
+    )
     m3 = create_statistical_model("ses", settings=settings)
     m3.fit(frame, target_column="target")
     m3.partial_fit(frame.slice(60, 10), target_column="target")
@@ -204,11 +218,13 @@ def test_processes_ma_and_multivariate_edges() -> None:
     y = simulate_seasonal_arima(60, period=4, D=0, d=1, rng=np.random.default_rng(1))
     assert y.size == 60
     assert johansen_trace(np.ones((5, 1))).rank == 0
-    assert johansen_trace(np.random.default_rng(0).normal(size=(80, 3)), lags=2).method == "johansen"
+    assert (
+        johansen_trace(np.random.default_rng(0).normal(size=(80, 3)), lags=2).method == "johansen"
+    )
     assert engle_granger(np.arange(20.0), np.arange(20.0) * 2).rank in {0, 1}
     fit_vecm_engle_granger(np.random.default_rng(0).normal(size=(50, 2)), lags=2)
     # trainer compare
     frame = to_frame(np.random.default_rng(0).normal(size=80))
-    StatisticalTrainer(StatisticalSettings.from_mapping({"identification": {"auto": False}})).compare(
-        ["ar"], frame
-    )
+    StatisticalTrainer(
+        StatisticalSettings.from_mapping({"identification": {"auto": False}})
+    ).compare(["ar"], frame)

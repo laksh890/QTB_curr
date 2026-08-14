@@ -13,19 +13,19 @@ CRITICAL RULES
 
 from __future__ import annotations
 
-from typing import Any, Callable
+from collections.abc import Callable
+from typing import Any
 from uuid import uuid4
 
 from iqrp.app.core.exceptions import ExecutionError, ValidationError
 from iqrp.app.execution.config import ExecutionSettings
 from iqrp.app.execution.order_manager.audit import AuditLog
 from iqrp.app.execution.order_manager.cancel_replace import (
-    CancelRequest,
     ReplaceRequest,
     begin_cancel,
     build_replacement,
 )
-from iqrp.app.execution.order_manager.fill_manager import Fill, FillManager
+from iqrp.app.execution.order_manager.fill_manager import FillManager
 from iqrp.app.execution.order_manager.order import Order, OrderSpec, target_to_orders
 from iqrp.app.execution.order_manager.order_group import OrderGroup
 from iqrp.app.execution.order_manager.order_lifecycle import (
@@ -63,9 +63,7 @@ class OrderManager:
         self.settings = settings or ExecutionSettings.default()
         self.audit = audit or AuditLog()
         self.kill_switch = kill_switch or KillSwitch()
-        self.validator = validator or OrderValidator(
-            self.settings, validate_risk=validate_risk
-        )
+        self.validator = validator or OrderValidator(self.settings, validate_risk=validate_risk)
         if validate_risk is not None and self.validator.validate_risk is None:
             self.validator.validate_risk = validate_risk
         self.fills = FillManager(allow_overfill=self.settings.fills.allow_overfill)
@@ -155,7 +153,11 @@ class OrderManager:
             "created",
             f"created order {order.order_id}",
             order_id=order.order_id,
-            details={"instrument": order.instrument, "side": order.side.value, "qty": order.quantity},
+            details={
+                "instrument": order.instrument,
+                "side": order.side.value,
+                "qty": order.quantity,
+            },
         )
         return order
 
@@ -189,7 +191,7 @@ class OrderManager:
             if order.state is not OrderState.REJECTED:
                 mark_rejected(order, reason="validation error", audit=self.audit)
             raise
-        except Exception as exc:  # noqa: BLE001
+        except Exception as exc:
             mark_failed(order, reason=str(exc), audit=self.audit)
             raise ExecutionError(
                 f"validation failed: {exc}",
@@ -199,7 +201,9 @@ class OrderManager:
         return order
 
     # ------------------------------------------------------------------- submit
-    def submit(self, order_id: str, *, venue: str | None = None, event_id: str | None = None) -> Order:
+    def submit(
+        self, order_id: str, *, venue: str | None = None, event_id: str | None = None
+    ) -> Order:
         """Submit an APPROVED order. Kill-switches are hard gates."""
         if event_id and self._is_duplicate_event(event_id, order_id, "submit"):
             return self.get(order_id)
@@ -239,7 +243,9 @@ class OrderManager:
         if self.validator.validate_risk is not None and self.settings.risk.enforce_hard_limits:
             ok, reason = self.validator.validate_risk(order)
             if not ok:
-                mark_rejected(order, reason=reason or "hard risk reject on submit", audit=self.audit)
+                mark_rejected(
+                    order, reason=reason or "hard risk reject on submit", audit=self.audit
+                )
                 raise ExecutionError(
                     reason or "hard risk reject on submit",
                     code="HARD_RISK_REJECT",

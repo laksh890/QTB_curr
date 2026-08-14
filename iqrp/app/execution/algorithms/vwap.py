@@ -67,9 +67,7 @@ class VWAPAlgorithm(ExecutionAlgorithm):
         super().__init__(default_urgency=default_urgency)
         self.n_slices = int(n_slices) if n_slices is not None else None
         self.horizon_seconds = max(float(horizon_seconds), 0.0)
-        self.participation_cap = (
-            float(participation_cap) if participation_cap is not None else None
-        )
+        self.participation_cap = float(participation_cap) if participation_cap is not None else None
         self.volume_curve = volume_curve
         self.adaptive = bool(adaptive)
 

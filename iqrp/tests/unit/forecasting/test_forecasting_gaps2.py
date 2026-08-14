@@ -47,7 +47,11 @@ from iqrp.app.forecasting.postprocessing.uncertainty import (
     predictive_entropy,
     quantile_from_samples,
 )
-from iqrp.app.forecasting.preprocessing.encoding import LabelEncoder, OneHotEncoder, encode_frame_categoricals
+from iqrp.app.forecasting.preprocessing.encoding import (
+    LabelEncoder,
+    OneHotEncoder,
+    encode_frame_categoricals,
+)
 from iqrp.app.forecasting.preprocessing.feature_selection import (
     select_by_correlation,
     select_by_mutual_info,
@@ -56,8 +60,16 @@ from iqrp.app.forecasting.preprocessing.feature_selection import (
 )
 from iqrp.app.forecasting.preprocessing.scaling import Scaler
 from iqrp.app.forecasting.preprocessing.windowing import make_windows, recursive_path
-from iqrp.app.forecasting.serialization.serializer import ForecastSerializer, _extract_arrays, _json_default
-from iqrp.app.forecasting.visualization import _line_plot, plot_feature_importance, plot_horizon_comparison
+from iqrp.app.forecasting.serialization.serializer import (
+    ForecastSerializer,
+    _extract_arrays,
+    _json_default,
+)
+from iqrp.app.forecasting.visualization import (
+    _line_plot,
+    plot_feature_importance,
+    plot_horizon_comparison,
+)
 
 
 def _frame(n: int = 40) -> pl.DataFrame:
@@ -107,7 +119,9 @@ def test_evaluator_remaining_branches() -> None:
     board = ForecastEvaluator().benchmark({"a": {}}, primary="rmse")
     assert board[0]["rank"] == 1
     # cross_validate empty folds → empty metrics
-    ev = ForecastEvaluator().cross_validate(np.array([1.0, 2.0]), np.array([1.0, 2.0]), method="walk_forward", train_size=10)
+    ev = ForecastEvaluator().cross_validate(
+        np.array([1.0, 2.0]), np.array([1.0, 2.0]), method="walk_forward", train_size=10
+    )
     assert ev.metrics == {} or True
 
 
@@ -196,7 +210,9 @@ def test_config_omegaconf_and_missing_yaml() -> None:
     s = ForecastingSettings.from_mapping(cfg)
     assert s.inference.default_horizon == 9
     # default() when file missing
-    with patch("iqrp.app.forecasting.config._default_config_path", return_value=Path("/tmp/no_fc.yaml")):
+    with patch(
+        "iqrp.app.forecasting.config._default_config_path", return_value=Path("/tmp/no_fc.yaml")
+    ):
         s2 = ForecastingSettings.default()
         assert s2.inference.default_horizon >= 1
 
@@ -232,6 +248,7 @@ def test_explain_shap_1d_and_ig_fallback_attribution() -> None:
     frame = _frame(10)
     assert shap_interface(M(), frame, ["f0", "f1"]).method == "shap"
     assert integrated_gradients_interface(M(), frame, ["f0", "f1"]).method == "integrated_gradients"
+
     # builtin resize mismatch
     class M2:
         feature_importances_ = np.array([1.0])
@@ -278,7 +295,11 @@ def test_pipeline_branches_and_stream_unfitted() -> None:
     settings = ForecastingSettings.from_mapping(
         {
             "columns": {"feature_columns": None, "target": "target"},
-            "preprocessing": {"encode_categoricals": True, "feature_selection": "none", "scaler": "none"},
+            "preprocessing": {
+                "encode_categoricals": True,
+                "feature_selection": "none",
+                "scaler": "none",
+            },
             "postprocessing": {"interval_level": 0.0},
         }
     )
@@ -318,7 +339,9 @@ def test_calibration_import_fail_and_isotonic_predict() -> None:
         assert cal_mod._fit_temperature(np.eye(5, 2) + 0.1, np.arange(5) % 2) == 1.0
         assert cal_mod._fit_platt(np.linspace(0, 1, 5), np.array([0.0, 1, 0, 1, 1])) == (1.0, 0.0)
     assert _isotonic_predict(np.array([0.5]), None, None)[0] == 0.5
-    assert _isotonic_predict(np.array([0.5]), np.array([0.0, 1.0]), np.array([0.1, 0.9]))[0] == pytest.approx(0.5)
+    assert _isotonic_predict(np.array([0.5]), np.array([0.0, 1.0]), np.array([0.1, 0.9]))[
+        0
+    ] == pytest.approx(0.5)
 
 
 @pytest.mark.unit

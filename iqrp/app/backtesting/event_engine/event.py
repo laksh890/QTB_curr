@@ -11,9 +11,10 @@ effective timestamp strictly after ``event.timestamp``. Enforce via
 from __future__ import annotations
 
 import uuid
+from collections.abc import Mapping
 from datetime import datetime
 from enum import Enum
-from typing import Any, Mapping
+from typing import Any
 
 
 class EventType(str, Enum):
@@ -81,7 +82,7 @@ class Event:
         Stable unique identifier for idempotency / audit.
     """
 
-    __slots__ = ("timestamp", "event_type", "priority", "payload", "event_id")
+    __slots__ = ("event_id", "event_type", "payload", "priority", "timestamp")
 
     def __init__(
         self,
@@ -93,9 +94,7 @@ class Event:
         event_id: str | None = None,
     ) -> None:
         if timestamp.tzinfo is None:
-            raise ValueError(
-                f"Event timestamp must be timezone-aware (got naive {timestamp!r})"
-            )
+            raise ValueError(f"Event timestamp must be timezone-aware (got naive {timestamp!r})")
         et = event_type if isinstance(event_type, EventType) else EventType(str(event_type))
         self.timestamp = timestamp
         self.event_type = et

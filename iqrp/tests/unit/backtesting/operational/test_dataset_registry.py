@@ -66,7 +66,9 @@ def test_registry_register_metadata_and_record(synthetic_parquet: Path, tmp_path
     frame = adapter.load()
     meta = metadata_from_frame(frame, dataset_id="m1", path=str(synthetic_parquet))
     registry = DatasetRegistry(tmp_path / "r2.json")
-    rec = registry.register(meta, path=str(synthetic_parquet), checksum=compute_checksum(synthetic_parquet))
+    rec = registry.register(
+        meta, path=str(synthetic_parquet), checksum=compute_checksum(synthetic_parquet)
+    )
     assert rec.key.endswith("@1.0.0") or "m1" in rec.key
     # Direct DatasetRecord
     registry.register(
@@ -97,7 +99,9 @@ def test_historical_dataset_and_provider(fixtures_dir: Path, seed: int):
 
     from_adapter = HistoricalDataset.from_adapter(ParquetAdapter(path), validate=True)
     assert from_adapter.quality_report is None or from_adapter.quality_report.ok or True
-    from_frame = HistoricalDataset.from_frame(create_frame(n_days=5), dataset_id="f1", validate=False)
+    from_frame = HistoricalDataset.from_frame(
+        create_frame(n_days=5), dataset_id="f1", validate=False
+    )
     assert len(from_frame.frame) > 0
 
     provider = LocalFileProvider(fixtures_dir)

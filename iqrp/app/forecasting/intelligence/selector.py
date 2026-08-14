@@ -8,7 +8,10 @@ from typing import Any
 import numpy as np
 import polars as pl
 
-from iqrp.app.forecasting.intelligence.benchmark import BenchmarkResult, benchmark_candidates, benchmark_model
+from iqrp.app.forecasting.intelligence.benchmark import (
+    benchmark_candidates,
+    benchmark_model,
+)
 from iqrp.app.forecasting.intelligence.config import IntelligenceSettings
 from iqrp.app.forecasting.intelligence.ranking import RankedModel, rank_models
 from iqrp.app.forecasting.intelligence.registry import list_discovered_models
@@ -55,7 +58,10 @@ def select_best(
         candidates=candidates,
     )
     ranked = rank_models(
-        [{"name": r.name, "family": r.family, "metrics": r.metrics, "metadata": r.metadata} for r in results],
+        [
+            {"name": r.name, "family": r.family, "metrics": r.metrics, "metadata": r.metadata}
+            for r in results
+        ],
         settings.ranking,
     )
     best = ranked[0].name if ranked else (candidates[0] if candidates else "mock")
@@ -63,7 +69,12 @@ def select_best(
     best_features = _select_features(frame, feature_columns, target_column, best, settings)
     # horizon search
     best_horizon = _select_horizon(
-        frame, best_features, target_column, best, settings, horizons or [settings.forecast.default_horizon]
+        frame,
+        best_features,
+        target_column,
+        best,
+        settings,
+        horizons or [settings.forecast.default_horizon],
     )
     # regime-specific
     regime_models = _select_regime_models(frame, best_features, target_column, settings, candidates)
@@ -91,7 +102,11 @@ def _select_features(
     if len(feature_columns) <= 2:
         return list(feature_columns)
     base = benchmark_model(
-        model_name, frame, feature_columns=feature_columns, target_column=target_column, settings=settings
+        model_name,
+        frame,
+        feature_columns=feature_columns,
+        target_column=target_column,
+        settings=settings,
     )
     base_rmse = float(base.metrics.get("rmse", np.inf))
     kept = list(feature_columns)
@@ -101,12 +116,16 @@ def _select_features(
             continue
         try:
             res = benchmark_model(
-                model_name, frame, feature_columns=trial, target_column=target_column, settings=settings
+                model_name,
+                frame,
+                feature_columns=trial,
+                target_column=target_column,
+                settings=settings,
             )
             if float(res.metrics.get("rmse", np.inf)) <= base_rmse * 1.02:
                 kept = trial
                 base_rmse = float(res.metrics.get("rmse", base_rmse))
-        except Exception:  # noqa: BLE001  # pragma: no cover
+        except Exception:  # pragma: no cover
             continue
     return kept or list(feature_columns)
 
@@ -136,7 +155,7 @@ def _select_horizon(
             if score < best_score:
                 best_score = score
                 best_h = h
-        except Exception:  # noqa: BLE001  # pragma: no cover
+        except Exception:  # pragma: no cover
             continue
     return best_h
 
@@ -174,6 +193,6 @@ def _select_regime_models(
             )
             if ranked:
                 out[str(reg)] = ranked[0].name
-        except Exception:  # noqa: BLE001  # pragma: no cover
+        except Exception:  # pragma: no cover
             continue
     return out

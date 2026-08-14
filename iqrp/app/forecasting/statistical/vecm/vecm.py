@@ -31,7 +31,9 @@ class VECMModel(StatisticalForecastModel):
         supports_intervals=True,
     )
 
-    def __init__(self, settings: Any | None = None, *, lags: int | None = None, **kwargs: Any) -> None:
+    def __init__(
+        self, settings: Any | None = None, *, lags: int | None = None, **kwargs: Any
+    ) -> None:
         super().__init__(settings=settings, **kwargs)
         self._lags = lags
         self._beta = np.array([1.0])
@@ -90,7 +92,9 @@ class VECMModel(StatisticalForecastModel):
         self._coint = {"johansen": joh.to_dict(), "engle_granger": eg.to_dict()}
         resid = fit["residuals"]
         pad = Y.shape[0] - resid.shape[0]
-        resid0 = np.concatenate([np.zeros(pad), resid[:, 0]]) if resid.size else np.zeros(Y.shape[0])
+        resid0 = (
+            np.concatenate([np.zeros(pad), resid[:, 0]]) if resid.size else np.zeros(Y.shape[0])
+        )
         fitted0 = Y[:, 0] - resid0
         self._finalize_fit(
             Y[:, 0],
@@ -104,9 +108,7 @@ class VECMModel(StatisticalForecastModel):
         )
         return self
 
-    def predict(
-        self, frame: pl.DataFrame, feature_columns: list[str] | None = None
-    ) -> np.ndarray:
+    def predict(self, frame: pl.DataFrame, feature_columns: list[str] | None = None) -> np.ndarray:
         self._require_fitted()
         if self._fitted_values is not None and self._fitted_values.size == frame.height:
             return self._fitted_values.copy()
@@ -147,7 +149,11 @@ class VECMModel(StatisticalForecastModel):
             dy = xrow @ self._B
             Y = np.vstack([Y, Y[-1] + dy])
             path[i] = Y[-1, 0]
-        regime = frame[self._regime_column][-1] if self._regime_column and self._regime_column in frame.columns else None
+        regime = (
+            frame[self._regime_column][-1]
+            if self._regime_column and self._regime_column in frame.columns
+            else None
+        )
         fc = self._build_forecast(path, horizon=h, regime_used=regime)
         fc.metadata["cointegration"] = self._coint
         return fc
@@ -184,7 +190,9 @@ class VECMModel(StatisticalForecastModel):
         self._endog_names = list(state.get("endog_names") or [])
         self._coint = dict(state.get("coint") or {})
         self._residuals = (
-            None if state.get("residuals") is None else np.asarray(state["residuals"], dtype=np.float64)
+            None
+            if state.get("residuals") is None
+            else np.asarray(state["residuals"], dtype=np.float64)
         )
         self._fitted_values = (
             None if state.get("fitted") is None else np.asarray(state["fitted"], dtype=np.float64)

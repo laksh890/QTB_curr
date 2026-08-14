@@ -11,10 +11,14 @@ import pytest
 from omegaconf import OmegaConf
 
 from iqrp.app.core.exceptions import ConfigurationError, ValidationError
-from iqrp.app.regimes.ensemble.calibration import Calibrator, brier_score, _isotonic_regression
+from iqrp.app.regimes.ensemble.calibration import Calibrator, _isotonic_regression, brier_score
 from iqrp.app.regimes.ensemble.combiner import stacking_combine
+from iqrp.app.regimes.ensemble.confidence import (
+    credible_mass_interval,
+    expected_persistence,
+    forecast_uncertainty,
+)
 from iqrp.app.regimes.ensemble.config import EnsembleSettings
-from iqrp.app.regimes.ensemble.confidence import credible_mass_interval, expected_persistence, forecast_uncertainty
 from iqrp.app.regimes.ensemble.model import EnsembleRegimeModel, EnsembleStateSpaceModel, _as_frame
 from iqrp.app.regimes.ensemble.registry import (
     EnsembleRegistry,
@@ -23,6 +27,11 @@ from iqrp.app.regimes.ensemble.registry import (
     list_available_members,
 )
 from iqrp.app.regimes.ensemble.serializer import _json_default
+from iqrp.app.regimes.ensemble.visualization import (
+    _ensure,
+    plot_member_timelines,
+    plot_transition_chart,
+)
 from iqrp.app.regimes.ensemble.weighting import (
     adaptive_update,
     calibration_weights,
@@ -31,8 +40,7 @@ from iqrp.app.regimes.ensemble.weighting import (
     rolling_weights,
     stability_weights,
 )
-from iqrp.app.regimes.ensemble.visualization import _ensure, plot_member_timelines, plot_transition_chart
-from iqrp.tests.unit.ensemble.test_ensemble_core import _StubRegimeA, _StubRegimeB  # noqa: F401
+from iqrp.tests.unit.ensemble.test_ensemble_core import _StubRegimeA, _StubRegimeB
 
 
 def _settings(**kw: object) -> EnsembleSettings:
@@ -117,7 +125,9 @@ def test_model_errors_and_ssm_sample(tmp_path: Path) -> None:
     # no members
     with pytest.raises(ConfigurationError):
         EnsembleRegistry(
-            _settings(member_names=("nope",), training={"validation_fraction": 0.2, "min_members": 1})
+            _settings(
+                member_names=("nope",), training={"validation_fraction": 0.2, "min_members": 1}
+            )
         ).create_members()
     frame = pl.DataFrame({"close": np.linspace(1, 2, 40)})
     model.fit(frame, feature_columns=["close"])

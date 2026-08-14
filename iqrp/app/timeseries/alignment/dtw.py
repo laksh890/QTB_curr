@@ -106,7 +106,11 @@ def _dtw_cost(
     i, j = n, m
     while i > 0 and j > 0:
         path.append((i - 1, j - 1))
-        candidates = [(D[i - 1, j - 1], i - 1, j - 1), (D[i - 1, j], i - 1, j), (D[i, j - 1], i, j - 1)]
+        candidates = [
+            (D[i - 1, j - 1], i - 1, j - 1),
+            (D[i - 1, j], i - 1, j),
+            (D[i, j - 1], i, j - 1),
+        ]
         _, i, j = min(candidates, key=lambda t: t[0])
     path.reverse()
     return dist, path

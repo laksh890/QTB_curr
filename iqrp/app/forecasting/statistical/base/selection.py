@@ -2,9 +2,10 @@
 
 from __future__ import annotations
 
+from collections.abc import Callable
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass, field
-from typing import Any, Callable, Literal
+from typing import Any, Literal
 
 import numpy as np
 
@@ -25,7 +26,11 @@ class CandidateScore:
     metadata: dict[str, Any] = field(default_factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        return {"order": dict(self.order), "scores": dict(self.scores), "metadata": dict(self.metadata)}
+        return {
+            "order": dict(self.order),
+            "scores": dict(self.scores),
+            "metadata": dict(self.metadata),
+        }
 
 
 @dataclass(slots=True)
@@ -107,9 +112,7 @@ def select_arima_order(
     d_star = int(d if d is not None else suggest_differencing(y, max_d=max_d))
     diff_fn = differencer or (lambda arr, order: difference(arr, order=order))
     z = diff_fn(y, d_star) if d_star else np.asarray(y, dtype=np.float64)
-    arma = select_arma_order(
-        z, max_p=max_p, max_q=max_q, criterion=criterion, parallel=parallel
-    )
+    arma = select_arma_order(z, max_p=max_p, max_q=max_q, criterion=criterion, parallel=parallel)
     best = {**arma.best_order, "d": d_star}
     for c in arma.leaderboard:
         c.order = {**c.order, "d": d_star}

@@ -49,7 +49,7 @@ def build_risk_budgets(
         total = float(sum(max(v, 0.0) for v in rb.values())) or float(total_risk_budget)
     else:
         share = float(total_risk_budget) / n if n else 0.0
-        rb = {nm: share for nm in names}
+        rb = dict.fromkeys(names, share)
         total = float(total_risk_budget)
 
     for nm in names:
@@ -182,12 +182,12 @@ def strategy_budget_vector(
     budgets: list[RiskBudget],
 ) -> dict[str, float]:
     """Extract strategy-level volatility budgets as a name→budget map."""
-    out = {nm: 0.0 for nm in names}
+    out = dict.fromkeys(names, 0.0)
     for b in budgets:
         if b.scope == "strategy" and b.risk_type == "volatility" and b.name in out:
             out[b.name] = float(b.budget)
     s = float(sum(out.values()))
     if s <= 0 and names:
         share = 1.0 / len(names)
-        return {nm: share for nm in names}
+        return dict.fromkeys(names, share)
     return out

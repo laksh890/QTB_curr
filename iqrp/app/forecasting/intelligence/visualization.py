@@ -10,7 +10,9 @@ from iqrp.app.forecasting.intelligence.config import VisualizationConfig
 from iqrp.app.forecasting.intelligence.ranking import RankedModel
 
 
-def leaderboard_chart(ranked: list[RankedModel], *, config: VisualizationConfig | None = None) -> dict[str, Any]:
+def leaderboard_chart(
+    ranked: list[RankedModel], *, config: VisualizationConfig | None = None
+) -> dict[str, Any]:
     cfg = config or VisualizationConfig()
     top = ranked[: max(cfg.top_n, 1)]
     return {

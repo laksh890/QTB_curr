@@ -2,23 +2,24 @@
 
 from __future__ import annotations
 
-from typing import Any, Mapping
+from collections.abc import Mapping
+from typing import Any
 
 import numpy as np
 
 __all__ = [
-    "trades_from_positions",
-    "number_of_trades",
-    "win_rate",
-    "loss_rate",
-    "profit_factor",
-    "average_win",
-    "average_loss",
-    "expectancy",
     "average_holding_period",
-    "turnover",
-    "trade_frequency",
+    "average_loss",
+    "average_win",
+    "expectancy",
+    "loss_rate",
+    "number_of_trades",
+    "profit_factor",
     "summarize_trades",
+    "trade_frequency",
+    "trades_from_positions",
+    "turnover",
+    "win_rate",
 ]
 
 
@@ -37,7 +38,7 @@ def _pnl_array(trades: Any) -> np.ndarray:
     if isinstance(first, Mapping):
         return np.asarray([float(t.get("pnl", 0.0)) for t in arr.flat], dtype=np.float64)
     if hasattr(first, "pnl"):
-        return np.asarray([float(getattr(t, "pnl")) for t in arr.flat], dtype=np.float64)
+        return np.asarray([float(t.pnl) for t in arr.flat], dtype=np.float64)
     return np.asarray(trades, dtype=np.float64).reshape(-1)
 
 
@@ -51,7 +52,7 @@ def _holding_array(trades: Any) -> np.ndarray:
     if isinstance(first, Mapping) and "holding" in first:
         return np.asarray([float(t.get("holding", np.nan)) for t in arr.flat], dtype=np.float64)
     if hasattr(first, "holding"):
-        return np.asarray([float(getattr(t, "holding")) for t in arr.flat], dtype=np.float64)
+        return np.asarray([float(t.holding) for t in arr.flat], dtype=np.float64)
     return np.zeros(0, dtype=np.float64)
 
 

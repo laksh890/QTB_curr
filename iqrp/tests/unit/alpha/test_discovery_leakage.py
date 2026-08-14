@@ -209,9 +209,7 @@ def test_candidate_generator_and_generate(
         alt_series=returns,
         event_mask=(np.abs(returns) > np.nanpercentile(np.abs(returns), 90)),
         forecast=returns * 0.2,
-        forecast_hypothesis=(
-            "Forecast innovations capture delayed incorporation of public news."
-        ),
+        forecast_hypothesis=("Forecast innovations capture delayed incorporation of public news."),
     )
     assert len(res.signals) >= 1
     d = res.to_dict()
@@ -281,9 +279,7 @@ def test_leakage_shift_and_pit_diagnostics(
     assert "finite" in diag and "leakage" in diag
 
 
-def test_genuine_ic_beats_noise_same_seed(
-    genuine: dict[str, Any], noise: dict[str, Any]
-) -> None:
+def test_genuine_ic_beats_noise_same_seed(genuine: dict[str, Any], noise: dict[str, Any]) -> None:
     g_ic = abs(
         compute_ic(
             np.asarray(genuine["signal"]),

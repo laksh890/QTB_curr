@@ -69,12 +69,15 @@ class HoltModel(StatisticalForecastModel):
         y = frame[tgt].to_numpy().astype(np.float64)
         self._maybe_regime_series(frame, regime_column)
         if self._alpha is None or self._beta is None:
+
             def obj(theta: np.ndarray) -> float:
                 _, r, _, _ = _holt(y, float(theta[0]), float(theta[1]))
                 return float(np.dot(r, r))
 
-            res = minimize(obj, x0=np.array([0.3, 0.1]), bounds=[(0.01, 0.99), (0.01, 0.99)], method="L-BFGS-B")
-            a, b = (res.x if res.success else np.array([0.3, 0.1]))
+            res = minimize(
+                obj, x0=np.array([0.3, 0.1]), bounds=[(0.01, 0.99), (0.01, 0.99)], method="L-BFGS-B"
+            )
+            a, b = res.x if res.success else np.array([0.3, 0.1])
             self._alpha = float(a)
             self._beta = float(b)
         fitted, resid, lvl, tr = _holt(y, float(self._alpha), float(self._beta))
@@ -91,12 +94,14 @@ class HoltModel(StatisticalForecastModel):
         )
         return self
 
-    def predict(
-        self, frame: pl.DataFrame, feature_columns: list[str] | None = None
-    ) -> np.ndarray:
+    def predict(self, frame: pl.DataFrame, feature_columns: list[str] | None = None) -> np.ndarray:
         self._require_fitted()
         tgt = self._target_column or self._stat_settings.columns.target
-        y = frame[tgt].to_numpy().astype(np.float64) if tgt in frame.columns else self._extract_target(frame, None)
+        y = (
+            frame[tgt].to_numpy().astype(np.float64)
+            if tgt in frame.columns
+            else self._extract_target(frame, None)
+        )
         fitted, _, _, _ = _holt(y, float(self._alpha or 0.3), float(self._beta or 0.1))
         return fitted
 
@@ -110,7 +115,11 @@ class HoltModel(StatisticalForecastModel):
         self._require_fitted()
         h = self._default_horizon(horizon)
         path = np.asarray([self._level + (i + 1) * self._trend for i in range(h)], dtype=np.float64)
-        regime = frame[self._regime_column][-1] if self._regime_column and self._regime_column in frame.columns else None
+        regime = (
+            frame[self._regime_column][-1]
+            if self._regime_column and self._regime_column in frame.columns
+            else None
+        )
         return self._build_forecast(path, horizon=h, strategy="direct", regime_used=regime)
 
     def _algorithm_state(self) -> dict[str, Any]:
@@ -136,7 +145,9 @@ class HoltModel(StatisticalForecastModel):
         self._trend = float(state.get("trend", 0.0))
         self._y = None if state.get("y") is None else np.asarray(state["y"], dtype=np.float64)
         self._residuals = (
-            None if state.get("residuals") is None else np.asarray(state["residuals"], dtype=np.float64)
+            None
+            if state.get("residuals") is None
+            else np.asarray(state["residuals"], dtype=np.float64)
         )
         self._fitted_values = (
             None if state.get("fitted") is None else np.asarray(state["fitted"], dtype=np.float64)

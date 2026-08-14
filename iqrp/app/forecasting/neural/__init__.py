@@ -16,8 +16,8 @@ from iqrp.app.forecasting.neural.trainer import NeuralOrchestrator, NeuralTrainR
 ensure_neural_models_loaded()
 
 __all__ = [
-    "NeuralSettings",
     "NeuralOrchestrator",
+    "NeuralSettings",
     "NeuralTrainResult",
     "create_neural_model",
     "ensure_neural_models_loaded",

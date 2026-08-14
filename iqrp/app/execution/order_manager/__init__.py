@@ -54,6 +54,7 @@ from iqrp.app.execution.types import KillSwitch
 __all__ = [
     "ALLOWED_EXECUTION_TRANSITIONS",
     "ALLOWED_TRANSITIONS",
+    "TERMINAL_STATES",
     "AuditEntry",
     "AuditLog",
     "CancelRequest",
@@ -76,7 +77,6 @@ __all__ = [
     "ReconciliationAlert",
     "ReconciliationResult",
     "ReplaceRequest",
-    "TERMINAL_STATES",
     "ValidationResult",
     "assert_execution_transition",
     "assert_transition",

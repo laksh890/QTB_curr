@@ -2,8 +2,9 @@
 
 from __future__ import annotations
 
+from collections.abc import Iterable, Mapping
 from dataclasses import dataclass, field
-from typing import Any, Iterable, Mapping
+from typing import Any
 
 
 @dataclass
@@ -40,7 +41,7 @@ class PositionRecord:
         }
 
     @classmethod
-    def from_dict(cls, data: Mapping[str, Any]) -> "PositionRecord":
+    def from_dict(cls, data: Mapping[str, Any]) -> PositionRecord:
         return cls(
             instrument=str(data["instrument"]),
             quantity=float(data.get("quantity", 0.0)),
@@ -150,7 +151,7 @@ class PositionBook:
         }
 
     @classmethod
-    def from_dict(cls, data: Mapping[str, Any]) -> "PositionBook":
+    def from_dict(cls, data: Mapping[str, Any]) -> PositionBook:
         book = cls(currency=str(data.get("currency", "USD")))
         for k, v in dict(data.get("positions") or {}).items():
             book.positions[str(k)] = PositionRecord.from_dict(v)

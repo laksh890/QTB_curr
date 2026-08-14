@@ -19,12 +19,14 @@ from iqrp.app.alpha.base.alpha_signal import AlphaSignal
 from iqrp.app.alpha.base.signal_definition import SignalDefinition
 from iqrp.app.alpha.base.signal_registry import SignalRegistry, get_default_registry
 from iqrp.app.alpha.base.signal_result import SignalStatus
-from iqrp.app.alpha.discovery import alternative as alt_mod
-from iqrp.app.alpha.discovery import cross_sectional as cs_mod
-from iqrp.app.alpha.discovery import event_based as event_mod
-from iqrp.app.alpha.discovery import statistical as stat_mod
-from iqrp.app.alpha.discovery import symbolic as sym_mod
-from iqrp.app.alpha.discovery import time_series as ts_mod
+from iqrp.app.alpha.discovery import (
+    alternative as alt_mod,
+    cross_sectional as cs_mod,
+    event_based as event_mod,
+    statistical as stat_mod,
+    symbolic as sym_mod,
+    time_series as ts_mod,
+)
 
 
 @dataclass(slots=True)
@@ -106,9 +108,7 @@ class CandidateGenerator:
             "an economic mechanism must be articulated before any promotion. "
             "Statistical significance alone ≠ alpha."
         )
-        signals = stat_mod.candidates_to_signals(
-            screens, features, economic_hypothesis=hyp
-        )
+        signals = stat_mod.candidates_to_signals(screens, features, economic_hypothesis=hyp)
         result = self._finalize(signals, notes=["statistical screen — NOT alpha"])
         result.statistical_screens = screens
         return result
@@ -237,9 +237,7 @@ class CandidateGenerator:
             )
         ]
         if returns is not None:
-            signals.append(
-                event_mod.earnings_drift_proxy(returns, event_mask, owner=self.owner)
-            )
+            signals.append(event_mod.earnings_drift_proxy(returns, event_mask, owner=self.owner))
         return self._finalize(signals, notes=["event templates"])
 
     def from_alternative(
@@ -291,9 +289,7 @@ class CandidateGenerator:
         )
         parts: list[DiscoveryResult] = []
         if returns is not None:
-            parts.append(
-                self.from_time_series(returns, volume=volume, prices=prices)
-            )
+            parts.append(self.from_time_series(returns, volume=volume, prices=prices))
         if features is not None and target is not None:
             parts.append(self.from_statistical_screen(features, target))
         if alt_series is not None:
@@ -315,9 +311,7 @@ class CandidateGenerator:
             merged.notes.extend(part.notes)
         return merged
 
-    def _finalize(
-        self, signals: list[AlphaSignal], *, notes: list[str]
-    ) -> DiscoveryResult:
+    def _finalize(self, signals: list[AlphaSignal], *, notes: list[str]) -> DiscoveryResult:
         definitions: list[SignalDefinition] = []
         experiment_ids: list[str] = []
         for sig in signals:

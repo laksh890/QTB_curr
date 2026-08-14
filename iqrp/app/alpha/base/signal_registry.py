@@ -186,9 +186,7 @@ class SignalRegistry:
             record.updated_at = datetime.now(UTC)
             return record
 
-    def attach_report(
-        self, experiment_id: str, report: SignalResearchReport
-    ) -> ExperimentRecord:
+    def attach_report(self, experiment_id: str, report: SignalResearchReport) -> ExperimentRecord:
         with self._lock:
             record = self.get(experiment_id)
             record.report = report

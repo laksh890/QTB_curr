@@ -10,7 +10,7 @@ from iqrp.app.forecasting.neural.base.torch_utils import has_torch
 try:
     import torch
     from torch import nn
-except Exception:  # noqa: BLE001  # pragma: no cover
+except Exception:  # pragma: no cover
     torch = None  # type: ignore[assignment]
     nn = object  # type: ignore[assignment]
 
@@ -21,7 +21,9 @@ class SinusoidalPositionalEncoding(nn.Module if has_torch() else object):  # typ
             super().__init__()
             pe = torch.zeros(max_len, d_model)
             pos = torch.arange(0, max_len, dtype=torch.float).unsqueeze(1)
-            div = torch.exp(torch.arange(0, d_model, 2).float() * (-math.log(10000.0) / max(d_model, 1)))
+            div = torch.exp(
+                torch.arange(0, d_model, 2).float() * (-math.log(10000.0) / max(d_model, 1))
+            )
             pe[:, 0::2] = torch.sin(pos * div)
             pe[:, 1::2] = torch.cos(pos * div[: pe[:, 1::2].shape[1]])
             self.register_buffer("pe", pe.unsqueeze(0), persistent=False)

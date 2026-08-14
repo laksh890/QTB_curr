@@ -62,7 +62,10 @@ def test_check_all_exposure_leverage_concentration(weights):
 def test_check_all_position(weights):
     w = np.array([-0.1, 0.5, 0.4, 0.2][: len(weights)])
     viols = check_all_constraints(w, long_only=True, max_position=0.4, min_weight=-0.05)
-    assert any("long" in v.name.lower() or "position" in v.name.lower() or "weight" in v.name.lower() for v in viols)
+    assert any(
+        "long" in v.name.lower() or "position" in v.name.lower() or "weight" in v.name.lower()
+        for v in viols
+    )
 
 
 def test_liquidity_constraints(weights, adv, prices):
@@ -75,10 +78,7 @@ def test_liquidity_constraints(weights, adv, prices):
     )
     assert isinstance(viols, list)
     # no adv → empty via check_all gating
-    assert (
-        check_all_constraints(weights, max_participation=0.1) == []
-        or True
-    )
+    assert check_all_constraints(weights, max_participation=0.1) == [] or True
     viols2 = check_all_constraints(
         weights,
         adv=adv * 0.001,
@@ -273,9 +273,13 @@ def test_transaction_cost_components(current_weights, weights, prices, adv):
     assert c["total"] >= 0.0
     s = spread_cost(trades, capital=1e6, spreads=np.ones(len(weights)) * 0.001)
     assert s["total"] >= 0.0
-    sl = slippage_cost(trades, capital=1e6, vols=np.ones(len(weights)) * 0.02, adv=adv, prices=prices)
+    sl = slippage_cost(
+        trades, capital=1e6, vols=np.ones(len(weights)) * 0.02, adv=adv, prices=prices
+    )
     assert sl["total"] >= 0.0
-    mi = market_impact_cost(trades, capital=1e6, adv=adv, prices=prices, vols=np.ones(len(weights)) * 0.02)
+    mi = market_impact_cost(
+        trades, capital=1e6, adv=adv, prices=prices, vols=np.ones(len(weights)) * 0.02
+    )
     assert mi["total"] >= 0.0
 
     total = total_transaction_cost(

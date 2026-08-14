@@ -2,9 +2,10 @@
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from dataclasses import dataclass, field
 from datetime import datetime
-from typing import Any, Mapping
+from typing import Any
 
 
 @dataclass
@@ -33,7 +34,7 @@ class OrderRecord:
         }
 
     @classmethod
-    def from_dict(cls, data: Mapping[str, Any]) -> "OrderRecord":
+    def from_dict(cls, data: Mapping[str, Any]) -> OrderRecord:
         return cls(
             order_id=str(data["order_id"]),
             timestamp=str(data.get("timestamp", "")),
@@ -66,7 +67,7 @@ class OrderLog:
         return {"orders": self.to_list()}
 
     @classmethod
-    def from_dict(cls, data: Mapping[str, Any]) -> "OrderLog":
+    def from_dict(cls, data: Mapping[str, Any]) -> OrderLog:
         log = cls()
         if isinstance(data, list):
             rows = data

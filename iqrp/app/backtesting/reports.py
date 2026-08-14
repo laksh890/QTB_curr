@@ -4,7 +4,8 @@ cost, execution, scenario, capacity, sensitivity, and scorecard summaries.
 
 from __future__ import annotations
 
-from typing import Any, Mapping
+from collections.abc import Mapping
+from typing import Any
 
 import numpy as np
 
@@ -24,19 +25,19 @@ from iqrp.app.backtesting.performance.returns import as_returns, wealth_index
 from iqrp.app.backtesting.serializer import to_jsonable
 
 __all__ = [
+    "attribution_report",
+    "capacity_report",
+    "cost_report",
+    "drawdown_report",
+    "execution_report",
+    "exposure_report",
+    "full_report",
     "performance_report",
     "risk_report",
-    "drawdown_report",
-    "trade_report",
-    "exposure_report",
-    "attribution_report",
-    "cost_report",
-    "execution_report",
     "scenario_report",
-    "capacity_report",
-    "sensitivity_report",
     "scorecard_report",
-    "full_report",
+    "sensitivity_report",
+    "trade_report",
 ]
 
 
@@ -44,8 +45,12 @@ def performance_report(returns: Any, **kwargs: Any) -> dict[str, Any]:
     r = as_returns(returns)
     return {
         "name": "performance",
-        "returns": summarize_returns(r, **{k: v for k, v in kwargs.items() if k in ("periods_per_year",)}),
-        "risk_adjusted": summarize_risk_adjusted(r, **{k: v for k, v in kwargs.items() if k in ("risk_free", "periods_per_year")}),
+        "returns": summarize_returns(
+            r, **{k: v for k, v in kwargs.items() if k in ("periods_per_year",)}
+        ),
+        "risk_adjusted": summarize_risk_adjusted(
+            r, **{k: v for k, v in kwargs.items() if k in ("risk_free", "periods_per_year")}
+        ),
         "equity": wealth_index(r).tolist(),
     }
 
@@ -104,7 +109,9 @@ def cost_report(costs: Any) -> dict[str, Any]:
     }
 
 
-def execution_report(fills: Any = None, *, latency: Mapping[str, Any] | None = None) -> dict[str, Any]:
+def execution_report(
+    fills: Any = None, *, latency: Mapping[str, Any] | None = None
+) -> dict[str, Any]:
     fills_list = list(fills or [])
     return {
         "name": "execution",

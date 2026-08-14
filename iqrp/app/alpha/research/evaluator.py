@@ -105,10 +105,7 @@ def _composite_score(
     persistence_s = float(min(1.0, abs(lag1))) if np.isfinite(lag1) else 0.0
 
     overall = float(
-        0.40 * predictive
-        + 0.25 * stability_s
-        + 0.15 * persistence_s
-        + 0.20 * hyp_score
+        0.40 * predictive + 0.25 * stability_s + 0.15 * persistence_s + 0.20 * hyp_score
     )
     return SignalScore(
         overall=overall * 100.0,
@@ -165,7 +162,7 @@ class SignalEvaluator:
                         version = definition.version
                         name = definition.name
                         hyp = definition.economic_hypothesis
-                    except Exception:  # noqa: BLE001
+                    except Exception:
                         pass
         else:
             values = np.asarray(signal, dtype=np.float64)
@@ -180,13 +177,9 @@ class SignalEvaluator:
         hit = compute_hit_rate(values, fwd1)
         ic_meta = ic_summary(values, fwd1, window=self.stability_window)
         decay = analyze_decay(values, r, horizons=self.horizons)
-        stability = analyze_stability(
-            values, r, horizon=1, window=self.stability_window
-        )
+        stability = analyze_stability(values, r, horizon=1, window=self.stability_window)
         persistence = persistence_summary(values)
-        seasonality = analyze_seasonality(
-            values, r, period=self.seasonality_period, horizon=1
-        )
+        seasonality = analyze_seasonality(values, r, period=self.seasonality_period, horizon=1)
         pred = SignalPredictor(horizon=1).predict(values, r)
 
         # Sharpe proxy from signed signal * forward return (research only)
@@ -198,7 +191,9 @@ class SignalEvaluator:
             mu, sd = float(np.mean(pnl)), float(np.std(pnl, ddof=1))
             sharpe_proxy = mu / (sd + 1e-12) * np.sqrt(252.0) if sd > 0 else float("nan")
             sig_f = values[m]
-            turnover_proxy = float(np.mean(np.abs(np.diff(np.sign(sig_f))))) if len(sig_f) > 1 else float("nan")
+            turnover_proxy = (
+                float(np.mean(np.abs(np.diff(np.sign(sig_f))))) if len(sig_f) > 1 else float("nan")
+            )
 
         performance = SignalPerformance(
             ic_mean=ic,

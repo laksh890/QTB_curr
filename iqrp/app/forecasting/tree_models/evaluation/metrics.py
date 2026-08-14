@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-from typing import Any
-
 import numpy as np
 
 
@@ -38,7 +36,11 @@ def evaluate_tree_predictions(
         P = np.asarray(proba, dtype=np.float64)
         scores = P[:, -1] if P.ndim == 2 and P.shape[1] >= 2 else P.reshape(-1)
         classes = np.unique(yt)
-        yb = (yt == classes.max()).astype(np.float64) if classes.size >= 2 else (yt > 0).astype(np.float64)
+        yb = (
+            (yt == classes.max()).astype(np.float64)
+            if classes.size >= 2
+            else (yt > 0).astype(np.float64)
+        )
         out["roc_auc"] = _roc_auc(yb, scores[:n])
         out["pr_auc"] = _pr_auc(yb, scores[:n])
         out["brier_score"] = float(np.mean((scores[:n] - yb) ** 2))
@@ -117,9 +119,12 @@ def _pr_auc(y: np.ndarray, scores: np.ndarray) -> float:
     precision = tp / np.maximum(tp + fp, 1e-12)
     recall = tp / max(float(np.sum(y)), 1e-12)
     # trapz
-    trap = getattr(np, "trapezoid", None) or getattr(np, "trapz")
-    return float(trap(precision, recall)) if recall.size > 1 else float(precision[-1] if precision.size else 0.0)
-
+    trap = getattr(np, "trapezoid", None) or np.trapz
+    return (
+        float(trap(precision, recall))
+        if recall.size > 1
+        else float(precision[-1] if precision.size else 0.0)
+    )
 
 
 def _log_loss(y: np.ndarray, p: np.ndarray) -> float:

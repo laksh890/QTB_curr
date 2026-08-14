@@ -28,9 +28,11 @@ from iqrp.app.alpha.base import (
 from iqrp.app.alpha.config import AlphaSettings
 from iqrp.app.alpha.engine import AlphaResearchEngine, ApprovalError
 from iqrp.app.alpha.phase11 import validate_phase11, write_phase11_report
-from iqrp.app.alpha.registry import available as registry_available
-from iqrp.app.alpha.registry import get as registry_get
-from iqrp.app.alpha.registry import register as registry_register
+from iqrp.app.alpha.registry import (
+    available as registry_available,
+    get as registry_get,
+    register as registry_register,
+)
 from iqrp.app.alpha.serializer import AlphaSerializer
 
 __all__ = [

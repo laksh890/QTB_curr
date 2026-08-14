@@ -13,12 +13,20 @@ from iqrp.app.regimes.particle.model import ParticleFilterModel, _resolve_names
 from iqrp.app.regimes.particle.particle import FilterTrace, ParticleCloud
 from iqrp.app.regimes.particle.propagation import build_transition
 from iqrp.app.regimes.particle.trainer import ParticleTrainer, simulate_nonlinear
-from iqrp.app.regimes.particle.weighting import effective_sample_size, normalize_weights, weight_entropy
 from iqrp.app.regimes.particle.visualization import plot_state_trajectory
+from iqrp.app.regimes.particle.weighting import (
+    effective_sample_size,
+    normalize_weights,
+    weight_entropy,
+)
 
 
 def _settings(**kw: object) -> ParticleSettings:
-    data = {**ParticleSettings.default().model_dump(), "n_particles": 25, "training": {"n_iterations": 2, "tol": 1.0}}
+    data = {
+        **ParticleSettings.default().model_dump(),
+        "n_particles": 25,
+        "training": {"n_iterations": 2, "tol": 1.0},
+    }
     data.update(kw)
     return ParticleSettings.from_mapping(data)
 

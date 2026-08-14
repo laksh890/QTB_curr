@@ -59,8 +59,7 @@ def analyze_seasonality(
         "mean_abs_ic": safe_nanmean(np.abs(vals)),
         "ic_dispersion": dispersion,
         "disclaimer": (
-            "Seasonality diagnostics are exploratory. "
-            "Statistical significance alone ≠ alpha."
+            "Seasonality diagnostics are exploratory. " "Statistical significance alone ≠ alpha."
         ),
     }
 

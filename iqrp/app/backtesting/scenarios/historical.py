@@ -99,9 +99,7 @@ def run_historical_scenario(
     else:
         port_full = as_returns(raw)
 
-    window = slice_window(
-        port_full, start=scenario.start, end=scenario.end, mask=scenario.mask
-    )
+    window = slice_window(port_full, start=scenario.start, end=scenario.end, mask=scenario.mask)
     window = window[np.isfinite(window)]
 
     return {

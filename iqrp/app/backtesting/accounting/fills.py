@@ -2,8 +2,9 @@
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from dataclasses import dataclass, field
-from typing import Any, Mapping
+from typing import Any
 
 
 @dataclass
@@ -34,7 +35,7 @@ class FillRecord:
         }
 
     @classmethod
-    def from_dict(cls, data: Mapping[str, Any]) -> "FillRecord":
+    def from_dict(cls, data: Mapping[str, Any]) -> FillRecord:
         return cls(
             fill_id=str(data.get("fill_id", data.get("event_id", ""))),
             order_id=str(data.get("order_id", "")),
@@ -68,7 +69,7 @@ class FillLog:
         return {"fills": self.to_list()}
 
     @classmethod
-    def from_dict(cls, data: Mapping[str, Any]) -> "FillLog":
+    def from_dict(cls, data: Mapping[str, Any]) -> FillLog:
         log = cls()
         rows = data.get("fills") if isinstance(data, Mapping) else data
         for row in list(rows or []):

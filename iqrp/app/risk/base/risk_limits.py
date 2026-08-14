@@ -18,7 +18,9 @@ class RiskLimit:
     metadata: dict[str, Any] = field(default_factory=dict)
 
     def evaluate(self, observed: float) -> LimitBreach | None:
-        breached = observed > self.threshold if self.direction == "max" else observed < self.threshold
+        breached = (
+            observed > self.threshold if self.direction == "max" else observed < self.threshold
+        )
         if not breached:
             return None
         return LimitBreach(

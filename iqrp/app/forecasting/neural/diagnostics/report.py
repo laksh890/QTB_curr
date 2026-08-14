@@ -35,7 +35,9 @@ class NeuralDiagnosticReport:
 
 
 def run_neural_diagnostics(model: Any) -> NeuralDiagnosticReport:
-    resid = np.asarray(model._residuals if model._residuals is not None else [0.0], dtype=np.float64)
+    resid = np.asarray(
+        model._residuals if model._residuals is not None else [0.0], dtype=np.float64
+    )
     if resid.size == 0:
         resid = np.asarray([0.0], dtype=np.float64)
     mean = float(np.mean(resid))
@@ -70,7 +72,12 @@ def _weight_stats(module: Any) -> dict[str, float]:
     w = np.concatenate(vals)
     if w.size == 0:
         return {}
-    return {"mean": float(np.mean(w)), "std": float(np.std(w)), "abs_max": float(np.max(np.abs(w))), "n": float(w.size)}
+    return {
+        "mean": float(np.mean(w)),
+        "std": float(np.std(w)),
+        "abs_max": float(np.max(np.abs(w))),
+        "n": float(w.size),
+    }
 
 
 def _activation_stats(model: Any) -> dict[str, float]:
@@ -83,7 +90,7 @@ def _activation_stats(model: Any) -> dict[str, float]:
         trainer.device = model._device
         out = trainer.predict(model._module, model._X_seq[:32])
         return {"pred_mean": float(np.mean(out)), "pred_std": float(np.std(out))}
-    except Exception:  # noqa: BLE001  # pragma: no cover
+    except Exception:  # pragma: no cover
         return {}
 
 

@@ -2,7 +2,8 @@
 
 from __future__ import annotations
 
-from typing import Any, Mapping, Sequence
+from collections.abc import Mapping, Sequence
+from typing import Any
 
 from iqrp.app.execution.transaction_costs.borrow_cost import borrow_cost
 from iqrp.app.execution.transaction_costs.commissions import commission_cost
@@ -94,9 +95,7 @@ def pre_trade_cost_estimate(
         spread=spread,
         impact_coeff=impact_coeff,
     )
-    fin = financing_cost(
-        notional=notional, rate=financing_rate, days=financing_days
-    )
+    fin = financing_cost(notional=notional, rate=financing_rate, days=financing_days)
     borrow = borrow_cost(
         notional=notional,
         borrow_rate=borrow_rate,
@@ -224,9 +223,7 @@ def post_trade_cost_analysis(
         is_short=_side_is_short(side),
     )
     fx = notional * max(float(fx_cost_bps), 0.0) / 1e4
-    spread_c = spread_cost(
-        quantity=filled_qty, mid=mid_f, spread=spread, side=side
-    )
+    spread_c = spread_cost(quantity=filled_qty, mid=mid_f, spread=spread, side=side)
 
     realized_slippage = arrival_slip_px * filled_qty
     realized_impact = max(trading_px, 0.0) * filled_qty

@@ -12,8 +12,8 @@ from iqrp.app.backtesting.performance.risk_adjusted import sharpe_ratio
 
 __all__ = [
     "classify_simple_regimes",
-    "run_regime_scenario",
     "evaluate_regime_robustness",
+    "run_regime_scenario",
 ]
 
 # Canonical regime names (labels only — detection is data-driven)

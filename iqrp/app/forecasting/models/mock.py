@@ -80,7 +80,7 @@ class MockForecastModel(ForecastModel):
         design = np.concatenate([ones, x], axis=1)
         try:
             beta, *_ = np.linalg.lstsq(design, y, rcond=None)
-        except Exception:  # noqa: BLE001
+        except Exception:
             beta = np.zeros(design.shape[1])
             beta[0] = float(np.mean(y))
         self._intercept = float(beta[0])
@@ -97,9 +97,15 @@ class MockForecastModel(ForecastModel):
         # class centers for proba path (tertiles of y)
         qs = np.quantile(y, [0.33, 0.66])
         self._class_centers = np.asarray(
-            [np.mean(y[y <= qs[0]]) if np.any(y <= qs[0]) else y.min(),
-             np.mean(y[(y > qs[0]) & (y <= qs[1])]) if np.any((y > qs[0]) & (y <= qs[1])) else np.mean(y),
-             np.mean(y[y > qs[1]]) if np.any(y > qs[1]) else y.max()],
+            [
+                np.mean(y[y <= qs[0]]) if np.any(y <= qs[0]) else y.min(),
+                (
+                    np.mean(y[(y > qs[0]) & (y <= qs[1])])
+                    if np.any((y > qs[0]) & (y <= qs[1]))
+                    else np.mean(y)
+                ),
+                np.mean(y[y > qs[1]]) if np.any(y > qs[1]) else y.max(),
+            ],
             dtype=np.float64,
         )
         self._training_meta = TrainingMetadata(
@@ -128,17 +134,18 @@ class MockForecastModel(ForecastModel):
         # blend with a refit on the new batch
         prev_coef = None if self._coef is None else self._coef.copy()
         prev_intercept = self._intercept
-        self.fit(frame, feature_columns or self._feature_columns,
-                 target_column=target_column or self._target_column,
-                 regime_column=regime_column or self._regime_column)
+        self.fit(
+            frame,
+            feature_columns or self._feature_columns,
+            target_column=target_column or self._target_column,
+            regime_column=regime_column or self._regime_column,
+        )
         if prev_coef is not None and self._coef is not None and prev_coef.shape == self._coef.shape:
             self._coef = 0.7 * prev_coef + 0.3 * self._coef
             self._intercept = 0.7 * prev_intercept + 0.3 * self._intercept
         return self
 
-    def predict(
-        self, frame: pl.DataFrame, feature_columns: list[str] | None = None
-    ) -> np.ndarray:
+    def predict(self, frame: pl.DataFrame, feature_columns: list[str] | None = None) -> np.ndarray:
         self._require_fitted()
         x = self._matrix(frame, feature_columns or self._feature_columns)
         coef = self._coef if self._coef is not None else np.zeros(x.shape[1])
@@ -205,7 +212,9 @@ class MockForecastModel(ForecastModel):
             metadata={"residual_std": self._residual_std},
         )
 
-    def shap_values(self, frame: pl.DataFrame, feature_columns: list[str] | None = None) -> np.ndarray:
+    def shap_values(
+        self, frame: pl.DataFrame, feature_columns: list[str] | None = None
+    ) -> np.ndarray:
         self._require_fitted()
         x = self._matrix(frame, feature_columns or self._feature_columns)
         coef = self._coef if self._coef is not None else np.ones(x.shape[1])

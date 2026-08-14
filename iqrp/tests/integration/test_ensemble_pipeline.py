@@ -8,7 +8,7 @@ import numpy as np
 import polars as pl
 import pytest
 
-import iqrp.app.regimes.ensemble  # noqa: F401
+import iqrp.app.regimes.ensemble
 from iqrp.app.regimes.ensemble import EnsembleRegimeModel, EnsembleSettings
 from iqrp.app.regimes.ensemble.visualization import (
     plot_confidence_timeline,
@@ -16,7 +16,7 @@ from iqrp.app.regimes.ensemble.visualization import (
     plot_regime_timeline,
 )
 from iqrp.app.state_space import get_registry as get_ss_registry
-from iqrp.tests.unit.ensemble.test_ensemble_core import _StubRegimeA, _StubRegimeB  # noqa: F401
+from iqrp.tests.unit.ensemble.test_ensemble_core import _StubRegimeA, _StubRegimeB
 
 
 @pytest.mark.integration
@@ -36,7 +36,9 @@ def test_ensemble_end_to_end(tmp_path: Path) -> None:
     rng = np.random.default_rng(41)
     n = 120
     close = 100 + np.cumsum(rng.normal(0, 1, n))
-    frame = pl.DataFrame({"open_time": list(range(n)), "close": close, "f1": np.diff(close, prepend=0)})
+    frame = pl.DataFrame(
+        {"open_time": list(range(n)), "close": close, "f1": np.diff(close, prepend=0)}
+    )
     model = EnsembleRegimeModel(settings=settings, random_seed=41)
     model.fit(frame, feature_columns=["close", "f1"])
     pred = model.predict(frame, feature_columns=["close", "f1"])

@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-from typing import Any
-
 import numpy as np
 
 
@@ -19,7 +17,9 @@ def blend_predictions(
     if scores is None:
         w = np.ones(len(names)) / len(names)
     else:
-        inv = np.asarray([1.0 / max(float(scores.get(n, 1.0)), 1e-6) for n in names], dtype=np.float64)
+        inv = np.asarray(
+            [1.0 / max(float(scores.get(n, 1.0)), 1e-6) for n in names], dtype=np.float64
+        )
         inv = np.maximum(inv, min_weight)
         w = inv / inv.sum()
     X = np.column_stack([np.asarray(preds[n], dtype=np.float64).reshape(-1) for n in names])

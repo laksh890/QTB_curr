@@ -23,6 +23,7 @@ poetry.toml
 .coverage
 .coverage.*
 coverage.xml
+coverage.json
 htmlcov/
 .pytest_cache/
 .mypy_cache/
@@ -30,6 +31,9 @@ htmlcov/
 .hypothesis/
 .tox/
 .nox/
+
+# Local backtest / experiment outputs
+results/
 
 # Editors / OS
 .idea/

@@ -9,10 +9,13 @@ from unittest.mock import MagicMock
 import numpy as np
 import pytest
 
-from iqrp.app.portfolio.base.optimizer import OptimizationResult, PortfolioOptimizer
 from iqrp.app.portfolio.base.objective import ObjectiveSpec
+from iqrp.app.portfolio.base.optimizer import OptimizationResult, PortfolioOptimizer
 from iqrp.app.portfolio.config import PortfolioSettings
-from iqrp.app.portfolio.constraints.factor import check_factor_constraints, portfolio_factor_exposures
+from iqrp.app.portfolio.constraints.factor import (
+    check_factor_constraints,
+    portfolio_factor_exposures,
+)
 from iqrp.app.portfolio.constraints.liquidity import check_liquidity_constraints
 from iqrp.app.portfolio.construction.constructor import PortfolioResult
 from iqrp.app.portfolio.construction.rebalance import RebalanceBands, plan_rebalance
@@ -40,13 +43,13 @@ from iqrp.app.portfolio.optimization import (
     optimize_minimum_variance,
     optimize_risk_parity,
     optimize_turnover,
+    projection as proj,
 )
-from iqrp.app.portfolio.optimization import projection as proj
 from iqrp.app.portfolio.robust import optimize_distributional_robust, optimize_parameter_uncertainty
 from iqrp.app.portfolio.serializer import PortfolioSerializer, _to_jsonable
 
-
 # ---- easy ValueError / input branches --------------------------------------
+
 
 def test_bl_input_validation_errors(cov, names):
     n = len(names)
@@ -127,10 +130,14 @@ def test_config_default_without_file(monkeypatch, tmp_path):
 def test_engine_dict_weights_sorted_keys(engine, cov):
     # length mismatch with n → sorted-keys branch
     raw = {"z": 0.1, "a": 0.2, "m": 0.3}
-    w = __import__("iqrp.app.portfolio.engine", fromlist=["_extract_weights"])._extract_weights(raw, n=4)
+    w = __import__("iqrp.app.portfolio.engine", fromlist=["_extract_weights"])._extract_weights(
+        raw, n=4
+    )
     assert len(w) == 3  # sorted keys of dict when len != n
     # force via dict_to_optimization_result with odd dict
-    r = dict_to_optimization_result({"success": True, "weights": {"b": 0.4, "a": 0.6}}, names=["x", "y", "z"])
+    r = dict_to_optimization_result(
+        {"success": True, "weights": {"b": 0.4, "a": 0.6}}, names=["x", "y", "z"]
+    )
     assert len(r.weights) == 2
 
 
@@ -225,6 +232,7 @@ def test_rebalance_min_trade_filter(current_weights):
 
 # ---- optimizer infeasible with names in constraints ------------------------
 
+
 def test_optimizers_infeasible_with_constraint_names(cov, names):
     cons = {"max_weight": 0.05, "names": list(names)}  # n*0.05 < 1
     for fn in (
@@ -246,7 +254,9 @@ def test_optimizers_infeasible_with_constraint_names(cov, names):
 
 
 def test_max_sharpe_infeasible(cov, names, mu):
-    res = optimize_maximum_sharpe(mu=mu, cov=cov, max_weight=0.05, constraints={"names": list(names)})
+    res = optimize_maximum_sharpe(
+        mu=mu, cov=cov, max_weight=0.05, constraints={"names": list(names)}
+    )
     assert res["success"] is False
 
 
@@ -261,7 +271,12 @@ def test_drawdown_box_violation_and_returns_cov(returns, names, current_weights)
         names=names,
         current_weights=current_weights,
     )
-    assert res2["success"] is False or res2["status"] in ("infeasible", "optimal", "fallback", "failed")
+    assert res2["success"] is False or res2["status"] in (
+        "infeasible",
+        "optimal",
+        "fallback",
+        "failed",
+    )
 
 
 def test_mean_variance_mu_none(cov, names):
@@ -273,7 +288,9 @@ def test_mean_variance_singular_cov_linalg(names):
     # rank-1 cov triggers LinAlgError path for analytic start
     v = np.ones(len(names))
     cov = np.outer(v, v) * 1e-4
-    res = optimize_mean_variance(mu=np.ones(len(names)) * 0.01, cov=cov, names=names, max_weight=0.5)
+    res = optimize_mean_variance(
+        mu=np.ones(len(names)) * 0.01, cov=cov, names=names, max_weight=0.5
+    )
     assert "success" in res
 
 
@@ -292,7 +309,9 @@ def test_max_sharpe_singular_cov(names, mu):
 
 
 def test_optimize_bl_requires_cov(names):
-    res = optimize_black_litterman(cov=None, names=names, market_weights=np.ones(len(names)) / len(names))
+    res = optimize_black_litterman(
+        cov=None, names=names, market_weights=np.ones(len(names)) / len(names)
+    )
     assert res["success"] is False or res.get("failure_reason")
 
 
@@ -343,6 +362,7 @@ def test_dp_mu_path_none(cov, names):
 
 # ---- monkeypatch scipy → PGD / exception outer -----------------------------
 
+
 def test_pgd_fallback_when_minimize_raises(mu, cov, names, monkeypatch):
     def boom(*a, **k):
         raise RuntimeError("scipy down")
@@ -355,8 +375,25 @@ def test_pgd_fallback_when_minimize_raises(mu, cov, names, monkeypatch):
         (optimize_maximum_diversification, {"cov": cov, "names": names, "max_weight": 0.5}),
         (optimize_maximum_sharpe, {"mu": mu, "cov": cov, "names": names, "max_weight": 0.5}),
         (optimize_minimum_variance, {"cov": cov, "names": names, "max_weight": 0.5}),
-        (optimize_turnover, {"mu": mu, "cov": cov, "names": names, "max_weight": 0.5, "current_weights": np.ones(len(names))/len(names)}),
-        (optimize_cvar, {"cov": cov, "names": names, "max_weight": 0.5, "scenarios": np.random.default_rng(0).normal(0, 0.01, (80, len(names)))}),
+        (
+            optimize_turnover,
+            {
+                "mu": mu,
+                "cov": cov,
+                "names": names,
+                "max_weight": 0.5,
+                "current_weights": np.ones(len(names)) / len(names),
+            },
+        ),
+        (
+            optimize_cvar,
+            {
+                "cov": cov,
+                "names": names,
+                "max_weight": 0.5,
+                "scenarios": np.random.default_rng(0).normal(0, 0.01, (80, len(names))),
+            },
+        ),
         (optimize_distributional_robust, {"mu": mu, "cov": cov, "names": names, "max_weight": 0.5}),
         (optimize_mean_variance, {"mu": mu, "cov": cov, "names": names, "max_weight": 0.5}),
     ):
@@ -373,16 +410,56 @@ def test_outer_exception_failed_result(cov, names, monkeypatch):
     monkeypatch.setattr(proj, "as_cov", bad_as_cov)
     # Import modules that call as_cov at runtime
     for mod_name, fn_name, kwargs in (
-        ("iqrp.app.portfolio.optimization.entropy", "optimize_entropy", {"mu": np.ones(4) * 0.01, "cov": cov, "names": names}),
-        ("iqrp.app.portfolio.optimization.maximum_sharpe", "optimize_maximum_sharpe", {"mu": np.ones(4) * 0.01, "cov": cov, "names": names}),
-        ("iqrp.app.portfolio.optimization.minimum_variance", "optimize_minimum_variance", {"cov": cov, "names": names}),
-        ("iqrp.app.portfolio.optimization.maximum_diversification", "optimize_maximum_diversification", {"cov": cov, "names": names}),
-        ("iqrp.app.portfolio.optimization.risk_parity", "optimize_risk_parity", {"cov": cov, "names": names}),
-        ("iqrp.app.portfolio.optimization.hierarchical", "optimize_hierarchical", {"cov": cov, "names": names}),
-        ("iqrp.app.portfolio.optimization.turnover", "optimize_turnover", {"mu": np.ones(4) * 0.01, "cov": cov, "names": names}),
-        ("iqrp.app.portfolio.robust.distributional_robust", "optimize_distributional_robust", {"mu": np.ones(4) * 0.01, "cov": cov, "names": names}),
-        ("iqrp.app.portfolio.optimization.black_litterman", "optimize_black_litterman", {"cov": cov, "market_weights": np.ones(4) / 4, "names": names}),
-        ("iqrp.app.portfolio.multi_period.optimizer", "optimize_multi_period", {"mu": np.ones(4) * 0.01, "cov": cov, "horizons": 2, "names": names}),
+        (
+            "iqrp.app.portfolio.optimization.entropy",
+            "optimize_entropy",
+            {"mu": np.ones(4) * 0.01, "cov": cov, "names": names},
+        ),
+        (
+            "iqrp.app.portfolio.optimization.maximum_sharpe",
+            "optimize_maximum_sharpe",
+            {"mu": np.ones(4) * 0.01, "cov": cov, "names": names},
+        ),
+        (
+            "iqrp.app.portfolio.optimization.minimum_variance",
+            "optimize_minimum_variance",
+            {"cov": cov, "names": names},
+        ),
+        (
+            "iqrp.app.portfolio.optimization.maximum_diversification",
+            "optimize_maximum_diversification",
+            {"cov": cov, "names": names},
+        ),
+        (
+            "iqrp.app.portfolio.optimization.risk_parity",
+            "optimize_risk_parity",
+            {"cov": cov, "names": names},
+        ),
+        (
+            "iqrp.app.portfolio.optimization.hierarchical",
+            "optimize_hierarchical",
+            {"cov": cov, "names": names},
+        ),
+        (
+            "iqrp.app.portfolio.optimization.turnover",
+            "optimize_turnover",
+            {"mu": np.ones(4) * 0.01, "cov": cov, "names": names},
+        ),
+        (
+            "iqrp.app.portfolio.robust.distributional_robust",
+            "optimize_distributional_robust",
+            {"mu": np.ones(4) * 0.01, "cov": cov, "names": names},
+        ),
+        (
+            "iqrp.app.portfolio.optimization.black_litterman",
+            "optimize_black_litterman",
+            {"cov": cov, "market_weights": np.ones(4) / 4, "names": names},
+        ),
+        (
+            "iqrp.app.portfolio.multi_period.optimizer",
+            "optimize_multi_period",
+            {"mu": np.ones(4) * 0.01, "cov": cov, "horizons": 2, "names": names},
+        ),
     ):
         mod = __import__(mod_name, fromlist=[fn_name])
         monkeypatch.setattr(mod, "as_cov", bad_as_cov, raising=False)
@@ -507,17 +584,54 @@ def test_box_violation_via_bad_project(mu, cov, names, monkeypatch):
         return np.ones(len(np.asarray(w).reshape(-1)))  # sum=n, each=1 → box viol
 
     for mod_name, fn, kwargs in (
-        ("iqrp.app.portfolio.optimization.entropy", optimize_entropy, {"mu": mu, "cov": cov, "names": names, "max_weight": 0.4}),
-        ("iqrp.app.portfolio.optimization.maximum_diversification", optimize_maximum_diversification, {"cov": cov, "names": names, "max_weight": 0.4}),
-        ("iqrp.app.portfolio.optimization.cvar", optimize_cvar, {"cov": cov, "names": names, "max_weight": 0.4}),
-        ("iqrp.app.portfolio.optimization.turnover", optimize_turnover, {"mu": mu, "cov": cov, "names": names, "max_weight": 0.4, "current_weights": np.ones(len(names))/len(names)}),
-        ("iqrp.app.portfolio.robust.distributional_robust", optimize_distributional_robust, {"mu": mu, "cov": cov, "names": names, "max_weight": 0.4}),
-        ("iqrp.app.portfolio.optimization.drawdown", optimize_drawdown, {"returns": np.random.default_rng(0).normal(0, 0.01, (80, len(names))), "cov": cov, "names": names, "max_weight": 0.4}),
+        (
+            "iqrp.app.portfolio.optimization.entropy",
+            optimize_entropy,
+            {"mu": mu, "cov": cov, "names": names, "max_weight": 0.4},
+        ),
+        (
+            "iqrp.app.portfolio.optimization.maximum_diversification",
+            optimize_maximum_diversification,
+            {"cov": cov, "names": names, "max_weight": 0.4},
+        ),
+        (
+            "iqrp.app.portfolio.optimization.cvar",
+            optimize_cvar,
+            {"cov": cov, "names": names, "max_weight": 0.4},
+        ),
+        (
+            "iqrp.app.portfolio.optimization.turnover",
+            optimize_turnover,
+            {
+                "mu": mu,
+                "cov": cov,
+                "names": names,
+                "max_weight": 0.4,
+                "current_weights": np.ones(len(names)) / len(names),
+            },
+        ),
+        (
+            "iqrp.app.portfolio.robust.distributional_robust",
+            optimize_distributional_robust,
+            {"mu": mu, "cov": cov, "names": names, "max_weight": 0.4},
+        ),
+        (
+            "iqrp.app.portfolio.optimization.drawdown",
+            optimize_drawdown,
+            {
+                "returns": np.random.default_rng(0).normal(0, 0.01, (80, len(names))),
+                "cov": cov,
+                "names": names,
+                "max_weight": 0.4,
+            },
+        ),
     ):
         mod = __import__(mod_name, fromlist=["project_weights"])
         monkeypatch.setattr(mod, "project_weights", bad_project, raising=False)
         if hasattr(mod, "project_box_simplex"):
-            monkeypatch.setattr(mod, "project_box_simplex", lambda *a, **k: np.ones(len(names)), raising=False)
+            monkeypatch.setattr(
+                mod, "project_box_simplex", lambda *a, **k: np.ones(len(names)), raising=False
+            )
         res = fn(**kwargs)
         assert "success" in res
 
@@ -610,16 +724,16 @@ def test_projection_simplex_theta_zero_and_equal():
 
 
 def test_outer_except_via_parse_constraints(cov, names, monkeypatch):
+    import iqrp.app.portfolio.multi_period.optimizer as mp
+    import iqrp.app.portfolio.optimization.black_litterman as bl
     import iqrp.app.portfolio.optimization.entropy as ent
-    import iqrp.app.portfolio.optimization.minimum_variance as mv
-    import iqrp.app.portfolio.optimization.maximum_sharpe as ms
-    import iqrp.app.portfolio.optimization.maximum_diversification as md
-    import iqrp.app.portfolio.optimization.risk_parity as rp
     import iqrp.app.portfolio.optimization.hierarchical as hi
+    import iqrp.app.portfolio.optimization.maximum_diversification as md
+    import iqrp.app.portfolio.optimization.maximum_sharpe as ms
+    import iqrp.app.portfolio.optimization.minimum_variance as mv
+    import iqrp.app.portfolio.optimization.risk_parity as rp
     import iqrp.app.portfolio.optimization.turnover as to
     import iqrp.app.portfolio.robust.distributional_robust as dr
-    import iqrp.app.portfolio.optimization.black_litterman as bl
-    import iqrp.app.portfolio.multi_period.optimizer as mp
 
     def boom(*a, **k):
         raise RuntimeError("parse fail")
@@ -630,12 +744,20 @@ def test_outer_except_via_parse_constraints(cov, names, monkeypatch):
 
     assert ent.optimize_entropy(mu=np.ones(4) * 0.01, cov=cov, names=names)["success"] is False
     assert mv.optimize_minimum_variance(cov=cov, names=names)["success"] is False
-    assert ms.optimize_maximum_sharpe(mu=np.ones(4) * 0.01, cov=cov, names=names)["success"] is False
+    assert (
+        ms.optimize_maximum_sharpe(mu=np.ones(4) * 0.01, cov=cov, names=names)["success"] is False
+    )
     assert md.optimize_maximum_diversification(cov=cov, names=names)["success"] is False
     assert rp.optimize_risk_parity(cov=cov, names=names)["success"] is False
     assert hi.optimize_hrp(cov=cov, names=names)["success"] is False
     assert to.optimize_turnover(mu=np.ones(4) * 0.01, cov=cov, names=names)["success"] is False
-    assert dr.optimize_distributional_robust(mu=np.ones(4) * 0.01, cov=cov, names=names)["success"] is False
+    assert (
+        dr.optimize_distributional_robust(mu=np.ones(4) * 0.01, cov=cov, names=names)["success"]
+        is False
+    )
     bl_res = bl.optimize_black_litterman(cov=cov, market_weights=np.ones(4) / 4, names=names)
     assert "success" in bl_res  # may fail or succeed depending on when parse is called
-    assert mp.optimize_multi_period(mu=np.ones(4) * 0.01, cov=cov, horizons=2, names=names)["success"] is False
+    assert (
+        mp.optimize_multi_period(mu=np.ones(4) * 0.01, cov=cov, horizons=2, names=names)["success"]
+        is False
+    )

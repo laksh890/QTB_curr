@@ -32,7 +32,7 @@ def pelt_detect(
 
     # prefix sums
     csum = np.concatenate([[0.0], np.cumsum(y)])
-    csum2 = np.concatenate([[0.0], np.cumsum(y ** 2)])
+    csum2 = np.concatenate([[0.0], np.cumsum(y**2)])
 
     def cost(a: int, b: int) -> float:
         """Cost of segment (a, b] (1-indexed ends via prefix arrays)."""

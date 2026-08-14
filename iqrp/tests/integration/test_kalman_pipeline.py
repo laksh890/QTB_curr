@@ -8,8 +8,9 @@ import numpy as np
 import polars as pl
 import pytest
 
-import iqrp.app.regimes.kalman  # noqa: F401
+import iqrp.app.regimes.kalman
 from iqrp.app.regimes.kalman import KalmanFilterModel, KalmanSettings, build_system, simulate_lds
+from iqrp.app.regimes.kalman.prediction import prediction_intervals
 from iqrp.app.regimes.kalman.visualization import (
     plot_covariance_evolution,
     plot_filtered_state,
@@ -18,7 +19,6 @@ from iqrp.app.regimes.kalman.visualization import (
     plot_prediction_bands,
     plot_smoothed_state,
 )
-from iqrp.app.regimes.kalman.prediction import prediction_intervals
 from iqrp.app.state_space import get_registry as get_ss_registry
 
 
@@ -59,7 +59,9 @@ def test_kalman_end_to_end(tmp_path: Path) -> None:
     plot_filtered_state(means, charts / "filtered.svg", settings, observations=obs[:, 0])
     plot_smoothed_state(model.smoothed_means(), charts / "smoothed.svg", settings)
     lo, hi = prediction_intervals(means[-1], model._trace.covs[-1])  # type: ignore[union-attr]
-    plot_prediction_bands(means[:, 0], means[:, 0] + lo[0], means[:, 0] + hi[0], charts / "bands.svg", settings)
+    plot_prediction_bands(
+        means[:, 0], means[:, 0] + lo[0], means[:, 0] + hi[0], charts / "bands.svg", settings
+    )
     plot_innovations(model._trace.innovations, charts / "innov.svg", settings)  # type: ignore[union-attr]
     plot_covariance_evolution(model._trace.covs, charts / "cov.svg", settings)  # type: ignore[union-attr]
     plot_kalman_gain(model._trace.gains, charts / "gain.svg", settings)  # type: ignore[union-attr]

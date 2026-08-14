@@ -31,7 +31,11 @@ def _local_black_litterman_posterior(
     pi = (
         as_vector(equilibrium_returns, n)
         if equilibrium_returns is not None
-        else float(risk_aversion) * (cov @ (as_vector(market_weights, n) if market_weights is not None else np.full(n, 1.0 / n)))
+        else float(risk_aversion)
+        * (
+            cov
+            @ (as_vector(market_weights, n) if market_weights is not None else np.full(n, 1.0 / n))
+        )
     )
     if P is None or Q is None:
         # no views → posterior = prior
@@ -120,13 +124,19 @@ def _call_bl_posterior(
     except Exception:
         return _local_black_litterman_posterior(
             cov,
-            market_weights=None if market_weights is None else as_vector(market_weights, cov.shape[0]),
+            market_weights=(
+                None if market_weights is None else as_vector(market_weights, cov.shape[0])
+            ),
             risk_aversion=risk_aversion,
             P=None if P is None else np.asarray(P, dtype=np.float64),
             Q=None if Q is None else as_vector(Q),
             omega=None if omega is None else np.asarray(omega, dtype=np.float64),
             tau=tau,
-            equilibrium_returns=None if equilibrium_returns is None else as_vector(equilibrium_returns, cov.shape[0]),
+            equilibrium_returns=(
+                None
+                if equilibrium_returns is None
+                else as_vector(equilibrium_returns, cov.shape[0])
+            ),
         )
 
 
@@ -180,7 +190,11 @@ def optimize_black_litterman(
         if mu_post is None:
             raise ValueError("BL posterior missing mu")
         mu_v = as_vector(mu_post, n)
-        cov_use = as_cov(post["posterior_cov"], n) if use_posterior_cov and post.get("posterior_cov") is not None else c
+        cov_use = (
+            as_cov(post["posterior_cov"], n)
+            if use_posterior_cov and post.get("posterior_cov") is not None
+            else c
+        )
 
         mv = optimize_mean_variance(
             mu=mu_v,

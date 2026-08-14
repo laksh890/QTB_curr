@@ -12,7 +12,6 @@ from iqrp.app.forecasting.base.metadata import ForecastModelMeta
 from iqrp.app.forecasting.base.registry import register_forecast_model
 from iqrp.app.forecasting.statistical.base.fitting import forecast_var, information_criteria
 from iqrp.app.forecasting.statistical.base.statistical_model import StatisticalForecastModel
-from iqrp.app.forecasting.statistical.var.var import VARModel
 
 
 @register_forecast_model
@@ -137,9 +136,7 @@ class VARMAXModel(StatisticalForecastModel):
         )
         return self
 
-    def predict(
-        self, frame: pl.DataFrame, feature_columns: list[str] | None = None
-    ) -> np.ndarray:
+    def predict(self, frame: pl.DataFrame, feature_columns: list[str] | None = None) -> np.ndarray:
         self._require_fitted()
         # delegate to one-step using stored coefs
         Y = frame.select(self._endog_names).to_numpy().astype(np.float64)
@@ -175,12 +172,21 @@ class VARMAXModel(StatisticalForecastModel):
         assert self._Y is not None and self._coefs is not None
         # freeze last exog
         path_m = forecast_var(self._Y, self._coefs, self._intercept, horizon=h)
-        if self._exog_coef is not None and self._exog_coef.size and self._X is not None and self._X.size:
+        if (
+            self._exog_coef is not None
+            and self._exog_coef.size
+            and self._X is not None
+            and self._X.size
+        ):
             x_last = self._X[-1]
             for i in range(h):
                 path_m[i] = path_m[i] + self._exog_coef @ x_last
         path = path_m[:, 0]
-        regime = frame[self._regime_column][-1] if self._regime_column and self._regime_column in frame.columns else None
+        regime = (
+            frame[self._regime_column][-1]
+            if self._regime_column and self._regime_column in frame.columns
+            else None
+        )
         return self._build_forecast(path, horizon=h, regime_used=regime)
 
     def _algorithm_state(self) -> dict[str, Any]:
@@ -210,11 +216,17 @@ class VARMAXModel(StatisticalForecastModel):
     def _load_algorithm_state(self, state: dict[str, Any]) -> None:
         self._p = state.get("p")
         self._q = state.get("q")
-        self._coefs = None if state.get("coefs") is None else np.asarray(state["coefs"], dtype=np.float64)
-        self._exog_coef = (
-            None if state.get("exog_coef") is None else np.asarray(state["exog_coef"], dtype=np.float64)
+        self._coefs = (
+            None if state.get("coefs") is None else np.asarray(state["coefs"], dtype=np.float64)
         )
-        self._ma_coef = None if state.get("ma_coef") is None else np.asarray(state["ma_coef"], dtype=np.float64)
+        self._exog_coef = (
+            None
+            if state.get("exog_coef") is None
+            else np.asarray(state["exog_coef"], dtype=np.float64)
+        )
+        self._ma_coef = (
+            None if state.get("ma_coef") is None else np.asarray(state["ma_coef"], dtype=np.float64)
+        )
         self._intercept = np.asarray(state.get("intercept") or [0.0], dtype=np.float64)
         self._sigma = np.asarray(state.get("sigma") or [[1.0]], dtype=np.float64)
         self._Y = None if state.get("Y") is None else np.asarray(state["Y"], dtype=np.float64)
@@ -222,7 +234,9 @@ class VARMAXModel(StatisticalForecastModel):
         self._endog_names = list(state.get("endog_names") or [])
         self._exog_names = list(state.get("exog_names") or [])
         self._residuals = (
-            None if state.get("residuals") is None else np.asarray(state["residuals"], dtype=np.float64)
+            None
+            if state.get("residuals") is None
+            else np.asarray(state["residuals"], dtype=np.float64)
         )
         self._fitted_values = (
             None if state.get("fitted") is None else np.asarray(state["fitted"], dtype=np.float64)

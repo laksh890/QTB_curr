@@ -55,12 +55,7 @@ def impact_curve(
     """Evaluate nonlinear impact (price units) over a participation grid."""
     parts = np.asarray(participations, dtype=np.float64).reshape(-1)
     parts = np.maximum(parts, 0.0)
-    return (
-        float(impact_coeff)
-        * float(volatility)
-        * float(mid)
-        * np.power(parts, float(exponent))
-    )
+    return float(impact_coeff) * float(volatility) * float(mid) * np.power(parts, float(exponent))
 
 
 __all__ = ["impact_curve", "nonlinear_impact"]

@@ -17,14 +17,17 @@ from iqrp.app.forecasting.transformers.base.masking import (
     padding_mask,
     regime_mask,
 )
-from iqrp.app.forecasting.transformers.base.processes import feature_names, simulate_long_range_series
+from iqrp.app.forecasting.transformers.base.processes import (
+    feature_names,
+    simulate_long_range_series,
+)
 from iqrp.app.forecasting.transformers.base.trainer import TransformerTrainer
 from iqrp.app.forecasting.transformers.diagnostics.report import run_transformer_diagnostics
 from iqrp.app.forecasting.transformers.probabilistic import mixture_density_params, mixture_mean
 from iqrp.app.forecasting.transformers.visualization.plots import (
+    plot_calibration_curve,
     plot_embedding_projection,
     plot_residual_distribution,
-    plot_calibration_curve,
 )
 
 
@@ -137,7 +140,15 @@ def test_forecast_pad_and_dict_settings(frame) -> None:
     m = create_transformer_model(
         "patchtst",
         settings={
-            "architecture": {"lookback": 12, "horizon": 2, "d_model": 32, "n_heads": 4, "num_layers": 1, "patch_len": 4, "stride": 2},
+            "architecture": {
+                "lookback": 12,
+                "horizon": 2,
+                "d_model": 32,
+                "n_heads": 4,
+                "num_layers": 1,
+                "patch_len": 4,
+                "stride": 2,
+            },
             "train": {"epochs": 1, "device": "cpu"},
             "scheduler": {"name": "none"},
             "regime": {"enabled": False},
@@ -148,10 +159,15 @@ def test_forecast_pad_and_dict_settings(frame) -> None:
     fc = m.forecast(frame, horizon=7)
     assert fc.path().size == 7
     # classification 3d predict_proba
-    cls = simulate_long_range_series(80, n_features=3, classification=True, rng=np.random.default_rng(8))
+    cls = simulate_long_range_series(
+        80, n_features=3, classification=True, rng=np.random.default_rng(8)
+    )
     m2 = create_transformer_model(
         "tft",
-        settings=_fast(task={"type": "classification", "n_classes": 2}, train={"loss": "cross_entropy", "epochs": 1, "device": "cpu"}),
+        settings=_fast(
+            task={"type": "classification", "n_classes": 2},
+            train={"loss": "cross_entropy", "epochs": 1, "device": "cpu"},
+        ),
     )
     m2.fit(cls, feature_columns=cols)
     assert m2.predict_proba(cls).shape[1] == 2
@@ -165,7 +181,9 @@ def test_viz_embedding_1d_and_export_no_torch(tmp_path: Path, frame) -> None:
     cols = feature_names(3)
     m = create_transformer_model("tide", settings=_fast())
     m.fit(frame, feature_columns=cols)
-    with patch("iqrp.app.forecasting.transformers.base.transformer_model.has_torch", return_value=False):
+    with patch(
+        "iqrp.app.forecasting.transformers.base.transformer_model.has_torch", return_value=False
+    ):
         with pytest.raises(Exception):
             m.export_onnx(tmp_path / "x.onnx")
 
@@ -173,5 +191,7 @@ def test_viz_embedding_1d_and_export_no_torch(tmp_path: Path, frame) -> None:
 @pytest.mark.unit
 def test_gradient_checkpoint_flag(frame) -> None:
     cols = feature_names(3)
-    s = _fast(train={"epochs": 1, "device": "cpu", "gradient_checkpointing": True, "ema_decay": 0.5})
+    s = _fast(
+        train={"epochs": 1, "device": "cpu", "gradient_checkpointing": True, "ema_decay": 0.5}
+    )
     create_transformer_model("timesnet", settings=s).fit(frame, feature_columns=cols)

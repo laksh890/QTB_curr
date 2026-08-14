@@ -15,7 +15,6 @@ from iqrp.app.risk.capital.correlation import correlation_crowding_scales, strat
 from iqrp.app.risk.capital.drawdown import drawdown_scales
 from iqrp.app.risk.capital.volatility import volatility_budgets
 
-
 _DEFAULT_RISK_STATE = {
     "NORMAL": 1.0,
     "CAUTION": 0.8,
@@ -123,8 +122,7 @@ def dynamic_risk_scales(
     med = float(np.median(vol_vals)) if n else 0.01
     med = max(med, cfg.vol_floor)
     vol_scales = {
-        names[i]: float(np.clip(med / max(vol_vals[i], cfg.vol_floor), 0.25, 1.0))
-        for i in range(n)
+        names[i]: float(np.clip(med / max(vol_vals[i], cfg.vol_floor), 0.25, 1.0)) for i in range(n)
     }
 
     # Confidence / agreement — CAP at 1.0 (cannot expand)

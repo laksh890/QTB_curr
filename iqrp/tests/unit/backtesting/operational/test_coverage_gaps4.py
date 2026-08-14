@@ -11,12 +11,12 @@ import pandas as pd
 import pytest
 
 from iqrp.app.backtesting.data import (
+    AdjustmentMethod,
     ContinuousContractBuilder,
     ContinuousContractConfig,
     ContractSpec,
     DatasetValidator,
     RollRule,
-    AdjustmentMethod,
 )
 from iqrp.app.backtesting.data.corporate_actions import corporate_actions_asof
 from iqrp.app.backtesting.data.metadata import metadata_from_frame
@@ -30,7 +30,11 @@ from iqrp.app.backtesting.runner import BacktestRunConfig
 from iqrp.app.backtesting.runner.executor import PipelineExecutor, load_market_frame
 from iqrp.app.backtesting.runner.pipeline import EventPipeline
 from iqrp.app.backtesting.runner.result import OperationalBacktestResult
-from iqrp.app.backtesting.strategy import BuyAndHoldStrategy, CrossSectionalMomentumStrategy, Strategy
+from iqrp.app.backtesting.strategy import (
+    BuyAndHoldStrategy,
+    CrossSectionalMomentumStrategy,
+    Strategy,
+)
 from iqrp.app.backtesting.strategy.base import Strategy as StrategyBase
 
 
@@ -230,9 +234,7 @@ def test_pipeline_risk_clamp_and_signal_targets(tmp_path: Path, registered_strat
             return {"signals": {"AAA": 1.0, "BBB": 0.5}}
 
     ex.context.strategy = SigOnly()
-    pipe.on_signal(
-        SignalEvent(timestamp=ts, payload={"signals": {"AAA": 1.0, "BBB": 0.5}})
-    )
+    pipe.on_signal(SignalEvent(timestamp=ts, payload={"signals": {"AAA": 1.0, "BBB": 0.5}}))
 
     # on_portfolio with signals only
     pipe.on_portfolio(

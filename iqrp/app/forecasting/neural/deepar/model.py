@@ -39,7 +39,11 @@ class DeepARForecastModel(NeuralForecastModel):
                 }
             )
         elif isinstance(settings, dict) and "train" not in settings:
-            settings = {**settings, "train": {"loss": "gaussian_nll"}, "task": {"type": "distribution"}}
+            settings = {
+                **settings,
+                "train": {"loss": "gaussian_nll"},
+                "task": {"type": "distribution"},
+            }
         super().__init__(settings=settings, **params)
 
     def _build_module(self, *, n_features: int, task: str) -> Any:

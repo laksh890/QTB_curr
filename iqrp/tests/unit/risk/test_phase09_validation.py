@@ -15,7 +15,6 @@ from iqrp.app.risk.phase09 import (
     write_phase09_report,
 )
 
-
 REQUIRED_CHECKLIST_KEYS = [
     "Risk Framework",
     "Position Sizing Engine",
@@ -94,7 +93,9 @@ class TestValidatePhase09:
         for key in REQUIRED_CHECKLIST_KEYS:
             assert key in data["checklist"]
 
-    def test_write_phase09_report_default_path(self, tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    def test_write_phase09_report_default_path(
+        self, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+    ) -> None:
         # Redirect default write into tmp by patching Path behavior via path arg only —
         # call with explicit path (default may write into repo docs which is fine if PASS).
         # Also exercise default when path is None but isolate to tmp by monkeypatching parents.

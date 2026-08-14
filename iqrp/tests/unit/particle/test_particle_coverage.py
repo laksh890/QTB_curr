@@ -13,7 +13,11 @@ from omegaconf import OmegaConf
 from iqrp.app.core.exceptions import ConfigurationError, ValidationError
 from iqrp.app.regimes.particle.adaptive import resize_cloud, suggest_n_particles
 from iqrp.app.regimes.particle.config import ParticleSettings
-from iqrp.app.regimes.particle.model import ParticleFilterModel, ParticleRegimeModel, _soft_trend_proba
+from iqrp.app.regimes.particle.model import (
+    ParticleFilterModel,
+    ParticleRegimeModel,
+    _soft_trend_proba,
+)
 from iqrp.app.regimes.particle.particle import ParticleCloud
 from iqrp.app.regimes.particle.prediction import posterior_summary
 from iqrp.app.regimes.particle.propagation import TransitionModel, build_transition
@@ -26,8 +30,17 @@ from iqrp.app.regimes.particle.rejuvenation import (
 )
 from iqrp.app.regimes.particle.serializer import _json_default
 from iqrp.app.regimes.particle.smoothing import backward_smooth_means, trajectory_smooth
-from iqrp.app.regimes.particle.trainer import ParticleTrainer, initialize_cloud, run_filter, simulate_nonlinear
-from iqrp.app.regimes.particle.visualization import _ensure, plot_particle_cloud, plot_state_trajectory
+from iqrp.app.regimes.particle.trainer import (
+    ParticleTrainer,
+    initialize_cloud,
+    run_filter,
+    simulate_nonlinear,
+)
+from iqrp.app.regimes.particle.visualization import (
+    _ensure,
+    plot_particle_cloud,
+    plot_state_trajectory,
+)
 from iqrp.app.regimes.particle.weighting import log_likelihood
 
 

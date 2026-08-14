@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Any, Literal
+from typing import Literal
 
 import numpy as np
 
@@ -15,7 +15,15 @@ class TimeSeriesTransformer:
     def __init__(
         self,
         method: Literal[
-            "log_return", "simple_return", "diff", "seasonal_diff", "zscore", "robust", "rank", "winsorize", "log"
+            "log_return",
+            "simple_return",
+            "diff",
+            "seasonal_diff",
+            "zscore",
+            "robust",
+            "rank",
+            "winsorize",
+            "log",
         ] = "log_return",
         *,
         window: int = 64,
@@ -35,13 +43,16 @@ class TimeSeriesTransformer:
     def fit(self, x: np.ndarray | list[float]) -> TimeSeriesTransformer:
         arr = as_float_array(x)
         finite = arr[np.isfinite(arr)]
-        if self.method in {"zscore", "robust", "winsorize", "rank"} and self.temporal_mode == "training_only":
+        if (
+            self.method in {"zscore", "robust", "winsorize", "rank"}
+            and self.temporal_mode == "training_only"
+        ):
             if self.method == "zscore":
                 self._center = float(np.mean(finite)) if finite.size else 0.0
                 self._scale = float(np.std(finite)) if finite.size else 1.0
             elif self.method == "robust":
                 self._center = float(np.median(finite)) if finite.size else 0.0
-                q75, q25 = (np.percentile(finite, [75, 25]) if finite.size else (1.0, 0.0))
+                q75, q25 = np.percentile(finite, [75, 25]) if finite.size else (1.0, 0.0)
                 self._scale = float(q75 - q25) or 1.0
             else:
                 self._center = 0.0

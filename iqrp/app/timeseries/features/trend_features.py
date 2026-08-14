@@ -5,8 +5,6 @@ These are measurements — not alpha signals.
 
 from __future__ import annotations
 
-from typing import Any
-
 import numpy as np
 
 from iqrp.app.timeseries.autocorrelation.acf import acf
@@ -23,16 +21,24 @@ from iqrp.app.timeseries.spectral.fft import dominant_frequencies
 from iqrp.app.timeseries.stationarity.variance_ratio import variance_ratio
 
 
-def trend_features(x: np.ndarray | list[float], *, period: int = 24, window: int = 64) -> dict[str, float]:
+def trend_features(
+    x: np.ndarray | list[float], *, period: int = 24, window: int = 64
+) -> dict[str, float]:
     arr = as_float_array(x)
     dec = stl_decompose(arr, period=period)
     slope = float(np.polyfit(np.arange(arr.size), arr, 1)[0]) if arr.size >= 2 else 0.0
     return {
         "trend_strength": trend_strength(dec.trend, dec.residual),
         "trend_slope": slope,
-        "rolling_slope": float(rolling_apply(arr, window, lambda c: float(np.polyfit(np.arange(c.size), c, 1)[0]))[-1])
-        if arr.size >= window
-        else slope,
+        "rolling_slope": (
+            float(
+                rolling_apply(arr, window, lambda c: float(np.polyfit(np.arange(c.size), c, 1)[0]))[
+                    -1
+                ]
+            )
+            if arr.size >= window
+            else slope
+        ),
     }
 
 
@@ -45,7 +51,9 @@ def cycle_features(x: np.ndarray | list[float], *, period: int = 24) -> dict[str
         "seasonal_strength": seasonal_strength(dec.seasonal, dec.residual),
         "dominant_frequency": float(freqs[0]["frequency"]) if freqs else 0.0,
         "dominant_period": float(freqs[0]["period"]) if freqs else float(period),
-        "cycle_strength": float(freqs[0].get("amplitude", freqs[0].get("power", 0.0))) if freqs else 0.0,
+        "cycle_strength": (
+            float(freqs[0].get("amplitude", freqs[0].get("power", 0.0))) if freqs else 0.0
+        ),
     }
 
 
@@ -69,7 +77,9 @@ def entropy_features(x: np.ndarray | list[float]) -> dict[str, float]:
     pe = permutation_entropy(arr)
     return {
         "shannon_entropy": float(h.value) if isinstance(h.value, (int, float)) else float("nan"),
-        "permutation_entropy": float(pe.value) if isinstance(pe.value, (int, float)) else float("nan"),
+        "permutation_entropy": (
+            float(pe.value) if isinstance(pe.value, (int, float)) else float("nan")
+        ),
     }
 
 
@@ -84,9 +94,16 @@ def memory_features(x: np.ndarray | list[float]) -> dict[str, float]:
         "hurst": float(h.value) if isinstance(h.value, (int, float)) else float("nan"),
         "variance_ratio": float(vr.value) if isinstance(vr.value, (int, float)) else float("nan"),
         "acf_lag1": ac1,
-        "mean_reversion_score": float(max(0.0, 1.0 - abs(float(h.value) if isinstance(h.value, (int, float)) else 0.5) * 2 + 1))
-        if isinstance(h.value, (int, float))
-        else float("nan"),
+        "mean_reversion_score": (
+            float(
+                max(
+                    0.0,
+                    1.0 - abs(float(h.value) if isinstance(h.value, (int, float)) else 0.5) * 2 + 1,
+                )
+            )
+            if isinstance(h.value, (int, float))
+            else float("nan")
+        ),
     }
 
 

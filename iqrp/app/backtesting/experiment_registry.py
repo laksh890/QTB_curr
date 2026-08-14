@@ -8,16 +8,17 @@ versions plus seed.
 from __future__ import annotations
 
 import uuid
+from collections.abc import Mapping
 from dataclasses import asdict, dataclass, field
 from datetime import UTC, datetime
-from typing import Any, Mapping
+from typing import Any
 
 from iqrp.app.backtesting.serializer import load_json, save_json, to_jsonable
 from iqrp.app.backtesting.types import BacktestState, JSONDict
 
 __all__ = [
-    "ExperimentRecord",
     "ExperimentLineage",
+    "ExperimentRecord",
     "ExperimentRegistry",
 ]
 
@@ -41,7 +42,7 @@ class ExperimentLineage:
         return asdict(self)
 
     @classmethod
-    def from_dict(cls, data: Mapping[str, Any] | None) -> "ExperimentLineage":
+    def from_dict(cls, data: Mapping[str, Any] | None) -> ExperimentLineage:
         if not data:
             return cls()
         known = {f.name for f in cls.__dataclass_fields__.values()}  # type: ignore[attr-defined]
@@ -54,7 +55,7 @@ class ExperimentLineage:
         return cls(**kwargs)
 
     @classmethod
-    def from_settings(cls, settings: Any, *, seed: int | None = None) -> "ExperimentLineage":
+    def from_settings(cls, settings: Any, *, seed: int | None = None) -> ExperimentLineage:
         repro = getattr(settings, "reproducibility", None)
         if repro is None:
             return cls(seed=42 if seed is None else int(seed))
@@ -95,10 +96,12 @@ class ExperimentRecord:
         return to_jsonable(d)
 
     @classmethod
-    def from_dict(cls, data: Mapping[str, Any]) -> "ExperimentRecord":
+    def from_dict(cls, data: Mapping[str, Any]) -> ExperimentRecord:
         payload = dict(data)
         lineage = ExperimentLineage.from_dict(payload.pop("lineage", None))
-        return cls(lineage=lineage, **{k: v for k, v in payload.items() if k in cls.__dataclass_fields__})
+        return cls(
+            lineage=lineage, **{k: v for k, v in payload.items() if k in cls.__dataclass_fields__}
+        )
 
 
 class ExperimentRegistry:

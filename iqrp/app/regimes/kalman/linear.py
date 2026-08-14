@@ -12,6 +12,7 @@ from iqrp.app.regimes.kalman.initialization import LinearGaussianSSM
 from iqrp.app.regimes.kalman.prediction import predict_state
 from iqrp.app.regimes.kalman.update import update_state
 
+
 @dataclass
 class FilterTrace:
     means: np.ndarray

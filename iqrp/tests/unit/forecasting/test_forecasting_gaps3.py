@@ -26,7 +26,10 @@ from iqrp.app.forecasting.models.mock import MockForecastModel
 from iqrp.app.forecasting.orchestration.pipeline import ForecastingPipeline
 from iqrp.app.forecasting.postprocessing.calibration import _fit_temperature
 from iqrp.app.forecasting.postprocessing.intervals import confidence_intervals_from_samples
-from iqrp.app.forecasting.postprocessing.uncertainty import predictive_entropy, quantile_from_samples
+from iqrp.app.forecasting.postprocessing.uncertainty import (
+    predictive_entropy,
+    quantile_from_samples,
+)
 from iqrp.app.forecasting.preprocessing.encoding import LabelEncoder
 from iqrp.app.forecasting.preprocessing.feature_selection import (
     _mutual_info_score,
@@ -122,7 +125,9 @@ def test_forecast_model_partial_fit_default_and_missing() -> None:
 
 @pytest.mark.unit
 def test_mock_settings_target_and_empty_forecast() -> None:
-    settings = ForecastingSettings.from_mapping({"columns": {"target": "target", "feature_columns": ("f0",)}})
+    settings = ForecastingSettings.from_mapping(
+        {"columns": {"target": "target", "feature_columns": ("f0",)}}
+    )
     m = MockForecastModel(settings=settings)
     frame = pl.DataFrame({"f0": [1.0, 2.0, 3.0], "target": [1.0, 2.0, 3.0]})
     m.fit(frame)  # uses settings target
@@ -139,7 +144,11 @@ def test_pipeline_model_name_and_intervals() -> None:
     settings = ForecastingSettings.from_mapping(
         {
             "columns": {"feature_columns": ("f0", "f1"), "target": "target"},
-            "preprocessing": {"feature_selection": "variance", "max_features": 1, "scaler": "standard"},
+            "preprocessing": {
+                "feature_selection": "variance",
+                "max_features": 1,
+                "scaler": "standard",
+            },
             "postprocessing": {"interval_level": 0.9},
         }
     )
@@ -175,6 +184,7 @@ def test_explain_permutation_fallback_and_shap_2d() -> None:
 
     frame = pl.DataFrame({"f0": [1.0, 2.0, 3.0], "f1": [0.1, 0.2, 0.3], "target": [1.0, 2.0, 3.0]})
     assert shap_interface(M(), frame, ["f0", "f1"]).attributions is not None
+
     # IG fallback to permutation when no hook
     class M2:
         def predict(self, frame, cols=None):
@@ -182,7 +192,9 @@ def test_explain_permutation_fallback_and_shap_2d() -> None:
 
     assert integrated_gradients_interface(M2(), frame, ["f0", "f1"]).method == "permutation"
     # ExplanationResult to_dict
-    er = ExplanationResult(method="x", importances={"a": 1.0}, attributions=np.ones((2, 1)), attention=np.eye(2))
+    er = ExplanationResult(
+        method="x", importances={"a": 1.0}, attributions=np.ones((2, 1)), attention=np.eye(2)
+    )
     assert er.to_dict()["attributions"]
 
 
@@ -197,7 +209,12 @@ def test_feature_selection_hard_branches() -> None:
     assert _mutual_info_score(np.array([1.0]), np.array([1.0])) == 0.0
     # select_features max_features none path with f==0
     select_features(np.zeros((5, 0)), method="none")
-    select_features(np.random.default_rng(0).normal(size=(25, 4)), np.linspace(0, 1, 25), method="mutual_info", max_features=2)
+    select_features(
+        np.random.default_rng(0).normal(size=(25, 4)),
+        np.linspace(0, 1, 25),
+        method="mutual_info",
+        max_features=2,
+    )
     # encoding unknown
     assert 1 in LabelEncoder().fit(["a"]).transform(["unknown"]).tolist() or True
 
@@ -237,10 +254,20 @@ def test_uncertainty_and_intervals_1d_and_viz(tmp_path: Path) -> None:
     q = quantile_from_samples(np.linspace(0, 1, 30).reshape(30, 1), horizon=1)
     assert len(q) == 1
     confidence_intervals_from_samples(np.linspace(0, 1, 40))  # 1d
-    settings = ForecastingSettings.from_mapping({"visualization": {"enabled": True, "max_points": 10}})
+    settings = ForecastingSettings.from_mapping(
+        {"visualization": {"enabled": True, "max_points": 10}}
+    )
     plot_residuals(np.array([]), tmp_path / "er.svg", settings=settings)
     plot_forecast(np.array([]), np.array([]), tmp_path / "ef.svg", settings=settings)
-    plot_feature_importance({}, tmp_path / "ei.svg", settings=ForecastingSettings.from_mapping({"visualization": {"enabled": False}}))
-    plot_horizon_comparison({}, tmp_path / "eh.svg", settings=ForecastingSettings.from_mapping({"visualization": {"enabled": False}}))
+    plot_feature_importance(
+        {},
+        tmp_path / "ei.svg",
+        settings=ForecastingSettings.from_mapping({"visualization": {"enabled": False}}),
+    )
+    plot_horizon_comparison(
+        {},
+        tmp_path / "eh.svg",
+        settings=ForecastingSettings.from_mapping({"visualization": {"enabled": False}}),
+    )
     # empty nonempty skip in line via plot_forecast with one empty one filled — already
     plot_horizon_comparison({1: 0.5, 2: 1.0}, tmp_path / "ok.svg", settings=settings)

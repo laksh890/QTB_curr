@@ -17,15 +17,19 @@ from typing import Any
 
 import numpy as np
 
+from iqrp.app.alpha.backtesting.signal_backtest import signal_backtest
 from iqrp.app.alpha.base.alpha_signal import AlphaSignal
 from iqrp.app.alpha.base.signal_definition import SignalDefinition
-from iqrp.app.alpha.base.signal_registry import ExperimentRecord, SignalRegistry, get_default_registry
+from iqrp.app.alpha.base.signal_registry import (
+    ExperimentRecord,
+    SignalRegistry,
+    get_default_registry,
+)
 from iqrp.app.alpha.base.signal_result import (
     SignalResearchReport,
     SignalStatistics,
     SignalStatus,
 )
-from iqrp.app.alpha.backtesting.signal_backtest import signal_backtest
 from iqrp.app.alpha.config import AlphaSettings
 from iqrp.app.alpha.discovery.candidate_generator import CandidateGenerator
 from iqrp.app.alpha.economics.capacity import estimate_capacity
@@ -33,8 +37,7 @@ from iqrp.app.alpha.ensemble.correlation import signal_correlation_matrix
 from iqrp.app.alpha.ensemble.redundancy import redundancy_report
 from iqrp.app.alpha.ranking import rank_candidates
 from iqrp.app.alpha.regime.regime_performance import regime_performance
-from iqrp.app.alpha.research.decay import analyze_decay
-from iqrp.app.alpha.research.decay import forward_returns as build_forward_returns
+from iqrp.app.alpha.research.decay import analyze_decay, forward_returns as build_forward_returns
 from iqrp.app.alpha.research.evaluator import SignalEvaluator
 from iqrp.app.alpha.serializer import AlphaSerializer
 from iqrp.app.alpha.statistical_validation.bootstrap import iid_bootstrap_ci
@@ -48,7 +51,6 @@ from iqrp.app.alpha.statistical_validation.probability_backtest_overfitting impo
     probability_backtest_overfitting,
 )
 from iqrp.app.alpha.statistical_validation.significance import ic_significance
-
 
 _SHARPE_ONLY_RE = re.compile(
     r"\b(sharpe|sr|net_sharpe|gross_sharpe)\b",
@@ -125,9 +127,7 @@ class AlphaResearchEngine:
             owner=kwargs.pop("owner", self.settings.owner_default),
             universe=kwargs.pop("universe", self.settings.universe_default),
             frequency=kwargs.pop("frequency", self.settings.frequency_default),
-            auto_register=kwargs.pop(
-                "auto_register", self.settings.discovery.auto_register
-            ),
+            auto_register=kwargs.pop("auto_register", self.settings.discovery.auto_register),
         )
         target = kwargs.pop("target", None)
         if features is not None and target is None and returns is not None:
@@ -146,11 +146,7 @@ class AlphaResearchEngine:
         )
         candidates: list[dict[str, Any]] = []
         for i, sig in enumerate(result.signals):
-            definition = (
-                result.definitions[i]
-                if i < len(result.definitions)
-                else None
-            )
+            definition = result.definitions[i] if i < len(result.definitions) else None
             eid = result.experiment_ids[i] if i < len(result.experiment_ids) else None
             candidates.append(
                 {
@@ -287,10 +283,10 @@ class AlphaResearchEngine:
             }
             nxt = allowed_next.get(current)
             if nxt is None:
-                raise ApprovalError(
-                    f"Cannot approve from status {current.value}"
-                )
-            step_reason = reason if nxt == SignalStatus.APPROVED else f"advance toward APPROVED: {reason}"
+                raise ApprovalError(f"Cannot approve from status {current.value}")
+            step_reason = (
+                reason if nxt == SignalStatus.APPROVED else f"advance toward APPROVED: {reason}"
+            )
             record = self.registry.transition(
                 experiment_id,
                 nxt,
@@ -397,9 +393,7 @@ class AlphaResearchEngine:
         if record.report is not None:
             return record.report
         if record.signal is None:
-            raise KeyError(
-                f"No report or signal attached for experiment {experiment_id}"
-            )
+            raise KeyError(f"No report or signal attached for experiment {experiment_id}")
         # Cannot evaluate without returns — return stub report
         return SignalResearchReport(
             signal_name=record.definition.name,
@@ -468,12 +462,8 @@ class AlphaResearchEngine:
         n_perm = int(kwargs.pop("n_perm", max(50, min(200, int(n_trials) * 5))))
 
         significance = ic_significance(sig, fwd)
-        bootstrap = iid_bootstrap_ci(
-            sig, fwd, stat="ic", n_boot=n_boot, seed=seed
-        )
-        permutation = permutation_ic_test(
-            sig, fwd, n_perm=n_perm, seed=seed
-        )
+        bootstrap = iid_bootstrap_ci(sig, fwd, stat="ic", n_boot=n_boot, seed=seed)
+        permutation = permutation_ic_test(sig, fwd, n_perm=n_perm, seed=seed)
 
         pvals = [float(significance.get("pvalue", float("nan")))]
         # Pad with nulls to reflect trial budget for MT demo
@@ -486,10 +476,7 @@ class AlphaResearchEngine:
             label=kwargs.pop("label", "alpha_validate"),
         )
         # Convert numpy arrays for JSON-friendliness
-        mt_out = {
-            k: (v.tolist() if isinstance(v, np.ndarray) else v)
-            for k, v in mt.items()
-        }
+        mt_out = {k: (v.tolist() if isinstance(v, np.ndarray) else v) for k, v in mt.items()}
 
         # Deflated Sharpe from signed signal * forward return
         m = np.isfinite(sig) & np.isfinite(fwd)
@@ -497,15 +484,15 @@ class AlphaResearchEngine:
         if pnl.size > 2:
             mu, sd = float(np.mean(pnl)), float(np.std(pnl, ddof=1))
             obs_sr = mu / (sd + 1e-12) if sd > 0 else 0.0
-            skew = float(0.0)
-            kurt = float(3.0)
+            skew = 0.0
+            kurt = 3.0
             try:
                 from scipy import stats as sp_stats  # type: ignore[import-untyped]
 
                 if pnl.size > 3:
                     skew = float(sp_stats.skew(pnl))
                     kurt = float(sp_stats.kurtosis(pnl) + 3.0)
-            except Exception:  # noqa: BLE001
+            except Exception:
                 pass
             dsr = deflated_sharpe_ratio(
                 obs_sr,
@@ -558,9 +545,11 @@ class AlphaResearchEngine:
                 try:
                     self.registry.transition(
                         experiment_id,
-                        SignalStatus.VALIDATING
-                        if rec.status == SignalStatus.RESEARCHING
-                        else SignalStatus.RESEARCHING,
+                        (
+                            SignalStatus.VALIDATING
+                            if rec.status == SignalStatus.RESEARCHING
+                            else SignalStatus.RESEARCHING
+                        ),
                         reason="engine.validate attached evidence",
                         actor="system",
                     )
@@ -588,10 +577,7 @@ class AlphaResearchEngine:
             **{k: v for k, v in kwargs.items() if k in {"periods_per_year", "weights"}},
         )
         # JSON-friendly scalars preferred by callers
-        out = {
-            k: (v.tolist() if isinstance(v, np.ndarray) else v)
-            for k, v in result.items()
-        }
+        out = {k: (v.tolist() if isinstance(v, np.ndarray) else v) for k, v in result.items()}
         out["net_sharpe"] = result.get("net_sharpe")
         out["gross_sharpe"] = result.get("gross_sharpe")
         return out
@@ -632,10 +618,7 @@ class AlphaResearchEngine:
             },
             "shocks": shocked,
             "regimes": regime_block,
-            "disclaimer": (
-                "Stress diagnostics only. "
-                "Historical Sharpe alone cannot approve."
-            ),
+            "disclaimer": ("Stress diagnostics only. " "Historical Sharpe alone cannot approve."),
         }
 
     def analyze_decay(
@@ -690,10 +673,7 @@ class AlphaResearchEngine:
             "correlation": corr,
             "redundancy": red,
             "signal_ic": pairwise_ic,
-            "disclaimer": (
-                "Comparison is triage only. "
-                "Statistical significance alone ≠ alpha."
-            ),
+            "disclaimer": ("Comparison is triage only. " "Statistical significance alone ≠ alpha."),
         }
 
     def rank(self, candidates: list[Any]) -> list[dict[str, Any]]:
@@ -719,9 +699,7 @@ class AlphaResearchEngine:
             return self.serializer.save_signal(obj, p)
         if isinstance(obj, SignalResearchReport):
             return self.serializer.save_report(obj, p)
-        p.write_text(
-            json.dumps(self._jsonable(obj), indent=2), encoding="utf-8"
-        )
+        p.write_text(json.dumps(self._jsonable(obj), indent=2), encoding="utf-8")
         return p
 
     def load(self, path: str | Path) -> dict[str, Any]:
@@ -783,9 +761,9 @@ class AlphaResearchEngine:
         present = {k for k in extras if k in sharpe_keys or k in evidence_keys}
         if present and present <= sharpe_keys:
             return True
-        if mentions_sharpe and present <= sharpe_keys and not self._has_validation_evidence(record):
-            return True
-        return False
+        return bool(
+            mentions_sharpe and present <= sharpe_keys and not self._has_validation_evidence(record)
+        )
 
     def _has_validation_evidence(self, record: ExperimentRecord) -> bool:
         report = record.report

@@ -31,7 +31,7 @@ def _normalize_weights(weights: dict[str, float]) -> dict[str, float]:
     total = sum(out.values())
     if total <= 1e-12:
         equal = 1.0 / len(DIMENSIONS)
-        return {d: equal for d in DIMENSIONS}
+        return dict.fromkeys(DIMENSIONS, equal)
     return {d: out[d] / total for d in DIMENSIONS}
 
 
@@ -39,7 +39,9 @@ def static_weights(settings: EnsembleSettings) -> dict[str, float]:
     return _normalize_weights(dict(settings.static_weights))
 
 
-def user_defined_weights(settings: EnsembleSettings, overrides: dict[str, float] | None = None) -> dict[str, float]:
+def user_defined_weights(
+    settings: EnsembleSettings, overrides: dict[str, float] | None = None
+) -> dict[str, float]:
     base = dict(settings.static_weights)
     base.update(dict(settings.user_defined_weights or {}))
     if overrides:

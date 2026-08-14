@@ -2,7 +2,8 @@
 
 from __future__ import annotations
 
-from typing import Any, Callable
+from collections.abc import Callable
+from typing import Any
 
 import numpy as np
 
@@ -10,7 +11,7 @@ from iqrp.app.backtesting.performance.drawdown import max_drawdown
 from iqrp.app.backtesting.performance.returns import as_returns, total_return
 from iqrp.app.backtesting.performance.risk_adjusted import sharpe_ratio
 
-__all__ = ["capacity_curve", "estimate_capacity_limit", "CapacityModel"]
+__all__ = ["CapacityModel", "capacity_curve", "estimate_capacity_limit"]
 
 
 class CapacityModel:

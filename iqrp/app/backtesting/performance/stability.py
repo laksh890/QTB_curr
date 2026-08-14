@@ -12,13 +12,13 @@ from iqrp.app.backtesting.performance.risk_adjusted import sharpe_ratio
 from iqrp.app.backtesting.performance.trade_metrics import turnover
 
 __all__ = [
-    "rolling_sharpe",
-    "rolling_return_series",
-    "rolling_drawdown",
-    "rolling_volatility",
-    "rolling_ic",
-    "rolling_turnover",
     "rolling_costs",
+    "rolling_drawdown",
+    "rolling_ic",
+    "rolling_return_series",
+    "rolling_sharpe",
+    "rolling_turnover",
+    "rolling_volatility",
     "stability_report",
 ]
 

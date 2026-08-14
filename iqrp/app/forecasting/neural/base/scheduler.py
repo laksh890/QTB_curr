@@ -14,7 +14,7 @@ try:
         OneCycleLR,
         ReduceLROnPlateau,
     )
-except Exception:  # noqa: BLE001  # pragma: no cover
+except Exception:  # pragma: no cover
     torch = None  # type: ignore[assignment]
 
 

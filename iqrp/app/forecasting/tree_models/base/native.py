@@ -19,7 +19,9 @@ class _Node:
 
 
 class _Tree:
-    def __init__(self, max_depth: int = 3, min_leaf: int = 5, random_state: int = 0, extra: bool = False) -> None:
+    def __init__(
+        self, max_depth: int = 3, min_leaf: int = 5, random_state: int = 0, extra: bool = False
+    ) -> None:
         self.max_depth = max_depth
         self.min_leaf = min_leaf
         self.rng = np.random.default_rng(random_state)
@@ -39,7 +41,9 @@ class _Tree:
         self.feature_importances_ /= s
         return self
 
-    def _build(self, X: np.ndarray, y: np.ndarray, w: np.ndarray, idx: np.ndarray, depth: int) -> int:
+    def _build(
+        self, X: np.ndarray, y: np.ndarray, w: np.ndarray, idx: np.ndarray, depth: int
+    ) -> int:
         node_id = len(self.nodes)
         self.nodes.append(_Node())
         yw = y[idx]
@@ -208,7 +212,6 @@ class NativeGBM:
             y_fit = (y == self.classes_[-1]).astype(np.float64)
             self.base_score = float(np.clip(np.mean(y_fit), 1e-3, 1 - 1e-3))
             # work in logit space
-            eps = 1e-6
             pred = np.full(y.size, np.log(self.base_score / (1 - self.base_score)))
         else:
             y_fit = y
@@ -251,7 +254,9 @@ class NativeGBM:
 
     def predict_proba(self, X: np.ndarray) -> np.ndarray:
         X = np.asarray(X, dtype=np.float64)
-        pred = np.full(X.shape[0], np.log(max(self.base_score, 1e-6) / max(1 - self.base_score, 1e-6)))
+        pred = np.full(
+            X.shape[0], np.log(max(self.base_score, 1e-6) / max(1 - self.base_score, 1e-6))
+        )
         for t in self.trees:
             pred = pred + self.learning_rate * t.predict(X)
         p = 1 / (1 + np.exp(-pred))

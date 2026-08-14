@@ -90,7 +90,9 @@ class TestVolTargetAndAdjustments:
         assert m.value == pytest.approx(50_000.0)
 
     def test_fixed_fractional_max_size(self) -> None:
-        m = fixed_fractional_size(equity=100_000, risk_fraction=0.01, stop_distance=0.02, max_size=10_000)
+        m = fixed_fractional_size(
+            equity=100_000, risk_fraction=0.01, stop_distance=0.02, max_size=10_000
+        )
         assert m.value == pytest.approx(10_000.0)
 
     def test_confidence_cannot_expand_beyond_one(self) -> None:
@@ -113,7 +115,9 @@ class TestVolTargetAndAdjustments:
     def test_drawdown_adjusted(self) -> None:
         full = drawdown_adjusted_size(base_size=1.0, current_drawdown=0.0, max_drawdown_limit=0.20)
         half = drawdown_adjusted_size(base_size=1.0, current_drawdown=0.10, max_drawdown_limit=0.20)
-        halt = drawdown_adjusted_size(base_size=1.0, current_drawdown=0.25, max_drawdown_limit=0.20, floor=0.0)
+        halt = drawdown_adjusted_size(
+            base_size=1.0, current_drawdown=0.25, max_drawdown_limit=0.20, floor=0.0
+        )
         assert full.value == pytest.approx(1.0)
         assert half.value == pytest.approx(0.5)
         assert halt.value == pytest.approx(0.0)
@@ -248,7 +252,9 @@ class TestAggregateLimits:
         assert len(lims) >= 5
 
     def test_check_all_clean(self) -> None:
-        breaches = check_all_limits(weights=[0.05, 0.05, 0.05], daily_loss=0.0, current_drawdown=0.0)
+        breaches = check_all_limits(
+            weights=[0.05, 0.05, 0.05], daily_loss=0.0, current_drawdown=0.0
+        )
         hard = [b for b in breaches if b.severity == LimitSeverity.HARD]
         assert hard == []
 

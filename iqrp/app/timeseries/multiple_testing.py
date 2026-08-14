@@ -20,7 +20,12 @@ def adjust_pvalues(
     p = np.clip(p, 0.0, 1.0)
     m = p.size
     if m == 0 or method == "none":
-        return {"adjusted": p.copy(), "rejected": (p < alpha).astype(bool), "method": method, "alpha": alpha}
+        return {
+            "adjusted": p.copy(),
+            "rejected": (p < alpha).astype(bool),
+            "method": method,
+            "alpha": alpha,
+        }
 
     order = np.argsort(p)
     ranked = p[order]

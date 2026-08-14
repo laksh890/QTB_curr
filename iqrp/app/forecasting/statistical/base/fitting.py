@@ -217,7 +217,7 @@ def fit_var_ols(Y: np.ndarray, p: int, *, intercept: bool = True) -> dict[str, A
         data = data.reshape(-1, 1)
     T, K = data.shape
     p = max(int(p), 1)
-    if T <= p + 2:
+    if p + 2 >= T:
         return {
             "coefs": np.zeros((p, K, K)),
             "intercept": np.zeros(K),

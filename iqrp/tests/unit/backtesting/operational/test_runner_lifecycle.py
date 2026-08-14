@@ -142,9 +142,7 @@ def test_checkpoint_pause_resume(buy_and_hold_config, registered_strategies, tmp
     state = runner.pause()
     assert state is RunnerLifecycleState.PAUSED
     # Resume from checkpoint
-    runner2 = BacktestRunner(
-        BacktestRunConfig.from_dict(cfg).with_updates(resume_from=str(cp))
-    )
+    runner2 = BacktestRunner(BacktestRunConfig.from_dict(cfg).with_updates(resume_from=str(cp)))
     runner2.validate()
     runner2.prepare()
     result = runner2.run()
@@ -197,7 +195,10 @@ def test_parameter_sweep_isolation(buy_and_hold_config, registered_strategies):
     ids = {r["experiment_id"] for r in results}
     assert ids == {"sweep_eq", "sweep_first"}
     # Isolation: distinct seeds / backtest ids
-    assert results[0]["seed"] != results[1]["seed"] or results[0]["experiment_id"] != results[1]["experiment_id"]
+    assert (
+        results[0]["seed"] != results[1]["seed"]
+        or results[0]["experiment_id"] != results[1]["experiment_id"]
+    )
 
     runner = BacktestRunner(base)
     sweep2 = runner.parameter_sweep(grid[:1], max_workers=1)
@@ -205,14 +206,18 @@ def test_parameter_sweep_isolation(buy_and_hold_config, registered_strategies):
 
 
 def test_runner_with_strategy_override(buy_and_hold_config):
-    runner = BacktestRunner(buy_and_hold_config, strategy=BuyAndHoldStrategy(mode="first_instrument"))
+    runner = BacktestRunner(
+        buy_and_hold_config, strategy=BuyAndHoldStrategy(mode="first_instrument")
+    )
     runner.validate()
     runner.prepare()
     result = runner.run()
     assert result.equity_curve
 
 
-def test_walk_forward_and_scenarios_hooks(buy_and_hold_config, registered_strategies, tmp_path: Path):
+def test_walk_forward_and_scenarios_hooks(
+    buy_and_hold_config, registered_strategies, tmp_path: Path
+):
     cfg = dict(buy_and_hold_config)
     cfg["backtest_id"] = "wf_hook"
     cfg["output_dir"] = str(tmp_path / "wf_out")

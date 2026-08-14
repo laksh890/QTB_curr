@@ -11,29 +11,42 @@ import pytest
 
 from iqrp.app.forecasting.intelligence.automl import optimize_model
 from iqrp.app.forecasting.intelligence.benchmark import make_splits
-from iqrp.app.forecasting.intelligence.calibration import fit_calibrator, apply_calibration, Calibrator
+from iqrp.app.forecasting.intelligence.calibration import (
+    Calibrator,
+    apply_calibration,
+    fit_calibrator,
+)
 from iqrp.app.forecasting.intelligence.config import (
     BenchmarkConfig,
     IntelligenceSettings,
     RankingConfig,
 )
-from iqrp.app.forecasting.intelligence.ensemble import voting_ensemble, dynamic_ensemble_selection, weighted_average
+from iqrp.app.forecasting.intelligence.ensemble import (
+    dynamic_ensemble_selection,
+    voting_ensemble,
+    weighted_average,
+)
 from iqrp.app.forecasting.intelligence.orchestrator import ForecastIntelligenceEngine
 from iqrp.app.forecasting.intelligence.processes import feature_names, simulate_market_frame
 from iqrp.app.forecasting.intelligence.ranking import RankedModel, composite_score
 from iqrp.app.forecasting.intelligence.registry import list_discovered_models
 from iqrp.app.forecasting.intelligence.retraining import checkpoint_model, restore_checkpoint
-from iqrp.app.forecasting.intelligence.serializer import IntelligenceSerializer, _to_jsonable
 from iqrp.app.forecasting.intelligence.selector import select_best
+from iqrp.app.forecasting.intelligence.serializer import IntelligenceSerializer, _to_jsonable
 from iqrp.app.forecasting.intelligence.tuning import TuningTrial
-
 
 FEATS = feature_names(3)
 
 
 def _s(**kw):
     base = {
-        "benchmark": {"method": "walk_forward", "n_splits": 2, "train_size": 40, "test_size": 12, "parallel": False},
+        "benchmark": {
+            "method": "walk_forward",
+            "n_splits": 2,
+            "train_size": 40,
+            "test_size": 12,
+            "parallel": False,
+        },
         "ensemble": {"method": "weighted", "top_k": 2},
         "automl": {"method": "none"},
         "routing": {"enabled": True},
@@ -140,7 +153,9 @@ def test_best_model_fallbacks_and_leaderboard_default():
 
 def test_calibrate_none_method_defaults_platt():
     frame = simulate_market_frame(70, n_features=3, rng=np.random.default_rng(5))
-    eng = ForecastIntelligenceEngine(_s(calibration={"enabled": True, "method": "none"}, ensemble={"method": "none"}))
+    eng = ForecastIntelligenceEngine(
+        _s(calibration={"enabled": True, "method": "none"}, ensemble={"method": "none"})
+    )
     eng.fit(frame, feature_columns=FEATS, candidates=["mock"], run_selection=False)
     cal = eng.calibrate(frame, method=None)
     assert cal is not None and cal.method == "platt"
@@ -148,12 +163,17 @@ def test_calibrate_none_method_defaults_platt():
 
 def test_retrain_ensemble_member_failure():
     frame = simulate_market_frame(70, n_features=3, rng=np.random.default_rng(6))
-    eng = ForecastIntelligenceEngine(_s(retrain={"mode": "rolling", "window": 40}, ensemble={"method": "none"}))
+    eng = ForecastIntelligenceEngine(
+        _s(retrain={"mode": "rolling", "window": 40}, ensemble={"method": "none"})
+    )
     eng.fit(frame, feature_columns=FEATS, candidates=["mock"], run_selection=False)
     bad = MagicMock()
     bad.fit.side_effect = RuntimeError("x")
     eng._ensemble_models = {"bad": bad}
-    with patch("iqrp.app.forecasting.intelligence.orchestrator.retrain_model", side_effect=[eng._model, RuntimeError("x")]):
+    with patch(
+        "iqrp.app.forecasting.intelligence.orchestrator.retrain_model",
+        side_effect=[eng._model, RuntimeError("x")],
+    ):
         eng.retrain(frame, force=True)
 
 
@@ -192,11 +212,9 @@ def test_ensemble_fit_create_exception():
     with patch("iqrp.app.forecasting.intelligence.orchestrator.create_model", side_effect=flaky):
         eng = ForecastIntelligenceEngine(_s(ensemble={"method": "weighted", "top_k": 3}))
         # need multiple leaderboard entries
-        with patch(
-            "iqrp.app.forecasting.intelligence.orchestrator.select_best"
-        ) as sel:
-            from iqrp.app.forecasting.intelligence.selector import SelectionResult
+        with patch("iqrp.app.forecasting.intelligence.orchestrator.select_best") as sel:
             from iqrp.app.forecasting.intelligence.ranking import RankedModel
+            from iqrp.app.forecasting.intelligence.selector import SelectionResult
 
             sel.return_value = SelectionResult(
                 best_model="mock",
@@ -256,7 +274,9 @@ def test_voting_empty_and_dynamic_empty_keep():
 
 
 def test_ranking_primary_higher_is_better():
-    cfg = RankingConfig(weights={}, primary="directional_accuracy", higher_is_better=("directional_accuracy",))
+    cfg = RankingConfig(
+        weights={}, primary="directional_accuracy", higher_is_better=("directional_accuracy",)
+    )
     assert composite_score({"directional_accuracy": 0.6}, cfg) == pytest.approx(-0.6)
 
 
@@ -269,11 +289,13 @@ def test_config_invalid_raises():
 
 def test_registry_exclude_family_and_as_discovery():
     models = list_discovered_models(
-        IntelligenceSettings.from_mapping({"discovery": {"exclude_families": ("baseline",), "max_candidates": 5}})
+        IntelligenceSettings.from_mapping(
+            {"discovery": {"exclude_families": ("baseline",), "max_candidates": 5}}
+        )
     )
     assert all(m.family != "baseline" for m in models)
-    from iqrp.app.forecasting.intelligence.registry import _as_discovery
     from iqrp.app.forecasting.intelligence.config import DiscoveryConfig
+    from iqrp.app.forecasting.intelligence.registry import _as_discovery
 
     assert isinstance(_as_discovery(None), DiscoveryConfig)
     assert isinstance(_as_discovery(DiscoveryConfig()), DiscoveryConfig)
@@ -319,10 +341,12 @@ def test_calibration_isotonic_changed_and_dirichlet_fit():
 
 
 def test_routing_asset_and_spread():
-    from iqrp.app.forecasting.intelligence.routing import build_routing_table, route_model
     from iqrp.app.forecasting.intelligence.config import RoutingConfig
+    from iqrp.app.forecasting.intelligence.routing import build_routing_table, route_model
 
-    frame = simulate_market_frame(40, kind="cross_asset", n_features=3, rng=np.random.default_rng(12))
+    frame = simulate_market_frame(
+        40, kind="cross_asset", n_features=3, rng=np.random.default_rng(12)
+    )
     table = build_routing_table("mock", asset_models={"A": "mock", "B": "mock"})
     table.low_confidence_model = "mock"
     cfg = RoutingConfig(enabled=True, by_regime=False, by_volatility=False, by_confidence=False)

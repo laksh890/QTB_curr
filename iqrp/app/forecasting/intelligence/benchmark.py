@@ -135,11 +135,9 @@ def benchmark_model(
         if getattr(model.meta, "supports_proba", False):
             try:
                 proba = model.predict_proba(test, feature_columns=feature_columns)
-            except Exception:  # noqa: BLE001  # pragma: no cover
+            except Exception:  # pragma: no cover
                 proba = None
-        fold_metrics.append(
-            compute_metrics(y_true, pred, probabilities=proba, latency_ms=latency)
-        )
+        fold_metrics.append(compute_metrics(y_true, pred, probabilities=proba, latency_ms=latency))
     if not fold_metrics:
         # single holdout fallback
         split = max(n // 5, 8)
@@ -186,7 +184,7 @@ def benchmark_candidates(
                 target_column=target_column,
                 settings=settings,
             )
-        except Exception as exc:  # noqa: BLE001
+        except Exception as exc:
             return BenchmarkResult(
                 name=name,
                 family="",
@@ -195,7 +193,9 @@ def benchmark_candidates(
             )
 
     if settings.benchmark.parallel and len(candidates) > 1:
-        with ThreadPoolExecutor(max_workers=min(settings.benchmark.max_workers, len(candidates))) as ex:
+        with ThreadPoolExecutor(
+            max_workers=min(settings.benchmark.max_workers, len(candidates))
+        ) as ex:
             futs = {ex.submit(_one, n): n for n in candidates}
             for fut in as_completed(futs):
                 results.append(fut.result())

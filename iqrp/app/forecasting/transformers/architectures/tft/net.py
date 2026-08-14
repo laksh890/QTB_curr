@@ -13,9 +13,10 @@ from iqrp.app.forecasting.transformers.base.positional_encoding import build_pos
 try:
     import torch
     from torch import nn
-except Exception:  # noqa: BLE001  # pragma: no cover
+except Exception:  # pragma: no cover
     torch = None  # type: ignore[assignment]
     nn = object  # type: ignore[assignment]
+
 
 class GatedResidualNetwork(nn.Module if has_torch() else object):  # type: ignore[misc]
     def __init__(self, d_model: int, dropout: float = 0.1) -> None:
@@ -66,13 +67,20 @@ class TFTNet(nn.Module if has_torch() else object):  # type: ignore[misc]
         self.n_classes = n_classes
         self.n_quantiles = n_quantiles
         self.dist = dist
-        self.input_emb = TransformerInputEmbedding(n_features, d_model, n_regimes=n_regimes, use_regime=use_regime, dropout=dropout)
+        self.input_emb = TransformerInputEmbedding(
+            n_features, d_model, n_regimes=n_regimes, use_regime=use_regime, dropout=dropout
+        )
         self.vsn = GatedResidualNetwork(d_model, dropout)
         self.pos = build_positional("sinusoidal", d_model)
-        self.encoder = TransformerEncoder(d_model, n_heads, num_layers, ffn_dim, dropout, attention_type)
+        self.encoder = TransformerEncoder(
+            d_model, n_heads, num_layers, ffn_dim, dropout, attention_type
+        )
         from iqrp.app.forecasting.transformers.base.decoder import TransformerDecoder
+
         self.decoder = TransformerDecoder(d_model, n_heads, 1, ffn_dim, dropout)
-        self.head = forecast_head(d_model, horizon, task=task, n_classes=n_classes, n_quantiles=n_quantiles, dist=dist)
+        self.head = forecast_head(
+            d_model, horizon, task=task, n_classes=n_classes, n_quantiles=n_quantiles, dist=dist
+        )
         self.query = nn.Parameter(torch.randn(1, horizon, d_model) * 0.02)
 
     def encode(self, x: Any) -> Any:
@@ -84,4 +92,12 @@ class TFTNet(nn.Module if has_torch() else object):  # type: ignore[misc]
         q = self.query.expand(x.shape[0], -1, -1)
         h = self.decoder(q, mem)
         out = self.head(h.mean(dim=1))
-        return reshape_forecast(out, x.shape[0], self.horizon, task=self.task, n_classes=self.n_classes, n_quantiles=self.n_quantiles, dist=self.dist)
+        return reshape_forecast(
+            out,
+            x.shape[0],
+            self.horizon,
+            task=self.task,
+            n_classes=self.n_classes,
+            n_quantiles=self.n_quantiles,
+            dist=self.dist,
+        )

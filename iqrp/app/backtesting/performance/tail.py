@@ -13,14 +13,14 @@ import numpy as np
 from iqrp.app.backtesting.performance.returns import as_returns, daily_returns
 
 __all__ = [
-    "value_at_risk",
     "conditional_value_at_risk",
     "expected_shortfall",
-    "tail_loss",
-    "worst_day",
-    "worst_week",
-    "worst_month",
     "summarize_tail",
+    "tail_loss",
+    "value_at_risk",
+    "worst_day",
+    "worst_month",
+    "worst_week",
 ]
 
 
@@ -33,7 +33,7 @@ def _risk_value(measure: Any) -> float:
 def _try_risk_tail():
     """Import risk.tail submodules without requiring optional heavy deps."""
     try:
-        from iqrp.app.risk.tail import (  # noqa: WPS433
+        from iqrp.app.risk.tail import (
             expected_shortfall as _es,
             filtered_historical_var,
             historical_cvar,
@@ -54,7 +54,7 @@ def _try_risk_tail():
             "monte_carlo_cvar": monte_carlo_cvar,
             "expected_shortfall": _es,
         }
-    except Exception:  # noqa: BLE001 — optional dependency path
+    except Exception:
         return None
 
 
@@ -94,9 +94,7 @@ def value_at_risk(
         elif m in ("monte_carlo", "mc", "simulation"):
             rm = rt["monte_carlo_var"](returns, confidence=confidence, horizon=horizon)
         elif m in ("filtered", "fhs", "filtered_historical"):
-            rm = rt["filtered_historical_var"](
-                returns, confidence=confidence, horizon=horizon
-            )
+            rm = rt["filtered_historical_var"](returns, confidence=confidence, horizon=horizon)
         else:
             rm = rt["historical_var"](returns, confidence=confidence, horizon=horizon)
         return _risk_value(rm)
@@ -135,13 +133,9 @@ def expected_shortfall(
     rt = _try_risk_tail()
     if rt is not None:
         return _risk_value(
-            rt["expected_shortfall"](
-                returns, confidence=confidence, horizon=horizon, method=method
-            )
+            rt["expected_shortfall"](returns, confidence=confidence, horizon=horizon, method=method)
         )
-    return conditional_value_at_risk(
-        returns, confidence=confidence, horizon=horizon, method=method
-    )
+    return conditional_value_at_risk(returns, confidence=confidence, horizon=horizon, method=method)
 
 
 def tail_loss(

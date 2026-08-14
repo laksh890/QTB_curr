@@ -11,7 +11,7 @@ CRITICAL RULES
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from typing import TYPE_CHECKING, Any
 
 from iqrp.app.core.exceptions import ExecutionError, ValidationError
@@ -23,7 +23,7 @@ if TYPE_CHECKING:
 
 
 def _utc_now() -> str:
-    return datetime.now(timezone.utc).isoformat()
+    return datetime.now(UTC).isoformat()
 
 
 @dataclass(slots=True)
@@ -86,7 +86,9 @@ class FillManager:
         without mutating quantity — idempotent guarantee.
         """
         if not event_id:
-            raise ValidationError("event_id is required for idempotent fills", code="FILL_EVENT_ID_REQUIRED")
+            raise ValidationError(
+                "event_id is required for idempotent fills", code="FILL_EVENT_ID_REQUIRED"
+            )
         if event_id in self._seen_events:
             if audit is not None:
                 audit.append(

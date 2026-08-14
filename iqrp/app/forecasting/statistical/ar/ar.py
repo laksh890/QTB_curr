@@ -10,7 +10,11 @@ import polars as pl
 from iqrp.app.forecasting.base.forecast import Forecast
 from iqrp.app.forecasting.base.metadata import ForecastModelMeta
 from iqrp.app.forecasting.base.registry import register_forecast_model
-from iqrp.app.forecasting.statistical.base.fitting import fit_ar_ols, forecast_arma, information_criteria
+from iqrp.app.forecasting.statistical.base.fitting import (
+    fit_ar_ols,
+    forecast_arma,
+    information_criteria,
+)
 from iqrp.app.forecasting.statistical.base.selection import select_ar_order
 from iqrp.app.forecasting.statistical.base.statistical_model import StatisticalForecastModel
 
@@ -82,12 +86,14 @@ class ARModel(StatisticalForecastModel):
         )
         return self
 
-    def predict(
-        self, frame: pl.DataFrame, feature_columns: list[str] | None = None
-    ) -> np.ndarray:
+    def predict(self, frame: pl.DataFrame, feature_columns: list[str] | None = None) -> np.ndarray:
         self._require_fitted()
         tgt = self._target_column or self._stat_settings.columns.target
-        y = frame[tgt].to_numpy().astype(np.float64) if tgt in frame.columns else self._extract_target(frame, None)
+        y = (
+            frame[tgt].to_numpy().astype(np.float64)
+            if tgt in frame.columns
+            else self._extract_target(frame, None)
+        )
         p = self._phi.size
         out = np.empty(y.size, dtype=np.float64)
         for t in range(y.size):
@@ -142,7 +148,9 @@ class ARModel(StatisticalForecastModel):
         self._intercept = float(state.get("intercept", 0.0))
         self._y = None if state.get("y") is None else np.asarray(state["y"], dtype=np.float64)
         self._residuals = (
-            None if state.get("residuals") is None else np.asarray(state["residuals"], dtype=np.float64)
+            None
+            if state.get("residuals") is None
+            else np.asarray(state["residuals"], dtype=np.float64)
         )
         self._fitted_values = (
             None if state.get("fitted") is None else np.asarray(state["fitted"], dtype=np.float64)

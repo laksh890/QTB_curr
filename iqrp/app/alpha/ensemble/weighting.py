@@ -7,7 +7,8 @@ configurable component weights.
 
 from __future__ import annotations
 
-from typing import Any, Literal, Mapping, Sequence
+from collections.abc import Mapping, Sequence
+from typing import Any, Literal
 
 import numpy as np
 
@@ -62,7 +63,7 @@ def normalize_weights(
 
 def equal_weights(names: Sequence[str]) -> dict[str, float]:
     n = max(len(names), 1)
-    return {name: 1.0 / n for name in names}
+    return dict.fromkeys(names, 1.0 / n)
 
 
 def _metric(m: Mapping[str, Any], key: str, default: float = 0.0) -> float:
@@ -172,7 +173,9 @@ def compute_ensemble_weights(
     return normalize_weights(raw, names, min_weight=min_weight)
 
 
-def ic_weights(metrics_by_signal: Mapping[str, Mapping[str, Any]], **kwargs: Any) -> dict[str, float]:
+def ic_weights(
+    metrics_by_signal: Mapping[str, Mapping[str, Any]], **kwargs: Any
+) -> dict[str, float]:
     return compute_ensemble_weights(metrics_by_signal, method="ic", **kwargs)
 
 

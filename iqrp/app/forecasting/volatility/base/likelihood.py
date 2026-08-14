@@ -2,8 +2,9 @@
 
 from __future__ import annotations
 
+from collections.abc import Callable
 from dataclasses import dataclass, field
-from typing import Any, Callable
+from typing import Any
 
 import numpy as np
 from scipy.optimize import minimize
@@ -79,7 +80,7 @@ def estimate(
         p = transform(theta) if transform is not None else theta
         try:
             var = variance_fn(p)
-        except Exception:  # noqa: BLE001
+        except Exception:
             return 1e20
         if not np.all(np.isfinite(var)):
             return 1e20
@@ -108,13 +109,13 @@ def estimate(
                     bounds=bounds,
                     options={"maxiter": maxiter},
                 )
-        except Exception:  # noqa: BLE001
+        except Exception:
             continue
         theta = np.asarray(res.x, dtype=np.float64)
         params = transform(theta) if transform is not None else theta
         try:
             var = variance_fn(params)
-        except Exception:  # noqa: BLE001
+        except Exception:
             continue
         if not np.all(np.isfinite(var)):
             continue
@@ -138,7 +139,7 @@ def estimate(
         x0_arr = np.asarray(x0, dtype=np.float64)
         try:
             var = variance_fn(x0_arr)
-        except Exception:  # noqa: BLE001
+        except Exception:
             var = np.full(r.size, max(float(np.mean(r**2)), 1e-6))
         if not np.all(np.isfinite(var)):
             var = np.full(r.size, max(float(np.mean(r**2)), 1e-6))

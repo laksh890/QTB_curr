@@ -411,7 +411,9 @@ class TestConfigOmegaConfAndDefaultFallback:
         s = RiskSettings.from_mapping(cfg)
         assert s.seed == 77
 
-    def test_default_fallback_when_missing(self, tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    def test_default_fallback_when_missing(
+        self, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+    ) -> None:
         monkeypatch.setattr(
             "iqrp.app.risk.config._default_config_path",
             lambda: tmp_path / "missing.yaml",
@@ -449,7 +451,9 @@ class TestSoftWarningsPath:
             returns=np.full(40, 0.001),
             forecast_confidence=0.0,
         )
-        if decision.breaches and not any(b.severity == LimitSeverity.HARD for b in decision.breaches):
+        if decision.breaches and not any(
+            b.severity == LimitSeverity.HARD for b in decision.breaches
+        ):
             assert decision.approved is True
             assert "APPROVED_WITH_WARNINGS" in decision.reason or "APPROVED" in decision.reason
 
@@ -488,6 +492,7 @@ class TestRemainingMicroGaps:
 
         class Weird:
             value = 1
+
             # looks enum-ish but isn't
             def __repr__(self):
                 return "Weird()"

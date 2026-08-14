@@ -113,8 +113,12 @@ def test_recursions_and_forecast_path() -> None:
     assert arch_variance(eps, 0.1, np.array([0.2])).min() > 0
     assert garch_variance(eps, 0.1, np.array([0.05]), np.array([0.9])).min() > 0
     assert gjr_variance(eps, 0.1, np.array([0.05]), np.array([0.1]), np.array([0.85])).min() > 0
-    assert egarch_variance(eps, -0.1, np.array([0.1]), np.array([-0.05]), np.array([0.95])).min() > 0
-    assert aparch_variance(eps, 0.1, np.array([0.1]), np.array([0.1]), np.array([0.8]), 2.0).min() > 0
+    assert (
+        egarch_variance(eps, -0.1, np.array([0.1]), np.array([-0.05]), np.array([0.95])).min() > 0
+    )
+    assert (
+        aparch_variance(eps, 0.1, np.array([0.1]), np.array([0.1]), np.array([0.8]), 2.0).min() > 0
+    )
     h, q = cgarch_variance(eps, 0.05, 0.95, 0.05, 0.05, 0.8)
     assert h.size == q.size
     assert figarch_variance(eps, 0.05, 0.2, 0.4, 0.4).min() > 0
@@ -238,7 +242,9 @@ def test_selection_and_rolling_validation(garch_frame: pl.DataFrame) -> None:
 
 @pytest.mark.unit
 def test_trainer_compare_and_auto(garch_frame: pl.DataFrame) -> None:
-    settings = VolatilitySettings.from_mapping({"visualization": {"enabled": True}, "forecast": {"scenario_paths": 3}})
+    settings = VolatilitySettings.from_mapping(
+        {"visualization": {"enabled": True}, "forecast": {"scenario_paths": 3}}
+    )
     trainer = VolatilityTrainer(settings)
     model, result = trainer.fit("garch", garch_frame)
     assert result.params

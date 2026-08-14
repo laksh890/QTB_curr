@@ -2,7 +2,8 @@
 
 from __future__ import annotations
 
-from typing import Any, Mapping, Sequence
+from collections.abc import Mapping, Sequence
+from typing import Any
 
 from iqrp.app.execution.slippage.estimator import estimate_slippage
 
@@ -104,7 +105,8 @@ def compare_expected_realized(
         "expected": expected,
         "realized": realized,
         "forecast_error_bps": real_bps - exp_bps,
-        "forecast_error": float(realized["realized_slippage"]) - float(expected["expected_slippage"]),
+        "forecast_error": float(realized["realized_slippage"])
+        - float(expected["expected_slippage"]),
         "expected_slippage_bps": exp_bps,
         "realized_slippage_bps": real_bps,
     }

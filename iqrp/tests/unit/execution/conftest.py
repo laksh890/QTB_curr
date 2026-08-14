@@ -25,7 +25,6 @@ from iqrp.app.execution.order_manager.order_validator import InstrumentMeta, Ord
 from iqrp.app.execution.smart_routing import SmartRouter
 from iqrp.app.execution.types import Side, Urgency
 
-
 SEED = 42
 
 

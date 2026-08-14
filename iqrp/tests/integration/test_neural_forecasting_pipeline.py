@@ -55,7 +55,13 @@ def test_synthetic_forecast_recovery_and_generalization() -> None:
     cols = feature_names(4)
     settings = NeuralSettings.from_mapping(
         {
-            "architecture": {"lookback": 16, "horizon": 3, "hidden_size": 32, "num_layers": 1, "dropout": 0.0},
+            "architecture": {
+                "lookback": 16,
+                "horizon": 3,
+                "hidden_size": 32,
+                "num_layers": 1,
+                "dropout": 0.0,
+            },
             "train": {"epochs": 8, "batch_size": 32, "device": "cpu", "learning_rate": 1e-3},
             "scheduler": {"name": "none"},
             "regime": {"enabled": False},
@@ -83,7 +89,12 @@ def test_probabilistic_deepar_calibration() -> None:
             "task": {"type": "distribution"},
             "architecture": {"lookback": 12, "horizon": 3, "hidden_size": 24, "num_layers": 1},
             "train": {"epochs": 4, "batch_size": 32, "device": "cpu", "loss": "gaussian_nll"},
-            "probabilistic": {"enabled": True, "distribution": "gaussian", "mc_dropout": True, "n_samples": 5},
+            "probabilistic": {
+                "enabled": True,
+                "distribution": "gaussian",
+                "mc_dropout": True,
+                "n_samples": 5,
+            },
             "scheduler": {"name": "none"},
             "regime": {"enabled": False},
             "visualization": {"enabled": False},

@@ -78,7 +78,14 @@ def optimize_risk_parity(
             names = cstr.get("names")
         ok, reason, conflicts = check_feasibility(cstr)
         if not ok:
-            return infeasible_result(name, n, method="risk_parity_weights", reason=reason or "infeasible", conflicts=conflicts, names=names)
+            return infeasible_result(
+                name,
+                n,
+                method="risk_parity_weights",
+                reason=reason or "infeasible",
+                conflicts=conflicts,
+                names=names,
+            )
 
         m = str(method).lower()
         if m in {"erc", "equal_risk_contribution", "equal_risk"}:

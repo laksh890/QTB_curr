@@ -8,7 +8,6 @@ from typing import Any
 import numpy as np
 from scipy import stats
 
-from iqrp.app.forecasting.statistical.base.fitting import fit_var_ols, lag_design
 from iqrp.app.forecasting.statistical.base.stationarity import adf_test
 
 
@@ -84,7 +83,7 @@ def johansen_trace(Y: np.ndarray, *, lags: int = 1) -> CointegrationResult:
         data = data.reshape(-1, 1)
     T, K = data.shape
     p = max(int(lags), 1)
-    if T <= p + K + 2 or K < 2:
+    if p + K + 2 >= T or K < 2:
         return CointegrationResult("johansen", 0.0, 1.0, 0)
     # ΔY_t and Y_{t-1}
     dY = np.diff(data, axis=0)
@@ -112,7 +111,7 @@ def johansen_trace(Y: np.ndarray, *, lags: int = 1) -> CointegrationResult:
         M = S11_inv @ S10 @ np.linalg.pinv(S00) @ S01
         eigvals = np.sort(np.real(np.linalg.eigvals(M)))[::-1]
         eigvals = np.clip(eigvals, 0.0, 0.999999)
-    except Exception:  # noqa: BLE001
+    except Exception:
         return CointegrationResult("johansen", 0.0, 1.0, 0)
     # trace for r=0
     nobs = R0.shape[0]
@@ -145,16 +144,14 @@ def granger_causality(
         data = data.reshape(-1, 1)
     T, K = data.shape
     p = max(int(lag), 1)
-    if cause >= K or effect >= K or T <= p + 5:
+    if cause >= K or effect >= K or p + 5 >= T:
         return GrangerResult(cause, effect, 0.0, 1.0, p, False)
     y = data[p:, effect]
     # restricted: lags of effect only
     X_r = np.column_stack([data[p - k : T - k, effect] for k in range(1, p + 1)])
     X_r = np.column_stack([np.ones(y.size), X_r])
     # unrestricted: + lags of cause
-    X_u = np.column_stack(
-        [X_r] + [data[p - k : T - k, cause] for k in range(1, p + 1)]
-    )
+    X_u = np.column_stack([X_r] + [data[p - k : T - k, cause] for k in range(1, p + 1)])
     Br, *_ = np.linalg.lstsq(X_r, y, rcond=None)
     Bu, *_ = np.linalg.lstsq(X_u, y, rcond=None)
     ssr_r = float(np.sum((y - X_r @ Br) ** 2))
@@ -236,9 +233,7 @@ def fevd(
     return out
 
 
-def fit_vecm_engle_granger(
-    Y: np.ndarray, *, lags: int = 1
-) -> dict[str, Any]:
+def fit_vecm_engle_granger(Y: np.ndarray, *, lags: int = 1) -> dict[str, Any]:
     """Bivariate / multi Engle–Granger VECM: Δy = α β' y_{t-1} + lags + e."""
     data = np.asarray(Y, dtype=np.float64)
     if data.ndim == 1:

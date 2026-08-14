@@ -72,12 +72,15 @@ def _load_coverage_json() -> dict[str, float] | None:
                 # Aggregate totals if present
                 totals = payload.get("totals") or {}
                 if "percent_covered" in totals:
-                    return {"_total": float(totals["percent_covered"]), **{
-                        k: float(v.get("summary", {}).get("percent_covered", 0.0))
-                        for k, v in files.items()
-                        if isinstance(v, dict)
-                    }}
-            except Exception:  # noqa: BLE001
+                    return {
+                        "_total": float(totals["percent_covered"]),
+                        **{
+                            k: float(v.get("summary", {}).get("percent_covered", 0.0))
+                            for k, v in files.items()
+                            if isinstance(v, dict)
+                        },
+                    }
+            except Exception:
                 continue
     return None
 
@@ -180,11 +183,15 @@ def run_deterministic_e2e(tmp_root: Path | None = None) -> dict[str, Any]:
     }
 
 
-def collect_component_results(e2e: dict[str, Any] | None = None, error: str | None = None) -> dict[str, Any]:
+def collect_component_results(
+    e2e: dict[str, Any] | None = None, error: str | None = None
+) -> dict[str, Any]:
     cov = _load_coverage_json()
     total_cov = None if cov is None else cov.get("_total")
 
-    components: dict[str, ComponentResult] = {cid: _component("fail", failed=1) for cid in COMPONENT_IDS}
+    components: dict[str, ComponentResult] = {
+        cid: _component("fail", failed=1) for cid in COMPONENT_IDS
+    }
 
     if error or not e2e:
         for cid in COMPONENT_IDS:
@@ -256,7 +263,9 @@ def collect_component_results(e2e: dict[str, Any] | None = None, error: str | No
         failed=0 if ok else 1,
         coverage=total_cov,
         detail=str(e2e.get("portfolio_backend")),
-        limitations=["Falls back to IsolatedPortfolioFallback when production portfolio unavailable"],
+        limitations=[
+            "Falls back to IsolatedPortfolioFallback when production portfolio unavailable"
+        ],
     )
     components["execution_simulation"] = _component(
         "pass" if int(e2e.get("n_fills") or 0) > 0 else "fail",
@@ -345,7 +354,7 @@ def build_report() -> dict[str, Any]:
     e2e: dict[str, Any] | None = None
     try:
         e2e = run_deterministic_e2e()
-    except Exception as exc:  # noqa: BLE001
+    except Exception as exc:
         error = f"{exc}\n{traceback.format_exc()}"
 
     components = collect_component_results(e2e, error=error)

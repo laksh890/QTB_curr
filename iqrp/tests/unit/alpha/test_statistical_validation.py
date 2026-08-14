@@ -47,21 +47,15 @@ def test_ic_significance_alternatives(signal: np.ndarray, fwd: np.ndarray) -> No
         assert out["alternative"] == alt
 
 
-def test_bootstrap_and_block(
-    signal: np.ndarray, fwd: np.ndarray, returns: np.ndarray
-) -> None:
+def test_bootstrap_and_block(signal: np.ndarray, fwd: np.ndarray, returns: np.ndarray) -> None:
     boot = iid_bootstrap_ci(signal, fwd, stat="ic", n_boot=50, seed=0, alpha=0.05)
     assert "ci_low" in boot and "ci_high" in boot
     assert boot["n_boot"] == 50
 
-    sharpe_boot = iid_bootstrap_ci(
-        returns, None, stat="sharpe", n_boot=40, seed=1
-    )
+    sharpe_boot = iid_bootstrap_ci(returns, None, stat="sharpe", n_boot=40, seed=1)
     assert "estimate" in sharpe_boot
 
-    block = block_bootstrap_ci(
-        signal, fwd, stat="ic", n_boot=40, block_size=10, seed=2
-    )
+    block = block_bootstrap_ci(signal, fwd, stat="ic", n_boot=40, block_size=10, seed=2)
     assert "block_size" in block
 
 
@@ -118,17 +112,13 @@ def test_dsr_and_psr() -> None:
     assert se > 0
 
     # annualized path
-    dsr_a = deflated_sharpe_ratio(
-        0.8, n_trials=5, n_obs=252, annualized=True, return_details=True
-    )
+    dsr_a = deflated_sharpe_ratio(0.8, n_trials=5, n_obs=252, annualized=True, return_details=True)
     assert isinstance(dsr_a, dict)
 
 
 def test_pbo_matrix_and_1d(rng: np.random.Generator) -> None:
     mat = rng.normal(0, 0.01, size=(200, 4))
-    pbo = probability_backtest_overfitting(
-        mat, n_groups=4, max_combinations=50, metric="sharpe"
-    )
+    pbo = probability_backtest_overfitting(mat, n_groups=4, max_combinations=50, metric="sharpe")
     assert "pbo" in pbo
     assert 0.0 <= pbo["pbo"] <= 1.0 or "detail" in pbo
 
@@ -136,9 +126,7 @@ def test_pbo_matrix_and_1d(rng: np.random.Generator) -> None:
     pbo1 = probability_backtest_overfitting(series, n_groups=4, max_combinations=30)
     assert "pbo" in pbo1
 
-    pbo_m = probability_backtest_overfitting(
-        mat, n_groups=4, max_combinations=30, metric="mean"
-    )
+    pbo_m = probability_backtest_overfitting(mat, n_groups=4, max_combinations=30, metric="mean")
     assert "metric" in pbo_m
 
 
@@ -153,9 +141,7 @@ def test_newey_west_and_rolling(signal: np.ndarray, fwd: np.ndarray) -> None:
     assert "pvalue" in nw or "ic" in nw
 
 
-def test_genuine_vs_noise_validation(
-    genuine: dict[str, Any], noise: dict[str, Any]
-) -> None:
+def test_genuine_vs_noise_validation(genuine: dict[str, Any], noise: dict[str, Any]) -> None:
     """Genuine should show stronger IC / lower permutation p than noise (seed family)."""
     g_sig = np.asarray(genuine["signal"])
     g_fwd = forward_returns(np.asarray(genuine["returns"]), 1)

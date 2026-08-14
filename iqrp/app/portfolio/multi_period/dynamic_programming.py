@@ -96,7 +96,14 @@ def optimize_dynamic_programming(
             names = cstr.get("names")
         ok, reason, conflicts = check_feasibility(cstr)
         if not ok:
-            return infeasible_result(name, n, method=method, reason=reason or "infeasible", conflicts=conflicts, names=names)
+            return infeasible_result(
+                name,
+                n,
+                method=method,
+                reason=reason or "infeasible",
+                conflicts=conflicts,
+                names=names,
+            )
         if cstr["lb"] < 0:
             return infeasible_result(
                 name,
@@ -215,7 +222,9 @@ def optimize_dynamic_programming(
                 "weights_path": [[float(x) for x in w.tolist()] for w in path],
                 "value": float(V[int(np.argmin(np.sum((grid - w0.reshape(1, -1)) ** 2, axis=1)))]),
             },
-            objective_value=float(V[int(np.argmin(np.sum((grid - w0.reshape(1, -1)) ** 2, axis=1)))]),
+            objective_value=float(
+                V[int(np.argmin(np.sum((grid - w0.reshape(1, -1)) ** 2, axis=1)))]
+            ),
         )
     except Exception as exc:
         n = 0

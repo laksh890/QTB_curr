@@ -8,6 +8,7 @@ from typing import Any
 import numpy as np
 import pytest
 
+from iqrp.app.portfolio import processes, registry, visualization
 from iqrp.app.portfolio.base import (
     OptimizationFailureError,
     OptimizationResult,
@@ -20,9 +21,9 @@ from iqrp.app.portfolio.base.constraints import (
     ConstraintSet,
     ConstraintSpec,
     ConstraintViolation,
-    evaluate_constraints,
-    conflicting_constraints,
     concentration_hhi,
+    conflicting_constraints,
+    evaluate_constraints,
     gross_exposure,
     leverage,
     long_exposure,
@@ -32,6 +33,7 @@ from iqrp.app.portfolio.base.constraints import (
 )
 from iqrp.app.portfolio.base.objective import ObjectiveSpec, ObjectiveType
 from iqrp.app.portfolio.base.optimizer import PortfolioOptimizer
+from iqrp.app.portfolio.config import PortfolioSettings
 from iqrp.app.portfolio.covariance import sample_covariance, shrinkage_covariance
 from iqrp.app.portfolio.diagnostics import (
     diversification_metrics,
@@ -40,7 +42,6 @@ from iqrp.app.portfolio.diagnostics import (
     portfolio_diagnostics,
 )
 from iqrp.app.portfolio.engine import PortfolioConstructionEngine, dict_to_optimization_result
-from iqrp.app.portfolio.config import PortfolioSettings
 from iqrp.app.portfolio.portfolio_risk import (
     component_risk_contribution,
     factor_risk_decomposition,
@@ -50,10 +51,7 @@ from iqrp.app.portfolio.portfolio_risk import (
     risk_decomposition,
     volatility_contribution,
 )
-from iqrp.app.portfolio import processes
-from iqrp.app.portfolio import registry
 from iqrp.app.portfolio.serializer import PortfolioSerializer
-from iqrp.app.portfolio import visualization
 
 
 # --------------------------------------------------------------------------- PIT
@@ -225,9 +223,7 @@ def test_visualization_bundle(weights, cov, names):
     assert isinstance(bundle, dict)
     wp = visualization.weights_payload(weights, names=names)
     assert wp.get("type") == "bar" or "values" in wp or "labels" in wp
-    rc = visualization.risk_contribution_payload(
-        np.ones(len(weights)) / len(weights), names=names
-    )
+    rc = visualization.risk_contribution_payload(np.ones(len(weights)) / len(weights), names=names)
     assert isinstance(rc, dict)
     to = visualization.turnover_payload(weights, weights * 0.5, names=names)
     assert isinstance(to, dict)
@@ -292,7 +288,9 @@ def test_optimization_result_failure_and_raise():
         weights=[0, 0],
         names=["a", "b"],
         violations=[
-            ConstraintViolation(name="x", kind="box", actual=1, limit=0.1, message="hard", hard=True)
+            ConstraintViolation(
+                name="x", kind="box", actual=1, limit=0.1, message="hard", hard=True
+            )
         ],
     )
 
@@ -310,7 +308,9 @@ def test_optimization_result_failure_and_raise():
         names=["a", "b"],
         fallback_used=True,
         violations=[
-            ConstraintViolation(name="x", kind="box", actual=1, limit=0.1, message="hard", hard=True)
+            ConstraintViolation(
+                name="x", kind="box", actual=1, limit=0.1, message="hard", hard=True
+            )
         ],
     )
     assert opt.raise_on_hard_violations(fb) is fb
@@ -331,7 +331,9 @@ def test_portfolio_optimizer_abc(cov, mu, names):
 
 
 def test_dict_to_opt_result_edge_cases():
-    r = dict_to_optimization_result({"success": True, "weights": [0.5, 0.5], "diagnostics": {"portfolio_variance": 0.01}})
+    r = dict_to_optimization_result(
+        {"success": True, "weights": [0.5, 0.5], "diagnostics": {"portfolio_variance": 0.01}}
+    )
     assert r.expected_variance == pytest.approx(0.01)
     r2 = dict_to_optimization_result({"success": False, "weights": {}})
     assert r2.success is False
@@ -448,7 +450,11 @@ def test_engine_risk_check_limits_error(names, returns, mu, cov):
     eng = PortfolioConstructionEngine(settings=settings, risk_engine=Broken())
     r = eng.construct(mu=mu, cov=cov, returns=returns, names=names, method="min_variance")
     assert r.risk_validation is not None
-    assert "check_limits_error" in r.risk_validation or "validate_position_error" in r.risk_validation or r.risk_validation.get("approved") is not None
+    assert (
+        "check_limits_error" in r.risk_validation
+        or "validate_position_error" in r.risk_validation
+        or r.risk_validation.get("approved") is not None
+    )
 
 
 def test_construct_include_tc_from_zero(engine, mu, cov, names, prices, adv):
@@ -536,11 +542,11 @@ def test_processes_low_liquidity_and_large_gaps():
 
 
 def test_tc_scalar_broadcast_and_optimizer_weight_array():
+    from iqrp.app.portfolio.base.optimizer import OptimizationResult
+    from iqrp.app.portfolio.config import PortfolioSettings
     from iqrp.app.portfolio.transaction_costs.market_impact import market_impact_cost
     from iqrp.app.portfolio.transaction_costs.slippage import slippage_cost
     from iqrp.app.portfolio.transaction_costs.spread import spread_cost
-    from iqrp.app.portfolio.base.optimizer import OptimizationResult
-    from iqrp.app.portfolio.config import PortfolioSettings
 
     trades = np.array([0.1, -0.05, 0.0, 0.2])
     mi = market_impact_cost(trades, capital=1e6, adv=1e7, prices=100.0, vols=0.02)
@@ -555,7 +561,9 @@ def test_tc_scalar_broadcast_and_optimizer_weight_array():
 
     from omegaconf import OmegaConf
 
-    s = PortfolioSettings.from_mapping(OmegaConf.create({"method": "min_variance", "require_risk_validation": False}))
+    s = PortfolioSettings.from_mapping(
+        OmegaConf.create({"method": "min_variance", "require_risk_validation": False})
+    )
     assert s.method == "min_variance"
     with pytest.raises(Exception):
         PortfolioSettings.from_mapping({"method": {"nested": True}})  # invalid type
@@ -575,8 +583,9 @@ def test_hierarchical_weights_dict_path(cov, names, monkeypatch):
 
 
 def test_phase10_runpy_main(tmp_path, monkeypatch):
-    from iqrp.app.portfolio import phase10
     import json
+
+    from iqrp.app.portfolio import phase10
 
     out = tmp_path / "Phase10_PortfolioConstruction_Validation.json"
 

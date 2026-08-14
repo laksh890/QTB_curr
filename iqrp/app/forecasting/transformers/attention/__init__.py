@@ -25,7 +25,9 @@ def build_attention(
 ) -> Any:
     key = (name or "full").lower()
     if key in {"flash", "flash_attention"}:
-        return FlashAttention(d_model, n_heads, dropout, chunk_size=int(kwargs.get("chunk_size", 256)))
+        return FlashAttention(
+            d_model, n_heads, dropout, chunk_size=int(kwargs.get("chunk_size", 256))
+        )
     if key == "sparse":
         return SparseAttention(d_model, n_heads, dropout)
     if key == "linear":
@@ -42,13 +44,13 @@ def build_attention(
 
 
 __all__ = [
-    "MultiHeadAttention",
-    "FlashAttention",
-    "SparseAttention",
-    "PerformerAttention",
-    "LinearAttention",
     "CrossAssetAttention",
-    "TemporalAttention",
+    "FlashAttention",
     "HierarchicalAttention",
+    "LinearAttention",
+    "MultiHeadAttention",
+    "PerformerAttention",
+    "SparseAttention",
+    "TemporalAttention",
     "build_attention",
 ]

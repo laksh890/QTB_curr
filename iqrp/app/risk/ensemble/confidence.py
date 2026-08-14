@@ -60,7 +60,9 @@ def estimate_confidence(
     # Missing critical metrics — confidence collapses; never implies approval
     if missing_critical_count > 0:
         conf *= float(
-            np.clip(1.0 - float(cfg.missing_metric_penalty) * float(missing_critical_count), 0.05, 1.0)
+            np.clip(
+                1.0 - float(cfg.missing_metric_penalty) * float(missing_critical_count), 0.05, 1.0
+            )
         )
 
     if data_quality is not None:
@@ -73,10 +75,7 @@ def estimate_confidence(
         k
         for k, v in metrics.items()
         if not str(k).startswith("_")
-        and (
-            isinstance(v, (int, float))
-            or (isinstance(v, dict) and "value" in v)
-        )
+        and (isinstance(v, (int, float)) or (isinstance(v, dict) and "value" in v))
     ]
     coverage = min(len(numeric_keys) / max(len(settings.critical_metric_keys), 1), 1.0)
     conf *= 0.7 + 0.3 * coverage

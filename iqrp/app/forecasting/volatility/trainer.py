@@ -9,11 +9,17 @@ from typing import Any
 import polars as pl
 
 from iqrp.app.forecasting.base.evaluator import EvaluationReport
-from iqrp.app.forecasting.volatility.base.selection import VolSelectionResult, select_volatility_models
+from iqrp.app.forecasting.volatility.base.selection import (
+    VolSelectionResult,
+    select_volatility_models,
+)
 from iqrp.app.forecasting.volatility.base.volatility_model import VolatilityModel
 from iqrp.app.forecasting.volatility.config import VolatilitySettings
 from iqrp.app.forecasting.volatility.evaluation.metrics import evaluate_volatility
-from iqrp.app.forecasting.volatility.registry import create_volatility_model, ensure_volatility_models_loaded
+from iqrp.app.forecasting.volatility.registry import (
+    create_volatility_model,
+    ensure_volatility_models_loaded,
+)
 from iqrp.app.forecasting.volatility.visualization.plots import (
     plot_conditional_variance,
     plot_persistence,
@@ -65,7 +71,8 @@ class VolatilityTrainer:
             frame,
             feature_columns,
             target_column=target_column or self.settings.columns.target,
-            regime_column=regime_column or (self.settings.regime.column if self.settings.regime.enabled else None),
+            regime_column=regime_column
+            or (self.settings.regime.column if self.settings.regime.enabled else None),
         )
         tgt = target_column or self.settings.columns.target
         metrics: dict[str, float] = {}
@@ -134,13 +141,13 @@ class VolatilityTrainer:
                 for fut in as_completed(futs):
                     try:
                         rows.append(fut.result())
-                    except Exception:  # noqa: BLE001
+                    except Exception:
                         continue
         else:
             for name in model_names:
                 try:
                     rows.append(_one(name))
-                except Exception:  # noqa: BLE001
+                except Exception:
                     continue
         rows.sort(key=lambda r: r.metrics.get("qlike", float("inf")))
         return rows

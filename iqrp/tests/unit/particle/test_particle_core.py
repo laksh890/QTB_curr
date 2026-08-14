@@ -16,16 +16,20 @@ from iqrp.app.regimes.particle import (
     ParticleSettings,
     build_transition,
     effective_sample_size,
+    filter_adaptive,
     filter_auxiliary,
     filter_bootstrap,
     filter_rao_blackwellized,
     filter_sir,
     filter_sis,
-    filter_adaptive,
     simulate_nonlinear,
     trajectory_smooth,
 )
-from iqrp.app.regimes.particle.prediction import credible_interval, forecast_particles, particle_diversity
+from iqrp.app.regimes.particle.prediction import (
+    credible_interval,
+    forecast_particles,
+    particle_diversity,
+)
 from iqrp.app.regimes.particle.rejuvenation import rejuvenate
 from iqrp.app.regimes.particle.resampling import (
     adaptive_resample,
@@ -102,7 +106,14 @@ def test_filters_and_smoothing() -> None:
     model = build_transition(settings, application="nonlinear_trend")
     states, obs = simulate_nonlinear(model, 40, rng=np.random.default_rng(2), obs_scale=0.05)
     rng = np.random.default_rng(2)
-    for runner in (filter_bootstrap, filter_sis, filter_sir, filter_auxiliary, filter_adaptive, filter_rao_blackwellized):
+    for runner in (
+        filter_bootstrap,
+        filter_sis,
+        filter_sir,
+        filter_auxiliary,
+        filter_adaptive,
+        filter_rao_blackwellized,
+    ):
         tr = runner(obs, model, settings, rng=rng)
         assert tr.means.shape[0] == obs.shape[0]
         assert np.isfinite(tr.log_likelihood)

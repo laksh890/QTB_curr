@@ -38,13 +38,9 @@ def attribution_matrix(result: ExplanationResult) -> np.ndarray:
     return np.asarray([result.importances[c] for c in cols], dtype=np.float64).reshape(1, -1)
 
 
-def compare_attributions(
-    a: ExplanationResult, b: ExplanationResult
-) -> dict[str, float]:
+def compare_attributions(a: ExplanationResult, b: ExplanationResult) -> dict[str, float]:
     keys = sorted(set(a.importances) | set(b.importances))
-    return {
-        k: float(a.importances.get(k, 0.0) - b.importances.get(k, 0.0)) for k in keys
-    }
+    return {k: float(a.importances.get(k, 0.0) - b.importances.get(k, 0.0)) for k in keys}
 
 
 # re-export hooks for convenience

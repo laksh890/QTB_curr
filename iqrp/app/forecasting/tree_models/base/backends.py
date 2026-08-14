@@ -124,27 +124,29 @@ def _make_xgboost(
     try:
         from xgboost import XGBClassifier, XGBRegressor
 
-        common = dict(
-            n_estimators=n_estimators,
-            max_depth=max_depth,
-            learning_rate=learning_rate,
-            subsample=subsample,
-            colsample_bytree=colsample,
-            reg_lambda=reg_lambda,
-            reg_alpha=reg_alpha,
-            random_state=random_state,
-            n_jobs=n_jobs,
-            verbosity=0,
-        )
+        common = {
+            "n_estimators": n_estimators,
+            "max_depth": max_depth,
+            "learning_rate": learning_rate,
+            "subsample": subsample,
+            "colsample_bytree": colsample,
+            "reg_lambda": reg_lambda,
+            "reg_alpha": reg_alpha,
+            "random_state": random_state,
+            "n_jobs": n_jobs,
+            "verbosity": 0,
+        }
         if device in {"gpu", "cuda"}:
             common["device"] = "cuda"
             common["tree_method"] = "hist"
         if is_cls:
             return XGBClassifier(objective="binary:logistic", eval_metric="logloss", **common)
         if is_quantile and quantile_alpha is not None:
-            return XGBRegressor(objective="reg:quantileerror", quantile_alpha=quantile_alpha, **common)
+            return XGBRegressor(
+                objective="reg:quantileerror", quantile_alpha=quantile_alpha, **common
+            )
         return XGBRegressor(objective="reg:squarederror", **common)
-    except Exception:  # noqa: BLE001
+    except Exception:
         from iqrp.app.forecasting.tree_models.base.native import NativeGBM
 
         return NativeGBM(
@@ -175,25 +177,25 @@ def _make_lightgbm(
     try:
         from lightgbm import LGBMClassifier, LGBMRegressor
 
-        common = dict(
-            n_estimators=n_estimators,
-            max_depth=max_depth,
-            learning_rate=learning_rate,
-            subsample=subsample,
-            colsample_bytree=colsample,
-            reg_lambda=reg_lambda,
-            reg_alpha=reg_alpha,
-            random_state=random_state,
-            n_jobs=n_jobs,
-            verbosity=-1,
-            device="gpu" if device in {"gpu", "cuda"} else "cpu",
-        )
+        common = {
+            "n_estimators": n_estimators,
+            "max_depth": max_depth,
+            "learning_rate": learning_rate,
+            "subsample": subsample,
+            "colsample_bytree": colsample,
+            "reg_lambda": reg_lambda,
+            "reg_alpha": reg_alpha,
+            "random_state": random_state,
+            "n_jobs": n_jobs,
+            "verbosity": -1,
+            "device": "gpu" if device in {"gpu", "cuda"} else "cpu",
+        }
         if is_cls:
             return LGBMClassifier(**common)
         if is_quantile and quantile_alpha is not None:
             return LGBMRegressor(objective="quantile", alpha=quantile_alpha, **common)
         return LGBMRegressor(**common)
-    except Exception:  # noqa: BLE001
+    except Exception:
         from iqrp.app.forecasting.tree_models.base.native import NativeGBM
 
         return NativeGBM(
@@ -222,24 +224,24 @@ def _make_catboost(
     try:
         from catboost import CatBoostClassifier, CatBoostRegressor
 
-        common = dict(
-            iterations=n_estimators,
-            depth=max_depth,
-            learning_rate=learning_rate,
-            subsample=subsample,
-            l2_leaf_reg=reg_lambda,
-            random_seed=random_state,
-            thread_count=n_jobs if n_jobs > 0 else -1,
-            verbose=False,
-            allow_writing_files=False,
-            task_type="GPU" if device in {"gpu", "cuda"} else "CPU",
-        )
+        common = {
+            "iterations": n_estimators,
+            "depth": max_depth,
+            "learning_rate": learning_rate,
+            "subsample": subsample,
+            "l2_leaf_reg": reg_lambda,
+            "random_seed": random_state,
+            "thread_count": n_jobs if n_jobs > 0 else -1,
+            "verbose": False,
+            "allow_writing_files": False,
+            "task_type": "GPU" if device in {"gpu", "cuda"} else "CPU",
+        }
         if is_cls:
             return CatBoostClassifier(**common)
         if is_quantile and quantile_alpha is not None:
             return CatBoostRegressor(loss_function=f"Quantile:alpha={quantile_alpha}", **common)
         return CatBoostRegressor(loss_function="RMSE", **common)
-    except Exception:  # noqa: BLE001
+    except Exception:
         from iqrp.app.forecasting.tree_models.base.native import NativeGBM
 
         return NativeGBM(
@@ -286,7 +288,7 @@ def _make_hist_gb(
             learning_rate=learning_rate,
             random_state=random_state,
         )
-    except Exception:  # noqa: BLE001
+    except Exception:
         from iqrp.app.forecasting.tree_models.base.native import NativeGBM
 
         return NativeGBM(
@@ -309,8 +311,12 @@ def _make_rf(
     extra: bool,
 ) -> Any:
     try:
-        from sklearn.ensemble import ExtraTreesClassifier, ExtraTreesRegressor
-        from sklearn.ensemble import RandomForestClassifier, RandomForestRegressor
+        from sklearn.ensemble import (
+            ExtraTreesClassifier,
+            ExtraTreesRegressor,
+            RandomForestClassifier,
+            RandomForestRegressor,
+        )
 
         if extra:
             cls = ExtraTreesClassifier if is_cls else ExtraTreesRegressor
@@ -322,7 +328,7 @@ def _make_rf(
             random_state=random_state,
             n_jobs=n_jobs,
         )
-    except Exception:  # noqa: BLE001
+    except Exception:
         from iqrp.app.forecasting.tree_models.base.native import NativeForest
 
         return NativeForest(
@@ -362,6 +368,6 @@ def estimator_feature_importances(est: Any, n_features: int) -> np.ndarray:
                     out[idx] = float(v)
             s = out.sum() or 1.0
             return out / s
-        except Exception:  # noqa: BLE001
+        except Exception:
             pass
     return np.ones(n_features) / max(n_features, 1)

@@ -44,7 +44,13 @@ def analyze_stability(
     # Stability score in [0, 1]: high mean/std and sign consistency
     if finite.size >= 3 and np.isfinite(std):
         cv_pen = 1.0 / (1.0 + abs(std) / (abs(mean) + 1e-9))
-        stab = float(np.clip(0.5 * cv_pen + 0.5 * (sign_consistency if np.isfinite(sign_consistency) else 0.0), 0, 1))
+        stab = float(
+            np.clip(
+                0.5 * cv_pen + 0.5 * (sign_consistency if np.isfinite(sign_consistency) else 0.0),
+                0,
+                1,
+            )
+        )
     else:
         stab = float("nan")
     return {
@@ -58,8 +64,5 @@ def analyze_stability(
         "window": window,
         "step": step,
         "horizon": horizon,
-        "disclaimer": (
-            "Rolling IC stability ≠ alpha. "
-            "Historical Sharpe alone cannot approve."
-        ),
+        "disclaimer": ("Rolling IC stability ≠ alpha. " "Historical Sharpe alone cannot approve."),
     }

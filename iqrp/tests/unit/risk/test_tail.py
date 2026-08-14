@@ -24,7 +24,6 @@ from iqrp.app.risk.tail.var import (
     parametric_var,
 )
 
-
 N_SIM = 300
 SEED = 42
 
@@ -136,9 +135,7 @@ class TestExpectedShortfallAndCTE:
 
     def test_mc_aliases(self, returns_1d: np.ndarray) -> None:
         for method in ("monte_carlo", "mc", "simulation"):
-            m = expected_shortfall(
-                returns_1d, method=method, n_simulations=N_SIM, seed=SEED
-            )
+            m = expected_shortfall(returns_1d, method=method, n_simulations=N_SIM, seed=SEED)
             assert m.method == "monte_carlo"
 
     def test_cte_quantile(self, returns_1d: np.ndarray) -> None:

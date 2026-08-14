@@ -9,14 +9,15 @@ capacity, costs, stability, regime robustness, and statistical checks.
 
 from __future__ import annotations
 
+from collections.abc import Mapping, Sequence
 from dataclasses import asdict, dataclass, field
-from typing import Any, Mapping, Sequence
+from typing import Any
 
 from iqrp.app.backtesting.performance.scorecard import StrategyScorecard
 
 __all__ = [
-    "GateThresholds",
     "GateResult",
+    "GateThresholds",
     "evaluate_gates",
     "require_oos",
 ]
@@ -48,7 +49,7 @@ class GateThresholds:
         return asdict(self)
 
     @classmethod
-    def from_dict(cls, data: Mapping[str, Any] | None) -> "GateThresholds":
+    def from_dict(cls, data: Mapping[str, Any] | None) -> GateThresholds:
         if not data:
             return cls()
         known = {f.name for f in cls.__dataclass_fields__.values()}  # type: ignore[attr-defined]
@@ -100,7 +101,11 @@ def evaluate_gates(
     Never approves solely because in-sample Sharpe/return is high.
     """
     thr = gates if isinstance(gates, GateThresholds) else GateThresholds.from_dict(gates)
-    sc = scorecard if isinstance(scorecard, StrategyScorecard) else StrategyScorecard.from_dict(scorecard)
+    sc = (
+        scorecard
+        if isinstance(scorecard, StrategyScorecard)
+        else StrategyScorecard.from_dict(scorecard)
+    )
 
     checks: dict[str, bool] = {}
     reasons: list[str] = []
@@ -115,9 +120,7 @@ def evaluate_gates(
         oos_ok = float(sc.out_of_sample) >= float(thr.min_oos_sharpe)  # type: ignore[arg-type]
         checks["out_of_sample_sharpe"] = oos_ok
         if not oos_ok:
-            reasons.append(
-                f"OOS Sharpe {sc.out_of_sample} < min_oos_sharpe {thr.min_oos_sharpe}"
-            )
+            reasons.append(f"OOS Sharpe {sc.out_of_sample} < min_oos_sharpe {thr.min_oos_sharpe}")
     checks["out_of_sample_ok"] = oos_ok and (not thr.require_out_of_sample or oos_present)
 
     if thr.reject_in_sample_only:
@@ -125,9 +128,7 @@ def evaluate_gates(
         is_only = (in_sample_sharpe is not None and float(in_sample_sharpe) > 0) and not oos_present
         checks["not_in_sample_only"] = not is_only
         if is_only:
-            reasons.append(
-                "rejected: in-sample Sharpe alone is insufficient for promotion"
-            )
+            reasons.append("rejected: in-sample Sharpe alone is insufficient for promotion")
 
     if thr.min_sharpe is not None:
         checks["sharpe"] = sc.sharpe >= float(thr.min_sharpe)
@@ -137,9 +138,7 @@ def evaluate_gates(
     if thr.max_drawdown is not None:
         checks["max_drawdown"] = sc.max_drawdown <= float(thr.max_drawdown)
         if not checks["max_drawdown"]:
-            reasons.append(
-                f"max_drawdown {sc.max_drawdown} > max_drawdown {thr.max_drawdown}"
-            )
+            reasons.append(f"max_drawdown {sc.max_drawdown} > max_drawdown {thr.max_drawdown}")
 
     if thr.max_cvar is not None:
         checks["cvar"] = sc.cvar <= float(thr.max_cvar)
@@ -152,9 +151,8 @@ def evaluate_gates(
             reasons.append(f"stability {sc.stability} < min_stability {thr.min_stability}")
 
     if thr.min_regime_robustness is not None:
-        ok = (
-            sc.regime_robustness is not None
-            and float(sc.regime_robustness) >= float(thr.min_regime_robustness)
+        ok = sc.regime_robustness is not None and float(sc.regime_robustness) >= float(
+            thr.min_regime_robustness
         )
         checks["regime_robustness"] = ok
         if not ok:
@@ -166,9 +164,7 @@ def evaluate_gates(
             reasons.append(f"turnover {sc.turnover} > max_turnover {thr.max_turnover}")
 
     if thr.max_transaction_costs is not None:
-        checks["transaction_costs"] = sc.transaction_costs <= float(
-            thr.max_transaction_costs
-        )
+        checks["transaction_costs"] = sc.transaction_costs <= float(thr.max_transaction_costs)
         if not checks["transaction_costs"]:
             reasons.append("transaction cost gate failed")
 

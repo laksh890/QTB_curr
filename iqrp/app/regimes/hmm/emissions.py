@@ -267,9 +267,7 @@ def _gaussian_logpdf(
     d = y.shape[1]
     if covariance_type == "diag":
         var = np.clip(np.asarray(covar, dtype=np.float64).reshape(-1), 1e-12, None)
-        out = -0.5 * (
-            d * np.log(2 * np.pi) + np.sum(np.log(var)) + np.sum(diff**2 / var, axis=1)
-        )
+        out = -0.5 * (d * np.log(2 * np.pi) + np.sum(np.log(var)) + np.sum(diff**2 / var, axis=1))
         return np.asarray(out, dtype=np.float64)
     cov = np.asarray(covar, dtype=np.float64)
     cov = cov + 1e-9 * np.eye(d)

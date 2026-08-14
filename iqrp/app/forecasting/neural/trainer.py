@@ -11,7 +11,6 @@ import polars as pl
 from iqrp.app.forecasting.base.evaluator import EvaluationReport
 from iqrp.app.forecasting.neural.base.neural_model import NeuralForecastModel
 from iqrp.app.forecasting.neural.config import NeuralSettings
-from iqrp.app.forecasting.neural.diagnostics.report import run_neural_diagnostics
 from iqrp.app.forecasting.neural.registry import create_neural_model, ensure_neural_models_loaded
 from iqrp.app.forecasting.neural.visualization.plots import (
     plot_forecast,

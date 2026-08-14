@@ -10,7 +10,7 @@ try:  # optional acceleration
     from numba import njit
 
     _HAS_NUMBA = True
-except Exception:  # noqa: BLE001
+except Exception:
     _HAS_NUMBA = False
 
     def njit(*args: Any, **kwargs: Any):  # type: ignore[misc]
@@ -48,7 +48,12 @@ def _garch_core(eps2: np.ndarray, omega: float, alpha: np.ndarray, beta: np.ndar
 
 @njit(cache=True)
 def _gjr_core(
-    eps: np.ndarray, eps2: np.ndarray, omega: float, alpha: np.ndarray, gamma: np.ndarray, beta: np.ndarray
+    eps: np.ndarray,
+    eps2: np.ndarray,
+    omega: float,
+    alpha: np.ndarray,
+    gamma: np.ndarray,
+    beta: np.ndarray,
 ) -> np.ndarray:
     n = eps2.shape[0]
     p = alpha.shape[0]
@@ -163,9 +168,13 @@ def _cgarch_core(
     return h, q
 
 
-def garch_variance(eps: np.ndarray, omega: float, alpha: np.ndarray, beta: np.ndarray) -> np.ndarray:
+def garch_variance(
+    eps: np.ndarray, omega: float, alpha: np.ndarray, beta: np.ndarray
+) -> np.ndarray:
     e = np.asarray(eps, dtype=np.float64).reshape(-1)
-    return _garch_core(e * e, float(omega), np.asarray(alpha, dtype=np.float64), np.asarray(beta, dtype=np.float64))
+    return _garch_core(
+        e * e, float(omega), np.asarray(alpha, dtype=np.float64), np.asarray(beta, dtype=np.float64)
+    )
 
 
 def arch_variance(eps: np.ndarray, omega: float, alpha: np.ndarray) -> np.ndarray:

@@ -40,7 +40,9 @@ class SimpleExpSmoothingModel(StatisticalForecastModel):
         supports_intervals=True,
     )
 
-    def __init__(self, settings: Any | None = None, *, alpha: float | None = None, **kwargs: Any) -> None:
+    def __init__(
+        self, settings: Any | None = None, *, alpha: float | None = None, **kwargs: Any
+    ) -> None:
         super().__init__(settings=settings, **kwargs)
         self._alpha = alpha
         self._level = 0.0
@@ -57,6 +59,7 @@ class SimpleExpSmoothingModel(StatisticalForecastModel):
         y = frame[tgt].to_numpy().astype(np.float64)
         self._maybe_regime_series(frame, regime_column)
         if self._alpha is None:
+
             def obj(a: float) -> float:
                 _, r = _ses(y, float(a))
                 return float(np.dot(r, r))
@@ -85,12 +88,14 @@ class SimpleExpSmoothingModel(StatisticalForecastModel):
         self._order = {"alpha": int(round(100 * float(self._alpha)))}
         return self
 
-    def predict(
-        self, frame: pl.DataFrame, feature_columns: list[str] | None = None
-    ) -> np.ndarray:
+    def predict(self, frame: pl.DataFrame, feature_columns: list[str] | None = None) -> np.ndarray:
         self._require_fitted()
         tgt = self._target_column or self._stat_settings.columns.target
-        y = frame[tgt].to_numpy().astype(np.float64) if tgt in frame.columns else self._extract_target(frame, None)
+        y = (
+            frame[tgt].to_numpy().astype(np.float64)
+            if tgt in frame.columns
+            else self._extract_target(frame, None)
+        )
         fitted, _ = _ses(y, float(self._alpha or 0.2))
         return fitted
 
@@ -104,7 +109,11 @@ class SimpleExpSmoothingModel(StatisticalForecastModel):
         self._require_fitted()
         h = self._default_horizon(horizon)
         path = np.full(h, self._level, dtype=np.float64)
-        regime = frame[self._regime_column][-1] if self._regime_column and self._regime_column in frame.columns else None
+        regime = (
+            frame[self._regime_column][-1]
+            if self._regime_column and self._regime_column in frame.columns
+            else None
+        )
         return self._build_forecast(path, horizon=h, strategy="direct", regime_used=regime)
 
     def _algorithm_state(self) -> dict[str, Any]:
@@ -126,7 +135,9 @@ class SimpleExpSmoothingModel(StatisticalForecastModel):
         self._level = float(state.get("level", 0.0))
         self._y = None if state.get("y") is None else np.asarray(state["y"], dtype=np.float64)
         self._residuals = (
-            None if state.get("residuals") is None else np.asarray(state["residuals"], dtype=np.float64)
+            None
+            if state.get("residuals") is None
+            else np.asarray(state["residuals"], dtype=np.float64)
         )
         self._fitted_values = (
             None if state.get("fitted") is None else np.asarray(state["fitted"], dtype=np.float64)

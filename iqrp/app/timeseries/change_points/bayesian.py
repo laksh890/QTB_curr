@@ -134,11 +134,7 @@ def _student_t_pdf(x: float, mu: float, kappa: float, alpha: float, beta: float)
     z = (x - mu) / np.sqrt(var)
     # unnormalized but relative comparisons matter; use log-stable approx
     # Γ((ν+1)/2) / (√(νπ) Γ(ν/2)) * (1 + z²/ν)^(-(ν+1)/2)
-    log_c = (
-        _log_gamma(0.5 * (df + 1.0))
-        - _log_gamma(0.5 * df)
-        - 0.5 * np.log(df * np.pi * var)
-    )
+    log_c = _log_gamma(0.5 * (df + 1.0)) - _log_gamma(0.5 * df) - 0.5 * np.log(df * np.pi * var)
     log_p = log_c - 0.5 * (df + 1.0) * np.log1p((z * z) / df)
     return float(np.exp(np.clip(log_p, -700, 700)))
 

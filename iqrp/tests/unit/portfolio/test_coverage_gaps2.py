@@ -40,7 +40,10 @@ from iqrp.app.portfolio.constraints._types import (
 )
 from iqrp.app.portfolio.constraints.beta import check_beta_constraints, portfolio_beta
 from iqrp.app.portfolio.constraints.currency import check_currency_constraints, currency_exposures
-from iqrp.app.portfolio.constraints.factor import check_factor_constraints, portfolio_factor_exposures
+from iqrp.app.portfolio.constraints.factor import (
+    check_factor_constraints,
+    portfolio_factor_exposures,
+)
 from iqrp.app.portfolio.constraints.liquidity import check_liquidity_constraints
 from iqrp.app.portfolio.constraints.position import check_position_constraints
 from iqrp.app.portfolio.constraints.sector import check_sector_constraints, sector_exposures
@@ -502,14 +505,23 @@ def test_parse_constraints_dict_object_extras():
     d2 = parse_constraints({"sum_weights": 0.8}, 4)
     assert d2["budget"] == 0.8
     # object attributes
-    obj = SimpleNamespace(long_only=False, max_weight=0.25, min_weight=-0.2, max_gross=1.1, budget=1.0, names=["x"] * 4)
+    obj = SimpleNamespace(
+        long_only=False,
+        max_weight=0.25,
+        min_weight=-0.2,
+        max_gross=1.1,
+        budget=1.0,
+        names=["x"] * 4,
+    )
     d3 = parse_constraints(obj, 4)
     assert d3["long_only"] is False
     assert d3["ub"] == 0.25
 
 
 def test_check_feasibility_conflict_branches():
-    ok, _, _ = check_feasibility({"n": 0, "lb": 0, "ub": 1, "budget": 1, "max_gross": None, "extras": []})
+    ok, _, _ = check_feasibility(
+        {"n": 0, "lb": 0, "ub": 1, "budget": 1, "max_gross": None, "extras": []}
+    )
     assert ok is False
     bad = {
         "n": 4,
@@ -524,7 +536,9 @@ def test_check_feasibility_conflict_branches():
     assert reason
     assert any("unsupported" in c for c in conflicts)
     # n*lb > budget
-    ok3, _, c3 = check_feasibility({"n": 4, "lb": 0.3, "ub": 1.0, "budget": 1.0, "max_gross": None, "extras": []})
+    ok3, _, c3 = check_feasibility(
+        {"n": 4, "lb": 0.3, "ub": 1.0, "budget": 1.0, "max_gross": None, "extras": []}
+    )
     assert ok3 is False
     assert any("min_weight" in x for x in c3)
 
@@ -554,7 +568,12 @@ def test_project_simplex_box_gross_weights_paths():
     pw = project_weights(np.array([0.8, 0.1, 0.05, 0.05]), cstr)
     assert abs(pw.sum() - 1.0) < 1e-5
 
-    cstr_ls = parse_constraints({"long_only": False, "min_weight": -0.5, "max_weight": 0.5}, 4, long_only=False, min_weight=-0.5)
+    cstr_ls = parse_constraints(
+        {"long_only": False, "min_weight": -0.5, "max_weight": 0.5},
+        4,
+        long_only=False,
+        min_weight=-0.5,
+    )
     pw2 = project_weights(np.array([0.5, -0.2, 0.4, 0.3]), cstr_ls)
     assert abs(pw2.sum() - 1.0) < 1e-5
 
@@ -581,7 +600,9 @@ def test_make_infeasible_failed_format_minimize_pgd():
     assert isinstance(portfolio_return(np.ones(2) / 2, np.array([0.1, 0.2])), float)
 
     if scipy_available():
-        res = minimize_scipy(lambda x: float(x @ x), np.array([1.0, 1.0]), method="BFGS", options={"maxiter": 20})
+        res = minimize_scipy(
+            lambda x: float(x @ x), np.array([1.0, 1.0]), method="BFGS", options={"maxiter": 20}
+        )
         assert res is not None
 
     def fun(x):
@@ -590,7 +611,9 @@ def test_make_infeasible_failed_format_minimize_pgd():
     def grad(x):
         return 2 * x
 
-    x, f, ok, it = projected_gradient(fun, grad, np.array([1.0, 1.0]), lambda z: z / max(np.sum(z), 1e-12), max_iter=50, tol=1e-12)
+    x, f, ok, it = projected_gradient(
+        fun, grad, np.array([1.0, 1.0]), lambda z: z / max(np.sum(z), 1e-12), max_iter=50, tol=1e-12
+    )
     assert x is not None
     assert it >= 1
 
@@ -665,9 +688,10 @@ def test_short_rejection_rp_hrp_entropy_and_missing_cov(cov, names, mu):
     for fn in (optimize_risk_parity, optimize_hrp, optimize_entropy):
         res = fn(cov=cov, names=names, long_only=False, min_weight=-0.5, max_weight=0.5)
         assert res["success"] is False
-        assert "long_only" in str(res.get("conflicting_constraints") or []) or "long" in (
-            res.get("failure_reason") or ""
-        ).lower()
+        assert (
+            "long_only" in str(res.get("conflicting_constraints") or [])
+            or "long" in (res.get("failure_reason") or "").lower()
+        )
 
     assert optimize_risk_parity(names=names)["success"] is False
     assert optimize_hrp(names=names)["success"] is False
@@ -707,15 +731,15 @@ def test_commission_per_share_and_min_floor(prices):
 
 # ============================================================================= extra optimizer fallbacks via monkeypatch
 def test_optimizers_scipy_unavailable_and_fail_fallback(mu, cov, names, monkeypatch):
+    import iqrp.app.portfolio.optimization.cvar as cv
+    import iqrp.app.portfolio.optimization.entropy as ent
+    import iqrp.app.portfolio.optimization.maximum_diversification as md
+    import iqrp.app.portfolio.optimization.maximum_sharpe as ms
     import iqrp.app.portfolio.optimization.mean_variance as mv
     import iqrp.app.portfolio.optimization.minimum_variance as mnv
-    import iqrp.app.portfolio.optimization.maximum_sharpe as ms
-    import iqrp.app.portfolio.optimization.maximum_diversification as md
-    import iqrp.app.portfolio.optimization.turnover as to
-    import iqrp.app.portfolio.optimization.entropy as ent
-    import iqrp.app.portfolio.optimization.risk_parity as rp
-    import iqrp.app.portfolio.optimization.cvar as cv
     import iqrp.app.portfolio.optimization.projection as proj
+    import iqrp.app.portfolio.optimization.risk_parity as rp
+    import iqrp.app.portfolio.optimization.turnover as to
 
     monkeypatch.setattr(proj, "scipy_available", lambda: False)
     for mod in (mv, mnv, ms, md, to, ent, rp, cv):
@@ -730,7 +754,9 @@ def test_optimizers_scipy_unavailable_and_fail_fallback(mu, cov, names, monkeypa
     assert "success" in r3
     r4 = md.optimize_maximum_diversification(cov=cov, names=names, max_weight=0.5)
     assert "success" in r4
-    r5 = to.optimize_turnover(mu=mu, cov=cov, names=names, max_weight=0.5, current_weights=np.ones(4) / 4)
+    r5 = to.optimize_turnover(
+        mu=mu, cov=cov, names=names, max_weight=0.5, current_weights=np.ones(4) / 4
+    )
     assert "success" in r5
     r6 = ent.optimize_entropy(cov=cov, names=names, max_weight=0.5)
     assert "success" in r6
@@ -755,9 +781,9 @@ def test_optimizers_minimize_scipy_raises(mu, cov, names, monkeypatch):
 
 
 def test_optimizers_postcheck_via_bad_project(mu, cov, names, monkeypatch):
+    import iqrp.app.portfolio.optimization.maximum_sharpe as ms
     import iqrp.app.portfolio.optimization.mean_variance as mv
     import iqrp.app.portfolio.optimization.minimum_variance as mnv
-    import iqrp.app.portfolio.optimization.maximum_sharpe as ms
     import iqrp.app.portfolio.optimization.projection as proj
 
     def bad_project(v, cstr):
@@ -767,9 +793,13 @@ def test_optimizers_postcheck_via_bad_project(mu, cov, names, monkeypatch):
     for mod in (mv, mnv, ms):
         monkeypatch.setattr(mod, "project_weights", bad_project)
         monkeypatch.setattr(mod, "scipy_available", lambda: False)
-    assert mv.optimize_mean_variance(mu=mu, cov=cov, names=names, max_weight=0.5)["success"] is False
+    assert (
+        mv.optimize_mean_variance(mu=mu, cov=cov, names=names, max_weight=0.5)["success"] is False
+    )
     assert mnv.optimize_minimum_variance(cov=cov, names=names, max_weight=0.5)["success"] is False
-    assert ms.optimize_maximum_sharpe(mu=mu, cov=cov, names=names, max_weight=0.5)["success"] is False
+    assert (
+        ms.optimize_maximum_sharpe(mu=mu, cov=cov, names=names, max_weight=0.5)["success"] is False
+    )
 
 
 def test_mv_singular_cov_and_exception_handler(mu, names, monkeypatch):
@@ -789,14 +819,14 @@ def test_mv_singular_cov_and_exception_handler(mu, names, monkeypatch):
 
 
 def test_drawdown_hrp_entropy_exception_handlers(cov, names, monkeypatch):
-    import iqrp.app.portfolio.optimization.drawdown as dd
-    import iqrp.app.portfolio.optimization.hierarchical as hr
-    import iqrp.app.portfolio.optimization.entropy as ent
-    import iqrp.app.portfolio.optimization.risk_parity as rp
-    import iqrp.app.portfolio.optimization.turnover as to
-    import iqrp.app.portfolio.optimization.maximum_diversification as md
     import iqrp.app.portfolio.optimization.black_litterman as bl
+    import iqrp.app.portfolio.optimization.drawdown as dd
+    import iqrp.app.portfolio.optimization.entropy as ent
+    import iqrp.app.portfolio.optimization.hierarchical as hr
+    import iqrp.app.portfolio.optimization.maximum_diversification as md
+    import iqrp.app.portfolio.optimization.risk_parity as rp
     import iqrp.app.portfolio.optimization.robust as rob
+    import iqrp.app.portfolio.optimization.turnover as to
 
     def boom_parse(*a, **k):
         raise RuntimeError("parse fail")
@@ -826,10 +856,10 @@ def test_drawdown_hrp_entropy_exception_handlers(cov, names, monkeypatch):
 
 
 def test_constraints_exposure_and_risk(weights):
-    from iqrp.app.portfolio.constraints.exposure import check_exposure_constraints, exposure_metrics
-    from iqrp.app.portfolio.constraints.risk import check_risk_constraints
     from iqrp.app.portfolio.constraints.concentration import check_concentration_constraints
+    from iqrp.app.portfolio.constraints.exposure import check_exposure_constraints, exposure_metrics
     from iqrp.app.portfolio.constraints.leverage import check_leverage_constraints
+    from iqrp.app.portfolio.constraints.risk import check_risk_constraints
     from iqrp.app.portfolio.constraints.turnover import check_turnover_constraints
 
     assert exposure_metrics([])["gross"] == 0.0
@@ -877,12 +907,12 @@ def test_constraints_exposure_and_risk(weights):
 
 
 def test_scipy_success_false_then_pgd(mu, cov, names, monkeypatch):
+    import iqrp.app.portfolio.optimization.cvar as cv
+    import iqrp.app.portfolio.optimization.maximum_diversification as md
+    import iqrp.app.portfolio.optimization.maximum_sharpe as ms
     import iqrp.app.portfolio.optimization.mean_variance as mv
     import iqrp.app.portfolio.optimization.minimum_variance as mnv
-    import iqrp.app.portfolio.optimization.maximum_sharpe as ms
-    import iqrp.app.portfolio.optimization.maximum_diversification as md
     import iqrp.app.portfolio.optimization.turnover as to
-    import iqrp.app.portfolio.optimization.cvar as cv
 
     class FakeRes:
         success = False
@@ -903,20 +933,26 @@ def test_scipy_success_false_then_pgd(mu, cov, names, monkeypatch):
     assert "success" in to.optimize_turnover(
         mu=mu, cov=cov, names=names, max_weight=0.5, current_weights=np.ones(4) / 4
     )
-    assert "success" in cv.optimize_cvar(cov=cov, scenarios=np.random.default_rng(0).normal(size=(30, 4)), names=names, max_weight=0.5, max_iter=10)
+    assert "success" in cv.optimize_cvar(
+        cov=cov,
+        scenarios=np.random.default_rng(0).normal(size=(30, 4)),
+        names=names,
+        max_weight=0.5,
+        max_iter=10,
+    )
 
 
 def test_budget_and_gross_postcheck(mu, cov, names, monkeypatch):
-    import iqrp.app.portfolio.optimization.mean_variance as mv
-    import iqrp.app.portfolio.optimization.minimum_variance as mnv
-    import iqrp.app.portfolio.optimization.maximum_sharpe as ms
+    import iqrp.app.portfolio.optimization.cvar as cv
+    import iqrp.app.portfolio.optimization.drawdown as dd
     import iqrp.app.portfolio.optimization.entropy as ent
     import iqrp.app.portfolio.optimization.hierarchical as hr
-    import iqrp.app.portfolio.optimization.risk_parity as rp
     import iqrp.app.portfolio.optimization.maximum_diversification as md
+    import iqrp.app.portfolio.optimization.maximum_sharpe as ms
+    import iqrp.app.portfolio.optimization.mean_variance as mv
+    import iqrp.app.portfolio.optimization.minimum_variance as mnv
+    import iqrp.app.portfolio.optimization.risk_parity as rp
     import iqrp.app.portfolio.optimization.turnover as to
-    import iqrp.app.portfolio.optimization.drawdown as dd
-    import iqrp.app.portfolio.optimization.cvar as cv
     import iqrp.app.portfolio.robust.distributional_robust as drob
 
     def budget_break(v, cstr):
@@ -935,21 +971,33 @@ def test_budget_and_gross_postcheck(mu, cov, names, monkeypatch):
         if hasattr(mod, "scipy_available"):
             monkeypatch.setattr(mod, "scipy_available", lambda: False)
         monkeypatch.setattr(mod, "project_weights", budget_break)
-    assert mv.optimize_mean_variance(mu=mu, cov=cov, names=names, max_weight=0.5)["success"] is False
+    assert (
+        mv.optimize_mean_variance(mu=mu, cov=cov, names=names, max_weight=0.5)["success"] is False
+    )
     assert mnv.optimize_minimum_variance(cov=cov, names=names, max_weight=0.5)["success"] is False
-    assert ms.optimize_maximum_sharpe(mu=mu, cov=cov, names=names, max_weight=0.5)["success"] is False
+    assert (
+        ms.optimize_maximum_sharpe(mu=mu, cov=cov, names=names, max_weight=0.5)["success"] is False
+    )
     assert ent.optimize_entropy(cov=cov, names=names, max_weight=0.5)["success"] is False
     assert hr.optimize_hrp(cov=cov, names=names, max_weight=0.6)["success"] is False
     assert rp.optimize_risk_parity(cov=cov, names=names, max_weight=0.5)["success"] is False
-    assert md.optimize_maximum_diversification(cov=cov, names=names, max_weight=0.5)["success"] is False
+    assert (
+        md.optimize_maximum_diversification(cov=cov, names=names, max_weight=0.5)["success"]
+        is False
+    )
     assert to.optimize_turnover(mu=mu, cov=cov, names=names, max_weight=0.5)["success"] is False
     assert dd.optimize_drawdown(mu=mu, cov=cov, names=names, max_weight=0.5)["success"] is False
     assert cv.optimize_cvar(cov=cov, names=names, max_weight=0.5, max_iter=5)["success"] is False
-    assert drob.optimize_distributional_robust(mu=mu, cov=cov, names=names, max_weight=0.5)["success"] is False
+    assert (
+        drob.optimize_distributional_robust(mu=mu, cov=cov, names=names, max_weight=0.5)["success"]
+        is False
+    )
 
     # gross violation path for MV
     monkeypatch.setattr(mv, "project_weights", gross_break)
-    res = mv.optimize_mean_variance(mu=mu, cov=cov, names=names, max_weight=5.0, max_gross=1.0, long_only=False, min_weight=-2.0)
+    res = mv.optimize_mean_variance(
+        mu=mu, cov=cov, names=names, max_weight=5.0, max_gross=1.0, long_only=False, min_weight=-2.0
+    )
     assert res["success"] is False
 
 
@@ -958,7 +1006,9 @@ def test_hrp_backend_bad_size_and_weights_dict(cov, names, monkeypatch):
     import iqrp.app.portfolio.optimization.risk_parity as rp
 
     def bad_hrp(*a, **k):
-        return {"weights": {f"a{i}": 0.0 for i in range(10)}}  # wrong keys/size after list comp may error
+        return {
+            "weights": {f"a{i}": 0.0 for i in range(10)}
+        }  # wrong keys/size after list comp may error
 
     monkeypatch.setattr(hr, "hrp_weights", lambda *a, **k: {"weight_vector": np.ones(2)})
     monkeypatch.setattr(hr, "herc_weights", lambda *a, **k: {"weight_vector": np.ones(2)})
@@ -973,8 +1023,8 @@ def test_hrp_backend_bad_size_and_weights_dict(cov, names, monkeypatch):
 
 def test_black_litterman_local_and_views(mu, cov, names, monkeypatch):
     from iqrp.app.portfolio.optimization.black_litterman import (
-        optimize_black_litterman,
         _local_black_litterman_posterior,
+        optimize_black_litterman,
     )
 
     n = len(names)
@@ -1024,10 +1074,10 @@ def test_softmin_cvar_empty_and_no_hard(monkeypatch):
 
 
 def test_exposure_short_and_risk_skip_rc(weights):
-    from iqrp.app.portfolio.constraints.exposure import check_exposure_constraints
-    from iqrp.app.portfolio.constraints.risk import check_risk_constraints
     from iqrp.app.portfolio.constraints.concentration import check_concentration_constraints
+    from iqrp.app.portfolio.constraints.exposure import check_exposure_constraints
     from iqrp.app.portfolio.constraints.leverage import check_leverage_constraints
+    from iqrp.app.portfolio.constraints.risk import check_risk_constraints
     from iqrp.app.portfolio.constraints.turnover import check_turnover_constraints
 
     w_ls = np.array([0.8, -0.5, 0.4, 0.3])

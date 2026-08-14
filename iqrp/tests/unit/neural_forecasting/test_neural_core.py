@@ -16,7 +16,11 @@ from iqrp.app.forecasting.neural import (
 )
 from iqrp.app.forecasting.neural.base.losses import get_loss, register_custom_loss
 from iqrp.app.forecasting.neural.base.metrics import evaluate_predictions
-from iqrp.app.forecasting.neural.base.processes import feature_names, multi_horizon_frame, simulate_nonlinear_returns
+from iqrp.app.forecasting.neural.base.processes import (
+    feature_names,
+    multi_horizon_frame,
+    simulate_nonlinear_returns,
+)
 from iqrp.app.forecasting.neural.base.scheduler import build_optimizer, build_scheduler
 from iqrp.app.forecasting.neural.base.torch_utils import has_torch, seed_everything
 from iqrp.app.forecasting.neural.embeddings import (
@@ -28,7 +32,11 @@ from iqrp.app.forecasting.neural.embeddings import (
     TemporalEmbedding,
 )
 from iqrp.app.forecasting.neural.explainability.attribution import explain_neural
-from iqrp.app.forecasting.neural.optimization.distributed import amp_enabled, enable_gradient_checkpointing, wrap_ddp
+from iqrp.app.forecasting.neural.optimization.distributed import (
+    amp_enabled,
+    enable_gradient_checkpointing,
+    wrap_ddp,
+)
 from iqrp.app.forecasting.neural.optimization.hpo import optimize_neural
 from iqrp.app.forecasting.neural.probabilistic import (
     gaussian_quantiles,
@@ -48,8 +56,21 @@ from iqrp.app.forecasting.neural.visualization.plots import (
 
 def _fast_settings(**extra: object) -> NeuralSettings:
     base = {
-        "architecture": {"lookback": 12, "horizon": 3, "hidden_size": 16, "num_layers": 1, "n_blocks": 1, "dropout": 0.0},
-        "train": {"epochs": 2, "batch_size": 32, "device": "cpu", "early_stopping_patience": 20, "seed": 0},
+        "architecture": {
+            "lookback": 12,
+            "horizon": 3,
+            "hidden_size": 16,
+            "num_layers": 1,
+            "n_blocks": 1,
+            "dropout": 0.0,
+        },
+        "train": {
+            "epochs": 2,
+            "batch_size": 32,
+            "device": "cpu",
+            "early_stopping_patience": 20,
+            "seed": 0,
+        },
         "scheduler": {"name": "none"},
         "regime": {"enabled": False},
         "optimization": {"method": "none"},
@@ -71,7 +92,9 @@ def reg_frame() -> pl.DataFrame:
 
 @pytest.fixture
 def cls_frame() -> pl.DataFrame:
-    return simulate_nonlinear_returns(160, n_features=4, classification=True, rng=np.random.default_rng(2))
+    return simulate_nonlinear_returns(
+        160, n_features=4, classification=True, rng=np.random.default_rng(2)
+    )
 
 
 @pytest.mark.unit
@@ -154,7 +177,9 @@ def test_all_models_api(name: str, reg_frame: pl.DataFrame) -> None:
 
 @pytest.mark.unit
 def test_classification_proba(cls_frame: pl.DataFrame) -> None:
-    settings = _fast_settings(task={"type": "binary"}, train={"loss": "bce", "epochs": 2, "device": "cpu"})
+    settings = _fast_settings(
+        task={"type": "binary"}, train={"loss": "bce", "epochs": 2, "device": "cpu"}
+    )
     model = create_neural_model("mlp", settings=settings)
     cols = feature_names(4)
     model.fit(cls_frame, feature_columns=cols)
@@ -197,7 +222,17 @@ def test_losses_schedulers_metrics() -> None:
 
     seed_everything(0)
     y = torch.randn(8, 3)
-    for name in ("mse", "mae", "huber", "logcosh", "quantile", "gaussian_nll", "student_t_nll", "focal", "bce"):
+    for name in (
+        "mse",
+        "mae",
+        "huber",
+        "logcosh",
+        "quantile",
+        "gaussian_nll",
+        "student_t_nll",
+        "focal",
+        "bce",
+    ):
         fn = get_loss(name, alphas=(0.1, 0.5, 0.9))
         if name == "quantile":
             pred = torch.randn(8, 3, 3)
@@ -323,16 +358,25 @@ def test_optimize_neural_direct(reg_frame: pl.DataFrame) -> None:
     settings = _fast_settings()
     model = create_neural_model("mlp", settings=settings)
     # build sequences like fit
-    from iqrp.app.forecasting.neural.base.data import make_sequences, standardize_apply, standardize_fit
+    from iqrp.app.forecasting.neural.base.data import (
+        make_sequences,
+        standardize_apply,
+        standardize_fit,
+    )
 
     X = reg_frame.select(cols).to_numpy()
     y = reg_frame["target"].to_numpy()
     mu, sd = standardize_fit(X)
     Xs = standardize_apply(X, mu, sd)
     X_seq, y_seq = make_sequences(Xs, y, lookback=12, horizon=3)
-    best = optimize_neural(model, X_seq, y_seq, settings=_fast_settings(optimization={"method": "grid", "n_trials": 2}))
+    best = optimize_neural(
+        model, X_seq, y_seq, settings=_fast_settings(optimization={"method": "grid", "n_trials": 2})
+    )
     assert isinstance(best, dict)
     best2 = optimize_neural(
-        model, X_seq, y_seq, settings=_fast_settings(optimization={"method": "optuna", "n_trials": 2})
+        model,
+        X_seq,
+        y_seq,
+        settings=_fast_settings(optimization={"method": "optuna", "n_trials": 2}),
     )
     assert isinstance(best2, dict)

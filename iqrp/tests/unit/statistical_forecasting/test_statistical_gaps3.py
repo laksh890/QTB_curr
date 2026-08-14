@@ -7,6 +7,7 @@ from unittest.mock import MagicMock, patch
 import numpy as np
 import polars as pl
 import pytest
+from omegaconf import OmegaConf
 
 from iqrp.app.core.exceptions import ValidationError
 from iqrp.app.forecasting.statistical.ar.ar import ARModel
@@ -32,7 +33,6 @@ from iqrp.app.forecasting.statistical.config import StatisticalSettings
 from iqrp.app.forecasting.statistical.ma.ma import MAModel
 from iqrp.app.forecasting.statistical.var.var import VARModel
 from iqrp.app.forecasting.statistical.vecm.vecm import VECMModel
-from omegaconf import OmegaConf
 
 
 @pytest.mark.unit
@@ -48,7 +48,12 @@ def test_arima_auto_and_predict_branches() -> None:
     pred = m.predict(frame)
     assert pred.size == frame.height
     # d=0 path without fitted cache
-    m0 = ARIMAModel(settings=StatisticalSettings.from_mapping({"identification": {"auto": False}}), p=1, d=0, q=0)
+    m0 = ARIMAModel(
+        settings=StatisticalSettings.from_mapping({"identification": {"auto": False}}),
+        p=1,
+        d=0,
+        q=0,
+    )
     m0.fit(frame, target_column="target")
     m0._fitted_values = None
     assert m0.predict(frame).size == frame.height
@@ -100,10 +105,14 @@ def test_fitting_and_multivariate_edges() -> None:
     # bad sigma slogdet
     bad = fit.copy()
     # impulse response cholesky fail
-    impulse_response(np.array([[[0.1, 0.0], [0.0, 0.1]]]), np.array([[1.0, 2.0], [2.0, 1.0]]), horizon=3)
+    impulse_response(
+        np.array([[[0.1, 0.0], [0.0, 0.1]]]), np.array([[1.0, 2.0], [2.0, 1.0]]), horizon=3
+    )
     # granger edges
     assert granger_causality(np.ones((5, 1)), cause=0, effect=0).pvalue == 1.0
-    assert johansen_trace(np.random.default_rng(0).normal(size=(10, 2)), lags=5).method == "johansen"
+    assert (
+        johansen_trace(np.random.default_rng(0).normal(size=(10, 2)), lags=5).method == "johansen"
+    )
     # vecm K=1 path inside fit_vecm
     fit_vecm_engle_granger(np.random.default_rng(0).normal(size=(40, 1)), lags=1)
     # stationarity short series branches already; hit suggest seasonal small

@@ -4,11 +4,9 @@ from __future__ import annotations
 
 from typing import Any
 
-from iqrp.app.forecasting.neural.base.torch_utils import has_torch
-
 try:
     from torch import nn
-except Exception:  # noqa: BLE001  # pragma: no cover
+except Exception:  # pragma: no cover
     nn = object  # type: ignore[assignment]
 
 

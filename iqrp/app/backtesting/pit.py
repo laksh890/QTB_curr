@@ -16,9 +16,10 @@ A backtest that fails these checks should transition to ``INVALIDATED``.
 
 from __future__ import annotations
 
+from collections.abc import Iterable, Mapping, Sequence
 from dataclasses import dataclass, field
 from datetime import datetime
-from typing import Any, Iterable, Mapping, Sequence
+from typing import Any
 
 
 class LookaheadViolation(ValueError):
@@ -27,9 +28,7 @@ class LookaheadViolation(ValueError):
 
 def _to_comparable(ts: datetime | int | float) -> datetime | int | float:
     if isinstance(ts, datetime) and ts.tzinfo is None:
-        raise LookaheadViolation(
-            f"naive datetime is not allowed for PIT checks: {ts!r}"
-        )
+        raise LookaheadViolation(f"naive datetime is not allowed for PIT checks: {ts!r}")
     return ts
 
 
@@ -64,9 +63,11 @@ def assert_no_lookahead(
 
 
 def filter_universe_asof(
-    membership: Mapping[str, Sequence[datetime | int | float]]
-    | Mapping[str, Mapping[str, Any]]
-    | Sequence[Mapping[str, Any]],
+    membership: (
+        Mapping[str, Sequence[datetime | int | float]]
+        | Mapping[str, Mapping[str, Any]]
+        | Sequence[Mapping[str, Any]]
+    ),
     asof: datetime | int | float,
     *,
     start_key: str = "start",
@@ -124,9 +125,7 @@ def _extract_window(
 def _is_active(start: Any, end: Any, asof: Any) -> bool:
     if asof < start:
         return False
-    if end is not None and asof >= end:
-        return False
-    return True
+    return not (end is not None and asof >= end)
 
 
 @dataclass(slots=True)
@@ -198,9 +197,7 @@ def detect_leakage(
     feats = list(feature_asof_index)
     labels = list(label_asof_index)
     if len(feats) != len(labels):
-        raise ValueError(
-            f"feature/label length mismatch: {len(feats)} vs {len(labels)}"
-        )
+        raise ValueError(f"feature/label length mismatch: {len(feats)} vs {len(labels)}")
 
     n = len(feats)
     violations: list[dict[str, Any]] = []
@@ -219,9 +216,7 @@ def detect_leakage(
             raise ValueError(f"non-numeric as-of index at sample {i}") from exc
 
         if li_num > fi_num:
-            reasons.append(
-                f"label index {l_i} exceeds feature as-of index {f_i}"
-            )
+            reasons.append(f"label index {l_i} exceeds feature as-of index {f_i}")
 
         if max_label_horizon is not None and (li_num - fi_num) > max_label_horizon:
             reasons.append(
@@ -230,13 +225,9 @@ def detect_leakage(
 
         if max_ts_idx is not None:
             if li_num > max_ts_idx:
-                reasons.append(
-                    f"label index {l_i} is past end of timestamps (max={max_ts_idx})"
-                )
+                reasons.append(f"label index {l_i} is past end of timestamps (max={max_ts_idx})")
             if fi_num > max_ts_idx:
-                reasons.append(
-                    f"feature index {f_i} is past end of timestamps (max={max_ts_idx})"
-                )
+                reasons.append(f"feature index {f_i} is past end of timestamps (max={max_ts_idx})")
 
         if reasons:
             entry: dict[str, Any] = {
@@ -255,10 +246,7 @@ def detect_leakage(
     detail = ""
     if has_leakage:
         first = violations[0]
-        detail = (
-            f"first_violation=sample[{first['sample']}]: "
-            + "; ".join(first["reasons"])
-        )
+        detail = f"first_violation=sample[{first['sample']}]: " + "; ".join(first["reasons"])
 
     return LeakageReport(
         has_leakage=has_leakage,

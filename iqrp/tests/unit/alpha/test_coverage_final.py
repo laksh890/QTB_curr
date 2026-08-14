@@ -9,10 +9,21 @@ from unittest import mock
 import numpy as np
 import pytest
 
+from iqrp.app.alpha.backtesting.signal_backtest import signal_backtest, signal_to_weights
 from iqrp.app.alpha.base.signal_result import (
     SignalResearchReport,
     SignalStatus,
     StatusTransition,
+)
+from iqrp.app.alpha.cross_section.residualization import (
+    _as_panel,
+    _ols_residuals,
+    beta_residualize,
+    residualize_vs_factors,
+)
+from iqrp.app.alpha.cross_section.sector_adjustment import (
+    cap_weighted_sector_neutral,
+    sector_relative_ranks,
 )
 from iqrp.app.alpha.discovery.symbolic import (
     as_float1d,
@@ -22,34 +33,23 @@ from iqrp.app.alpha.discovery.symbolic import (
     rolling_std,
     zscore,
 )
-from iqrp.app.alpha.statistical_validation.bootstrap import (
-    block_bootstrap_ci,
-    iid_bootstrap_ci,
-)
-from iqrp.app.alpha.cross_section.residualization import (
-    _as_panel,
-    _ols_residuals,
-    beta_residualize,
-    residualize_vs_factors,
-)
-from iqrp.app.alpha.backtesting.signal_backtest import signal_backtest, signal_to_weights
-from iqrp.app.alpha.statistical_validation.significance import (
-    ic_significance,
-    newey_west_ic_significance,
-    newey_west_variance,
-)
-from iqrp.app.alpha.monitoring.signal_drift import (
-    concept_drift_ic,
-    signal_distribution_drift,
-)
 from iqrp.app.alpha.ensemble.signal_combination import (
     combine_signals,
     majority_sign_combine,
     rank_average_combine,
 )
-from iqrp.app.alpha.cross_section.sector_adjustment import (
-    cap_weighted_sector_neutral,
-    sector_relative_ranks,
+from iqrp.app.alpha.monitoring.signal_drift import (
+    concept_drift_ic,
+    signal_distribution_drift,
+)
+from iqrp.app.alpha.statistical_validation.bootstrap import (
+    block_bootstrap_ci,
+    iid_bootstrap_ci,
+)
+from iqrp.app.alpha.statistical_validation.significance import (
+    ic_significance,
+    newey_west_ic_significance,
+    newey_west_variance,
 )
 
 
@@ -163,7 +163,9 @@ def test_signal_backtest_remaining() -> None:
     # custom weights shorter than n
     s = np.linspace(-1, 1, 30)
     r = np.random.default_rng(0).normal(0, 0.01, 30)
-    signal_backtest(s, r, weights=np.array([0.5, -0.5, 0.1]), cost_bps=1.0, returns_are_forward=False)
+    signal_backtest(
+        s, r, weights=np.array([0.5, -0.5, 0.1]), cost_bps=1.0, returns_are_forward=False
+    )
 
 
 def test_significance_remaining() -> None:
@@ -180,8 +182,8 @@ def test_significance_remaining() -> None:
 
 
 def test_phase11_remaining_paths(monkeypatch: pytest.MonkeyPatch, tmp_path: Any) -> None:
-    from iqrp.app.alpha import phase11
     import iqrp.app.alpha as alpha_mod
+    from iqrp.app.alpha import phase11
 
     # missing doc in REQUIRED_DOCS without writing stubs
     monkeypatch.setattr(phase11, "_docs_root", lambda: tmp_path)
@@ -202,7 +204,7 @@ def test_phase11_remaining_paths(monkeypatch: pytest.MonkeyPatch, tmp_path: Any)
     # alpha package import failed via patching import statement target
     real_import = __import__
 
-    def _imp(name: str, globals=None, locals=None, fromlist=(), level=0):  # noqa: A002
+    def _imp(name: str, globals=None, locals=None, fromlist=(), level=0):
         if name == "iqrp.app.alpha" and fromlist:
             raise ImportError("pkg fail")
         return real_import(name, globals, locals, fromlist, level)
@@ -239,7 +241,10 @@ def test_signal_combination_remaining() -> None:
         combine_signals({"a": np.ones(5), "b": np.ones(5)}, weights=[1.0])
     assert rank_average_combine({}).size == 0
     # panel path for rank average
-    panel = {"a": np.random.default_rng(0).normal(size=(20, 5)), "b": np.random.default_rng(1).normal(size=(20, 5))}
+    panel = {
+        "a": np.random.default_rng(0).normal(size=(20, 5)),
+        "b": np.random.default_rng(1).normal(size=(20, 5)),
+    }
     rank_average_combine(panel)
     assert majority_sign_combine({}).size == 0
 
@@ -266,49 +271,53 @@ def test_sector_adjustment_remaining() -> None:
 
 
 def test_more_module_edges() -> None:
+    from iqrp.app.alpha.backtesting.embargo import apply_embargo
     from iqrp.app.alpha.backtesting.portfolio_backtest import portfolio_backtest
+    from iqrp.app.alpha.backtesting.purged_cv import purged_kfold_splits
+    from iqrp.app.alpha.backtesting.walk_forward import walk_forward_backtest
+    from iqrp.app.alpha.base.signal_definition import SignalDefinition
+    from iqrp.app.alpha.base.signal_registry import SignalRegistry
+    from iqrp.app.alpha.cross_section.neutralization import demean_by_group, neutralize_weighted
+    from iqrp.app.alpha.diagnostics import leakage_shift_test
+    from iqrp.app.alpha.discovery.event_based import earnings_drift_proxy, event_impulse_signal
+    from iqrp.app.alpha.discovery.statistical import screen_features
+    from iqrp.app.alpha.economics.market_impact import market_impact_bps
+    from iqrp.app.alpha.economics.slippage import slippage_bps
+    from iqrp.app.alpha.engine import AlphaResearchEngine
+    from iqrp.app.alpha.ensemble.clustering import hierarchical_correlation_clusters
     from iqrp.app.alpha.ensemble.correlation import signal_correlation_matrix
     from iqrp.app.alpha.ensemble.redundancy import detect_nested_signals, redundancy_report
-    from iqrp.app.alpha.regime.regime_performance import regime_ic
-    from iqrp.app.alpha.research.decay import analyze_decay
+    from iqrp.app.alpha.ensemble.weighting import _metric, normalize_weights
+    from iqrp.app.alpha.monitoring.performance_decay import monitor_performance_decay
+    from iqrp.app.alpha.monitoring.retirement import evaluate_retirement
     from iqrp.app.alpha.monitoring.signal_decay import estimate_ic_half_life, ic_decay_curve
-    from iqrp.app.alpha.discovery.event_based import earnings_drift_proxy, event_impulse_signal
+    from iqrp.app.alpha.ranking import rank_candidates
+    from iqrp.app.alpha.regime.regime_performance import regime_ic
+    from iqrp.app.alpha.regime.regime_stability import (
+        regime_stability_score,
+        rolling_regime_stability,
+    )
+    from iqrp.app.alpha.research.decay import analyze_decay, forward_returns
+    from iqrp.app.alpha.research.evaluator import SignalEvaluator
+    from iqrp.app.alpha.research.hit_rate import compute_hit_rate
+    from iqrp.app.alpha.research.information_coefficient import rolling_ic
+    from iqrp.app.alpha.research.persistence import signal_half_life
+    from iqrp.app.alpha.research.rank_ic import compute_rank_ic
+    from iqrp.app.alpha.research.seasonality import analyze_seasonality, month_of_year_ic
     from iqrp.app.alpha.serializer import _to_jsonable
+    from iqrp.app.alpha.statistical_validation import __getattr__ as sv_getattr
+    from iqrp.app.alpha.statistical_validation.multiple_testing import _resolve_adjust_pvalues
     from iqrp.app.alpha.statistical_validation.probability_backtest_overfitting import (
         probability_backtest_overfitting,
     )
-    from iqrp.app.alpha.regime.regime_stability import regime_stability_score, rolling_regime_stability
-    from iqrp.app.alpha.cross_section.neutralization import demean_by_group, neutralize_weighted
-    from iqrp.app.alpha.ensemble.weighting import normalize_weights, _metric
-    from iqrp.app.alpha.monitoring.performance_decay import monitor_performance_decay
-    from iqrp.app.alpha.ensemble.clustering import hierarchical_correlation_clusters
-    from iqrp.app.alpha.discovery.statistical import screen_features
-    from iqrp.app.alpha.research.seasonality import analyze_seasonality, month_of_year_ic
-    from iqrp.app.alpha.research.decay import forward_returns
-    from iqrp.app.alpha.ranking import rank_candidates
-    from iqrp.app.alpha.monitoring.retirement import evaluate_retirement
-    from iqrp.app.alpha.diagnostics import leakage_shift_test
     from iqrp.app.alpha.visualization import regime_bars_payload
-    from iqrp.app.alpha.economics.market_impact import market_impact_bps
-    from iqrp.app.alpha.economics.slippage import slippage_bps
-    from iqrp.app.alpha.backtesting.walk_forward import walk_forward_backtest
-    from iqrp.app.alpha.backtesting.embargo import apply_embargo
-    from iqrp.app.alpha.backtesting.purged_cv import purged_kfold_splits
-    from iqrp.app.alpha.statistical_validation.multiple_testing import _resolve_adjust_pvalues
-    from iqrp.app.alpha.statistical_validation import __getattr__ as sv_getattr
-    from iqrp.app.alpha.research.persistence import signal_half_life
-    from iqrp.app.alpha.research.hit_rate import compute_hit_rate
-    from iqrp.app.alpha.research.information_coefficient import rolling_ic
-    from iqrp.app.alpha.research.rank_ic import compute_rank_ic
-    from iqrp.app.alpha.research.evaluator import SignalEvaluator
-    from iqrp.app.alpha.engine import AlphaResearchEngine
-    from iqrp.app.alpha.base.signal_registry import SignalRegistry
-    from iqrp.app.alpha.base.signal_definition import SignalDefinition
 
     rng = np.random.default_rng(2)
     # portfolio empty sharpe paths
     portfolio_backtest(np.ones((5, 2)) / 2, np.zeros((5, 2)), cost_bps=0.0)
-    portfolio_backtest(np.ones((5, 2)) / 2, rng.normal(0, 0.01, (5, 2)), cost_bps=0.0, returns_are_forward=True)
+    portfolio_backtest(
+        np.ones((5, 2)) / 2, rng.normal(0, 0.01, (5, 2)), cost_bps=0.0, returns_are_forward=True
+    )
 
     # correlation ndim error
     with pytest.raises(ValueError):
@@ -343,6 +352,7 @@ def test_more_module_edges() -> None:
             return {"a": 1}
 
     assert _to_jsonable([M()])[0]["a"] == 1
+
     # Enum-like with value that's not Enum subclass handled
     class E(str):
         value = "x"
@@ -378,7 +388,9 @@ def test_more_module_edges() -> None:
     hierarchical_correlation_clusters(np.eye(1), labels=["a"])
 
     # statistical screen filters
-    screen_features({"c": np.ones(20)}, forward_returns(rng.normal(size=20), 1), min_abs_ic=0.0, min_obs=5)
+    screen_features(
+        {"c": np.ones(20)}, forward_returns(rng.normal(size=20), 1), min_abs_ic=0.0, min_obs=5
+    )
 
     # seasonality
     analyze_seasonality(s, r, period=2)
@@ -428,8 +440,16 @@ def test_more_module_edges() -> None:
     # engine line 754 to_dict already; 776 sharpe-only with evidence false
     eng = AlphaResearchEngine(registry=SignalRegistry())
     d = SignalDefinition(
-        name="f", version="1", formula="x", features=("r",), lookback=5, horizon=1,
-        universe="u", frequency="1d", direction="long_short", expected_relationship="positive",
+        name="f",
+        version="1",
+        formula="x",
+        features=("r",),
+        lookback=5,
+        horizon=1,
+        universe="u",
+        frequency="1d",
+        direction="long_short",
+        expected_relationship="positive",
         economic_hypothesis="Economic rationale for continuation from underreaction dynamics.",
         owner="r",
     )
@@ -439,50 +459,67 @@ def test_more_module_edges() -> None:
 
 @pytest.mark.filterwarnings("ignore::RuntimeWarning")
 def test_push_over_98() -> None:
-    from iqrp.app.alpha.statistical_validation.probability_backtest_overfitting import (
-        probability_backtest_overfitting,
-        _as_strategy_matrix,
-        _sharpe,
-    )
-    from iqrp.app.alpha.statistical_validation.significance import newey_west_ic_significance
-    from iqrp.app.alpha.regime.regime_stability import (
-        regime_stability_score,
-        rolling_regime_stability,
-        regime_concentration,
-    )
-    from iqrp.app.alpha.regime.regime_performance import regime_ic, _pearson, _spearman, _align_regime_labels
-    from iqrp.app.alpha.ensemble.redundancy import (
-        find_high_correlation_pairs,
-        detect_nested_signals,
-        redundancy_report,
-        feature_overlap,
-    )
     from iqrp.app.alpha.backtesting.portfolio_backtest import portfolio_backtest
+    from iqrp.app.alpha.backtesting.signal_backtest import _rank01, signal_backtest
+    from iqrp.app.alpha.backtesting.walk_forward import walk_forward_backtest, walk_forward_splits
+    from iqrp.app.alpha.base.signal_definition import SignalDefinition
+    from iqrp.app.alpha.base.signal_registry import SignalRegistry
+    from iqrp.app.alpha.cross_section.neutralization import demean_by_group, neutralize_weighted
+    from iqrp.app.alpha.cross_section.ranking import _as_panel, cross_sectional_rank
+    from iqrp.app.alpha.cross_section.sector_adjustment import (
+        cap_weighted_sector_neutral,
+        sector_relative_ranks,
+    )
     from iqrp.app.alpha.discovery.event_based import (
+        earnings_drift_proxy,
         event_impulse_signal,
         surprise_signal,
-        earnings_drift_proxy,
     )
-    from iqrp.app.alpha.research.decay import analyze_decay, _half_life_from_ics
+    from iqrp.app.alpha.discovery.statistical import candidates_to_signals, screen_features
     from iqrp.app.alpha.discovery.symbolic import rank
-    from iqrp.app.alpha.monitoring.signal_decay import _pearson as md_pearson, ic_decay_curve, estimate_ic_half_life
-    from iqrp.app.alpha.serializer import _to_jsonable
-    from iqrp.app.alpha.research.seasonality import analyze_seasonality, month_of_year_ic
-    from iqrp.app.alpha.cross_section.ranking import cross_sectional_rank, _as_panel
-    from iqrp.app.alpha.cross_section.neutralization import demean_by_group, neutralize_weighted
+    from iqrp.app.alpha.economics.turnover import average_turnover, turnover_series
     from iqrp.app.alpha.engine import AlphaResearchEngine, ApprovalError
-    from iqrp.app.alpha.base.signal_registry import SignalRegistry
-    from iqrp.app.alpha.base.signal_definition import SignalDefinition
-    from iqrp.app.alpha.base.signal_result import SignalStatus
-    from iqrp.app.alpha.ensemble.correlation import signal_correlation_matrix, correlation_penalty_vector
-    from iqrp.app.alpha.ensemble.clustering import hierarchical_correlation_clusters, representative_per_cluster
-    from iqrp.app.alpha.economics.turnover import turnover_series, average_turnover
-    from iqrp.app.alpha.backtesting.signal_backtest import signal_backtest, _rank01
-    from iqrp.app.alpha.backtesting.walk_forward import walk_forward_splits, walk_forward_backtest
-    from iqrp.app.alpha.discovery.statistical import screen_features, candidates_to_signals
+    from iqrp.app.alpha.ensemble.clustering import (
+        hierarchical_correlation_clusters,
+        representative_per_cluster,
+    )
+    from iqrp.app.alpha.ensemble.correlation import (
+        correlation_penalty_vector,
+        signal_correlation_matrix,
+    )
+    from iqrp.app.alpha.ensemble.redundancy import (
+        detect_nested_signals,
+        feature_overlap,
+        find_high_correlation_pairs,
+        redundancy_report,
+    )
     from iqrp.app.alpha.monitoring.retirement import evaluate_retirement
+    from iqrp.app.alpha.monitoring.signal_decay import (
+        _pearson as md_pearson,
+        estimate_ic_half_life,
+        ic_decay_curve,
+    )
+    from iqrp.app.alpha.regime.regime_performance import (
+        _align_regime_labels,
+        _pearson,
+        _spearman,
+        regime_ic,
+    )
+    from iqrp.app.alpha.regime.regime_stability import (
+        regime_concentration,
+        regime_stability_score,
+        rolling_regime_stability,
+    )
+    from iqrp.app.alpha.research.decay import _half_life_from_ics, analyze_decay
+    from iqrp.app.alpha.research.seasonality import analyze_seasonality, month_of_year_ic
+    from iqrp.app.alpha.serializer import _to_jsonable
+    from iqrp.app.alpha.statistical_validation.probability_backtest_overfitting import (
+        _as_strategy_matrix,
+        _sharpe,
+        probability_backtest_overfitting,
+    )
+    from iqrp.app.alpha.statistical_validation.significance import newey_west_ic_significance
     from iqrp.app.alpha.visualization import regime_bars_payload
-    from iqrp.app.alpha.cross_section.sector_adjustment import sector_relative_ranks, cap_weighted_sector_neutral
 
     rng = np.random.default_rng(9)
 
@@ -531,7 +568,9 @@ def test_push_over_98() -> None:
 
     # redundancy
     find_high_correlation_pairs(np.eye(2), threshold=0.5)  # labels None
-    detect_nested_signals({"a": rng.normal(size=(40, 3)), "b": rng.normal(size=(40, 3))}, min_obs=10)
+    detect_nested_signals(
+        {"a": rng.normal(size=(40, 3)), "b": rng.normal(size=(40, 3))}, min_obs=10
+    )
     detect_nested_signals({"a": np.ones(40), "b": np.ones(40)}, min_obs=10)  # zero var continue
     redundancy_report(
         {"a": rng.normal(size=40), "b": rng.normal(size=40)},
@@ -539,7 +578,9 @@ def test_push_over_98() -> None:
     )
 
     # portfolio empty after shift
-    portfolio_backtest(np.ones((1, 2)) / 2, rng.normal(0, 0.01, size=(1, 2)), returns_are_forward=False)
+    portfolio_backtest(
+        np.ones((1, 2)) / 2, rng.normal(0, 0.01, size=(1, 2)), returns_are_forward=False
+    )
     portfolio_backtest(np.ones((5, 2)) / 2, np.zeros((5, 2)))
 
     # event based errors
@@ -593,8 +634,16 @@ def test_push_over_98() -> None:
     # engine approve from RETIRED / research_report KeyError / evidence False
     eng = AlphaResearchEngine(registry=SignalRegistry())
     d = SignalDefinition(
-        name="z", version="1", formula="x", features=("r",), lookback=5, horizon=1,
-        universe="u", frequency="1d", direction="long_short", expected_relationship="positive",
+        name="z",
+        version="1",
+        formula="x",
+        features=("r",),
+        lookback=5,
+        horizon=1,
+        universe="u",
+        frequency="1d",
+        direction="long_short",
+        expected_relationship="positive",
         economic_hypothesis="Economic rationale for continuation from underreaction dynamics.",
         owner="r",
     )
@@ -609,7 +658,9 @@ def test_push_over_98() -> None:
     eng.registry.attach_report(
         rec.experiment_id,
         SignalResearchReport(
-            signal_name="z", version="1", status=SignalStatus.RETIRED,
+            signal_name="z",
+            version="1",
+            status=SignalStatus.RETIRED,
             economic_hypothesis=d.economic_hypothesis,
             performance=SignalPerformance(ic_mean=float("nan")),
             diagnostics={},

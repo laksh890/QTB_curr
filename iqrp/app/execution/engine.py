@@ -12,10 +12,11 @@ CRITICAL RULES
 
 from __future__ import annotations
 
+from collections.abc import Mapping, Sequence
 from dataclasses import dataclass, field
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
-from typing import Any, Mapping, Sequence
+from typing import Any
 from uuid import uuid4
 
 from iqrp.app.core.exceptions import ExecutionError, ValidationError
@@ -28,7 +29,7 @@ from iqrp.app.execution.order_manager.execution_state import ExecutionState, tra
 from iqrp.app.execution.order_manager.fill_manager import Fill
 from iqrp.app.execution.order_manager.order import Order, target_to_orders
 from iqrp.app.execution.order_manager.order_manager import OrderManager
-from iqrp.app.execution.order_manager.order_state import OrderState, TERMINAL_STATES
+from iqrp.app.execution.order_manager.order_state import TERMINAL_STATES, OrderState
 from iqrp.app.execution.order_manager.order_validator import ValidationResult
 from iqrp.app.execution.order_manager.parent_order import ParentOrder
 from iqrp.app.execution.order_manager.position_reconciliation import ReconciliationResult
@@ -40,7 +41,6 @@ from iqrp.app.execution.smart_routing.router import RoutingDecision, SmartRouter
 from iqrp.app.execution.smart_routing.venue import (
     SimulatedVenue,
     Venue,
-    VenueInterface,
     VenueOrderRequest,
     VenueResponseStatus,
     as_venue,
@@ -49,11 +49,11 @@ from iqrp.app.execution.transaction_costs.total_cost import (
     post_trade_cost_analysis,
     pre_trade_cost_estimate,
 )
-from iqrp.app.execution.types import KillSwitch, OrderType, Side, Urgency
+from iqrp.app.execution.types import KillSwitch, OrderType, Urgency
 
 
 def _utc_now() -> str:
-    return datetime.now(timezone.utc).isoformat()
+    return datetime.now(UTC).isoformat()
 
 
 def _instrument_ctx(
@@ -147,9 +147,7 @@ class ExecutionEngine:
 
     # ------------------------------------------------------------------ helpers
     def _audit_event(self, action: str, **details: Any) -> None:
-        self._audit.append(
-            {"action": action, "timestamp": _utc_now(), "details": dict(details)}
-        )
+        self._audit.append({"action": action, "timestamp": _utc_now(), "details": dict(details)})
 
     def _make_risk_callback(self):
         if self.risk_engine is None:
@@ -193,12 +191,18 @@ class ExecutionEngine:
                     return False, f"limit breaches: {result}"
                 if result is False:
                     return False, "risk_engine.check_limits rejected"
-        except Exception as exc:  # noqa: BLE001
+        except Exception as exc:
             if self.settings.risk.enforce_hard_limits:
                 return False, f"risk_engine error: {exc}"
         return True, ""
 
-    def _assert_not_halted(self, *, account_id: str | None = None, venue: str | None = None, strategy_id: str | None = None) -> None:
+    def _assert_not_halted(
+        self,
+        *,
+        account_id: str | None = None,
+        venue: str | None = None,
+        strategy_id: str | None = None,
+    ) -> None:
         if self._halted or self.state is ExecutionState.HALTED:
             raise ExecutionError(
                 self._halt_reason or "execution halted",
@@ -366,7 +370,7 @@ class ExecutionEngine:
                 if "mid" in ctx or "price" in ctx:
                     prices[str(inst)] = float(ctx.get("mid", ctx.get("price", 0.0)))
             specs = target_to_orders(
-                {k: 0.0 for k in orders_or_delta},
+                dict.fromkeys(orders_or_delta, 0.0),
                 {k: float(v) for k, v in orders_or_delta.items()},
                 prices=prices or None,
             )
@@ -439,7 +443,7 @@ class ExecutionEngine:
             )
             parents = [po]
         elif isinstance(parent_order_or_targets, Mapping):
-            cur = dict(current or {k: 0.0 for k in parent_order_or_targets})
+            cur = dict(current or dict.fromkeys(parent_order_or_targets, 0.0))
             tgt = {str(k).upper(): float(v) for k, v in parent_order_or_targets.items()}
             cur = {str(k).upper(): float(v) for k, v in cur.items()}
             prices = {}
@@ -448,9 +452,13 @@ class ExecutionEngine:
                 px = ctx.get("mid", ctx.get("price"))
                 if px is not None:
                     prices[inst] = float(px)
-            specs = target_to_orders(cur, tgt, prices=prices or None, urgency=urg, **{
-                k: kwargs[k] for k in ("lot_size", "min_qty", "round_lots") if k in kwargs
-            })
+            specs = target_to_orders(
+                cur,
+                tgt,
+                prices=prices or None,
+                urgency=urg,
+                **{k: kwargs[k] for k in ("lot_size", "min_qty", "round_lots") if k in kwargs},
+            )
             for s in specs:
                 parents.append(
                     ParentOrder(
@@ -509,10 +517,10 @@ class ExecutionEngine:
 
         sim_mode = simulation_mode
         if sim_mode is None:
-            sim_mode = bool(
-                venues
-                and all(isinstance(v, SimulatedVenue) for v in venues)
-            ) or venues is None
+            sim_mode = (
+                bool(venues and all(isinstance(v, SimulatedVenue) for v in venues))
+                or venues is None
+            )
 
         try:
             for parent in parents:
@@ -674,7 +682,9 @@ class ExecutionEngine:
                 post_trade["by_parent"].append(
                     {"parent_id": parent.parent_id, "instrument": parent.instrument, **post}
                 )
-                lat_sum = self.latency.summary([c.order_id for c in child_orders if c.parent_id == parent.parent_id])
+                lat_sum = self.latency.summary(
+                    [c.order_id for c in child_orders if c.parent_id == parent.parent_id]
+                )
                 aq = execution_quality_report(
                     side=parent.side.value,
                     ordered_qty=parent.quantity,
@@ -724,7 +734,7 @@ class ExecutionEngine:
                 if self.state not in {ExecutionState.HALTED, ExecutionState.FAILED}:
                     if can_fail(self.state):
                         self.state = ExecutionState.FAILED
-            except Exception:  # noqa: BLE001
+            except Exception:
                 self.state = ExecutionState.FAILED
             status = "BLOCKED" if getattr(exc, "code", "") == "KILL_SWITCH_ACTIVE" else "FAILED"
             # Re-raise kill switch so smoke test can catch it
@@ -783,9 +793,7 @@ class ExecutionEngine:
             client_order_id=child.client_order_id or child.order_id,
             order_id=child.order_id,
         )
-        if isinstance(venue_obj, SimulatedVenue):
-            resp = venue_obj.submit(req)
-        elif hasattr(venue_obj, "submit"):
+        if isinstance(venue_obj, SimulatedVenue) or hasattr(venue_obj, "submit"):
             resp = venue_obj.submit(req)
         else:
             # Synthetic fill at mid
@@ -866,7 +874,9 @@ class ExecutionEngine:
             event_id, event_type, order_id=order_id, payload=payload
         )
         self._processed_events.add(event_id)
-        self._audit_event("apply_event", event_id=event_id, event_type=event_type, order_id=order_id)
+        self._audit_event(
+            "apply_event", event_id=event_id, event_type=event_type, order_id=order_id
+        )
         return order
 
     def reconcile(
@@ -896,7 +906,7 @@ class ExecutionEngine:
                 self.state = ExecutionState.HALTED
             else:
                 self.state = ExecutionState.HALTED
-        except Exception:  # noqa: BLE001
+        except Exception:
             self.state = ExecutionState.HALTED
         self.router.kill_switch = self.kill_switch
         self.order_manager.kill_switch = self.kill_switch
@@ -908,7 +918,7 @@ class ExecutionEngine:
                 }:
                     try:
                         self.order_manager.cancel(order.order_id, reason=f"halt: {reason}")
-                    except Exception:  # noqa: BLE001
+                    except Exception:
                         pass
         self._audit_event("halt", reason=reason, cancel_open=cancel_open)
 
@@ -960,13 +970,28 @@ class ExecutionEngine:
                 fill_maps.append(dict(f))
         qty = ordered_qty
         if qty is None:
-            qty = float(sum(abs(float(f.get("fill_qty", f.get("quantity", f.get("qty", 0.0))))) for f in fill_maps))
+            qty = float(
+                sum(
+                    abs(float(f.get("fill_qty", f.get("quantity", f.get("qty", 0.0)))))
+                    for f in fill_maps
+                )
+            )
         return execution_quality_report(
             side=side,
             ordered_qty=float(qty),
             fills=fill_maps,
             arrival_price=float(arrival_price),
-            **{k: kwargs[k] for k in ("vwap_benchmark", "twap_benchmark", "latency", "pre_trade_estimate", "post_trade_costs") if k in kwargs},
+            **{
+                k: kwargs[k]
+                for k in (
+                    "vwap_benchmark",
+                    "twap_benchmark",
+                    "latency",
+                    "pre_trade_estimate",
+                    "post_trade_costs",
+                )
+                if k in kwargs
+            },
         )
 
     def simulate_execution(self, **kwargs: Any) -> dict[str, Any]:
@@ -1000,7 +1025,7 @@ class ExecutionEngine:
         if "state" in data:
             try:
                 self.state = ExecutionState(data["state"])
-            except Exception:  # noqa: BLE001
+            except Exception:
                 pass
         self._halted = bool(data.get("halted", False))
         self._halt_reason = str(data.get("halt_reason", ""))

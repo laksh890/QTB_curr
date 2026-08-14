@@ -160,7 +160,10 @@ class TestGapAndLiquidity:
             impact_coeff=0.1,
         )
         assert "score" in out or "measures" in out
-        assert 0.0 <= float(out.get("score", out.get("liquidity_score", 0))) <= 1.0 or "measures" in out
+        assert (
+            0.0 <= float(out.get("score", out.get("liquidity_score", 0))) <= 1.0
+            or "measures" in out
+        )
 
     def test_liquidity_zero_position(self) -> None:
         out = liquidity_risk(position_size=0.0, adv=1e6, spread=0.001)

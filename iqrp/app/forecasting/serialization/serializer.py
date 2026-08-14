@@ -20,7 +20,9 @@ class ForecastSerializer:
         include_npz = True
         settings = getattr(model, "settings", None) or getattr(model, "_settings", None)
         if settings is not None:
-            include_npz = bool(getattr(getattr(settings, "serialization", None), "include_npz", True))
+            include_npz = bool(
+                getattr(getattr(settings, "serialization", None), "include_npz", True)
+            )
         if include_npz:
             arrays = _extract_arrays(payload.get("algorithm_state") or {})
             if arrays:
@@ -49,7 +51,7 @@ def _extract_arrays(state: dict[str, Any]) -> dict[str, np.ndarray]:
                 arr = np.asarray(v, dtype=np.float64)
                 if arr.size >= 16:
                     out[k] = arr
-            except Exception:  # noqa: BLE001
+            except Exception:
                 continue
         elif isinstance(v, np.ndarray):
             out[k] = v

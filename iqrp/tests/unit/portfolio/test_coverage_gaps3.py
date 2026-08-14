@@ -2,11 +2,11 @@
 
 from __future__ import annotations
 
+import importlib
 from enum import Enum
 from pathlib import Path
 from typing import Any
 
-import importlib
 import numpy as np
 import pytest
 
@@ -230,7 +230,9 @@ def test_black_litterman_market_caps_omega_mismatches(mu, cov, names):
     # market_caps path + zero caps → equal
     bl = black_litterman_posterior(cov, market_caps=np.zeros(n), names=names)
     assert bl["equilibrium_method"] == "market_caps"
-    bl2 = black_litterman_posterior(cov, market_caps=np.array([1.0, 2.0, 3.0, 4.0][:n]), names=names)
+    bl2 = black_litterman_posterior(
+        cov, market_caps=np.array([1.0, 2.0, 3.0, 4.0][:n]), names=names
+    )
     assert bl2["equilibrium_method"] == "market_caps"
 
     # equal weight default
@@ -246,7 +248,9 @@ def test_black_litterman_market_caps_omega_mismatches(mu, cov, names):
     P = np.eye(1, n)
     Q = np.array([0.01])
     # omega diagonal
-    bl5 = black_litterman_posterior(cov, market_weights=np.ones(n) / n, P=P, Q=Q, omega=np.array([0.1]))
+    bl5 = black_litterman_posterior(
+        cov, market_weights=np.ones(n) / n, P=P, Q=Q, omega=np.array([0.1])
+    )
     assert bl5["n_views"] == 1
     # omega matrix
     bl6 = black_litterman_posterior(
@@ -461,7 +465,9 @@ def test_target_positions_edges(names, prices, weights):
 
     # TargetWeights input
     tw = TargetWeights.from_arrays(weights, names=names)
-    tp2 = target_positions(tw, capital=1e5, prices=[0.0, 50.0, 25.0, 80.0], multipliers=[0.0, 1, 1, 1])
+    tp2 = target_positions(
+        tw, capital=1e5, prices=[0.0, 50.0, 25.0, 80.0], multipliers=[0.0, 1, 1, 1]
+    )
     assert len(tp2.positions) == len(names)
 
 
@@ -528,11 +534,15 @@ def test_rebalance_trigger_kinds_and_bands(names, weights, current_weights):
 def test_signal_empty_and_long_short(names, signals):
     empty = signals_to_raw_weights([])
     assert empty["weights"] == []
-    out = signals_to_raw_weights(signals, method="identity", long_only=False, budget=1.0, names=names[:2])
+    out = signals_to_raw_weights(
+        signals, method="identity", long_only=False, budget=1.0, names=names[:2]
+    )
     assert len(out["weights"]) == len(signals)
     out2 = signals_to_raw_weights(np.zeros(4), method="proportional", long_only=False)
     assert abs(sum(out2["weights"])) < 1e-8 or out2["gross"] == 0.0
-    out3 = signals_to_raw_weights(np.array([-1.0, -1.0, -1.0, -1.0]), method="zscore", long_only=True)
+    out3 = signals_to_raw_weights(
+        np.array([-1.0, -1.0, -1.0, -1.0]), method="zscore", long_only=True
+    )
     assert abs(sum(out3["weights"]) - 1.0) < 1e-8
 
 
@@ -550,7 +560,9 @@ def test_portfolio_result_to_dict_and_to_portfolio(names, weights, prices):
     port = pr.to_portfolio()
     assert isinstance(port, Portfolio)
 
-    pr2 = PortfolioResult(target_positions=[Position(asset=names[0], weight=1.0)], names=[names[0]], weights=[1.0])
+    pr2 = PortfolioResult(
+        target_positions=[Position(asset=names[0], weight=1.0)], names=[names[0]], weights=[1.0]
+    )
     assert pr2.to_dict()["target_positions"] is not None
     assert pr2.to_portfolio().positions
 
@@ -559,7 +571,12 @@ def test_portfolio_result_to_dict_and_to_portfolio(names, weights, prices):
 def test_dict_extract_sorted_keys_and_variance_diag():
     # length mismatch → sorted keys
     r = dict_to_optimization_result(
-        {"success": True, "weights": {"b": 0.4, "a": 0.6}, "expected_return": 0.01, "expected_variance": 0.02}
+        {
+            "success": True,
+            "weights": {"b": 0.4, "a": 0.6},
+            "expected_return": 0.01,
+            "expected_variance": 0.02,
+        }
     )
     assert abs(sum(r.weights) - 1.0) < 1e-12
     r2 = dict_to_optimization_result(
@@ -576,7 +593,9 @@ def test_dict_extract_sorted_keys_and_variance_diag():
     assert r3.success
 
 
-def test_engine_filtered_kwargs_load_settings_and_paths(mu, cov, names, returns, prices, adv, forecasts, weights):
+def test_engine_filtered_kwargs_load_settings_and_paths(
+    mu, cov, names, returns, prices, adv, forecasts, weights
+):
     eng = PortfolioConstructionEngine(
         settings=PortfolioSettings(require_risk_validation=False, seed=42, method="min_variance")
     )
@@ -644,7 +663,9 @@ def test_engine_filtered_kwargs_load_settings_and_paths(mu, cov, names, returns,
     assert isinstance(r3.factor_exposure, dict)
 
     # target_positions construct path
-    tp = eng.target_positions(mu=mu, cov=cov, names=names, prices=prices, capital=1e5, method="min_variance")
+    tp = eng.target_positions(
+        mu=mu, cov=cov, names=names, prices=prices, capital=1e5, method="min_variance"
+    )
     assert tp is not None
     tp2 = eng.target_positions(weights, capital=1e5, prices=prices, names=names, as_list=True)
     assert isinstance(tp2, list)
@@ -783,7 +804,11 @@ def test_diagnostics_unhealthy_not_psd_and_infeasible(weights, cov, mu):
     bad_cov = np.array([[1.0, 2.0], [2.0, 1.0]])
     nh = numerical_health(weights=np.array([20.0, 0.1]), cov=bad_cov, mu=np.array([np.nan, 0.1]))
     assert nh["healthy"] is False
-    assert "cov_not_psd" in nh["issues"] or "weights_extreme" in nh["issues"] or "mu_nonfinite" in nh["issues"]
+    assert (
+        "cov_not_psd" in nh["issues"]
+        or "weights_extreme" in nh["issues"]
+        or "mu_nonfinite" in nh["issues"]
+    )
 
     nh2 = numerical_health(cov=np.ones(3))
     assert "cov_not_square" in nh2["issues"]
@@ -862,6 +887,7 @@ def test_phase10_fail_paths(monkeypatch, tmp_path):
         mod = orig(name, *a, **k)
         # strip a known symbol temporarily via wrapper
         if name == "iqrp.app.portfolio.optimization":
+
             class Wrap:
                 def __getattr__(self, item):
                     if item == "optimize_mean_variance":
@@ -903,6 +929,7 @@ def test_phase10_fail_paths(monkeypatch, tmp_path):
 
     # __main__ path
     import runpy
+
     # skip runpy of phase10 to avoid side effects; cover write + ComponentCheck.to_dict already
 
 
@@ -1030,6 +1057,7 @@ def test_processes_mc_success_path(returns):
 
 def test_serializer_numpy_integer_and_enum_fail(tmp_path):
     assert _to_jsonable(np.int64(3)) == 3
+
     # enum branch exception swallow: object with value but not Enum
     class Weird:
         value = "x"
@@ -1057,8 +1085,9 @@ def test_ill_conditioned_cov_diagnostics():
 
 
 def test_phase10_missing_symbol(monkeypatch, tmp_path):
-    from iqrp.app.portfolio import phase10
     import types
+
+    from iqrp.app.portfolio import phase10
 
     fake = types.ModuleType("iqrp.app.portfolio._fake_phase10_mod")
     # no symbol
@@ -1085,7 +1114,10 @@ def test_phase10_missing_symbol(monkeypatch, tmp_path):
     monkeypatch.setattr(phase10, "_docs_root", lambda: tmp_path)
     # make hydra path exist to avoid that failure dominating
     report = phase10.validate_phase10()
-    assert any("missing" in f.lower() or "DoesNotExist" in f for f in report["summary"]["failures"]) or report["status"] == "FAIL"
+    assert (
+        any("missing" in f.lower() or "DoesNotExist" in f for f in report["summary"]["failures"])
+        or report["status"] == "FAIL"
+    )
 
 
 def test_engine_ensure_risk_failure(monkeypatch):
@@ -1120,7 +1152,12 @@ def test_multi_period_failed_step_hold(mu, cov, names, current_weights, monkeypa
     import iqrp.app.portfolio.optimization.turnover as to_mod
 
     def fail_to(**kwargs):
-        return {"success": False, "status": "failed", "failure_reason": "x", "weights": current_weights}
+        return {
+            "success": False,
+            "status": "failed",
+            "failure_reason": "x",
+            "weights": current_weights,
+        }
 
     monkeypatch.setattr(to_mod, "optimize_turnover", fail_to)
     # also patch the import used inside loop — module import inside function
@@ -1145,6 +1182,7 @@ def test_dp_mu_path_1d_and_exception(mu, cov, names):
         grid_levels=3,
     )
     assert "success" in res
+
     # exception handler with bad cov
     class Bad:
         shape = property(lambda self: (_ for _ in ()).throw(RuntimeError("x")))
@@ -1155,10 +1193,10 @@ def test_dp_mu_path_1d_and_exception(mu, cov, names):
 
 def test_projection_remaining_edges():
     from iqrp.app.portfolio.optimization.projection import (
-        project_simplex,
-        project_gross,
-        project_box_simplex,
         minimize_scipy,
+        project_box_simplex,
+        project_gross,
+        project_simplex,
         scipy_available,
     )
 
@@ -1174,7 +1212,12 @@ def test_projection_remaining_edges():
     if scipy_available():
         # just ensure callable path with options None uses defaults
         try:
-            minimize_scipy(lambda z: float(z[0] ** 2), np.array([1.0]), method="Nelder-Mead", options={"maxiter": 5})
+            minimize_scipy(
+                lambda z: float(z[0] ** 2),
+                np.array([1.0]),
+                method="Nelder-Mead",
+                options={"maxiter": 5},
+            )
         except Exception:
             pass
 
@@ -1189,27 +1232,33 @@ def test_processes_mc_path_shape_branches(returns, monkeypatch):
         return {"paths": np.ones((5, 4, n))}
 
     monkeypatch.setattr(sim, "correlated_monte_carlo", ret3)
-    out = processes.monte_carlo_portfolio_paths(returns, n_simulations=5, horizon=4, seed=1, weights=w)
+    out = processes.monte_carlo_portfolio_paths(
+        returns, n_simulations=5, horizon=4, seed=1, weights=w
+    )
     assert out.get("portfolio_paths") is not None
 
     def ret2(*a, **k):
         return {"paths": np.ones((5, 4))}
 
     monkeypatch.setattr(sim, "correlated_monte_carlo", ret2)
-    out2 = processes.monte_carlo_portfolio_paths(returns, n_simulations=5, horizon=4, seed=1, weights=w)
+    out2 = processes.monte_carlo_portfolio_paths(
+        returns, n_simulations=5, horizon=4, seed=1, weights=w
+    )
     assert out2.get("portfolio_paths") is not None
 
     def ret_other(*a, **k):
         return {"paths": "weird"}
 
     monkeypatch.setattr(sim, "correlated_monte_carlo", ret_other)
-    out3 = processes.monte_carlo_portfolio_paths(returns, n_simulations=5, horizon=4, seed=1, weights=w)
+    out3 = processes.monte_carlo_portfolio_paths(
+        returns, n_simulations=5, horizon=4, seed=1, weights=w
+    )
     assert "source" in out3
 
 
 def test_phase10_all_missing_and_hydra(monkeypatch, tmp_path):
-    from iqrp.app.portfolio import phase10
     import iqrp.app.portfolio as port_pkg
+    from iqrp.app.portfolio import phase10
 
     monkeypatch.setattr(port_pkg, "__all__", ["Portfolio"], raising=False)
     monkeypatch.setattr(phase10, "PHASE10_COMPONENTS", [])
@@ -1251,8 +1300,8 @@ def test_optimize_robust_modes(mu, cov, names):
 
 
 def test_bl_optimizer_typeerror_fallback(mu, cov, names, monkeypatch):
-    import iqrp.app.portfolio.optimization.black_litterman as bl
     import iqrp.app.portfolio.expected_returns.black_litterman as er_bl
+    import iqrp.app.portfolio.optimization.black_litterman as bl
 
     calls = {"n": 0}
     real = er_bl.black_litterman_posterior
@@ -1261,9 +1310,29 @@ def test_bl_optimizer_typeerror_fallback(mu, cov, names, monkeypatch):
         calls["n"] += 1
         if calls["n"] == 1:
             raise TypeError("bad kwargs")
-        return real(*a, **{kk: vv for kk, vv in k.items() if kk in (
-            "market_weights", "risk_aversion", "P", "Q", "omega", "tau", "equilibrium_mu", "names", "version"
-        )} if False else k)
+        return real(
+            *a,
+            **(
+                {
+                    kk: vv
+                    for kk, vv in k.items()
+                    if kk
+                    in (
+                        "market_weights",
+                        "risk_aversion",
+                        "P",
+                        "Q",
+                        "omega",
+                        "tau",
+                        "equilibrium_mu",
+                        "names",
+                        "version",
+                    )
+                }
+                if False
+                else k
+            ),
+        )
 
     # simpler: patch _call_bl_posterior's import target
     def boom_then_ok(cov_arr, **kwargs):
@@ -1274,17 +1343,23 @@ def test_bl_optimizer_typeerror_fallback(mu, cov, names, monkeypatch):
 
     monkeypatch.setattr(er_bl, "black_litterman_posterior", boom_then_ok)
     n = len(names)
-    P = np.zeros((1, n)); P[0, 0] = 1
+    P = np.zeros((1, n))
+    P[0, 0] = 1
     res = bl.optimize_black_litterman(
-        cov=cov, names=names, P=P, Q=np.array([0.01]), omega=np.array([0.1]),
-        equilibrium_returns=mu, max_weight=0.5,
+        cov=cov,
+        names=names,
+        P=P,
+        Q=np.array([0.01]),
+        omega=np.array([0.1]),
+        equilibrium_returns=mu,
+        max_weight=0.5,
     )
     assert "success" in res
 
 
 def test_engine_extract_weights_sorted_and_rc_error(mu, cov, names, prices, adv, monkeypatch):
-    from iqrp.app.portfolio.engine import _extract_weights
     import iqrp.app.portfolio.engine as eng_mod
+    from iqrp.app.portfolio.engine import _extract_weights
 
     # n provided but dict length differs → sorted keys
     w = _extract_weights({"b": 0.3, "a": 0.7}, n=2)
@@ -1305,7 +1380,10 @@ def test_engine_extract_weights_sorted_and_rc_error(mu, cov, names, prices, adv,
 
 
 def test_misc_empty_concentration_min_leverage_illcond():
-    from iqrp.app.portfolio.constraints.concentration import concentration_metrics, check_concentration_constraints
+    from iqrp.app.portfolio.constraints.concentration import (
+        check_concentration_constraints,
+        concentration_metrics,
+    )
     from iqrp.app.portfolio.constraints.leverage import check_leverage_constraints
     from iqrp.app.portfolio.constraints.liquidity import check_liquidity_constraints
     from iqrp.app.portfolio.constraints.turnover import check_turnover_constraints
@@ -1355,12 +1433,12 @@ def test_factor_cov_bad_fr_columns(rng):
 
 
 def test_max_sharpe_minvar_exception_and_names(mu, cov, names, monkeypatch):
-    import iqrp.app.portfolio.optimization.maximum_sharpe as ms
-    import iqrp.app.portfolio.optimization.minimum_variance as mnv
+    import iqrp.app.portfolio.optimization.drawdown as dd
     import iqrp.app.portfolio.optimization.entropy as ent
     import iqrp.app.portfolio.optimization.maximum_diversification as md
+    import iqrp.app.portfolio.optimization.maximum_sharpe as ms
+    import iqrp.app.portfolio.optimization.minimum_variance as mnv
     import iqrp.app.portfolio.optimization.turnover as to
-    import iqrp.app.portfolio.optimization.drawdown as dd
 
     def boom_parse(*a, **k):
         raise RuntimeError("x")
@@ -1376,6 +1454,7 @@ def test_serializer_enum_mro_exception():
     class Weird:
         value = "z"
         # pretend enum-ish
+
     # force Enum check fail by having value + mro that isn't Enum
     assert isinstance(_to_jsonable(Weird()), str) or _to_jsonable(Weird()) is not None
 
@@ -1470,10 +1549,14 @@ def test_max_sharpe_edges(mu, cov, names):
     assert "success" in res
     # singular-ish → LinAlgError path
     sing = np.ones((4, 4)) * 1e-18
-    res2 = optimize_maximum_sharpe(mu=np.zeros(4), cov=sing + np.eye(4) * 1e-18, names=names, max_weight=0.5, ridge=0.0)
+    res2 = optimize_maximum_sharpe(
+        mu=np.zeros(4), cov=sing + np.eye(4) * 1e-18, names=names, max_weight=0.5, ridge=0.0
+    )
     assert "success" in res2
     # all excess ~0 → equal weights seed
-    res3 = optimize_maximum_sharpe(mu=np.zeros(4), cov=cov, names=names, max_weight=0.5, risk_free_rate=0.0)
+    res3 = optimize_maximum_sharpe(
+        mu=np.zeros(4), cov=cov, names=names, max_weight=0.5, risk_free_rate=0.0
+    )
     assert "success" in res3
 
 
@@ -1505,8 +1588,9 @@ def test_entropy_weights_dict_and_size(cov, names, monkeypatch):
 
 
 def test_phase10_hydra_missing(monkeypatch, tmp_path):
-    from iqrp.app.portfolio import phase10
     from pathlib import Path
+
+    from iqrp.app.portfolio import phase10
 
     real_validate_parts = phase10.validate_phase10
 
@@ -1527,12 +1611,12 @@ def test_phase10_hydra_missing(monkeypatch, tmp_path):
 
 
 def test_run_phase10_as_main(tmp_path):
+    import json
     import runpy
     import sys
 
     # Write a tiny shim that imports and runs main logic is heavy; call write + print like __main__
     from iqrp.app.portfolio.phase10 import write_phase10_report
-    import json
 
     p = write_phase10_report(tmp_path / "p.json")
     data = json.loads(p.read_text(encoding="utf-8"))

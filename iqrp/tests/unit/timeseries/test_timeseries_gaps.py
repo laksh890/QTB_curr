@@ -17,14 +17,24 @@ from iqrp.app.timeseries.anomaly.robust import mad_anomalies, robust_zscore_anom
 from iqrp.app.timeseries.anomaly.statistical import zscore_anomalies
 from iqrp.app.timeseries.autocorrelation.acf import rolling_acf
 from iqrp.app.timeseries.autocorrelation.cross_correlation import lead_lag
-from iqrp.app.timeseries.base import ChangePointResult, DecompositionResult, TemporalMode, finite_mask
+from iqrp.app.timeseries.base import (
+    ChangePointResult,
+    DecompositionResult,
+    TemporalMode,
+    finite_mask,
+)
 from iqrp.app.timeseries.change_points.binary_segmentation import binseg_detect
 from iqrp.app.timeseries.change_points.pelt import pelt_detect
 from iqrp.app.timeseries.config import TimeSeriesSettings
 from iqrp.app.timeseries.decomposition.classical import classical_decompose
 from iqrp.app.timeseries.decomposition.seasonal import extract_seasonal
 from iqrp.app.timeseries.decomposition.trend import extract_trend
-from iqrp.app.timeseries.diagnostics import distribution_shift, heteroskedasticity, seasonality_diagnostics, structural_breaks
+from iqrp.app.timeseries.diagnostics import (
+    distribution_shift,
+    heteroskedasticity,
+    seasonality_diagnostics,
+    structural_breaks,
+)
 from iqrp.app.timeseries.features import (
     change_point_proximity,
     cycle_features,
@@ -44,9 +54,16 @@ from iqrp.app.timeseries.serializer import TimeSeriesSerializer, _to_jsonable
 from iqrp.app.timeseries.spectral.spectral_density import period_from_frequency, spectral_density
 from iqrp.app.timeseries.stationarity import adf, kpss, phillips_perron, variance_ratio
 from iqrp.app.timeseries.transforms import TimeSeriesTransformer
-from iqrp.app.timeseries.transforms.differencing import differencing as difference, seasonal_differencing as seasonal_difference
+from iqrp.app.timeseries.transforms.differencing import (
+    differencing as difference,
+    seasonal_differencing as seasonal_difference,
+)
 from iqrp.app.timeseries.transforms.log_transform import log_transform
-from iqrp.app.timeseries.transforms.normalization import robust_normalize, zscore_normalize, minmax_normalize
+from iqrp.app.timeseries.transforms.normalization import (
+    minmax_normalize,
+    robust_normalize,
+    zscore_normalize,
+)
 from iqrp.app.timeseries.transforms.rank_transform import rank_transform as rank
 from iqrp.app.timeseries.transforms.returns import log_returns as lr2, simple_returns as sr2
 
@@ -79,7 +96,10 @@ def test_transform_wrappers_and_training_only():
     tr2 = TimeSeriesTransformer(method="robust", temporal_mode="training_only", window=20)
     tr2.fit(x)
     assert tr2.transform(x).shape[0] == x.size
-    assert TimeSeriesTransformer(method="zscore", temporal_mode="expanding").fit_transform(x).shape[0] == x.size
+    assert (
+        TimeSeriesTransformer(method="zscore", temporal_mode="expanding").fit_transform(x).shape[0]
+        == x.size
+    )
     from iqrp.app.timeseries.transforms import normalize
 
     assert normalize(x, method="minmax", window=10).shape[0] == x.size

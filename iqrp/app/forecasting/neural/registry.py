@@ -34,7 +34,7 @@ def ensure_neural_models_loaded(modules: Iterable[str] | None = None) -> list[st
         try:
             importlib.import_module(mod)
             loaded.append(mod)
-        except Exception:  # noqa: BLE001  # pragma: no cover
+        except Exception:  # pragma: no cover
             continue
     return loaded
 

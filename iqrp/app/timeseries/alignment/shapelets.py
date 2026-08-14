@@ -48,7 +48,9 @@ def discover_shapelets(
     for L in lens:
         n_sub = n - L + 1
         n_take = min(int(n_candidates), n_sub)
-        starts = rng.choice(n_sub, size=n_take, replace=False) if n_sub > n_take else np.arange(n_sub)
+        starts = (
+            rng.choice(n_sub, size=n_take, replace=False) if n_sub > n_take else np.arange(n_sub)
+        )
         for s in starts:
             s = int(s)
             shape = y[s : s + L]
@@ -65,7 +67,10 @@ def discover_shapelets(
     # diversify by exclusion
     selected: list[dict] = []
     for c in candidates:
-        if any(abs(c["start"] - s["start"]) < c["length"] // 2 and c["length"] == s["length"] for s in selected):
+        if any(
+            abs(c["start"] - s["start"]) < c["length"] // 2 and c["length"] == s["length"]
+            for s in selected
+        ):
             continue
         selected.append(c)
         if len(selected) >= k:
@@ -108,7 +113,7 @@ def _score_shapelet(shape: np.ndarray, series: np.ndarray, labels: np.ndarray | 
     # label each subsequence start by majority of labels in window
     sub_labels = np.array([int(np.round(np.mean(labels[i : i + L]))) for i in range(n_sub)])
     order = np.argsort(dists)
-    d_sorted = dists[order]
+    dists[order]
     lab_sorted = sub_labels[order]
     best_ig = -np.inf
     for t in range(1, n_sub):

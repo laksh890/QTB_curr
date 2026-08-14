@@ -79,9 +79,7 @@ class ForecastModel(ABC):
         )
 
     @abstractmethod
-    def predict(
-        self, frame: pl.DataFrame, feature_columns: list[str] | None = None
-    ) -> np.ndarray:
+    def predict(self, frame: pl.DataFrame, feature_columns: list[str] | None = None) -> np.ndarray:
         """In-sample / one-step point predictions, shape ``(T,)`` or ``(T, H)``."""
 
     def predict_proba(
@@ -151,7 +149,7 @@ class ForecastModel(ABC):
                 proba = self.predict_proba(frame, cols)
                 if proba.ndim == 2 and proba.shape[1] >= 2:
                     scores = proba[:, -1]
-            except Exception:  # noqa: BLE001
+            except Exception:
                 proba = None
         return ForecastEvaluator().evaluate(
             y_true,
@@ -250,9 +248,7 @@ class ForecastModel(ABC):
             if c not in exclude and getattr(frame[c].dtype, "is_numeric", lambda: False)()
         ]
 
-    def _matrix(
-        self, frame: pl.DataFrame, feature_columns: list[str] | None = None
-    ) -> np.ndarray:
+    def _matrix(self, frame: pl.DataFrame, feature_columns: list[str] | None = None) -> np.ndarray:
         cols = self._resolve_feature_columns(frame, feature_columns)
         if not cols:
             from iqrp.app.core.exceptions import ValidationError

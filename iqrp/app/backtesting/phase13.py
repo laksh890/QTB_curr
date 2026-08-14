@@ -40,47 +40,293 @@ class ComponentCheck:
 
 
 PHASE13_COMPONENTS: list[ComponentCheck] = [
-    ComponentCheck("Event Engine", "engine", "iqrp.app.backtesting.event_engine", "EventDrivenEngine", ["EventEngine.md", "BacktestingPlatform.md"]),
-    ComponentCheck("Event Queue", "engine", "iqrp.app.backtesting.event_engine", "EventQueue", ["EventEngine.md"]),
-    ComponentCheck("Deterministic Clock", "engine", "iqrp.app.backtesting.event_engine", "BacktestClock", ["EventEngine.md"]),
-    ComponentCheck("Event-Driven Backtesting", "engine", "iqrp.app.backtesting.engine", "BacktestEngine", ["BacktestingPlatform.md"]),
-    ComponentCheck("Point-in-Time Validation", "pit", "iqrp.app.backtesting.pit", "detect_leakage", ["Reproducibility.md"]),
-    ComponentCheck("Survivorship-Bias Protection", "pit", "iqrp.app.backtesting.pit", "filter_universe_asof", ["Reproducibility.md"]),
-    ComponentCheck("Corporate Actions", "corporate", "iqrp.app.backtesting.corporate_actions", "actions_asof", ["BacktestingPlatform.md"]),
-    ComponentCheck("Walk-Forward", "walk_forward", "iqrp.app.backtesting.walk_forward", "WalkForwardEngine", ["WalkForward.md"]),
-    ComponentCheck("Rolling Windows", "walk_forward", "iqrp.app.backtesting.walk_forward", "generate_windows", ["WalkForward.md"]),
-    ComponentCheck("Expanding Windows", "walk_forward", "iqrp.app.backtesting.walk_forward.windows", "generate_windows", ["WalkForward.md"]),
-    ComponentCheck("Purged Validation", "walk_forward", "iqrp.app.backtesting.walk_forward", "purged_kfold_splits", ["WalkForward.md"]),
-    ComponentCheck("Embargo", "walk_forward", "iqrp.app.backtesting.walk_forward", "apply_embargo", ["WalkForward.md"]),
-    ComponentCheck("Rolling Retraining", "rolling", "iqrp.app.backtesting.rolling_retraining", "RollingRetrainer", ["RollingRetraining.md"]),
-    ComponentCheck("Model Versioning", "rolling", "iqrp.app.backtesting.rolling_retraining", "ModelRegistry", ["RollingRetraining.md", "Reproducibility.md"]),
-    ComponentCheck("Performance Metrics", "performance", "iqrp.app.backtesting.performance", "build_scorecard", ["PerformanceMetrics.md"]),
-    ComponentCheck("Risk Metrics", "performance", "iqrp.app.backtesting.performance", "sharpe_ratio", ["PerformanceMetrics.md"]),
-    ComponentCheck("Drawdown Metrics", "performance", "iqrp.app.backtesting.performance", "max_drawdown", ["PerformanceMetrics.md"]),
-    ComponentCheck("Tail Metrics", "performance", "iqrp.app.backtesting.performance", "summarize_tail", ["PerformanceMetrics.md"]),
-    ComponentCheck("Trade Metrics", "performance", "iqrp.app.backtesting.performance", "summarize_trades", ["PerformanceMetrics.md"]),
-    ComponentCheck("Exposure Metrics", "performance", "iqrp.app.backtesting.performance", "summarize_exposure", ["PerformanceMetrics.md"]),
-    ComponentCheck("Performance Attribution", "performance", "iqrp.app.backtesting.performance", "full_attribution", ["PerformanceMetrics.md"]),
-    ComponentCheck("Benchmarking", "performance", "iqrp.app.backtesting.performance", "compare_to_benchmark", ["PerformanceMetrics.md"]),
-    ComponentCheck("Stability Analysis", "performance", "iqrp.app.backtesting.performance", "stability_report", ["PerformanceMetrics.md"]),
-    ComponentCheck("Historical Scenarios", "scenarios", "iqrp.app.backtesting.scenarios", "run_historical_scenario", ["ScenarioTesting.md"]),
-    ComponentCheck("Hypothetical Scenarios", "scenarios", "iqrp.app.backtesting.scenarios", "run_hypothetical_scenario", ["ScenarioTesting.md"]),
-    ComponentCheck("Monte Carlo Scenarios", "scenarios", "iqrp.app.backtesting.scenarios", "run_monte_carlo", ["ScenarioTesting.md"]),
-    ComponentCheck("Regime Scenarios", "scenarios", "iqrp.app.backtesting.scenarios.regime", "evaluate_regime_robustness", ["ScenarioTesting.md"]),
-    ComponentCheck("Liquidity Scenarios", "scenarios", "iqrp.app.backtesting.scenarios.liquidity", "run_liquidity_scenario", ["ScenarioTesting.md"]),
-    ComponentCheck("Capacity Testing", "capacity", "iqrp.app.backtesting.capacity", "capacity_curve", ["CapacityTesting.md"]),
-    ComponentCheck("Parameter Robustness", "robustness", "iqrp.app.backtesting.robustness", "parameter_sweep", ["ParameterRobustness.md"]),
-    ComponentCheck("Ablation Testing", "robustness", "iqrp.app.backtesting.robustness", "ablation_test", ["ParameterRobustness.md"]),
-    ComponentCheck("Strategy Comparison", "comparison", "iqrp.app.backtesting.comparison", "compare_strategies", ["PerformanceMetrics.md"]),
-    ComponentCheck("Experiment Registry", "registry", "iqrp.app.backtesting.experiment_registry", "ExperimentRegistry", ["Reproducibility.md"]),
-    ComponentCheck("Reproducibility", "infra", "iqrp.app.backtesting.serializer", "serialize_result", ["Reproducibility.md"]),
-    ComponentCheck("Strategy Validation Gates", "gates", "iqrp.app.backtesting.validation_gates", "evaluate_gates", ["StrategyValidation.md"]),
-    ComponentCheck("Paper Trading Interface", "paper", "iqrp.app.backtesting.paper_trading", "PaperTradingInterface", ["StrategyValidation.md"]),
-    ComponentCheck("Scorecard", "performance", "iqrp.app.backtesting.performance", "StrategyScorecard", ["PerformanceMetrics.md", "StrategyValidation.md"]),
-    ComponentCheck("Backtest Engine", "engine", "iqrp.app.backtesting.engine", "BacktestEngine", ["BacktestingPlatform.md", "Phase13_BacktestingPlatform.md"]),
-    ComponentCheck("Reports", "reports", "iqrp.app.backtesting.reports", "full_report", ["BacktestingPlatform.md"]),
-    ComponentCheck("Component Registry", "infra", "iqrp.app.backtesting.registry", "default_registry", ["BacktestingPlatform.md"]),
-    ComponentCheck("Scenario Engine", "scenarios", "iqrp.app.backtesting.scenarios", "ScenarioEngine", ["ScenarioTesting.md"]),
+    ComponentCheck(
+        "Event Engine",
+        "engine",
+        "iqrp.app.backtesting.event_engine",
+        "EventDrivenEngine",
+        ["EventEngine.md", "BacktestingPlatform.md"],
+    ),
+    ComponentCheck(
+        "Event Queue",
+        "engine",
+        "iqrp.app.backtesting.event_engine",
+        "EventQueue",
+        ["EventEngine.md"],
+    ),
+    ComponentCheck(
+        "Deterministic Clock",
+        "engine",
+        "iqrp.app.backtesting.event_engine",
+        "BacktestClock",
+        ["EventEngine.md"],
+    ),
+    ComponentCheck(
+        "Event-Driven Backtesting",
+        "engine",
+        "iqrp.app.backtesting.engine",
+        "BacktestEngine",
+        ["BacktestingPlatform.md"],
+    ),
+    ComponentCheck(
+        "Point-in-Time Validation",
+        "pit",
+        "iqrp.app.backtesting.pit",
+        "detect_leakage",
+        ["Reproducibility.md"],
+    ),
+    ComponentCheck(
+        "Survivorship-Bias Protection",
+        "pit",
+        "iqrp.app.backtesting.pit",
+        "filter_universe_asof",
+        ["Reproducibility.md"],
+    ),
+    ComponentCheck(
+        "Corporate Actions",
+        "corporate",
+        "iqrp.app.backtesting.corporate_actions",
+        "actions_asof",
+        ["BacktestingPlatform.md"],
+    ),
+    ComponentCheck(
+        "Walk-Forward",
+        "walk_forward",
+        "iqrp.app.backtesting.walk_forward",
+        "WalkForwardEngine",
+        ["WalkForward.md"],
+    ),
+    ComponentCheck(
+        "Rolling Windows",
+        "walk_forward",
+        "iqrp.app.backtesting.walk_forward",
+        "generate_windows",
+        ["WalkForward.md"],
+    ),
+    ComponentCheck(
+        "Expanding Windows",
+        "walk_forward",
+        "iqrp.app.backtesting.walk_forward.windows",
+        "generate_windows",
+        ["WalkForward.md"],
+    ),
+    ComponentCheck(
+        "Purged Validation",
+        "walk_forward",
+        "iqrp.app.backtesting.walk_forward",
+        "purged_kfold_splits",
+        ["WalkForward.md"],
+    ),
+    ComponentCheck(
+        "Embargo",
+        "walk_forward",
+        "iqrp.app.backtesting.walk_forward",
+        "apply_embargo",
+        ["WalkForward.md"],
+    ),
+    ComponentCheck(
+        "Rolling Retraining",
+        "rolling",
+        "iqrp.app.backtesting.rolling_retraining",
+        "RollingRetrainer",
+        ["RollingRetraining.md"],
+    ),
+    ComponentCheck(
+        "Model Versioning",
+        "rolling",
+        "iqrp.app.backtesting.rolling_retraining",
+        "ModelRegistry",
+        ["RollingRetraining.md", "Reproducibility.md"],
+    ),
+    ComponentCheck(
+        "Performance Metrics",
+        "performance",
+        "iqrp.app.backtesting.performance",
+        "build_scorecard",
+        ["PerformanceMetrics.md"],
+    ),
+    ComponentCheck(
+        "Risk Metrics",
+        "performance",
+        "iqrp.app.backtesting.performance",
+        "sharpe_ratio",
+        ["PerformanceMetrics.md"],
+    ),
+    ComponentCheck(
+        "Drawdown Metrics",
+        "performance",
+        "iqrp.app.backtesting.performance",
+        "max_drawdown",
+        ["PerformanceMetrics.md"],
+    ),
+    ComponentCheck(
+        "Tail Metrics",
+        "performance",
+        "iqrp.app.backtesting.performance",
+        "summarize_tail",
+        ["PerformanceMetrics.md"],
+    ),
+    ComponentCheck(
+        "Trade Metrics",
+        "performance",
+        "iqrp.app.backtesting.performance",
+        "summarize_trades",
+        ["PerformanceMetrics.md"],
+    ),
+    ComponentCheck(
+        "Exposure Metrics",
+        "performance",
+        "iqrp.app.backtesting.performance",
+        "summarize_exposure",
+        ["PerformanceMetrics.md"],
+    ),
+    ComponentCheck(
+        "Performance Attribution",
+        "performance",
+        "iqrp.app.backtesting.performance",
+        "full_attribution",
+        ["PerformanceMetrics.md"],
+    ),
+    ComponentCheck(
+        "Benchmarking",
+        "performance",
+        "iqrp.app.backtesting.performance",
+        "compare_to_benchmark",
+        ["PerformanceMetrics.md"],
+    ),
+    ComponentCheck(
+        "Stability Analysis",
+        "performance",
+        "iqrp.app.backtesting.performance",
+        "stability_report",
+        ["PerformanceMetrics.md"],
+    ),
+    ComponentCheck(
+        "Historical Scenarios",
+        "scenarios",
+        "iqrp.app.backtesting.scenarios",
+        "run_historical_scenario",
+        ["ScenarioTesting.md"],
+    ),
+    ComponentCheck(
+        "Hypothetical Scenarios",
+        "scenarios",
+        "iqrp.app.backtesting.scenarios",
+        "run_hypothetical_scenario",
+        ["ScenarioTesting.md"],
+    ),
+    ComponentCheck(
+        "Monte Carlo Scenarios",
+        "scenarios",
+        "iqrp.app.backtesting.scenarios",
+        "run_monte_carlo",
+        ["ScenarioTesting.md"],
+    ),
+    ComponentCheck(
+        "Regime Scenarios",
+        "scenarios",
+        "iqrp.app.backtesting.scenarios.regime",
+        "evaluate_regime_robustness",
+        ["ScenarioTesting.md"],
+    ),
+    ComponentCheck(
+        "Liquidity Scenarios",
+        "scenarios",
+        "iqrp.app.backtesting.scenarios.liquidity",
+        "run_liquidity_scenario",
+        ["ScenarioTesting.md"],
+    ),
+    ComponentCheck(
+        "Capacity Testing",
+        "capacity",
+        "iqrp.app.backtesting.capacity",
+        "capacity_curve",
+        ["CapacityTesting.md"],
+    ),
+    ComponentCheck(
+        "Parameter Robustness",
+        "robustness",
+        "iqrp.app.backtesting.robustness",
+        "parameter_sweep",
+        ["ParameterRobustness.md"],
+    ),
+    ComponentCheck(
+        "Ablation Testing",
+        "robustness",
+        "iqrp.app.backtesting.robustness",
+        "ablation_test",
+        ["ParameterRobustness.md"],
+    ),
+    ComponentCheck(
+        "Strategy Comparison",
+        "comparison",
+        "iqrp.app.backtesting.comparison",
+        "compare_strategies",
+        ["PerformanceMetrics.md"],
+    ),
+    ComponentCheck(
+        "Experiment Registry",
+        "registry",
+        "iqrp.app.backtesting.experiment_registry",
+        "ExperimentRegistry",
+        ["Reproducibility.md"],
+    ),
+    ComponentCheck(
+        "Reproducibility",
+        "infra",
+        "iqrp.app.backtesting.serializer",
+        "serialize_result",
+        ["Reproducibility.md"],
+    ),
+    ComponentCheck(
+        "Strategy Validation Gates",
+        "gates",
+        "iqrp.app.backtesting.validation_gates",
+        "evaluate_gates",
+        ["StrategyValidation.md"],
+    ),
+    ComponentCheck(
+        "Paper Trading Interface",
+        "paper",
+        "iqrp.app.backtesting.paper_trading",
+        "PaperTradingInterface",
+        ["StrategyValidation.md"],
+    ),
+    ComponentCheck(
+        "Scorecard",
+        "performance",
+        "iqrp.app.backtesting.performance",
+        "StrategyScorecard",
+        ["PerformanceMetrics.md", "StrategyValidation.md"],
+    ),
+    ComponentCheck(
+        "Backtest Engine",
+        "engine",
+        "iqrp.app.backtesting.engine",
+        "BacktestEngine",
+        ["BacktestingPlatform.md", "Phase13_BacktestingPlatform.md"],
+    ),
+    ComponentCheck(
+        "Reports",
+        "reports",
+        "iqrp.app.backtesting.reports",
+        "full_report",
+        ["BacktestingPlatform.md"],
+    ),
+    ComponentCheck(
+        "Component Registry",
+        "infra",
+        "iqrp.app.backtesting.registry",
+        "default_registry",
+        ["BacktestingPlatform.md"],
+    ),
+    ComponentCheck(
+        "Scenario Engine",
+        "scenarios",
+        "iqrp.app.backtesting.scenarios",
+        "ScenarioEngine",
+        ["ScenarioTesting.md"],
+    ),
 ]
 
 
@@ -227,7 +473,7 @@ def validate_phase13(*, write_stubs: bool = True) -> dict[str, Any]:
             else:
                 item.status = "pass"
                 item.detail = "importable and documented"
-        except Exception as exc:  # noqa: BLE001
+        except Exception as exc:
             item.status = "fail"
             item.detail = f"import error: {exc}"
             failures.append(item.detail)
@@ -262,7 +508,7 @@ def validate_phase13(*, write_stubs: bool = True) -> dict[str, Any]:
         missing_api = [m for m in api_methods if not hasattr(BacktestEngine, m)]
         if missing_api:
             failures.append(f"BacktestEngine missing methods: {missing_api}")
-    except Exception as exc:  # noqa: BLE001
+    except Exception as exc:
         failures.append(f"BacktestEngine import failed: {exc}")
 
     # Gate policy: OOS mandatory — high IS Sharpe alone must not approve
@@ -276,7 +522,7 @@ def validate_phase13(*, write_stubs: bool = True) -> dict[str, Any]:
             failures.append("validation_gates incorrectly approved without OOS")
         if gate.out_of_sample_ok:
             failures.append("out_of_sample_ok should be False when OOS missing")
-    except Exception as exc:  # noqa: BLE001
+    except Exception as exc:
         failures.append(f"gate policy check failed: {exc}")
 
     integration = {
@@ -309,7 +555,7 @@ def validate_phase13(*, write_stubs: bool = True) -> dict[str, Any]:
         ):
             if required not in getattr(bt_pkg, "__all__", []):
                 failures.append(f"backtesting.__all__ missing {required}")
-    except Exception as exc:  # noqa: BLE001
+    except Exception as exc:
         failures.append(f"backtesting package import failed: {exc}")
 
     cfg = Path(integration["hydra"])
@@ -397,8 +643,14 @@ def validate_phase13(*, write_stubs: bool = True) -> dict[str, Any]:
 
 def write_phase13_report(path: str | Path | None = None) -> Path:
     report = validate_phase13(write_stubs=True)
-    out = Path(path) if path else (
-        Path(__file__).resolve().parents[2] / "docs" / "Phase13_BacktestingPlatform_Validation.json"
+    out = (
+        Path(path)
+        if path
+        else (
+            Path(__file__).resolve().parents[2]
+            / "docs"
+            / "Phase13_BacktestingPlatform_Validation.json"
+        )
     )
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(report, indent=2), encoding="utf-8")
@@ -413,10 +665,7 @@ def write_phase13_report(path: str | Path | None = None) -> Path:
         f"{report['summary']['docs_required']}\n\n"
         "**Note:** Execution used Phase 12; this is Phase 13.\n\n"
         "## Checklist\n\n"
-        + "\n".join(
-            f"- [{'x' if ok else ' '}] {name}"
-            for name, ok in report["checklist"].items()
-        )
+        + "\n".join(f"- [{'x' if ok else ' '}] {name}" for name, ok in report["checklist"].items())
         + "\n"
     )
     # Preserve extended architecture/integration body if already authored.

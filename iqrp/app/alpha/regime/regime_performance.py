@@ -145,10 +145,14 @@ def regime_performance(
     """Combined IC + return scorecard by regime."""
     ic_rep = regime_ic(signal, forward_returns, regimes, rank=False)
     ric_rep = regime_ic(signal, forward_returns, regimes, rank=True)
-    ret_src = strategy_returns if strategy_returns is not None else (
-        np.nanmean(np.asarray(forward_returns, dtype=np.float64), axis=1)
-        if np.asarray(forward_returns).ndim == 2
-        else forward_returns
+    ret_src = (
+        strategy_returns
+        if strategy_returns is not None
+        else (
+            np.nanmean(np.asarray(forward_returns, dtype=np.float64), axis=1)
+            if np.asarray(forward_returns).ndim == 2
+            else forward_returns
+        )
     )
     ret_rep = regime_returns(ret_src, regimes)
     return {

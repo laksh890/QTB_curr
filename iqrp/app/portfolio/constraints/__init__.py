@@ -100,10 +100,7 @@ def check_all_constraints(weights: Any, **kwargs: Any) -> list[ConstraintViolati
         )
 
     # Position box / long-only
-    if any(
-        k in kwargs
-        for k in ("max_position", "min_position", "min_weight", "long_only")
-    ):
+    if any(k in kwargs for k in ("max_position", "min_position", "min_weight", "long_only")):
         violations.extend(
             check_position_constraints(
                 weights,

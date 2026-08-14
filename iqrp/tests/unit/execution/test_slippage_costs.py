@@ -115,9 +115,7 @@ def test_historical_slippage_model():
 
 def test_execution_slippage_model():
     model = ExecutionSlippageModel(impact_coeff=0.1)
-    br = model.estimate(
-        side="buy", quantity=100, mid=100.0, spread=0.02, adv=1e6, volatility=0.02
-    )
+    br = model.estimate(side="buy", quantity=100, mid=100.0, spread=0.02, adv=1e6, volatility=0.02)
     d = br.to_dict()
     assert d["total_bps"] >= 0
 
@@ -186,7 +184,9 @@ def test_component_cost_helpers():
     assert borrow_cost(notional=10_000, borrow_rate=0.02, days=2, is_short=False)["total"] == 0
 
 
-def test_engine_estimate_costs_and_slippage(engine, market_context, make_limit_order, order_manager):
+def test_engine_estimate_costs_and_slippage(
+    engine, market_context, make_limit_order, order_manager
+):
     order = make_limit_order(quantity=100)
     costs = engine.estimate_costs([order], market_context)
     assert costs["total_cost"] >= 0

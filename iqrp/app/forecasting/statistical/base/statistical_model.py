@@ -116,10 +116,7 @@ class StatisticalForecastModel(ForecastModel):
             return self.fit(  # type: ignore[return-value]
                 frame, feature_columns, target_column=target_column, regime_column=regime_column
             )
-        if mode == "sliding":
-            w = int(self._stat_settings.online.window)
-            y_all = np.concatenate([self._y, y_new])[-w:]
-        elif mode == "rolling":
+        if mode == "sliding" or mode == "rolling":
             w = int(self._stat_settings.online.window)
             y_all = np.concatenate([self._y, y_new])[-w:]
         else:  # expanding
@@ -133,9 +130,7 @@ class StatisticalForecastModel(ForecastModel):
             regime_column=regime_column or self._regime_column,
         )
 
-    def _extract_target(
-        self, frame: pl.DataFrame, target_column: str | None
-    ) -> np.ndarray:
+    def _extract_target(self, frame: pl.DataFrame, target_column: str | None) -> np.ndarray:
         tgt = target_column or self._target_column or self._stat_settings.columns.target
         if tgt in frame.columns:
             return frame[tgt].to_numpy().astype(np.float64)
@@ -163,9 +158,7 @@ class StatisticalForecastModel(ForecastModel):
                 data[self._regime_column] = np.resize(reg, y.size)
         return pl.DataFrame(data)
 
-    def _resolve_target_name(
-        self, frame: pl.DataFrame, target_column: str | None
-    ) -> str:
+    def _resolve_target_name(self, frame: pl.DataFrame, target_column: str | None) -> str:
         if target_column:
             return target_column
         if self._target_column:
@@ -191,9 +184,7 @@ class StatisticalForecastModel(ForecastModel):
             return frame[col].to_numpy()
         return None
 
-    def _regime_conditioned_y(
-        self, y: np.ndarray, regimes: np.ndarray | None
-    ) -> np.ndarray:
+    def _regime_conditioned_y(self, y: np.ndarray, regimes: np.ndarray | None) -> np.ndarray:
         """Optionally demean by regime for conditioning."""
         if regimes is None or not self._stat_settings.regime.condition_forecasts:
             return y
@@ -276,14 +267,12 @@ class StatisticalForecastModel(ForecastModel):
         *,
         target_column: str | None = None,
         regime_column: str | None = None,
-    ) -> StatisticalForecastModel:
-        ...
+    ) -> StatisticalForecastModel: ...
 
     @abstractmethod
     def predict(
         self, frame: pl.DataFrame, feature_columns: list[str] | None = None
-    ) -> np.ndarray:
-        ...
+    ) -> np.ndarray: ...
 
     @abstractmethod
     def forecast(
@@ -292,5 +281,4 @@ class StatisticalForecastModel(ForecastModel):
         *,
         horizon: int | None = None,
         feature_columns: list[str] | None = None,
-    ) -> Forecast:
-        ...
+    ) -> Forecast: ...

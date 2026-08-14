@@ -13,9 +13,10 @@ Execution never generates alpha and never overrides hard risk limits.
 
 from __future__ import annotations
 
+from collections.abc import Callable, Iterable, Mapping, Sequence
 from dataclasses import dataclass, field
 from datetime import UTC, datetime
-from typing import Any, Callable, Iterable, Mapping, Sequence
+from typing import Any
 
 from iqrp.app.execution.smart_routing.allocation import (
     AllocationMode,
@@ -34,7 +35,6 @@ from iqrp.app.execution.smart_routing.scoring import (
 )
 from iqrp.app.execution.smart_routing.venue import Venue, VenueInterface, as_venue
 from iqrp.app.execution.types import KillSwitch, OrderType, Side, Urgency
-
 
 RiskCheck = Callable[[Any, Venue], bool | tuple[bool, str]]
 
@@ -203,9 +203,7 @@ class SmartRouter:
         allow_partial_route: bool = True,
     ) -> None:
         self.weights = (
-            weights
-            if isinstance(weights, ScoreWeights)
-            else ScoreWeights.from_mapping(weights)
+            weights if isinstance(weights, ScoreWeights) else ScoreWeights.from_mapping(weights)
         )
         self.mode: AllocationMode = mode
         self.impact_coeff = float(impact_coeff)
@@ -271,9 +269,11 @@ class SmartRouter:
         urgency = (
             ro.urgency
             if isinstance(ro.urgency, Urgency)
-            else Urgency(str(ro.urgency).upper())
-            if str(ro.urgency).upper() in Urgency.__members__
-            else Urgency.NORMAL
+            else (
+                Urgency(str(ro.urgency).upper())
+                if str(ro.urgency).upper() in Urgency.__members__
+                else Urgency.NORMAL
+            )
         )
         weights = self._urgency_adjusted_weights(urgency)
 
@@ -372,10 +372,10 @@ class SmartRouter:
         )
 
         if not plan.allocations:
-            rejections.append(
-                RejectionReason("allocation_empty", "no quantity could be allocated")
+            rejections.append(RejectionReason("allocation_empty", "no quantity could be allocated"))
+            return self._reject(
+                ro, alloc_mode, rejections, ts, scores=scores, costs=costs, liquidity=liquidity
             )
-            return self._reject(ro, alloc_mode, rejections, ts, scores=scores, costs=costs, liquidity=liquidity)
 
         if plan.residual_qty > 0 and not self.allow_partial_route:
             rejections.append(
@@ -384,7 +384,9 @@ class SmartRouter:
                     f"residual {plan.residual_qty} not allowed under allow_partial_route=False",
                 )
             )
-            return self._reject(ro, alloc_mode, rejections, ts, scores=scores, costs=costs, liquidity=liquidity)
+            return self._reject(
+                ro, alloc_mode, rejections, ts, scores=scores, costs=costs, liquidity=liquidity
+            )
 
         primary = plan.allocations[0].venue_id
         fallback = build_fallback_chain(
@@ -603,10 +605,10 @@ class SmartRouter:
 
 
 __all__ = [
-    "RoutingOrder",
     "RejectionReason",
+    "RiskCheck",
     "RoutingDecision",
+    "RoutingOrder",
     "SmartRouter",
     "normalize_order",
-    "RiskCheck",
 ]

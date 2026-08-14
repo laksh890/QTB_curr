@@ -79,7 +79,9 @@ class TrainConfig(BaseModel):
 class SchedulerConfig(BaseModel):
     model_config = ConfigDict(frozen=True)
 
-    name: Literal["none", "cosine", "onecycle", "plateau", "warmup_cosine", "exponential"] = "cosine"
+    name: Literal["none", "cosine", "onecycle", "plateau", "warmup_cosine", "exponential"] = (
+        "cosine"
+    )
     warmup_epochs: int = 2
     min_lr: float = 1e-6
     gamma: float = 0.95
@@ -186,7 +188,7 @@ class NeuralSettings(BaseModel):
             if hasattr(data, "items") and not isinstance(data, dict):
                 data = OmegaConf.to_container(data, resolve=True)
             return cls.model_validate(dict(data or {}))
-        except Exception as exc:  # noqa: BLE001
+        except Exception as exc:
             from iqrp.app.core.exceptions import ConfigurationError
 
             raise ConfigurationError(
@@ -217,4 +219,6 @@ class NeuralSettings(BaseModel):
 
 
 def _default_config_path() -> Path:
-    return Path(__file__).resolve().parents[3] / "configs" / "forecasting" / "neural" / "default.yaml"
+    return (
+        Path(__file__).resolve().parents[3] / "configs" / "forecasting" / "neural" / "default.yaml"
+    )

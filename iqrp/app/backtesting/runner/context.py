@@ -112,7 +112,9 @@ class PipelineContext:
         self.trades = TradeLedger.from_dict(data.get("trades") or {})
         self.snapshots = SnapshotBook.from_dict(data.get("snapshots") or {})
         self.universe = list(data.get("universe") or [])
-        self.latest_prices = {str(k): float(v) for k, v in dict(data.get("latest_prices") or {}).items()}
+        self.latest_prices = {
+            str(k): float(v) for k, v in dict(data.get("latest_prices") or {}).items()
+        }
         self.target_weights = {
             str(k): float(v) for k, v in dict(data.get("target_weights") or {}).items()
         }

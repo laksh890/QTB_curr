@@ -8,7 +8,7 @@ from iqrp.app.forecasting.neural.base.torch_utils import has_torch
 
 try:
     import torch
-except Exception:  # noqa: BLE001  # pragma: no cover
+except Exception:  # pragma: no cover
     torch = None  # type: ignore[assignment]
 
 

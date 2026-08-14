@@ -35,7 +35,7 @@ def forecast_uncertainty(
         y = y[-w:]
         n = w
     err = y - f
-    rmse = float(np.sqrt(np.mean(err ** 2)))
+    rmse = float(np.sqrt(np.mean(err**2)))
     mae = float(np.mean(np.abs(err)))
     bias = float(np.mean(err))
     return RiskMeasure(

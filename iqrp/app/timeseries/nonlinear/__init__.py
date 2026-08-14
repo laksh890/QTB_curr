@@ -8,10 +8,10 @@ from iqrp.app.timeseries.nonlinear.permutation_entropy import permutation_entrop
 from iqrp.app.timeseries.nonlinear.sample_entropy import sample_entropy
 
 __all__ = [
-    "hurst_exponent",
+    "approximate_entropy",
     "higuchi_fd",
-    "shannon_entropy",
+    "hurst_exponent",
     "permutation_entropy",
     "sample_entropy",
-    "approximate_entropy",
+    "shannon_entropy",
 ]

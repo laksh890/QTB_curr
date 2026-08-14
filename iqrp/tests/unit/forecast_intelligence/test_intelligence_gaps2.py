@@ -10,9 +10,13 @@ import polars as pl
 import pytest
 
 from iqrp.app.forecasting.intelligence.automl import optimize_model
-from iqrp.app.forecasting.intelligence.benchmark import make_splits, benchmark_candidates
+from iqrp.app.forecasting.intelligence.benchmark import benchmark_candidates, make_splits
 from iqrp.app.forecasting.intelligence.blending import blend_predictions
-from iqrp.app.forecasting.intelligence.calibration import Calibrator, apply_calibration, fit_calibrator
+from iqrp.app.forecasting.intelligence.calibration import (
+    Calibrator,
+    apply_calibration,
+    fit_calibrator,
+)
 from iqrp.app.forecasting.intelligence.config import (
     BenchmarkConfig,
     EnsembleConfig,
@@ -23,14 +27,22 @@ from iqrp.app.forecasting.intelligence.config import (
 )
 from iqrp.app.forecasting.intelligence.deployment import DeploymentManager
 from iqrp.app.forecasting.intelligence.diagnostics import diagnose_residuals
-from iqrp.app.forecasting.intelligence.drift import detect_drift, ks_statistic
-from iqrp.app.forecasting.intelligence.ensemble import build_ensemble, weighted_average, median_ensemble
+from iqrp.app.forecasting.intelligence.drift import DriftReport, detect_drift, ks_statistic
+from iqrp.app.forecasting.intelligence.ensemble import (
+    build_ensemble,
+    median_ensemble,
+    weighted_average,
+)
 from iqrp.app.forecasting.intelligence.gating import moe_combine
 from iqrp.app.forecasting.intelligence.monitoring import ForecastMonitor
 from iqrp.app.forecasting.intelligence.orchestrator import ForecastIntelligenceEngine
-from iqrp.app.forecasting.intelligence.processes import simulate_market_frame, feature_names, _local_simulate
+from iqrp.app.forecasting.intelligence.processes import (
+    _local_simulate,
+    feature_names,
+    simulate_market_frame,
+)
 from iqrp.app.forecasting.intelligence.ranking import composite_score
-from iqrp.app.forecasting.intelligence.registry import list_discovered_models, create_model
+from iqrp.app.forecasting.intelligence.registry import create_model, list_discovered_models
 from iqrp.app.forecasting.intelligence.retraining import (
     checkpoint_model,
     decide_retrain,
@@ -39,19 +51,23 @@ from iqrp.app.forecasting.intelligence.retraining import (
 )
 from iqrp.app.forecasting.intelligence.routing import build_routing_table, route_model
 from iqrp.app.forecasting.intelligence.serializer import IntelligenceSerializer, _to_jsonable
-from iqrp.app.forecasting.intelligence.stacking import stack_predictions, fit_stacker
+from iqrp.app.forecasting.intelligence.stacking import fit_stacker, stack_predictions
 from iqrp.app.forecasting.intelligence.tuning import TuningHistory, build_search_space
 from iqrp.app.forecasting.intelligence.uncertainty import prediction_intervals
 from iqrp.app.forecasting.intelligence.visualization import forecast_chart
-from iqrp.app.forecasting.intelligence.drift import DriftReport
-
 
 FEATS = feature_names(3)
 
 
 def _s(**kw):
     base = {
-        "benchmark": {"method": "walk_forward", "n_splits": 2, "train_size": 40, "test_size": 12, "parallel": False},
+        "benchmark": {
+            "method": "walk_forward",
+            "n_splits": 2,
+            "train_size": 40,
+            "test_size": 12,
+            "parallel": False,
+        },
         "ensemble": {"method": "none"},
         "automl": {"method": "none"},
     }
@@ -77,9 +93,20 @@ def test_processes_simulation_engine_fallback():
 
 def test_automl_none_and_fallback_and_pbt():
     frame = simulate_market_frame(80, n_features=3, rng=np.random.default_rng(2))
-    assert optimize_model("mock", frame, feature_columns=FEATS, target_column="target", settings=_s(automl={"method": "none"})) == {}
+    assert (
+        optimize_model(
+            "mock",
+            frame,
+            feature_columns=FEATS,
+            target_column="target",
+            settings=_s(automl={"method": "none"}),
+        )
+        == {}
+    )
     # force eval exception path
-    with patch("iqrp.app.forecasting.intelligence.automl.benchmark_model", side_effect=RuntimeError("x")):
+    with patch(
+        "iqrp.app.forecasting.intelligence.automl.benchmark_model", side_effect=RuntimeError("x")
+    ):
         out = optimize_model(
             "mock",
             frame,
@@ -109,7 +136,9 @@ def test_automl_none_and_fallback_and_pbt():
     # unknown method fallback
     s = _s(automl={"method": "random", "n_trials": 1})
     # patch method after to hit final return — call with bayesian and mock optuna fail
-    with patch("iqrp.app.forecasting.intelligence.automl._optuna_search", side_effect=Exception("no")):
+    with patch(
+        "iqrp.app.forecasting.intelligence.automl._optuna_search", side_effect=Exception("no")
+    ):
         # _optuna_search catches internally; force import failure path already covered
         pass
 
@@ -170,7 +199,9 @@ def test_retraining_warm_partial_and_checkpoint_hooks():
 
 
 def test_routing_disabled_and_branches():
-    frame = simulate_market_frame(50, kind="regime_switching", n_features=3, rng=np.random.default_rng(4))
+    frame = simulate_market_frame(
+        50, kind="regime_switching", n_features=3, rng=np.random.default_rng(4)
+    )
     table = build_routing_table(
         "mock",
         regime_models={str(frame["regime"][-1]): "mock"},
@@ -214,7 +245,7 @@ def test_orchestrator_ensemble_and_errors():
     with pytest.raises(ValueError):
         eng2.fit(frame.drop("target"), feature_columns=FEATS, candidates=["mock"])
     # empty candidates discovery path with max
-    eng3 = ForecastIntelligenceEngine(_s(discovery={"max_candidates": 0, "exclude_names": tuple()}))
+    eng3 = ForecastIntelligenceEngine(_s(discovery={"max_candidates": 0, "exclude_names": ()}))
     # list may be empty — fit should still work with explicit candidates
     eng3.fit(frame, feature_columns=FEATS, candidates=["mock"], run_selection=False)
     assert eng3.best_model() == "mock"
@@ -223,7 +254,10 @@ def test_orchestrator_ensemble_and_errors():
     # ensemble method override
     assert eng.ensemble(frame, method="median").size == frame.height
     # retrain with performance path
-    eng.settings = _s(retrain={"mode": "performance", "window": 40}, drift={"enabled": True, "performance_drop": 0.0})
+    eng.settings = _s(
+        retrain={"mode": "performance", "window": 40},
+        drift={"enabled": True, "performance_drop": 0.0},
+    )
     # inflate residual metric reference to force degradation
     eng._ref_metric = 1e-12
     d = eng.retrain(frame)
@@ -235,7 +269,9 @@ def test_orchestrator_ensemble_and_errors():
 
 def test_orchestrator_import_partial_and_visualize_none():
     eng = ForecastIntelligenceEngine(_s())
-    eng.import_state({"best_model": "mock", "fitted": False, "leaderboard": [], "settings": {"seed": 1}})
+    eng.import_state(
+        {"best_model": "mock", "fitted": False, "leaderboard": [], "settings": {"seed": 1}}
+    )
     assert eng.visualize()["leaderboard"]["type"] == "bar"
     # bad settings ignored
     eng.import_state({"settings": {"benchmark": {"method": "bad"}}})
@@ -259,7 +295,10 @@ def test_orchestrator_import_partial_and_visualize_none():
 
 def test_benchmark_error_candidate():
     frame = simulate_market_frame(80, n_features=3, rng=np.random.default_rng(7))
-    with patch("iqrp.app.forecasting.intelligence.benchmark.benchmark_model", side_effect=RuntimeError("fail")):
+    with patch(
+        "iqrp.app.forecasting.intelligence.benchmark.benchmark_model",
+        side_effect=RuntimeError("fail"),
+    ):
         res = benchmark_candidates(
             frame,
             feature_columns=FEATS,
@@ -299,12 +338,20 @@ def test_ensemble_empty_and_weighted_none_scores():
     assert blend_predictions({}).size == 0
     assert blend_predictions({"a": np.array([1.0])}).size == 1
     assert moe_combine({}).size == 0
-    assert moe_combine({"a": np.array([1.0]), "b": np.array([2.0])}, gate_logits=np.ones((1, 2))).size == 1
+    assert (
+        moe_combine({"a": np.array([1.0]), "b": np.array([2.0])}, gate_logits=np.ones((1, 2))).size
+        == 1
+    )
 
 
 def test_stack_ndim1_and_bad_weights():
     assert fit_stacker(np.array([1.0, 2.0, 3.0]), np.array([1.0, 2.0, 3.0])).size == 1
-    assert stack_predictions({"a": np.array([1.0]), "b": np.array([2.0])}, meta_weights=np.array([1.0])).size == 1
+    assert (
+        stack_predictions(
+            {"a": np.array([1.0]), "b": np.array([2.0])}, meta_weights=np.array([1.0])
+        ).size
+        == 1
+    )
 
 
 def test_drift_empty_ks_and_1d_features():
@@ -314,9 +361,19 @@ def test_drift_empty_ks_and_1d_features():
 
 
 def test_monitoring_alerts():
-    mon = ForecastMonitor(IntelligenceSettings.from_mapping({
-        "monitoring": {"mae_alert": -1.0, "latency_ms_alert": -1.0, "calibration_alert": -1.0, "stability_alert": 10.0, "window": 20}
-    }).monitoring)
+    mon = ForecastMonitor(
+        IntelligenceSettings.from_mapping(
+            {
+                "monitoring": {
+                    "mae_alert": -1.0,
+                    "latency_ms_alert": -1.0,
+                    "calibration_alert": -1.0,
+                    "stability_alert": 10.0,
+                    "window": 20,
+                }
+            }
+        ).monitoring
+    )
     for i in range(6):
         mon.record(y_true=float(i), y_pred=float(i + 5), latency_ms=50.0, features=np.ones(2) * i)
     snap = mon.snapshot()
@@ -341,7 +398,9 @@ def test_uncertainty_scipy_fallback():
 
 
 def test_visualization_intervals():
-    ch = forecast_chart([1, 2], None, np.array([0.0, 1.0]), lower=np.array([-1.0, 0.0]), upper=np.array([1.0, 2.0]))
+    ch = forecast_chart(
+        [1, 2], None, np.array([0.0, 1.0]), lower=np.array([-1.0, 0.0]), upper=np.array([1.0, 2.0])
+    )
     assert "lower" in ch
 
 
@@ -358,7 +417,9 @@ def test_tuning_history_empty_and_baseline_space():
 
 def test_registry_include_exclude():
     models = list_discovered_models(
-        IntelligenceSettings.from_mapping({"discovery": {"include_families": ["baseline"], "exclude_names": ("nope",)}})
+        IntelligenceSettings.from_mapping(
+            {"discovery": {"include_families": ["baseline"], "exclude_names": ("nope",)}}
+        )
     )
     assert all(m.family == "baseline" for m in models)
 

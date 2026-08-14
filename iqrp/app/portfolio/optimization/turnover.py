@@ -77,7 +77,14 @@ def optimize_turnover(
             names = cstr.get("names")
         ok, reason, conflicts = check_feasibility(cstr)
         if not ok:
-            return infeasible_result(name, n, method=method, reason=reason or "infeasible", conflicts=conflicts, names=names)
+            return infeasible_result(
+                name,
+                n,
+                method=method,
+                reason=reason or "infeasible",
+                conflicts=conflicts,
+                names=names,
+            )
 
         if current_weights is not None:
             raw = as_vector(current_weights, n)
@@ -98,7 +105,11 @@ def optimize_turnover(
             return 0.5 * float(np.sum(np.abs(w - w0)))
 
         def obj(w: np.ndarray) -> float:
-            return 0.5 * lam * portfolio_variance(w, c) - portfolio_return(w, m) + tau * float(np.sum(np.abs(w - w0)))
+            return (
+                0.5 * lam * portfolio_variance(w, c)
+                - portfolio_return(w, m)
+                + tau * float(np.sum(np.abs(w - w0)))
+            )
 
         def grad(w: np.ndarray) -> np.ndarray:
             # subgradient of L1
@@ -109,9 +120,17 @@ def optimize_turnover(
             bounds = [(cstr["lb"], cstr["ub"])] * n
             cons = [{"type": "eq", "fun": lambda ww: float(np.sum(ww) - cstr["budget"])}]
             if mt is not None:
-                cons.append({"type": "ineq", "fun": lambda ww, _w0=w0, _mt=float(mt): float(_mt) - 0.5 * float(np.sum(np.abs(ww - _w0)))})
+                cons.append(
+                    {
+                        "type": "ineq",
+                        "fun": lambda ww, _w0=w0, _mt=float(mt): float(_mt)
+                        - 0.5 * float(np.sum(np.abs(ww - _w0))),
+                    }
+                )
             try:
-                res = minimize_scipy(obj, x0, jac=grad, bounds=bounds, constraints=cons, method="SLSQP")
+                res = minimize_scipy(
+                    obj, x0, jac=grad, bounds=bounds, constraints=cons, method="SLSQP"
+                )
                 if bool(res.success):
                     w = project(np.asarray(res.x, dtype=np.float64))
                     fval = float(obj(w))
@@ -119,7 +138,9 @@ def optimize_turnover(
                     success_opt = True
                     iters = int(getattr(res, "nit", 0) or 0)
                 else:
-                    w, fval, success_opt, iters = projected_gradient(obj, grad, x0, project, lr=0.05)
+                    w, fval, success_opt, iters = projected_gradient(
+                        obj, grad, x0, project, lr=0.05
+                    )
                     used = "numpy_pgd"
             except Exception:
                 w, fval, success_opt, iters = projected_gradient(obj, grad, x0, project, lr=0.05)
@@ -159,9 +180,13 @@ def optimize_turnover(
             used = used + "_turnover_projection"
 
         if float(np.min(w)) < cstr["lb"] - 1e-8 or float(np.max(w)) > cstr["ub"] + 1e-8:
-            return infeasible_result(name, n, method=used, reason="box violation", conflicts=["box"], names=names)
+            return infeasible_result(
+                name, n, method=used, reason="box violation", conflicts=["box"], names=names
+            )
         if abs(float(np.sum(w)) - cstr["budget"]) > 1e-6:
-            return infeasible_result(name, n, method=used, reason="budget violation", conflicts=["budget"], names=names)
+            return infeasible_result(
+                name, n, method=used, reason="budget violation", conflicts=["budget"], names=names
+            )
 
         return make_result(
             name,

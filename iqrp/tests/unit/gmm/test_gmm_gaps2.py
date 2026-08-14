@@ -102,7 +102,7 @@ def test_parallel_em_and_viz_and_regime() -> None:
     assert m2.is_fitted
     # serializer path without npz covered by save
     # viz empties / 2d ellipses / disabled
-    tmp = Path("/tmp/gmm_viz")  # noqa: S108
+    tmp = Path("/tmp/gmm_viz")
     tmp.mkdir(exist_ok=True)
     plot_likelihood_curve([], tmp / "a.svg")
     plot_cluster_scatter(np.zeros(5), np.zeros(5, dtype=int), tmp / "b.svg")

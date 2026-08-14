@@ -29,7 +29,9 @@ def apply_embargo(
     purge: int = 0,
 ) -> np.ndarray:
     """Drop train indices in the purge/embargo neighbourhood of the test fold."""
-    tr = np.asarray(list(train_idx) if not isinstance(train_idx, np.ndarray) else train_idx, dtype=int)
+    tr = np.asarray(
+        list(train_idx) if not isinstance(train_idx, np.ndarray) else train_idx, dtype=int
+    )
     te = np.asarray(list(test_idx) if not isinstance(test_idx, np.ndarray) else test_idx, dtype=int)
     if tr.size == 0 or te.size == 0:
         return tr
@@ -49,7 +51,9 @@ def embargo_after_test(
     embargo: int = 0,
 ) -> np.ndarray:
     """Remove only the post-test embargo zone from ``train_idx``."""
-    tr = np.asarray(list(train_idx) if not isinstance(train_idx, np.ndarray) else train_idx, dtype=int)
+    tr = np.asarray(
+        list(train_idx) if not isinstance(train_idx, np.ndarray) else train_idx, dtype=int
+    )
     lo, hi = embargo_range(test_end, embargo=embargo)
     if hi <= lo:
         return tr

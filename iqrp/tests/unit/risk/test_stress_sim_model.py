@@ -55,9 +55,7 @@ class TestScenarios:
 
 
 class TestHistoricalStress:
-    def test_event_window_indices(
-        self, returns_2d: np.ndarray, weights_4: np.ndarray
-    ) -> None:
+    def test_event_window_indices(self, returns_2d: np.ndarray, weights_4: np.ndarray) -> None:
         out = historical_stress(returns_2d, event_window=np.arange(20, 40), weights=weights_4)
         assert out["n_event_days"] == 20
         assert "loss" in out
@@ -162,9 +160,7 @@ class TestBootstrapAndCopula:
         assert out["terminal"].shape == (N_SIM,)
 
     def test_block_bootstrap(self, returns_1d: np.ndarray) -> None:
-        out = block_bootstrap(
-            returns_1d, n_simulations=N_SIM, horizon=20, block_size=5, seed=SEED
-        )
+        out = block_bootstrap(returns_1d, n_simulations=N_SIM, horizon=20, block_size=5, seed=SEED)
         assert out["terminal"].shape == (N_SIM,)
 
     def test_block_default_horizon(self, returns_1d: np.ndarray) -> None:
@@ -192,9 +188,20 @@ class TestBootstrapAndCopula:
 class TestScenarioEngine:
     def test_all_methods(self, returns_2d: np.ndarray, weights_4: np.ndarray) -> None:
         eng = ScenarioEngine(n_simulations=N_SIM, horizon=2, seed=SEED, block_size=4)
-        for method in ("parametric", "correlated", "bootstrap", "block_bootstrap", "gaussian_copula"):
+        for method in (
+            "parametric",
+            "correlated",
+            "bootstrap",
+            "block_bootstrap",
+            "gaussian_copula",
+        ):
             out = eng.run(returns_2d, method=method, weights=weights_4)  # type: ignore[arg-type]
-            assert "terminal_mean" in out or "var" in out or "measures" in out or "terminal" in str(out)
+            assert (
+                "terminal_mean" in out
+                or "var" in out
+                or "measures" in out
+                or "terminal" in str(out)
+            )
 
     def test_unknown_method_falls_back(self, returns_1d: np.ndarray) -> None:
         eng = ScenarioEngine(n_simulations=N_SIM, seed=SEED)

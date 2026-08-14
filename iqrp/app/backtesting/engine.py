@@ -10,9 +10,10 @@ Never promote on historical Sharpe/return alone (see validation_gates).
 from __future__ import annotations
 
 import uuid
+from collections.abc import Callable, Mapping, Sequence
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Any, Callable, Mapping, Sequence
+from typing import Any
 
 import numpy as np
 
@@ -24,7 +25,11 @@ from iqrp.app.backtesting.experiment_registry import (
     ExperimentRegistry,
 )
 from iqrp.app.backtesting.paper_trading import PaperTradingConfig, PaperTradingInterface
-from iqrp.app.backtesting.performance import build_scorecard, summarize_returns, summarize_risk_adjusted
+from iqrp.app.backtesting.performance import (
+    build_scorecard,
+    summarize_returns,
+    summarize_risk_adjusted,
+)
 from iqrp.app.backtesting.performance.drawdown import summarize_drawdown
 from iqrp.app.backtesting.performance.returns import as_returns, wealth_index
 from iqrp.app.backtesting.performance.scorecard import StrategyScorecard
@@ -32,12 +37,17 @@ from iqrp.app.backtesting.performance.tail import summarize_tail
 from iqrp.app.backtesting.pit import LookaheadViolation, detect_leakage, filter_universe_asof
 from iqrp.app.backtesting.robustness import ablation_test, parameter_sweep, sensitivity_analysis
 from iqrp.app.backtesting.scenarios import ScenarioEngine
-from iqrp.app.backtesting.serializer import deserialize_result, load_json, save_json, serialize_result
+from iqrp.app.backtesting.serializer import (
+    deserialize_result,
+    load_json,
+    save_json,
+    serialize_result,
+)
 from iqrp.app.backtesting.types import BacktestState, JSONDict
 from iqrp.app.backtesting.validation_gates import GateResult, GateThresholds, evaluate_gates
 from iqrp.app.backtesting.walk_forward import WalkForwardEngine
 
-__all__ = ["BacktestResult", "BacktestEngine"]
+__all__ = ["BacktestEngine", "BacktestResult"]
 
 StrategyFn = Callable[..., Any]
 SignalFn = Callable[..., Any]
@@ -69,7 +79,7 @@ def _optional_execution_cost(
         total = float(est.get("total_cost", 0.0))
         # Convert absolute cost to fraction of notional
         return abs(total) / max(abs(float(notional)), 1e-12)
-    except Exception:  # noqa: BLE001
+    except Exception:
         bps = float(commission_bps) + float(spread_bps) + float(slippage_bps)
         return abs(float(notional)) * bps / 10_000.0 / max(abs(float(notional)), 1e-12)
 
@@ -132,19 +142,21 @@ class BacktestResult:
             "warnings": list(self.warnings),
             "invalidated": bool(self.invalidated),
             "invalidation_reason": self.invalidation_reason,
-            "oos_returns": None
-            if self.oos_returns is None
-            else np.asarray(self.oos_returns, dtype=np.float64).tolist(),
+            "oos_returns": (
+                None
+                if self.oos_returns is None
+                else np.asarray(self.oos_returns, dtype=np.float64).tolist()
+            ),
             "scorecard": None if self.scorecard is None else self.scorecard.to_dict(),
             "timestamps": list(self.timestamps),
         }
 
     @classmethod
-    def from_dict(cls, data: Mapping[str, Any]) -> "BacktestResult":
+    def from_dict(cls, data: Mapping[str, Any]) -> BacktestResult:
         state_raw = data.get("state", BacktestState.CREATED.value)
         try:
             state = BacktestState(state_raw)
-        except Exception:  # noqa: BLE001
+        except Exception:
             state = BacktestState.FAILED
         sc_data = data.get("scorecard")
         scorecard = StrategyScorecard.from_dict(sc_data) if sc_data else None
@@ -259,7 +271,11 @@ class BacktestEngine:
                     return self._invalidate(result, f"universe PIT violation: {exc}")
 
             # Leakage checks
-            if self.settings.pit.detect_leakage and feature_asof_index is not None and label_asof_index is not None:
+            if (
+                self.settings.pit.detect_leakage
+                and feature_asof_index is not None
+                and label_asof_index is not None
+            ):
                 report = detect_leakage(
                     feature_asof_index,
                     label_asof_index,
@@ -332,7 +348,7 @@ class BacktestEngine:
             self._last_result = result
             return result
 
-        except Exception as exc:  # noqa: BLE001
+        except Exception as exc:
             result.state = BacktestState.FAILED
             result.warnings.append(str(exc))
             self.registry.register_result(
@@ -415,7 +431,7 @@ class BacktestEngine:
                     for a in applicable:
                         if a.action_type == CorporateActionType.DIVIDEND:
                             ca_dividend_boost[i] += float(a.payload.get("amount", 0.0))
-            except Exception as exc:  # noqa: BLE001
+            except Exception as exc:
                 # Non-fatal — record warning via empty boost
                 _ = exc
 
@@ -457,11 +473,7 @@ class BacktestEngine:
                         slippage_bps=cost_cfg.slippage_bps,
                     ) * abs(delta)
                 else:
-                    bps = (
-                        cost_cfg.commission_bps
-                        + cost_cfg.spread_bps
-                        + cost_cfg.slippage_bps
-                    )
+                    bps = cost_cfg.commission_bps + cost_cfg.spread_bps + cost_cfg.slippage_bps
                     trade_cost = abs(delta) * bps / 10_000.0
                 trades.append(
                     {
@@ -476,7 +488,9 @@ class BacktestEngine:
                 )
 
             # Position PnL from market return at t (position held into bar)
-            pnl = float(prev_w) * float(market_returns[t]) - trade_cost + float(ca_dividend_boost[t])
+            pnl = (
+                float(prev_w) * float(market_returns[t]) - trade_cost + float(ca_dividend_boost[t])
+            )
             if trades and trades[-1].get("t") == t:
                 trades[-1]["pnl"] = float(pnl)
 
@@ -614,11 +628,19 @@ class BacktestEngine:
         if r is None:
             raise ValueError("capacity_test requires returns or a prior result")
         levels = capital_levels if capital_levels is not None else np.geomspace(1e6, 1e9, 12)
-        curve = capacity_curve(r, levels, **{k: v for k, v in kwargs.items() if k in ("model", "cost_fn", "periods_per_year")})
+        curve = capacity_curve(
+            r,
+            levels,
+            **{k: v for k, v in kwargs.items() if k in ("model", "cost_fn", "periods_per_year")},
+        )
         limit = estimate_capacity_limit(
             r,
             capital_levels=levels,
-            **{k: v for k, v in kwargs.items() if k in ("min_sharpe", "max_drawdown", "model", "periods_per_year")},
+            **{
+                k: v
+                for k, v in kwargs.items()
+                if k in ("min_sharpe", "max_drawdown", "model", "periods_per_year")
+            },
         )
         return {"curve": curve, "limit": limit}
 
@@ -665,7 +687,7 @@ class BacktestEngine:
                 oos_returns=result.oos_returns,
             )
         if isinstance(result, Mapping):
-            if "scorecard" in result and result["scorecard"]:
+            if result.get("scorecard"):
                 return StrategyScorecard.from_dict(result["scorecard"])
             return build_scorecard(
                 result.get("returns"),
@@ -731,7 +753,7 @@ class BacktestEngine:
                 from iqrp.app.backtesting.experiment_registry import ExperimentRecord
 
                 er = ExperimentRecord.from_dict(rec)
-                self.registry._records[er.experiment_id] = er  # noqa: SLF001
+                self.registry._records[er.experiment_id] = er
         else:
             result = deserialize_result(data)
         self._last_result = result

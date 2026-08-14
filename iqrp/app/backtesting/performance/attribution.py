@@ -2,24 +2,25 @@
 
 from __future__ import annotations
 
-from typing import Any, Mapping
+from collections.abc import Mapping
+from typing import Any
 
 import numpy as np
 
 from iqrp.app.backtesting.performance.returns import as_returns, total_return
 
 __all__ = [
-    "attribute_by_groups",
-    "attribute_strategy",
-    "attribute_signal",
     "attribute_asset",
-    "attribute_sector",
+    "attribute_by_groups",
+    "attribute_costs",
+    "attribute_execution",
     "attribute_factor",
     "attribute_market",
-    "attribute_timeframe",
     "attribute_regime",
-    "attribute_execution",
-    "attribute_costs",
+    "attribute_sector",
+    "attribute_signal",
+    "attribute_strategy",
+    "attribute_timeframe",
     "full_attribution",
 ]
 
@@ -174,7 +175,7 @@ def attribute_regime(
     labs = np.asarray(regime_labels).reshape(-1)
     n = min(r.size, labs.size)
     out: dict[str, float] = {}
-    for lab in sorted(set(str(x) for x in labs[:n].tolist())):
+    for lab in sorted({str(x) for x in labs[:n].tolist()}):
         mask = np.asarray([str(x) == lab for x in labs[:n].tolist()])
         out[lab] = total_return(r[:n][mask])
     return out

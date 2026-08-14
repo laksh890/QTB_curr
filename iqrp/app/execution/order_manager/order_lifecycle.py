@@ -12,8 +12,8 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 
 from iqrp.app.execution.order_manager.order_state import (
-    OrderState,
     TERMINAL_STATES,
+    OrderState,
     transition_order,
 )
 
@@ -30,7 +30,9 @@ def approve(order: Order, *, audit: AuditLog | None = None) -> Order:
     return transition_order(order, OrderState.APPROVED, audit=audit, reason="approved")
 
 
-def mark_submitted(order: Order, *, venue: str | None = None, audit: AuditLog | None = None) -> Order:
+def mark_submitted(
+    order: Order, *, venue: str | None = None, audit: AuditLog | None = None
+) -> Order:
     if venue:
         order.venue = venue
     from iqrp.app.execution.order_manager.order import _utc_now
@@ -77,16 +79,16 @@ def mark_filled(order: Order, *, audit: AuditLog | None = None) -> Order:
 
 
 def request_cancel(order: Order, *, audit: AuditLog | None = None) -> Order:
-    return transition_order(order, OrderState.CANCEL_PENDING, audit=audit, reason="cancel_requested")
+    return transition_order(
+        order, OrderState.CANCEL_PENDING, audit=audit, reason="cancel_requested"
+    )
 
 
 def mark_cancelled(order: Order, *, audit: AuditLog | None = None, reason: str = "") -> Order:
     from iqrp.app.execution.order_manager.order import _utc_now
 
     order.completed_at = _utc_now()
-    return transition_order(
-        order, OrderState.CANCELLED, audit=audit, reason=reason or "cancelled"
-    )
+    return transition_order(order, OrderState.CANCELLED, audit=audit, reason=reason or "cancelled")
 
 
 def mark_rejected(order: Order, *, reason: str, audit: AuditLog | None = None) -> Order:

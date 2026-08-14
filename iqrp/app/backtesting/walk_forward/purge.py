@@ -30,14 +30,16 @@ def purge_train_indices(
     purge: int = 0,
 ) -> np.ndarray:
     """Remove train indices within ``purge`` bars of any test index."""
-    tr = np.asarray(list(train_idx) if not isinstance(train_idx, np.ndarray) else train_idx, dtype=int)
+    tr = np.asarray(
+        list(train_idx) if not isinstance(train_idx, np.ndarray) else train_idx, dtype=int
+    )
     te = np.asarray(list(test_idx) if not isinstance(test_idx, np.ndarray) else test_idx, dtype=int)
     if tr.size == 0 or te.size == 0:
         return tr
     p = max(int(purge), 0)
     if p == 0:
         # Still drop exact overlap.
-        te_set = set(int(x) for x in te.tolist())
+        te_set = {int(x) for x in te.tolist()}
         return tr[np.array([int(i) not in te_set for i in tr], dtype=bool)] if te_set else tr
     te0 = int(np.min(te))
     te1 = int(np.max(te)) + 1  # exclusive end of test span

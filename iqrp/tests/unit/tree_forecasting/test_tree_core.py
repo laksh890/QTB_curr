@@ -22,8 +22,14 @@ from iqrp.app.forecasting.tree_models.base.ensemble import (
     weighted_average,
 )
 from iqrp.app.forecasting.tree_models.base.native import NativeForest, NativeGBM
-from iqrp.app.forecasting.tree_models.base.processes import feature_names, simulate_nonlinear_returns
-from iqrp.app.forecasting.tree_models.calibration.calibrators import apply_calibration, fit_calibrator
+from iqrp.app.forecasting.tree_models.base.processes import (
+    feature_names,
+    simulate_nonlinear_returns,
+)
+from iqrp.app.forecasting.tree_models.calibration.calibrators import (
+    apply_calibration,
+    fit_calibrator,
+)
 from iqrp.app.forecasting.tree_models.evaluation.metrics import evaluate_tree_predictions
 from iqrp.app.forecasting.tree_models.explainability.importance import (
     decision_paths,
@@ -34,7 +40,10 @@ from iqrp.app.forecasting.tree_models.explainability.importance import (
 )
 from iqrp.app.forecasting.tree_models.optimization.cv import make_time_splits
 from iqrp.app.forecasting.tree_models.optimization.hpo import optimize_hyperparameters
-from iqrp.app.forecasting.tree_models.preprocessing.pipeline import TreePreprocessor, select_features
+from iqrp.app.forecasting.tree_models.preprocessing.pipeline import (
+    TreePreprocessor,
+    select_features,
+)
 from iqrp.app.forecasting.tree_models.visualization.plots import (
     plot_calibration,
     plot_feature_importance,
@@ -74,7 +83,9 @@ def test_registry_lists_all_models() -> None:
 def test_settings_hydra() -> None:
     s = TreeSettings.default()
     assert s.hyperparameters.n_estimators > 0
-    s2 = TreeSettings.from_mapping({"task": {"type": "binary"}, "optimization": {"method": "random", "n_trials": 3}})
+    s2 = TreeSettings.from_mapping(
+        {"task": {"type": "binary"}, "optimization": {"method": "random", "n_trials": 3}}
+    )
     assert s2.task.type == "binary"
     s3 = TreeSettings.from_hydra(overrides=["forecast.default_horizon=7"])
     assert s3.forecast.default_horizon == 7
@@ -89,7 +100,10 @@ def test_settings_hydra() -> None:
 )
 def test_all_models_api(name: str, reg_frame: pl.DataFrame) -> None:
     settings = TreeSettings.from_mapping(
-        {"hyperparameters": {"n_estimators": 25, "max_depth": 3}, "visualization": {"enabled": False}}
+        {
+            "hyperparameters": {"n_estimators": 25, "max_depth": 3},
+            "visualization": {"enabled": False},
+        }
     )
     model = create_tree_model(name, settings=settings)
     cols = feature_names(5)
@@ -247,10 +261,14 @@ def test_explainability_and_native(reg_frame: pl.DataFrame) -> None:
 def test_ensemble_and_metrics(reg_frame: pl.DataFrame) -> None:
     X = reg_frame.select(feature_names(5)).to_numpy()
     y = reg_frame["target"].to_numpy()
-    pred = bagging_predict("random_forest", X, y, X[:20], params={"n_estimators": 10, "max_depth": 3}, n_bags=3)
+    pred = bagging_predict(
+        "random_forest", X, y, X[:20], params={"n_estimators": 10, "max_depth": 3}, n_bags=3
+    )
     assert pred.size == 20
     assert weighted_average([pred, pred], [0.5, 0.5]).size == 20
-    stack = stacking_predict(np.column_stack([y[:50], y[:50] * 0.9]), y[:50], np.column_stack([y[:10], y[:10]]))
+    stack = stacking_predict(
+        np.column_stack([y[:50], y[:50] * 0.9]), y[:50], np.column_stack([y[:10], y[:10]])
+    )
     assert stack.size == 10
     assert blending_predict(stack.reshape(-1, 1)[:10], y[:10], stack.reshape(-1, 1)[:10]).size == 10
     ens = ensemble_fit_predict(
@@ -269,12 +287,20 @@ def test_ensemble_and_metrics(reg_frame: pl.DataFrame) -> None:
 @pytest.mark.unit
 def test_trainer_compare(reg_frame: pl.DataFrame) -> None:
     settings = TreeSettings.from_mapping(
-        {"hyperparameters": {"n_estimators": 20, "max_depth": 3}, "visualization": {"enabled": True}}
+        {
+            "hyperparameters": {"n_estimators": 20, "max_depth": 3},
+            "visualization": {"enabled": True},
+        }
     )
     trainer = TreeTrainer(settings)
     model, result = trainer.fit("random_forest", reg_frame, feature_columns=feature_names(5))
     assert result.to_dict()["metrics"]
-    rows = trainer.compare(["random_forest", "extra_trees"], reg_frame, feature_columns=feature_names(5), parallel=False)
+    rows = trainer.compare(
+        ["random_forest", "extra_trees"],
+        reg_frame,
+        feature_columns=feature_names(5),
+        parallel=False,
+    )
     assert len(rows) >= 1
     assert model.meta.name == "random_forest"
 
@@ -283,9 +309,9 @@ def test_trainer_compare(reg_frame: pl.DataFrame) -> None:
 def test_visualization_helpers() -> None:
     assert "names" in plot_feature_importance({"a": 0.2, "b": 0.8})
     assert "mean_abs_shap" in plot_shap_summary(np.random.default_rng(0).normal(size=(20, 3)))
-    assert "figure" in plot_prediction_error(np.arange(10.0), np.arange(10.0) + 0.1) or "y_true" in plot_prediction_error(
-        np.arange(10.0), np.arange(10.0)
-    )
+    assert "figure" in plot_prediction_error(
+        np.arange(10.0), np.arange(10.0) + 0.1
+    ) or "y_true" in plot_prediction_error(np.arange(10.0), np.arange(10.0))
     assert "mean_predicted" in plot_calibration([0.1, 0.5, 0.9], [0.2, 0.4, 0.8])
     assert "train_sizes" in plot_learning_curve(
         {"train_sizes": [10, 20], "train_rmse": [1.0, 0.8], "val_rmse": [1.1, 0.9]}

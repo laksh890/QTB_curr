@@ -34,7 +34,9 @@ def _to_jsonable(obj: Any) -> Any:
 class CapitalSerializer:
     """Save / load CapitalAllocation results and allocator snapshots."""
 
-    def save_allocation(self, allocation: CapitalAllocation | dict[str, Any], path: str | Path) -> Path:
+    def save_allocation(
+        self, allocation: CapitalAllocation | dict[str, Any], path: str | Path
+    ) -> Path:
         p = Path(path)
         p.parent.mkdir(parents=True, exist_ok=True)
         payload = allocation.to_dict() if hasattr(allocation, "to_dict") else dict(allocation)
@@ -53,7 +55,9 @@ class CapitalSerializer:
         elif hasattr(allocator, "settings"):
             settings = allocator.settings
             payload = {
-                "settings": settings.model_dump() if hasattr(settings, "model_dump") else dict(settings),
+                "settings": (
+                    settings.model_dump() if hasattr(settings, "model_dump") else dict(settings)
+                ),
                 "last_allocation": (
                     allocator.last_allocation.to_dict()
                     if getattr(allocator, "last_allocation", None) is not None

@@ -180,7 +180,9 @@ def test_paper_trading_save_load_invalidate(engine, returns, tmp_path: Path) -> 
 
 
 def test_backtest_result_roundtrip() -> None:
-    r = BacktestResult(experiment_id="abc", state=BacktestState.COMPLETED, returns=np.array([0.01, -0.02]))
+    r = BacktestResult(
+        experiment_id="abc", state=BacktestState.COMPLETED, returns=np.array([0.01, -0.02])
+    )
     d = r.to_dict()
     r2 = BacktestResult.from_dict(d)
     assert r2.experiment_id == "abc"

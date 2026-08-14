@@ -11,7 +11,7 @@ CRITICAL RULES
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from typing import Any
 from uuid import uuid4
 
@@ -20,7 +20,7 @@ from iqrp.app.execution.types import OrderType, Side, TimeInForce, Urgency
 
 
 def _utc_now() -> str:
-    return datetime.now(timezone.utc).isoformat()
+    return datetime.now(UTC).isoformat()
 
 
 def _new_id(prefix: str = "ord") -> str:

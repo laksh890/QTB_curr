@@ -81,7 +81,9 @@ def _raw_escalation_target(
         if settings.hard_halt_on_single:
             meta["halt_confirmation"] = "hard_halt_on_single"
             return RiskState.TRADING_HALT, meta
-        if len(hot) >= min_dims or overall >= settings.state_thresholds.trading_halt and len(hot) >= 2:
+        if len(hot) >= min_dims or (
+            overall >= settings.state_thresholds.trading_halt and len(hot) >= 2
+        ):
             meta["halt_confirmation"] = "multi_dimension"
             return RiskState.TRADING_HALT, meta
         # Single noisy metric / insufficient confirmation → cap at CAPITAL_PRESERVATION
@@ -116,14 +118,16 @@ class EnsembleStateMachine:
             "current_state": self.current_state.value,
             "escalation_streak": self._escalation_streak,
             "recovery_streak": self._recovery_streak,
-            "pending_escalation": self._pending_escalation.value if self._pending_escalation else None,
+            "pending_escalation": (
+                self._pending_escalation.value if self._pending_escalation else None
+            ),
             "pending_recovery": self._pending_recovery.value if self._pending_recovery else None,
         }
 
     def import_state(self, payload: dict[str, Any]) -> None:
         if not payload:
             return
-        if "current_state" in payload and payload["current_state"]:
+        if payload.get("current_state"):
             self.current_state = RiskState(str(payload["current_state"]))
         self._escalation_streak = int(payload.get("escalation_streak", 0) or 0)
         self._recovery_streak = int(payload.get("recovery_streak", 0) or 0)

@@ -2,7 +2,8 @@
 
 from __future__ import annotations
 
-from typing import Any, Callable
+from collections.abc import Callable
+from typing import Any
 
 from iqrp.app.portfolio.covariance.ewma import ewma_covariance
 from iqrp.app.portfolio.covariance.factor import factor_covariance

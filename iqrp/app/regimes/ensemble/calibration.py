@@ -72,7 +72,11 @@ class Calibrator:
                 out[i] = remain * out[i]
                 out[i, j] = calib[i]
             return _row_norm(out)
-        if self.method == "isotonic" and self.isotonic_x is not None and self.isotonic_y is not None:
+        if (
+            self.method == "isotonic"
+            and self.isotonic_x is not None
+            and self.isotonic_y is not None
+        ):
             conf = p.max(axis=1)
             calib = np.interp(conf, self.isotonic_x, self.isotonic_y)
             out = p.copy()
@@ -129,7 +133,9 @@ class Calibrator:
         )
 
 
-def expected_calibration_error(probabilities: np.ndarray, labels: np.ndarray, *, n_bins: int = 10) -> float:
+def expected_calibration_error(
+    probabilities: np.ndarray, labels: np.ndarray, *, n_bins: int = 10
+) -> float:
     p = np.asarray(probabilities, dtype=np.float64)
     y = np.asarray(labels, dtype=np.int64).reshape(-1)
     if p.ndim == 1:

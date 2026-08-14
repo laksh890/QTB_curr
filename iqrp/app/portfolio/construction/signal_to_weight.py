@@ -6,7 +6,8 @@ as unconstrained (or lightly normalized) raw weights via rank, z-score, or softm
 
 from __future__ import annotations
 
-from typing import Any, Literal, Sequence
+from collections.abc import Sequence
+from typing import Any, Literal
 
 import numpy as np
 
@@ -76,7 +77,9 @@ def signals_to_raw_weights(
     elif m in ("proportional", "prop"):
         raw = s.copy()
     else:
-        raise ValueError(f"Unknown signal method '{method}'. Use rank|zscore|softmax|proportional|identity")
+        raise ValueError(
+            f"Unknown signal method '{method}'. Use rank|zscore|softmax|proportional|identity"
+        )
 
     if m == "softmax":
         w = raw * float(budget)

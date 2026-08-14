@@ -105,9 +105,7 @@ class ParticleCloud:
                     weight=float(w[i]),
                     log_weight=float(self.log_weights[i]),
                     likelihood=float(self.likelihoods[i]),
-                    timestamp=(
-                        None if self.timestamps is None else float(self.timestamps[i])
-                    ),
+                    timestamp=(None if self.timestamps is None else float(self.timestamps[i])),
                 )
             )
         return out

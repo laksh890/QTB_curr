@@ -9,7 +9,9 @@ import numpy as np
 from iqrp.app.forecasting.neural.base.torch_utils import from_tensor, has_torch, to_tensor
 
 
-def gaussian_quantiles(mu: np.ndarray, sigma: np.ndarray, alphas: tuple[float, ...] = (0.1, 0.5, 0.9)) -> np.ndarray:
+def gaussian_quantiles(
+    mu: np.ndarray, sigma: np.ndarray, alphas: tuple[float, ...] = (0.1, 0.5, 0.9)
+) -> np.ndarray:
     from scipy.stats import norm
 
     mu = np.asarray(mu, dtype=np.float64)
@@ -21,7 +23,11 @@ def gaussian_quantiles(mu: np.ndarray, sigma: np.ndarray, alphas: tuple[float, .
 
 
 def student_t_quantiles(
-    mu: np.ndarray, scale: np.ndarray, *, df: float = 5.0, alphas: tuple[float, ...] = (0.1, 0.5, 0.9)
+    mu: np.ndarray,
+    scale: np.ndarray,
+    *,
+    df: float = 5.0,
+    alphas: tuple[float, ...] = (0.1, 0.5, 0.9),
 ) -> np.ndarray:
     from scipy.stats import t as student_t
 
@@ -33,7 +39,9 @@ def student_t_quantiles(
     return np.stack(qs, axis=-1)
 
 
-def prediction_intervals_from_quantiles(quantiles: np.ndarray, alphas: tuple[float, ...]) -> tuple[np.ndarray, np.ndarray]:
+def prediction_intervals_from_quantiles(
+    quantiles: np.ndarray, alphas: tuple[float, ...]
+) -> tuple[np.ndarray, np.ndarray]:
     q = np.asarray(quantiles, dtype=np.float64)
     # assume first/last are lower/upper if sorted alphas
     order = np.argsort(alphas)
@@ -50,7 +58,9 @@ def aleatoric_from_gaussian(pred: np.ndarray) -> np.ndarray:
     return np.exp(p[..., 1])
 
 
-def epistemic_mc_dropout(module: Any, X: np.ndarray, *, n_samples: int = 20, device: Any = None) -> tuple[np.ndarray, np.ndarray]:
+def epistemic_mc_dropout(
+    module: Any, X: np.ndarray, *, n_samples: int = 20, device: Any = None
+) -> tuple[np.ndarray, np.ndarray]:
     """Enable dropout at inference for epistemic uncertainty."""
     if not has_torch():
         y = np.asarray(module(X) if callable(module) else X.mean(axis=1), dtype=np.float64)
@@ -75,7 +85,9 @@ def epistemic_mc_dropout(module: Any, X: np.ndarray, *, n_samples: int = 20, dev
     return stack.mean(axis=0), stack.std(axis=0)
 
 
-def sample_gaussian(mu: np.ndarray, sigma: np.ndarray, n: int = 50, rng: np.random.Generator | None = None) -> np.ndarray:
+def sample_gaussian(
+    mu: np.ndarray, sigma: np.ndarray, n: int = 50, rng: np.random.Generator | None = None
+) -> np.ndarray:
     gen = rng or np.random.default_rng(0)
     mu = np.asarray(mu, dtype=np.float64)
     sigma = np.maximum(np.asarray(sigma, dtype=np.float64), 1e-8)

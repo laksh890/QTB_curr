@@ -15,11 +15,11 @@ from iqrp.app.risk.ensemble.types import (
 )
 
 __all__ = [
-    "RiskIntelligenceEnsemble",
-    "EnsembleSettings",
-    "RiskScore",
-    "RiskAssessment",
-    "EnsembleDecision",
     "DecisionAction",
+    "EnsembleDecision",
+    "EnsembleSettings",
     "NormalizedMetric",
+    "RiskAssessment",
+    "RiskIntelligenceEnsemble",
+    "RiskScore",
 ]

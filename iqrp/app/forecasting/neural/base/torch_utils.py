@@ -11,7 +11,7 @@ try:
     from torch import nn
 
     _HAS_TORCH = True
-except Exception:  # noqa: BLE001  # pragma: no cover
+except Exception:  # pragma: no cover
     torch = None  # type: ignore[assignment]
     nn = None  # type: ignore[assignment]
     _HAS_TORCH = False
@@ -52,7 +52,7 @@ def maybe_compile(module: Any, enabled: bool = False) -> Any:
         return module
     try:
         return torch.compile(module)  # type: ignore[attr-defined]
-    except Exception:  # noqa: BLE001  # pragma: no cover
+    except Exception:  # pragma: no cover
         return module
 
 

@@ -102,7 +102,6 @@ from iqrp.app.alpha.visualization import (
     regime_bars_payload,
 )
 
-
 HYP = "Inventory risk and slow capital redeployment generate short-horizon continuation."
 
 
@@ -129,7 +128,7 @@ def test_sv_lazy_getattr_all() -> None:
     for name in sv.__all__:
         getattr(sv, name)
     with pytest.raises(AttributeError):
-        getattr(sv, "not_a_real_export")
+        _ = sv.not_a_real_export
 
 
 def test_local_adjust_pvalues_branches() -> None:
@@ -179,8 +178,16 @@ def test_signal_result_from_dict_and_illegal_transitions() -> None:
         status=SignalStatus.RESEARCHING,
         economic_hypothesis=HYP,
         statistics=SignalStatistics(
-            n_obs=1, n_finite=1, mean=0, std=0, skew=0, kurtosis=0,
-            min=0, max=0, missing_pct=0, autocorrelation_lag1=0,
+            n_obs=1,
+            n_finite=1,
+            mean=0,
+            std=0,
+            skew=0,
+            kurtosis=0,
+            min=0,
+            max=0,
+            missing_pct=0,
+            autocorrelation_lag1=0,
         ),
         performance=SignalPerformance(),
         score=SignalScore(
@@ -208,9 +215,7 @@ def test_registry_empty_hyp_approve() -> None:
         reg.transition("e", SignalStatus.APPROVED, reason="no hyp")
 
 
-def test_engine_approve_paths_and_jsonable(
-    genuine: dict[str, Any], tmp_path: Path
-) -> None:
+def test_engine_approve_paths_and_jsonable(genuine: dict[str, Any], tmp_path: Path) -> None:
     reg = SignalRegistry()
     eng = AlphaResearchEngine(registry=reg)
     sig = np.asarray(genuine["signal"])
@@ -290,6 +295,7 @@ def test_ranking_score_extraction_branches() -> None:
         ]
     )
     assert len(ranked) >= 4
+
     # object without to_dict coerced
     class Bare:
         pass
@@ -406,7 +412,9 @@ def test_monitoring_retirement_and_alerts_branches() -> None:
 
 
 @pytest.mark.filterwarnings("ignore::RuntimeWarning")
-def test_signal_decay_monitor_branches(signal: np.ndarray, returns: np.ndarray, fwd: np.ndarray) -> None:
+def test_signal_decay_monitor_branches(
+    signal: np.ndarray, returns: np.ndarray, fwd: np.ndarray
+) -> None:
     ric = rolling_ic(signal, fwd, window=30)
     # panel path
     panel_sig = np.column_stack([signal, signal * 0.5])
@@ -464,7 +472,9 @@ def test_clustering_and_correlation_edges(rng: np.random.Generator) -> None:
         redundancy_report(series, corr_threshold=0.5)
     except TypeError:
         redundancy_report(series)
-    reps = representative_per_cluster({"0": ["s0", "s1"], "1": ["s2"]}, {k: {"ic": 0.1} for k in series})
+    reps = representative_per_cluster(
+        {"0": ["s0", "s1"], "1": ["s2"]}, {k: {"ic": 0.1} for k in series}
+    )
     assert isinstance(reps, list)
     combine_signals(list(series.values()), weights=[0.25] * 4, names=list(series))
     rank_average_combine(series)
@@ -473,11 +483,11 @@ def test_clustering_and_correlation_edges(rng: np.random.Generator) -> None:
 
 
 def test_backtest_portfolio_shift_and_empty(rng: np.random.Generator) -> None:
-    from iqrp.app.alpha.backtesting.portfolio_backtest import portfolio_backtest
-    from iqrp.app.alpha.backtesting.signal_backtest import signal_backtest
     from iqrp.app.alpha.backtesting.embargo import apply_embargo, embargo_splits
-    from iqrp.app.alpha.backtesting.purged_cv import purged_kfold_splits
     from iqrp.app.alpha.backtesting.nested_cv import nested_cv_splits
+    from iqrp.app.alpha.backtesting.portfolio_backtest import portfolio_backtest
+    from iqrp.app.alpha.backtesting.purged_cv import purged_kfold_splits
+    from iqrp.app.alpha.backtesting.signal_backtest import signal_backtest
     from iqrp.app.alpha.backtesting.walk_forward import walk_forward_splits
 
     t, n = 80, 3
@@ -495,10 +505,10 @@ def test_backtest_portfolio_shift_and_empty(rng: np.random.Generator) -> None:
 
 
 def test_economics_transaction_fallback() -> None:
-    from iqrp.app.alpha.economics.transaction_costs import estimate_transaction_cost
-    from iqrp.app.alpha.economics.capacity import estimate_capacity, capacity_decay
-    from iqrp.app.alpha.economics.slippage import slippage_bps
+    from iqrp.app.alpha.economics.capacity import capacity_decay, estimate_capacity
     from iqrp.app.alpha.economics.market_impact import market_impact_bps
+    from iqrp.app.alpha.economics.slippage import slippage_bps
+    from iqrp.app.alpha.economics.transaction_costs import estimate_transaction_cost
 
     # prefer_portfolio True with shapes that may fall back
     estimate_transaction_cost(np.array([0.5, 0.5]), np.array([0.2, 0.8]), capital=1e6, cost_bps=3)
@@ -509,14 +519,13 @@ def test_economics_transaction_fallback() -> None:
 
 
 def test_research_edge_nan_paths(rng: np.random.Generator) -> None:
-    from iqrp.app.alpha.research.information_coefficient import compute_ic, rolling_ic
-    from iqrp.app.alpha.research.rank_ic import compute_rank_ic, rolling_rank_ic
     from iqrp.app.alpha.research.hit_rate import compute_hit_rate, rolling_hit_rate
+    from iqrp.app.alpha.research.information_coefficient import compute_ic, rolling_ic
     from iqrp.app.alpha.research.persistence import autocorrelation, signal_half_life
+    from iqrp.app.alpha.research.predictor import SignalPredictor
+    from iqrp.app.alpha.research.rank_ic import compute_rank_ic, rolling_rank_ic
     from iqrp.app.alpha.research.seasonality import analyze_seasonality, month_of_year_ic
     from iqrp.app.alpha.research.stability import analyze_stability
-    from iqrp.app.alpha.research.decay import analyze_decay, forward_returns
-    from iqrp.app.alpha.research.predictor import SignalPredictor
 
     s = rng.normal(size=40)
     r = rng.normal(size=40)
@@ -564,12 +573,12 @@ def test_phase11_failure_branches(tmp_path: Path) -> None:
 
 
 def test_cs_ranking_edges(panel: np.ndarray) -> None:
+    from iqrp.app.alpha.cross_section.neutralization import neutralize_weighted
     from iqrp.app.alpha.cross_section.ranking import (
         cross_sectional_rank,
         cross_sectional_zscore,
         winsorize_cross_section,
     )
-    from iqrp.app.alpha.cross_section.neutralization import neutralize_weighted
     from iqrp.app.alpha.cross_section.sector_adjustment import sector_relative_ranks
 
     row = panel.copy()
@@ -584,7 +593,9 @@ def test_cs_ranking_edges(panel: np.ndarray) -> None:
 
 
 def test_visualization_decay_curve_form() -> None:
-    decay_payload({"curve": [{"horizon": 1, "ic": 0.1}, {"horizon": 2, "ic": np.nan}], "half_life": 2.0})
+    decay_payload(
+        {"curve": [{"horizon": 1, "ic": 0.1}, {"horizon": 2, "ic": np.nan}], "half_life": 2.0}
+    )
     regime_bars_payload({"bull": 0.05, "bear": -0.02})
     correlation_heatmap_payload({"matrix": [[1.0, 0.2], [0.2, 1.0]], "names": ["a", "b"]})
     alpha_viz_bundle(
@@ -601,6 +612,7 @@ def test_config_default_without_hydra(tmp_path: Path, monkeypatch: pytest.Monkey
     )
     s = AlphaSettings.default()
     assert s.seed == 42
+
     # from_mapping OmegaConf-like
     class Map:
         def items(self):

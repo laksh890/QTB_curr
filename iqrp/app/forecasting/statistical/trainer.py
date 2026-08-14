@@ -12,7 +12,10 @@ from iqrp.app.forecasting.statistical.base.selection import SelectionResult, sel
 from iqrp.app.forecasting.statistical.base.statistical_model import StatisticalForecastModel
 from iqrp.app.forecasting.statistical.config import StatisticalSettings
 from iqrp.app.forecasting.statistical.evaluation.metrics import evaluate_forecast
-from iqrp.app.forecasting.statistical.registry import create_statistical_model, ensure_statistical_models_loaded
+from iqrp.app.forecasting.statistical.registry import (
+    create_statistical_model,
+    ensure_statistical_models_loaded,
+)
 
 
 @dataclass(slots=True)

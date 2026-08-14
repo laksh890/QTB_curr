@@ -81,7 +81,11 @@ def simulate_process(
         common = np.cumsum(e)
         x = common + rng.normal(0, 0.2, size=n)
         y = 2.0 * common + rng.normal(0, 0.2, size=n)
-        return {"series": x, "series_y": y, "truth": {"cointegrated": True, "beta": 2.0, "kind": kind}}
+        return {
+            "series": x,
+            "series_y": y,
+            "truth": {"cointegrated": True, "beta": 2.0, "kind": kind},
+        }
     if kind == "anomalous":
         x = rng.normal(0, 1, size=n)
         idx = sorted(rng.choice(n, size=max(3, n // 50), replace=False).tolist())
@@ -92,7 +96,9 @@ def simulate_process(
     return {"series": x, "truth": {"kind": kind}}
 
 
-def from_market_simulator(n: int = 200, *, preset: str = "sideways", seed: int = 0) -> dict[str, Any]:
+def from_market_simulator(
+    n: int = 200, *, preset: str = "sideways", seed: int = 0
+) -> dict[str, Any]:
     try:
         from iqrp.app.simulation.base.simulator import MarketSimulator
 
@@ -101,8 +107,11 @@ def from_market_simulator(n: int = 200, *, preset: str = "sideways", seed: int =
         close = market.ohlcv()["close"].to_numpy().astype(np.float64)
         if close.size > n:
             close = close[-n:]
-        return {"series": close, "truth": {"source": "MarketSimulator", "preset": preset, "seed": seed}}
-    except Exception as exc:  # noqa: BLE001
+        return {
+            "series": close,
+            "truth": {"source": "MarketSimulator", "preset": preset, "seed": seed},
+        }
+    except Exception as exc:
         rng = np.random.default_rng(seed)
         return {
             "series": np.cumsum(rng.normal(0, 0.01, size=n)) + 100,

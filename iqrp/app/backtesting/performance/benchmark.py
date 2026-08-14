@@ -21,11 +21,11 @@ from iqrp.app.backtesting.performance.risk_adjusted import (
 BenchmarkKind = Literal["buyhold", "market", "risk_free", "custom", "strategy"]
 
 __all__ = [
-    "buy_and_hold_returns",
-    "risk_free_returns",
     "active_returns",
-    "relative_performance",
+    "buy_and_hold_returns",
     "compare_to_benchmark",
+    "relative_performance",
+    "risk_free_returns",
 ]
 
 
@@ -98,15 +98,11 @@ def relative_performance(
         "annualized_return": annualized_return(r, periods_per_year=periods_per_year),
         "benchmark_annualized_return": annualized_return(b, periods_per_year=periods_per_year),
         "sharpe": sharpe_ratio(r, risk_free=risk_free, periods_per_year=periods_per_year),
-        "benchmark_sharpe": sharpe_ratio(
-            b, risk_free=risk_free, periods_per_year=periods_per_year
+        "benchmark_sharpe": sharpe_ratio(b, risk_free=risk_free, periods_per_year=periods_per_year),
+        "information_ratio": information_ratio(r, b, periods_per_year=periods_per_year),
+        "tracking_error": (
+            float(np.std(active, ddof=1) * np.sqrt(periods_per_year)) if active.size > 1 else 0.0
         ),
-        "information_ratio": information_ratio(
-            r, b, periods_per_year=periods_per_year
-        ),
-        "tracking_error": float(np.std(active, ddof=1) * np.sqrt(periods_per_year))
-        if active.size > 1
-        else 0.0,
     }
     out.update(capture_ratios(r, b))
     return out
@@ -138,9 +134,7 @@ def compare_to_benchmark(
             raise ValueError("asset_returns required for buyhold benchmark")
         bench = buy_and_hold_returns(asset_returns, weights=buyhold_weights)
     elif k == "risk_free":
-        bench = risk_free_returns(
-            r.size, rate=risk_free_rate, periods_per_year=periods_per_year
-        )
+        bench = risk_free_returns(r.size, rate=risk_free_rate, periods_per_year=periods_per_year)
     else:
         if benchmark is None:
             raise ValueError(f"benchmark series required for kind={kind!r}")

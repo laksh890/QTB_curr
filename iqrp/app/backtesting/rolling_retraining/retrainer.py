@@ -24,10 +24,8 @@ from iqrp.app.backtesting.rolling_retraining.model_registry import ModelRegistry
 from iqrp.app.backtesting.rolling_retraining.parameter_snapshot import ParameterSnapshotStore
 from iqrp.app.backtesting.rolling_retraining.schedule import (
     RetrainSchedule,
-    TimeTrigger,
     TriggerDecision,
 )
-
 
 TrainFn = Callable[[np.ndarray, np.ndarray | None, dict[str, Any]], Any]
 """``train_fn(X_train, y_train, params) -> model``"""
@@ -257,11 +255,7 @@ class RollingRetrainer:
             )
             if snap is not None:
                 # Close previous episode at t (exclusive eval end).
-                if (
-                    current_version is not None
-                    and episode_start is not None
-                    and episode_start < t
-                ):
+                if current_version is not None and episode_start is not None and episode_start < t:
                     prev = self.registry.get(current_version)
                     self.episodes.append(
                         RetrainEpisode(

@@ -2,9 +2,10 @@
 
 from __future__ import annotations
 
+from collections.abc import Iterable, Sequence
 from dataclasses import dataclass, field
 from enum import Enum
-from typing import Any, Iterable, Sequence
+from typing import Any
 
 import numpy as np
 
@@ -140,12 +141,24 @@ class ConstraintSet:
         extras: list[ConstraintSpec] = []
         if self.long_only and (ConstraintKind.LONG_ONLY.value, None) not in existing:
             extras.append(ConstraintSpec(kind=ConstraintKind.LONG_ONLY, value=0.0, hard=True))
-        if self.max_weight is not None and (ConstraintKind.MAX_POSITION.value, None) not in existing:
-            extras.append(ConstraintSpec(kind=ConstraintKind.MAX_POSITION, value=float(self.max_weight)))
-        if self.min_weight is not None and (ConstraintKind.MIN_POSITION.value, None) not in existing:
-            extras.append(ConstraintSpec(kind=ConstraintKind.MIN_POSITION, value=float(self.min_weight)))
+        if (
+            self.max_weight is not None
+            and (ConstraintKind.MAX_POSITION.value, None) not in existing
+        ):
+            extras.append(
+                ConstraintSpec(kind=ConstraintKind.MAX_POSITION, value=float(self.max_weight))
+            )
+        if (
+            self.min_weight is not None
+            and (ConstraintKind.MIN_POSITION.value, None) not in existing
+        ):
+            extras.append(
+                ConstraintSpec(kind=ConstraintKind.MIN_POSITION, value=float(self.min_weight))
+            )
         if self.max_gross is not None and (ConstraintKind.MAX_GROSS.value, None) not in existing:
-            extras.append(ConstraintSpec(kind=ConstraintKind.MAX_GROSS, value=float(self.max_gross)))
+            extras.append(
+                ConstraintSpec(kind=ConstraintKind.MAX_GROSS, value=float(self.max_gross))
+            )
         if self.max_net is not None and (ConstraintKind.MAX_NET.value, None) not in existing:
             extras.append(ConstraintSpec(kind=ConstraintKind.MAX_NET, value=float(self.max_net)))
         if self.min_net is not None and (ConstraintKind.MIN_NET.value, None) not in existing:
@@ -153,15 +166,32 @@ class ConstraintSet:
         if self.max_long is not None and (ConstraintKind.MAX_LONG.value, None) not in existing:
             extras.append(ConstraintSpec(kind=ConstraintKind.MAX_LONG, value=float(self.max_long)))
         if self.max_short is not None and (ConstraintKind.MAX_SHORT.value, None) not in existing:
-            extras.append(ConstraintSpec(kind=ConstraintKind.MAX_SHORT, value=float(self.max_short)))
-        if self.max_leverage is not None and (ConstraintKind.MAX_LEVERAGE.value, None) not in existing:
-            extras.append(ConstraintSpec(kind=ConstraintKind.MAX_LEVERAGE, value=float(self.max_leverage)))
-        if self.max_concentration is not None and (ConstraintKind.MAX_CONCENTRATION.value, None) not in existing:
             extras.append(
-                ConstraintSpec(kind=ConstraintKind.MAX_CONCENTRATION, value=float(self.max_concentration))
+                ConstraintSpec(kind=ConstraintKind.MAX_SHORT, value=float(self.max_short))
             )
-        if self.max_turnover is not None and (ConstraintKind.MAX_TURNOVER.value, None) not in existing:
-            extras.append(ConstraintSpec(kind=ConstraintKind.MAX_TURNOVER, value=float(self.max_turnover)))
+        if (
+            self.max_leverage is not None
+            and (ConstraintKind.MAX_LEVERAGE.value, None) not in existing
+        ):
+            extras.append(
+                ConstraintSpec(kind=ConstraintKind.MAX_LEVERAGE, value=float(self.max_leverage))
+            )
+        if (
+            self.max_concentration is not None
+            and (ConstraintKind.MAX_CONCENTRATION.value, None) not in existing
+        ):
+            extras.append(
+                ConstraintSpec(
+                    kind=ConstraintKind.MAX_CONCENTRATION, value=float(self.max_concentration)
+                )
+            )
+        if (
+            self.max_turnover is not None
+            and (ConstraintKind.MAX_TURNOVER.value, None) not in existing
+        ):
+            extras.append(
+                ConstraintSpec(kind=ConstraintKind.MAX_TURNOVER, value=float(self.max_turnover))
+            )
         if self.dollar_neutral and (ConstraintKind.DOLLAR_NEUTRAL.value, None) not in existing:
             extras.append(
                 ConstraintSpec(
@@ -188,7 +218,9 @@ class ConstraintSet:
             "max_long": float(self.max_long) if self.max_long is not None else None,
             "max_short": float(self.max_short) if self.max_short is not None else None,
             "max_leverage": float(self.max_leverage) if self.max_leverage is not None else None,
-            "max_concentration": float(self.max_concentration) if self.max_concentration is not None else None,
+            "max_concentration": (
+                float(self.max_concentration) if self.max_concentration is not None else None
+            ),
             "max_turnover": float(self.max_turnover) if self.max_turnover is not None else None,
             "dollar_neutral": bool(self.dollar_neutral),
             "dollar_neutral_tol": float(self.dollar_neutral_tol),
@@ -206,11 +238,17 @@ class ConstraintSet:
             min_net=float(data["min_net"]) if data.get("min_net") is not None else None,
             max_long=float(data["max_long"]) if data.get("max_long") is not None else None,
             max_short=float(data["max_short"]) if data.get("max_short") is not None else None,
-            max_leverage=float(data["max_leverage"]) if data.get("max_leverage") is not None else None,
-            max_concentration=(
-                float(data["max_concentration"]) if data.get("max_concentration") is not None else None
+            max_leverage=(
+                float(data["max_leverage"]) if data.get("max_leverage") is not None else None
             ),
-            max_turnover=float(data["max_turnover"]) if data.get("max_turnover") is not None else None,
+            max_concentration=(
+                float(data["max_concentration"])
+                if data.get("max_concentration") is not None
+                else None
+            ),
+            max_turnover=(
+                float(data["max_turnover"]) if data.get("max_turnover") is not None else None
+            ),
             dollar_neutral=bool(data.get("dollar_neutral", False)),
             dollar_neutral_tol=float(data.get("dollar_neutral_tol", 1e-6)),
         )
@@ -501,7 +539,11 @@ def evaluate_constraints(
         hard = bool(spec.hard)
 
         if kind == ConstraintKind.MAX_POSITION.value:
-            limit = float(spec.value if spec.value is not None else (spec.upper if spec.upper is not None else 1.0))
+            limit = float(
+                spec.value
+                if spec.value is not None
+                else (spec.upper if spec.upper is not None else 1.0)
+            )
             if spec.asset is not None and names is not None:
                 try:
                     idx = list(names).index(spec.asset)
@@ -525,7 +567,11 @@ def evaluate_constraints(
             seen_kinds.add(kind)
 
         elif kind == ConstraintKind.MIN_POSITION.value:
-            limit = float(spec.value if spec.value is not None else (spec.lower if spec.lower is not None else 0.0))
+            limit = float(
+                spec.value
+                if spec.value is not None
+                else (spec.lower if spec.lower is not None else 0.0)
+            )
             violations.extend(evaluate_min_position(w, limit, names=names, hard=hard))
             seen_kinds.add(kind)
 

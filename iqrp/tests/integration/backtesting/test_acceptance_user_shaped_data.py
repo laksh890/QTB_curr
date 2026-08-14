@@ -104,6 +104,6 @@ def test_acceptance_workflow_user_shaped_local_parquet(tmp_path: Path):
     assert recon.ok
 
     # Runner diagnostics should not indicate lookahead invalidation
-    assert result.diagnostics.get("integrity", {}).get("ok", True) is True or not result.diagnostics.get(
-        "invalidated", False
-    )
+    assert result.diagnostics.get("integrity", {}).get(
+        "ok", True
+    ) is True or not result.diagnostics.get("invalidated", False)

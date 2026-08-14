@@ -5,8 +5,10 @@ from __future__ import annotations
 import numpy as np
 
 from iqrp.app.timeseries.base import AnalysisResult, TemporalMode
-from iqrp.app.timeseries.transforms import log_returns as _log_returns
-from iqrp.app.timeseries.transforms import simple_returns as _simple_returns
+from iqrp.app.timeseries.transforms import (
+    log_returns as _log_returns,
+    simple_returns as _simple_returns,
+)
 
 
 def log_returns(x: np.ndarray | list[float]) -> AnalysisResult:

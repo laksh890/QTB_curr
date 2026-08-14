@@ -2,8 +2,9 @@
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from dataclasses import asdict, dataclass, field
-from typing import Any, Mapping
+from typing import Any
 
 import numpy as np
 
@@ -45,7 +46,7 @@ class StrategyScorecard:
         return asdict(self)
 
     @classmethod
-    def from_dict(cls, data: Mapping[str, Any]) -> "StrategyScorecard":
+    def from_dict(cls, data: Mapping[str, Any]) -> StrategyScorecard:
         """Construct from a mapping (unknown keys → metadata)."""
         known = {f.name for f in cls.__dataclass_fields__.values()}  # type: ignore[attr-defined]
         kwargs = {k: v for k, v in data.items() if k in known and k != "metadata"}
@@ -97,9 +98,7 @@ class StrategyScorecard:
         if max_costs is not None:
             checks["transaction_costs"] = self.transaction_costs <= float(max_costs)
         if min_capacity is not None:
-            checks["capacity"] = (
-                self.capacity is not None and self.capacity >= float(min_capacity)
-            )
+            checks["capacity"] = self.capacity is not None and self.capacity >= float(min_capacity)
         passed = all(checks.values()) if checks else True
         return {"passed": passed, "checks": checks}
 

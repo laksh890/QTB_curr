@@ -2,7 +2,8 @@
 
 from __future__ import annotations
 
-from typing import Any, Mapping
+from collections.abc import Mapping
+from typing import Any
 
 
 def evaluate_retirement(
@@ -74,10 +75,7 @@ def evaluate_retirement(
             retire_votes += 1
 
     # Cost dominance
-    if cost_ratio is not None and float(cost_ratio) >= thr["cost_dominance"]:
-        reasons.append("cost_dominance")
-        retire_votes += 1
-    elif (
+    if (cost_ratio is not None and float(cost_ratio) >= thr["cost_dominance"]) or (
         gross_sharpe is not None
         and net_sharpe is not None
         and float(gross_sharpe) > 0.5
@@ -133,15 +131,24 @@ def evaluate_retirement(
         degrade_votes += 1
 
     # Decision
-    if retire_votes >= 2 or (retire_votes >= 1 and ("ic_collapse" in reasons or "cost_dominance" in reasons or "capacity_collapse" in reasons)):
-        # Single strong structural failure with negative economics → RETIRED
-        if retire_votes >= 1 and (
+    if retire_votes >= 2 or (
+        retire_votes >= 1
+        and (
             "ic_collapse" in reasons
             or "cost_dominance" in reasons
             or "capacity_collapse" in reasons
-        ) and (net_sharpe is not None and float(net_sharpe) < thr["net_sharpe_retire"]):
-            status = "RETIRED"
-        elif retire_votes >= 2:
+        )
+    ):
+        # Single strong structural failure with negative economics → RETIRED
+        if (
+            retire_votes >= 1
+            and (
+                "ic_collapse" in reasons
+                or "cost_dominance" in reasons
+                or "capacity_collapse" in reasons
+            )
+            and (net_sharpe is not None and float(net_sharpe) < thr["net_sharpe_retire"])
+        ) or retire_votes >= 2:
             status = "RETIRED"
         else:
             status = "DEGRADED"

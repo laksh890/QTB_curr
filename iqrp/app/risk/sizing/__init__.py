@@ -12,13 +12,13 @@ from iqrp.app.risk.sizing.volatility_target import (
 )
 
 __all__ = [
-    "volatility_target_size",
-    "fixed_fractional_size",
     "confidence_adjusted_size",
+    "drawdown_adjusted_size",
+    "equal_risk_contribution",
+    "fixed_fractional_size",
+    "fractional_kelly",
+    "kelly_fraction",
     "regime_adjusted_size",
     "risk_parity_weights",
-    "equal_risk_contribution",
-    "kelly_fraction",
-    "fractional_kelly",
-    "drawdown_adjusted_size",
+    "volatility_target_size",
 ]

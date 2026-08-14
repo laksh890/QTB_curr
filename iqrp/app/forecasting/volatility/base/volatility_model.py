@@ -15,7 +15,10 @@ from iqrp.app.forecasting.base.metadata import TrainingMetadata
 from iqrp.app.forecasting.base.prediction import PredictionInterval
 from iqrp.app.forecasting.postprocessing.intervals import residual_intervals
 from iqrp.app.forecasting.volatility.config import VolatilitySettings
-from iqrp.app.forecasting.volatility.diagnostics.report import VolatilityDiagnosticReport, run_vol_diagnostics
+from iqrp.app.forecasting.volatility.diagnostics.report import (
+    VolatilityDiagnosticReport,
+    run_vol_diagnostics,
+)
 from iqrp.app.forecasting.volatility.evaluation.metrics import evaluate_volatility
 
 
@@ -66,7 +69,9 @@ class VolatilityModel(ForecastModel):
         if self._cov_series is not None and self._cov_series.ndim == 3:
             last = self._cov_series[-1]
             return np.repeat(last[None, :, :], h, axis=0)
-        var_path = self.forecast(pl.DataFrame({self._target_column or "returns": self._returns}), horizon=h)
+        var_path = self.forecast(
+            pl.DataFrame({self._target_column or "returns": self._returns}), horizon=h
+        )
         return np.asarray(var_path.metadata.get("variance", var_path.values**2), dtype=np.float64)
 
     def diagnostics(self) -> VolatilityDiagnosticReport:
@@ -179,7 +184,9 @@ class VolatilityModel(ForecastModel):
         }
         if self._regime_column and self._regime_column in template.columns:
             reg = template[self._regime_column].to_numpy()
-            data[self._regime_column] = reg[-len(r) :] if reg.size >= len(r) else np.resize(reg, len(r))
+            data[self._regime_column] = (
+                reg[-len(r) :] if reg.size >= len(r) else np.resize(reg, len(r))
+            )
         return pl.DataFrame(data)
 
     def _maybe_regime(self, frame: pl.DataFrame, regime_column: str | None) -> np.ndarray | None:
@@ -271,13 +278,10 @@ class VolatilityModel(ForecastModel):
         *,
         target_column: str | None = None,
         regime_column: str | None = None,
-    ) -> VolatilityModel:
-        ...
+    ) -> VolatilityModel: ...
 
     @abstractmethod
-    def predict(
-        self, frame: pl.DataFrame, feature_columns: list[str] | None = None
-    ) -> np.ndarray:
+    def predict(self, frame: pl.DataFrame, feature_columns: list[str] | None = None) -> np.ndarray:
         """In-sample conditional volatility (σ_t)."""
 
     @abstractmethod

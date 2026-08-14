@@ -19,7 +19,10 @@ from iqrp.app.regimes.kalman.visualization import plot_filtered_state
 
 
 def _settings(**kw: object) -> KalmanSettings:
-    data = {**KalmanSettings.default().model_dump(), "training": {"em_iterations": 2, "tol": 1.0, "estimate_noise": True}}
+    data = {
+        **KalmanSettings.default().model_dump(),
+        "training": {"em_iterations": 2, "tol": 1.0, "estimate_noise": True},
+    }
     data.update(kw)
     return KalmanSettings.from_mapping(data)
 
@@ -68,7 +71,9 @@ def test_final_coverage_lines(tmp_path: Path) -> None:
     assert res.converged or res.n_iter >= 1
 
     # model sample initial_state + forecast metadata
-    model = KalmanFilterModel(settings=_settings(application="denoise"), system=sys_d, random_seed=2)
+    model = KalmanFilterModel(
+        settings=_settings(application="denoise"), system=sys_d, random_seed=2
+    )
     model.fit(y)
     labels, _obs = model.sample(5, initial_state=1)
     assert labels[0] == 1

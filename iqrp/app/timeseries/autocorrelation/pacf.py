@@ -5,8 +5,8 @@ from __future__ import annotations
 import numpy as np
 from scipy import stats
 
-from iqrp.app.timeseries.base import AnalysisResult, TemporalMode, as_float_array
 from iqrp.app.timeseries.autocorrelation.acf import acf as compute_acf
+from iqrp.app.timeseries.base import AnalysisResult, TemporalMode, as_float_array
 
 
 def pacf(

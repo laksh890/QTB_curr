@@ -56,7 +56,9 @@ class LabelEncoder:
 
     @classmethod
     def from_dict(cls, data: dict[str, Any]) -> LabelEncoder:
-        return cls(classes_=list(data.get("classes_") or []), fitted=bool(data.get("fitted", False)))
+        return cls(
+            classes_=list(data.get("classes_") or []), fitted=bool(data.get("fitted", False))
+        )
 
 
 @dataclass
@@ -89,7 +91,9 @@ class OneHotEncoder:
 
     @classmethod
     def from_dict(cls, data: dict[str, Any]) -> OneHotEncoder:
-        return cls(classes_=list(data.get("classes_") or []), fitted=bool(data.get("fitted", False)))
+        return cls(
+            classes_=list(data.get("classes_") or []), fitted=bool(data.get("fitted", False))
+        )
 
 
 def encode_frame_categoricals(

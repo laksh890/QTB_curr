@@ -22,9 +22,7 @@ class ValidationWindow:
         if int(self.start) < 0:
             raise ValueError(f"ValidationWindow.start must be >= 0, got {self.start}")
         if int(self.end) < int(self.start):
-            raise ValueError(
-                f"ValidationWindow.end ({self.end}) must be >= start ({self.start})"
-            )
+            raise ValueError(f"ValidationWindow.end ({self.end}) must be >= start ({self.start})")
 
     @property
     def size(self) -> int:
@@ -45,9 +43,7 @@ class ValidationWindow:
 
     def assert_before_test(self, test_start: int) -> None:
         if int(self.end) > int(test_start):
-            raise ValueError(
-                f"Validation end ({self.end}) must be <= test start ({test_start})"
-            )
+            raise ValueError(f"Validation end ({self.end}) must be <= test start ({test_start})")
 
     def __repr__(self) -> str:
         return f"ValidationWindow([{self.start}, {self.end}), size={self.size})"

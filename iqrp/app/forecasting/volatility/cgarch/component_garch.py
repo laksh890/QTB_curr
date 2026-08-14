@@ -74,7 +74,9 @@ class ComponentGARCHModel(UnivariateVolatilityModel):
             loglik=ll,
             aic=aic,
             bic=bic,
-            extras={"permanent_last": float(self._q_path[-1]) if self._q_path is not None else None},
+            extras={
+                "permanent_last": float(self._q_path[-1]) if self._q_path is not None else None
+            },
         )
         return self
 

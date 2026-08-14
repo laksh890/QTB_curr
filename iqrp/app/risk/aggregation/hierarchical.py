@@ -24,9 +24,7 @@ def hierarchical_aggregate(
     """
 
     def _is_leaf(node: Any) -> bool:
-        if isinstance(node, dict) and "children" in node:
-            return False
-        return True
+        return not (isinstance(node, dict) and "children" in node)
 
     def _walk(node: Any, name: str = "root") -> dict[str, Any]:
         if _is_leaf(node):

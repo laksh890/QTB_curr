@@ -74,5 +74,7 @@ def false_discovery_report(
         "n_experiments": adj["n_experiments"],
         "qvalues": storey["qvalues"],
         "pi0": storey["pi0"],
-        "fdr_estimate": float(storey["pi0"] * float(alpha)) if np.isfinite(storey["pi0"]) else float("nan"),
+        "fdr_estimate": (
+            float(storey["pi0"] * float(alpha)) if np.isfinite(storey["pi0"]) else float("nan")
+        ),
     }

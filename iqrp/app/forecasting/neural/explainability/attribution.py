@@ -29,7 +29,9 @@ def explain_neural(
     return integrated_gradients(module, X, device=device, steps=steps)
 
 
-def integrated_gradients(module: Any, X: np.ndarray, *, device: Any = None, steps: int = 16) -> np.ndarray:
+def integrated_gradients(
+    module: Any, X: np.ndarray, *, device: Any = None, steps: int = 16
+) -> np.ndarray:
     if not has_torch():
         return np.abs(np.asarray(X, dtype=np.float64))
     import torch
@@ -66,7 +68,9 @@ def saliency_map(module: Any, X: np.ndarray, *, device: Any = None) -> np.ndarra
     return from_tensor(grads.abs())
 
 
-def occlusion_analysis(module: Any, X: np.ndarray, *, device: Any = None, patch: int = 2) -> np.ndarray:
+def occlusion_analysis(
+    module: Any, X: np.ndarray, *, device: Any = None, patch: int = 2
+) -> np.ndarray:
     if not has_torch():
         return np.abs(np.asarray(X, dtype=np.float64))
     import torch
@@ -103,5 +107,5 @@ def _shap_or_ig(module: Any, X: np.ndarray, *, device: Any = None) -> np.ndarray
         if isinstance(vals, list):
             vals = vals[0]
         return np.asarray(vals, dtype=np.float64)
-    except Exception:  # noqa: BLE001  # pragma: no cover
+    except Exception:  # pragma: no cover
         return integrated_gradients(module, X, device=device)

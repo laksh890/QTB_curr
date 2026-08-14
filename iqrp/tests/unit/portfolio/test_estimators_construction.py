@@ -5,6 +5,7 @@ from __future__ import annotations
 import numpy as np
 import pytest
 
+from iqrp.app.portfolio.config import PortfolioSettings
 from iqrp.app.portfolio.construction import (
     PortfolioConstructor,
     RebalanceBands,
@@ -36,7 +37,6 @@ from iqrp.app.portfolio.expected_returns import (
 )
 from iqrp.app.portfolio.expected_returns.black_litterman import equilibrium_returns
 from iqrp.app.portfolio.expected_returns.shrinkage import james_stein_shrinkage
-from iqrp.app.portfolio.config import PortfolioSettings
 
 
 def test_sample_ewma_shrinkage_lw_robust(returns):
@@ -125,7 +125,9 @@ def test_signals_to_raw_weights_methods(signals, names):
 
 
 def test_signals_all_negative_long_only():
-    out = signals_to_raw_weights(np.array([-1.0, -2.0, -0.5]), method="proportional", long_only=True)
+    out = signals_to_raw_weights(
+        np.array([-1.0, -2.0, -0.5]), method="proportional", long_only=True
+    )
     assert abs(sum(out["weights"]) - 1.0) < 1e-5
 
 

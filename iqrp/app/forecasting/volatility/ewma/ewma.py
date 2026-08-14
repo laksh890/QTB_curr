@@ -27,7 +27,9 @@ class EWMAVolatilityModel(UnivariateVolatilityModel):
         supports_intervals=True,
     )
 
-    def __init__(self, settings: Any | None = None, *, lam: float | None = None, **params: Any) -> None:
+    def __init__(
+        self, settings: Any | None = None, *, lam: float | None = None, **params: Any
+    ) -> None:
         super().__init__(settings=settings, **params)
         self._lam = lam
 
@@ -44,7 +46,9 @@ class EWMAVolatilityModel(UnivariateVolatilityModel):
         regimes = self._maybe_regime(frame, regime_column)
 
         def _fit_subset(rr: np.ndarray) -> tuple[dict[str, float], np.ndarray, float, float, float]:
-            lam0 = float(self._lam if self._lam is not None else self._vol_settings.order.ewma_lambda)
+            lam0 = float(
+                self._lam if self._lam is not None else self._vol_settings.order.ewma_lambda
+            )
 
             def var_fn(theta: np.ndarray) -> np.ndarray:
                 return ewma_variance(rr, float(theta[0]))
@@ -64,7 +68,9 @@ class EWMAVolatilityModel(UnivariateVolatilityModel):
             else:
                 lam = lam0
                 var = ewma_variance(rr, lam)
-                nll = gaussian_nll_from_variance(rr, var, dist=self._dist_name(), dist_kwargs=self._dist_kwargs())
+                nll = gaussian_nll_from_variance(
+                    rr, var, dist=self._dist_name(), dist_kwargs=self._dist_kwargs()
+                )
                 ll = -nll
                 aic, bic = -2 * ll + 2, -2 * ll + np.log(max(rr.size, 1))
             return {"lambda": lam}, var, ll, aic, bic

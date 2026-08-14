@@ -76,7 +76,7 @@ def test_gaussian_and_cov_paths() -> None:
 
 @pytest.mark.unit
 def test_model_edges_and_regime_roundtrip(tmp_path: Path) -> None:
-    import iqrp.app.regimes.gmm  # noqa: F401
+    import iqrp.app.regimes.gmm
 
     assert "gmm" in get_ss_registry().list_names()
     settings = GMMSettings.from_mapping(

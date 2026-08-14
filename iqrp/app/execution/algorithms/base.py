@@ -3,8 +3,9 @@
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
+from collections.abc import Mapping, MutableMapping, Sequence
 from dataclasses import dataclass, field
-from typing import Any, Mapping, MutableMapping, Sequence
+from typing import Any
 
 import numpy as np
 
@@ -252,7 +253,9 @@ class ExecutionAlgorithm(ABC):
         return [s for s in slices if s.quantity > 0.0]
 
 
-def schedule_offsets(n: int, horizon_seconds: float, *, jitter: float = 0.0, rng: np.random.Generator | None = None) -> list[float]:
+def schedule_offsets(
+    n: int, horizon_seconds: float, *, jitter: float = 0.0, rng: np.random.Generator | None = None
+) -> list[float]:
     """Evenly spaced offsets over ``horizon_seconds`` with optional relative jitter."""
     n = max(int(n), 1)
     horizon = max(float(horizon_seconds), 0.0)

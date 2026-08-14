@@ -96,9 +96,7 @@ def plot_feature_importance(
         y = 36 + i * 26
         bar_w = (width - 180) * abs(val) / max_v
         parts.append(f'<text x="10" y="{y + 12}" font-size="11">{name}</text>')
-        parts.append(
-            f'<rect x="140" y="{y}" width="{bar_w:.1f}" height="16" fill="#1d3557"/>'
-        )
+        parts.append(f'<rect x="140" y="{y}" width="{bar_w:.1f}" height="16" fill="#1d3557"/>')
         parts.append(f'<text x="{145 + bar_w:.1f}" y="{y + 12}" font-size="10">{val:.3f}</text>')
     parts.append("</svg>")
     path.write_text("\n".join(parts), encoding="utf-8")

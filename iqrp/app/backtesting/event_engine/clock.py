@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 
-from datetime import datetime, timedelta, timezone
+from collections.abc import Iterator
+from datetime import UTC, datetime, timedelta, timezone
 from enum import Enum
-from typing import Iterator
 from zoneinfo import ZoneInfo
 
 
@@ -55,14 +55,14 @@ def _parse_frequency(value: ClockFrequency | str) -> ClockFrequency:
 
 def _resolve_tz(tz: str | ZoneInfo | None) -> ZoneInfo | timezone:
     if tz is None:
-        return timezone.utc
+        return UTC
     if isinstance(tz, ZoneInfo):
         return tz
     if isinstance(tz, timezone):
         return tz
     name = str(tz).strip()
     if name.upper() in {"UTC", "Z", "GMT"}:
-        return timezone.utc
+        return UTC
     return ZoneInfo(name)
 
 
@@ -74,12 +74,12 @@ class BacktestClock:
     """
 
     __slots__ = (
-        "_start",
-        "_now",
         "_frequency",
+        "_now",
+        "_start",
         "_step",
-        "_tz",
         "_tick_size",
+        "_tz",
     )
 
     def __init__(

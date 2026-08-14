@@ -33,7 +33,7 @@ def ensure_transformer_models_loaded(modules: Iterable[str] | None = None) -> li
         try:
             importlib.import_module(mod)
             loaded.append(mod)
-        except Exception:  # noqa: BLE001  # pragma: no cover
+        except Exception:  # pragma: no cover
             continue
     return loaded
 

@@ -70,7 +70,9 @@ def attention_rollout(module: Any, X: np.ndarray, *, device: Any = None) -> np.n
     return Xa * np.maximum(scale, 1e-6)
 
 
-def integrated_gradients(module: Any, X: np.ndarray, *, device: Any = None, steps: int = 12) -> np.ndarray:
+def integrated_gradients(
+    module: Any, X: np.ndarray, *, device: Any = None, steps: int = 12
+) -> np.ndarray:
     if not has_torch():
         return np.abs(np.asarray(X, dtype=np.float64))
     import torch

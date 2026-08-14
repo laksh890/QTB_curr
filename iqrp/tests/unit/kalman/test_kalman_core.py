@@ -28,9 +28,9 @@ from iqrp.app.regimes.kalman.initialization import numerical_jacobian
 from iqrp.app.regimes.kalman.prediction import (
     forecast_observation,
     n_step_predict,
-    prediction_intervals,
     predict_nonlinear,
     predict_state,
+    prediction_intervals,
 )
 from iqrp.app.regimes.kalman.update import innovation_statistics, update_nonlinear, update_state
 from iqrp.app.regimes.kalman.visualization import (
@@ -44,7 +44,10 @@ from iqrp.app.regimes.kalman.visualization import (
 
 
 def _settings(**kw: object) -> KalmanSettings:
-    data = {**KalmanSettings.default().model_dump(), "training": {"em_iterations": 3, "tol": 1e-3, "estimate_noise": True}}
+    data = {
+        **KalmanSettings.default().model_dump(),
+        "training": {"em_iterations": 3, "tol": 1e-3, "estimate_noise": True},
+    }
     data.update(kw)
     return KalmanSettings.from_mapping(data)
 
@@ -63,7 +66,9 @@ def test_covariance_and_predict_update() -> None:
     assert block_diag(np.eye(1), np.eye(2)).shape == (3, 3)
     x, p2 = predict_state(np.zeros(2), p, np.eye(2), 0.1 * np.eye(2))
     assert x.shape == (2,)
-    x3, p3, innov, s, k = update_state(x, p2, np.array([0.1]), np.array([[1.0, 0.0]]), np.array([[0.1]]))
+    x3, p3, innov, s, k = update_state(
+        x, p2, np.array([0.1]), np.array([[1.0, 0.0]]), np.array([[0.1]])
+    )
     assert innov.shape[0] == 1 and k.shape == (2, 1)
     assert joseph_update(p2, k, np.array([[1.0, 0.0]]), np.array([[0.1]])).shape == (2, 2)
     assert mahalanobis(innov, s) >= 0
@@ -113,7 +118,9 @@ def test_ekf_ukf_adaptive_and_jacobians() -> None:
 
     jac = numerical_jacobian(f, np.array([2.0]))
     assert jac.shape == (1, 1) and abs(float(jac[0, 0]) - 4.0) < 0.01
-    xn, pn = predict_nonlinear(np.array([1.0]), np.eye(1), f, lambda x: numerical_jacobian(f, x), np.eye(1) * 0.01)
+    xn, pn = predict_nonlinear(
+        np.array([1.0]), np.eye(1), f, lambda x: numerical_jacobian(f, x), np.eye(1) * 0.01
+    )
     assert xn.shape[0] == 1
     xu, pu, *_ = update_nonlinear(
         xn, pn, np.array([1.0]), f, lambda x: numerical_jacobian(f, x), np.array([[0.1]])
@@ -155,7 +162,12 @@ def test_model_api(tmp_path: Path) -> None:
     plot_filtered_state(model.filtered_means(), tmp_path / "f.svg", observations=obs[:, 0])
     plot_smoothed_state(model.smoothed_means(), tmp_path / "s.svg")
     lo, hi = prediction_intervals(model.state(), model.covariance())
-    plot_prediction_bands(model.filtered_means()[:, 0], lo[0] * np.ones(obs.shape[0]), hi[0] * np.ones(obs.shape[0]), tmp_path / "b.svg")
+    plot_prediction_bands(
+        model.filtered_means()[:, 0],
+        lo[0] * np.ones(obs.shape[0]),
+        hi[0] * np.ones(obs.shape[0]),
+        tmp_path / "b.svg",
+    )
     plot_innovations(model._trace.innovations, tmp_path / "i.svg")  # type: ignore[union-attr]
     plot_covariance_evolution(model._trace.covs, tmp_path / "c.svg")  # type: ignore[union-attr]
     plot_kalman_gain(model._trace.gains, tmp_path / "g.svg")  # type: ignore[union-attr]

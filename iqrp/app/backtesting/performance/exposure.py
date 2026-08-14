@@ -7,15 +7,15 @@ from typing import Any
 import numpy as np
 
 __all__ = [
-    "gross_exposure",
-    "net_exposure",
-    "long_exposure",
-    "short_exposure",
-    "leverage",
     "beta",
-    "factor_exposure",
-    "sector_exposure",
     "currency_exposure",
+    "factor_exposure",
+    "gross_exposure",
+    "leverage",
+    "long_exposure",
+    "net_exposure",
+    "sector_exposure",
+    "short_exposure",
     "summarize_exposure",
 ]
 

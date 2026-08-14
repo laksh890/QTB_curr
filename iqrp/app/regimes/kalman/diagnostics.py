@@ -38,7 +38,12 @@ class KalmanDiagnostics:
         spectral_radius = float(np.max(np.abs(eig_f)))
         stable = spectral_radius < 1.0 + 1e-6 or spectral_radius <= 1.0 + 1e-3
         # Joseph-form residual PSD check
-        min_eig_p = float(min(np.min(np.linalg.eigvalsh(ensure_spd(c))) for c in trace.covs[: min(50, len(trace.covs))]))
+        min_eig_p = float(
+            min(
+                np.min(np.linalg.eigvalsh(ensure_spd(c)))
+                for c in trace.covs[: min(50, len(trace.covs))]
+            )
+        )
         noise = {
             "q_diag": np.diag(ensure_spd(system.q)).tolist(),
             "r_diag": np.diag(ensure_spd(system.r)).tolist(),

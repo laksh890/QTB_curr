@@ -24,7 +24,10 @@ from iqrp.app.forecasting.transformers.base.masking import (
     regime_mask,
 )
 from iqrp.app.forecasting.transformers.base.positional_encoding import build_positional
-from iqrp.app.forecasting.transformers.base.processes import feature_names, simulate_long_range_series
+from iqrp.app.forecasting.transformers.base.processes import (
+    feature_names,
+    simulate_long_range_series,
+)
 from iqrp.app.forecasting.transformers.explainability.attribution import explain_transformer
 from iqrp.app.forecasting.transformers.mixture_of_experts import MoEGating
 from iqrp.app.forecasting.transformers.probabilistic import (
@@ -105,7 +108,9 @@ def test_registry_lists_all_models() -> None:
 def test_settings_hydra() -> None:
     s = TransformerSettings.default()
     assert s.architecture.d_model > 0
-    s2 = TransformerSettings.from_mapping({"task": {"type": "quantile"}, "train": {"loss": "quantile"}})
+    s2 = TransformerSettings.from_mapping(
+        {"task": {"type": "quantile"}, "train": {"loss": "quantile"}}
+    )
     assert s2.task.type == "quantile"
     s3 = TransformerSettings.from_hydra(overrides=["forecast.default_horizon=12"])
     assert s3.forecast.default_horizon == 12
@@ -211,11 +216,15 @@ def test_moe_and_probabilistic() -> None:
 
 @pytest.mark.unit
 def test_classification_and_orchestrator(frame) -> None:
-    cls = simulate_long_range_series(120, n_features=4, classification=True, rng=np.random.default_rng(3))
+    cls = simulate_long_range_series(
+        120, n_features=4, classification=True, rng=np.random.default_rng(3)
+    )
     cols = feature_names(4)
     model = create_transformer_model(
         "tft",
-        settings=_fast(task={"type": "binary"}, train={"loss": "bce", "epochs": 2, "device": "cpu"}),
+        settings=_fast(
+            task={"type": "binary"}, train={"loss": "bce", "epochs": 2, "device": "cpu"}
+        ),
     )
     model.fit(cls, feature_columns=cols)
     proba = model.predict_proba(cls)
@@ -249,7 +258,13 @@ def test_regime_feature_and_curriculum(frame) -> None:
     cols = feature_names(4)
     s = _fast(
         regime={"enabled": True, "mode": "feature", "column": "regime"},
-        train={"epochs": 2, "batch_size": 16, "device": "cpu", "curriculum": True, "ema_decay": 0.9},
+        train={
+            "epochs": 2,
+            "batch_size": 16,
+            "device": "cpu",
+            "curriculum": True,
+            "ema_decay": 0.9,
+        },
         scheduler={"name": "warmup_cosine", "warmup_epochs": 1},
     )
     model = create_transformer_model("moe_transformer", settings=s)
@@ -259,7 +274,9 @@ def test_regime_feature_and_curriculum(frame) -> None:
 
 @pytest.mark.unit
 def test_cross_asset_attention() -> None:
-    from iqrp.app.forecasting.transformers.attention.cross_asset_attention import CrossAssetAttention
+    from iqrp.app.forecasting.transformers.attention.cross_asset_attention import (
+        CrossAssetAttention,
+    )
 
     ca = CrossAssetAttention(16, 4)
     x = torch.randn(2, 3, 8, 16)

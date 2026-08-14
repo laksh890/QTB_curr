@@ -8,7 +8,7 @@ import numpy as np
 import polars as pl
 import pytest
 
-import iqrp.app.regimes.gmm  # noqa: F401
+import iqrp.app.regimes.gmm
 from iqrp.app.regimes.gmm import GaussianMixtureModel, GMMSettings
 from iqrp.app.regimes.gmm.visualization import (
     plot_cluster_scatter,

@@ -8,13 +8,31 @@ import numpy as np
 import polars as pl
 import pytest
 
-from iqrp.app.forecasting.volatility import VolatilitySettings, VolatilityTrainer, create_volatility_model
-from iqrp.app.forecasting.volatility.base.distributions import distribution_params, logpdf, register_custom_distribution
+from iqrp.app.forecasting.volatility import (
+    VolatilitySettings,
+    VolatilityTrainer,
+    create_volatility_model,
+)
+from iqrp.app.forecasting.volatility.base.distributions import (
+    distribution_params,
+    logpdf,
+    register_custom_distribution,
+)
 from iqrp.app.forecasting.volatility.base.likelihood import estimate, gaussian_nll_from_variance
-from iqrp.app.forecasting.volatility.base.processes import simulate_dcc, simulate_garch, to_returns_frame
+from iqrp.app.forecasting.volatility.base.processes import (
+    simulate_dcc,
+    simulate_garch,
+    to_returns_frame,
+)
 from iqrp.app.forecasting.volatility.base.recursion import ewma_variance, garch_variance
-from iqrp.app.forecasting.volatility.base.selection import rolling_vol_validation, select_volatility_models
-from iqrp.app.forecasting.volatility.diagnostics.report import persistence_and_half_life, run_vol_diagnostics
+from iqrp.app.forecasting.volatility.base.selection import (
+    rolling_vol_validation,
+    select_volatility_models,
+)
+from iqrp.app.forecasting.volatility.diagnostics.report import (
+    persistence_and_half_life,
+    run_vol_diagnostics,
+)
 from iqrp.app.forecasting.volatility.registry import ensure_volatility_models_loaded
 from iqrp.app.forecasting.volatility.visualization import plots as plot_mod
 
@@ -132,7 +150,9 @@ def test_likelihood_failure_paths() -> None:
     )
     assert res2.variance.size == r.size
     # force fallback when optimizer always fails
-    with patch("iqrp.app.forecasting.volatility.base.likelihood.minimize", side_effect=RuntimeError("x")):
+    with patch(
+        "iqrp.app.forecasting.volatility.base.likelihood.minimize", side_effect=RuntimeError("x")
+    ):
         res3 = estimate(r, ok_var, np.array([0.2]), [(1e-6, 2.0)], param_names=["x"], n_restarts=1)
         assert res3.message == "fallback"
 
@@ -154,7 +174,9 @@ def test_selection_serial_and_failures() -> None:
 def test_trainer_parallel_compare() -> None:
     r, _ = simulate_garch(100, rng=np.random.default_rng(36))
     frame = to_returns_frame(r)
-    trainer = VolatilityTrainer(VolatilitySettings.from_mapping({"visualization": {"enabled": False}}))
+    trainer = VolatilityTrainer(
+        VolatilitySettings.from_mapping({"visualization": {"enabled": False}})
+    )
     rows = trainer.compare(["ewma", "garch", "not_a_model"], frame, parallel=True)
     assert len(rows) >= 1
 
@@ -168,7 +190,6 @@ def test_diagnostics_edge_cases() -> None:
     assert p == 0.0 and hl == 0.0
     p2, hl2 = persistence_and_half_life({"alpha": 0.5, "beta": 0.5})
     assert hl2 > 100
-
 
 
 @pytest.mark.unit
@@ -231,7 +252,12 @@ def test_plots_with_matplotlib_mock() -> None:
         x = np.linspace(0.1, 1, 20)
         assert plot_mod.plot_volatility_forecast(x, forecast=x[:3], max_points=10)["figure"] is fig
         assert plot_mod.plot_conditional_variance(x, max_points=5)["figure"] is fig
-        assert plot_mod.plot_residuals(np.random.default_rng(0).normal(size=20), max_points=5)["figure"] is fig
+        assert (
+            plot_mod.plot_residuals(np.random.default_rng(0).normal(size=20), max_points=5)[
+                "figure"
+            ]
+            is fig
+        )
         assert plot_mod.plot_persistence(0.9, 5.0)["figure"] is fig
         corr = np.eye(2)[None, :, :].repeat(10, axis=0)
         assert plot_mod.plot_correlation_evolution(corr)["figure"] is fig
@@ -287,7 +313,9 @@ def test_extract_returns_from_features() -> None:
     from iqrp.app.forecasting.volatility.base.univariate import UnivariateVolatilityModel
 
     assert UnivariateVolatilityModel._variance_from_returns(m, r[:10]).size == 10
-    assert UnivariateVolatilityModel._variance_from_returns(m, np.concatenate([r, r[:5]])).size == 65
+    assert (
+        UnivariateVolatilityModel._variance_from_returns(m, np.concatenate([r, r[:5]])).size == 65
+    )
     # garch11 forecast path via base
     assert UnivariateVolatilityModel._garch11_forecast(m, 3)[0].size == 3
     assert UnivariateVolatilityModel._forecast_path(m, 2)[0].size == 2

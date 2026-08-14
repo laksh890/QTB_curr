@@ -10,7 +10,7 @@ from iqrp.app.forecasting.transformers.base.heads import forecast_head, reshape_
 try:
     import torch
     from torch import nn
-except Exception:  # noqa: BLE001  # pragma: no cover
+except Exception:  # pragma: no cover
     torch = None  # type: ignore[assignment]
     nn = object  # type: ignore[assignment]
 

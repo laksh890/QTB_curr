@@ -6,10 +6,10 @@ from iqrp.app.timeseries.spectral.spectral_density import period_from_frequency,
 from iqrp.app.timeseries.spectral.welch import welch_psd
 
 __all__ = [
-    "fft_spectrum",
     "dominant_frequencies",
-    "periodogram",
-    "welch_psd",
-    "spectral_density",
+    "fft_spectrum",
     "period_from_frequency",
+    "periodogram",
+    "spectral_density",
+    "welch_psd",
 ]

@@ -30,7 +30,6 @@ from iqrp.app.execution.registry import (
 )
 from iqrp.app.execution.types import Urgency
 
-
 PARENT_QTY = 100.0
 
 
@@ -122,10 +121,17 @@ def test_twap_with_participation_cap_and_jitter():
 
 def test_twap_interval_seconds():
     algo = TWAPAlgorithm(n_slices=None, horizon_seconds=60.0, interval_seconds=20.0, seed=42)
-    slices = algo.plan(PARENT_QTY, _ctx(n_slices=None) if False else {
-        **_ctx(),
-        # don't override n_slices in ctx
-    })
+    slices = algo.plan(
+        PARENT_QTY,
+        (
+            _ctx(n_slices=None)
+            if False
+            else {
+                **_ctx(),
+                # don't override n_slices in ctx
+            }
+        ),
+    )
     # remove n_slices override
     ctx = _ctx()
     ctx.pop("n_slices", None)
@@ -195,7 +201,10 @@ def test_registry_get_and_custom():
 
 
 def test_approved_quantity_and_redistribute():
-    assert approved_quantity(100, {"residual": 40, "approved_quantity": 50, "max_quantity": 30}) == 30.0
+    assert (
+        approved_quantity(100, {"residual": 40, "approved_quantity": 50, "max_quantity": 30})
+        == 30.0
+    )
     out = redistribute_to_parent([10, 20, 30], 50)
     assert abs(sum(out) - 50) < 1e-9
     assert redistribute_to_parent([], 10) == []

@@ -3,7 +3,8 @@
 from __future__ import annotations
 
 from collections import defaultdict, deque
-from typing import Any, Mapping
+from collections.abc import Mapping
+from typing import Any
 
 from iqrp.app.backtesting.strategy.base import Strategy
 
@@ -27,7 +28,9 @@ class CrossSectionalMomentumStrategy(Strategy):
         self.lookback = max(int(lookback), 2)
         self.top_n = None if top_n is None else max(int(top_n), 1)
         self.long_only = bool(long_only)
-        self._history: dict[str, deque[float]] = defaultdict(lambda: deque(maxlen=self.lookback + 1))
+        self._history: dict[str, deque[float]] = defaultdict(
+            lambda: deque(maxlen=self.lookback + 1)
+        )
         self._last_targets: dict[str, float] = {}
 
     def initialize(self, context: Any) -> None:

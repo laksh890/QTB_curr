@@ -42,10 +42,12 @@ class TransformerTrainer:
 
         seed_everything(self.settings.train.seed)
         module = module.to(self.device)
-        if self.settings.train.gradient_checkpointing and hasattr(module, "gradient_checkpointing_enable"):
+        if self.settings.train.gradient_checkpointing and hasattr(
+            module, "gradient_checkpointing_enable"
+        ):
             try:
                 module.gradient_checkpointing_enable()
-            except Exception:  # noqa: BLE001  # pragma: no cover
+            except Exception:  # pragma: no cover
                 pass
         module = maybe_compile(module, self.settings.train.compile)
         opt = build_optimizer(
@@ -78,11 +80,17 @@ class TransformerTrainer:
         )
         stopper = EarlyStopping(patience=self.settings.train.early_stopping_patience)
         use_amp = bool(self.settings.train.mixed_precision or self.settings.distributed.amp)
-        scaler = torch.amp.GradScaler("cuda", enabled=use_amp and str(self.device).startswith("cuda"))
+        scaler = torch.amp.GradScaler(
+            "cuda", enabled=use_amp and str(self.device).startswith("cuda")
+        )
         accum = max(int(self.settings.train.accumulation_steps), 1)
         ema_decay = float(self.settings.train.ema_decay)
         self.history = History()
-        self._ema = {k: v.detach().clone() for k, v in module.state_dict().items()} if ema_decay > 0 else None
+        self._ema = (
+            {k: v.detach().clone() for k, v in module.state_dict().items()}
+            if ema_decay > 0
+            else None
+        )
 
         for epoch in range(self.settings.train.epochs):
             module.train()
@@ -98,14 +106,18 @@ class TransformerTrainer:
                     xb = xb[:, -cut:]
                 xb_t = to_tensor(xb, self.device)
                 yb_t = to_tensor(yb, self.device)
-                with torch.amp.autocast("cuda", enabled=use_amp and str(self.device).startswith("cuda")):
+                with torch.amp.autocast(
+                    "cuda", enabled=use_amp and str(self.device).startswith("cuda")
+                ):
                     out = module(xb_t)
                     loss = _compute_loss(loss_fn, out, yb_t, task=self.settings.task.type) / accum
                 scaler.scale(loss).backward()
                 if (step + 1) % accum == 0:
                     if self.settings.train.grad_clip > 0:
                         scaler.unscale_(opt)
-                        torch.nn.utils.clip_grad_norm_(module.parameters(), self.settings.train.grad_clip)
+                        torch.nn.utils.clip_grad_norm_(
+                            module.parameters(), self.settings.train.grad_clip
+                        )
                     gnorm = self.grad_monitor.record(module)
                     self.history.grad_norms.append(gnorm)
                     scaler.step(opt)
@@ -134,14 +146,20 @@ class TransformerTrainer:
             module.load_state_dict(self._ema)
         return module, self.history
 
-    def evaluate_loss(self, module: Any, X: np.ndarray, y: np.ndarray, loss_fn: Any | None = None) -> float:
+    def evaluate_loss(
+        self, module: Any, X: np.ndarray, y: np.ndarray, loss_fn: Any | None = None
+    ) -> float:
         import torch
 
         module.eval()
-        loss_fn = loss_fn or get_loss(self.settings.train.loss, alphas=self.settings.task.quantile_alphas)
+        loss_fn = loss_fn or get_loss(
+            self.settings.train.loss, alphas=self.settings.task.quantile_alphas
+        )
         with torch.no_grad():
             out = module(to_tensor(X, self.device))
-            loss = _compute_loss(loss_fn, out, to_tensor(y, self.device), task=self.settings.task.type)
+            loss = _compute_loss(
+                loss_fn, out, to_tensor(y, self.device), task=self.settings.task.type
+            )
         return float(loss.item())
 
     def predict(self, module: Any, X: np.ndarray) -> np.ndarray:

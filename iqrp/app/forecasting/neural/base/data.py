@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-from typing import Any
-
 import numpy as np
 
 
@@ -64,7 +62,14 @@ def standardize_apply(X: np.ndarray, mu: np.ndarray, sd: np.ndarray) -> np.ndarr
 
 
 class NumpyBatchLoader:
-    def __init__(self, X: np.ndarray, y: np.ndarray, batch_size: int = 64, shuffle: bool = True, seed: int = 0) -> None:
+    def __init__(
+        self,
+        X: np.ndarray,
+        y: np.ndarray,
+        batch_size: int = 64,
+        shuffle: bool = True,
+        seed: int = 0,
+    ) -> None:
         self.X = np.asarray(X)
         self.y = np.asarray(y)
         self.batch_size = max(int(batch_size), 1)

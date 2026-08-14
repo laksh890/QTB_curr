@@ -62,7 +62,8 @@ class TreeTrainer:
             frame,
             feature_columns,
             target_column=target_column or self.settings.columns.target,
-            regime_column=regime_column or (self.settings.regime.column if self.settings.regime.enabled else None),
+            regime_column=regime_column
+            or (self.settings.regime.column if self.settings.regime.enabled else None),
         )
         ev = m.evaluate(frame, feature_columns=m._feature_columns)
 
@@ -121,13 +122,13 @@ class TreeTrainer:
                 for fut in as_completed(futs):
                     try:
                         rows.append(fut.result())
-                    except Exception:  # noqa: BLE001
+                    except Exception:
                         continue
         else:
             for name in model_names:
                 try:
                     rows.append(_one(name))
-                except Exception:  # noqa: BLE001
+                except Exception:
                     continue
         rows.sort(key=lambda r: r.metrics.get("rmse", float("inf")))
         return rows

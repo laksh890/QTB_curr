@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import argparse
 import sys
-from pathlib import Path
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -43,7 +42,7 @@ def main(argv: list[str] | None = None) -> int:
     for cls in (BuyAndHoldStrategy, CrossSectionalMomentumStrategy):
         try:
             StrategyRegistry.register(cls, overwrite=True)
-        except Exception:  # noqa: BLE001
+        except Exception:
             pass
 
     if args.config:

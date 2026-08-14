@@ -119,15 +119,11 @@ class BacktestSettings(BaseModel):
     clock: ClockConfig = Field(default_factory=ClockConfig)
     event_engine: EventEngineConfig = Field(default_factory=EventEngineConfig)
     pit: PITConfig = Field(default_factory=PITConfig)
-    corporate_actions: CorporateActionsConfig = Field(
-        default_factory=CorporateActionsConfig
-    )
+    corporate_actions: CorporateActionsConfig = Field(default_factory=CorporateActionsConfig)
     costs: CostsConfig = Field(default_factory=CostsConfig)
     latency: LatencyConfig = Field(default_factory=LatencyConfig)
     walk_forward: WalkForwardConfig = Field(default_factory=WalkForwardConfig)
-    reproducibility: ReproducibilityConfig = Field(
-        default_factory=ReproducibilityConfig
-    )
+    reproducibility: ReproducibilityConfig = Field(default_factory=ReproducibilityConfig)
     reporting: ReportingConfig = Field(default_factory=ReportingConfig)
 
     @classmethod
@@ -136,7 +132,7 @@ class BacktestSettings(BaseModel):
             if hasattr(data, "items") and not isinstance(data, dict):
                 data = OmegaConf.to_container(data, resolve=True)
             return cls.model_validate(dict(data or {}))
-        except Exception as exc:  # noqa: BLE001
+        except Exception as exc:
             from iqrp.app.core.exceptions import ConfigurationError
 
             raise ConfigurationError(
@@ -167,9 +163,7 @@ class BacktestSettings(BaseModel):
 
 
 def _default_config_path() -> Path:
-    return (
-        Path(__file__).resolve().parents[2] / "configs" / "backtesting" / "default.yaml"
-    )
+    return Path(__file__).resolve().parents[2] / "configs" / "backtesting" / "default.yaml"
 
 
 __all__ = [

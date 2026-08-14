@@ -2,9 +2,10 @@
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from dataclasses import asdict, dataclass, field
 from datetime import UTC, datetime
-from typing import Any, Mapping
+from typing import Any
 
 from iqrp.app.backtesting.serializer import to_jsonable
 
@@ -36,7 +37,7 @@ class PaperTradingConfig:
         return to_jsonable(asdict(self))
 
     @classmethod
-    def from_dict(cls, data: Mapping[str, Any]) -> "PaperTradingConfig":
+    def from_dict(cls, data: Mapping[str, Any]) -> PaperTradingConfig:
         known = {f.name for f in cls.__dataclass_fields__.values()}  # type: ignore[attr-defined]
         return cls(**{k: v for k, v in data.items() if k in known})
 

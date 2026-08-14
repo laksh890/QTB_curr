@@ -3,12 +3,12 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from typing import Any
 
 
 def _utc_now() -> str:
-    return datetime.now(timezone.utc).isoformat()
+    return datetime.now(UTC).isoformat()
 
 
 @dataclass(slots=True)
@@ -181,9 +181,7 @@ class CapitalAllocation:
             for k, v in strategies_raw.items()
         }
         budgets_raw = data.get("risk_budgets") or []
-        budgets = [
-            RiskBudget.from_dict(b) if isinstance(b, dict) else b for b in budgets_raw
-        ]
+        budgets = [RiskBudget.from_dict(b) if isinstance(b, dict) else b for b in budgets_raw]
         return cls(
             timestamp=str(data.get("timestamp", _utc_now())),
             data_version=str(data.get("data_version", "1.0.0")),
@@ -204,8 +202,7 @@ class CapitalAllocation:
             output=dict(data.get("output") or {}),
             constraints_applied=list(data.get("constraints_applied") or []),
             correlation_adjustment={
-                str(k): float(v)
-                for k, v in (data.get("correlation_adjustment") or {}).items()
+                str(k): float(v) for k, v in (data.get("correlation_adjustment") or {}).items()
             },
             capacity_adjustment={
                 str(k): float(v) for k, v in (data.get("capacity_adjustment") or {}).items()

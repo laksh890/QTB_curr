@@ -9,13 +9,15 @@ from iqrp.app.forecasting.neural.base.torch_utils import has_torch
 try:
     import torch
     from torch import nn
-except Exception:  # noqa: BLE001  # pragma: no cover
+except Exception:  # pragma: no cover
     torch = None  # type: ignore[assignment]
     nn = object  # type: ignore[assignment]
 
 
 class PerformerAttention(nn.Module if has_torch() else object):  # type: ignore[misc]
-    def __init__(self, d_model: int, n_heads: int = 4, dropout: float = 0.1, n_features: int = 64) -> None:
+    def __init__(
+        self, d_model: int, n_heads: int = 4, dropout: float = 0.1, n_features: int = 64
+    ) -> None:
         if has_torch():
             super().__init__()
         self.n_heads = n_heads
@@ -28,7 +30,7 @@ class PerformerAttention(nn.Module if has_torch() else object):  # type: ignore[
         self.drop = nn.Dropout(dropout)
         self.register_buffer(
             "proj",
-            torch.randn(self.d_k, n_features) / max(self.d_k ** 0.5, 1e-6),
+            torch.randn(self.d_k, n_features) / max(self.d_k**0.5, 1e-6),
             persistent=False,
         )
         self.last_attn: Any = None

@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 
-from typing import Any, Callable
-
+from collections.abc import Callable
+from typing import Any
 
 _REGISTRY: dict[str, Callable[..., Any]] = {}
 
@@ -51,7 +51,7 @@ def ensure_timeseries_loaded() -> list[str]:
         try:
             importlib.import_module(m)
             loaded.append(m)
-        except Exception:  # noqa: BLE001
+        except Exception:
             continue
     # populate registry with core callables
     _populate()

@@ -36,7 +36,11 @@ def decide_retrain(
 ) -> RetrainDecision:
     if config.mode == "none":
         return RetrainDecision(False, "disabled", config.mode)
-    if config.mode == "scheduled" and n_updates > 0 and n_updates % max(config.schedule_every, 1) == 0:
+    if (
+        config.mode == "scheduled"
+        and n_updates > 0
+        and n_updates % max(config.schedule_every, 1) == 0
+    ):
         return RetrainDecision(True, "schedule", config.mode, {"n_updates": n_updates})
     if config.mode == "drift" and drift is not None and drift.triggered:
         return RetrainDecision(True, "drift:" + ",".join(drift.reasons), config.mode)
@@ -64,8 +68,10 @@ def retrain_model(
     data = frame[-window:] if frame.height > window else frame
     if use_warm and hasattr(model, "partial_fit") and getattr(model, "is_fitted", False):
         try:
-            return model.partial_fit(data, feature_columns=feature_columns, target_column=target_column)
-        except Exception:  # noqa: BLE001
+            return model.partial_fit(
+                data, feature_columns=feature_columns, target_column=target_column
+            )
+        except Exception:
             pass
     return model.fit(data, feature_columns=feature_columns, target_column=target_column)
 

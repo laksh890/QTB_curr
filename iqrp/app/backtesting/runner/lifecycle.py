@@ -56,10 +56,10 @@ def map_engine_state(state: BacktestState | str | None) -> RunnerLifecycleState 
         return _ENGINE_TO_RUNNER.get(state)
     try:
         eng = BacktestState(str(state))
-    except Exception:  # noqa: BLE001
+    except Exception:
         try:
             return RunnerLifecycleState(str(state))
-        except Exception:  # noqa: BLE001
+        except Exception:
             return None
     return _ENGINE_TO_RUNNER.get(eng)
 
@@ -74,7 +74,7 @@ def map_runner_to_engine(state: RunnerLifecycleState) -> BacktestState:
         return BacktestState.FAILED
     try:
         return BacktestState(state.value)
-    except Exception:  # noqa: BLE001
+    except Exception:
         return BacktestState.FAILED
 
 

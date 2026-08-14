@@ -56,7 +56,9 @@ def test_time_performance_drift_regime_triggers() -> None:
 
 
 def test_composite_and_schedule() -> None:
-    comp = CompositeTrigger(triggers=[TimeTrigger(every=5), DriftTrigger(threshold=0.01)], combine="any")
+    comp = CompositeTrigger(
+        triggers=[TimeTrigger(every=5), DriftTrigger(threshold=0.01)], combine="any"
+    )
     d = comp.evaluate({"t": 10, "last_retrain_t": 0, "drift_score": 0.0})
     assert d.should_retrain
     empty = CompositeTrigger(triggers=[], combine="all")

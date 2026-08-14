@@ -9,9 +9,14 @@ import numpy as np
 import polars as pl
 import pytest
 
-import iqrp.app.regimes.particle  # noqa: F401
+import iqrp.app.regimes.particle
 from iqrp.app.regimes.base.registry import get_registry as get_regime_registry
-from iqrp.app.regimes.particle import ParticleFilterModel, ParticleSettings, build_transition, simulate_nonlinear
+from iqrp.app.regimes.particle import (
+    ParticleFilterModel,
+    ParticleSettings,
+    build_transition,
+    simulate_nonlinear,
+)
 from iqrp.app.regimes.particle.particle import ParticleCloud
 from iqrp.app.regimes.particle.propagation import TransitionModel
 from iqrp.app.regimes.particle.rejuvenation import mcmc_rejuvenation
@@ -30,7 +35,11 @@ from iqrp.app.state_space import get_registry as get_ss_registry
 
 
 def _settings(**kw: object) -> ParticleSettings:
-    data = {**ParticleSettings.default().model_dump(), "n_particles": 30, "training": {"n_iterations": 1, "tol": 1e-3}}
+    data = {
+        **ParticleSettings.default().model_dump(),
+        "n_particles": 30,
+        "training": {"n_iterations": 1, "tol": 1e-3},
+    }
     data.update(kw)
     return ParticleSettings.from_mapping(data)
 
@@ -83,7 +92,9 @@ def test_columns_and_vol_roundtrip(tmp_path: Path) -> None:
 
 @pytest.mark.unit
 def test_viz_empty_and_bands(tmp_path: Path) -> None:
-    settings = _settings(visualization={"enabled": True, "max_points": 50, "max_particles_plot": 50})
+    settings = _settings(
+        visualization={"enabled": True, "max_points": 50, "max_particles_plot": 50}
+    )
     plot_state_trajectory(np.array([]), tmp_path / "empty.svg", settings)
     plot_weight_histogram(np.array([]), tmp_path / "wh.svg", settings)
     plot_particle_cloud(np.zeros((0, 2)), np.array([]), tmp_path / "pc.svg", settings)
@@ -110,6 +121,9 @@ def test_mcmc_and_apply_resample() -> None:
 
 @pytest.mark.unit
 def test_default_config_missing(tmp_path: Path) -> None:
-    with patch("iqrp.app.regimes.particle.config._default_config_path", return_value=tmp_path / "missing.yaml"):
+    with patch(
+        "iqrp.app.regimes.particle.config._default_config_path",
+        return_value=tmp_path / "missing.yaml",
+    ):
         s = ParticleSettings.default()
         assert s.n_particles == 500

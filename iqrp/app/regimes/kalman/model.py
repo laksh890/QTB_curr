@@ -21,8 +21,8 @@ from iqrp.app.regimes.kalman.linear import FilterTrace
 from iqrp.app.regimes.kalman.prediction import (
     forecast_observation,
     n_step_predict,
-    prediction_intervals,
     predict_state,
+    prediction_intervals,
 )
 from iqrp.app.regimes.kalman.serializer import KalmanSerializer
 from iqrp.app.regimes.kalman.smoothing import SmoothTrace, rts_smooth
@@ -143,9 +143,8 @@ class KalmanFilterModel(StateSpaceModel):
         h = h_seq if h_seq is not None else self._build_h_seq(y, observations)
         # dynamic beta: observation = asset (col0); market (col1) enters via H_t = [1, mkt]
         if (
-            (system.application == "dynamic_beta" or self._kf_settings.application == "dynamic_beta")
-            and y.shape[1] >= 2
-        ):
+            system.application == "dynamic_beta" or self._kf_settings.application == "dynamic_beta"
+        ) and y.shape[1] >= 2:
             mkt = y[:, 1]
             if h is None:
                 h = np.stack([np.ones(y.shape[0]), mkt], axis=1).reshape(y.shape[0], 1, 2)
@@ -154,7 +153,9 @@ class KalmanFilterModel(StateSpaceModel):
         result = KalmanTrainer(self._kf_settings).fit(
             y, system=system, controls=ctrl, h_seq=h, rng=self._rng
         )
-        self._ingest(result.system, result.trace, y, result.history, result.n_iter, result.converged)
+        self._ingest(
+            result.system, result.trace, y, result.history, result.n_iter, result.converged
+        )
         self._controls = ctrl
         self._h_seq = h
         self._online_x = result.trace.means[-1].copy()
@@ -188,14 +189,18 @@ class KalmanFilterModel(StateSpaceModel):
             self._train_obs = np.vstack([self._train_obs, y])
         return self
 
-    def update(self, observation: np.ndarray | float, *, control: np.ndarray | None = None) -> np.ndarray:
+    def update(
+        self, observation: np.ndarray | float, *, control: np.ndarray | None = None
+    ) -> np.ndarray:
         """Single-step online update; returns filtered state mean."""
         self._require_fitted()
         assert self.system is not None
         z = np.asarray(observation, dtype=np.float64).reshape(-1)
         x = self._online_x if self._online_x is not None else self.system.x0.copy()
         p = self._online_p if self._online_p is not None else self.system.p0.copy()
-        x_pred, p_pred = predict_state(x, p, self.system.f, self.system.q, b=self.system.b, u=control)
+        x_pred, p_pred = predict_state(
+            x, p, self.system.f, self.system.q, b=self.system.b, u=control
+        )
         x_new, p_new, innov, _s, k = update_state(x_pred, p_pred, z, self.system.h, self.system.r)
         self._online_x, self._online_p = x_new, p_new
         self._last_innov, self._last_gain = innov, k
@@ -211,13 +216,8 @@ class KalmanFilterModel(StateSpaceModel):
         assert self.system is not None
         raw = self._extract_obs(observations, observation_columns)
         h_seq = None
-        if (
-            self.system.application == "dynamic_beta"
-            and raw.shape[1] >= 2
-        ):
-            h_seq = np.stack([np.ones(raw.shape[0]), raw[:, 1]], axis=1).reshape(
-                raw.shape[0], 1, 2
-            )
+        if self.system.application == "dynamic_beta" and raw.shape[1] >= 2:
+            h_seq = np.stack([np.ones(raw.shape[0]), raw[:, 1]], axis=1).reshape(raw.shape[0], 1, 2)
             y = raw[:, 0:1]
         else:
             y = self._maybe_dynamic_beta_obs(raw)
@@ -227,7 +227,11 @@ class KalmanFilterModel(StateSpaceModel):
             y,
             self.system,
             self._kf_settings,
-            controls=self._controls if self._controls is not None and self._controls.shape[0] == y.shape[0] else None,
+            controls=(
+                self._controls
+                if self._controls is not None and self._controls.shape[0] == y.shape[0]
+                else None
+            ),
             h_seq=h_seq,
         )
         self._trace = trace
@@ -321,7 +325,10 @@ class KalmanFilterModel(StateSpaceModel):
             horizon=h,
             expected_state=int(np.argmax(terminal)),
             probability_distribution=terminal,
-            confidence_interval=(float(lo[0]) if lo.size else 0.0, float(hi[0]) if hi.size else 0.0),
+            confidence_interval=(
+                float(lo[0]) if lo.size else 0.0,
+                float(hi[0]) if hi.size else 0.0,
+            ),
             expected_duration={0: float(h) * float(terminal[0]), 1: float(h) * float(terminal[1])},
             step_distributions=step_proba,
             state_names=self._state_names,
@@ -528,7 +535,11 @@ class KalmanFilterModel(StateSpaceModel):
         return int(n * n + m * n + n * (n + 1) // 2 + m * (m + 1) // 2)
 
     def _maybe_dynamic_beta_obs(self, y: np.ndarray) -> np.ndarray:
-        if self.system is not None and self.system.application == "dynamic_beta" and y.shape[1] >= 2:
+        if (
+            self.system is not None
+            and self.system.application == "dynamic_beta"
+            and y.shape[1] >= 2
+        ):
             return y[:, 0:1]
         return y
 
@@ -743,7 +754,9 @@ class KalmanRegimeModel(RegimeModel):
         )
         self._state_names = self._engine.state_names
 
-    def fit(self, frame: pl.DataFrame, feature_columns: list[str] | None = None) -> KalmanRegimeModel:
+    def fit(
+        self, frame: pl.DataFrame, feature_columns: list[str] | None = None
+    ) -> KalmanRegimeModel:
         self._engine.fit(frame, observation_columns=feature_columns)
         self._fitted = True
         self._transition_matrix = np.array([[0.9, 0.1], [0.1, 0.9]], dtype=np.float64)

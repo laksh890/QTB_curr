@@ -67,7 +67,9 @@ class MotifConfig(BaseModel):
 class TransformConfig(BaseModel):
     model_config = ConfigDict(frozen=True)
 
-    method: Literal["log_return", "simple_return", "diff", "zscore", "robust", "rank"] = "log_return"
+    method: Literal["log_return", "simple_return", "diff", "zscore", "robust", "rank"] = (
+        "log_return"
+    )
     window: int = 64
     temporal_mode: Literal["rolling", "expanding", "training_only"] = "rolling"
 
@@ -110,7 +112,7 @@ class TimeSeriesSettings(BaseModel):
             if hasattr(data, "items") and not isinstance(data, dict):
                 data = OmegaConf.to_container(data, resolve=True)
             return cls.model_validate(dict(data or {}))
-        except Exception as exc:  # noqa: BLE001
+        except Exception as exc:
             from iqrp.app.core.exceptions import ConfigurationError
 
             raise ConfigurationError(

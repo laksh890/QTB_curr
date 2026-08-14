@@ -81,7 +81,14 @@ class GARCHModel(UnivariateVolatilityModel):
         params, var, ll, aic, bic = self._regime_fit(r, regimes, _fit_subset)
         self._p, self._q = p, q
         self._finalize(
-            r, var, target_column=tgt, params=params, loglik=ll, aic=aic, bic=bic, extras={"p": p, "q": q}
+            r,
+            var,
+            target_column=tgt,
+            params=params,
+            loglik=ll,
+            aic=aic,
+            bic=bic,
+            extras={"p": p, "q": q},
         )
         return self
 

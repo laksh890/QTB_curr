@@ -10,8 +10,10 @@ import polars as pl
 from iqrp.app.forecasting.base.evaluator import EvaluationReport
 from iqrp.app.forecasting.transformers.base.transformer_model import TransformerForecastModel
 from iqrp.app.forecasting.transformers.config import TransformerSettings
-from iqrp.app.forecasting.transformers.diagnostics.report import run_transformer_diagnostics
-from iqrp.app.forecasting.transformers.registry import create_transformer_model, ensure_transformer_models_loaded
+from iqrp.app.forecasting.transformers.registry import (
+    create_transformer_model,
+    ensure_transformer_models_loaded,
+)
 from iqrp.app.forecasting.transformers.visualization.plots import (
     plot_attention_map,
     plot_forecast,

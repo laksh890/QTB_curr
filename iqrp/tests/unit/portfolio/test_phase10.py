@@ -12,7 +12,6 @@ from iqrp.app.portfolio.phase10 import (
     write_phase10_report,
 )
 
-
 EXPECTED_CHECKLIST_KEYS = [
     "Portfolio Construction Framework",
     "Expected Return Engine",

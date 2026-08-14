@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
@@ -30,7 +30,7 @@ def _parse_ts(value: str | datetime | None, *, end: bool = False) -> datetime | 
     else:
         ts = pd.Timestamp(value).to_pydatetime()
     if ts.tzinfo is None:  # pragma: no cover
-        ts = ts.replace(tzinfo=timezone.utc)
+        ts = ts.replace(tzinfo=UTC)
     if end and isinstance(value, str) and len(value) <= 10:
         # Inclusive calendar end-of-day
         ts = ts.replace(hour=23, minute=59, second=59, microsecond=999999)
@@ -89,7 +89,7 @@ def bars_by_timestamp(frame: pd.DataFrame) -> list[tuple[datetime, dict[str, dic
     for ts, group in ordered.groupby("timestamp", sort=True):
         ts_dt = pd.Timestamp(ts).to_pydatetime()
         if ts_dt.tzinfo is None:
-            ts_dt = ts_dt.replace(tzinfo=timezone.utc)
+            ts_dt = ts_dt.replace(tzinfo=UTC)
         bars: dict[str, dict[str, Any]] = {}
         for _, row in group.iterrows():
             inst = str(row["instrument"])
@@ -137,8 +137,13 @@ class PipelineExecutor:
         start_ts = self._bar_schedule[0][0]
         freq_raw = str(self.config.frequency or "daily").lower()
         try:  # pragma: no cover - alias map below is authoritative
-            freq = ClockFrequency(freq_raw) if freq_raw in ClockFrequency.__members__.values() or freq_raw in {f.value for f in ClockFrequency} else ClockFrequency.DAILY
-        except Exception:  # noqa: BLE001
+            freq = (
+                ClockFrequency(freq_raw)
+                if freq_raw in ClockFrequency.__members__.values()
+                or freq_raw in {f.value for f in ClockFrequency}
+                else ClockFrequency.DAILY
+            )
+        except Exception:
             freq = ClockFrequency.DAILY
         # Map common strings
         aliases = {
@@ -220,9 +225,7 @@ class PipelineExecutor:
         if checkpoint_every and self.config.checkpoint_dir:
             write_checkpoint(
                 self.context,
-                Path(self.config.checkpoint_dir)
-                / self.config.backtest_id
-                / "checkpoint.json",
+                Path(self.config.checkpoint_dir) / self.config.backtest_id / "checkpoint.json",
             )
         self.strategy.on_end(self.context)
         return self.context

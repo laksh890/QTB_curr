@@ -29,7 +29,9 @@ def optimize_neural(
     }
     if method == "optuna" or method == "bayesian":
         return _optuna_search(model, X_seq, y_seq, settings, space_grid)
-    candidates = _expand(space_grid, method=method, n_trials=settings.optimization.n_trials, seed=settings.train.seed)
+    candidates = _expand(
+        space_grid, method=method, n_trials=settings.optimization.n_trials, seed=settings.train.seed
+    )
     best_score, best = float("inf"), {}
     for cand in candidates:
         score = _eval_candidate(model, X_seq, y_seq, settings, cand)
@@ -38,7 +40,9 @@ def optimize_neural(
     return best
 
 
-def _expand(space: dict[str, list[Any]], *, method: str, n_trials: int, seed: int) -> list[dict[str, Any]]:
+def _expand(
+    space: dict[str, list[Any]], *, method: str, n_trials: int, seed: int
+) -> list[dict[str, Any]]:
     rng = np.random.default_rng(seed)
     if method == "grid":
         out = [{}]
@@ -65,7 +69,11 @@ def _eval_candidate(
     s = NeuralSettings.from_mapping(
         {
             **settings.model_dump(),
-            "train": {**settings.train.model_dump(), "epochs": min(5, settings.train.epochs), "learning_rate": cand.get("learning_rate", settings.train.learning_rate)},
+            "train": {
+                **settings.train.model_dump(),
+                "epochs": min(5, settings.train.epochs),
+                "learning_rate": cand.get("learning_rate", settings.train.learning_rate),
+            },
             "architecture": {
                 **settings.architecture.model_dump(),
                 "hidden_size": cand.get("hidden_size", settings.architecture.hidden_size),
@@ -84,12 +92,16 @@ def _eval_candidate(
         trainer = NeuralTrainer(s)
         mod, _ = trainer.fit(mod, X_tr, y_tr, X_va, y_va)
         return trainer.evaluate_loss(mod, X_va if X_va.size else X_tr, y_va if y_va.size else y_tr)
-    except Exception:  # noqa: BLE001  # pragma: no cover
+    except Exception:  # pragma: no cover
         return 1e6
 
 
 def _optuna_search(
-    model: Any, X_seq: np.ndarray, y_seq: np.ndarray, settings: NeuralSettings, space: dict[str, list[Any]]
+    model: Any,
+    X_seq: np.ndarray,
+    y_seq: np.ndarray,
+    settings: NeuralSettings,
+    space: dict[str, list[Any]],
 ) -> dict[str, Any]:
     try:
         import optuna
@@ -105,9 +117,28 @@ def _optuna_search(
             }
             return _eval_candidate(model, X_seq, y_seq, settings, cand)
 
-        pruner = optuna.pruners.MedianPruner() if settings.optimization.pruning else optuna.pruners.NopPruner()
+        pruner = (
+            optuna.pruners.MedianPruner()
+            if settings.optimization.pruning
+            else optuna.pruners.NopPruner()
+        )
         study = optuna.create_study(direction="minimize", pruner=pruner)
-        study.optimize(objective, n_trials=max(int(settings.optimization.n_trials), 1), show_progress_bar=False)
+        study.optimize(
+            objective, n_trials=max(int(settings.optimization.n_trials), 1), show_progress_bar=False
+        )
         return dict(study.best_params)
-    except Exception:  # noqa: BLE001  # pragma: no cover
-        return optimize_neural(model, X_seq, y_seq, settings=NeuralSettings.from_mapping({**settings.model_dump(), "optimization": {"method": "random", "n_trials": settings.optimization.n_trials}}))
+    except Exception:  # pragma: no cover
+        return optimize_neural(
+            model,
+            X_seq,
+            y_seq,
+            settings=NeuralSettings.from_mapping(
+                {
+                    **settings.model_dump(),
+                    "optimization": {
+                        "method": "random",
+                        "n_trials": settings.optimization.n_trials,
+                    },
+                }
+            ),
+        )

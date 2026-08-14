@@ -11,7 +11,6 @@ from typing import Literal
 import numpy as np
 import polars as pl
 
-
 MarketKind = Literal[
     "trending",
     "mean_reverting",
@@ -37,7 +36,7 @@ def simulate_market_frame(
     gen = rng or np.random.default_rng(0)
     try:
         return _from_simulation_engine(n, kind=kind, n_features=n_features, noise=noise, rng=gen)
-    except Exception:  # noqa: BLE001
+    except Exception:
         return _local_simulate(n, kind=kind, n_features=n_features, noise=noise, rng=gen)
 
 
@@ -69,7 +68,9 @@ def _from_simulation_engine(
     gt = market.ground_truth
     regime = np.asarray(gt.regime_ids).reshape(-1)[-rets.size :]
     vol = np.asarray(gt.volatility).reshape(-1)[-rets.size :]
-    return _assemble(rets, close, regime, vol, n_features=n_features, noise=noise, rng=rng, kind=kind)
+    return _assemble(
+        rets, close, regime, vol, n_features=n_features, noise=noise, rng=rng, kind=kind
+    )
 
 
 def _local_simulate(
@@ -103,7 +104,9 @@ def _local_simulate(
         regime = (rng.random(n) > 0.5).astype(np.int64)
     close = 100.0 * np.exp(np.cumsum(rets))
     vol = np.abs(rets) * 10
-    return _assemble(rets, close, regime, vol, n_features=n_features, noise=noise, rng=rng, kind=kind)
+    return _assemble(
+        rets, close, regime, vol, n_features=n_features, noise=noise, rng=rng, kind=kind
+    )
 
 
 def _assemble(

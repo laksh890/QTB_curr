@@ -67,7 +67,7 @@ def aggregate_risks(
     if m == "max":
         agg = float(np.max(values)) if values.size else 0.0
     elif m == "rms":
-        agg = float(np.sqrt(np.sum(w * values ** 2))) if values.size else 0.0
+        agg = float(np.sqrt(np.sum(w * values**2))) if values.size else 0.0
     else:
         agg = float(np.dot(w, values)) if values.size else 0.0
         m = "weighted_sum"

@@ -15,8 +15,8 @@ ensure_statistical_models_loaded()
 
 __all__ = [
     "StatisticalSettings",
-    "StatisticalTrainer",
     "StatisticalTrainResult",
+    "StatisticalTrainer",
     "create_statistical_model",
     "ensure_statistical_models_loaded",
     "list_statistical_models",

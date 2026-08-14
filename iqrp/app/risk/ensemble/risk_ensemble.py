@@ -15,7 +15,11 @@ from typing import Any
 import numpy as np
 
 from iqrp.app.risk.base import RiskState, as_returns, as_weights
-from iqrp.app.risk.ensemble.aggregator import RiskAggregator, aggregate_metrics, missing_critical_keys
+from iqrp.app.risk.ensemble.aggregator import (
+    RiskAggregator,
+    aggregate_metrics,
+    missing_critical_keys,
+)
 from iqrp.app.risk.ensemble.calibration import CalibrationEngine, run_calibration
 from iqrp.app.risk.ensemble.confidence import ConfidenceEstimator, estimate_confidence
 from iqrp.app.risk.ensemble.config import EnsembleSettings
@@ -244,8 +248,12 @@ class RiskIntelligenceEnsemble:
                 metric_bag["var"] = float(self.risk_engine.var(r).value)
             if "cvar" not in metric_bag and hasattr(self.risk_engine, "cvar"):
                 metric_bag["cvar"] = float(self.risk_engine.cvar(r).value)
-            if "expected_shortfall" not in metric_bag and hasattr(self.risk_engine, "expected_shortfall"):
-                metric_bag["expected_shortfall"] = float(self.risk_engine.expected_shortfall(r).value)
+            if "expected_shortfall" not in metric_bag and hasattr(
+                self.risk_engine, "expected_shortfall"
+            ):
+                metric_bag["expected_shortfall"] = float(
+                    self.risk_engine.expected_shortfall(r).value
+                )
         elif r.size:
             from iqrp.app.risk.tail.cvar import historical_cvar
             from iqrp.app.risk.tail.var import historical_var
@@ -274,7 +282,11 @@ class RiskIntelligenceEnsemble:
                 forecast_confidence=float(forecast_confidence),
                 asset_index=int(asset_index),
             )
-            engine_audit = eng_decision.to_dict() if hasattr(eng_decision, "to_dict") else {"raw": str(eng_decision)}
+            engine_audit = (
+                eng_decision.to_dict()
+                if hasattr(eng_decision, "to_dict")
+                else {"raw": str(eng_decision)}
+            )
             engine_state = getattr(eng_decision, "risk_state", None)
             approved = bool(getattr(eng_decision, "approved", True))
             if not approved:
@@ -382,7 +394,10 @@ class RiskIntelligenceEnsemble:
             vol = float(
                 realized_vol
                 if realized_vol is not None
-                else (assessment.input_metrics.get("volatility") or self.settings.leverage.target_volatility)
+                else (
+                    assessment.input_metrics.get("volatility")
+                    or self.settings.leverage.target_volatility
+                )
             )
             measure = eng_recommended_leverage(
                 realized_vol=max(vol, float(forecast_vol) if forecast_vol is not None else vol),
@@ -404,7 +419,9 @@ class RiskIntelligenceEnsemble:
             return float(min(float(measure.value), hard_max))
 
         # No assessment — use NORMAL caps only if vol provided; still clip hard
-        vol = float(realized_vol if realized_vol is not None else self.settings.leverage.target_volatility)
+        vol = float(
+            realized_vol if realized_vol is not None else self.settings.leverage.target_volatility
+        )
         measure = eng_recommended_leverage(
             realized_vol=vol,
             target_vol=self.settings.leverage.target_volatility,
@@ -435,10 +452,10 @@ class RiskIntelligenceEnsemble:
                 state = self.risk_state(scores, previous_state=previous_state)
                 return float(state_cap(self.settings, state).max_exposure)
             else:
-                return float(state_cap(self.settings, self._state_machine.current_state).max_exposure)
-        return float(
-            min(assessment.max_exposure, float(self.settings.limits.max_gross_exposure))
-        )
+                return float(
+                    state_cap(self.settings, self._state_machine.current_state).max_exposure
+                )
+        return float(min(assessment.max_exposure, float(self.settings.limits.max_gross_exposure)))
 
     # --------------------------------------------------------------- helpers
     def calibrate(self, **kwargs: Any) -> dict[str, Any]:

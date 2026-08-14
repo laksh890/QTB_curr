@@ -5,7 +5,7 @@ from __future__ import annotations
 import importlib
 import threading
 from collections.abc import Callable, Iterable
-from typing import Any, TYPE_CHECKING
+from typing import TYPE_CHECKING, Any
 
 from iqrp.app.core.exceptions import ConfigurationError
 from iqrp.app.forecasting.base.metadata import ForecastModelMeta, TrainingMetadata
@@ -99,7 +99,7 @@ def ensure_forecast_models_loaded(modules: Iterable[str] | None = None) -> None:
     for mod in modules or default:
         try:
             importlib.import_module(mod)
-        except Exception:  # noqa: BLE001 - optional until algorithms land
+        except Exception:
             continue
 
 

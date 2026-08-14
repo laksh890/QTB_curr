@@ -7,7 +7,10 @@ import numpy as np
 from iqrp.app.timeseries.alignment.dtw import dtw_path
 from iqrp.app.timeseries.alignment.shapelets import discover_shapelets
 from iqrp.app.timeseries.alignment.soft_dtw import soft_dtw
-from iqrp.app.timeseries.anomaly.isolation_forest import _isolation_tree_depths, _numpy_isolation_forest
+from iqrp.app.timeseries.anomaly.isolation_forest import (
+    _isolation_tree_depths,
+    _numpy_isolation_forest,
+)
 from iqrp.app.timeseries.anomaly.matrix_profile import matrix_profile_anomalies
 from iqrp.app.timeseries.autocorrelation.acf import acf
 from iqrp.app.timeseries.autocorrelation.cross_correlation import ccf
@@ -32,9 +35,11 @@ from iqrp.app.timeseries.spectral.periodogram import periodogram
 from iqrp.app.timeseries.spectral.spectral_density import spectral_density
 from iqrp.app.timeseries.spectral.welch import welch_psd
 from iqrp.app.timeseries.stationarity.kpss import _kpss_pvalue
-from iqrp.app.timeseries.transforms import TimeSeriesTransformer
-from iqrp.app.timeseries.transforms import log_returns as log_returns_arr
-from iqrp.app.timeseries.transforms import simple_returns as simple_returns_arr
+from iqrp.app.timeseries.transforms import (
+    TimeSeriesTransformer,
+    log_returns as log_returns_arr,
+    simple_returns as simple_returns_arr,
+)
 from iqrp.app.timeseries.wavelets.continuous import cwt_morlet
 from iqrp.app.timeseries.wavelets.denoising import wavelet_denoise
 from iqrp.app.timeseries.wavelets.discrete import dwt_haar
@@ -49,7 +54,10 @@ def test_transform_short_arrays():
     assert TimeSeriesTransformer(method="robust", window=5).fit_transform(x).shape[0] == 30
     assert TimeSeriesTransformer(method="diff", period=2).fit_transform([1.0, 2.0]).shape[0] == 2
     # force order>len via seasonal_diff short
-    assert TimeSeriesTransformer(method="seasonal_diff", period=5).fit_transform([1.0, 2.0]).shape[0] == 2
+    assert (
+        TimeSeriesTransformer(method="seasonal_diff", period=5).fit_transform([1.0, 2.0]).shape[0]
+        == 2
+    )
 
 
 def test_dwt_zero_energy_and_odd():
@@ -80,7 +88,10 @@ def test_shapelets_nan_series():
 
 
 def test_soft_dtw_short():
-    assert soft_dtw([1.0], [1.0]).value == "insufficient_data" or soft_dtw(np.arange(5.0), np.arange(5.0)).method
+    assert (
+        soft_dtw([1.0], [1.0]).value == "insufficient_data"
+        or soft_dtw(np.arange(5.0), np.arange(5.0)).method
+    )
 
 
 def test_dtw_path_empty():
@@ -90,7 +101,10 @@ def test_dtw_path_empty():
 def test_acf_constant_and_pacf():
     assert acf(np.ones(40)).metadata.get("constant_series") or acf(np.ones(40)).method
     assert pacf(np.ones(40)).method
-    assert ccf(np.random.randn(30), np.random.randn(30), nlags=0).method or ccf(np.random.randn(30), np.random.randn(30)).method
+    assert (
+        ccf(np.random.randn(30), np.random.randn(30), nlags=0).method
+        or ccf(np.random.randn(30), np.random.randn(30)).method
+    )
 
 
 def test_spectral_invalid_and_welch_overlap():

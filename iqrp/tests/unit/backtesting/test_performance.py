@@ -7,7 +7,9 @@ import pytest
 
 from iqrp.app.backtesting.performance import (
     StrategyScorecard,
+    annualized_return,
     build_scorecard,
+    cagr,
     compare_to_benchmark,
     full_attribution,
     max_drawdown,
@@ -21,8 +23,6 @@ from iqrp.app.backtesting.performance import (
     summarize_tail,
     summarize_trades,
     total_return,
-    cagr,
-    annualized_return,
 )
 from iqrp.app.backtesting.performance.attribution import (
     attribute_asset,
@@ -173,7 +173,10 @@ def test_drawdown(returns) -> None:
 def test_tail(returns) -> None:
     assert isinstance(value_at_risk(returns), float)
     assert isinstance(conditional_value_at_risk(returns), float)
-    assert expected_shortfall(returns) == pytest.approx(conditional_value_at_risk(returns), rel=1e-6) or True
+    assert (
+        expected_shortfall(returns) == pytest.approx(conditional_value_at_risk(returns), rel=1e-6)
+        or True
+    )
     assert isinstance(tail_loss(returns), float)
     assert worst_day(returns) <= 0 or worst_day(returns) < 1
     assert isinstance(worst_week(returns), float)
@@ -272,7 +275,9 @@ def test_attribution_benchmark_stability(returns) -> None:
 
 def test_scorecard(returns) -> None:
     oos = returns[-50:]
-    sc = build_scorecard(returns, positions=np.tanh(returns), costs=np.abs(returns) * 0.0001, oos_returns=oos)
+    sc = build_scorecard(
+        returns, positions=np.tanh(returns), costs=np.abs(returns) * 0.0001, oos_returns=oos
+    )
     assert isinstance(sc, StrategyScorecard)
     d = sc.to_dict()
     sc2 = StrategyScorecard.from_dict(d)

@@ -1,6 +1,10 @@
 """Forecast model diagnostics."""
 
-from iqrp.app.forecasting.diagnostics.calibration import CalibrationReport, calibration_report, detect_bias
+from iqrp.app.forecasting.diagnostics.calibration import (
+    CalibrationReport,
+    calibration_report,
+    detect_bias,
+)
 from iqrp.app.forecasting.diagnostics.drift import (
     DriftReport,
     detect_feature_drift,

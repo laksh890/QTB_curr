@@ -2,7 +2,8 @@
 
 from __future__ import annotations
 
-from typing import Any, Mapping, Sequence
+from collections.abc import Mapping, Sequence
+from typing import Any
 
 import numpy as np
 
@@ -214,7 +215,11 @@ def run_alpha_diagnostics(
     if extra_arrays:
         arrays.update(extra_arrays)
 
-    finite = finite_check(arrays) if arrays else {"name": "finite_check", "ok": True, "issues": [], "details": {}}
+    finite = (
+        finite_check(arrays)
+        if arrays
+        else {"name": "finite_check", "ok": True, "issues": [], "details": {}}
+    )
     leakage = (
         leakage_shift_test(signal, forward_returns)
         if signal is not None and forward_returns is not None

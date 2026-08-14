@@ -17,7 +17,11 @@ from iqrp.app.forecasting.statistical.base.fitting import (
     information_criteria,
 )
 from iqrp.app.forecasting.statistical.base.selection import select_arima_order
-from iqrp.app.forecasting.statistical.base.stationarity import difference, integrate, suggest_differencing
+from iqrp.app.forecasting.statistical.base.stationarity import (
+    difference,
+    integrate,
+    suggest_differencing,
+)
 from iqrp.app.forecasting.statistical.base.statistical_model import StatisticalForecastModel
 
 
@@ -76,7 +80,11 @@ class ARIMAModel(StatisticalForecastModel):
             d = int(d if d is not None else sel.best_order.get("d", 0))
             q = int(q if q is not None else sel.best_order.get("q", 0))
         else:
-            d = int(d if d is not None else suggest_differencing(y_fit, max_d=self._stat_settings.order.max_d))
+            d = int(
+                d
+                if d is not None
+                else suggest_differencing(y_fit, max_d=self._stat_settings.order.max_d)
+            )
             p = int(p if p is not None else (self._stat_settings.order.p or 1))
             q = int(q if q is not None else (self._stat_settings.order.q or 0))
         z = difference(y_fit, order=d) if d else y_fit
@@ -112,12 +120,14 @@ class ARIMAModel(StatisticalForecastModel):
         )
         return self
 
-    def predict(
-        self, frame: pl.DataFrame, feature_columns: list[str] | None = None
-    ) -> np.ndarray:
+    def predict(self, frame: pl.DataFrame, feature_columns: list[str] | None = None) -> np.ndarray:
         self._require_fitted()
         tgt = self._target_column or self._stat_settings.columns.target
-        y = frame[tgt].to_numpy().astype(np.float64) if tgt in frame.columns else self._extract_target(frame, None)
+        y = (
+            frame[tgt].to_numpy().astype(np.float64)
+            if tgt in frame.columns
+            else self._extract_target(frame, None)
+        )
         if self._fitted_values is not None and self._fitted_values.size == y.size:
             return self._fitted_values.copy()
         z = difference(y, order=self._d or 0) if self._d else y
@@ -147,7 +157,11 @@ class ARIMAModel(StatisticalForecastModel):
         e, _ = arma_innovations(z, self._phi, self._theta, intercept=self._intercept)
         z_path = forecast_arma(z, e, self._phi, self._theta, intercept=self._intercept, horizon=h)
         path = integrate(z_path, self._y, order=d) if d else z_path
-        regime = frame[self._regime_column][-1] if self._regime_column and self._regime_column in frame.columns else None
+        regime = (
+            frame[self._regime_column][-1]
+            if self._regime_column and self._regime_column in frame.columns
+            else None
+        )
         return self._build_forecast(path, horizon=h, regime_used=regime)
 
     def _algorithm_state(self) -> dict[str, Any]:
@@ -178,7 +192,9 @@ class ARIMAModel(StatisticalForecastModel):
         self._intercept = float(state.get("intercept", 0.0))
         self._y = None if state.get("y") is None else np.asarray(state["y"], dtype=np.float64)
         self._residuals = (
-            None if state.get("residuals") is None else np.asarray(state["residuals"], dtype=np.float64)
+            None
+            if state.get("residuals") is None
+            else np.asarray(state["residuals"], dtype=np.float64)
         )
         self._fitted_values = (
             None if state.get("fitted") is None else np.asarray(state["fitted"], dtype=np.float64)

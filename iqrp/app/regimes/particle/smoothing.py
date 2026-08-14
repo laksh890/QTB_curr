@@ -7,7 +7,7 @@ from typing import Any
 
 import numpy as np
 
-from iqrp.app.regimes.particle.particle import FilterTrace, ParticleCloud
+from iqrp.app.regimes.particle.particle import FilterTrace
 from iqrp.app.regimes.particle.propagation import TransitionModel
 
 

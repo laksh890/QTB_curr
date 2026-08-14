@@ -10,15 +10,15 @@ from iqrp.app.backtesting.performance.drawdown import max_drawdown
 from iqrp.app.backtesting.performance.returns import as_returns, cagr
 
 __all__ = [
+    "calmar_ratio",
+    "capture_ratios",
+    "downside_capture",
+    "information_ratio",
+    "omega_ratio",
     "sharpe_ratio",
     "sortino_ratio",
-    "calmar_ratio",
-    "omega_ratio",
-    "information_ratio",
-    "upside_capture",
-    "downside_capture",
-    "capture_ratios",
     "summarize_risk_adjusted",
+    "upside_capture",
 ]
 
 
@@ -50,7 +50,7 @@ def sortino_ratio(
     if r.size < 2:
         return 0.0
     downside = np.minimum(r - float(mar), 0.0)
-    dd = float(np.sqrt(np.mean(downside ** 2)))
+    dd = float(np.sqrt(np.mean(downside**2)))
     if dd < 1e-15:
         return 0.0
     return float((np.mean(r) - float(mar)) / dd * np.sqrt(float(periods_per_year)))

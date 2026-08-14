@@ -22,7 +22,7 @@ def test_csv_adapter_load_and_validate(synthetic_csv: Path):
     adapter = CSVAdapter(synthetic_csv, dataset_id="csv_demo")
     frame = adapter.load()
     assert not frame.empty
-    assert set(["timestamp", "instrument", "open", "high", "low", "close", "volume"]).issubset(
+    assert {"timestamp", "instrument", "open", "high", "low", "close", "volume"}.issubset(
         frame.columns
     )
     report = adapter.validate(raise_on_critical=True)

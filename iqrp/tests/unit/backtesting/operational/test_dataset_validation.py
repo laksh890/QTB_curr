@@ -105,9 +105,7 @@ def test_validator_fails_naive_timestamps():
     naive = raw.copy()
     naive["timestamp"] = pd.to_datetime(naive["timestamp"])  # naive
     try:
-        report = DatasetValidator(fail_on_naive_timestamps=True).validate(
-            naive, normalize=False
-        )
+        report = DatasetValidator(fail_on_naive_timestamps=True).validate(naive, normalize=False)
         assert (not report.ok) or any(i.code == "timezone" for i in report.issues)
     except TypeError:
         # frame_coverage may reject naive timestamps; treat as hard fail path covered

@@ -104,7 +104,14 @@ def optimize_drawdown(
             names = cstr.get("names")
         ok, reason, conflicts = check_feasibility(cstr)
         if not ok:
-            return infeasible_result(name, n, method=method, reason=reason or "infeasible", conflicts=conflicts, names=names)
+            return infeasible_result(
+                name,
+                n,
+                method=method,
+                reason=reason or "infeasible",
+                conflicts=conflicts,
+                names=names,
+            )
 
         base = optimize_mean_variance(
             mu=mu if mu is not None else np.zeros(n),
@@ -152,9 +159,13 @@ def optimize_drawdown(
             port_mdd = _max_drawdown(wealth)
 
         if float(np.min(w)) < cstr["lb"] - 1e-8 or float(np.max(w)) > cstr["ub"] + 1e-8:
-            return infeasible_result(name, n, method=method, reason="box violation", conflicts=["box"], names=names)
+            return infeasible_result(
+                name, n, method=method, reason="box violation", conflicts=["box"], names=names
+            )
         if abs(float(np.sum(w)) - cstr["budget"]) > 1e-6:
-            return infeasible_result(name, n, method=method, reason="budget violation", conflicts=["budget"], names=names)
+            return infeasible_result(
+                name, n, method=method, reason="budget violation", conflicts=["budget"], names=names
+            )
 
         return make_result(
             name,

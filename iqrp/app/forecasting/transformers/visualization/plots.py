@@ -12,7 +12,7 @@ def _pyplot():
         import matplotlib.pyplot as plt
 
         return plt
-    except Exception:  # noqa: BLE001  # pragma: no cover
+    except Exception:  # pragma: no cover
         return None
 
 
@@ -33,7 +33,12 @@ def plot_attention_map(attn: np.ndarray) -> dict[str, Any]:
     return payload
 
 
-def plot_forecast(y_pred: np.ndarray, *, y_true: np.ndarray | None = None, bands: tuple[np.ndarray, np.ndarray] | None = None) -> dict[str, Any]:
+def plot_forecast(
+    y_pred: np.ndarray,
+    *,
+    y_true: np.ndarray | None = None,
+    bands: tuple[np.ndarray, np.ndarray] | None = None,
+) -> dict[str, Any]:
     payload: dict[str, Any] = {"y_pred": np.asarray(y_pred).reshape(-1).tolist()}
     plt = _pyplot()
     if plt is None:

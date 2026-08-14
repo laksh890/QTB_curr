@@ -19,7 +19,7 @@ from iqrp.app.timeseries.anomaly.statistical import zscore_anomalies
 from iqrp.app.timeseries.autocorrelation.acf import acf
 from iqrp.app.timeseries.autocorrelation.cross_correlation import ccf
 from iqrp.app.timeseries.autocorrelation.pacf import pacf
-from iqrp.app.timeseries.base import AnalysisResult, TemporalMode, as_float_array
+from iqrp.app.timeseries.base import AnalysisResult, as_float_array
 from iqrp.app.timeseries.change_points.bayesian import bayesian_online_changepoint
 from iqrp.app.timeseries.change_points.binary_segmentation import binseg_detect
 from iqrp.app.timeseries.change_points.cusum import cusum_detect
@@ -36,8 +36,8 @@ from iqrp.app.timeseries.dependence.mutual_information import mutual_information
 from iqrp.app.timeseries.dependence.tail_dependence import empirical_tail_dependence
 from iqrp.app.timeseries.diagnostics import full_diagnostics
 from iqrp.app.timeseries.features import extract_features
-from iqrp.app.timeseries.motifs.discovery import find_motifs
 from iqrp.app.timeseries.motifs.discord import find_discords
+from iqrp.app.timeseries.motifs.discovery import find_motifs
 from iqrp.app.timeseries.multiple_testing import adjust_pvalues
 from iqrp.app.timeseries.nonlinear.approximate_entropy import approximate_entropy
 from iqrp.app.timeseries.nonlinear.entropy import shannon_entropy
@@ -140,7 +140,9 @@ class TimeSeriesAnalyticsEngine:
         if m == "classical":
             return classical_decompose(x, period=p, model=mod)
         if m == "mstl":
-            return mstl_decompose(x, periods=(p, max(p * 7, p + 1)), robust=self.settings.decomposition.robust)
+            return mstl_decompose(
+                x, periods=(p, max(p * 7, p + 1)), robust=self.settings.decomposition.robust
+            )
         return stl_decompose(x, period=p, robust=self.settings.decomposition.robust)
 
     def correlate(
@@ -167,11 +169,19 @@ class TimeSeriesAnalyticsEngine:
             "phillips_perron": phillips_perron(x, alpha=alpha),
             "variance_ratio": variance_ratio(x, alpha=alpha),
         }
-        pvals = [r.pvalue for r in results.values() if r.pvalue is not None and np.isfinite(r.pvalue)]
-        adj = adjust_pvalues(pvals, method=self.settings.multiple_testing.method, alpha=self.settings.multiple_testing.alpha)
+        pvals = [
+            r.pvalue for r in results.values() if r.pvalue is not None and np.isfinite(r.pvalue)
+        ]
+        adj = adjust_pvalues(
+            pvals,
+            method=self.settings.multiple_testing.method,
+            alpha=self.settings.multiple_testing.alpha,
+        )
         return {
             "tests": {k: v.to_dict() for k, v in results.items()},
-            "multiple_testing": {k: (v.tolist() if isinstance(v, np.ndarray) else v) for k, v in adj.items()},
+            "multiple_testing": {
+                k: (v.tolist() if isinstance(v, np.ndarray) else v) for k, v in adj.items()
+            },
             "note": "Do not treat unadjusted significance as a profitable feature.",
         }
 
@@ -248,7 +258,9 @@ class TimeSeriesAnalyticsEngine:
             "cointegration": self.cointegration(x, y).to_dict(),
         }
 
-    def anomalies(self, x: np.ndarray | list[float], *, method: str | None = None) -> AnalysisResult:
+    def anomalies(
+        self, x: np.ndarray | list[float], *, method: str | None = None
+    ) -> AnalysisResult:
         m = method or self.settings.anomaly.method
         if m == "statistical":
             return zscore_anomalies(x, threshold=self.settings.anomaly.z_threshold)
@@ -284,7 +296,9 @@ class TimeSeriesAnalyticsEngine:
         )
 
     def diagnostics(self, x: np.ndarray | list[float]) -> dict[str, AnalysisResult]:
-        return full_diagnostics(x, period=self.settings.decomposition.period, alpha=self.settings.stationarity.alpha)
+        return full_diagnostics(
+            x, period=self.settings.decomposition.period, alpha=self.settings.stationarity.alpha
+        )
 
     def visualize(self, x: np.ndarray | list[float]) -> dict[str, Any]:
         arr = as_float_array(x)
@@ -297,7 +311,9 @@ class TimeSeriesAnalyticsEngine:
         if isinstance(spec.value, dict):
             freqs = spec.value.get("frequencies")
             amp = spec.value.get("power")
-        anomaly_idx = an.value if isinstance(an.value, list) else (an.metadata or {}).get("indices", [])
+        anomaly_idx = (
+            an.value if isinstance(an.value, list) else (an.metadata or {}).get("indices", [])
+        )
         return {
             "decomposition": decomposition_chart(dec),
             "change_points": change_point_chart(arr, cp),
@@ -313,7 +329,9 @@ class TimeSeriesAnalyticsEngine:
         return self._serializer.save(self, path)
 
     @classmethod
-    def load(cls, path: str | Path, settings: TimeSeriesSettings | None = None) -> TimeSeriesAnalyticsEngine:
+    def load(
+        cls, path: str | Path, settings: TimeSeriesSettings | None = None
+    ) -> TimeSeriesAnalyticsEngine:
         ser = TimeSeriesSerializer()
         payload = ser.load(path)
         eng = cls(settings=settings or TimeSeriesSettings.default())
@@ -332,7 +350,7 @@ class TimeSeriesAnalyticsEngine:
         if "settings" in payload:
             try:
                 self.settings = TimeSeriesSettings.from_mapping(payload["settings"])
-            except Exception:  # noqa: BLE001
+            except Exception:
                 pass
         self._fitted = bool(payload.get("fitted", False))
         return self

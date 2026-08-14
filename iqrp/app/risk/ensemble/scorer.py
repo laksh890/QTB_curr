@@ -49,10 +49,16 @@ def score_dimensions(
     """Build per-dimension scores; missing dimensions use conservative penalty, never zero-risk."""
 
     market = _pick(normalized, ("volatility", "vol", "realized_vol", "garch_vol", "gap_risk"))
-    tail = _pick(normalized, ("var", "cvar", "expected_shortfall", "es", "var_historical", "var_monte_carlo"))
-    liquidity = _pick(normalized, ("liquidity_score", "liquidity", "liquidity_model", "liquidity_observed"))
+    tail = _pick(
+        normalized, ("var", "cvar", "expected_shortfall", "es", "var_historical", "var_monte_carlo")
+    )
+    liquidity = _pick(
+        normalized, ("liquidity_score", "liquidity", "liquidity_model", "liquidity_observed")
+    )
     concentration = _pick(normalized, ("concentration", "hhi", "herfindahl"))
-    correlation = _pick(normalized, ("correlation", "corr", "avg_correlation", "corr_normal", "corr_stress"))
+    correlation = _pick(
+        normalized, ("correlation", "corr", "avg_correlation", "corr_normal", "corr_stress")
+    )
     drawdown = _pick(normalized, ("drawdown", "current_drawdown", "max_drawdown", "dd"))
     model = _pick(normalized, ("model_risk", "model_disagreement", "forecast_uncertainty"))
     operational = _pick(normalized, ("operational", "ops_risk", "operational_risk"))
@@ -80,9 +86,7 @@ def score_dimensions(
     missing_dims: list[str] = []
     observed = [v for v in raw_dims.values() if v is not None]
     if observed:
-        conservative_floor = float(
-            np.clip(0.5 * float(np.mean(observed)), 0.15, 0.55)
-        )
+        conservative_floor = float(np.clip(0.5 * float(np.mean(observed)), 0.15, 0.55))
     else:
         conservative_floor = float(np.clip(missing_penalty, 0.15, 0.85))
     for name, val in raw_dims.items():

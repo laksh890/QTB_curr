@@ -2,8 +2,9 @@
 
 from __future__ import annotations
 
+from collections.abc import Mapping, Sequence
 from pathlib import Path
-from typing import Any, Mapping, Sequence
+from typing import Any
 
 import numpy as np
 
@@ -71,7 +72,7 @@ class BacktestRunner:
             else:
                 StrategyRegistry.get(self.config.strategy_id, self.config.strategy_version)
                 strategy_ok = True
-        except Exception:  # noqa: BLE001
+        except Exception:
             strategy_ok = False
 
         dataset_ok = False
@@ -86,7 +87,7 @@ class BacktestRunner:
             elif self.config.dataset_id:
                 detail = "dataset_id provided without resolvable local path"
                 dataset_ok = False
-        except Exception as exc:  # noqa: BLE001
+        except Exception as exc:
             detail = str(exc)
             dataset_ok = False
 
@@ -98,9 +99,7 @@ class BacktestRunner:
         )
         self._validation = report
         if not report.ok:
-            self.lifecycle.transition(
-                RunnerLifecycleState.FAILED, reason="preflight_failed"
-            )
+            self.lifecycle.transition(RunnerLifecycleState.FAILED, reason="preflight_failed")
             raise ValueError(f"preflight validation failed: {report.to_dict()}")
         return report
 
@@ -154,9 +153,7 @@ class BacktestRunner:
                     reason=ctx.invalidation_reason or "invalidated",
                 )
             elif self._cancel:  # pragma: no cover
-                self.lifecycle.transition(
-                    RunnerLifecycleState.CANCELLED, reason="cancelled"
-                )
+                self.lifecycle.transition(RunnerLifecycleState.CANCELLED, reason="cancelled")
             else:
                 self._result = self._build_result()
                 self._persisted_root = persist_result(self._result, self.config.output_dir)
@@ -184,16 +181,12 @@ class BacktestRunner:
                             RunnerLifecycleState.FAILED,
                             reason="integrity_failed",
                         )
-                        raise RuntimeError(
-                            f"integrity validation failed: {integrity.to_dict()}"
-                        )
+                        raise RuntimeError(f"integrity validation failed: {integrity.to_dict()}")
                     self.lifecycle.transition(  # pragma: no cover
                         RunnerLifecycleState.COMPLETED, reason="completed_with_warnings"
                     )
                 else:
-                    self.lifecycle.transition(
-                        RunnerLifecycleState.COMPLETED, reason="completed"
-                    )
+                    self.lifecycle.transition(RunnerLifecycleState.COMPLETED, reason="completed")
                 # Persist lifecycle status on the result before writing reports.
                 self._result.status = self.lifecycle.state.value
                 self._report_paths = write_reports(self._result, self.config.output_dir)
@@ -291,7 +284,7 @@ class BacktestRunner:
                 "n_windows": len(windows),
                 "config": cfg,
             }
-        except Exception as exc:  # noqa: BLE001
+        except Exception as exc:
             return {"error": str(exc), "config": cfg}
 
     def retrain(self) -> dict[str, Any]:
@@ -302,7 +295,7 @@ class BacktestRunner:
             from iqrp.app.backtesting.rolling_retraining import RollingRetrainer
 
             return {"retrainer": RollingRetrainer.__name__, "config": cfg}
-        except Exception as exc:  # noqa: BLE001
+        except Exception as exc:
             return {"error": str(exc), "config": cfg}
 
     def scenarios(self) -> dict[str, Any]:
@@ -314,7 +307,7 @@ class BacktestRunner:
 
             eng = ScenarioEngine()
             return {"engine": type(eng).__name__, "config": cfg}
-        except Exception as exc:  # noqa: BLE001
+        except Exception as exc:
             return {"error": str(exc), "config": cfg}
 
     def parameter_sweep(
@@ -352,7 +345,7 @@ class BacktestRunner:
                 perf = {"summary": perf}
             perf["sharpe"] = float(sharpe_ratio(rets)) if rets else 0.0
             risk["max_drawdown"] = float(max_drawdown(rets)) if rets else 0.0
-        except Exception:  # noqa: BLE001
+        except Exception:
             if eq:
                 arr = np.asarray(eq, dtype=np.float64)
                 perf = {

@@ -9,9 +9,9 @@ from iqrp.app.timeseries.diagnostics.diagnostics import (
 )
 
 __all__ = [
-    "structural_breaks",
     "distribution_shift",
+    "full_diagnostics",
     "heteroskedasticity",
     "seasonality_diagnostics",
-    "full_diagnostics",
+    "structural_breaks",
 ]

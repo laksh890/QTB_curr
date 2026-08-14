@@ -37,30 +37,174 @@ class ComponentCheck:
 
 
 PHASE10_COMPONENTS: list[ComponentCheck] = [
-    ComponentCheck("Portfolio Construction Framework", "engine", "iqrp.app.portfolio", "PortfolioConstructionEngine", ["PortfolioConstruction.md"]),
-    ComponentCheck("Expected Return Engine", "estimators", "iqrp.app.portfolio.expected_returns", "forecast_expected_returns", ["PortfolioConstruction.md"]),
-    ComponentCheck("Covariance Engine", "estimators", "iqrp.app.portfolio.covariance", "shrinkage_covariance", ["PortfolioConstruction.md"]),
-    ComponentCheck("Mean-Variance Optimization", "optimization", "iqrp.app.portfolio.optimization", "optimize_mean_variance", ["MeanVariance.md"]),
-    ComponentCheck("Minimum Variance", "optimization", "iqrp.app.portfolio.optimization", "optimize_minimum_variance", ["MeanVariance.md"]),
-    ComponentCheck("Maximum Sharpe", "optimization", "iqrp.app.portfolio.optimization", "optimize_maximum_sharpe", ["MeanVariance.md"]),
-    ComponentCheck("Risk Parity", "optimization", "iqrp.app.portfolio.optimization", "optimize_risk_parity", ["RiskParity.md"]),
-    ComponentCheck("Equal Risk Contribution", "optimization", "iqrp.app.portfolio.optimization", "optimize_risk_parity", ["RiskParity.md"]),
-    ComponentCheck("Hierarchical Risk Parity", "optimization", "iqrp.app.portfolio.optimization", "optimize_hrp", ["RiskParity.md"]),
-    ComponentCheck("Maximum Diversification", "optimization", "iqrp.app.portfolio.optimization", "optimize_maximum_diversification", ["PortfolioConstruction.md"]),
-    ComponentCheck("CVaR Optimization", "optimization", "iqrp.app.portfolio.optimization", "optimize_cvar", ["PortfolioConstruction.md"]),
-    ComponentCheck("Drawdown-aware Optimization", "optimization", "iqrp.app.portfolio.optimization", "optimize_drawdown", ["PortfolioConstruction.md"]),
-    ComponentCheck("Black-Litterman", "optimization", "iqrp.app.portfolio.optimization", "optimize_black_litterman", ["BlackLitterman.md"]),
-    ComponentCheck("Robust Optimization", "optimization", "iqrp.app.portfolio.optimization", "optimize_robust", ["RobustOptimization.md"]),
-    ComponentCheck("Transaction Cost Modeling", "costs", "iqrp.app.portfolio.transaction_costs", "total_transaction_cost", ["TransactionCosts.md"]),
-    ComponentCheck("Turnover Control", "costs", "iqrp.app.portfolio.optimization", "optimize_turnover", ["TurnoverControl.md"]),
-    ComponentCheck("Liquidity-aware Optimization", "constraints", "iqrp.app.portfolio.constraints", "check_liquidity_constraints", ["PortfolioConstraints.md"]),
-    ComponentCheck("Factor Constraints", "constraints", "iqrp.app.portfolio.constraints", "check_factor_constraints", ["PortfolioConstraints.md"]),
-    ComponentCheck("Currency Constraints", "constraints", "iqrp.app.portfolio.constraints", "check_currency_constraints", ["PortfolioConstraints.md"]),
-    ComponentCheck("Multi-Strategy Allocation", "construction", "iqrp.app.portfolio.construction", "signals_to_raw_weights", ["PortfolioConstruction.md"]),
-    ComponentCheck("Multi-Period Optimization", "multi_period", "iqrp.app.portfolio.multi_period", "optimize_multi_period", ["MultiPeriodOptimization.md"]),
-    ComponentCheck("Dynamic Rebalancing", "construction", "iqrp.app.portfolio.construction", "plan_rebalance", ["TurnoverControl.md"]),
-    ComponentCheck("Portfolio Validation", "engine", "iqrp.app.portfolio", "ValidationReport", ["PortfolioConstruction.md"]),
-    ComponentCheck("Risk Intelligence Pre-Trade Validation", "engine", "iqrp.app.portfolio", "PortfolioConstructionEngine", ["PortfolioConstruction.md"]),
+    ComponentCheck(
+        "Portfolio Construction Framework",
+        "engine",
+        "iqrp.app.portfolio",
+        "PortfolioConstructionEngine",
+        ["PortfolioConstruction.md"],
+    ),
+    ComponentCheck(
+        "Expected Return Engine",
+        "estimators",
+        "iqrp.app.portfolio.expected_returns",
+        "forecast_expected_returns",
+        ["PortfolioConstruction.md"],
+    ),
+    ComponentCheck(
+        "Covariance Engine",
+        "estimators",
+        "iqrp.app.portfolio.covariance",
+        "shrinkage_covariance",
+        ["PortfolioConstruction.md"],
+    ),
+    ComponentCheck(
+        "Mean-Variance Optimization",
+        "optimization",
+        "iqrp.app.portfolio.optimization",
+        "optimize_mean_variance",
+        ["MeanVariance.md"],
+    ),
+    ComponentCheck(
+        "Minimum Variance",
+        "optimization",
+        "iqrp.app.portfolio.optimization",
+        "optimize_minimum_variance",
+        ["MeanVariance.md"],
+    ),
+    ComponentCheck(
+        "Maximum Sharpe",
+        "optimization",
+        "iqrp.app.portfolio.optimization",
+        "optimize_maximum_sharpe",
+        ["MeanVariance.md"],
+    ),
+    ComponentCheck(
+        "Risk Parity",
+        "optimization",
+        "iqrp.app.portfolio.optimization",
+        "optimize_risk_parity",
+        ["RiskParity.md"],
+    ),
+    ComponentCheck(
+        "Equal Risk Contribution",
+        "optimization",
+        "iqrp.app.portfolio.optimization",
+        "optimize_risk_parity",
+        ["RiskParity.md"],
+    ),
+    ComponentCheck(
+        "Hierarchical Risk Parity",
+        "optimization",
+        "iqrp.app.portfolio.optimization",
+        "optimize_hrp",
+        ["RiskParity.md"],
+    ),
+    ComponentCheck(
+        "Maximum Diversification",
+        "optimization",
+        "iqrp.app.portfolio.optimization",
+        "optimize_maximum_diversification",
+        ["PortfolioConstruction.md"],
+    ),
+    ComponentCheck(
+        "CVaR Optimization",
+        "optimization",
+        "iqrp.app.portfolio.optimization",
+        "optimize_cvar",
+        ["PortfolioConstruction.md"],
+    ),
+    ComponentCheck(
+        "Drawdown-aware Optimization",
+        "optimization",
+        "iqrp.app.portfolio.optimization",
+        "optimize_drawdown",
+        ["PortfolioConstruction.md"],
+    ),
+    ComponentCheck(
+        "Black-Litterman",
+        "optimization",
+        "iqrp.app.portfolio.optimization",
+        "optimize_black_litterman",
+        ["BlackLitterman.md"],
+    ),
+    ComponentCheck(
+        "Robust Optimization",
+        "optimization",
+        "iqrp.app.portfolio.optimization",
+        "optimize_robust",
+        ["RobustOptimization.md"],
+    ),
+    ComponentCheck(
+        "Transaction Cost Modeling",
+        "costs",
+        "iqrp.app.portfolio.transaction_costs",
+        "total_transaction_cost",
+        ["TransactionCosts.md"],
+    ),
+    ComponentCheck(
+        "Turnover Control",
+        "costs",
+        "iqrp.app.portfolio.optimization",
+        "optimize_turnover",
+        ["TurnoverControl.md"],
+    ),
+    ComponentCheck(
+        "Liquidity-aware Optimization",
+        "constraints",
+        "iqrp.app.portfolio.constraints",
+        "check_liquidity_constraints",
+        ["PortfolioConstraints.md"],
+    ),
+    ComponentCheck(
+        "Factor Constraints",
+        "constraints",
+        "iqrp.app.portfolio.constraints",
+        "check_factor_constraints",
+        ["PortfolioConstraints.md"],
+    ),
+    ComponentCheck(
+        "Currency Constraints",
+        "constraints",
+        "iqrp.app.portfolio.constraints",
+        "check_currency_constraints",
+        ["PortfolioConstraints.md"],
+    ),
+    ComponentCheck(
+        "Multi-Strategy Allocation",
+        "construction",
+        "iqrp.app.portfolio.construction",
+        "signals_to_raw_weights",
+        ["PortfolioConstruction.md"],
+    ),
+    ComponentCheck(
+        "Multi-Period Optimization",
+        "multi_period",
+        "iqrp.app.portfolio.multi_period",
+        "optimize_multi_period",
+        ["MultiPeriodOptimization.md"],
+    ),
+    ComponentCheck(
+        "Dynamic Rebalancing",
+        "construction",
+        "iqrp.app.portfolio.construction",
+        "plan_rebalance",
+        ["TurnoverControl.md"],
+    ),
+    ComponentCheck(
+        "Portfolio Validation",
+        "engine",
+        "iqrp.app.portfolio",
+        "ValidationReport",
+        ["PortfolioConstruction.md"],
+    ),
+    ComponentCheck(
+        "Risk Intelligence Pre-Trade Validation",
+        "engine",
+        "iqrp.app.portfolio",
+        "PortfolioConstructionEngine",
+        ["PortfolioConstruction.md"],
+    ),
 ]
 
 
@@ -110,7 +254,7 @@ def validate_phase10() -> dict[str, Any]:
                 else:
                     item.status = "pass"
                     item.detail = "importable and documented"
-        except Exception as exc:  # noqa: BLE001
+        except Exception as exc:
             item.status = "fail"
             item.detail = f"import error: {exc}"
             failures.append(item.detail)
@@ -148,7 +292,7 @@ def validate_phase10() -> dict[str, Any]:
         ):
             if required not in getattr(port_pkg, "__all__", []):
                 failures.append(f"portfolio.__all__ missing {required}")
-    except Exception as exc:  # noqa: BLE001
+    except Exception as exc:
         failures.append(f"portfolio package import failed: {exc}")
 
     cfg = Path(integration["hydra"])
@@ -214,8 +358,14 @@ def validate_phase10() -> dict[str, Any]:
 
 def write_phase10_report(path: str | Path | None = None) -> Path:
     report = validate_phase10()
-    out = Path(path) if path else (
-        Path(__file__).resolve().parents[2] / "docs" / "Phase10_PortfolioConstruction_Validation.json"
+    out = (
+        Path(path)
+        if path
+        else (
+            Path(__file__).resolve().parents[2]
+            / "docs"
+            / "Phase10_PortfolioConstruction_Validation.json"
+        )
     )
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(report, indent=2), encoding="utf-8")

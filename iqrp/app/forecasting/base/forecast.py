@@ -114,7 +114,11 @@ class Forecast:
         if isinstance(r, np.ndarray):
             if r.size == 0:
                 return None
-            return r[min(idx, r.size - 1)].item() if hasattr(r[min(idx, r.size - 1)], "item") else r[min(idx, r.size - 1)]
+            return (
+                r[min(idx, r.size - 1)].item()
+                if hasattr(r[min(idx, r.size - 1)], "item")
+                else r[min(idx, r.size - 1)]
+            )
         return r
 
     def to_dict(self) -> dict[str, Any]:

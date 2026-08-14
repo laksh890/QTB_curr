@@ -5,7 +5,6 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Any
 
-import numpy as np
 import polars as pl
 
 from iqrp.app.forecasting.base.evaluator import EvaluationReport, ForecastEvaluator
@@ -103,7 +102,9 @@ class ForecastTrainer:
         horizon = int(getattr(model.meta, "default_horizon", 1))
         frac = validation_fraction
         if frac is None and self.settings is not None:
-            frac = float(getattr(getattr(self.settings, "training", None), "validation_fraction", 0.0))
+            frac = float(
+                getattr(getattr(self.settings, "training", None), "validation_fraction", 0.0)
+            )
         frac = float(frac or 0.0)
         history: list[dict[str, Any]] = []
         eval_report: EvaluationReport | None = None
@@ -154,4 +155,6 @@ class ForecastTrainer:
             extra={"mode": "partial_fit"},
         )
         get_registry().record_training(model.meta.name, meta)
-        return TrainResult(model_name=model.meta.name, training=meta, metadata={"mode": "partial_fit"})
+        return TrainResult(
+            model_name=model.meta.name, training=meta, metadata={"mode": "partial_fit"}
+        )

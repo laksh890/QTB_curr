@@ -40,9 +40,13 @@ def check_concentration_limits(
     max_concentration: float = 0.25,
     max_herfindahl: float = 0.30,
 ) -> list[LimitBreach]:
-    lims = limits if limits is not None else build_concentration_limits(
-        max_concentration=max_concentration,
-        max_herfindahl=max_herfindahl,
+    lims = (
+        limits
+        if limits is not None
+        else build_concentration_limits(
+            max_concentration=max_concentration,
+            max_herfindahl=max_herfindahl,
+        )
     )
     w = as_weights(weights)
     values = {

@@ -67,7 +67,11 @@ def risk_diagnostics(
                     "symmetry_error": sym_err,
                     "min_eigenvalue": min_eig,
                     "n_negative_eigenvalues": int(np.sum(eig < -1e-10)) if eig.size else 0,
-                    "condition_number": float(np.linalg.cond(c)) if c.size and np.linalg.det(c) != 0 else float("inf"),
+                    "condition_number": (
+                        float(np.linalg.cond(c))
+                        if c.size and np.linalg.det(c) != 0
+                        else float("inf")
+                    ),
                 }
             )
             if sym_err > 1e-8:

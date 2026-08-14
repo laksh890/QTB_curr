@@ -8,7 +8,6 @@ import numpy as np
 
 from iqrp.app.risk.tail.drawdown import drawdown_state
 
-
 # Maps RiskState → capital scale (confidence cannot expand beyond 1.0)
 _STATE_SCALES: dict[str, float] = {
     "NORMAL": 1.0,

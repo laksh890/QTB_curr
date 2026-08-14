@@ -40,7 +40,11 @@ def action_for_state(
     if state == RiskState.CAPITAL_PRESERVATION:
         if proposed_exposure > max_exposure + 1e-12:
             return DecisionAction.REJECT
-        return DecisionAction.APPROVE_REDUCED if proposed_exposure > 0 else DecisionAction.APPROVE_REDUCED
+        return (
+            DecisionAction.APPROVE_REDUCED
+            if proposed_exposure > 0
+            else DecisionAction.APPROVE_REDUCED
+        )
     if proposed_exposure > max_exposure + 1e-12:
         if state in (RiskState.CAUTION, RiskState.REDUCED_RISK, RiskState.CAPITAL_PRESERVATION):
             return DecisionAction.APPROVE_REDUCED

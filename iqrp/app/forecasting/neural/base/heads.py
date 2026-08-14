@@ -4,17 +4,23 @@ from __future__ import annotations
 
 from typing import Any
 
-from iqrp.app.forecasting.neural.base.torch_utils import has_torch
-
 try:
     import torch
     from torch import nn
-except Exception:  # noqa: BLE001  # pragma: no cover
+except Exception:  # pragma: no cover
     torch = None  # type: ignore[assignment]
     nn = object  # type: ignore[assignment]
 
 
-def output_head(in_dim: int, horizon: int, *, task: str, n_classes: int = 2, n_quantiles: int = 3, dist: bool = False) -> Any:
+def output_head(
+    in_dim: int,
+    horizon: int,
+    *,
+    task: str,
+    n_classes: int = 2,
+    n_quantiles: int = 3,
+    dist: bool = False,
+) -> Any:
     if task in {"classification", "multiclass"}:
         return nn.Linear(in_dim, horizon * n_classes)
     if task in {"binary", "probability"}:
@@ -26,7 +32,16 @@ def output_head(in_dim: int, horizon: int, *, task: str, n_classes: int = 2, n_q
     return nn.Linear(in_dim, horizon)
 
 
-def reshape_head(out: Any, batch: int, horizon: int, *, task: str, n_classes: int = 2, n_quantiles: int = 3, dist: bool = False) -> Any:
+def reshape_head(
+    out: Any,
+    batch: int,
+    horizon: int,
+    *,
+    task: str,
+    n_classes: int = 2,
+    n_quantiles: int = 3,
+    dist: bool = False,
+) -> Any:
     if task in {"classification", "multiclass"}:
         return out.view(batch, horizon, n_classes)
     if task == "quantile":

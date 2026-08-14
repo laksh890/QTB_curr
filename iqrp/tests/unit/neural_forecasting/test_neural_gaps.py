@@ -17,7 +17,11 @@ from iqrp.app.forecasting.neural.base.heads import output_head, reshape_head
 from iqrp.app.forecasting.neural.base.losses import GaussianNLLLoss, StudentTNLLLoss, get_loss
 from iqrp.app.forecasting.neural.base.metrics import directional_accuracy, evaluate_predictions
 from iqrp.app.forecasting.neural.base.processes import feature_names, simulate_nonlinear_returns
-from iqrp.app.forecasting.neural.base.scheduler import WarmupCosineScheduler, build_optimizer, build_scheduler
+from iqrp.app.forecasting.neural.base.scheduler import (
+    WarmupCosineScheduler,
+    build_optimizer,
+    build_scheduler,
+)
 from iqrp.app.forecasting.neural.base.torch_utils import (
     count_parameters,
     from_tensor,
@@ -33,9 +37,16 @@ from iqrp.app.forecasting.neural.explainability.attribution import (
     occlusion_analysis,
     saliency_map,
 )
-from iqrp.app.forecasting.neural.optimization.distributed import amp_enabled, enable_gradient_checkpointing, wrap_ddp
+from iqrp.app.forecasting.neural.optimization.distributed import (
+    amp_enabled,
+    enable_gradient_checkpointing,
+    wrap_ddp,
+)
 from iqrp.app.forecasting.neural.optimization.hpo import optimize_neural
-from iqrp.app.forecasting.neural.probabilistic.distributions import aleatoric_from_gaussian, epistemic_mc_dropout
+from iqrp.app.forecasting.neural.probabilistic.distributions import (
+    aleatoric_from_gaussian,
+    epistemic_mc_dropout,
+)
 from iqrp.app.forecasting.neural.probabilistic.quantiles import (
     extract_point_forecast,
     interval_from_prediction,
@@ -43,7 +54,11 @@ from iqrp.app.forecasting.neural.probabilistic.quantiles import (
 )
 from iqrp.app.forecasting.neural.registry import ensure_neural_models_loaded
 from iqrp.app.forecasting.neural.seq2seq.net import Seq2SeqNet
-from iqrp.app.forecasting.neural.visualization.plots import plot_attribution, plot_forecast, plot_training_curves
+from iqrp.app.forecasting.neural.visualization.plots import (
+    plot_attribution,
+    plot_forecast,
+    plot_training_curves,
+)
 
 
 def _fast(**extra):
@@ -205,7 +220,13 @@ def test_trainer_schedulers_and_class_loss(frame) -> None:
     model.fit(frame, feature_columns=feature_names(3))
     settings2 = _fast(
         scheduler={"name": "plateau"},
-        train={"epochs": 2, "batch_size": 16, "device": "cpu", "accumulation_steps": 2, "grad_clip": 1.0},
+        train={
+            "epochs": 2,
+            "batch_size": 16,
+            "device": "cpu",
+            "accumulation_steps": 2,
+            "grad_clip": 1.0,
+        },
     )
     model2 = create_neural_model("lstm", settings=settings2)
     model2.fit(frame, feature_columns=feature_names(3))
@@ -213,7 +234,9 @@ def test_trainer_schedulers_and_class_loss(frame) -> None:
         task={"type": "classification", "n_classes": 2},
         train={"epochs": 2, "batch_size": 16, "device": "cpu", "loss": "cross_entropy"},
     )
-    cls = simulate_nonlinear_returns(90, n_features=3, classification=True, rng=np.random.default_rng(9))
+    cls = simulate_nonlinear_returns(
+        90, n_features=3, classification=True, rng=np.random.default_rng(9)
+    )
     m3 = create_neural_model("mlp", settings=settings3)
     m3.fit(cls, feature_columns=feature_names(3))
     loss_fn = get_loss("mse")
@@ -241,17 +264,23 @@ def test_neural_model_edges(frame, tmp_path: Path) -> None:
     m2.fit(frame[:80], feature_columns=cols)
     m2.partial_fit(frame, feature_columns=cols)
     with pytest.raises(Exception):
-        create_neural_model("nbeats", settings=_fast()).fit(frame, feature_columns=cols).predict_proba(frame)
+        create_neural_model("nbeats", settings=_fast()).fit(
+            frame, feature_columns=cols
+        ).predict_proba(frame)
     s3 = _fast(task={"type": "binary"}, train={"loss": "bce", "epochs": 2, "device": "cpu"})
     m3 = create_neural_model("lstm", settings=s3)
-    cls = simulate_nonlinear_returns(90, n_features=3, classification=True, rng=np.random.default_rng(3))
+    cls = simulate_nonlinear_returns(
+        90, n_features=3, classification=True, rng=np.random.default_rng(3)
+    )
     m3.fit(cls, feature_columns=cols)
     m3.predict_proba(cls)
     m.explain(frame, method="integrated_gradients")
     p = m.export_onnx(tmp_path / "x.onnx")
     assert p.exists()
     with pytest.raises(Exception):
-        create_neural_model("mlp", settings=_fast()).fit(frame.select(["open_time", "target"]), feature_columns=[])
+        create_neural_model("mlp", settings=_fast()).fit(
+            frame.select(["open_time", "target"]), feature_columns=[]
+        )
     create_neural_model(
         "mlp",
         settings={
@@ -280,7 +309,15 @@ def test_neural_model_edges(frame, tmp_path: Path) -> None:
 @pytest.mark.unit
 def test_seq2seq_attention_off_and_quantile_nets(frame) -> None:
     cols = feature_names(3)
-    s = _fast(architecture={"attention": False, "lookback": 10, "horizon": 2, "hidden_size": 12, "num_layers": 1})
+    s = _fast(
+        architecture={
+            "attention": False,
+            "lookback": 10,
+            "horizon": 2,
+            "hidden_size": 12,
+            "num_layers": 1,
+        }
+    )
     m = create_neural_model("seq2seq", settings=s)
     m.fit(frame, feature_columns=cols)
     net = Seq2SeqNet(3, 2, hidden_size=8, use_attention=False, task="quantile", n_quantiles=3)
@@ -291,7 +328,9 @@ def test_seq2seq_attention_off_and_quantile_nets(frame) -> None:
     for name in ("nbeats", "nhits"):
         q = create_neural_model(
             name,
-            settings=_fast(task={"type": "quantile"}, train={"loss": "quantile", "epochs": 2, "device": "cpu"}),
+            settings=_fast(
+                task={"type": "quantile"}, train={"loss": "quantile", "epochs": 2, "device": "cpu"}
+            ),
         )
         q.fit(frame, feature_columns=cols)
         q.forecast(frame, horizon=2)
@@ -309,10 +348,15 @@ def test_hpo_none_and_failures(frame) -> None:
         "iqrp.app.forecasting.neural.optimization.hpo.NeuralTrainer.fit",
         side_effect=RuntimeError("boom"),
     ):
-        best = optimize_neural(m, X_seq, y_seq, settings=_fast(optimization={"method": "random", "n_trials": 1}))
+        best = optimize_neural(
+            m, X_seq, y_seq, settings=_fast(optimization={"method": "random", "n_trials": 1})
+        )
         assert isinstance(best, dict)
     optimize_neural(
-        m, X_seq[:40], y_seq[:40], settings=_fast(optimization={"method": "bayesian", "n_trials": 1, "pruning": False})
+        m,
+        X_seq[:40],
+        y_seq[:40],
+        settings=_fast(optimization={"method": "bayesian", "n_trials": 1, "pruning": False}),
     )
 
 
@@ -320,7 +364,9 @@ def test_hpo_none_and_failures(frame) -> None:
 def test_explain_no_torch_and_distributed() -> None:
     mod = nn.Sequential(nn.Flatten(), nn.Linear(6, 1))
     X = np.random.randn(2, 2, 3)
-    with patch("iqrp.app.forecasting.neural.explainability.attribution.has_torch", return_value=False):
+    with patch(
+        "iqrp.app.forecasting.neural.explainability.attribution.has_torch", return_value=False
+    ):
         assert explain_neural(mod, X, method="ig").shape == X.shape
         assert saliency_map(mod, X).shape == X.shape
         assert occlusion_analysis(mod, X).shape == X.shape
@@ -348,7 +394,9 @@ def test_probabilistic_edges() -> None:
     pred = np.stack([mu, np.zeros_like(mu)], axis=-1)
     q = quantiles_from_prediction(pred, task="distribution", distribution="student_t")
     assert q.shape[-1] == 3
-    point = extract_point_forecast(np.random.randn(4, 3, 3), task="quantile", alphas=(0.1, 0.5, 0.9))
+    point = extract_point_forecast(
+        np.random.randn(4, 3, 3), task="quantile", alphas=(0.1, 0.5, 0.9)
+    )
     assert point.shape[0] == 4
     lo, hi = interval_from_prediction(np.random.randn(1, 3), task="regression")
     assert lo.shape == hi.shape
@@ -409,7 +457,9 @@ def test_forecast_interval_fallback(frame) -> None:
     cols = feature_names(3)
     m = create_neural_model("mlp", settings=_fast())
     m.fit(frame, feature_columns=cols)
-    with patch.object(type(m), "forecast", return_value=MagicMock(intervals=None, path=lambda: np.ones(3))):
+    with patch.object(
+        type(m), "forecast", return_value=MagicMock(intervals=None, path=lambda: np.ones(3))
+    ):
         from iqrp.app.forecasting.neural.base.neural_model import NeuralForecastModel
 
         ints = NeuralForecastModel.forecast_interval(m, frame, horizon=3)

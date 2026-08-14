@@ -7,7 +7,6 @@ from typing import Any
 import numpy as np
 import polars as pl
 
-from iqrp.app.forecasting.base.forecast import Forecast
 from iqrp.app.forecasting.base.metadata import ForecastModelMeta
 from iqrp.app.forecasting.base.registry import register_forecast_model
 from iqrp.app.forecasting.volatility.base.univariate import UnivariateVolatilityModel
@@ -43,7 +42,15 @@ class HistoricalVolatilityModel(UnivariateVolatilityModel):
         var = np.full(r.size, max(sigma**2, 1e-12))
         params = {"sigma": sigma, "annualized": sigma * np.sqrt(ann)}
         ll = float(-0.5 * np.sum(np.log(2 * np.pi * var) + r**2 / var))
-        self._finalize(r, var, target_column=tgt, params=params, loglik=ll, aic=-2 * ll + 2, bic=-2 * ll + np.log(r.size))
+        self._finalize(
+            r,
+            var,
+            target_column=tgt,
+            params=params,
+            loglik=ll,
+            aic=-2 * ll + 2,
+            bic=-2 * ll + np.log(r.size),
+        )
         return self
 
     def _forecast_path(self, horizon: int) -> tuple[np.ndarray, np.ndarray]:
@@ -70,7 +77,9 @@ class RollingVolatilityModel(UnivariateVolatilityModel):
         supports_intervals=True,
     )
 
-    def __init__(self, settings: Any | None = None, *, window: int | None = None, **params: Any) -> None:
+    def __init__(
+        self, settings: Any | None = None, *, window: int | None = None, **params: Any
+    ) -> None:
         super().__init__(settings=settings, **params)
         self._window = window
 

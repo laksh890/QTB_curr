@@ -40,7 +40,9 @@ def build_report_payload(result: OperationalBacktestResult) -> dict[str, Any]:
         "risk": risk,
         "drawdown": {
             "max_drawdown": risk.get("max_drawdown", perf.get("max_drawdown")),
-            "end_drawdown": (result.snapshots[-1] or {}).get("drawdown") if result.snapshots else None,
+            "end_drawdown": (
+                (result.snapshots[-1] or {}).get("drawdown") if result.snapshots else None
+            ),
         },
         "trading": {
             "orders": len(result.orders),
@@ -156,7 +158,17 @@ def render_markdown(payload: dict[str, Any]) -> str:
     ]
     for item in payload.get("limitations") or []:
         lines.append(f"- {item}")
-    lines.extend(["", "## Reconciliation", "", "```json", json.dumps(payload.get("reconciliation") or {}, indent=2, default=str), "```", ""])
+    lines.extend(
+        [
+            "",
+            "## Reconciliation",
+            "",
+            "```json",
+            json.dumps(payload.get("reconciliation") or {}, indent=2, default=str),
+            "```",
+            "",
+        ]
+    )
     return "\n".join(lines)
 
 

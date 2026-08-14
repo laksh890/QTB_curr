@@ -12,13 +12,19 @@ def _pyplot():
         import matplotlib.pyplot as plt
 
         return plt
-    except Exception:  # noqa: BLE001
+    except Exception:
         return None
 
 
-def plot_feature_importance(importances: dict[str, float], *, title: str = "Feature Importance") -> dict[str, Any]:
+def plot_feature_importance(
+    importances: dict[str, float], *, title: str = "Feature Importance"
+) -> dict[str, Any]:
     items = sorted(importances.items(), key=lambda kv: abs(kv[1]), reverse=True)
-    payload = {"names": [k for k, _ in items], "values": [float(v) for _, v in items], "title": title}
+    payload = {
+        "names": [k for k, _ in items],
+        "values": [float(v) for _, v in items],
+        "title": title,
+    }
     plt = _pyplot()
     if plt is None:
         return payload
@@ -30,7 +36,9 @@ def plot_feature_importance(importances: dict[str, float], *, title: str = "Feat
     return payload
 
 
-def plot_shap_summary(shap_vals: np.ndarray, feature_names: list[str] | None = None) -> dict[str, Any]:
+def plot_shap_summary(
+    shap_vals: np.ndarray, feature_names: list[str] | None = None
+) -> dict[str, Any]:
 
     sv = np.asarray(shap_vals, dtype=np.float64)
     means = np.mean(np.abs(sv), axis=0)
@@ -48,8 +56,14 @@ def plot_shap_summary(shap_vals: np.ndarray, feature_names: list[str] | None = N
     return payload
 
 
-def plot_dependence(grid: np.ndarray, values: np.ndarray, *, title: str = "Partial Dependence") -> dict[str, Any]:
-    payload = {"grid": np.asarray(grid).tolist(), "values": np.asarray(values).tolist(), "title": title}
+def plot_dependence(
+    grid: np.ndarray, values: np.ndarray, *, title: str = "Partial Dependence"
+) -> dict[str, Any]:
+    payload = {
+        "grid": np.asarray(grid).tolist(),
+        "values": np.asarray(values).tolist(),
+        "title": title,
+    }
     plt = _pyplot()
     if plt is None:
         return payload

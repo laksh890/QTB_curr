@@ -87,7 +87,7 @@ def _best_split(y: np.ndarray, a: int, b: int, min_size: int) -> tuple[int, floa
     seg = y[a:b]
     m = seg.size
     csum = np.cumsum(seg)
-    csum2 = np.cumsum(seg ** 2)
+    csum2 = np.cumsum(seg**2)
 
     def cost_len(s2: float, s1: float, length: int) -> float:
         if length <= 0:

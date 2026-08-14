@@ -166,9 +166,7 @@ class EnsembleRegistry:
                 f"state_{i}" for i in range(model.meta.n_states)
             )
             smap = build_state_map(member_names, canon)
-            members.append(
-                EnsembleMember(name=name, model=model, weight=1.0, state_map=smap)
-            )
+            members.append(EnsembleMember(name=name, model=model, weight=1.0, state_map=smap))
         # equal weights
         w = 1.0 / max(len(members), 1)
         for m in members:

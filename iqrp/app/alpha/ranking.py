@@ -6,7 +6,8 @@ Statistical significance alone ≠ alpha.
 
 from __future__ import annotations
 
-from typing import Any, Mapping, Sequence
+from collections.abc import Mapping, Sequence
+from typing import Any
 
 import numpy as np
 
@@ -103,7 +104,7 @@ def _extract_score(item: Mapping[str, Any]) -> float:
 
 def _name_of(item: Mapping[str, Any], idx: int) -> str:
     for key in ("name", "signal_name", "experiment_id", "definition_id"):
-        if key in item and item[key]:
+        if item.get(key):
             return str(item[key])
     definition = item.get("definition")
     if isinstance(definition, Mapping) and definition.get("name"):

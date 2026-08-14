@@ -86,7 +86,7 @@ def test_evaluator_and_ffbs_python() -> None:
 @pytest.mark.unit
 def test_model_extract_helpers_and_regime_roundtrip(tmp_path: Path) -> None:
     assert "bayesian_regime" in get_ss_registry().list_names() or True  # may need import
-    import iqrp.app.regimes.bayesian  # noqa: F401
+    import iqrp.app.regimes.bayesian
 
     assert "bayesian_regime" in get_ss_registry().list_names()
     settings = BayesianSettings.from_mapping(

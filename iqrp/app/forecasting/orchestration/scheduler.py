@@ -47,7 +47,11 @@ class ForecastScheduler:
         regime_column: str | None = None,
     ) -> dict[str, Any]:
         self.state.updates += 1
-        actions: dict[str, Any] = {"update": self.state.updates, "retrained": False, "checkpointed": False}
+        actions: dict[str, Any] = {
+            "update": self.state.updates,
+            "retrained": False,
+            "checkpointed": False,
+        }
         if self.should_retrain() or not getattr(model, "is_fitted", False):
             model.fit(
                 frame,

@@ -9,7 +9,7 @@ from iqrp.app.forecasting.neural.base.torch_utils import has_torch
 
 try:
     from torch import nn
-except Exception:  # noqa: BLE001  # pragma: no cover
+except Exception:  # pragma: no cover
     nn = object  # type: ignore[assignment]
 
 
@@ -54,5 +54,11 @@ class MLPNet(nn.Module if has_torch() else object):  # type: ignore[misc]
         h = self.body(x.reshape(b, -1))
         out = self.head(h)
         return reshape_head(
-            out, b, self.horizon, task=self.task, n_classes=self.n_classes, n_quantiles=self.n_quantiles, dist=self.dist
+            out,
+            b,
+            self.horizon,
+            task=self.task,
+            n_classes=self.n_classes,
+            n_quantiles=self.n_quantiles,
+            dist=self.dist,
         )

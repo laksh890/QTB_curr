@@ -55,7 +55,11 @@ def filter_adaptive(
 
         # covariance matching
         if len(innov_hist) >= max(3, window // 2):
-            emp = np.cov(np.asarray(innov_hist).T) if m > 1 else np.array([[float(np.var(innov_hist))]])
+            emp = (
+                np.cov(np.asarray(innov_hist).T)
+                if m > 1
+                else np.array([[float(np.var(innov_hist))]])
+            )
             emp = ensure_spd(emp)
             # R ← (1-α) R + α emp
             r = ensure_spd((1.0 - observation_adapt_rate) * r + observation_adapt_rate * emp)
@@ -64,7 +68,9 @@ def filter_adaptive(
             if d > innovation_threshold:
                 q = ensure_spd(q * (1.0 + process_adapt_rate * (d / innovation_threshold)))
             else:
-                q = ensure_spd((1.0 - process_adapt_rate * 0.1) * q + process_adapt_rate * 0.1 * system.q)
+                q = ensure_spd(
+                    (1.0 - process_adapt_rate * 0.1) * q + process_adapt_rate * 0.1 * system.q
+                )
 
         means[t], covs[t] = x, p
         pred_means[t], pred_covs[t] = x_pred, p_pred
@@ -88,12 +94,16 @@ def filter_adaptive(
     )
 
 
-def adapt_noise_from_trace(trace: FilterTrace, system: LinearGaussianSSM) -> tuple[np.ndarray, np.ndarray]:
+def adapt_noise_from_trace(
+    trace: FilterTrace, system: LinearGaussianSSM
+) -> tuple[np.ndarray, np.ndarray]:
     """Batch covariance-matching estimate of Q, R from a filter trace."""
     innov = trace.innovations
     if innov.ndim == 1:
         innov = innov.reshape(-1, 1)
-    r_hat = ensure_spd(np.cov(innov.T) if innov.shape[1] > 1 else np.array([[float(np.var(innov))]]))
+    r_hat = ensure_spd(
+        np.cov(innov.T) if innov.shape[1] > 1 else np.array([[float(np.var(innov))]])
+    )
     # rough Q from state increments
     dx = np.diff(trace.means, axis=0)
     if dx.size == 0:

@@ -75,7 +75,12 @@ def matrix_profile_anomalies(
     mask[sig_indices] = True
     return AnalysisResult(
         method="matrix_profile_anomalies",
-        value={"indices": sig_indices, "scores": scores, "is_anomaly": mask, "top_discords": indices},
+        value={
+            "indices": sig_indices,
+            "scores": scores,
+            "is_anomaly": mask,
+            "top_discords": indices,
+        },
         statistic=float(np.nanmax(mp)),
         temporal_mode=TemporalMode.FULL_SAMPLE,
         null_hypothesis="no unusual subsequences (discords)",

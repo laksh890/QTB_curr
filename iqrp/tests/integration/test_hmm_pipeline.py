@@ -8,7 +8,7 @@ import numpy as np
 import polars as pl
 import pytest
 
-import iqrp.app.regimes.hmm  # noqa: F401
+import iqrp.app.regimes.hmm
 from iqrp.app.regimes.hmm import HiddenMarkovModel, HMMSettings
 from iqrp.app.regimes.hmm.visualization import (
     plot_hidden_state_timeline,

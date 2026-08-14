@@ -8,7 +8,7 @@ import numpy as np
 import polars as pl
 
 from iqrp.app.forecasting.intelligence.benchmark import benchmark_model
-from iqrp.app.forecasting.intelligence.config import AutoMLConfig, IntelligenceSettings
+from iqrp.app.forecasting.intelligence.config import IntelligenceSettings
 
 
 def optimize_model(
@@ -27,10 +27,14 @@ def optimize_model(
     if cfg.method == "grid":
         return _grid_search(name, frame, feature_columns, target_column, settings, space)
     if cfg.method in {"random", "hyperband", "successive_halving", "pbt"}:
-        return _random_or_bandit(name, frame, feature_columns, target_column, settings, space, method=cfg.method)
+        return _random_or_bandit(
+            name, frame, feature_columns, target_column, settings, space, method=cfg.method
+        )
     if cfg.method in {"bayesian", "optuna"}:
         return _optuna_search(name, frame, feature_columns, target_column, settings, space)
-    return _random_or_bandit(name, frame, feature_columns, target_column, settings, space, method="random")
+    return _random_or_bandit(
+        name, frame, feature_columns, target_column, settings, space, method="random"
+    )
 
 
 def _default_space(name: str) -> dict[str, list[Any]]:
@@ -71,7 +75,7 @@ def _eval(
             model_kwargs=params,
         )
         return float(res.metrics.get("rmse", 1e6))
-    except Exception:  # noqa: BLE001
+    except Exception:
         return 1e6
 
 
@@ -113,7 +117,8 @@ def _random_or_bandit(
         survivors = pool
         while len(survivors) > 1:
             scored = [
-                (p, _eval(name, frame, feature_columns, target_column, settings, p)) for p in survivors
+                (p, _eval(name, frame, feature_columns, target_column, settings, p))
+                for p in survivors
             ]
             scored.sort(key=lambda x: x[1])
             keep = max(len(scored) // 2, 1)
@@ -161,11 +166,13 @@ def _optuna_search(
             study = optuna.create_study(directions=["minimize", "minimize"])
         else:
             study = optuna.create_study(direction="minimize")
-        study.optimize(objective, n_trials=max(int(settings.automl.n_trials), 1), show_progress_bar=False)
+        study.optimize(
+            objective, n_trials=max(int(settings.automl.n_trials), 1), show_progress_bar=False
+        )
         if settings.automl.multi_objective:
             return dict(study.best_trials[0].params) if study.best_trials else {}
         return dict(study.best_params)
-    except Exception:  # noqa: BLE001
+    except Exception:
         return _random_or_bandit(
             name, frame, feature_columns, target_column, settings, space, method="random"
         )

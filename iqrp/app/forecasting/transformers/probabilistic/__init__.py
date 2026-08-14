@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-from typing import Any
-
 import numpy as np
 
 from iqrp.app.forecasting.neural.probabilistic.distributions import (
@@ -11,7 +9,6 @@ from iqrp.app.forecasting.neural.probabilistic.distributions import (
     sample_gaussian,
     student_t_quantiles,
 )
-from iqrp.app.forecasting.neural.base.torch_utils import has_torch
 
 
 def mixture_density_params(pred: np.ndarray, n_mixtures: int = 3) -> dict[str, np.ndarray]:
@@ -34,7 +31,9 @@ def mixture_mean(pred: np.ndarray, n_mixtures: int = 3) -> np.ndarray:
     return np.sum(d["pi"] * d["mu"], axis=-1)
 
 
-def gaussian_head_quantiles(pred: np.ndarray, alphas: tuple[float, ...] = (0.1, 0.5, 0.9)) -> np.ndarray:
+def gaussian_head_quantiles(
+    pred: np.ndarray, alphas: tuple[float, ...] = (0.1, 0.5, 0.9)
+) -> np.ndarray:
     p = np.asarray(pred, dtype=np.float64)
     if p.ndim >= 2 and p.shape[-1] >= 2:
         return gaussian_quantiles(p[..., 0], np.exp(p[..., 1]), alphas=alphas)
@@ -42,7 +41,9 @@ def gaussian_head_quantiles(pred: np.ndarray, alphas: tuple[float, ...] = (0.1, 
     return gaussian_quantiles(mu, np.maximum(0.1 * np.abs(mu), 1e-3), alphas=alphas)
 
 
-def student_t_head_quantiles(pred: np.ndarray, alphas: tuple[float, ...] = (0.1, 0.5, 0.9)) -> np.ndarray:
+def student_t_head_quantiles(
+    pred: np.ndarray, alphas: tuple[float, ...] = (0.1, 0.5, 0.9)
+) -> np.ndarray:
     p = np.asarray(pred, dtype=np.float64)
     if p.ndim >= 2 and p.shape[-1] >= 2:
         return student_t_quantiles(p[..., 0], np.exp(p[..., 1]), alphas=alphas)
@@ -51,9 +52,9 @@ def student_t_head_quantiles(pred: np.ndarray, alphas: tuple[float, ...] = (0.1,
 
 
 __all__ = [
+    "gaussian_head_quantiles",
     "mixture_density_params",
     "mixture_mean",
-    "gaussian_head_quantiles",
-    "student_t_head_quantiles",
     "sample_gaussian",
+    "student_t_head_quantiles",
 ]

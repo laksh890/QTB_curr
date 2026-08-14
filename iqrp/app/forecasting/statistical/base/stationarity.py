@@ -150,7 +150,7 @@ def adf_test(
         X = np.column_stack(cols)
         try:
             beta, *_ = np.linalg.lstsq(X, dep, rcond=None)
-        except Exception:  # noqa: BLE001
+        except Exception:
             continue
         resid = dep - X @ beta
         s2 = float(np.dot(resid, resid) / max(dep.size - X.shape[1], 1))
@@ -165,7 +165,11 @@ def adf_test(
         return StationarityResult(0.0, 1.0, 0, n, {}, False, "adf")
     tstat, used_lags, nobs, _ = best
     # MacKinnon approx critical values for constant case
-    crit = {"1%": -3.43, "5%": -2.86, "10%": -2.57} if regression != "n" else {"1%": -2.58, "5%": -1.95, "10%": -1.62}
+    crit = (
+        {"1%": -3.43, "5%": -2.86, "10%": -2.57}
+        if regression != "n"
+        else {"1%": -2.58, "5%": -1.95, "10%": -1.62}
+    )
     if regression == "ct":
         crit = {"1%": -3.96, "5%": -3.41, "10%": -3.13}
     # rough p-value from normal for ranking (conservative)
@@ -212,7 +216,11 @@ def kpss_test(
         lrv += 2 * w * gamma
     lrv = max(lrv, 1e-300)
     stat = float(np.sum(s**2) / (n**2 * lrv))
-    crit = {"10%": 0.347, "5%": 0.463, "1%": 0.739} if regression == "c" else {"10%": 0.119, "5%": 0.146, "1%": 0.216}
+    crit = (
+        {"10%": 0.347, "5%": 0.463, "1%": 0.739}
+        if regression == "c"
+        else {"10%": 0.119, "5%": 0.146, "1%": 0.216}
+    )
     # approximate p: higher stat → reject stationarity
     pvalue = float(np.exp(-stat / crit["5%"]))
     return StationarityResult(

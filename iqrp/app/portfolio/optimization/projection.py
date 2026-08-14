@@ -118,7 +118,7 @@ def parse_constraints(
                         gross = float(val)
                     elif setter == "bud":
                         bud = float(val)
-        if hasattr(constraints, "names") and getattr(constraints, "names") is not None:
+        if hasattr(constraints, "names") and constraints.names is not None:
             names = list(constraints.names)
 
     if lo:
@@ -273,7 +273,11 @@ def project_weights(
         w = x - (float(np.sum(x)) - bud) / max(x.size, 1)
         w = np.clip(w, lb, ub)
         # restore budget with minimal L2 change under box via dual bisection
-        w = project_box_simplex(w, lb=lb, ub=ub, budget=bud) if lb >= 0 else _project_budget_box_ls(w, lb, ub, bud)
+        w = (
+            project_box_simplex(w, lb=lb, ub=ub, budget=bud)
+            if lb >= 0
+            else _project_budget_box_ls(w, lb, ub, bud)
+        )
 
     gross = cstr.get("max_gross")
     if gross is not None:

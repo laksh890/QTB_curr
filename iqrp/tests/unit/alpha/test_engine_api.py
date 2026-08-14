@@ -13,8 +13,8 @@ from iqrp.app.alpha.base.signal_definition import SignalDefinition
 from iqrp.app.alpha.base.signal_registry import SignalRegistry
 from iqrp.app.alpha.base.signal_result import SignalStatus
 from iqrp.app.alpha.engine import AlphaResearchEngine, ApprovalError
-from iqrp.app.alpha.research.information_coefficient import compute_ic
 from iqrp.app.alpha.research.decay import forward_returns
+from iqrp.app.alpha.research.information_coefficient import compute_ic
 
 
 def test_approve_without_hypothesis_fails(
@@ -25,9 +25,7 @@ def test_approve_without_hypothesis_fails(
 ) -> None:
     rec = engine.register(thin_definition, signal=signal)
     # Attach validate evidence so hyp gate is the failure mode
-    engine.validate(
-        signal, returns, n_trials=10, experiment_id=rec.experiment_id
-    )
+    engine.validate(signal, returns, n_trials=10, experiment_id=rec.experiment_id)
     with pytest.raises(ApprovalError, match="economic_hypothesis"):
         engine.approve(
             rec.experiment_id,
@@ -142,8 +140,7 @@ def test_discover_compare_rank(
         assert c.get("claims_profitability") is False
 
     sig_book = {
-        f"c{i}": np.asarray(c["values"], dtype=np.float64)
-        for i, c in enumerate(candidates[:3])
+        f"c{i}": np.asarray(c["values"], dtype=np.float64) for i, c in enumerate(candidates[:3])
     }
     if len(sig_book) < 2:
         sig_book["extra"] = rng.normal(size=returns.size)
@@ -171,9 +168,7 @@ def test_backtest_stress_decay_regime_capacity(
     # Costs reduce net vs gross within costly backtest
     assert bt_cost["net_mean"] <= bt_cost["gross_mean"] + 1e-12
 
-    stress = engine.stress_test(
-        signal, returns, regimes=regime_scen["regimes"][: signal.size]
-    )
+    stress = engine.stress_test(signal, returns, regimes=regime_scen["regimes"][: signal.size])
     assert "baseline" in stress and "shocks" in stress
 
     decay = engine.analyze_decay(signal, returns, horizons=(1, 2, 5))

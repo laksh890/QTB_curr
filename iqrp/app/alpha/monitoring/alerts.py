@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 
-from typing import Any, Mapping, Sequence
-
+from collections.abc import Mapping, Sequence
+from typing import Any
 
 _SEVERITY_ORDER = {"CRITICAL": 0, "HARD": 1, "HIGH": 2, "MEDIUM": 3, "WARNING": 4, "INFO": 5}
 

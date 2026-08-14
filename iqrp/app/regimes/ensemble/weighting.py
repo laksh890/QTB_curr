@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Any, Literal
+from typing import Literal
 
 import numpy as np
 
@@ -183,7 +183,5 @@ def compute_weights(
         return rolling_weights(score_matrix, min_weight=min_weight)
     if method == "adaptive" and current is not None and score_matrix is not None:
         instant = score_matrix[-1] if score_matrix.ndim == 2 else score_matrix
-        return adaptive_update(
-            current, instant, rate=adaptive_rate, min_weight=min_weight
-        )
+        return adaptive_update(current, instant, rate=adaptive_rate, min_weight=min_weight)
     return equal_weights(len(names))

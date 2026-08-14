@@ -87,7 +87,9 @@ def calibration_report(
     )
 
 
-def detect_bias(y_true: np.ndarray, y_pred: np.ndarray, *, threshold: float = 0.05) -> dict[str, Any]:
+def detect_bias(
+    y_true: np.ndarray, y_pred: np.ndarray, *, threshold: float = 0.05
+) -> dict[str, Any]:
     yt = np.asarray(y_true, dtype=np.float64).reshape(-1)
     yp = np.asarray(y_pred, dtype=np.float64).reshape(-1)
     n = min(yt.size, yp.size)

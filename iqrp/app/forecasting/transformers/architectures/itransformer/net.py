@@ -11,7 +11,7 @@ from iqrp.app.forecasting.transformers.base.heads import forecast_head, reshape_
 try:
     import torch
     from torch import nn
-except Exception:  # noqa: BLE001  # pragma: no cover
+except Exception:  # pragma: no cover
     torch = None  # type: ignore[assignment]
     nn = object  # type: ignore[assignment]
 
@@ -54,7 +54,9 @@ class iTransformerNet(nn.Module if has_torch() else object):  # type: ignore[mis
             nn.GELU(),
             nn.AdaptiveAvgPool1d(1),
         )
-        self.encoder = TransformerEncoder(d_model, n_heads, num_layers, ffn_dim, dropout, attention_type)
+        self.encoder = TransformerEncoder(
+            d_model, n_heads, num_layers, ffn_dim, dropout, attention_type
+        )
         self.head = forecast_head(
             d_model, horizon, task=task, n_classes=n_classes, n_quantiles=n_quantiles, dist=dist
         )

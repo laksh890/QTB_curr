@@ -39,7 +39,9 @@ class EnsembleDiagnostics:
             w1 = history[-1].get("weights") or {}
             keys = set(w0) | set(w1)
             if keys:
-                drift = float(np.mean([abs(float(w1.get(k, 0)) - float(w0.get(k, 0))) for k in keys]))
+                drift = float(
+                    np.mean([abs(float(w1.get(k, 0)) - float(w0.get(k, 0))) for k in keys])
+                )
         cal = None
         if truth is not None:
             y = np.asarray(truth, dtype=np.int64).reshape(-1)

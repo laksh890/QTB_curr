@@ -2,7 +2,8 @@
 
 from __future__ import annotations
 
-from typing import Any, Mapping
+from collections.abc import Mapping
+from typing import Any
 
 import numpy as np
 
@@ -23,9 +24,9 @@ from iqrp.app.backtesting.performance.tail import conditional_value_at_risk
 from iqrp.app.backtesting.performance.trade_metrics import turnover
 
 __all__ = [
-    "compare_strategies",
-    "compare_scorecards",
     "compare_configurations",
+    "compare_scorecards",
+    "compare_strategies",
     "rank_strategies",
 ]
 
@@ -75,9 +76,11 @@ def compare_strategies(
         )
         if include_drawdown_detail:
             metrics.update(
-                {f"dd_{k}": float(v) if isinstance(v, (int, float, np.floating)) else np.nan
-                 for k, v in summarize_drawdown(rets).items()
-                 if isinstance(v, (int, float, np.floating)) or v is None}
+                {
+                    f"dd_{k}": float(v) if isinstance(v, (int, float, np.floating)) else np.nan
+                    for k, v in summarize_drawdown(rets).items()
+                    if isinstance(v, (int, float, np.floating)) or v is None
+                }
             )
         table[str(name)] = metrics
 

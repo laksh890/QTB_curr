@@ -124,7 +124,7 @@ def regime_concentration(
     vals = np.asarray([v for _, v in ics], dtype=np.float64)
     total = float(vals.sum()) + 1e-12
     shares = vals / total
-    hhi = float(np.sum(shares ** 2))
+    hhi = float(np.sum(shares**2))
     top_i = int(np.argmax(shares))
     return {
         "name": "regime_concentration",

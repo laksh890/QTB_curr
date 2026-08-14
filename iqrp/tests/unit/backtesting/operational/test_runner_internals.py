@@ -15,7 +15,11 @@ from iqrp.app.backtesting.runner.adapters import (
     PortfolioConstructionAdapter,
 )
 from iqrp.app.backtesting.runner.configuration import BacktestRunConfig
-from iqrp.app.backtesting.runner.executor import PipelineExecutor, bars_by_timestamp, load_market_frame
+from iqrp.app.backtesting.runner.executor import (
+    PipelineExecutor,
+    bars_by_timestamp,
+    load_market_frame,
+)
 from iqrp.app.backtesting.runner.persistence import persist_result
 from iqrp.app.backtesting.runner.reports import write_reports
 from iqrp.app.backtesting.runner.result import OperationalBacktestResult
@@ -127,7 +131,16 @@ def test_persist_and_reports(tmp_path: Path):
         returns=[0.01, 0.0099],
         timestamps=["2020-01-01", "2020-01-02", "2020-01-03"],
         orders=[{"order_id": "o1", "instrument": "AAA", "side": "buy", "quantity": 1}],
-        fills=[{"fill_id": "f1", "order_id": "o1", "instrument": "AAA", "side": "buy", "quantity": 1, "price": 10}],
+        fills=[
+            {
+                "fill_id": "f1",
+                "order_id": "o1",
+                "instrument": "AAA",
+                "side": "buy",
+                "quantity": 1,
+                "price": 10,
+            }
+        ],
         trades=[],
         positions_log=[],
         snapshots=[],
@@ -142,7 +155,9 @@ def test_persist_and_reports(tmp_path: Path):
     )
     root = persist_result(res, tmp_path / "results")
     assert root is not None
-    assert (Path(root) / "reports" / "result.json").exists() or (Path(root) / "capital.json").exists()
+    assert (Path(root) / "reports" / "result.json").exists() or (
+        Path(root) / "capital.json"
+    ).exists()
     paths = write_reports(res, tmp_path / "results")
     assert paths
     assert res.to_dict()["backtest_id"] == "persist_demo"

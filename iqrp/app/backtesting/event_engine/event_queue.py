@@ -10,9 +10,9 @@ Ordering key: ``(timestamp, priority, sequence)``.
 from __future__ import annotations
 
 import heapq
+from collections.abc import Iterator
 from dataclasses import dataclass, field
 from datetime import datetime
-from typing import Iterator
 
 from iqrp.app.backtesting.event_engine.event import Event
 

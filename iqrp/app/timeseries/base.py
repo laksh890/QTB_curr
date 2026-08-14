@@ -58,7 +58,9 @@ class AnalysisResult:
             "pvalue": self.pvalue,
             "critical_values": dict(self.critical_values) if self.critical_values else None,
             "confidence": self.confidence,
-            "confidence_interval": list(self.confidence_interval) if self.confidence_interval else None,
+            "confidence_interval": (
+                list(self.confidence_interval) if self.confidence_interval else None
+            ),
             "null_hypothesis": self.null_hypothesis,
             "alternative_hypothesis": self.alternative_hypothesis,
             "temporal_mode": self.temporal_mode.value,

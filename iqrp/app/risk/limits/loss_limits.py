@@ -52,9 +52,13 @@ def check_loss_limits(
     max_daily_loss: float = 0.03,
     max_drawdown: float = 0.20,
 ) -> list[LimitBreach]:
-    lims = limits if limits is not None else build_loss_limits(
-        max_daily_loss=max_daily_loss,
-        max_drawdown=max_drawdown,
+    lims = (
+        limits
+        if limits is not None
+        else build_loss_limits(
+            max_daily_loss=max_daily_loss,
+            max_drawdown=max_drawdown,
+        )
     )
     values = {
         "max_daily_loss": abs(float(daily_loss)),

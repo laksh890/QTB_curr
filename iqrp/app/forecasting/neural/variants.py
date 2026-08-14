@@ -12,7 +12,9 @@ from iqrp.app.forecasting.neural.lstm.model import LSTMForecastModel
 from iqrp.app.forecasting.neural.seq2seq.model import Seq2SeqForecastModel
 
 
-def _merge(settings: Any | None, patch: dict[str, Any], **params: Any) -> tuple[NeuralSettings, dict[str, Any]]:
+def _merge(
+    settings: Any | None, patch: dict[str, Any], **params: Any
+) -> tuple[NeuralSettings, dict[str, Any]]:
     base: dict[str, Any] = {}
     if isinstance(settings, dict):
         base = dict(settings)
@@ -47,7 +49,9 @@ class StackedLSTMForecastModel(LSTMForecastModel):
     )
 
     def __init__(self, settings: Any | None = None, **params: Any) -> None:
-        s, params = _merge(settings, {"architecture": {"num_layers": 3, "bidirectional": False}}, **params)
+        s, params = _merge(
+            settings, {"architecture": {"num_layers": 3, "bidirectional": False}}, **params
+        )
         super().__init__(settings=s, **params)
 
 
@@ -68,7 +72,9 @@ class BidirectionalLSTMForecastModel(LSTMForecastModel):
     )
 
     def __init__(self, settings: Any | None = None, **params: Any) -> None:
-        s, params = _merge(settings, {"architecture": {"bidirectional": True, "num_layers": 2}}, **params)
+        s, params = _merge(
+            settings, {"architecture": {"bidirectional": True, "num_layers": 2}}, **params
+        )
         super().__init__(settings=s, **params)
 
 
@@ -89,7 +95,9 @@ class StackedGRUForecastModel(GRUForecastModel):
     )
 
     def __init__(self, settings: Any | None = None, **params: Any) -> None:
-        s, params = _merge(settings, {"architecture": {"num_layers": 3, "bidirectional": False}}, **params)
+        s, params = _merge(
+            settings, {"architecture": {"num_layers": 3, "bidirectional": False}}, **params
+        )
         super().__init__(settings=s, **params)
 
 

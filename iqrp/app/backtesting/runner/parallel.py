@@ -3,8 +3,9 @@
 from __future__ import annotations
 
 import copy
+from collections.abc import Mapping, Sequence
 from concurrent.futures import ProcessPoolExecutor, as_completed
-from typing import Any, Mapping, Sequence
+from typing import Any
 
 
 def _run_single(payload: dict[str, Any]) -> dict[str, Any]:
@@ -21,7 +22,7 @@ def _run_single(payload: dict[str, Any]) -> dict[str, Any]:
     for cls in (BuyAndHoldStrategy, CrossSectionalMomentumStrategy):
         try:
             StrategyRegistry.register(cls, overwrite=True)
-        except Exception:  # noqa: BLE001
+        except Exception:
             pass
 
     cfg = BacktestRunConfig.from_dict(payload["config"])
@@ -33,7 +34,9 @@ def _run_single(payload: dict[str, Any]) -> dict[str, Any]:
     return {
         "experiment_id": payload.get("experiment_id"),
         "seed": payload.get("seed"),
-        "status": str(runner.status().value if hasattr(runner.status(), "value") else runner.status()),
+        "status": str(
+            runner.status().value if hasattr(runner.status(), "value") else runner.status()
+        ),
         "equity_end": float(res.equity_curve[-1]) if res.equity_curve else None,
         "n_fills": len(res.fills),
         "result": res.to_dict(),

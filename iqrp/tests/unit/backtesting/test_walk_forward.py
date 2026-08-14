@@ -39,9 +39,7 @@ def test_generate_rolling_expanding_anchored() -> None:
     assert expanding[0].train.start == 0
     assert expanding[-1].train_indices.size >= expanding[0].train_indices.size
 
-    anchored = generate_windows(
-        80, train_size=20, test_size=10, mode="anchored", anchor=5, step=10
-    )
+    anchored = generate_windows(80, train_size=20, test_size=10, mode="anchored", anchor=5, step=10)
     assert all(w.train.start >= 5 for w in anchored)
 
 
@@ -66,7 +64,9 @@ def test_generate_with_purge_embargo_validation() -> None:
 
 
 def test_purged_kfold_and_assert_no_future() -> None:
-    wins = generate_windows(100, train_size=20, test_size=10, mode="purged_kfold", n_splits=5, purge=2, embargo=1)
+    wins = generate_windows(
+        100, train_size=20, test_size=10, mode="purged_kfold", n_splits=5, purge=2, embargo=1
+    )
     assert len(wins) >= 2
     assert_no_future_training(wins)
 
@@ -108,7 +108,9 @@ def test_window_dataclasses() -> None:
     va.assert_after_train(tr.end)
     va.assert_before_test(te.start)
     assert tr.indices().tolist() == list(range(7))
-    w = WalkForwardWindow(0, "rolling", tr, te, va, train_idx=np.arange(7), test_idx=np.arange(10, 15))
+    w = WalkForwardWindow(
+        0, "rolling", tr, te, va, train_idx=np.arange(7), test_idx=np.arange(10, 15)
+    )
     assert w.validation is not None
     assert w.validation_indices.size == 3
 
@@ -123,7 +125,13 @@ def test_walk_forward_engine(short_returns) -> None:
 
     report = eng.run(n=60, train_size=20, test_size=5, evaluate_fold=fold, as_dict=True)
     assert report["n_folds"] >= 1
-    assert "folds" in report or "aggregate" in report or "metrics" in report or "summary" in report or True
+    assert (
+        "folds" in report
+        or "aggregate" in report
+        or "metrics" in report
+        or "summary" in report
+        or True
+    )
 
     raw = eng.run(n=40, train_size=15, test_size=5, evaluate_fold=fold, as_dict=False)
     assert raw is not None
@@ -145,7 +153,7 @@ def test_walk_forward_engine(short_returns) -> None:
 
 
 def test_walk_forward_evaluator_aggregate() -> None:
-    from iqrp.app.backtesting.walk_forward.evaluator import aggregate_fold_metrics, FoldResult
+    from iqrp.app.backtesting.walk_forward.evaluator import FoldResult, aggregate_fold_metrics
 
     metrics = [{"sharpe": 1.0, "n": 5}, {"sharpe": 2.0, "n": 5}]
     agg = aggregate_fold_metrics(metrics)

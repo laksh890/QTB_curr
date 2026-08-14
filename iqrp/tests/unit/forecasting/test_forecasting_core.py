@@ -166,7 +166,9 @@ def test_partial_fit_and_online() -> None:
 
 @pytest.mark.unit
 def test_forecast_objects() -> None:
-    fc = Forecast.from_values([1.0, 2.0, 3.0], horizon=3, timestamps=(1, 2, 3), probabilities=np.eye(3))
+    fc = Forecast.from_values(
+        [1.0, 2.0, 3.0], horizon=3, timestamps=(1, 2, 3), probabilities=np.eye(3)
+    )
     assert fc.point(2).value == 2.0
     d = fc.to_dict()
     assert d["horizon"] == 3
@@ -254,7 +256,9 @@ def test_preprocessing_postprocessing() -> None:
     assert len(qf) == 2
     dist = distribution_from_samples(np.ones(10))
     assert dist.mean == 1.0
-    ur = forecast_uncertainty_report(np.array([1.0, 2.0]), intervals_width=np.array([0.1, 0.2]), probabilities=np.eye(2))
+    ur = forecast_uncertainty_report(
+        np.array([1.0, 2.0]), intervals_width=np.array([0.1, 0.2]), probabilities=np.eye(2)
+    )
     assert "mean_entropy" in ur
 
 
@@ -269,7 +273,9 @@ def test_diagnostics_explain_viz(tmp_path: Path) -> None:
     assert "score" in dr.to_dict()
     detect_prediction_drift(pred[:15], pred[15:], method="ks")
     detect_prediction_drift(pred[:15], pred[15:] + 2, method="mean_shift")
-    fd = detect_feature_drift(np.random.default_rng(0).normal(size=(40, 2)), np.random.default_rng(1).normal(size=(40, 2)))
+    fd = detect_feature_drift(
+        np.random.default_rng(0).normal(size=(40, 2)), np.random.default_rng(1).normal(size=(40, 2))
+    )
     assert fd.method == "psi_features"
     proba = np.column_stack([1 - pred, pred])
     labels = (y > 0.5).astype(int)
@@ -310,26 +316,45 @@ def test_trainer_pipeline_scheduler_inference(tmp_path: Path) -> None:
                 "feature_selection": "variance",
                 "max_features": 2,
             },
-            "online": {"warm_start": True, "rolling_retrain_every": 2, "checkpoint_every": 1, "stream_buffer": 10},
+            "online": {
+                "warm_start": True,
+                "rolling_retrain_every": 2,
+                "checkpoint_every": 1,
+                "stream_buffer": 10,
+            },
         }
     )
     model = MockForecastModel(settings=settings)
-    tr = ForecastTrainer(settings).fit(model, frame, feature_columns=["f0", "f1"], target_column="target")
+    tr = ForecastTrainer(settings).fit(
+        model, frame, feature_columns=["f0", "f1"], target_column="target"
+    )
     assert tr.training.n_samples == 50
-    ForecastTrainer(settings).partial_fit(model, frame.slice(40, 10), feature_columns=["f0", "f1"], target_column="target")
+    ForecastTrainer(settings).partial_fit(
+        model, frame.slice(40, 10), feature_columns=["f0", "f1"], target_column="target"
+    )
     pipe = ForecastingPipeline(settings=settings, model_name="mock")
     result = pipe.run(frame, horizon=4)
     assert result.forecast.horizon == 4
     sched = ForecastScheduler(settings)
-    actions = sched.on_update(MockForecastModel(settings=settings), frame.slice(0, 15), feature_columns=["f0", "f1"], target_column="target")
+    actions = sched.on_update(
+        MockForecastModel(settings=settings),
+        frame.slice(0, 15),
+        feature_columns=["f0", "f1"],
+        target_column="target",
+    )
     assert actions["retrained"]
-    sched.on_update(model, frame.slice(15, 10), feature_columns=["f0", "f1"], target_column="target")
+    sched.on_update(
+        model, frame.slice(15, 10), feature_columns=["f0", "f1"], target_column="target"
+    )
     sched.reset()
     stream = StreamingInference(model=model, settings=settings)
     for i in range(5):
         stream.push({"f0": float(i), "f1": float(i) * 0.1, "target": float(i)})
     assert stream.forecast(horizon=2).values.size == 2
-    assert batch_predict(model, frame, feature_columns=["f0", "f1"], batch_size=7).shape[0] == frame.height
+    assert (
+        batch_predict(model, frame, feature_columns=["f0", "f1"], batch_size=7).shape[0]
+        == frame.height
+    )
     assert batch_forecast(model, frame, horizon=2, feature_columns=["f0", "f1"]).horizon == 2
     settings2 = ForecastingSettings.from_hydra(overrides=["inference.default_horizon=7"])
     assert settings2.inference.default_horizon == 7

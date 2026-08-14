@@ -15,7 +15,14 @@ from iqrp.app.risk import (
     RiskState,
 )
 from iqrp.app.risk.base import LimitSeverity, RiskMeasure
-from iqrp.app.risk.config import LeverageConfig, LimitConfig, MonteCarloConfig, SizingConfig, VaRConfig, ESConfig
+from iqrp.app.risk.config import (
+    ESConfig,
+    LeverageConfig,
+    LimitConfig,
+    MonteCarloConfig,
+    SizingConfig,
+    VaRConfig,
+)
 
 
 class TestCalculateRisk:
@@ -70,7 +77,9 @@ class TestVaRMethods:
 
     def test_default_method_from_settings(self, returns_1d: np.ndarray) -> None:
         eng = RiskIntelligenceEngine(
-            RiskSettings(var=VaRConfig(method="parametric"), monte_carlo=MonteCarloConfig(n_simulations=200))
+            RiskSettings(
+                var=VaRConfig(method="parametric"), monte_carlo=MonteCarloConfig(n_simulations=200)
+            )
         )
         assert eng.var(returns_1d).method == "parametric"
 
@@ -88,7 +97,9 @@ class TestCVaRAndES:
         m = engine.cvar(returns_1d, method="monte_carlo")
         assert m.method == "monte_carlo"
 
-    def test_expected_shortfall(self, engine: RiskIntelligenceEngine, returns_1d: np.ndarray) -> None:
+    def test_expected_shortfall(
+        self, engine: RiskIntelligenceEngine, returns_1d: np.ndarray
+    ) -> None:
         m = engine.expected_shortfall(returns_1d, confidence=0.95)
         assert m.name == "expected_shortfall"
         assert m.value >= 0.0
@@ -119,11 +130,15 @@ class TestStressAndReverse:
         assert "hypothetical" in out
         assert out["hypothetical"]["loss"] >= 0.0
 
-    def test_hypothetical_without_cov(self, engine: RiskIntelligenceEngine, weights_4: np.ndarray) -> None:
+    def test_hypothetical_without_cov(
+        self, engine: RiskIntelligenceEngine, weights_4: np.ndarray
+    ) -> None:
         out = engine.stress_test(weights_4, shocks={"a": -0.1})
         assert "hypothetical" in out
 
-    def test_hypothetical_scalar_shock(self, engine: RiskIntelligenceEngine, weights_4: np.ndarray) -> None:
+    def test_hypothetical_scalar_shock(
+        self, engine: RiskIntelligenceEngine, weights_4: np.ndarray
+    ) -> None:
         out = engine.stress_test(weights_4, shocks=[-0.08])
         assert "hypothetical" in out
 
@@ -169,7 +184,6 @@ class TestPositionSizeMethods:
         base = engine.position_size(realized_vol=0.10, confidence=1.0, regime="normal")
         crisis = engine.position_size(realized_vol=0.10, confidence=1.0, regime="crisis")
         assert crisis["size"] <= base["size"]
-        assert "cannot authorize unlimited" in out["note"] if False else True
         assert "Hard max_leverage" in base["note"]
 
 
@@ -195,10 +209,14 @@ class TestPortfolioHelpers:
         assert "score" in out or "participation" in out or "measures" in out
 
     def test_liquidity_risk_notional(self, engine: RiskIntelligenceEngine) -> None:
-        out = engine.liquidity_risk(notional=2e6, adv=1e7, spread=0.0005, price=100.0, volatility=0.02)
+        out = engine.liquidity_risk(
+            notional=2e6, adv=1e7, spread=0.0005, price=100.0, volatility=0.02
+        )
         assert out is not None
 
-    def test_drawdown_and_state(self, engine: RiskIntelligenceEngine, returns_1d: np.ndarray) -> None:
+    def test_drawdown_and_state(
+        self, engine: RiskIntelligenceEngine, returns_1d: np.ndarray
+    ) -> None:
         dd = engine.drawdown(returns_1d)
         assert "risk_state" in dd
         assert "current_drawdown" in dd
@@ -268,9 +286,7 @@ class TestValidatePositionInvariants:
         )
         assert isinstance(decision, RiskDecision)
 
-    def test_trading_halt_rejects(
-        self, fast_settings: RiskSettings
-    ) -> None:
+    def test_trading_halt_rejects(self, fast_settings: RiskSettings) -> None:
         eng = RiskIntelligenceEngine(fast_settings)
         # Force deep drawdown path
         crash = np.full(50, -0.05)
@@ -286,9 +302,7 @@ class TestValidatePositionInvariants:
     def test_audit_log_appended(
         self, engine: RiskIntelligenceEngine, returns_1d: np.ndarray
     ) -> None:
-        engine.validate_position(
-            proposed_weight=0.04, weights=[0.04], returns=returns_1d
-        )
+        engine.validate_position(proposed_weight=0.04, weights=[0.04], returns=returns_1d)
         assert len(engine._audit_log) >= 1
 
 
@@ -321,7 +335,9 @@ class TestRecommendedLeverageInvariant:
 
 
 class TestModelRiskAndMonitor:
-    def test_model_risk_dict_forecasts(self, engine: RiskIntelligenceEngine, rng: np.random.Generator) -> None:
+    def test_model_risk_dict_forecasts(
+        self, engine: RiskIntelligenceEngine, rng: np.random.Generator
+    ) -> None:
         fcs = {
             "a": rng.normal(0, 0.01, 50),
             "b": rng.normal(0, 0.012, 50),
@@ -332,7 +348,9 @@ class TestModelRiskAndMonitor:
         assert "uncertainty" in out
         assert "drift" in out
 
-    def test_model_risk_array_forecasts(self, engine: RiskIntelligenceEngine, rng: np.random.Generator) -> None:
+    def test_model_risk_array_forecasts(
+        self, engine: RiskIntelligenceEngine, rng: np.random.Generator
+    ) -> None:
         stack = rng.normal(0, 0.01, size=(3, 40))
         out = engine.model_risk_assessment(stack)
         assert "disagreement" in out
@@ -353,7 +371,9 @@ class TestModelRiskAndMonitor:
 
 
 class TestSaveLoadExportImport:
-    def test_save_and_load(self, engine: RiskIntelligenceEngine, tmp_path: Path, returns_1d: np.ndarray) -> None:
+    def test_save_and_load(
+        self, engine: RiskIntelligenceEngine, tmp_path: Path, returns_1d: np.ndarray
+    ) -> None:
         engine.validate_position(proposed_weight=0.04, weights=[0.04], returns=returns_1d)
         path = tmp_path / "risk_state.json"
         saved = engine.save(path)
@@ -375,7 +395,9 @@ class TestSaveLoadExportImport:
         # Should not raise
         assert engine is not None
 
-    def test_load_with_explicit_settings(self, engine: RiskIntelligenceEngine, tmp_path: Path) -> None:
+    def test_load_with_explicit_settings(
+        self, engine: RiskIntelligenceEngine, tmp_path: Path
+    ) -> None:
         path = tmp_path / "eng.json"
         engine.save(path)
         custom = RiskSettings(seed=99, monte_carlo=MonteCarloConfig(n_simulations=200))

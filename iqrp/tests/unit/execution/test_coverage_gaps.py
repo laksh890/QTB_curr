@@ -69,9 +69,18 @@ from iqrp.app.execution.serializer import ExecutionSerializer, _to_jsonable
 from iqrp.app.execution.simulation import simulate_fill_path, simulate_with_market_simulator
 from iqrp.app.execution.smart_routing.allocation import allocate_quantity
 from iqrp.app.execution.smart_routing.cost_model import estimate_venue_cost
-from iqrp.app.execution.smart_routing.fallback import FallbackChain, build_fallback_chain, select_fallback
+from iqrp.app.execution.smart_routing.fallback import (
+    FallbackChain,
+    build_fallback_chain,
+    select_fallback,
+)
 from iqrp.app.execution.smart_routing.liquidity import aggregate_fillable, assess_liquidity
-from iqrp.app.execution.smart_routing.scoring import DEFAULT_WEIGHTS, ScoreWeights, rank_venues, score_venue
+from iqrp.app.execution.smart_routing.scoring import (
+    DEFAULT_WEIGHTS,
+    ScoreWeights,
+    rank_venues,
+    score_venue,
+)
 from iqrp.app.execution.smart_routing.venue import SimulatedVenue, Venue, VenueState, as_venue
 from iqrp.app.execution.smart_routing.venue_state import VenueState as VS
 from iqrp.app.execution.types import KillSwitch, OrderType, Side, TimeInForce, Urgency
@@ -184,13 +193,17 @@ def test_parent_child_group_reconcile():
 
 def test_cancel_replace_helpers():
     audit = AuditLog()
-    order = Order(instrument="AAPL", side=Side.BUY, quantity=50, order_type=OrderType.LIMIT, price=100.0)
+    order = Order(
+        instrument="AAPL", side=Side.BUY, quantity=50, order_type=OrderType.LIMIT, price=100.0
+    )
     order.state = OrderState.ACKNOWLEDGED
     begin_cancel(order, audit=audit, reason="user")
     assert order.state is OrderState.CANCEL_PENDING
     mark_cancelled(order, audit=audit, reason="done")
 
-    order2 = Order(instrument="AAPL", side=Side.BUY, quantity=50, order_type=OrderType.LIMIT, price=100.0)
+    order2 = Order(
+        instrument="AAPL", side=Side.BUY, quantity=50, order_type=OrderType.LIMIT, price=100.0
+    )
     order2.state = OrderState.ACKNOWLEDGED
     req = ReplaceRequest(order_id=order2.order_id, quantity=40.0, price=99.0, request_id="r1")
     repl = build_replacement(order2, req, audit=audit)
@@ -228,7 +241,9 @@ def test_algo_base_helpers():
     assert n_slices_for_urgency(10, Urgency.CRITICAL) >= 1
     offs = schedule_offsets(4, 100.0, jitter=0.2, rng=np.random.default_rng(42))
     assert offs[0] == 0.0
-    capped = apply_participation_cap([100, 100], adv=1000, participation_cap=0.1, horizon_fraction=0.5)
+    capped = apply_participation_cap(
+        [100, 100], adv=1000, participation_cap=0.1, horizon_fraction=0.5
+    )
     assert all(q <= 100 for q in capped)
 
 
@@ -246,7 +261,11 @@ def test_arrival_helpers():
 def test_analytics_helpers():
     fills = [{"qty": 50, "price": 100.1}]
     fr = fill_rate(ordered_qty=100, filled_qty=50)
-    assert fr["fill_rate"] == 0.5 or fr.get("fill_rate", 0.5) == 0.5 or abs(float(list(fr.values())[0]) - 0.5) < 1e-9
+    assert (
+        fr["fill_rate"] == 0.5
+        or fr.get("fill_rate", 0.5) == 0.5
+        or abs(float(list(fr.values())[0]) - 0.5) < 1e-9
+    )
     is_ = implementation_shortfall(side="buy", arrival_price=100.0, fills=fills)
     assert is_
     report = execution_quality_report(
@@ -332,7 +351,11 @@ def test_smart_routing_helpers():
             "reliability": 0.1,
         }
     )
-    w = ScoreWeights.from_mapping(raw_w) if hasattr(ScoreWeights, "from_mapping") else DEFAULT_WEIGHTS
+    w = (
+        ScoreWeights.from_mapping(raw_w)
+        if hasattr(ScoreWeights, "from_mapping")
+        else DEFAULT_WEIGHTS
+    )
     weights = w.normalized() if hasattr(w, "normalized") else w
     sc = score_venue(
         venue,

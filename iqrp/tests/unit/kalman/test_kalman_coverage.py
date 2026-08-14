@@ -27,7 +27,10 @@ from iqrp.app.regimes.kalman.visualization import _ensure, plot_filtered_state
 
 
 def _settings(**kw: object) -> KalmanSettings:
-    data = {**KalmanSettings.default().model_dump(), "training": {"em_iterations": 2, "tol": 1e-3, "estimate_noise": True}}
+    data = {
+        **KalmanSettings.default().model_dump(),
+        "training": {"em_iterations": 2, "tol": 1e-3, "estimate_noise": True},
+    }
     data.update(kw)
     return KalmanSettings.from_mapping(data)
 
@@ -51,7 +54,14 @@ def test_trainer_filter_types_and_controls() -> None:
     sys = trainer.build_system(n_states=2, n_obs=1)
     # with control matrix
     sys = LinearGaussianSSM(
-        f=sys.f, h=sys.h, q=sys.q, r=sys.r, x0=sys.x0, p0=sys.p0, b=np.array([[0.1], [0.0]]), application="custom"
+        f=sys.f,
+        h=sys.h,
+        q=sys.q,
+        r=sys.r,
+        x0=sys.x0,
+        p0=sys.p0,
+        b=np.array([[0.1], [0.0]]),
+        application="custom",
     )
     ctrl = np.ones((40, 1))
     states, obs = simulate_lds(sys, 40, rng=np.random.default_rng(1), controls=ctrl)
@@ -92,7 +102,9 @@ def test_model_partial_fit_online_and_errors(tmp_path: Path) -> None:
     model.fit(y[:20])
     model.partial_fit(y[20:30])
     model.partial_fit(y[30:40])
-    settings2 = _settings(application="denoise", online={"warm_start": False, "checkpoint_every": 0})
+    settings2 = _settings(
+        application="denoise", online={"warm_start": False, "checkpoint_every": 0}
+    )
     m2 = KalmanFilterModel(settings=settings2, random_seed=4)
     m2.fit(y[:10])
     m2.partial_fit(y[10:20])
@@ -156,7 +168,9 @@ def test_diagnostics_evaluator_edge_cases() -> None:
     assert diag["smoothed"]["final_mean"]
     assert _lag1_corr(np.array([1.0, 2.0])) == 0.0
     assert _lag1_corr(np.zeros(10)) == 0.0
-    ev = KalmanEvaluator().evaluate(observations=obs, trace=tr, smooth=sm, true_states=np.zeros((25, 1)), n_params=3)
+    ev = KalmanEvaluator().evaluate(
+        observations=obs, trace=tr, smooth=sm, true_states=np.zeros((25, 1)), n_params=3
+    )
     assert "aic" in ev["metrics"]
     assert stats_chi2_crit(2) > 0
     # ukf singular-ish

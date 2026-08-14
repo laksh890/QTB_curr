@@ -128,9 +128,7 @@ def plot_agreement_heatmap(
             parts.append(
                 f'<rect x="{x}" y="{y}" width="{cell - 2}" height="{cell - 2}" fill="{color}"/>'
             )
-            parts.append(
-                f'<text x="{x + 8}" y="{y + 20}" font-size="10">{val:.2f}</text>'
-            )
+            parts.append(f'<text x="{x + 8}" y="{y + 20}" font-size="10">{val:.2f}</text>')
         parts.append(
             f'<text x="5" y="{40 + i * cell + 20}" font-size="10">{names[i] if i < len(names) else i}</text>'
         )
@@ -187,8 +185,7 @@ def plot_probability_dashboard(
     if p.ndim == 1:
         p = p.reshape(1, -1)
     series = [
-        (p[:, i], state_names[i] if i < len(state_names) else f"r{i}")
-        for i in range(p.shape[1])
+        (p[:, i], state_names[i] if i < len(state_names) else f"r{i}") for i in range(p.shape[1])
     ]
     return _line_plot(series, Path(path), title=title, settings=settings)
 

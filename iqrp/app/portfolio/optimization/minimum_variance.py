@@ -69,7 +69,14 @@ def optimize_minimum_variance(
             names = cstr.get("names")
         ok, reason, conflicts = check_feasibility(cstr)
         if not ok:
-            return infeasible_result(name, n, method=method, reason=reason or "infeasible", conflicts=conflicts, names=names)
+            return infeasible_result(
+                name,
+                n,
+                method=method,
+                reason=reason or "infeasible",
+                conflicts=conflicts,
+                names=names,
+            )
 
         ones = np.ones(n)
         try:
@@ -96,7 +103,10 @@ def optimize_minimum_variance(
         needs_opt = (
             float(np.min(w_unc)) < cstr["lb"] - 1e-10
             or float(np.max(w_unc)) > cstr["ub"] + 1e-10
-            or (cstr.get("max_gross") is not None and float(np.sum(np.abs(w_unc))) > float(cstr["max_gross"]) + 1e-10)
+            or (
+                cstr.get("max_gross") is not None
+                and float(np.sum(np.abs(w_unc))) > float(cstr["max_gross"]) + 1e-10
+            )
         )
         fval = float(obj(w))
         success_opt = True
@@ -106,14 +116,18 @@ def optimize_minimum_variance(
                 bounds = [(cstr["lb"], cstr["ub"])] * n
                 cons = {"type": "eq", "fun": lambda ww: float(np.sum(ww) - cstr["budget"])}
                 try:
-                    res = minimize_scipy(obj, x0, jac=grad, bounds=bounds, constraints=[cons], method="SLSQP")
+                    res = minimize_scipy(
+                        obj, x0, jac=grad, bounds=bounds, constraints=[cons], method="SLSQP"
+                    )
                     if bool(res.success):
                         w = project(np.asarray(res.x, dtype=np.float64))
                         fval = float(obj(w))
                         used = "scipy_slsqp"
                         iters = int(getattr(res, "nit", 0) or 0)
                     else:
-                        w, fval, success_opt, iters = projected_gradient(obj, grad, x0, project, lr=0.1)
+                        w, fval, success_opt, iters = projected_gradient(
+                            obj, grad, x0, project, lr=0.1
+                        )
                         used = "numpy_pgd"
                 except Exception:
                     w, fval, success_opt, iters = projected_gradient(obj, grad, x0, project, lr=0.1)
@@ -124,9 +138,13 @@ def optimize_minimum_variance(
 
         # hard constraint verification
         if float(np.min(w)) < cstr["lb"] - 1e-8 or float(np.max(w)) > cstr["ub"] + 1e-8:
-            return infeasible_result(name, n, method=used, reason="box violation", conflicts=["box"], names=names)
+            return infeasible_result(
+                name, n, method=used, reason="box violation", conflicts=["box"], names=names
+            )
         if abs(float(np.sum(w)) - cstr["budget"]) > 1e-6:
-            return infeasible_result(name, n, method=used, reason="budget violation", conflicts=["budget"], names=names)
+            return infeasible_result(
+                name, n, method=used, reason="budget violation", conflicts=["budget"], names=names
+            )
 
         return make_result(
             name,

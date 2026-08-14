@@ -2,7 +2,8 @@
 
 from __future__ import annotations
 
-from typing import Any, Mapping
+from collections.abc import Mapping
+from typing import Any
 
 from iqrp.app.backtesting.strategy.base import Strategy
 
@@ -47,7 +48,7 @@ class BuyAndHoldStrategy(Strategy):
         if universe:
             return [str(x) for x in universe]
         prices = dict(getattr(context, "latest_prices", {}) or {})
-        return sorted(str(k) for k in prices.keys())
+        return sorted(str(k) for k in prices)
 
     def _build_targets(self, instruments: list[str]) -> dict[str, float]:
         if not instruments:
@@ -55,7 +56,7 @@ class BuyAndHoldStrategy(Strategy):
         if self.mode == "first_instrument":
             return {instruments[0]: 1.0}
         w = 1.0 / float(len(instruments))
-        return {inst: w for inst in instruments}
+        return dict.fromkeys(instruments, w)
 
     def on_market_data(self, event: Any, context: Any) -> Mapping[str, Any] | None:
         # Eager entry on first market observation so orders/fills occur early.
@@ -64,7 +65,7 @@ class BuyAndHoldStrategy(Strategy):
         instruments = self._instruments(context)
         if not instruments:
             bars = dict((event.payload or {}).get("bars") or {})
-            instruments = sorted(str(k) for k in bars.keys())
+            instruments = sorted(str(k) for k in bars)
             if not instruments:
                 sym = (event.payload or {}).get("instrument") or (event.payload or {}).get("symbol")
                 if sym:
@@ -102,7 +103,10 @@ class BuyAndHoldStrategy(Strategy):
 
     def on_signal(self, event: Any, context: Any) -> Mapping[str, Any] | None:
         if self._target_weights:
-            return {"signals": dict(self._target_weights), "target_weights": dict(self._target_weights)}
+            return {
+                "signals": dict(self._target_weights),
+                "target_weights": dict(self._target_weights),
+            }
         return None
 
     def on_end(self, context: Any) -> Mapping[str, Any] | None:

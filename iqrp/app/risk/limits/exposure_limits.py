@@ -40,9 +40,13 @@ def check_exposure_limits(
     max_gross_exposure: float = 1.5,
     max_net_exposure: float = 1.0,
 ) -> list[LimitBreach]:
-    lims = limits if limits is not None else build_exposure_limits(
-        max_gross_exposure=max_gross_exposure,
-        max_net_exposure=max_net_exposure,
+    lims = (
+        limits
+        if limits is not None
+        else build_exposure_limits(
+            max_gross_exposure=max_gross_exposure,
+            max_net_exposure=max_net_exposure,
+        )
     )
     w = as_weights(weights)
     values = {

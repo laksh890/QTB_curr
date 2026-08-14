@@ -42,7 +42,9 @@ def score_bars_payload(scores: RiskScore) -> dict[str, Any]:
     }
 
 
-def state_gauge_payload(state: RiskState | str, *, overall_score: float | None = None) -> dict[str, Any]:
+def state_gauge_payload(
+    state: RiskState | str, *, overall_score: float | None = None
+) -> dict[str, Any]:
     value = state.value if isinstance(state, RiskState) else str(state)
     idx = _STATE_ORDER.index(value) if value in _STATE_ORDER else 0
     return {
@@ -73,7 +75,9 @@ def assessment_viz(assessment: RiskAssessment) -> dict[str, Any]:
     return {
         "score_radar": score_radar_payload(assessment.dimension_scores),
         "score_bars": score_bars_payload(assessment.dimension_scores),
-        "state_gauge": state_gauge_payload(assessment.risk_state, overall_score=assessment.overall_score),
+        "state_gauge": state_gauge_payload(
+            assessment.risk_state, overall_score=assessment.overall_score
+        ),
         "disagreement": disagreement_payload(assessment.disagreement),
         "meta": {
             "timestamp": assessment.timestamp,
@@ -87,7 +91,9 @@ def assessment_viz(assessment: RiskAssessment) -> dict[str, Any]:
 
 def decision_viz(decision: EnsembleDecision) -> dict[str, Any]:
     return {
-        "state_gauge": state_gauge_payload(decision.risk_state, overall_score=decision.risk_score.overall),
+        "state_gauge": state_gauge_payload(
+            decision.risk_state, overall_score=decision.risk_score.overall
+        ),
         "score_bars": score_bars_payload(decision.risk_score),
         "decision_card": {
             "type": "card",
@@ -106,7 +112,9 @@ class EnsembleVisualization:
     def scores(self, scores: RiskScore) -> dict[str, Any]:
         return {"radar": score_radar_payload(scores), "bars": score_bars_payload(scores)}
 
-    def state(self, state: RiskState | str, *, overall_score: float | None = None) -> dict[str, Any]:
+    def state(
+        self, state: RiskState | str, *, overall_score: float | None = None
+    ) -> dict[str, Any]:
         return state_gauge_payload(state, overall_score=overall_score)
 
     def assessment(self, assessment: RiskAssessment) -> dict[str, Any]:

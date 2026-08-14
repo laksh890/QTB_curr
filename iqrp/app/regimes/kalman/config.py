@@ -114,9 +114,7 @@ class KalmanSettings(BaseModel):
             else:
                 container = data
             if not isinstance(container, dict):
-                raise ConfigurationError(
-                    "Kalman config mapping invalid", code="KF_CONFIG_INVALID"
-                )
+                raise ConfigurationError("Kalman config mapping invalid", code="KF_CONFIG_INVALID")
             data = container
         return cls.model_validate(data)
 

@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-from typing import Any
-
 import numpy as np
 
 
@@ -41,7 +39,7 @@ def stack_predictions(
                 w = np.clip(w, 0, None)
                 w = w / (w.sum() or 1.0)
                 return X @ w
-            except Exception:  # noqa: BLE001  # pragma: no cover
+            except Exception:  # pragma: no cover
                 pass
     return X.mean(axis=1)
 

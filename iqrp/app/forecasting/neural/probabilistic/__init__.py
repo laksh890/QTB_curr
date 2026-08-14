@@ -18,12 +18,12 @@ from iqrp.app.forecasting.neural.probabilistic.uncertainty import total_uncertai
 __all__ = [
     "aleatoric_from_gaussian",
     "epistemic_mc_dropout",
+    "extract_point_forecast",
     "gaussian_quantiles",
+    "interval_from_prediction",
     "prediction_intervals_from_quantiles",
+    "quantiles_from_prediction",
     "sample_gaussian",
     "student_t_quantiles",
-    "extract_point_forecast",
-    "interval_from_prediction",
-    "quantiles_from_prediction",
     "total_uncertainty",
 ]

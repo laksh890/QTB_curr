@@ -138,6 +138,7 @@ class DiagonalGaussianObservationModel(ObservationModel):
 
     def expected_observation(self, state: int) -> np.ndarray:
         return np.asarray(self._means[int(state)].copy(), dtype=np.float64)
+
     def predictive_density(self, observation: Any, state_probs: Any) -> float:
         """Mixture predictive ``sum_k π_k p(y|k)`` in log-space."""
         pi = np.asarray(state_probs, dtype=np.float64).reshape(-1)

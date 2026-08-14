@@ -23,8 +23,8 @@ from iqrp.app.forecasting.base.evaluator import (
     precision_recall_f1,
     profit_factor,
     r2_score,
-    roc_auc_binary,
     rmse,
+    roc_auc_binary,
     sharpe_ratio,
     smape,
     sortino_ratio,
@@ -86,7 +86,11 @@ def test_metric_edge_cases() -> None:
     assert np.isnan(profit_factor(np.array([1.0]), np.array([1.0])))
     assert np.isnan(sharpe_ratio(np.array([1.0, 1.0]), np.array([1.0, 1.0]))) or True
     assert r2_score(np.ones(5), np.ones(5)) == 0.0 or np.isfinite(r2_score(np.ones(5), np.ones(5)))
-    assert precision_recall_f1(np.array([]), np.array([]))["f1"] != precision_recall_f1(np.array([]), np.array([])) or True
+    assert (
+        precision_recall_f1(np.array([]), np.array([]))["f1"]
+        != precision_recall_f1(np.array([]), np.array([]))
+        or True
+    )
     prf = precision_recall_f1(np.array([0, 1, 0, 1]), np.array([0, 1, 1, 1]), average="micro")
     assert "f1" in prf
     assert np.isnan(roc_auc_binary(np.ones(5, dtype=int), np.linspace(0, 1, 5)))
@@ -137,7 +141,10 @@ def test_stream_empty_and_batch_empty() -> None:
     stream = StreamingInference(model=model)
     with pytest.raises(ValidationError):
         stream.forecast()
-    assert batch_predict(model, pl.DataFrame({"f0": [], "f1": []}), feature_columns=["f0", "f1"]).size == 0
+    assert (
+        batch_predict(model, pl.DataFrame({"f0": [], "f1": []}), feature_columns=["f0", "f1"]).size
+        == 0
+    )
 
 
 @pytest.mark.unit
@@ -146,7 +153,12 @@ def test_windows_empty_and_selection_edges() -> None:
     assert wb.X.shape[0] == 0
     assert select_by_variance(np.zeros((10, 3)), threshold=1.0).size >= 1
     assert select_features(np.ones((10, 1)), method="none").size == 1
-    assert select_features(np.random.default_rng(0).normal(size=(20, 4)), method="variance", max_features=1).size == 1
+    assert (
+        select_features(
+            np.random.default_rng(0).normal(size=(20, 4)), method="variance", max_features=1
+        ).size
+        == 1
+    )
 
 
 @pytest.mark.unit
@@ -159,10 +171,14 @@ def test_calibration_isotonic_and_scipy_fail() -> None:
         return_value=MagicMock(success=False, x=1.0),
     ):
         ProbabilityCalibrator(method="temperature").fit(np.eye(8, 2) + 0.1, np.arange(8) % 2)
-    with patch("scipy.optimize.minimize", return_value=MagicMock(success=False, x=np.array([1.0, 0.0]))):
+    with patch(
+        "scipy.optimize.minimize", return_value=MagicMock(success=False, x=np.array([1.0, 0.0]))
+    ):
         ProbabilityCalibrator(method="platt").fit(np.eye(8, 2) + 0.1, np.arange(8) % 2)
     # 1d transform
-    c = ProbabilityCalibrator(method="none").fit(np.array([0.1, 0.9, 0.5, 0.4, 0.6]), np.array([0, 1, 0, 0, 1]))
+    c = ProbabilityCalibrator(method="none").fit(
+        np.array([0.1, 0.9, 0.5, 0.4, 0.6]), np.array([0, 1, 0, 0, 1])
+    )
     assert c.transform(np.array([0.2, 0.8])).shape[1] == 2
 
 
@@ -236,9 +252,9 @@ def test_registry_training_config_and_scheduler_warm() -> None:
     assert reg.get_config("mock")["a"] == 1
     reg.record_training(
         "mock",
-        __import__("iqrp.app.forecasting.base.metadata", fromlist=["TrainingMetadata"]).TrainingMetadata(
-            1, 1, ("f0",), "target", None, 1
-        ),
+        __import__(
+            "iqrp.app.forecasting.base.metadata", fromlist=["TrainingMetadata"]
+        ).TrainingMetadata(1, 1, ("f0",), "target", None, 1),
     )
     assert reg.training_history("mock")
     settings = ForecastingSettings.from_mapping(

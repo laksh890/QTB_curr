@@ -91,15 +91,22 @@ def test_training_only_winsorize_fit():
 def test_misc_insufficient():
     assert acf(np.array([1.0, np.nan])).value == "insufficient_data" or acf(np.ones(5)).method
     assert pacf(np.array([1.0])).value == "insufficient_data"
-    assert ccf(np.array([1.0]), np.array([1.0])).value == "insufficient_data" or ccf(np.random.randn(20), np.random.randn(20)).method
+    assert (
+        ccf(np.array([1.0]), np.array([1.0])).value == "insufficient_data"
+        or ccf(np.random.randn(20), np.random.randn(20)).method
+    )
     assert lead_lag(np.array([1.0, 2.0]), np.array([1.0, 2.0])).method
     assert rolling_acf(np.ones(5), window=10, lag=1).method
     assert periodogram(np.array([1.0])).value == "insufficient_data"
     assert welch_psd(np.random.randn(100), nperseg=32, noverlap=8, detrend=False).method
     assert spectral_density(np.random.randn(64), method="welch", nperseg=16).method
     assert dtw_distance([], []).value == "insufficient_data"
-    assert dtw_path([1.0], [1.0, 2.0]).method or dtw_path(np.arange(10.0), np.arange(10.0) + 1).method
-    assert discover_shapelets(np.random.randn(60), labels=np.array([0] * 30 + [1] * 30), lengths=(8,), top_k=1).method
+    assert (
+        dtw_path([1.0], [1.0, 2.0]).method or dtw_path(np.arange(10.0), np.arange(10.0) + 1).method
+    )
+    assert discover_shapelets(
+        np.random.randn(60), labels=np.array([0] * 30 + [1] * 30), lengths=(8,), top_k=1
+    ).method
     assert matrix_profile_anomalies(np.ones(5), window=3).value == "insufficient_data"
     assert compute_matrix_profile(np.random.randn(80), window=10).method
     assert find_motifs(np.random.randn(80), window=10, top_k=1, max_distance=0.01).method
@@ -124,6 +131,9 @@ def test_misc_insufficient():
     assert sample_entropy(np.arange(5.0)).method
     assert approximate_entropy(np.arange(5.0)).method
     assert permutation_entropy(np.array([1.0, 1.0, 1.0])).method
-    assert higuchi_fd(np.arange(8.0)).value == "insufficient_data" or higuchi_fd(np.arange(40.0)).method
+    assert (
+        higuchi_fd(np.arange(8.0)).value == "insufficient_data"
+        or higuchi_fd(np.arange(40.0)).method
+    )
     # cycle features when no peaks
     assert "seasonal_strength" in cycle_features(np.random.randn(80), period=12)

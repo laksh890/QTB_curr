@@ -120,11 +120,13 @@ class DCCGARCHModel(VolatilityModel):
                         return 1e20
                     inv = np.linalg.inv(ri)
                     ll += logdet + float(z[i] @ inv @ z[i])
-                except Exception:  # noqa: BLE001
+                except Exception:
                     return 1e20
             return 0.5 * ll
 
-        res = minimize(nll, np.array([0.05, 0.9]), method="L-BFGS-B", bounds=[(1e-6, 0.5), (1e-6, 0.99)])
+        res = minimize(
+            nll, np.array([0.05, 0.9]), method="L-BFGS-B", bounds=[(1e-6, 0.5), (1e-6, 0.99)]
+        )
         a, b = map(float, res.x)
         if a + b >= 0.999:
             a, b = 0.05, 0.9
@@ -157,9 +159,7 @@ class DCCGARCHModel(VolatilityModel):
         self._feature_columns = assets
         return self
 
-    def predict(
-        self, frame: pl.DataFrame, feature_columns: list[str] | None = None
-    ) -> np.ndarray:
+    def predict(self, frame: pl.DataFrame, feature_columns: list[str] | None = None) -> np.ndarray:
         self._require_fitted()
         assert self._variance is not None
         return np.sqrt(self._variance)

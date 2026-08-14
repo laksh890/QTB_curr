@@ -65,7 +65,9 @@ def test_evaluate_gates_oos_mandatory() -> None:
     assert gate3.out_of_sample_ok is True
 
     # statistical confidence required but missing
-    thr2 = GateThresholds(require_out_of_sample=True, min_oos_sharpe=0.0, min_statistical_confidence=0.95)
+    thr2 = GateThresholds(
+        require_out_of_sample=True, min_oos_sharpe=0.0, min_statistical_confidence=0.95
+    )
     gate4 = evaluate_gates(sc_oos, thr2)
     assert gate4.approved is False
 

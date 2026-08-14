@@ -14,7 +14,10 @@ from iqrp.app.forecasting.tree_models import (
     create_tree_model,
     ensure_tree_models_loaded,
 )
-from iqrp.app.forecasting.tree_models.base.processes import feature_names, simulate_nonlinear_returns
+from iqrp.app.forecasting.tree_models.base.processes import (
+    feature_names,
+    simulate_nonlinear_returns,
+)
 from iqrp.app.forecasting.tree_models.catboost.trainer import CatBoostTrainer
 from iqrp.app.forecasting.tree_models.lightgbm.trainer import LightGBMTrainer
 from iqrp.app.forecasting.tree_models.xgboost.trainer import XGBoostTrainer

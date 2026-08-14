@@ -10,18 +10,22 @@ from iqrp.app.forecasting.neural.base.torch_utils import has_torch
 try:
     import torch
     from torch import nn
-except Exception:  # noqa: BLE001  # pragma: no cover
+except Exception:  # pragma: no cover
     torch = None  # type: ignore[assignment]
     nn = object  # type: ignore[assignment]
 
 
 class TemporalBlock(nn.Module if has_torch() else object):  # type: ignore[misc]
-    def __init__(self, n_inputs: int, n_outputs: int, kernel_size: int, dilation: int, dropout: float) -> None:
+    def __init__(
+        self, n_inputs: int, n_outputs: int, kernel_size: int, dilation: int, dropout: float
+    ) -> None:
         if has_torch():
             super().__init__()
         padding = (kernel_size - 1) * dilation
         self.conv1 = nn.Conv1d(n_inputs, n_outputs, kernel_size, padding=padding, dilation=dilation)
-        self.conv2 = nn.Conv1d(n_outputs, n_outputs, kernel_size, padding=padding, dilation=dilation)
+        self.conv2 = nn.Conv1d(
+            n_outputs, n_outputs, kernel_size, padding=padding, dilation=dilation
+        )
         self.down = nn.Conv1d(n_inputs, n_outputs, 1) if n_inputs != n_outputs else nn.Identity()
         self.dropout = nn.Dropout(dropout)
         self.relu = nn.ReLU()
@@ -69,7 +73,9 @@ class TCNNet(nn.Module if has_torch() else object):  # type: ignore[misc]
         layers = []
         for i in range(max(num_layers, 1)):
             din = n_features if i == 0 else hidden_size
-            layers.append(TemporalBlock(din, hidden_size, kernel_size, dilation=2**i, dropout=dropout))
+            layers.append(
+                TemporalBlock(din, hidden_size, kernel_size, dilation=2**i, dropout=dropout)
+            )
         self.network = nn.Sequential(*layers)
         self.head = output_head(
             hidden_size, horizon, task=task, n_classes=n_classes, n_quantiles=n_quantiles, dist=dist
@@ -82,5 +88,11 @@ class TCNNet(nn.Module if has_torch() else object):  # type: ignore[misc]
         last = h[:, :, -1]
         pred = self.head(last)
         return reshape_head(
-            pred, b, self.horizon, task=self.task, n_classes=self.n_classes, n_quantiles=self.n_quantiles, dist=self.dist
+            pred,
+            b,
+            self.horizon,
+            task=self.task,
+            n_classes=self.n_classes,
+            n_quantiles=self.n_quantiles,
+            dist=self.dist,
         )

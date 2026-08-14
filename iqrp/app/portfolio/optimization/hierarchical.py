@@ -71,7 +71,14 @@ def optimize_hierarchical(
             names = cstr.get("names")
         ok, reason, conflicts = check_feasibility(cstr)
         if not ok:
-            return infeasible_result(name, n, method=str(variant), reason=reason or "infeasible", conflicts=conflicts, names=names)
+            return infeasible_result(
+                name,
+                n,
+                method=str(variant),
+                reason=reason or "infeasible",
+                conflicts=conflicts,
+                names=names,
+            )
 
         key_names = names if names and len(names) == n else [f"a{i}" for i in range(n)]
         v = str(variant).lower()

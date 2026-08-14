@@ -10,7 +10,12 @@ import pytest
 import torch
 from torch import nn
 
-from iqrp.app.forecasting.transformers import TransformerSettings, create_transformer_model, ensure_transformer_models_loaded
+from iqrp.app.forecasting.neural.base.losses import get_loss
+from iqrp.app.forecasting.transformers import (
+    TransformerSettings,
+    create_transformer_model,
+    ensure_transformer_models_loaded,
+)
 from iqrp.app.forecasting.transformers.attention import build_attention
 from iqrp.app.forecasting.transformers.base.embeddings import (
     AssetEmbedding,
@@ -23,13 +28,22 @@ from iqrp.app.forecasting.transformers.base.embeddings import (
 )
 from iqrp.app.forecasting.transformers.base.heads import forecast_head, reshape_forecast
 from iqrp.app.forecasting.transformers.base.masking import apply_mask_to_scores, causal_mask
-from iqrp.app.forecasting.transformers.base.processes import feature_names, simulate_long_range_series
+from iqrp.app.forecasting.transformers.base.processes import (
+    feature_names,
+    simulate_long_range_series,
+)
 from iqrp.app.forecasting.transformers.base.trainer import TransformerTrainer, _compute_loss
 from iqrp.app.forecasting.transformers.explainability.attribution import explain_transformer
 from iqrp.app.forecasting.transformers.mixture_of_experts import ExpertFFN, MoERouter
-from iqrp.app.forecasting.transformers.probabilistic import gaussian_head_quantiles, student_t_head_quantiles
-from iqrp.app.forecasting.neural.base.losses import get_loss
-from iqrp.app.forecasting.transformers.visualization.plots import plot_attention_map, plot_forecast, plot_training_curves
+from iqrp.app.forecasting.transformers.probabilistic import (
+    gaussian_head_quantiles,
+    student_t_head_quantiles,
+)
+from iqrp.app.forecasting.transformers.visualization.plots import (
+    plot_attention_map,
+    plot_forecast,
+    plot_training_curves,
+)
 
 
 def _fast(**extra):
@@ -47,7 +61,13 @@ def _fast(**extra):
             "moving_avg": 5,
             "chunk_size": 8,
         },
-        "train": {"epochs": 1, "batch_size": 16, "device": "cpu", "early_stopping_patience": 20, "seed": 0},
+        "train": {
+            "epochs": 1,
+            "batch_size": 16,
+            "device": "cpu",
+            "early_stopping_patience": 20,
+            "seed": 0,
+        },
         "scheduler": {"name": "none"},
         "regime": {"enabled": False},
         "visualization": {"enabled": False},
@@ -91,7 +111,10 @@ def test_heads_classification_distribution() -> None:
     rd = reshape_forecast(hd(torch.randn(2, 16)), 2, 4, task="distribution")
     assert rd.shape[-1] == 2
     hq = forecast_head(16, 4, task="quantile", n_quantiles=3)
-    assert reshape_forecast(hq(torch.randn(2, 16)), 2, 4, task="quantile", n_quantiles=3).shape[-1] == 3
+    assert (
+        reshape_forecast(hq(torch.randn(2, 16)), 2, 4, task="quantile", n_quantiles=3).shape[-1]
+        == 3
+    )
     hm = forecast_head(16, 4, task="mixture", n_mixtures=2)
     assert hm(torch.randn(2, 16)).shape[-1] == 4 * 2 * 3
 
@@ -102,7 +125,9 @@ def test_online_refit_and_no_torch(frame) -> None:
     m = create_transformer_model("tide", settings=_fast())
     m.fit(frame, feature_columns=cols)
     m.partial_fit(frame, feature_columns=cols)
-    with patch("iqrp.app.forecasting.transformers.base.transformer_model.has_torch", return_value=False):
+    with patch(
+        "iqrp.app.forecasting.transformers.base.transformer_model.has_torch", return_value=False
+    ):
         with pytest.raises(Exception):
             create_transformer_model("tide", settings=_fast()).fit(frame, feature_columns=cols)
 
@@ -110,7 +135,16 @@ def test_online_refit_and_no_torch(frame) -> None:
 @pytest.mark.unit
 def test_chunked_predict_and_loss_paths(frame) -> None:
     cols = feature_names(3)
-    s = _fast(architecture={"lookback": 12, "horizon": 3, "d_model": 32, "n_heads": 4, "num_layers": 1, "chunk_size": 4})
+    s = _fast(
+        architecture={
+            "lookback": 12,
+            "horizon": 3,
+            "d_model": 32,
+            "n_heads": 4,
+            "num_layers": 1,
+            "chunk_size": 4,
+        }
+    )
     m = create_transformer_model("informer", settings=s)
     m.fit(frame, feature_columns=cols)
     # force chunked path
@@ -220,5 +254,7 @@ def test_explain_no_torch(frame) -> None:
     m = create_transformer_model("tide", settings=_fast())
     m.fit(frame, feature_columns=cols)
     X = m._last_window(frame, cols)
-    with patch("iqrp.app.forecasting.transformers.explainability.attribution.has_torch", return_value=False):
+    with patch(
+        "iqrp.app.forecasting.transformers.explainability.attribution.has_torch", return_value=False
+    ):
         assert explain_transformer(m._module, X, method="ig").shape == X.shape

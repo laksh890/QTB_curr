@@ -78,9 +78,7 @@ def _line_plot(
         for i in range(lo_b.size - 1, -1, -1):
             x, y = _xy(i, float(lo_b[i]))
             poly.append(f"{x:.1f},{y:.1f}")
-        parts.append(
-            f'<polygon fill="#a8dadc" opacity="0.45" points="{" ".join(poly)}"/>'
-        )
+        parts.append(f'<polygon fill="#a8dadc" opacity="0.45" points="{" ".join(poly)}"/>')
     for idx, (v, name) in enumerate(cleaned):
         pts = []
         for i, val in enumerate(v):

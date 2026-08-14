@@ -73,7 +73,14 @@ def optimize_mean_variance(
             names = cstr.get("names")
         ok, reason, conflicts = check_feasibility(cstr)
         if not ok:
-            return infeasible_result(name, n, method=method, reason=reason or "infeasible", conflicts=conflicts, names=names)
+            return infeasible_result(
+                name,
+                n,
+                method=method,
+                reason=reason or "infeasible",
+                conflicts=conflicts,
+                names=names,
+            )
 
         lam = max(float(risk_aversion), 1e-8)
 
@@ -106,7 +113,9 @@ def optimize_mean_variance(
             bounds = [(cstr["lb"], cstr["ub"])] * n
             cons = {"type": "eq", "fun": lambda w: float(np.sum(w) - cstr["budget"])}
             try:
-                res = minimize_scipy(obj, x0, jac=grad, bounds=bounds, constraints=[cons], method="SLSQP")
+                res = minimize_scipy(
+                    obj, x0, jac=grad, bounds=bounds, constraints=[cons], method="SLSQP"
+                )
                 if bool(res.success):
                     w = project(np.asarray(res.x, dtype=np.float64))
                     fval = float(obj(w))

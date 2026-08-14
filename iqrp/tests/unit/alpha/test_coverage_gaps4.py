@@ -21,22 +21,21 @@ from iqrp.app.alpha.base.signal_result import (
     StatusTransition,
     validate_transition,
 )
-from iqrp.app.alpha.engine import AlphaResearchEngine, ApprovalError
-from iqrp.app.alpha.monitoring.signal_decay import (
-    estimate_ic_half_life,
-    ic_decay_curve,
-    rolling_ic,
-)
-from iqrp.app.alpha.research.evaluator import SignalEvaluator
 from iqrp.app.alpha.discovery.cross_sectional import (
     _cs_rank_matrix,
     cross_sectional_rank_signal,
     cross_sectional_zscore_signal,
     long_short_spread,
 )
-from iqrp.app.alpha.serializer import _to_jsonable
+from iqrp.app.alpha.engine import AlphaResearchEngine, ApprovalError
+from iqrp.app.alpha.monitoring.signal_decay import (
+    estimate_ic_half_life,
+    ic_decay_curve,
+    rolling_ic,
+)
 from iqrp.app.alpha.phase11 import validate_phase11, write_phase11_report
-
+from iqrp.app.alpha.research.evaluator import SignalEvaluator
+from iqrp.app.alpha.serializer import _to_jsonable
 
 HYP = "Compensated inventory risk and gradual capital redeployment create continuation."
 
@@ -66,9 +65,18 @@ def test_ic_decay_curve_panel_and_1d_mismatch() -> None:
 
 def test_evaluator_definition_from_metadata() -> None:
     d = SignalDefinition(
-        name="meta", version="2.0.0", formula="x", features=("r",), lookback=5,
-        horizon=1, universe="u", frequency="1d", direction="long_short",
-        expected_relationship="positive", economic_hypothesis=HYP, owner="r",
+        name="meta",
+        version="2.0.0",
+        formula="x",
+        features=("r",),
+        lookback=5,
+        horizon=1,
+        universe="u",
+        frequency="1d",
+        direction="long_short",
+        expected_relationship="positive",
+        economic_hypothesis=HYP,
+        owner="r",
     )
     sig = AlphaSignal(
         values=np.random.default_rng(0).normal(size=120),
@@ -118,9 +126,18 @@ def test_engine_remaining_branches(genuine: dict[str, Any]) -> None:
     sig = np.asarray(genuine["signal"])
     ret = np.asarray(genuine["returns"])
     d = SignalDefinition(
-        name="e", version="1.0.0", formula="x", features=("r",), lookback=5,
-        horizon=1, universe="u", frequency="1d", direction="long_short",
-        expected_relationship="positive", economic_hypothesis=HYP, owner="r",
+        name="e",
+        version="1.0.0",
+        formula="x",
+        features=("r",),
+        lookback=5,
+        horizon=1,
+        universe="u",
+        frequency="1d",
+        direction="long_short",
+        expected_relationship="positive",
+        economic_hypothesis=HYP,
+        owner="r",
     )
     # retire from unknown-ish: RETIRED already; approve from RETIRED
     rec = eng.register(d, signal=sig)
@@ -128,21 +145,28 @@ def test_engine_remaining_branches(genuine: dict[str, Any]) -> None:
     with pytest.raises(ApprovalError):
         eng.approve(rec.experiment_id, reason="IC validation + economic hypothesis")
 
-    # validate transition ValueError swallowed: register as VALIDATING illegally? 
+    # validate transition ValueError swallowed: register as VALIDATING illegally?
     # Put status RESEARCHING then validate while transition blocked
     rec2 = eng.register(
         SignalDefinition(
-            name="e2", version="1.0.0", formula="x", features=("r",), lookback=5,
-            horizon=1, universe="u", frequency="1d", direction="long_short",
-            expected_relationship="positive", economic_hypothesis=HYP, owner="r",
+            name="e2",
+            version="1.0.0",
+            formula="x",
+            features=("r",),
+            lookback=5,
+            horizon=1,
+            universe="u",
+            frequency="1d",
+            direction="long_short",
+            expected_relationship="positive",
+            economic_hypothesis=HYP,
+            owner="r",
         ),
         signal=sig,
         status=SignalStatus.RESEARCHING,
     )
     # Force invalid transition by mocking
-    with mock.patch.object(
-        eng.registry, "transition", side_effect=ValueError("blocked")
-    ):
+    with mock.patch.object(eng.registry, "transition", side_effect=ValueError("blocked")):
         eng.validate(sig, ret, n_trials=8, experiment_id=rec2.experiment_id)
 
     # scipy skew fail path
@@ -154,16 +178,25 @@ def test_engine_remaining_branches(genuine: dict[str, Any]) -> None:
         def to_dict(self) -> dict[str, Any]:
             return {"k": 1}
 
-    eng.save(Path("/tmp/alpha_td.json") if False else Path("."), None) if False else None
+    eng.save(Path("/tmp/alpha_td.json") if False else Path(), None) if False else None
     assert eng._jsonable(TD()) == {"k": 1}
     assert eng._jsonable((1, 2)) == [1, 2]
 
     # sharpe mention with evidence still ok; sharpe mention without other tokens + no evidence
     rec3 = eng.register(
         SignalDefinition(
-            name="e3", version="1.0.0", formula="x", features=("r",), lookback=5,
-            horizon=1, universe="u", frequency="1d", direction="long_short",
-            expected_relationship="positive", economic_hypothesis=HYP, owner="r",
+            name="e3",
+            version="1.0.0",
+            formula="x",
+            features=("r",),
+            lookback=5,
+            horizon=1,
+            universe="u",
+            frequency="1d",
+            direction="long_short",
+            expected_relationship="positive",
+            economic_hypothesis=HYP,
+            owner="r",
         ),
         signal=sig,
     )
@@ -174,7 +207,9 @@ def test_engine_remaining_branches(genuine: dict[str, Any]) -> None:
     eng.registry.attach_report(
         rec3.experiment_id,
         SignalResearchReport(
-            signal_name="e3", version="1.0.0", status=SignalStatus.CANDIDATE,
+            signal_name="e3",
+            version="1.0.0",
+            status=SignalStatus.CANDIDATE,
             economic_hypothesis=HYP,
             performance=SignalPerformance(ic_mean=0.04),
             diagnostics={"foo": 1},
@@ -185,7 +220,9 @@ def test_engine_remaining_branches(genuine: dict[str, Any]) -> None:
     eng.registry.attach_report(
         rec3.experiment_id,
         SignalResearchReport(
-            signal_name="e3", version="1.0.0", status=SignalStatus.CANDIDATE,
+            signal_name="e3",
+            version="1.0.0",
+            status=SignalStatus.CANDIDATE,
             economic_hypothesis=HYP,
             performance=SignalPerformance(ic_mean=0.04, extras={"decay": {"h": 1}}),
             diagnostics={},
@@ -200,6 +237,7 @@ def test_serializer_enum_branch() -> None:
 
     assert _to_jsonable(Color.RED) == "red"
     assert _to_jsonable([Color.RED]) == ["red"]
+
     # list path with nested enum via hasattr value
     class Weird:
         value = 3
@@ -208,7 +246,9 @@ def test_serializer_enum_branch() -> None:
     assert isinstance(_to_jsonable(Weird()), str)
 
 
-def test_phase11_stub_create_and_export_fail(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+def test_phase11_stub_create_and_export_fail(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
     from iqrp.app.alpha import phase11
 
     # force stub creation by pointing docs root to empty tmp
@@ -220,7 +260,9 @@ def test_phase11_stub_create_and_export_fail(tmp_path: Path, monkeypatch: pytest
     import iqrp.app.alpha as alpha_pkg
 
     real_all = alpha_pkg.__all__
-    monkeypatch.setattr(alpha_pkg, "__all__", [x for x in real_all if x != "AlphaSettings"], raising=False)
+    monkeypatch.setattr(
+        alpha_pkg, "__all__", [x for x in real_all if x != "AlphaSettings"], raising=False
+    )
     bad = validate_phase11(write_stubs=True)
     assert bad["status"] == "FAIL" or "AlphaSettings" in str(bad["summary"]["failures"])
     # engine missing method
@@ -234,53 +276,73 @@ def test_phase11_stub_create_and_export_fail(tmp_path: Path, monkeypatch: pytest
 
 @pytest.mark.filterwarnings("ignore::RuntimeWarning")
 def test_remaining_modules_edges() -> None:
+    from iqrp.app.alpha.backtesting.embargo import apply_embargo
+    from iqrp.app.alpha.backtesting.portfolio_backtest import portfolio_backtest
+    from iqrp.app.alpha.backtesting.purged_cv import purge_train_indices, purged_kfold_splits
+    from iqrp.app.alpha.backtesting.signal_backtest import signal_backtest, signal_to_weights
+    from iqrp.app.alpha.base.signal_result import (
+        SignalResearchReport,
+        SignalScore,
+        SignalStatistics,
+    )
+    from iqrp.app.alpha.cross_section.factor_adjustment import factor_exposure_summary
+    from iqrp.app.alpha.cross_section.neutralization import demean_by_group, neutralize_multi_group
     from iqrp.app.alpha.cross_section.ranking import (
         cross_sectional_minmax,
         cross_sectional_rank,
         cross_sectional_zscore,
         winsorize_cross_section,
     )
-    from iqrp.app.alpha.cross_section.neutralization import demean_by_group, neutralize_multi_group
-    from iqrp.app.alpha.cross_section.residualization import residualize_vs_factors, beta_residualize
-    from iqrp.app.alpha.cross_section.sector_adjustment import sector_relative_ranks, cap_weighted_sector_neutral
-    from iqrp.app.alpha.cross_section.factor_adjustment import factor_exposure_summary
-    from iqrp.app.alpha.discovery.symbolic import lag, rolling_apply, rank, zscore, rolling_std
+    from iqrp.app.alpha.cross_section.residualization import (
+        beta_residualize,
+        residualize_vs_factors,
+    )
+    from iqrp.app.alpha.cross_section.sector_adjustment import (
+        cap_weighted_sector_neutral,
+        sector_relative_ranks,
+    )
+    from iqrp.app.alpha.discovery.symbolic import lag, rank, rolling_apply, rolling_std, zscore
     from iqrp.app.alpha.economics.transaction_costs import estimate_transaction_cost
-    from iqrp.app.alpha.economics.turnover import turnover_series, average_turnover
-    from iqrp.app.alpha.ensemble.redundancy import find_high_correlation_pairs, detect_nested_signals, redundancy_report
-    from iqrp.app.alpha.ensemble.signal_combination import rank_average_combine, combine_signals
-    from iqrp.app.alpha.ensemble.correlation import signal_correlation_matrix, correlation_penalty_vector
-    from iqrp.app.alpha.backtesting.signal_backtest import signal_backtest, signal_to_weights
-    from iqrp.app.alpha.backtesting.portfolio_backtest import portfolio_backtest
-    from iqrp.app.alpha.backtesting.embargo import apply_embargo
-    from iqrp.app.alpha.backtesting.purged_cv import purged_kfold_splits, purge_train_indices
+    from iqrp.app.alpha.economics.turnover import average_turnover, turnover_series
+    from iqrp.app.alpha.ensemble.correlation import (
+        correlation_penalty_vector,
+        signal_correlation_matrix,
+    )
+    from iqrp.app.alpha.ensemble.redundancy import (
+        detect_nested_signals,
+        find_high_correlation_pairs,
+        redundancy_report,
+    )
+    from iqrp.app.alpha.ensemble.signal_combination import combine_signals, rank_average_combine
+    from iqrp.app.alpha.monitoring.performance_decay import max_drawdown, rolling_performance
+    from iqrp.app.alpha.monitoring.signal_drift import concept_drift_ic, signal_distribution_drift
+    from iqrp.app.alpha.regime.conditional_alpha import (
+        compare_unconditional_vs_conditional,
+        conditional_ic,
+    )
+    from iqrp.app.alpha.regime.regime_performance import regime_hit_rate
+    from iqrp.app.alpha.regime.regime_stability import (
+        regime_concentration,
+        regime_stability_score,
+        rolling_regime_stability,
+    )
     from iqrp.app.alpha.research.decay import analyze_decay
     from iqrp.app.alpha.research.hit_rate import compute_hit_rate
-    from iqrp.app.alpha.research.persistence import autocorrelation, signal_half_life
     from iqrp.app.alpha.research.information_coefficient import rolling_ic as ric
+    from iqrp.app.alpha.research.persistence import autocorrelation, signal_half_life
     from iqrp.app.alpha.research.rank_ic import rolling_rank_ic
-    from iqrp.app.alpha.research.seasonality import month_of_year_ic, analyze_seasonality
-    from iqrp.app.alpha.statistical_validation.bootstrap import iid_bootstrap_ci, block_bootstrap_ci
-    from iqrp.app.alpha.statistical_validation.significance import (
-        ic_significance,
-        newey_west_variance,
-        newey_west_ic_significance,
-        rolling_ic_series,
-    )
+    from iqrp.app.alpha.research.seasonality import analyze_seasonality, month_of_year_ic
+    from iqrp.app.alpha.statistical_validation.bootstrap import block_bootstrap_ci, iid_bootstrap_ci
+    from iqrp.app.alpha.statistical_validation.deflated_sharpe import deflated_sharpe_ratio
     from iqrp.app.alpha.statistical_validation.probability_backtest_overfitting import (
         probability_backtest_overfitting,
     )
-    from iqrp.app.alpha.statistical_validation.deflated_sharpe import deflated_sharpe_ratio
-    from iqrp.app.alpha.monitoring.signal_drift import signal_distribution_drift, concept_drift_ic
-    from iqrp.app.alpha.monitoring.performance_decay import rolling_performance, max_drawdown
-    from iqrp.app.alpha.regime.regime_stability import (
-        regime_stability_score,
-        rolling_regime_stability,
-        regime_concentration,
+    from iqrp.app.alpha.statistical_validation.significance import (
+        ic_significance,
+        newey_west_ic_significance,
+        newey_west_variance,
+        rolling_ic_series,
     )
-    from iqrp.app.alpha.regime.regime_performance import regime_hit_rate
-    from iqrp.app.alpha.regime.conditional_alpha import conditional_ic, compare_unconditional_vs_conditional
-    from iqrp.app.alpha.base.signal_result import SignalResearchReport, SignalScore, SignalStatistics
     from iqrp.app.alpha.visualization import regime_bars_payload
 
     rng = np.random.default_rng(1)
@@ -332,21 +394,15 @@ def test_remaining_modules_edges() -> None:
     zscore(returns, 5, min_periods=100)
 
     # TC prefer portfolio True/False + exception fallback
-    estimate_transaction_cost(
-        np.array([0.5, 0.5]), np.array([0.2, 0.8]), prefer_portfolio=True
-    )
-    estimate_transaction_cost(
-        np.array([0.5, 0.5]), np.array([0.2, 0.8]), prefer_portfolio=False
-    )
+    estimate_transaction_cost(np.array([0.5, 0.5]), np.array([0.2, 0.8]), prefer_portfolio=True)
+    estimate_transaction_cost(np.array([0.5, 0.5]), np.array([0.2, 0.8]), prefer_portfolio=False)
     import iqrp.app.alpha.economics.transaction_costs as tc_mod
 
     def _boom(*_a: Any, **_k: Any) -> dict[str, Any]:
         raise RuntimeError("fail")
 
     with mock.patch.object(tc_mod, "_portfolio_tc", _boom):
-        estimate_transaction_cost(
-            np.array([0.5, 0.5]), np.array([0.2, 0.8]), prefer_portfolio=True
-        )
+        estimate_transaction_cost(np.array([0.5, 0.5]), np.array([0.2, 0.8]), prefer_portfolio=True)
     turnover_series(np.ones((3, 2)) * 0.5, half=False)
     average_turnover(np.ones((3, 2)) * 0.5)
 
@@ -366,8 +422,16 @@ def test_remaining_modules_edges() -> None:
 
     # backtest edges
     signal_to_weights(np.array([np.nan, 1.0, -1.0]), mode="sign")
-    signal_backtest(rng.normal(size=30), rng.normal(0, 0.01, 30), cost_bps=5, mode="long_short", returns_are_forward=True)
-    portfolio_backtest(np.ones((10, 1)), rng.normal(0, 0.01, size=(10, 1)), cost_bps=1.0, returns_are_forward=False)
+    signal_backtest(
+        rng.normal(size=30),
+        rng.normal(0, 0.01, 30),
+        cost_bps=5,
+        mode="long_short",
+        returns_are_forward=True,
+    )
+    portfolio_backtest(
+        np.ones((10, 1)), rng.normal(0, 0.01, size=(10, 1)), cost_bps=1.0, returns_are_forward=False
+    )
     apply_embargo(np.arange(10), np.array([], dtype=int), embargo=2)
     list(purged_kfold_splits(10, n_splits=5, purge=0))
     purge_train_indices(np.arange(10), np.array([], dtype=int), purge=2)
@@ -434,15 +498,26 @@ def test_remaining_modules_edges() -> None:
                 "economic_hypothesis_score": 1,
             },
             "statistics": {
-                "n_obs": 1, "n_finite": 1, "mean": 0, "std": 0, "skew": 0,
-                "kurtosis": 0, "min": 0, "max": 0, "missing_pct": 0,
+                "n_obs": 1,
+                "n_finite": 1,
+                "mean": 0,
+                "std": 0,
+                "skew": 0,
+                "kurtosis": 0,
+                "min": 0,
+                "max": 0,
+                "missing_pct": 0,
                 "autocorrelation_lag1": 0,
             },
         }
     )
     # metadata created_at datetime instance
     SignalMetadata.from_dict(
-        {"signal_name": "s", "version": "1", "created_at": __import__("datetime").datetime.now(__import__("datetime").UTC)}
+        {
+            "signal_name": "s",
+            "version": "1",
+            "created_at": __import__("datetime").datetime.now(__import__("datetime").UTC),
+        }
     )
 
     regime_bars_payload({"a": {"ic": float("nan")}, "b": 0.1})

@@ -12,12 +12,12 @@ from iqrp.app.timeseries.features.trend_features import (
 )
 
 __all__ = [
-    "extract_features",
-    "trend_features",
+    "change_point_proximity",
     "cycle_features",
-    "volatility_features",
     "entropy_features",
+    "extract_features",
     "memory_features",
     "spectral_features",
-    "change_point_proximity",
+    "trend_features",
+    "volatility_features",
 ]

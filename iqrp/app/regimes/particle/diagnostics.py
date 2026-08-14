@@ -45,11 +45,18 @@ class ParticleDiagnostics:
                 "final": float(entropies[-1]) if entropies else 0.0,
             },
             "particle_degeneracy": {
-                "mean_degeneracy_ratio": float(
-                    np.mean([1.0 - e / max(trace.clouds[i].n_particles, 1) for i, e in enumerate(ess)])
-                )
-                if ess.size and trace.clouds
-                else 0.0,
+                "mean_degeneracy_ratio": (
+                    float(
+                        np.mean(
+                            [
+                                1.0 - e / max(trace.clouds[i].n_particles, 1)
+                                for i, e in enumerate(ess)
+                            ]
+                        )
+                    )
+                    if ess.size and trace.clouds
+                    else 0.0
+                ),
                 "final": final_w,
             },
             "resampling_history": {
@@ -76,6 +83,8 @@ class ParticleDiagnostics:
         if smooth is not None:
             out["smoothed"] = {
                 "mean_final": smooth.means[-1].tolist() if smooth.means.size else [],
-                "n_trajectories": int(smooth.trajectories.shape[0]) if smooth.trajectories.size else 0,
+                "n_trajectories": (
+                    int(smooth.trajectories.shape[0]) if smooth.trajectories.size else 0
+                ),
             }
         return out

@@ -8,17 +8,27 @@ import pytest
 from iqrp.app.forecasting.intelligence import ForecastIntelligenceEngine, IntelligenceSettings
 from iqrp.app.forecasting.intelligence.processes import feature_names, simulate_market_frame
 
-
 FEATS = feature_names(4)
 
 
 def _eng(**kw) -> ForecastIntelligenceEngine:
     base = {
-        "benchmark": {"method": "walk_forward", "n_splits": 2, "train_size": 60, "test_size": 20, "parallel": False},
+        "benchmark": {
+            "method": "walk_forward",
+            "n_splits": 2,
+            "train_size": 60,
+            "test_size": 20,
+            "parallel": False,
+        },
         "ensemble": {"method": "weighted", "top_k": 1},
         "automl": {"method": "none"},
         "retrain": {"mode": "drift", "window": 100, "warm_start": True},
-        "drift": {"enabled": True, "feature_psi_threshold": 0.01, "prediction_ks_threshold": 0.01, "performance_drop": 0.05},
+        "drift": {
+            "enabled": True,
+            "feature_psi_threshold": 0.01,
+            "prediction_ks_threshold": 0.01,
+            "performance_drop": 0.05,
+        },
     }
     base.update(kw)
     return ForecastIntelligenceEngine(IntelligenceSettings.from_mapping(base))
@@ -49,7 +59,9 @@ def test_ensemble_superiority_path():
 
 
 def test_drift_triggers_retrain():
-    frame = simulate_market_frame(140, kind="regime_switching", n_features=4, rng=np.random.default_rng(12))
+    frame = simulate_market_frame(
+        140, kind="regime_switching", n_features=4, rng=np.random.default_rng(12)
+    )
     eng = _eng()
     eng.fit(frame, feature_columns=FEATS, candidates=["mock"])
     # shift features strongly
@@ -69,9 +81,19 @@ def test_automl_fit_path():
 
 
 def test_benchmark_methods_integration():
-    frame = simulate_market_frame(130, kind="mean_reverting", n_features=4, rng=np.random.default_rng(14))
+    frame = simulate_market_frame(
+        130, kind="mean_reverting", n_features=4, rng=np.random.default_rng(14)
+    )
     for method in ("rolling", "purged_kfold", "embargo"):
-        eng = _eng(benchmark={"method": method, "n_splits": 2, "train_size": 50, "test_size": 15, "parallel": False})
+        eng = _eng(
+            benchmark={
+                "method": method,
+                "n_splits": 2,
+                "train_size": 50,
+                "test_size": 15,
+                "parallel": False,
+            }
+        )
         rows = eng.benchmark(frame, feature_columns=FEATS, candidates=["mock"])
         assert rows[0]["name"] == "mock"
 

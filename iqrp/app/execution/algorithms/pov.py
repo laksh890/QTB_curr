@@ -19,7 +19,6 @@ from iqrp.app.execution.algorithms.base import (
 )
 from iqrp.app.execution.types import Urgency
 
-
 # Urgency scales target participation (still hard-capped by max_participation).
 _URGENCY_POV_MULT: dict[Urgency, float] = {
     Urgency.LOW: 0.7,
@@ -124,10 +123,7 @@ class POVAlgorithm(ExecutionAlgorithm):
         # Per-slice hard participation vs expected market volume in that bucket
         per_bucket_vol = expected_market_vol * weights
         hard_cap = max_part if max_part > 0 else 1.0
-        capped = [
-            min(raw[i], float(per_bucket_vol[i]) * hard_cap)
-            for i in range(n)
-        ]
+        capped = [min(raw[i], float(per_bucket_vol[i]) * hard_cap) for i in range(n)]
         # Residual: if we under-participated due to throttle but urgency is high,
         # push residual into later buckets without exceeding parent or max POV
         shortfall = min(approved, expected_trade) - float(sum(capped))
@@ -153,10 +149,7 @@ class POVAlgorithm(ExecutionAlgorithm):
                     target_fill,
                 )
                 # Re-apply per-bucket caps
-                capped = [
-                    min(capped[i], float(per_bucket_vol[i]) * hard_cap)
-                    for i in range(n)
-                ]
+                capped = [min(capped[i], float(per_bucket_vol[i]) * hard_cap) for i in range(n)]
                 capped = redistribute_to_parent(capped, min(float(sum(capped)), approved))
 
         offsets = schedule_offsets(n, horizon)

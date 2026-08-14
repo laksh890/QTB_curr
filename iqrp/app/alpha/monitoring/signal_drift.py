@@ -67,7 +67,11 @@ def signal_distribution_drift(
 
     severity = "none"
     if alerts:
-        severity = "high" if len(alerts) >= 2 or (np.isfinite(psi) and psi >= 2 * psi_threshold) else "medium"
+        severity = (
+            "high"
+            if len(alerts) >= 2 or (np.isfinite(psi) and psi >= 2 * psi_threshold)
+            else "medium"
+        )
 
     return {
         "name": "signal_distribution_drift",
@@ -89,6 +93,7 @@ def concept_drift_ic(
     ratio_threshold: float = 0.5,
 ) -> dict[str, Any]:
     """Concept drift via IC ratio current/reference."""
+
     def _ic(s: Any, r: Any) -> float:
         s = np.asarray(s, dtype=np.float64).reshape(-1)
         r = np.asarray(r, dtype=np.float64).reshape(-1)
@@ -117,7 +122,11 @@ def concept_drift_ic(
         "ratio": float(ratio) if np.isfinite(ratio) else float("nan"),
         "sign_flip": bool(sign_flip),
         "drifted": bool(drifted),
-        "severity": "high" if sign_flip or (np.isfinite(ratio) and ratio < 0.3) else ("medium" if drifted else "none"),
+        "severity": (
+            "high"
+            if sign_flip or (np.isfinite(ratio) and ratio < 0.3)
+            else ("medium" if drifted else "none")
+        ),
     }
 
 
@@ -143,7 +152,11 @@ def position_drift(
         "correlation": corr,
         "mean_abs_delta": l1,
         "drifted": bool(drifted),
-        "severity": "high" if drifted and (not np.isfinite(corr) or corr < 0.4) else ("medium" if drifted else "none"),
+        "severity": (
+            "high"
+            if drifted and (not np.isfinite(corr) or corr < 0.4)
+            else ("medium" if drifted else "none")
+        ),
     }
 
 

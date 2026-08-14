@@ -21,7 +21,6 @@ from iqrp.app.execution.algorithms.base import (
 )
 from iqrp.app.execution.types import Urgency
 
-
 _URGENCY_RISK_AVERSION: dict[Urgency, float] = {
     Urgency.LOW: 0.35,
     Urgency.NORMAL: 1.0,

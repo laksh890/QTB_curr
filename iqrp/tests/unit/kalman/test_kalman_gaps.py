@@ -8,6 +8,8 @@ import numpy as np
 import polars as pl
 import pytest
 
+import iqrp.app.regimes.kalman
+from iqrp.app.regimes.base.registry import get_registry as get_regime_registry
 from iqrp.app.regimes.kalman import KalmanFilterModel, KalmanSettings, build_system, simulate_lds
 from iqrp.app.regimes.kalman.covariance import ensure_spd
 from iqrp.app.regimes.kalman.ekf import filter_ekf
@@ -26,13 +28,13 @@ from iqrp.app.regimes.kalman.visualization import (
     plot_smoothed_state,
 )
 from iqrp.app.state_space import get_registry as get_ss_registry
-from iqrp.app.regimes.base.registry import get_registry as get_regime_registry
-
-import iqrp.app.regimes.kalman  # noqa: F401
 
 
 def _settings(**kw: object) -> KalmanSettings:
-    data = {**KalmanSettings.default().model_dump(), "training": {"em_iterations": 2, "tol": 1e-3, "estimate_noise": False}}
+    data = {
+        **KalmanSettings.default().model_dump(),
+        "training": {"em_iterations": 2, "tol": 1e-3, "estimate_noise": False},
+    }
     data.update(kw)
     return KalmanSettings.from_mapping(data)
 
@@ -109,7 +111,9 @@ def test_viz_empty_and_bands(tmp_path: Path) -> None:
     plot_smoothed_state(np.linspace(0, 1, 10), tmp_path / "sm.svg", settings)
     plot_prediction_bands(np.zeros(10), -np.ones(10), np.ones(10), tmp_path / "pb.svg", settings)
     plot_innovations(np.random.default_rng(0).normal(size=(10, 2)), tmp_path / "inn.svg", settings)
-    plot_covariance_evolution(np.stack([np.eye(2) for _ in range(10)]), tmp_path / "cov.svg", settings)
+    plot_covariance_evolution(
+        np.stack([np.eye(2) for _ in range(10)]), tmp_path / "cov.svg", settings
+    )
     plot_kalman_gain(np.stack([np.ones((2, 1)) for _ in range(10)]), tmp_path / "kg.svg", settings)
 
 
@@ -118,8 +122,8 @@ def test_rts_with_f_seq_and_1d_adapt() -> None:
     sys = build_system(_settings(application="denoise"), application="denoise")
     _, obs = simulate_lds(sys, 15, rng=np.random.default_rng(3))
     tr = filter_linear(obs, sys)
+    from iqrp.app.regimes.kalman.adaptive import adapt_noise_from_trace, filter_adaptive
     from iqrp.app.regimes.kalman.smoothing import rts_smooth
-    from iqrp.app.regimes.kalman.adaptive import filter_adaptive, adapt_noise_from_trace
 
     sm = rts_smooth(tr, sys, f_seq=np.stack([sys.f] * 15))
     assert sm.means.shape[0] == 15

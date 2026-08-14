@@ -16,12 +16,12 @@ from iqrp.app.portfolio.optimization.projection import (
     format_weights,
     infeasible_result,
     make_result,
+    minimize_scipy,
     parse_constraints,
     portfolio_variance,
     project_weights,
     projected_gradient,
     scipy_available,
-    minimize_scipy,
     stabilize_mu,
 )
 from iqrp.app.portfolio.robust.uncertainty_sets import (
@@ -88,7 +88,14 @@ def optimize_distributional_robust(
             names = cstr.get("names")
         ok, reason, conflicts = check_feasibility(cstr)
         if not ok:
-            return infeasible_result(name, n, method=method, reason=reason or "infeasible", conflicts=conflicts, names=names)
+            return infeasible_result(
+                name,
+                n,
+                method=method,
+                reason=reason or "infeasible",
+                conflicts=conflicts,
+                names=names,
+            )
 
         # Seed with worst-case mu plug-in MV
         w_seed = equal_weights(n, cstr["budget"])
@@ -135,7 +142,9 @@ def optimize_distributional_robust(
             bounds = [(cstr["lb"], cstr["ub"])] * n
             cons = {"type": "eq", "fun": lambda ww: float(np.sum(ww) - cstr["budget"])}
             try:
-                res = minimize_scipy(obj, x0, jac=grad, bounds=bounds, constraints=[cons], method="SLSQP")
+                res = minimize_scipy(
+                    obj, x0, jac=grad, bounds=bounds, constraints=[cons], method="SLSQP"
+                )
                 if bool(res.success):
                     w = project(np.asarray(res.x, dtype=np.float64))
                     fval = float(obj(w))
@@ -143,16 +152,22 @@ def optimize_distributional_robust(
                     success_opt = True
                     iters = int(getattr(res, "nit", 0) or 0)
                 else:
-                    w, fval, success_opt, iters = projected_gradient(obj, grad, x0, project, lr=0.05)
+                    w, fval, success_opt, iters = projected_gradient(
+                        obj, grad, x0, project, lr=0.05
+                    )
             except Exception:
                 w, fval, success_opt, iters = projected_gradient(obj, grad, x0, project, lr=0.05)
         else:
             w, fval, success_opt, iters = projected_gradient(obj, grad, x0, project, lr=0.05)
 
         if float(np.min(w)) < cstr["lb"] - 1e-8 or float(np.max(w)) > cstr["ub"] + 1e-8:
-            return infeasible_result(name, n, method=used, reason="box violation", conflicts=["box"], names=names)
+            return infeasible_result(
+                name, n, method=used, reason="box violation", conflicts=["box"], names=names
+            )
         if abs(float(np.sum(w)) - cstr["budget"]) > 1e-6:
-            return infeasible_result(name, n, method=used, reason="budget violation", conflicts=["budget"], names=names)
+            return infeasible_result(
+                name, n, method=used, reason="budget violation", conflicts=["budget"], names=names
+            )
 
         return make_result(
             name,

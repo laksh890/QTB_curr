@@ -1,0 +1,488 @@
+{
+  "campaign_id": "model_driven_alpha_campaign_v1",
+  "output_dir": "results/model_driven_alpha_campaign",
+  "registry_path": "dataset_registry.json",
+  "dataset_keys": {
+    "1m": "btcusdt_intraday_1m@1.0.0",
+    "5m": "btcusdt_intraday_5m@1.0.0",
+    "15m": "btcusdt_intraday_15m@1.0.0",
+    "30m": "btcusdt_intraday_30m@1.0.0",
+    "1h": "btcusdt_intraday_1h@1.0.0"
+  },
+  "timeframes": [
+    "1m",
+    "5m",
+    "15m",
+    "30m",
+    "1h"
+  ],
+  "holding_bars": [
+    1,
+    2,
+    3,
+    5,
+    10,
+    20
+  ],
+  "directions": [
+    "LONG",
+    "SHORT",
+    "LONG_SHORT"
+  ],
+  "cost_scenarios": [
+    "BASE",
+    "MODERATE",
+    "ADVERSE"
+  ],
+  "max_bars": {
+    "1m": 40000,
+    "5m": 30000,
+    "15m": 25000,
+    "30m": 20000,
+    "1h": 20000
+  },
+  "train_frac": 0.5,
+  "validation_frac": 0.25,
+  "random_seed": 39,
+  "reference_lookback": 20,
+  "market_type": "crypto",
+  "timezone": "UTC",
+  "software_version": "iqrp-model-driven-alpha-0.1.0",
+  "smoke": false,
+  "disclaimer": "MODEL-DRIVEN ALPHA RESEARCH \u2014 predefined protocol. Research evidence is not a profitability guarantee. MODEL IMPLEMENTED \u2260 FORECAST \u2260 SIGNAL \u2260 OOS \u2260 COST-SURVIVAL \u2260 ROBUST \u2260 PROFITABLE \u2260 LIVE-READY.",
+  "cost_scenario_defs": {
+    "BASE": {
+      "commission_bps": 1.0,
+      "spread_bps": 2.0,
+      "slippage_bps": 2.0
+    },
+    "MODERATE": {
+      "commission_bps": 2.0,
+      "spread_bps": 4.0,
+      "slippage_bps": 4.0
+    },
+    "ADVERSE": {
+      "commission_bps": 4.0,
+      "spread_bps": 8.0,
+      "slippage_bps": 8.0
+    }
+  },
+  "model_specs": [
+    {
+      "family": "GARCH",
+      "model_id": "garch",
+      "adapter_id": "garch_volatility_v1",
+      "pipeline": "volatility",
+      "timeframes": [
+        "5m",
+        "15m",
+        "30m",
+        "1h"
+      ],
+      "unavailable": {
+        "1m": "GARCH MLE on 1m research window exceeds campaign compute budget"
+      }
+    },
+    {
+      "family": "ARIMA",
+      "model_id": "arima",
+      "adapter_id": "arima_return_v1",
+      "pipeline": "statistical",
+      "timeframes": [
+        "15m",
+        "30m",
+        "1h"
+      ],
+      "unavailable": {
+        "1m": "ARIMA unfit for dense 1m campaign subsample",
+        "5m": "ARIMA reserved for coarser TFs in declared protocol"
+      }
+    },
+    {
+      "family": "VAR",
+      "model_id": "var",
+      "adapter_id": null,
+      "pipeline": null,
+      "timeframes": [],
+      "unavailable": {
+        "1m": "Single-asset BTCUSDT \u2014 VAR requires multivariate series",
+        "5m": "Single-asset BTCUSDT \u2014 VAR requires multivariate series",
+        "15m": "Single-asset BTCUSDT \u2014 VAR requires multivariate series",
+        "30m": "Single-asset BTCUSDT \u2014 VAR requires multivariate series",
+        "1h": "Single-asset BTCUSDT \u2014 VAR requires multivariate series"
+      }
+    },
+    {
+      "family": "VECM",
+      "model_id": "vecm",
+      "adapter_id": null,
+      "pipeline": null,
+      "timeframes": [],
+      "unavailable": {
+        "1m": "Single-asset BTCUSDT \u2014 VECM requires cointegrated multivariate series",
+        "5m": "Single-asset BTCUSDT \u2014 VECM requires cointegrated multivariate series",
+        "15m": "Single-asset BTCUSDT \u2014 VECM requires cointegrated multivariate series",
+        "30m": "Single-asset BTCUSDT \u2014 VECM requires cointegrated multivariate series",
+        "1h": "Single-asset BTCUSDT \u2014 VECM requires cointegrated multivariate series"
+      }
+    },
+    {
+      "family": "XGBoost",
+      "model_id": "xgboost",
+      "adapter_id": "xgb_return_v1",
+      "pipeline": "tree_ml",
+      "timeframes": [
+        "15m",
+        "30m",
+        "1h"
+      ],
+      "unavailable": {
+        "1m": "Tree ML on 1m excluded by protocol compute budget",
+        "5m": "Tree ML reserved for >=15m in declared protocol"
+      }
+    },
+    {
+      "family": "LightGBM",
+      "model_id": "lightgbm",
+      "adapter_id": "lgbm_return_v1",
+      "pipeline": "tree_ml",
+      "timeframes": [
+        "15m",
+        "30m",
+        "1h"
+      ],
+      "unavailable": {
+        "1m": "Tree ML on 1m excluded by protocol compute budget",
+        "5m": "Tree ML reserved for >=15m in declared protocol"
+      }
+    },
+    {
+      "family": "CatBoost",
+      "model_id": "catboost",
+      "adapter_id": "cat_return_v1",
+      "pipeline": "tree_ml",
+      "timeframes": [
+        "15m",
+        "30m",
+        "1h"
+      ],
+      "unavailable": {
+        "1m": "Tree ML on 1m excluded by protocol compute budget",
+        "5m": "Tree ML reserved for >=15m in declared protocol"
+      }
+    },
+    {
+      "family": "LSTM",
+      "model_id": "lstm",
+      "adapter_id": "lstm_return_v1",
+      "pipeline": "neural",
+      "timeframes": [
+        "30m",
+        "1h"
+      ],
+      "unavailable": {
+        "1m": "Neural training excluded on fine TFs by protocol",
+        "5m": "Neural training excluded on fine TFs by protocol",
+        "15m": "Neural training reserved for >=30m in declared protocol"
+      }
+    },
+    {
+      "family": "GRU",
+      "model_id": "gru",
+      "adapter_id": "gru_return_v1",
+      "pipeline": "neural",
+      "timeframes": [
+        "1h"
+      ],
+      "unavailable": {
+        "1m": "GRU reserved for 1h in declared protocol",
+        "5m": "GRU reserved for 1h in declared protocol",
+        "15m": "GRU reserved for 1h in declared protocol",
+        "30m": "GRU reserved for 1h in declared protocol"
+      }
+    },
+    {
+      "family": "MLP",
+      "model_id": "mlp",
+      "adapter_id": "mlp_return_v1",
+      "pipeline": "neural",
+      "timeframes": [
+        "1h"
+      ],
+      "unavailable": {
+        "1m": "MLP reserved for 1h in declared protocol",
+        "5m": "MLP reserved for 1h in declared protocol",
+        "15m": "MLP reserved for 1h in declared protocol",
+        "30m": "MLP reserved for 1h in declared protocol"
+      }
+    },
+    {
+      "family": "Transformer",
+      "model_id": "tide",
+      "adapter_id": "transformer_return_v1",
+      "pipeline": "transformer",
+      "timeframes": [
+        "1h"
+      ],
+      "unavailable": {
+        "1m": "Transformer reserved for 1h in declared protocol",
+        "5m": "Transformer reserved for 1h in declared protocol",
+        "15m": "Transformer reserved for 1h in declared protocol",
+        "30m": "Transformer reserved for 1h in declared protocol"
+      }
+    },
+    {
+      "family": "HMM",
+      "model_id": "hmm",
+      "adapter_id": "hmm_regime_v1",
+      "pipeline": "regime",
+      "timeframes": [
+        "15m",
+        "30m",
+        "1h"
+      ],
+      "unavailable": {
+        "1m": "HMM excluded on 1m by protocol compute budget",
+        "5m": "HMM reserved for >=15m in declared protocol"
+      }
+    },
+    {
+      "family": "GMM",
+      "model_id": "gmm",
+      "adapter_id": null,
+      "pipeline": null,
+      "timeframes": [],
+      "unavailable": {
+        "1m": "GMM regime model present in package but not registered in default adapter/pipeline path",
+        "5m": "GMM regime model present in package but not registered in default adapter/pipeline path",
+        "15m": "GMM regime model present in package but not registered in default adapter/pipeline path",
+        "30m": "GMM regime model present in package but not registered in default adapter/pipeline path",
+        "1h": "GMM regime model present in package but not registered in default adapter/pipeline path"
+      }
+    },
+    {
+      "family": "Markov",
+      "model_id": "markov_chain",
+      "adapter_id": "markov_regime_v1",
+      "pipeline": "regime",
+      "timeframes": [
+        "1h"
+      ],
+      "unavailable": {
+        "1m": "Markov reserved for 1h smoke in declared protocol",
+        "5m": "Markov reserved for 1h smoke in declared protocol",
+        "15m": "Markov reserved for 1h smoke in declared protocol",
+        "30m": "Markov reserved for 1h smoke in declared protocol"
+      }
+    }
+  ],
+  "combinations": [
+    {
+      "id": "garch_x_momentum",
+      "model_adapter": "garch_volatility_v1",
+      "reference": "momentum_signal",
+      "timeframes": [
+        "1h",
+        "30m"
+      ]
+    },
+    {
+      "id": "garch_x_breakout",
+      "model_adapter": "garch_volatility_v1",
+      "reference": "breakout_signal",
+      "timeframes": [
+        "1h"
+      ]
+    },
+    {
+      "id": "garch_x_meanrev",
+      "model_adapter": "garch_volatility_v1",
+      "reference": "mean_reversion_signal",
+      "timeframes": [
+        "1h"
+      ]
+    },
+    {
+      "id": "hmm_x_momentum",
+      "model_adapter": "hmm_regime_v1",
+      "reference": "momentum_signal",
+      "timeframes": [
+        "1h",
+        "30m"
+      ]
+    },
+    {
+      "id": "hmm_x_meanrev",
+      "model_adapter": "hmm_regime_v1",
+      "reference": "mean_reversion_signal",
+      "timeframes": [
+        "1h"
+      ]
+    },
+    {
+      "id": "hmm_x_breakout",
+      "model_adapter": "hmm_regime_v1",
+      "reference": "breakout_signal",
+      "timeframes": [
+        "1h"
+      ]
+    },
+    {
+      "id": "arima_x_price_action",
+      "model_adapter": "arima_return_v1",
+      "reference": "price_action_signal",
+      "timeframes": [
+        "1h"
+      ]
+    },
+    {
+      "id": "arima_x_momentum",
+      "model_adapter": "arima_return_v1",
+      "reference": "momentum_signal",
+      "timeframes": [
+        "1h"
+      ]
+    },
+    {
+      "id": "xgb_x_momentum",
+      "model_adapter": "xgb_return_v1",
+      "reference": "momentum_signal",
+      "timeframes": [
+        "1h",
+        "30m"
+      ]
+    },
+    {
+      "id": "xgb_x_volatility",
+      "model_adapter": "xgb_return_v1",
+      "reference": "volatility_signal",
+      "timeframes": [
+        "1h"
+      ]
+    },
+    {
+      "id": "xgb_x_price_action",
+      "model_adapter": "xgb_return_v1",
+      "reference": "price_action_signal",
+      "timeframes": [
+        "1h"
+      ]
+    },
+    {
+      "id": "transformer_x_momentum",
+      "model_adapter": "transformer_return_v1",
+      "reference": "momentum_signal",
+      "timeframes": [
+        "1h"
+      ]
+    },
+    {
+      "id": "transformer_x_volatility",
+      "model_adapter": "transformer_return_v1",
+      "reference": "volatility_signal",
+      "timeframes": [
+        "1h"
+      ]
+    }
+  ],
+  "mtf_pairs": [
+    {
+      "model_tf": "1h",
+      "exec_tf": "15m",
+      "sources": [
+        "garch_volatility_v1",
+        "arima_return_v1",
+        "xgb_return_v1",
+        "hmm_regime_v1",
+        "momentum_signal"
+      ]
+    },
+    {
+      "model_tf": "30m",
+      "exec_tf": "5m",
+      "sources": [
+        "garch_volatility_v1",
+        "momentum_signal"
+      ]
+    },
+    {
+      "model_tf": "15m",
+      "exec_tf": "5m",
+      "sources": [
+        "momentum_signal",
+        "xgb_return_v1"
+      ]
+    }
+  ],
+  "ensembles": [
+    {
+      "id": "equal_weight_ref_1h",
+      "method": "equal_weight",
+      "timeframe": "1h",
+      "members": [
+        "momentum_signal",
+        "trend_signal",
+        "breakout_signal"
+      ],
+      "weights": [
+        0.3333333333333333,
+        0.3333333333333333,
+        0.3333333333333333
+      ]
+    },
+    {
+      "id": "majority_vote_ref_1h",
+      "method": "majority_vote",
+      "timeframe": "1h",
+      "members": [
+        "momentum_signal",
+        "trend_signal",
+        "breakout_signal"
+      ],
+      "weights": null
+    },
+    {
+      "id": "confidence_weight_model_1h",
+      "method": "confidence_weighted",
+      "timeframe": "1h",
+      "members": [
+        "arima_return_v1",
+        "xgb_return_v1",
+        "momentum_signal"
+      ],
+      "weights": [
+        0.25,
+        0.35,
+        0.4
+      ]
+    },
+    {
+      "id": "regime_conditioned_mom_1h",
+      "method": "regime_conditioned",
+      "timeframe": "1h",
+      "members": [
+        "hmm_regime_v1",
+        "momentum_signal"
+      ],
+      "weights": null
+    }
+  ],
+  "reference_signals": [
+    "momentum_signal",
+    "mean_reversion_signal",
+    "breakout_signal",
+    "trend_signal",
+    "volatility_signal",
+    "volume_signal",
+    "price_action_signal"
+  ],
+  "started_at": "2026-08-14T16:13:45.292943+00:00",
+  "trimmed_row_counts": {
+    "1m": 40000,
+    "5m": 30000,
+    "15m": 25000,
+    "30m": 20000,
+    "1h": 20000
+  },
+  "note_subsample": "Frames trimmed to MAX_BARS ending at registered dataset end (2024-12-31). No fabricated post-2024 bars."
+}

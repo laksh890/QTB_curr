@@ -1,0 +1,38 @@
+{
+  "disclaimer": "MODEL\u2192ALPHA INTEGRATION VALIDATION \u2014 wiring only. Not a profitability claim. Research evidence is not a guarantee.",
+  "status": "PASS",
+  "path": "Data\u2192Model\u2192Adapter\u2192SignalRegistry\u2192AlphaResearch\u2192cost-aware positions/returns",
+  "adapter_id": "garch_volatility_v1_1h",
+  "result_keys": [
+    "bars_per_day",
+    "classification",
+    "classification_reason",
+    "cost_scenario",
+    "costs",
+    "decay",
+    "embargo_bars",
+    "experiment",
+    "experiment_id",
+    "ic",
+    "importance",
+    "leakage",
+    "matrix_row",
+    "mtf",
+    "n_sessions",
+    "oos",
+    "periods_per_year",
+    "positions",
+    "purge_bars",
+    "regime",
+    "research_status",
+    "score",
+    "signal_meta",
+    "signal_series",
+    "time_of_day"
+  ],
+  "downstream": {
+    "risk": "PASS",
+    "portfolio": "PASS",
+    "execution": "PASS"
+  }
+}

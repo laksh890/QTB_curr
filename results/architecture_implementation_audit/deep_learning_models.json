@@ -1,0 +1,540 @@
+{
+  "MLP": {
+    "status": "IMPLEMENTED",
+    "source": [
+      "iqrp/app/forecasting/neural/mlp"
+    ],
+    "tests": [
+      "iqrp/tests/integration/test_neural_forecasting_pipeline.py",
+      "iqrp/tests/unit/neural_forecasting/test_neural_core.py",
+      "iqrp/tests/unit/neural_forecasting/test_neural_gaps.py",
+      "iqrp/tests/unit/neural_forecasting/test_neural_gaps2.py"
+    ],
+    "docs": [
+      "iqrp/docs/NHITS.md",
+      "iqrp/docs/NeuralForecasting.md",
+      "iqrp/docs/TiDE.md"
+    ],
+    "executable_smoke": null,
+    "integrated_into_alpha_research": false,
+    "integrated_into_backtest_runner": false,
+    "notes": "Neural forecasting architecture; NOT wired to alpha_research campaign",
+    "evidence": {
+      "n_sources": 1,
+      "n_tests": 4,
+      "n_docs": 3
+    }
+  },
+  "LSTM": {
+    "status": "IMPLEMENTED",
+    "source": [
+      "iqrp/app/forecasting/neural/lstm"
+    ],
+    "tests": [
+      "iqrp/tests/integration/test_neural_forecasting_pipeline.py",
+      "iqrp/tests/unit/neural_forecasting/test_neural_core.py",
+      "iqrp/tests/unit/neural_forecasting/test_neural_gaps.py",
+      "iqrp/tests/unit/neural_forecasting/test_neural_gaps2.py"
+    ],
+    "docs": [
+      "iqrp/docs/ForecastingFramework.md",
+      "iqrp/docs/LSTM.md",
+      "iqrp/docs/NeuralForecasting.md",
+      "iqrp/docs/ProbabilisticForecasting.md",
+      "iqrp/docs/Seq2Seq.md"
+    ],
+    "executable_smoke": null,
+    "integrated_into_alpha_research": false,
+    "integrated_into_backtest_runner": false,
+    "notes": "Neural forecasting architecture; NOT wired to alpha_research campaign",
+    "evidence": {
+      "n_sources": 1,
+      "n_tests": 4,
+      "n_docs": 5
+    }
+  },
+  "GRU": {
+    "status": "IMPLEMENTED",
+    "source": [
+      "iqrp/app/forecasting/neural/gru"
+    ],
+    "tests": [
+      "iqrp/tests/integration/test_neural_forecasting_pipeline.py",
+      "iqrp/tests/unit/neural_forecasting/test_neural_core.py",
+      "iqrp/tests/unit/neural_forecasting/test_neural_gaps.py",
+      "iqrp/tests/unit/neural_forecasting/test_neural_gaps2.py"
+    ],
+    "docs": [
+      "iqrp/docs/ForecastingFramework.md",
+      "iqrp/docs/GRU.md",
+      "iqrp/docs/NeuralForecasting.md"
+    ],
+    "executable_smoke": null,
+    "integrated_into_alpha_research": false,
+    "integrated_into_backtest_runner": false,
+    "notes": "Neural forecasting architecture; NOT wired to alpha_research campaign",
+    "evidence": {
+      "n_sources": 1,
+      "n_tests": 4,
+      "n_docs": 3
+    }
+  },
+  "TCN": {
+    "status": "IMPLEMENTED",
+    "source": [
+      "iqrp/app/forecasting/neural/tcn"
+    ],
+    "tests": [
+      "iqrp/tests/integration/test_neural_forecasting_pipeline.py",
+      "iqrp/tests/integration/test_transformer_forecasting_pipeline.py",
+      "iqrp/tests/unit/forecast_intelligence/test_intelligence_core.py",
+      "iqrp/tests/unit/neural_forecasting/test_neural_core.py",
+      "iqrp/tests/unit/neural_forecasting/test_neural_gaps.py",
+      "iqrp/tests/unit/neural_forecasting/test_neural_gaps2.py",
+      "iqrp/tests/unit/transformer_forecasting/test_transformer_gaps.py"
+    ],
+    "docs": [
+      "iqrp/docs/AutoML.md",
+      "iqrp/docs/DeepAR.md",
+      "iqrp/docs/ForecastingFramework.md",
+      "iqrp/docs/GRU.md",
+      "iqrp/docs/LSTM.md",
+      "iqrp/docs/NBEATS.md",
+      "iqrp/docs/NHITS.md",
+      "iqrp/docs/NeuralForecasting.md",
+      "iqrp/docs/ProbabilisticForecasting.md",
+      "iqrp/docs/RegimeFramework.md"
+    ],
+    "executable_smoke": null,
+    "integrated_into_alpha_research": false,
+    "integrated_into_backtest_runner": false,
+    "notes": "Neural forecasting architecture; NOT wired to alpha_research campaign",
+    "evidence": {
+      "n_sources": 1,
+      "n_tests": 7,
+      "n_docs": 12
+    }
+  },
+  "DeepAR": {
+    "status": "IMPLEMENTED",
+    "source": [
+      "iqrp/app/forecasting/neural/deepar"
+    ],
+    "tests": [
+      "iqrp/tests/integration/test_neural_forecasting_pipeline.py",
+      "iqrp/tests/integration/test_transformer_forecasting_pipeline.py",
+      "iqrp/tests/unit/forecast_intelligence/test_intelligence_core.py",
+      "iqrp/tests/unit/neural_forecasting/test_neural_core.py",
+      "iqrp/tests/unit/neural_forecasting/test_neural_gaps.py",
+      "iqrp/tests/unit/neural_forecasting/test_neural_gaps2.py",
+      "iqrp/tests/unit/transformer_forecasting/test_transformer_gaps.py"
+    ],
+    "docs": [
+      "iqrp/docs/AutoML.md",
+      "iqrp/docs/DeepAR.md",
+      "iqrp/docs/ForecastingFramework.md",
+      "iqrp/docs/GRU.md",
+      "iqrp/docs/LSTM.md",
+      "iqrp/docs/NBEATS.md",
+      "iqrp/docs/NHITS.md",
+      "iqrp/docs/NeuralForecasting.md",
+      "iqrp/docs/ProbabilisticForecasting.md",
+      "iqrp/docs/RegimeFramework.md"
+    ],
+    "executable_smoke": null,
+    "integrated_into_alpha_research": false,
+    "integrated_into_backtest_runner": false,
+    "notes": "Neural forecasting architecture; NOT wired to alpha_research campaign",
+    "evidence": {
+      "n_sources": 1,
+      "n_tests": 7,
+      "n_docs": 12
+    }
+  },
+  "NBEATS": {
+    "status": "IMPLEMENTED",
+    "source": [
+      "iqrp/app/forecasting/neural/nbeats"
+    ],
+    "tests": [
+      "iqrp/tests/integration/test_neural_forecasting_pipeline.py",
+      "iqrp/tests/integration/test_transformer_forecasting_pipeline.py",
+      "iqrp/tests/unit/forecast_intelligence/test_intelligence_core.py",
+      "iqrp/tests/unit/neural_forecasting/test_neural_core.py",
+      "iqrp/tests/unit/neural_forecasting/test_neural_gaps.py",
+      "iqrp/tests/unit/neural_forecasting/test_neural_gaps2.py",
+      "iqrp/tests/unit/transformer_forecasting/test_transformer_gaps.py"
+    ],
+    "docs": [
+      "iqrp/docs/AutoML.md",
+      "iqrp/docs/DeepAR.md",
+      "iqrp/docs/ForecastingFramework.md",
+      "iqrp/docs/GRU.md",
+      "iqrp/docs/LSTM.md",
+      "iqrp/docs/NBEATS.md",
+      "iqrp/docs/NHITS.md",
+      "iqrp/docs/NeuralForecasting.md",
+      "iqrp/docs/ProbabilisticForecasting.md",
+      "iqrp/docs/RegimeFramework.md"
+    ],
+    "executable_smoke": null,
+    "integrated_into_alpha_research": false,
+    "integrated_into_backtest_runner": false,
+    "notes": "Neural forecasting architecture; NOT wired to alpha_research campaign",
+    "evidence": {
+      "n_sources": 1,
+      "n_tests": 7,
+      "n_docs": 12
+    }
+  },
+  "NHITS": {
+    "status": "IMPLEMENTED",
+    "source": [
+      "iqrp/app/forecasting/neural/nhits"
+    ],
+    "tests": [
+      "iqrp/tests/integration/test_neural_forecasting_pipeline.py",
+      "iqrp/tests/integration/test_transformer_forecasting_pipeline.py",
+      "iqrp/tests/unit/forecast_intelligence/test_intelligence_core.py",
+      "iqrp/tests/unit/neural_forecasting/test_neural_core.py",
+      "iqrp/tests/unit/neural_forecasting/test_neural_gaps.py",
+      "iqrp/tests/unit/neural_forecasting/test_neural_gaps2.py",
+      "iqrp/tests/unit/transformer_forecasting/test_transformer_gaps.py"
+    ],
+    "docs": [
+      "iqrp/docs/AutoML.md",
+      "iqrp/docs/DeepAR.md",
+      "iqrp/docs/ForecastingFramework.md",
+      "iqrp/docs/GRU.md",
+      "iqrp/docs/LSTM.md",
+      "iqrp/docs/NBEATS.md",
+      "iqrp/docs/NHITS.md",
+      "iqrp/docs/NeuralForecasting.md",
+      "iqrp/docs/ProbabilisticForecasting.md",
+      "iqrp/docs/RegimeFramework.md"
+    ],
+    "executable_smoke": null,
+    "integrated_into_alpha_research": false,
+    "integrated_into_backtest_runner": false,
+    "notes": "Neural forecasting architecture; NOT wired to alpha_research campaign",
+    "evidence": {
+      "n_sources": 1,
+      "n_tests": 7,
+      "n_docs": 12
+    }
+  },
+  "Seq2Seq": {
+    "status": "IMPLEMENTED",
+    "source": [
+      "iqrp/app/forecasting/neural/seq2seq"
+    ],
+    "tests": [
+      "iqrp/tests/integration/test_neural_forecasting_pipeline.py",
+      "iqrp/tests/integration/test_transformer_forecasting_pipeline.py",
+      "iqrp/tests/unit/forecast_intelligence/test_intelligence_core.py",
+      "iqrp/tests/unit/neural_forecasting/test_neural_core.py",
+      "iqrp/tests/unit/neural_forecasting/test_neural_gaps.py",
+      "iqrp/tests/unit/neural_forecasting/test_neural_gaps2.py",
+      "iqrp/tests/unit/transformer_forecasting/test_transformer_gaps.py"
+    ],
+    "docs": [
+      "iqrp/docs/AutoML.md",
+      "iqrp/docs/DeepAR.md",
+      "iqrp/docs/ForecastingFramework.md",
+      "iqrp/docs/GRU.md",
+      "iqrp/docs/LSTM.md",
+      "iqrp/docs/NBEATS.md",
+      "iqrp/docs/NHITS.md",
+      "iqrp/docs/NeuralForecasting.md",
+      "iqrp/docs/ProbabilisticForecasting.md",
+      "iqrp/docs/RegimeFramework.md"
+    ],
+    "executable_smoke": null,
+    "integrated_into_alpha_research": false,
+    "integrated_into_backtest_runner": false,
+    "notes": "Neural forecasting architecture; NOT wired to alpha_research campaign",
+    "evidence": {
+      "n_sources": 1,
+      "n_tests": 7,
+      "n_docs": 12
+    }
+  },
+  "transformers": {
+    "informer": {
+      "status": "IMPLEMENTED",
+      "source": [
+        "iqrp/app/forecasting/transformers/architectures/informer"
+      ],
+      "tests": [
+        "iqrp/tests/integration/test_transformer_forecasting_pipeline.py",
+        "iqrp/tests/unit/transformer_forecasting/test_transformer_core.py",
+        "iqrp/tests/unit/transformer_forecasting/test_transformer_gaps.py",
+        "iqrp/tests/unit/transformer_forecasting/test_transformer_gaps2.py"
+      ],
+      "docs": [
+        "iqrp/docs/Informer.md",
+        "iqrp/docs/TransformerPlatform.md"
+      ],
+      "executable_smoke": null,
+      "integrated_into_alpha_research": false,
+      "integrated_into_backtest_runner": false,
+      "notes": "Transformer forecasting architecture present with tests/pipelines; NOT wired to alpha_research",
+      "evidence": {
+        "n_sources": 1,
+        "n_tests": 4,
+        "n_docs": 2
+      }
+    },
+    "autoformer": {
+      "status": "IMPLEMENTED",
+      "source": [
+        "iqrp/app/forecasting/transformers/architectures/autoformer"
+      ],
+      "tests": [
+        "iqrp/tests/integration/test_transformer_forecasting_pipeline.py",
+        "iqrp/tests/unit/transformer_forecasting/test_transformer_core.py",
+        "iqrp/tests/unit/transformer_forecasting/test_transformer_gaps.py",
+        "iqrp/tests/unit/transformer_forecasting/test_transformer_gaps2.py"
+      ],
+      "docs": [
+        "iqrp/docs/Autoformer.md",
+        "iqrp/docs/TransformerPlatform.md"
+      ],
+      "executable_smoke": null,
+      "integrated_into_alpha_research": false,
+      "integrated_into_backtest_runner": false,
+      "notes": "Transformer forecasting architecture present with tests/pipelines; NOT wired to alpha_research",
+      "evidence": {
+        "n_sources": 1,
+        "n_tests": 4,
+        "n_docs": 2
+      }
+    },
+    "fedformer": {
+      "status": "IMPLEMENTED",
+      "source": [
+        "iqrp/app/forecasting/transformers/architectures/fedformer"
+      ],
+      "tests": [
+        "iqrp/tests/integration/test_transformer_forecasting_pipeline.py",
+        "iqrp/tests/unit/transformer_forecasting/test_transformer_core.py",
+        "iqrp/tests/unit/transformer_forecasting/test_transformer_gaps.py",
+        "iqrp/tests/unit/transformer_forecasting/test_transformer_gaps2.py"
+      ],
+      "docs": [
+        "iqrp/docs/FEDformer.md",
+        "iqrp/docs/TransformerPlatform.md"
+      ],
+      "executable_smoke": null,
+      "integrated_into_alpha_research": false,
+      "integrated_into_backtest_runner": false,
+      "notes": "Transformer forecasting architecture present with tests/pipelines; NOT wired to alpha_research",
+      "evidence": {
+        "n_sources": 1,
+        "n_tests": 4,
+        "n_docs": 2
+      }
+    },
+    "crossformer": {
+      "status": "IMPLEMENTED",
+      "source": [
+        "iqrp/app/forecasting/transformers/architectures/crossformer"
+      ],
+      "tests": [
+        "iqrp/tests/integration/test_transformer_forecasting_pipeline.py",
+        "iqrp/tests/unit/transformer_forecasting/test_transformer_core.py",
+        "iqrp/tests/unit/transformer_forecasting/test_transformer_gaps.py",
+        "iqrp/tests/unit/transformer_forecasting/test_transformer_gaps2.py"
+      ],
+      "docs": [
+        "iqrp/docs/Crossformer.md",
+        "iqrp/docs/TransformerPlatform.md"
+      ],
+      "executable_smoke": null,
+      "integrated_into_alpha_research": false,
+      "integrated_into_backtest_runner": false,
+      "notes": "Transformer forecasting architecture present with tests/pipelines; NOT wired to alpha_research",
+      "evidence": {
+        "n_sources": 1,
+        "n_tests": 4,
+        "n_docs": 2
+      }
+    },
+    "patchtst": {
+      "status": "IMPLEMENTED",
+      "source": [
+        "iqrp/app/forecasting/transformers/architectures/patchtst"
+      ],
+      "tests": [
+        "iqrp/tests/integration/test_transformer_forecasting_pipeline.py",
+        "iqrp/tests/unit/transformer_forecasting/test_transformer_core.py",
+        "iqrp/tests/unit/transformer_forecasting/test_transformer_gaps.py",
+        "iqrp/tests/unit/transformer_forecasting/test_transformer_gaps2.py"
+      ],
+      "docs": [
+        "iqrp/docs/PatchTST.md",
+        "iqrp/docs/TransformerPlatform.md"
+      ],
+      "executable_smoke": null,
+      "integrated_into_alpha_research": false,
+      "integrated_into_backtest_runner": false,
+      "notes": "Transformer forecasting architecture present with tests/pipelines; NOT wired to alpha_research",
+      "evidence": {
+        "n_sources": 1,
+        "n_tests": 4,
+        "n_docs": 2
+      }
+    },
+    "tft": {
+      "status": "IMPLEMENTED",
+      "source": [
+        "iqrp/app/forecasting/transformers/architectures/tft"
+      ],
+      "tests": [
+        "iqrp/tests/integration/test_transformer_forecasting_pipeline.py",
+        "iqrp/tests/unit/transformer_forecasting/test_transformer_core.py",
+        "iqrp/tests/unit/transformer_forecasting/test_transformer_gaps.py",
+        "iqrp/tests/unit/transformer_forecasting/test_transformer_gaps2.py"
+      ],
+      "docs": [
+        "iqrp/docs/ForecastingFramework.md",
+        "iqrp/docs/ModelRisk.md",
+        "iqrp/docs/TemporalFusionTransformer.md",
+        "iqrp/docs/TransformerPlatform.md"
+      ],
+      "executable_smoke": null,
+      "integrated_into_alpha_research": false,
+      "integrated_into_backtest_runner": false,
+      "notes": "Transformer forecasting architecture present with tests/pipelines; NOT wired to alpha_research",
+      "evidence": {
+        "n_sources": 1,
+        "n_tests": 4,
+        "n_docs": 4
+      }
+    },
+    "itransformer": {
+      "status": "IMPLEMENTED",
+      "source": [
+        "iqrp/app/forecasting/transformers/architectures/itransformer"
+      ],
+      "tests": [
+        "iqrp/tests/integration/test_transformer_forecasting_pipeline.py",
+        "iqrp/tests/unit/transformer_forecasting/test_transformer_core.py",
+        "iqrp/tests/unit/transformer_forecasting/test_transformer_gaps.py",
+        "iqrp/tests/unit/transformer_forecasting/test_transformer_gaps2.py"
+      ],
+      "docs": [
+        "iqrp/docs/TransformerPlatform.md",
+        "iqrp/docs/iTransformer.md"
+      ],
+      "executable_smoke": null,
+      "integrated_into_alpha_research": false,
+      "integrated_into_backtest_runner": false,
+      "notes": "Transformer forecasting architecture present with tests/pipelines; NOT wired to alpha_research",
+      "evidence": {
+        "n_sources": 1,
+        "n_tests": 4,
+        "n_docs": 2
+      }
+    },
+    "timesnet": {
+      "status": "IMPLEMENTED",
+      "source": [
+        "iqrp/app/forecasting/transformers/architectures/timesnet"
+      ],
+      "tests": [
+        "iqrp/tests/integration/test_transformer_forecasting_pipeline.py",
+        "iqrp/tests/unit/transformer_forecasting/test_transformer_core.py",
+        "iqrp/tests/unit/transformer_forecasting/test_transformer_gaps.py",
+        "iqrp/tests/unit/transformer_forecasting/test_transformer_gaps2.py"
+      ],
+      "docs": [
+        "iqrp/docs/TimesNet.md",
+        "iqrp/docs/TransformerPlatform.md"
+      ],
+      "executable_smoke": null,
+      "integrated_into_alpha_research": false,
+      "integrated_into_backtest_runner": false,
+      "notes": "Transformer forecasting architecture present with tests/pipelines; NOT wired to alpha_research",
+      "evidence": {
+        "n_sources": 1,
+        "n_tests": 4,
+        "n_docs": 2
+      }
+    },
+    "timemixer": {
+      "status": "IMPLEMENTED",
+      "source": [
+        "iqrp/app/forecasting/transformers/architectures/timemixer"
+      ],
+      "tests": [
+        "iqrp/tests/integration/test_transformer_forecasting_pipeline.py",
+        "iqrp/tests/unit/transformer_forecasting/test_transformer_core.py",
+        "iqrp/tests/unit/transformer_forecasting/test_transformer_gaps.py",
+        "iqrp/tests/unit/transformer_forecasting/test_transformer_gaps2.py"
+      ],
+      "docs": [
+        "iqrp/docs/TimeMixer.md",
+        "iqrp/docs/TransformerPlatform.md"
+      ],
+      "executable_smoke": null,
+      "integrated_into_alpha_research": false,
+      "integrated_into_backtest_runner": false,
+      "notes": "Transformer forecasting architecture present with tests/pipelines; NOT wired to alpha_research",
+      "evidence": {
+        "n_sources": 1,
+        "n_tests": 4,
+        "n_docs": 2
+      }
+    },
+    "tide": {
+      "status": "IMPLEMENTED",
+      "source": [
+        "iqrp/app/forecasting/transformers/architectures/tide"
+      ],
+      "tests": [
+        "iqrp/tests/integration/test_transformer_forecasting_pipeline.py",
+        "iqrp/tests/unit/transformer_forecasting/test_transformer_core.py",
+        "iqrp/tests/unit/transformer_forecasting/test_transformer_gaps.py",
+        "iqrp/tests/unit/transformer_forecasting/test_transformer_gaps2.py"
+      ],
+      "docs": [
+        "iqrp/docs/TiDE.md",
+        "iqrp/docs/TransformerPlatform.md"
+      ],
+      "executable_smoke": null,
+      "integrated_into_alpha_research": false,
+      "integrated_into_backtest_runner": false,
+      "notes": "Transformer forecasting architecture present with tests/pipelines; NOT wired to alpha_research",
+      "evidence": {
+        "n_sources": 1,
+        "n_tests": 4,
+        "n_docs": 2
+      }
+    },
+    "moe_transformer": {
+      "status": "IMPLEMENTED",
+      "source": [
+        "iqrp/app/forecasting/transformers/architectures/moe_transformer"
+      ],
+      "tests": [
+        "iqrp/tests/integration/test_transformer_forecasting_pipeline.py",
+        "iqrp/tests/unit/transformer_forecasting/test_transformer_core.py",
+        "iqrp/tests/unit/transformer_forecasting/test_transformer_gaps.py",
+        "iqrp/tests/unit/transformer_forecasting/test_transformer_gaps2.py"
+      ],
+      "docs": [
+        "iqrp/docs/TransformerPlatform.md"
+      ],
+      "executable_smoke": null,
+      "integrated_into_alpha_research": false,
+      "integrated_into_backtest_runner": false,
+      "notes": "Transformer forecasting architecture present with tests/pipelines; NOT wired to alpha_research",
+      "evidence": {
+        "n_sources": 1,
+        "n_tests": 4,
+        "n_docs": 1
+      }
+    }
+  }
+}

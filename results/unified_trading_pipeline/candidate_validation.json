@@ -1,0 +1,17 @@
+{
+  "disclaimer": "UNIFIED TRADING PIPELINE \u2014 integration validation only. PIPELINE WORKS \u2260 STRATEGY WORKS \u2260 PROFITABLE \u2260 ROBUST \u2260 PRODUCTION READY.",
+  "good_ok": true,
+  "good_codes": [],
+  "bad_ok": false,
+  "bad_codes": [
+    "NON_FINITE_SIGNAL",
+    "INVALID_DIRECTION",
+    "INVALID_TIMESTAMP",
+    "MISSING_INSTRUMENT",
+    "UNKNOWN_MODEL_VERSION",
+    "UNKNOWN_DATASET",
+    "OOS_UNACCEPTABLE"
+  ],
+  "duplicate_rejected": true,
+  "status": "PASS"
+}

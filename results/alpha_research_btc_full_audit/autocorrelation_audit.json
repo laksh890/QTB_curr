@@ -1,0 +1,11 @@
+{
+  "return_lag1_acf": -0.01835901843102859,
+  "signal_lag1_acf": 0.7734267417994078,
+  "forward_return_h5_lag1_acf": 0.7875331060608005,
+  "raw_n_1h_returns": 52548,
+  "crude_n_eff_ar1": 54513.54487562601,
+  "iid_assumption_in_fdr_pvalues": true,
+  "assessment": "STATISTICAL_LIMITATION",
+  "note": "Prompt 35 FDR used IC t\u2192p treating observations as independent. Positive autocorrelation and overlapping horizons shrink effective sample size. No corrected significance fabricated in this audit.",
+  "disclaimer": "Research evidence is not a profitability guarantee."
+}

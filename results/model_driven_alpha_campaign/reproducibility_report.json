@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "experiment_id": "mdc_eafabf8bd521ce2a",
+  "sharpe_run1": -67.06665241150341,
+  "sharpe_run2": -67.06665241150341,
+  "score_run1": 0.1827704908209628,
+  "score_run2": 0.1827704908209628,
+  "identical_metrics": true,
+  "disclaimer": "MODEL-DRIVEN ALPHA RESEARCH \u2014 predefined protocol. Research evidence is not a profitability guarantee. MODEL IMPLEMENTED \u2260 FORECAST \u2260 SIGNAL \u2260 OOS \u2260 COST-SURVIVAL \u2260 ROBUST \u2260 PROFITABLE \u2260 LIVE-READY."
+}

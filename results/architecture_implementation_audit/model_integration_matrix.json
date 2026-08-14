@@ -1,0 +1,131 @@
+{
+  "matrix": [
+    {
+      "MODEL": "Reference_momentum_meanrev_breakout_etc",
+      "FORECAST": "NO",
+      "SIGNAL": "YES",
+      "ALPHA": "YES",
+      "BACKTEST": "YES",
+      "RISK": "NO",
+      "PORTFOLIO": "NO",
+      "EXECUTION": "PARTIAL",
+      "notes": "Prompt 35 path; execution via bps cost drag only"
+    },
+    {
+      "MODEL": "GARCH_family",
+      "FORECAST": "YES",
+      "SIGNAL": "NO",
+      "ALPHA": "NO",
+      "BACKTEST": "PARTIAL",
+      "RISK": "NO",
+      "PORTFOLIO": "NO",
+      "EXECUTION": "NO",
+      "notes": "Own vol forecasting tests/pipelines only"
+    },
+    {
+      "MODEL": "ARIMA_SARIMA_VAR_VECM",
+      "FORECAST": "YES",
+      "SIGNAL": "NO",
+      "ALPHA": "NO",
+      "BACKTEST": "PARTIAL",
+      "RISK": "NO",
+      "PORTFOLIO": "NO",
+      "EXECUTION": "NO",
+      "notes": "Statistical forecasting package"
+    },
+    {
+      "MODEL": "HMM_Markov_GMM_regimes",
+      "FORECAST": "PARTIAL",
+      "SIGNAL": "NO",
+      "ALPHA": "NO",
+      "BACKTEST": "PARTIAL",
+      "RISK": "PARTIAL",
+      "PORTFOLIO": "NO",
+      "EXECUTION": "NO",
+      "notes": "Regime forecasts exist; default registry loads mock only; simple regimes in alpha diagnostics"
+    },
+    {
+      "MODEL": "Cointegration_utilities",
+      "FORECAST": "NO",
+      "SIGNAL": "NO",
+      "ALPHA": "NO",
+      "BACKTEST": "NO",
+      "RISK": "NO",
+      "PORTFOLIO": "NO",
+      "EXECUTION": "NO",
+      "notes": "Analysis utilities only"
+    },
+    {
+      "MODEL": "XGBoost_LightGBM_CatBoost",
+      "FORECAST": "YES",
+      "SIGNAL": "NO",
+      "ALPHA": "NO",
+      "BACKTEST": "PARTIAL",
+      "RISK": "NO",
+      "PORTFOLIO": "NO",
+      "EXECUTION": "NO",
+      "notes": "Tree forecasting pipelines"
+    },
+    {
+      "MODEL": "LSTM_GRU_MLP_DeepAR",
+      "FORECAST": "YES",
+      "SIGNAL": "NO",
+      "ALPHA": "NO",
+      "BACKTEST": "PARTIAL",
+      "RISK": "NO",
+      "PORTFOLIO": "NO",
+      "EXECUTION": "NO",
+      "notes": "Neural forecasting nets/trainers"
+    },
+    {
+      "MODEL": "Transformers_Informer_etc",
+      "FORECAST": "YES",
+      "SIGNAL": "NO",
+      "ALPHA": "NO",
+      "BACKTEST": "PARTIAL",
+      "RISK": "NO",
+      "PORTFOLIO": "NO",
+      "EXECUTION": "NO",
+      "notes": "Transformer forecasting architectures"
+    },
+    {
+      "MODEL": "BlackLitterman_MeanVariance_RiskParity",
+      "FORECAST": "NO",
+      "SIGNAL": "NO",
+      "ALPHA": "NO",
+      "BACKTEST": "NO",
+      "RISK": "PARTIAL",
+      "PORTFOLIO": "YES",
+      "EXECUTION": "NO",
+      "notes": "Portfolio optimizers exist; not fed by alpha campaign"
+    },
+    {
+      "MODEL": "Execution_algos_OM",
+      "FORECAST": "NO",
+      "SIGNAL": "NO",
+      "ALPHA": "NO",
+      "BACKTEST": "PARTIAL",
+      "RISK": "NO",
+      "PORTFOLIO": "NO",
+      "EXECUTION": "YES",
+      "notes": "Execution platform; not used by alpha_research simplified costs"
+    },
+    {
+      "MODEL": "Kalman_state_space",
+      "FORECAST": "YES",
+      "SIGNAL": "NO",
+      "ALPHA": "NO",
+      "BACKTEST": "PARTIAL",
+      "RISK": "NO",
+      "PORTFOLIO": "NO",
+      "EXECUTION": "NO",
+      "notes": "state_space + regimes/kalman"
+    }
+  ],
+  "legend": {
+    "YES": "Executable path exists into that layer",
+    "PARTIAL": "Exists in package/tests or simplified path, not end-to-end institutional wiring",
+    "NO": "No evidence of integration"
+  },
+  "critical_finding": "Cross-import scan found 0 references between iqrp.app.backtesting.alpha_research and iqrp.app.forecasting / regimes / portfolio model outputs. Working BTC alpha campaigns use reference OHLCV signals only."
+}

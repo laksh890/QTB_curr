@@ -1,0 +1,451 @@
+{
+  "pairs": [
+    {
+      "pair": [
+        "mdc_801488267ad484dc",
+        "mdc_6f008c954ea26bf5"
+      ],
+      "drawdown_overlap_frac": 0.09178743961352658,
+      "downside_corr_daily_net": 0.03235928400270527,
+      "note": "Downside correlation proxy = corr on days where either return < 0"
+    },
+    {
+      "pair": [
+        "mdc_801488267ad484dc",
+        "mdc_51a60a3264845365"
+      ],
+      "drawdown_overlap_frac": 0.0,
+      "downside_corr_daily_net": -0.43994335974066184,
+      "note": "Downside correlation proxy = corr on days where either return < 0"
+    },
+    {
+      "pair": [
+        "mdc_801488267ad484dc",
+        "mdc_678609c534d68189"
+      ],
+      "drawdown_overlap_frac": 0.0,
+      "downside_corr_daily_net": -0.41978056753641046,
+      "note": "Downside correlation proxy = corr on days where either return < 0"
+    },
+    {
+      "pair": [
+        "mdc_801488267ad484dc",
+        "mdc_99aa952c5d5f6ff7"
+      ],
+      "drawdown_overlap_frac": 0.04854368932038835,
+      "downside_corr_daily_net": -0.2520978506386517,
+      "note": "Downside correlation proxy = corr on days where either return < 0"
+    },
+    {
+      "pair": [
+        "mdc_801488267ad484dc",
+        "mdc_3ed979ee7d9dabe6"
+      ],
+      "drawdown_overlap_frac": 0.648578811369509,
+      "downside_corr_daily_net": -0.09607274229825775,
+      "note": "Downside correlation proxy = corr on days where either return < 0"
+    },
+    {
+      "pair": [
+        "mdc_801488267ad484dc",
+        "mdc_4992167889db9b2e"
+      ],
+      "drawdown_overlap_frac": 0.32894736842105265,
+      "downside_corr_daily_net": -0.5068195171869188,
+      "note": "Downside correlation proxy = corr on days where either return < 0"
+    },
+    {
+      "pair": [
+        "mdc_801488267ad484dc",
+        "mdc_a0f769fc20835273"
+      ],
+      "drawdown_overlap_frac": 0.648,
+      "downside_corr_daily_net": -0.27630987130389834,
+      "note": "Downside correlation proxy = corr on days where either return < 0"
+    },
+    {
+      "pair": [
+        "mdc_6f008c954ea26bf5",
+        "mdc_51a60a3264845365"
+      ],
+      "drawdown_overlap_frac": 0.0,
+      "downside_corr_daily_net": -0.2514677392048459,
+      "note": "Downside correlation proxy = corr on days where either return < 0"
+    },
+    {
+      "pair": [
+        "mdc_6f008c954ea26bf5",
+        "mdc_678609c534d68189"
+      ],
+      "drawdown_overlap_frac": 0.0,
+      "downside_corr_daily_net": -0.39757007377907194,
+      "note": "Downside correlation proxy = corr on days where either return < 0"
+    },
+    {
+      "pair": [
+        "mdc_6f008c954ea26bf5",
+        "mdc_99aa952c5d5f6ff7"
+      ],
+      "drawdown_overlap_frac": 0.10344827586206896,
+      "downside_corr_daily_net": 0.22599390023258786,
+      "note": "Downside correlation proxy = corr on days where either return < 0"
+    },
+    {
+      "pair": [
+        "mdc_6f008c954ea26bf5",
+        "mdc_3ed979ee7d9dabe6"
+      ],
+      "drawdown_overlap_frac": 0.07630522088353414,
+      "downside_corr_daily_net": -0.23238292647316738,
+      "note": "Downside correlation proxy = corr on days where either return < 0"
+    },
+    {
+      "pair": [
+        "mdc_6f008c954ea26bf5",
+        "mdc_4992167889db9b2e"
+      ],
+      "drawdown_overlap_frac": 0.00847457627118644,
+      "downside_corr_daily_net": -0.5514909009276658,
+      "note": "Downside correlation proxy = corr on days where either return < 0"
+    },
+    {
+      "pair": [
+        "mdc_6f008c954ea26bf5",
+        "mdc_a0f769fc20835273"
+      ],
+      "drawdown_overlap_frac": 0.09259259259259259,
+      "downside_corr_daily_net": -0.2615741295559364,
+      "note": "Downside correlation proxy = corr on days where either return < 0"
+    },
+    {
+      "pair": [
+        "mdc_51a60a3264845365",
+        "mdc_678609c534d68189"
+      ],
+      "drawdown_overlap_frac": 0.0,
+      "downside_corr_daily_net": 0.1776425904228455,
+      "note": "Downside correlation proxy = corr on days where either return < 0"
+    },
+    {
+      "pair": [
+        "mdc_51a60a3264845365",
+        "mdc_99aa952c5d5f6ff7"
+      ],
+      "drawdown_overlap_frac": 0.0,
+      "downside_corr_daily_net": -0.2881805192605872,
+      "note": "Downside correlation proxy = corr on days where either return < 0"
+    },
+    {
+      "pair": [
+        "mdc_51a60a3264845365",
+        "mdc_3ed979ee7d9dabe6"
+      ],
+      "drawdown_overlap_frac": 0.0,
+      "downside_corr_daily_net": -0.41160718517870565,
+      "note": "Downside correlation proxy = corr on days where either return < 0"
+    },
+    {
+      "pair": [
+        "mdc_51a60a3264845365",
+        "mdc_4992167889db9b2e"
+      ],
+      "drawdown_overlap_frac": 0.011764705882352941,
+      "downside_corr_daily_net": -0.6222625104126157,
+      "note": "Downside correlation proxy = corr on days where either return < 0"
+    },
+    {
+      "pair": [
+        "mdc_51a60a3264845365",
+        "mdc_a0f769fc20835273"
+      ],
+      "drawdown_overlap_frac": 0.0,
+      "downside_corr_daily_net": -0.7033619843455599,
+      "note": "Downside correlation proxy = corr on days where either return < 0"
+    },
+    {
+      "pair": [
+        "mdc_678609c534d68189",
+        "mdc_99aa952c5d5f6ff7"
+      ],
+      "drawdown_overlap_frac": 0.0,
+      "downside_corr_daily_net": -0.3142676750291804,
+      "note": "Downside correlation proxy = corr on days where either return < 0"
+    },
+    {
+      "pair": [
+        "mdc_678609c534d68189",
+        "mdc_3ed979ee7d9dabe6"
+      ],
+      "drawdown_overlap_frac": 0.0,
+      "downside_corr_daily_net": -0.45518351283107295,
+      "note": "Downside correlation proxy = corr on days where either return < 0"
+    },
+    {
+      "pair": [
+        "mdc_678609c534d68189",
+        "mdc_4992167889db9b2e"
+      ],
+      "drawdown_overlap_frac": 0.0,
+      "downside_corr_daily_net": -0.27564975442119805,
+      "note": "Downside correlation proxy = corr on days where either return < 0"
+    },
+    {
+      "pair": [
+        "mdc_678609c534d68189",
+        "mdc_a0f769fc20835273"
+      ],
+      "drawdown_overlap_frac": 0.0,
+      "downside_corr_daily_net": -0.6089771677621516,
+      "note": "Downside correlation proxy = corr on days where either return < 0"
+    },
+    {
+      "pair": [
+        "mdc_99aa952c5d5f6ff7",
+        "mdc_3ed979ee7d9dabe6"
+      ],
+      "drawdown_overlap_frac": 0.03614457831325301,
+      "downside_corr_daily_net": -0.4103384548496632,
+      "note": "Downside correlation proxy = corr on days where either return < 0"
+    },
+    {
+      "pair": [
+        "mdc_99aa952c5d5f6ff7",
+        "mdc_4992167889db9b2e"
+      ],
+      "drawdown_overlap_frac": 0.018691588785046728,
+      "downside_corr_daily_net": -0.6205015813732577,
+      "note": "Downside correlation proxy = corr on days where either return < 0"
+    },
+    {
+      "pair": [
+        "mdc_99aa952c5d5f6ff7",
+        "mdc_a0f769fc20835273"
+      ],
+      "drawdown_overlap_frac": 0.046296296296296294,
+      "downside_corr_daily_net": -0.5701723037399292,
+      "note": "Downside correlation proxy = corr on days where either return < 0"
+    },
+    {
+      "pair": [
+        "mdc_3ed979ee7d9dabe6",
+        "mdc_4992167889db9b2e"
+      ],
+      "drawdown_overlap_frac": 0.3967611336032389,
+      "downside_corr_daily_net": -0.5223144632284688,
+      "note": "Downside correlation proxy = corr on days where either return < 0"
+    },
+    {
+      "pair": [
+        "mdc_3ed979ee7d9dabe6",
+        "mdc_a0f769fc20835273"
+      ],
+      "drawdown_overlap_frac": 0.8088235294117647,
+      "downside_corr_daily_net": -0.4916010500616104,
+      "note": "Downside correlation proxy = corr on days where either return < 0"
+    },
+    {
+      "pair": [
+        "mdc_4992167889db9b2e",
+        "mdc_a0f769fc20835273"
+      ],
+      "drawdown_overlap_frac": 0.2827868852459016,
+      "downside_corr_daily_net": -0.3458161054621009,
+      "note": "Downside correlation proxy = corr on days where either return < 0"
+    }
+  ],
+  "diversification_check": {
+    "ensemble_id": "cdc_3ead53d805422ea0",
+    "ensemble_drawdown": 0.24153991843712141,
+    "component_drawdowns": {
+      "mdc_801488267ad484dc": 0.20532514264354418,
+      "mdc_3ed979ee7d9dabe6": 0.3163569996987021,
+      "mdc_a0f769fc20835273": 0.35627330829255077
+    },
+    "median_component_drawdown": 0.3163569996987021,
+    "reduces_max_drawdown_vs_median_component": true,
+    "drawdown_overlap_among_reps": [
+      {
+        "pair": [
+          "mdc_801488267ad484dc",
+          "mdc_6f008c954ea26bf5"
+        ],
+        "drawdown_overlap_frac": 0.09178743961352658,
+        "downside_corr_daily_net": 0.03235928400270527,
+        "note": "Downside correlation proxy = corr on days where either return < 0"
+      },
+      {
+        "pair": [
+          "mdc_801488267ad484dc",
+          "mdc_51a60a3264845365"
+        ],
+        "drawdown_overlap_frac": 0.0,
+        "downside_corr_daily_net": -0.43994335974066184,
+        "note": "Downside correlation proxy = corr on days where either return < 0"
+      },
+      {
+        "pair": [
+          "mdc_801488267ad484dc",
+          "mdc_678609c534d68189"
+        ],
+        "drawdown_overlap_frac": 0.0,
+        "downside_corr_daily_net": -0.41978056753641046,
+        "note": "Downside correlation proxy = corr on days where either return < 0"
+      },
+      {
+        "pair": [
+          "mdc_801488267ad484dc",
+          "mdc_99aa952c5d5f6ff7"
+        ],
+        "drawdown_overlap_frac": 0.04854368932038835,
+        "downside_corr_daily_net": -0.2520978506386517,
+        "note": "Downside correlation proxy = corr on days where either return < 0"
+      },
+      {
+        "pair": [
+          "mdc_801488267ad484dc",
+          "mdc_3ed979ee7d9dabe6"
+        ],
+        "drawdown_overlap_frac": 0.648578811369509,
+        "downside_corr_daily_net": -0.09607274229825775,
+        "note": "Downside correlation proxy = corr on days where either return < 0"
+      },
+      {
+        "pair": [
+          "mdc_801488267ad484dc",
+          "mdc_4992167889db9b2e"
+        ],
+        "drawdown_overlap_frac": 0.32894736842105265,
+        "downside_corr_daily_net": -0.5068195171869188,
+        "note": "Downside correlation proxy = corr on days where either return < 0"
+      },
+      {
+        "pair": [
+          "mdc_801488267ad484dc",
+          "mdc_a0f769fc20835273"
+        ],
+        "drawdown_overlap_frac": 0.648,
+        "downside_corr_daily_net": -0.27630987130389834,
+        "note": "Downside correlation proxy = corr on days where either return < 0"
+      },
+      {
+        "pair": [
+          "mdc_6f008c954ea26bf5",
+          "mdc_51a60a3264845365"
+        ],
+        "drawdown_overlap_frac": 0.0,
+        "downside_corr_daily_net": -0.2514677392048459,
+        "note": "Downside correlation proxy = corr on days where either return < 0"
+      },
+      {
+        "pair": [
+          "mdc_6f008c954ea26bf5",
+          "mdc_678609c534d68189"
+        ],
+        "drawdown_overlap_frac": 0.0,
+        "downside_corr_daily_net": -0.39757007377907194,
+        "note": "Downside correlation proxy = corr on days where either return < 0"
+      },
+      {
+        "pair": [
+          "mdc_6f008c954ea26bf5",
+          "mdc_99aa952c5d5f6ff7"
+        ],
+        "drawdown_overlap_frac": 0.10344827586206896,
+        "downside_corr_daily_net": 0.22599390023258786,
+        "note": "Downside correlation proxy = corr on days where either return < 0"
+      },
+      {
+        "pair": [
+          "mdc_6f008c954ea26bf5",
+          "mdc_3ed979ee7d9dabe6"
+        ],
+        "drawdown_overlap_frac": 0.07630522088353414,
+        "downside_corr_daily_net": -0.23238292647316738,
+        "note": "Downside correlation proxy = corr on days where either return < 0"
+      },
+      {
+        "pair": [
+          "mdc_6f008c954ea26bf5",
+          "mdc_4992167889db9b2e"
+        ],
+        "drawdown_overlap_frac": 0.00847457627118644,
+        "downside_corr_daily_net": -0.5514909009276658,
+        "note": "Downside correlation proxy = corr on days where either return < 0"
+      },
+      {
+        "pair": [
+          "mdc_6f008c954ea26bf5",
+          "mdc_a0f769fc20835273"
+        ],
+        "drawdown_overlap_frac": 0.09259259259259259,
+        "downside_corr_daily_net": -0.2615741295559364,
+        "note": "Downside correlation proxy = corr on days where either return < 0"
+      },
+      {
+        "pair": [
+          "mdc_51a60a3264845365",
+          "mdc_678609c534d68189"
+        ],
+        "drawdown_overlap_frac": 0.0,
+        "downside_corr_daily_net": 0.1776425904228455,
+        "note": "Downside correlation proxy = corr on days where either return < 0"
+      },
+      {
+        "pair": [
+          "mdc_51a60a3264845365",
+          "mdc_99aa952c5d5f6ff7"
+        ],
+        "drawdown_overlap_frac": 0.0,
+        "downside_corr_daily_net": -0.2881805192605872,
+        "note": "Downside correlation proxy = corr on days where either return < 0"
+      },
+      {
+        "pair": [
+          "mdc_51a60a3264845365",
+          "mdc_3ed979ee7d9dabe6"
+        ],
+        "drawdown_overlap_frac": 0.0,
+        "downside_corr_daily_net": -0.41160718517870565,
+        "note": "Downside correlation proxy = corr on days where either return < 0"
+      },
+      {
+        "pair": [
+          "mdc_51a60a3264845365",
+          "mdc_4992167889db9b2e"
+        ],
+        "drawdown_overlap_frac": 0.011764705882352941,
+        "downside_corr_daily_net": -0.6222625104126157,
+        "note": "Downside correlation proxy = corr on days where either return < 0"
+      },
+      {
+        "pair": [
+          "mdc_51a60a3264845365",
+          "mdc_a0f769fc20835273"
+        ],
+        "drawdown_overlap_frac": 0.0,
+        "downside_corr_daily_net": -0.7033619843455599,
+        "note": "Downside correlation proxy = corr on days where either return < 0"
+      },
+      {
+        "pair": [
+          "mdc_678609c534d68189",
+          "mdc_99aa952c5d5f6ff7"
+        ],
+        "drawdown_overlap_frac": 0.0,
+        "downside_corr_daily_net": -0.3142676750291804,
+        "note": "Downside correlation proxy = corr on days where either return < 0"
+      },
+      {
+        "pair": [
+          "mdc_678609c534d68189",
+          "mdc_3ed979ee7d9dabe6"
+        ],
+        "drawdown_overlap_frac": 0.0,
+        "downside_corr_daily_net": -0.45518351283107295,
+        "note": "Downside correlation proxy = corr on days where either return < 0"
+      }
+    ]
+  },
+  "downside_measure": "daily_net_when_either_negative",
+  "disclaimer": "CANDIDATE CONSOLIDATION RESEARCH \u2014 predefined protocol. Research evidence is not a profitability guarantee. DISTINCT_RESEARCH_CANDIDATE \u2260 PROFITABLE \u2260 PRODUCTION_READY \u2260 LIVE_READY. Prompt 39 artifacts are immutable inputs."
+}

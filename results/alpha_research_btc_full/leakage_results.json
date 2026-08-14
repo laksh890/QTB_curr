@@ -1,0 +1,774 @@
+{
+  "by_timeframe": {
+    "1m": {
+      "momentum": {
+        "future_columns": {
+          "ok": true
+        },
+        "causality_corr": {
+          "ok": true,
+          "corr_with_future_1bar": -0.009541977993905703,
+          "corr_with_past_lookback": 1.0,
+          "n": 49979
+        },
+        "normalization": {
+          "ok": true
+        },
+        "future_shift_changes": {
+          "ok": true,
+          "changed": true,
+          "dependency": "price"
+        },
+        "ok": true,
+        "sampled_tail_bars": 50000,
+        "full_frame_rows": 3152391
+      },
+      "rolling_zscore": {
+        "future_columns": {
+          "ok": true
+        },
+        "causality_corr": {
+          "ok": true,
+          "corr_with_future_1bar": 0.003915087841462975,
+          "corr_with_past_lookback": 0.6349393465731151,
+          "n": 49979
+        },
+        "normalization": {
+          "ok": true
+        },
+        "future_shift_changes": {
+          "ok": true,
+          "changed": true,
+          "dependency": "price"
+        },
+        "ok": true,
+        "sampled_tail_bars": 50000,
+        "full_frame_rows": 3152391
+      },
+      "volatility": {
+        "future_columns": {
+          "ok": true
+        },
+        "causality_corr": {
+          "ok": true,
+          "corr_with_future_1bar": 0.02540691500972102,
+          "corr_with_past_lookback": -0.07856771528511176,
+          "n": 49979
+        },
+        "normalization": {
+          "ok": true
+        },
+        "future_shift_changes": {
+          "ok": true,
+          "changed": true,
+          "dependency": "price"
+        },
+        "ok": true,
+        "sampled_tail_bars": 50000,
+        "full_frame_rows": 3152391
+      },
+      "volume_change": {
+        "future_columns": {
+          "ok": true
+        },
+        "causality_corr": {
+          "ok": true,
+          "corr_with_future_1bar": 0.008795746355675545,
+          "corr_with_past_lookback": -0.0299416772583135,
+          "n": 49979
+        },
+        "normalization": {
+          "ok": true
+        },
+        "future_shift_changes": {
+          "ok": true,
+          "changed": false,
+          "volume_changed": true,
+          "dependency": "volume",
+          "note": "feature is price-independent; volume forward-shift changes output"
+        },
+        "ok": true,
+        "sampled_tail_bars": 50000,
+        "full_frame_rows": 3152391
+      },
+      "moving_average": {
+        "future_columns": {
+          "ok": true
+        },
+        "causality_corr": {
+          "ok": true,
+          "corr_with_future_1bar": -0.010604376154447684,
+          "corr_with_past_lookback": 0.0015723756885666382,
+          "n": 49979
+        },
+        "normalization": {
+          "ok": true
+        },
+        "future_shift_changes": {
+          "ok": true,
+          "changed": true,
+          "dependency": "price"
+        },
+        "ok": true,
+        "sampled_tail_bars": 50000,
+        "full_frame_rows": 3152391
+      },
+      "range": {
+        "future_columns": {
+          "ok": true
+        },
+        "causality_corr": {
+          "ok": true,
+          "corr_with_future_1bar": 0.041876535064023314,
+          "corr_with_past_lookback": -0.12949419383300456,
+          "n": 49979
+        },
+        "normalization": {
+          "ok": true
+        },
+        "future_shift_changes": {
+          "ok": true,
+          "changed": true,
+          "dependency": "price"
+        },
+        "ok": true,
+        "sampled_tail_bars": 50000,
+        "full_frame_rows": 3152391
+      },
+      "returns": {
+        "future_columns": {
+          "ok": true
+        },
+        "causality_corr": {
+          "ok": true,
+          "corr_with_future_1bar": -0.009541977993905703,
+          "corr_with_past_lookback": 1.0,
+          "n": 49979
+        },
+        "normalization": {
+          "ok": true
+        },
+        "future_shift_changes": {
+          "ok": true,
+          "changed": true,
+          "dependency": "price"
+        },
+        "ok": true,
+        "sampled_tail_bars": 50000,
+        "full_frame_rows": 3152391
+      }
+    },
+    "5m": {
+      "momentum": {
+        "future_columns": {
+          "ok": true
+        },
+        "causality_corr": {
+          "ok": true,
+          "corr_with_future_1bar": -0.0079152338073356,
+          "corr_with_past_lookback": 1.0,
+          "n": 49979
+        },
+        "normalization": {
+          "ok": true
+        },
+        "future_shift_changes": {
+          "ok": true,
+          "changed": true,
+          "dependency": "price"
+        },
+        "ok": true,
+        "sampled_tail_bars": 50000,
+        "full_frame_rows": 630482
+      },
+      "rolling_zscore": {
+        "future_columns": {
+          "ok": true
+        },
+        "causality_corr": {
+          "ok": true,
+          "corr_with_future_1bar": -0.0006422603801293804,
+          "corr_with_past_lookback": 0.6089265206231721,
+          "n": 49979
+        },
+        "normalization": {
+          "ok": true
+        },
+        "future_shift_changes": {
+          "ok": true,
+          "changed": true,
+          "dependency": "price"
+        },
+        "ok": true,
+        "sampled_tail_bars": 50000,
+        "full_frame_rows": 630482
+      },
+      "volatility": {
+        "future_columns": {
+          "ok": true
+        },
+        "causality_corr": {
+          "ok": true,
+          "corr_with_future_1bar": 0.0191002994991434,
+          "corr_with_past_lookback": -0.02397805859625454,
+          "n": 49979
+        },
+        "normalization": {
+          "ok": true
+        },
+        "future_shift_changes": {
+          "ok": true,
+          "changed": true,
+          "dependency": "price"
+        },
+        "ok": true,
+        "sampled_tail_bars": 50000,
+        "full_frame_rows": 630482
+      },
+      "volume_change": {
+        "future_columns": {
+          "ok": true
+        },
+        "causality_corr": {
+          "ok": true,
+          "corr_with_future_1bar": 0.004698356018516638,
+          "corr_with_past_lookback": -0.052233056402411604,
+          "n": 49979
+        },
+        "normalization": {
+          "ok": true
+        },
+        "future_shift_changes": {
+          "ok": true,
+          "changed": false,
+          "volume_changed": true,
+          "dependency": "volume",
+          "note": "feature is price-independent; volume forward-shift changes output"
+        },
+        "ok": true,
+        "sampled_tail_bars": 50000,
+        "full_frame_rows": 630482
+      },
+      "moving_average": {
+        "future_columns": {
+          "ok": true
+        },
+        "causality_corr": {
+          "ok": true,
+          "corr_with_future_1bar": -0.002979307321375401,
+          "corr_with_past_lookback": 0.003305738863432403,
+          "n": 49979
+        },
+        "normalization": {
+          "ok": true
+        },
+        "future_shift_changes": {
+          "ok": true,
+          "changed": true,
+          "dependency": "price"
+        },
+        "ok": true,
+        "sampled_tail_bars": 50000,
+        "full_frame_rows": 630482
+      },
+      "range": {
+        "future_columns": {
+          "ok": true
+        },
+        "causality_corr": {
+          "ok": true,
+          "corr_with_future_1bar": 0.026695682655257506,
+          "corr_with_past_lookback": -0.1008128417307207,
+          "n": 49979
+        },
+        "normalization": {
+          "ok": true
+        },
+        "future_shift_changes": {
+          "ok": true,
+          "changed": true,
+          "dependency": "price"
+        },
+        "ok": true,
+        "sampled_tail_bars": 50000,
+        "full_frame_rows": 630482
+      },
+      "returns": {
+        "future_columns": {
+          "ok": true
+        },
+        "causality_corr": {
+          "ok": true,
+          "corr_with_future_1bar": -0.0079152338073356,
+          "corr_with_past_lookback": 1.0,
+          "n": 49979
+        },
+        "normalization": {
+          "ok": true
+        },
+        "future_shift_changes": {
+          "ok": true,
+          "changed": true,
+          "dependency": "price"
+        },
+        "ok": true,
+        "sampled_tail_bars": 50000,
+        "full_frame_rows": 630482
+      }
+    },
+    "15m": {
+      "momentum": {
+        "future_columns": {
+          "ok": true
+        },
+        "causality_corr": {
+          "ok": true,
+          "corr_with_future_1bar": -0.01365466093389118,
+          "corr_with_past_lookback": 1.0,
+          "n": 49979
+        },
+        "normalization": {
+          "ok": true
+        },
+        "future_shift_changes": {
+          "ok": true,
+          "changed": true,
+          "dependency": "price"
+        },
+        "ok": true,
+        "sampled_tail_bars": 50000,
+        "full_frame_rows": 210163
+      },
+      "rolling_zscore": {
+        "future_columns": {
+          "ok": true
+        },
+        "causality_corr": {
+          "ok": true,
+          "corr_with_future_1bar": -0.0012274631654415882,
+          "corr_with_past_lookback": 0.6019378008591524,
+          "n": 49979
+        },
+        "normalization": {
+          "ok": true
+        },
+        "future_shift_changes": {
+          "ok": true,
+          "changed": true,
+          "dependency": "price"
+        },
+        "ok": true,
+        "sampled_tail_bars": 50000,
+        "full_frame_rows": 210163
+      },
+      "volatility": {
+        "future_columns": {
+          "ok": true
+        },
+        "causality_corr": {
+          "ok": true,
+          "corr_with_future_1bar": 0.014621458174119147,
+          "corr_with_past_lookback": -0.043259330564388784,
+          "n": 49979
+        },
+        "normalization": {
+          "ok": true
+        },
+        "future_shift_changes": {
+          "ok": true,
+          "changed": true,
+          "dependency": "price"
+        },
+        "ok": true,
+        "sampled_tail_bars": 50000,
+        "full_frame_rows": 210163
+      },
+      "volume_change": {
+        "future_columns": {
+          "ok": true
+        },
+        "causality_corr": {
+          "ok": true,
+          "corr_with_future_1bar": -0.0023213652797694066,
+          "corr_with_past_lookback": -0.010030379749361435,
+          "n": 49979
+        },
+        "normalization": {
+          "ok": true
+        },
+        "future_shift_changes": {
+          "ok": true,
+          "changed": false,
+          "volume_changed": true,
+          "dependency": "volume",
+          "note": "feature is price-independent; volume forward-shift changes output"
+        },
+        "ok": true,
+        "sampled_tail_bars": 50000,
+        "full_frame_rows": 210163
+      },
+      "moving_average": {
+        "future_columns": {
+          "ok": true
+        },
+        "causality_corr": {
+          "ok": true,
+          "corr_with_future_1bar": -0.003744298218478793,
+          "corr_with_past_lookback": 0.0008623866461417483,
+          "n": 49979
+        },
+        "normalization": {
+          "ok": true
+        },
+        "future_shift_changes": {
+          "ok": true,
+          "changed": true,
+          "dependency": "price"
+        },
+        "ok": true,
+        "sampled_tail_bars": 50000,
+        "full_frame_rows": 210163
+      },
+      "range": {
+        "future_columns": {
+          "ok": true
+        },
+        "causality_corr": {
+          "ok": true,
+          "corr_with_future_1bar": 0.016651081298631066,
+          "corr_with_past_lookback": -0.07273694764123873,
+          "n": 49979
+        },
+        "normalization": {
+          "ok": true
+        },
+        "future_shift_changes": {
+          "ok": true,
+          "changed": true,
+          "dependency": "price"
+        },
+        "ok": true,
+        "sampled_tail_bars": 50000,
+        "full_frame_rows": 210163
+      },
+      "returns": {
+        "future_columns": {
+          "ok": true
+        },
+        "causality_corr": {
+          "ok": true,
+          "corr_with_future_1bar": -0.01365466093389118,
+          "corr_with_past_lookback": 1.0,
+          "n": 49979
+        },
+        "normalization": {
+          "ok": true
+        },
+        "future_shift_changes": {
+          "ok": true,
+          "changed": true,
+          "dependency": "price"
+        },
+        "ok": true,
+        "sampled_tail_bars": 50000,
+        "full_frame_rows": 210163
+      }
+    },
+    "30m": {
+      "momentum": {
+        "future_columns": {
+          "ok": true
+        },
+        "causality_corr": {
+          "ok": true,
+          "corr_with_future_1bar": -0.010664989908493525,
+          "corr_with_past_lookback": 1.0,
+          "n": 105065
+        },
+        "normalization": {
+          "ok": true
+        },
+        "future_shift_changes": {
+          "ok": true,
+          "changed": true,
+          "dependency": "price"
+        },
+        "ok": true
+      },
+      "rolling_zscore": {
+        "future_columns": {
+          "ok": true
+        },
+        "causality_corr": {
+          "ok": true,
+          "corr_with_future_1bar": -0.004169363257438542,
+          "corr_with_past_lookback": 0.5915375169347102,
+          "n": 105065
+        },
+        "normalization": {
+          "ok": true
+        },
+        "future_shift_changes": {
+          "ok": true,
+          "changed": true,
+          "dependency": "price"
+        },
+        "ok": true
+      },
+      "volatility": {
+        "future_columns": {
+          "ok": true
+        },
+        "causality_corr": {
+          "ok": true,
+          "corr_with_future_1bar": 0.009631718665082799,
+          "corr_with_past_lookback": -0.05853715148175104,
+          "n": 105065
+        },
+        "normalization": {
+          "ok": true
+        },
+        "future_shift_changes": {
+          "ok": true,
+          "changed": true,
+          "dependency": "price"
+        },
+        "ok": true
+      },
+      "volume_change": {
+        "future_columns": {
+          "ok": true
+        },
+        "causality_corr": {
+          "ok": true,
+          "corr_with_future_1bar": NaN,
+          "corr_with_past_lookback": NaN,
+          "n": 105065
+        },
+        "normalization": {
+          "ok": true
+        },
+        "future_shift_changes": {
+          "ok": true,
+          "changed": false,
+          "volume_changed": true,
+          "dependency": "volume",
+          "note": "feature is price-independent; volume forward-shift changes output"
+        },
+        "ok": true
+      },
+      "moving_average": {
+        "future_columns": {
+          "ok": true
+        },
+        "causality_corr": {
+          "ok": true,
+          "corr_with_future_1bar": -0.004270678223996183,
+          "corr_with_past_lookback": -0.0046099035271840155,
+          "n": 105065
+        },
+        "normalization": {
+          "ok": true
+        },
+        "future_shift_changes": {
+          "ok": true,
+          "changed": true,
+          "dependency": "price"
+        },
+        "ok": true
+      },
+      "range": {
+        "future_columns": {
+          "ok": true
+        },
+        "causality_corr": {
+          "ok": true,
+          "corr_with_future_1bar": 0.027345869595111906,
+          "corr_with_past_lookback": -0.1074547300121063,
+          "n": 105065
+        },
+        "normalization": {
+          "ok": true
+        },
+        "future_shift_changes": {
+          "ok": true,
+          "changed": true,
+          "dependency": "price"
+        },
+        "ok": true
+      },
+      "returns": {
+        "future_columns": {
+          "ok": true
+        },
+        "causality_corr": {
+          "ok": true,
+          "corr_with_future_1bar": -0.010664989908493525,
+          "corr_with_past_lookback": 1.0,
+          "n": 105065
+        },
+        "normalization": {
+          "ok": true
+        },
+        "future_shift_changes": {
+          "ok": true,
+          "changed": true,
+          "dependency": "price"
+        },
+        "ok": true
+      }
+    },
+    "1h": {
+      "momentum": {
+        "future_columns": {
+          "ok": true
+        },
+        "causality_corr": {
+          "ok": true,
+          "corr_with_future_1bar": 0.0007934310062322816,
+          "corr_with_past_lookback": 1.0,
+          "n": 52528
+        },
+        "normalization": {
+          "ok": true
+        },
+        "future_shift_changes": {
+          "ok": true,
+          "changed": true,
+          "dependency": "price"
+        },
+        "ok": true
+      },
+      "rolling_zscore": {
+        "future_columns": {
+          "ok": true
+        },
+        "causality_corr": {
+          "ok": true,
+          "corr_with_future_1bar": 0.004749534725160067,
+          "corr_with_past_lookback": 0.6132718076551322,
+          "n": 52528
+        },
+        "normalization": {
+          "ok": true
+        },
+        "future_shift_changes": {
+          "ok": true,
+          "changed": true,
+          "dependency": "price"
+        },
+        "ok": true
+      },
+      "volatility": {
+        "future_columns": {
+          "ok": true
+        },
+        "causality_corr": {
+          "ok": true,
+          "corr_with_future_1bar": 0.012582306089216799,
+          "corr_with_past_lookback": -0.05686549853507737,
+          "n": 52528
+        },
+        "normalization": {
+          "ok": true
+        },
+        "future_shift_changes": {
+          "ok": true,
+          "changed": true,
+          "dependency": "price"
+        },
+        "ok": true
+      },
+      "volume_change": {
+        "future_columns": {
+          "ok": true
+        },
+        "causality_corr": {
+          "ok": true,
+          "corr_with_future_1bar": NaN,
+          "corr_with_past_lookback": NaN,
+          "n": 52528
+        },
+        "normalization": {
+          "ok": true
+        },
+        "future_shift_changes": {
+          "ok": true,
+          "changed": false,
+          "volume_changed": true,
+          "dependency": "volume",
+          "note": "feature is price-independent; volume forward-shift changes output"
+        },
+        "ok": true
+      },
+      "moving_average": {
+        "future_columns": {
+          "ok": true
+        },
+        "causality_corr": {
+          "ok": true,
+          "corr_with_future_1bar": -0.006283768794605967,
+          "corr_with_past_lookback": -0.006950287913640078,
+          "n": 52528
+        },
+        "normalization": {
+          "ok": true
+        },
+        "future_shift_changes": {
+          "ok": true,
+          "changed": true,
+          "dependency": "price"
+        },
+        "ok": true
+      },
+      "range": {
+        "future_columns": {
+          "ok": true
+        },
+        "causality_corr": {
+          "ok": true,
+          "corr_with_future_1bar": 0.028375700180327437,
+          "corr_with_past_lookback": -0.11360589470795786,
+          "n": 52528
+        },
+        "normalization": {
+          "ok": true
+        },
+        "future_shift_changes": {
+          "ok": true,
+          "changed": true,
+          "dependency": "price"
+        },
+        "ok": true
+      },
+      "returns": {
+        "future_columns": {
+          "ok": true
+        },
+        "causality_corr": {
+          "ok": true,
+          "corr_with_future_1bar": 0.0007934310062322816,
+          "corr_with_past_lookback": 1.0,
+          "n": 52528
+        },
+        "normalization": {
+          "ok": true
+        },
+        "future_shift_changes": {
+          "ok": true,
+          "changed": true,
+          "dependency": "price"
+        },
+        "ok": true
+      }
+    }
+  },
+  "mtf_alignment": {
+    "feature_timeframe": "1h",
+    "execution_timeframe": "5m",
+    "method": "merge_asof_backward",
+    "ok": true,
+    "note": "Higher-TF feature uses only completed candles as-of execution timestamp."
+  },
+  "ok": true
+}

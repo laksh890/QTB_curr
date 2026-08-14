@@ -1,0 +1,1751 @@
+{
+  "campaign_id": "alpha_research_btc_full_v1",
+  "title": "IQRP Prompt 35 \u2014 BTCUSDT Alpha Research Campaign",
+  "disclaimer": "Research evidence is not a profitability guarantee.",
+  "not_profitability_claim": true,
+  "not_production_ready": true,
+  "started_at": "2026-08-14T14:10:10.217079+00:00",
+  "completed_at": "2026-08-14T14:43:57.690676+00:00",
+  "software_version": "iqrp-alpha-research-0.1.0",
+  "random_seed": 0,
+  "datasets": {
+    "1m": {
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_id_bare": "btcusdt_intraday_1m",
+      "version": "1.0.0",
+      "checksum": "eb6c6488167b598b85e883946ea5fbedb5a9b13850c5599389cf0f18302a09fe",
+      "path": "data/btcusdt/btcusdt_intraday_1m.parquet",
+      "frequency_kind": "SOURCE",
+      "source": "binance_vision_public_historical",
+      "row_count": 3152391,
+      "start": "2019-01-01T00:00:00+00:00",
+      "end": "2024-12-31T23:59:00+00:00",
+      "coverage_pct": 100.0,
+      "known_limitations": [
+        "1 month archive(s) unavailable; actual range may be shorter than requested (not fabricated).",
+        "Availability timestamps not provided by this archive; PIT of vendor revisions unknown.",
+        "DEVELOPMENT/RESEARCH data \u2014 not institutional-grade market data.",
+        "License status UNKNOWN unless independently established.",
+        "archive unavailable (404): https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1m/BTCUSDT-1m-2026-08.zip",
+        "data_tier=DEVELOPMENT/RESEARCH"
+      ],
+      "gaps": {
+        "n_gaps": 22,
+        "expected_bar": "0 days 00:01:00",
+        "gaps_sample": [
+          {
+            "index": 100920,
+            "from": "2019-03-12 01:59:00+00:00",
+            "to": "2019-03-12 08:00:00+00:00",
+            "delta_seconds": 21660.0
+          },
+          {
+            "index": 192780,
+            "from": "2019-05-15 02:59:00+00:00",
+            "to": "2019-05-15 13:00:00+00:00",
+            "delta_seconds": 36060.0
+          },
+          {
+            "index": 226394,
+            "from": "2019-06-07 21:13:00+00:00",
+            "to": "2019-06-07 22:15:00+00:00",
+            "delta_seconds": 3720.0
+          },
+          {
+            "index": 324539,
+            "from": "2019-08-15 01:59:00+00:00",
+            "to": "2019-08-15 10:00:00+00:00",
+            "delta_seconds": 28860.0
+          },
+          {
+            "index": 453659,
+            "from": "2019-11-13 01:59:00+00:00",
+            "to": "2019-11-13 04:20:00+00:00",
+            "delta_seconds": 8460.0
+          },
+          {
+            "index": 453729,
+            "from": "2019-11-13 05:29:00+00:00",
+            "to": "2019-11-13 05:33:00+00:00",
+            "delta_seconds": 240.0
+          },
+          {
+            "index": 470796,
+            "from": "2019-11-25 01:59:00+00:00",
+            "to": "2019-11-25 04:00:00+00:00",
+            "delta_seconds": 7260.0
+          },
+          {
+            "index": 580116,
+            "from": "2020-02-09 01:59:00+00:00",
+            "to": "2020-02-09 03:00:00+00:00",
+            "delta_seconds": 3660.0
+          },
+          {
+            "index": 595032,
+            "from": "2020-02-19 11:35:00+00:00",
+            "to": "2020-02-19 17:30:00+00:00",
+            "delta_seconds": 21300.0
+          },
+          {
+            "index": 614704,
+            "from": "2020-03-04 09:21:00+00:00",
+            "to": "2020-03-04 11:30:00+00:00",
+            "delta_seconds": 7740.0
+          },
+          {
+            "index": 689014,
+            "from": "2020-04-25 01:59:00+00:00",
+            "to": "2020-04-25 04:30:00+00:00",
+            "delta_seconds": 9060.0
+          },
+          {
+            "index": 781024,
+            "from": "2020-06-28 01:59:00+00:00",
+            "to": "2020-06-28 05:30:00+00:00",
+            "delta_seconds": 12660.0
+          },
+          {
+            "index": 1004254,
+            "from": "2020-11-30 05:59:00+00:00",
+            "to": "2020-11-30 07:00:00+00:00",
+            "delta_seconds": 3660.0
+          },
+          {
+            "index": 1034924,
+            "from": "2020-12-21 14:09:00+00:00",
+            "to": "2020-12-21 18:00:00+00:00",
+            "delta_seconds": 13860.0
+          },
+          {
+            "index": 1039724,
+            "from": "2020-12-25 01:59:00+00:00",
+            "to": "2020-12-25 03:00:00+00:00",
+            "delta_seconds": 3660.0
+          },
+          {
+            "index": 1108885,
+            "from": "2021-02-11 03:40:00+00:00",
+            "to": "2021-02-11 05:00:00+00:00",
+            "delta_seconds": 4800.0
+          },
+          {
+            "index": 1141825,
+            "from": "2021-03-06 01:59:00+00:00",
+            "to": "2021-03-06 03:30:00+00:00",
+            "delta_seconds": 5460.0
+          },
+          {
+            "index": 1206535,
+            "from": "2021-04-20 01:59:00+00:00",
+            "to": "2021-04-20 04:30:00+00:00",
+            "delta_seconds": 9060.0
+          },
+          {
+            "index": 1213706,
+            "from": "2021-04-25 04:00:00+00:00",
+            "to": "2021-04-25 08:45:00+00:00",
+            "delta_seconds": 17100.0
+          },
+          {
+            "index": 1371701,
+            "from": "2021-08-13 01:59:00+00:00",
+            "to": "2021-08-13 06:30:00+00:00",
+            "delta_seconds": 16260.0
+          },
+          {
+            "index": 1439411,
+            "from": "2021-09-29 06:59:00+00:00",
+            "to": "2021-09-29 09:00:00+00:00",
+            "delta_seconds": 7260.0
+          },
+          {
+            "index": 2218671,
+            "from": "2023-03-24 12:39:00+00:00",
+            "to": "2023-03-24 14:00:00+00:00",
+            "delta_seconds": 4860.0
+          }
+        ],
+        "handling": "Gaps are not filled. Observations whose forward-return window crosses a gap are excluded where continuous bars are required."
+      },
+      "extra": {
+        "provenance": {
+          "provider": "binance",
+          "source": "binance_vision_public_historical",
+          "acquisition_timestamp": "2026-08-14T13:32:22.480755+00:00",
+          "original_symbol": "BTCUSDT",
+          "normalized_symbol": "BTCUSDT",
+          "frequency": "1m",
+          "timezone": "UTC",
+          "original_timezone": "UTC",
+          "exchange_timezone": "UTC",
+          "currency": "USDT",
+          "adjustment_status": "unadjusted",
+          "corporate_action_treatment": "n/a_crypto_spot",
+          "contract_information": {},
+          "checksum": "eb6c6488167b598b85e883946ea5fbedb5a9b13850c5599389cf0f18302a09fe",
+          "schema_version": "ohlcv_canonical_v1",
+          "license_status": "UNKNOWN",
+          "data_class": "DEVELOPMENT/RESEARCH",
+          "availability_timestamp_available": false,
+          "source_dataset_id": null,
+          "source_frequency": null,
+          "derived_frequency": null,
+          "aggregation_method": null,
+          "creation_timestamp": null,
+          "frequency_kind": "SOURCE",
+          "requested_range": [
+            "2019-01-01 00:00:00+00:00",
+            "2026-08-01 00:00:00+00:00"
+          ],
+          "actual_range": [
+            "2019-01-01 00:00:00+00:00",
+            "2024-12-31 23:59:00+00:00"
+          ],
+          "known_limitations": [
+            "archive unavailable (404): https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1m/BTCUSDT-1m-2026-08.zip",
+            "1 month archive(s) unavailable; actual range may be shorter than requested (not fabricated).",
+            "data_tier=DEVELOPMENT/RESEARCH",
+            "DEVELOPMENT/RESEARCH data \u2014 not institutional-grade market data.",
+            "License status UNKNOWN unless independently established.",
+            "Availability timestamps not provided by this archive; PIT of vendor revisions unknown."
+          ],
+          "extra": {
+            "market_type": "CRYPTO",
+            "continuous_market": true,
+            "session_model": "24x7",
+            "timezone": "UTC"
+          }
+        },
+        "frequency_kind": "SOURCE",
+        "data_class": "DEVELOPMENT/RESEARCH",
+        "license_status": "UNKNOWN",
+        "provenance_checksum_field": "eb6c6488167b598b85e883946ea5fbedb5a9b13850c5599389cf0f18302a09fe",
+        "quality_status": "PASS"
+      }
+    },
+    "5m": {
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_id_bare": "btcusdt_intraday_5m",
+      "version": "1.0.0",
+      "checksum": "8743b419c92b661ad94309662eab2f5696f5c68b871f094474496cd524e6688f",
+      "path": "data/btcusdt/btcusdt_intraday_5m.parquet",
+      "frequency_kind": "DERIVED",
+      "source": "derived:btcusdt_intraday_1m@1.0.0",
+      "row_count": 630482,
+      "start": "2019-01-01T00:00:00+00:00",
+      "end": "2024-12-31T23:55:00+00:00",
+      "coverage_pct": 100.0,
+      "known_limitations": [
+        "Derived bars are aggregations of source bars; not equivalent to a native vendor feed.",
+        "Missing source bars are not fabricated before aggregation."
+      ],
+      "gaps": {
+        "n_gaps": 21,
+        "expected_bar": "0 days 00:05:00",
+        "gaps_sample": [
+          {
+            "index": 20184,
+            "from": "2019-03-12 01:55:00+00:00",
+            "to": "2019-03-12 08:00:00+00:00",
+            "delta_seconds": 21900.0
+          },
+          {
+            "index": 38556,
+            "from": "2019-05-15 02:55:00+00:00",
+            "to": "2019-05-15 13:00:00+00:00",
+            "delta_seconds": 36300.0
+          },
+          {
+            "index": 45279,
+            "from": "2019-06-07 21:10:00+00:00",
+            "to": "2019-06-07 22:15:00+00:00",
+            "delta_seconds": 3900.0
+          },
+          {
+            "index": 64908,
+            "from": "2019-08-15 01:55:00+00:00",
+            "to": "2019-08-15 10:00:00+00:00",
+            "delta_seconds": 29100.0
+          },
+          {
+            "index": 90732,
+            "from": "2019-11-13 01:55:00+00:00",
+            "to": "2019-11-13 04:20:00+00:00",
+            "delta_seconds": 8700.0
+          },
+          {
+            "index": 94160,
+            "from": "2019-11-25 01:55:00+00:00",
+            "to": "2019-11-25 04:00:00+00:00",
+            "delta_seconds": 7500.0
+          },
+          {
+            "index": 116024,
+            "from": "2020-02-09 01:55:00+00:00",
+            "to": "2020-02-09 03:00:00+00:00",
+            "delta_seconds": 3900.0
+          },
+          {
+            "index": 119008,
+            "from": "2020-02-19 11:35:00+00:00",
+            "to": "2020-02-19 17:30:00+00:00",
+            "delta_seconds": 21300.0
+          },
+          {
+            "index": 122943,
+            "from": "2020-03-04 09:20:00+00:00",
+            "to": "2020-03-04 11:30:00+00:00",
+            "delta_seconds": 7800.0
+          },
+          {
+            "index": 137805,
+            "from": "2020-04-25 01:55:00+00:00",
+            "to": "2020-04-25 04:30:00+00:00",
+            "delta_seconds": 9300.0
+          },
+          {
+            "index": 156207,
+            "from": "2020-06-28 01:55:00+00:00",
+            "to": "2020-06-28 05:30:00+00:00",
+            "delta_seconds": 12900.0
+          },
+          {
+            "index": 200853,
+            "from": "2020-11-30 05:55:00+00:00",
+            "to": "2020-11-30 07:00:00+00:00",
+            "delta_seconds": 3900.0
+          },
+          {
+            "index": 206987,
+            "from": "2020-12-21 14:05:00+00:00",
+            "to": "2020-12-21 18:00:00+00:00",
+            "delta_seconds": 14100.0
+          },
+          {
+            "index": 207947,
+            "from": "2020-12-25 01:55:00+00:00",
+            "to": "2020-12-25 03:00:00+00:00",
+            "delta_seconds": 3900.0
+          },
+          {
+            "index": 221780,
+            "from": "2021-02-11 03:40:00+00:00",
+            "to": "2021-02-11 05:00:00+00:00",
+            "delta_seconds": 4800.0
+          },
+          {
+            "index": 228368,
+            "from": "2021-03-06 01:55:00+00:00",
+            "to": "2021-03-06 03:30:00+00:00",
+            "delta_seconds": 5700.0
+          },
+          {
+            "index": 241310,
+            "from": "2021-04-20 01:55:00+00:00",
+            "to": "2021-04-20 04:30:00+00:00",
+            "delta_seconds": 9300.0
+          },
+          {
+            "index": 242745,
+            "from": "2021-04-25 04:00:00+00:00",
+            "to": "2021-04-25 08:45:00+00:00",
+            "delta_seconds": 17100.0
+          },
+          {
+            "index": 274344,
+            "from": "2021-08-13 01:55:00+00:00",
+            "to": "2021-08-13 06:30:00+00:00",
+            "delta_seconds": 16500.0
+          },
+          {
+            "index": 287886,
+            "from": "2021-09-29 06:55:00+00:00",
+            "to": "2021-09-29 09:00:00+00:00",
+            "delta_seconds": 7500.0
+          },
+          {
+            "index": 443738,
+            "from": "2023-03-24 12:35:00+00:00",
+            "to": "2023-03-24 14:00:00+00:00",
+            "delta_seconds": 5100.0
+          }
+        ],
+        "handling": "Gaps are not filled. Observations whose forward-return window crosses a gap are excluded where continuous bars are required."
+      },
+      "extra": {
+        "provenance": {
+          "provider": "derived",
+          "source": "session_aware_ohlcv_resample",
+          "acquisition_timestamp": "2026-08-14T13:40:08.806401+00:00",
+          "original_symbol": "",
+          "normalized_symbol": "BTCUSDT",
+          "frequency": "5m",
+          "timezone": "UTC",
+          "original_timezone": "UNKNOWN",
+          "exchange_timezone": "UTC",
+          "currency": "INR",
+          "adjustment_status": "inherited",
+          "corporate_action_treatment": "inherited",
+          "contract_information": {},
+          "checksum": "8743b419c92b661ad94309662eab2f5696f5c68b871f094474496cd524e6688f",
+          "schema_version": "ohlcv_canonical_v1",
+          "license_status": "UNKNOWN",
+          "data_class": "DEVELOPMENT DATA",
+          "availability_timestamp_available": false,
+          "source_dataset_id": "btcusdt_intraday_1m@1.0.0",
+          "source_frequency": "1m",
+          "derived_frequency": "5m",
+          "aggregation_method": "open=first,high=max,low=min,close=last,volume=sum; session-bounded",
+          "creation_timestamp": "2026-08-14T13:40:08.806401+00:00",
+          "frequency_kind": "DERIVED",
+          "requested_range": null,
+          "actual_range": null,
+          "known_limitations": [
+            "Derived bars are aggregations of source bars; not equivalent to a native vendor feed.",
+            "Missing source bars are not fabricated before aggregation."
+          ],
+          "extra": {
+            "source_checksum": "eb6c6488167b598b85e883946ea5fbedb5a9b13850c5599389cf0f18302a09fe"
+          }
+        },
+        "frequency_kind": "DERIVED",
+        "data_class": "DEVELOPMENT DATA",
+        "license_status": "UNKNOWN",
+        "provenance_checksum_field": "8743b419c92b661ad94309662eab2f5696f5c68b871f094474496cd524e6688f",
+        "quality_status": "PASS"
+      }
+    },
+    "15m": {
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_id_bare": "btcusdt_intraday_15m",
+      "version": "1.0.0",
+      "checksum": "74cc6c8ea63345b6e27e4abf2d42a48b99f3e1365d9e935bacd77e9b9997de80",
+      "path": "data/btcusdt/btcusdt_intraday_15m.parquet",
+      "frequency_kind": "DERIVED",
+      "source": "derived:btcusdt_intraday_1m@1.0.0",
+      "row_count": 210163,
+      "start": "2019-01-01T00:00:00+00:00",
+      "end": "2024-12-31T23:45:00+00:00",
+      "coverage_pct": 100.0,
+      "known_limitations": [
+        "Derived bars are aggregations of source bars; not equivalent to a native vendor feed.",
+        "Missing source bars are not fabricated before aggregation."
+      ],
+      "gaps": {
+        "n_gaps": 21,
+        "expected_bar": "0 days 00:15:00",
+        "gaps_sample": [
+          {
+            "index": 6728,
+            "from": "2019-03-12 01:45:00+00:00",
+            "to": "2019-03-12 08:00:00+00:00",
+            "delta_seconds": 22500.0
+          },
+          {
+            "index": 12852,
+            "from": "2019-05-15 02:45:00+00:00",
+            "to": "2019-05-15 13:00:00+00:00",
+            "delta_seconds": 36900.0
+          },
+          {
+            "index": 15093,
+            "from": "2019-06-07 21:00:00+00:00",
+            "to": "2019-06-07 22:15:00+00:00",
+            "delta_seconds": 4500.0
+          },
+          {
+            "index": 21636,
+            "from": "2019-08-15 01:45:00+00:00",
+            "to": "2019-08-15 10:00:00+00:00",
+            "delta_seconds": 29700.0
+          },
+          {
+            "index": 30244,
+            "from": "2019-11-13 01:45:00+00:00",
+            "to": "2019-11-13 04:15:00+00:00",
+            "delta_seconds": 9000.0
+          },
+          {
+            "index": 31387,
+            "from": "2019-11-25 01:45:00+00:00",
+            "to": "2019-11-25 04:00:00+00:00",
+            "delta_seconds": 8100.0
+          },
+          {
+            "index": 38675,
+            "from": "2020-02-09 01:45:00+00:00",
+            "to": "2020-02-09 03:00:00+00:00",
+            "delta_seconds": 4500.0
+          },
+          {
+            "index": 39670,
+            "from": "2020-02-19 11:30:00+00:00",
+            "to": "2020-02-19 17:30:00+00:00",
+            "delta_seconds": 21600.0
+          },
+          {
+            "index": 40982,
+            "from": "2020-03-04 09:15:00+00:00",
+            "to": "2020-03-04 11:30:00+00:00",
+            "delta_seconds": 8100.0
+          },
+          {
+            "index": 45936,
+            "from": "2020-04-25 01:45:00+00:00",
+            "to": "2020-04-25 04:30:00+00:00",
+            "delta_seconds": 9900.0
+          },
+          {
+            "index": 52070,
+            "from": "2020-06-28 01:45:00+00:00",
+            "to": "2020-06-28 05:30:00+00:00",
+            "delta_seconds": 13500.0
+          },
+          {
+            "index": 66952,
+            "from": "2020-11-30 05:45:00+00:00",
+            "to": "2020-11-30 07:00:00+00:00",
+            "delta_seconds": 4500.0
+          },
+          {
+            "index": 68997,
+            "from": "2020-12-21 14:00:00+00:00",
+            "to": "2020-12-21 18:00:00+00:00",
+            "delta_seconds": 14400.0
+          },
+          {
+            "index": 69317,
+            "from": "2020-12-25 01:45:00+00:00",
+            "to": "2020-12-25 03:00:00+00:00",
+            "delta_seconds": 4500.0
+          },
+          {
+            "index": 73928,
+            "from": "2021-02-11 03:30:00+00:00",
+            "to": "2021-02-11 05:00:00+00:00",
+            "delta_seconds": 5400.0
+          },
+          {
+            "index": 76124,
+            "from": "2021-03-06 01:45:00+00:00",
+            "to": "2021-03-06 03:30:00+00:00",
+            "delta_seconds": 6300.0
+          },
+          {
+            "index": 80438,
+            "from": "2021-04-20 01:45:00+00:00",
+            "to": "2021-04-20 04:30:00+00:00",
+            "delta_seconds": 9900.0
+          },
+          {
+            "index": 80917,
+            "from": "2021-04-25 04:00:00+00:00",
+            "to": "2021-04-25 08:45:00+00:00",
+            "delta_seconds": 17100.0
+          },
+          {
+            "index": 91450,
+            "from": "2021-08-13 01:45:00+00:00",
+            "to": "2021-08-13 06:30:00+00:00",
+            "delta_seconds": 17100.0
+          },
+          {
+            "index": 95964,
+            "from": "2021-09-29 06:45:00+00:00",
+            "to": "2021-09-29 09:00:00+00:00",
+            "delta_seconds": 8100.0
+          },
+          {
+            "index": 147915,
+            "from": "2023-03-24 12:30:00+00:00",
+            "to": "2023-03-24 14:00:00+00:00",
+            "delta_seconds": 5400.0
+          }
+        ],
+        "handling": "Gaps are not filled. Observations whose forward-return window crosses a gap are excluded where continuous bars are required."
+      },
+      "extra": {
+        "provenance": {
+          "provider": "derived",
+          "source": "session_aware_ohlcv_resample",
+          "acquisition_timestamp": "2026-08-14T13:40:17.319079+00:00",
+          "original_symbol": "",
+          "normalized_symbol": "BTCUSDT",
+          "frequency": "15m",
+          "timezone": "UTC",
+          "original_timezone": "UNKNOWN",
+          "exchange_timezone": "UTC",
+          "currency": "INR",
+          "adjustment_status": "inherited",
+          "corporate_action_treatment": "inherited",
+          "contract_information": {},
+          "checksum": "74cc6c8ea63345b6e27e4abf2d42a48b99f3e1365d9e935bacd77e9b9997de80",
+          "schema_version": "ohlcv_canonical_v1",
+          "license_status": "UNKNOWN",
+          "data_class": "DEVELOPMENT DATA",
+          "availability_timestamp_available": false,
+          "source_dataset_id": "btcusdt_intraday_1m@1.0.0",
+          "source_frequency": "1m",
+          "derived_frequency": "15m",
+          "aggregation_method": "open=first,high=max,low=min,close=last,volume=sum; session-bounded",
+          "creation_timestamp": "2026-08-14T13:40:17.319079+00:00",
+          "frequency_kind": "DERIVED",
+          "requested_range": null,
+          "actual_range": null,
+          "known_limitations": [
+            "Derived bars are aggregations of source bars; not equivalent to a native vendor feed.",
+            "Missing source bars are not fabricated before aggregation."
+          ],
+          "extra": {
+            "source_checksum": "eb6c6488167b598b85e883946ea5fbedb5a9b13850c5599389cf0f18302a09fe"
+          }
+        },
+        "frequency_kind": "DERIVED",
+        "data_class": "DEVELOPMENT DATA",
+        "license_status": "UNKNOWN",
+        "provenance_checksum_field": "74cc6c8ea63345b6e27e4abf2d42a48b99f3e1365d9e935bacd77e9b9997de80",
+        "quality_status": "PASS"
+      }
+    },
+    "30m": {
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_id_bare": "btcusdt_intraday_30m",
+      "version": "1.0.0",
+      "checksum": "3c5f41cf8dba5f04966e2a91f481e534b1ccb167be1ca9b5d6218a4ebb4a38fa",
+      "path": "data/btcusdt/btcusdt_intraday_30m.parquet",
+      "frequency_kind": "DERIVED",
+      "source": "derived:btcusdt_intraday_1m@1.0.0",
+      "row_count": 105086,
+      "start": "2019-01-01T00:00:00+00:00",
+      "end": "2024-12-31T23:30:00+00:00",
+      "coverage_pct": 100.0,
+      "known_limitations": [
+        "Derived bars are aggregations of source bars; not equivalent to a native vendor feed.",
+        "Missing source bars are not fabricated before aggregation."
+      ],
+      "gaps": {
+        "n_gaps": 21,
+        "expected_bar": "0 days 00:30:00",
+        "gaps_sample": [
+          {
+            "index": 3364,
+            "from": "2019-03-12 01:30:00+00:00",
+            "to": "2019-03-12 08:00:00+00:00",
+            "delta_seconds": 23400.0
+          },
+          {
+            "index": 6426,
+            "from": "2019-05-15 02:30:00+00:00",
+            "to": "2019-05-15 13:00:00+00:00",
+            "delta_seconds": 37800.0
+          },
+          {
+            "index": 7547,
+            "from": "2019-06-07 21:00:00+00:00",
+            "to": "2019-06-07 22:00:00+00:00",
+            "delta_seconds": 3600.0
+          },
+          {
+            "index": 10819,
+            "from": "2019-08-15 01:30:00+00:00",
+            "to": "2019-08-15 10:00:00+00:00",
+            "delta_seconds": 30600.0
+          },
+          {
+            "index": 15123,
+            "from": "2019-11-13 01:30:00+00:00",
+            "to": "2019-11-13 04:00:00+00:00",
+            "delta_seconds": 9000.0
+          },
+          {
+            "index": 15695,
+            "from": "2019-11-25 01:30:00+00:00",
+            "to": "2019-11-25 04:00:00+00:00",
+            "delta_seconds": 9000.0
+          },
+          {
+            "index": 19339,
+            "from": "2020-02-09 01:30:00+00:00",
+            "to": "2020-02-09 03:00:00+00:00",
+            "delta_seconds": 5400.0
+          },
+          {
+            "index": 19837,
+            "from": "2020-02-19 11:30:00+00:00",
+            "to": "2020-02-19 17:30:00+00:00",
+            "delta_seconds": 21600.0
+          },
+          {
+            "index": 20493,
+            "from": "2020-03-04 09:00:00+00:00",
+            "to": "2020-03-04 11:30:00+00:00",
+            "delta_seconds": 9000.0
+          },
+          {
+            "index": 22970,
+            "from": "2020-04-25 01:30:00+00:00",
+            "to": "2020-04-25 04:30:00+00:00",
+            "delta_seconds": 10800.0
+          },
+          {
+            "index": 26037,
+            "from": "2020-06-28 01:30:00+00:00",
+            "to": "2020-06-28 05:30:00+00:00",
+            "delta_seconds": 14400.0
+          },
+          {
+            "index": 33478,
+            "from": "2020-11-30 05:30:00+00:00",
+            "to": "2020-11-30 07:00:00+00:00",
+            "delta_seconds": 5400.0
+          },
+          {
+            "index": 34501,
+            "from": "2020-12-21 14:00:00+00:00",
+            "to": "2020-12-21 18:00:00+00:00",
+            "delta_seconds": 14400.0
+          },
+          {
+            "index": 34661,
+            "from": "2020-12-25 01:30:00+00:00",
+            "to": "2020-12-25 03:00:00+00:00",
+            "delta_seconds": 5400.0
+          },
+          {
+            "index": 36967,
+            "from": "2021-02-11 03:30:00+00:00",
+            "to": "2021-02-11 05:00:00+00:00",
+            "delta_seconds": 5400.0
+          },
+          {
+            "index": 38065,
+            "from": "2021-03-06 01:30:00+00:00",
+            "to": "2021-03-06 03:30:00+00:00",
+            "delta_seconds": 7200.0
+          },
+          {
+            "index": 40222,
+            "from": "2021-04-20 01:30:00+00:00",
+            "to": "2021-04-20 04:30:00+00:00",
+            "delta_seconds": 10800.0
+          },
+          {
+            "index": 40462,
+            "from": "2021-04-25 04:00:00+00:00",
+            "to": "2021-04-25 08:30:00+00:00",
+            "delta_seconds": 16200.0
+          },
+          {
+            "index": 45729,
+            "from": "2021-08-13 01:30:00+00:00",
+            "to": "2021-08-13 06:30:00+00:00",
+            "delta_seconds": 18000.0
+          },
+          {
+            "index": 47986,
+            "from": "2021-09-29 06:30:00+00:00",
+            "to": "2021-09-29 09:00:00+00:00",
+            "delta_seconds": 9000.0
+          },
+          {
+            "index": 73962,
+            "from": "2023-03-24 12:30:00+00:00",
+            "to": "2023-03-24 14:00:00+00:00",
+            "delta_seconds": 5400.0
+          }
+        ],
+        "handling": "Gaps are not filled. Observations whose forward-return window crosses a gap are excluded where continuous bars are required."
+      },
+      "extra": {
+        "provenance": {
+          "provider": "derived",
+          "source": "session_aware_ohlcv_resample",
+          "acquisition_timestamp": "2026-08-14T13:40:24.079323+00:00",
+          "original_symbol": "",
+          "normalized_symbol": "BTCUSDT",
+          "frequency": "30m",
+          "timezone": "UTC",
+          "original_timezone": "UNKNOWN",
+          "exchange_timezone": "UTC",
+          "currency": "INR",
+          "adjustment_status": "inherited",
+          "corporate_action_treatment": "inherited",
+          "contract_information": {},
+          "checksum": "3c5f41cf8dba5f04966e2a91f481e534b1ccb167be1ca9b5d6218a4ebb4a38fa",
+          "schema_version": "ohlcv_canonical_v1",
+          "license_status": "UNKNOWN",
+          "data_class": "DEVELOPMENT DATA",
+          "availability_timestamp_available": false,
+          "source_dataset_id": "btcusdt_intraday_1m@1.0.0",
+          "source_frequency": "1m",
+          "derived_frequency": "30m",
+          "aggregation_method": "open=first,high=max,low=min,close=last,volume=sum; session-bounded",
+          "creation_timestamp": "2026-08-14T13:40:24.079323+00:00",
+          "frequency_kind": "DERIVED",
+          "requested_range": null,
+          "actual_range": null,
+          "known_limitations": [
+            "Derived bars are aggregations of source bars; not equivalent to a native vendor feed.",
+            "Missing source bars are not fabricated before aggregation."
+          ],
+          "extra": {
+            "source_checksum": "eb6c6488167b598b85e883946ea5fbedb5a9b13850c5599389cf0f18302a09fe"
+          }
+        },
+        "frequency_kind": "DERIVED",
+        "data_class": "DEVELOPMENT DATA",
+        "license_status": "UNKNOWN",
+        "provenance_checksum_field": "3c5f41cf8dba5f04966e2a91f481e534b1ccb167be1ca9b5d6218a4ebb4a38fa",
+        "quality_status": "PASS"
+      }
+    },
+    "1h": {
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_id_bare": "btcusdt_intraday_1h",
+      "version": "1.0.0",
+      "checksum": "f3ecf67059770b4d7948dec8618e8f4e28f5bd33b0556437dffb3124432f1a03",
+      "path": "data/btcusdt/btcusdt_intraday_1h.parquet",
+      "frequency_kind": "DERIVED",
+      "source": "derived:btcusdt_intraday_1m@1.0.0",
+      "row_count": 52549,
+      "start": "2019-01-01T00:00:00+00:00",
+      "end": "2024-12-31T23:00:00+00:00",
+      "coverage_pct": 100.0,
+      "known_limitations": [
+        "Derived bars are aggregations of source bars; not equivalent to a native vendor feed.",
+        "Missing source bars are not fabricated before aggregation."
+      ],
+      "gaps": {
+        "n_gaps": 20,
+        "expected_bar": "0 days 01:00:00",
+        "gaps_sample": [
+          {
+            "index": 1682,
+            "from": "2019-03-12 01:00:00+00:00",
+            "to": "2019-03-12 08:00:00+00:00",
+            "delta_seconds": 25200.0
+          },
+          {
+            "index": 3213,
+            "from": "2019-05-15 02:00:00+00:00",
+            "to": "2019-05-15 13:00:00+00:00",
+            "delta_seconds": 39600.0
+          },
+          {
+            "index": 5410,
+            "from": "2019-08-15 01:00:00+00:00",
+            "to": "2019-08-15 10:00:00+00:00",
+            "delta_seconds": 32400.0
+          },
+          {
+            "index": 7562,
+            "from": "2019-11-13 01:00:00+00:00",
+            "to": "2019-11-13 04:00:00+00:00",
+            "delta_seconds": 10800.0
+          },
+          {
+            "index": 7848,
+            "from": "2019-11-25 01:00:00+00:00",
+            "to": "2019-11-25 04:00:00+00:00",
+            "delta_seconds": 10800.0
+          },
+          {
+            "index": 9670,
+            "from": "2020-02-09 01:00:00+00:00",
+            "to": "2020-02-09 03:00:00+00:00",
+            "delta_seconds": 7200.0
+          },
+          {
+            "index": 9919,
+            "from": "2020-02-19 11:00:00+00:00",
+            "to": "2020-02-19 17:00:00+00:00",
+            "delta_seconds": 21600.0
+          },
+          {
+            "index": 10248,
+            "from": "2020-03-04 09:00:00+00:00",
+            "to": "2020-03-04 11:00:00+00:00",
+            "delta_seconds": 7200.0
+          },
+          {
+            "index": 11487,
+            "from": "2020-04-25 01:00:00+00:00",
+            "to": "2020-04-25 04:00:00+00:00",
+            "delta_seconds": 10800.0
+          },
+          {
+            "index": 13021,
+            "from": "2020-06-28 01:00:00+00:00",
+            "to": "2020-06-28 05:00:00+00:00",
+            "delta_seconds": 14400.0
+          },
+          {
+            "index": 16742,
+            "from": "2020-11-30 05:00:00+00:00",
+            "to": "2020-11-30 07:00:00+00:00",
+            "delta_seconds": 7200.0
+          },
+          {
+            "index": 17254,
+            "from": "2020-12-21 14:00:00+00:00",
+            "to": "2020-12-21 18:00:00+00:00",
+            "delta_seconds": 14400.0
+          },
+          {
+            "index": 17334,
+            "from": "2020-12-25 01:00:00+00:00",
+            "to": "2020-12-25 03:00:00+00:00",
+            "delta_seconds": 7200.0
+          },
+          {
+            "index": 18487,
+            "from": "2021-02-11 03:00:00+00:00",
+            "to": "2021-02-11 05:00:00+00:00",
+            "delta_seconds": 7200.0
+          },
+          {
+            "index": 19036,
+            "from": "2021-03-06 01:00:00+00:00",
+            "to": "2021-03-06 03:00:00+00:00",
+            "delta_seconds": 7200.0
+          },
+          {
+            "index": 20115,
+            "from": "2021-04-20 01:00:00+00:00",
+            "to": "2021-04-20 04:00:00+00:00",
+            "delta_seconds": 10800.0
+          },
+          {
+            "index": 20236,
+            "from": "2021-04-25 04:00:00+00:00",
+            "to": "2021-04-25 08:00:00+00:00",
+            "delta_seconds": 14400.0
+          },
+          {
+            "index": 22870,
+            "from": "2021-08-13 01:00:00+00:00",
+            "to": "2021-08-13 06:00:00+00:00",
+            "delta_seconds": 18000.0
+          },
+          {
+            "index": 23999,
+            "from": "2021-09-29 06:00:00+00:00",
+            "to": "2021-09-29 09:00:00+00:00",
+            "delta_seconds": 10800.0
+          },
+          {
+            "index": 36987,
+            "from": "2023-03-24 12:00:00+00:00",
+            "to": "2023-03-24 14:00:00+00:00",
+            "delta_seconds": 7200.0
+          }
+        ],
+        "handling": "Gaps are not filled. Observations whose forward-return window crosses a gap are excluded where continuous bars are required."
+      },
+      "extra": {
+        "provenance": {
+          "provider": "derived",
+          "source": "session_aware_ohlcv_resample",
+          "acquisition_timestamp": "2026-08-14T13:40:30.283308+00:00",
+          "original_symbol": "",
+          "normalized_symbol": "BTCUSDT",
+          "frequency": "1h",
+          "timezone": "UTC",
+          "original_timezone": "UNKNOWN",
+          "exchange_timezone": "UTC",
+          "currency": "INR",
+          "adjustment_status": "inherited",
+          "corporate_action_treatment": "inherited",
+          "contract_information": {},
+          "checksum": "f3ecf67059770b4d7948dec8618e8f4e28f5bd33b0556437dffb3124432f1a03",
+          "schema_version": "ohlcv_canonical_v1",
+          "license_status": "UNKNOWN",
+          "data_class": "DEVELOPMENT DATA",
+          "availability_timestamp_available": false,
+          "source_dataset_id": "btcusdt_intraday_1m@1.0.0",
+          "source_frequency": "1m",
+          "derived_frequency": "1h",
+          "aggregation_method": "open=first,high=max,low=min,close=last,volume=sum; session-bounded",
+          "creation_timestamp": "2026-08-14T13:40:30.283308+00:00",
+          "frequency_kind": "DERIVED",
+          "requested_range": null,
+          "actual_range": null,
+          "known_limitations": [
+            "Derived bars are aggregations of source bars; not equivalent to a native vendor feed.",
+            "Missing source bars are not fabricated before aggregation."
+          ],
+          "extra": {
+            "source_checksum": "eb6c6488167b598b85e883946ea5fbedb5a9b13850c5599389cf0f18302a09fe"
+          }
+        },
+        "frequency_kind": "DERIVED",
+        "data_class": "DEVELOPMENT DATA",
+        "license_status": "UNKNOWN",
+        "provenance_checksum_field": "f3ecf67059770b4d7948dec8618e8f4e28f5bd33b0556437dffb3124432f1a03",
+        "quality_status": "PASS"
+      }
+    }
+  },
+  "data_quality_limitations": {
+    "gap_class": "MINOR_GAPS",
+    "gaps_not_filled": true,
+    "gap_exclusions_recorded": 420,
+    "license_status": "UNKNOWN",
+    "note": "OHLCV alone does not support institutional capacity claims."
+  },
+  "research_universe": {
+    "n_features": 14,
+    "n_signals": 7,
+    "signal_ids": [
+      "breakout_signal",
+      "mean_reversion_signal",
+      "momentum_signal",
+      "price_action_signal",
+      "trend_signal",
+      "volatility_signal",
+      "volume_signal"
+    ],
+    "families": [
+      "breakout",
+      "mean_reversion",
+      "momentum",
+      "price_action",
+      "trend",
+      "volatility",
+      "volume"
+    ]
+  },
+  "n_experiments_total": 1260,
+  "n_experiments_base": 420,
+  "timeframes_evaluated": [
+    "1m",
+    "5m",
+    "15m",
+    "30m",
+    "1h"
+  ],
+  "holding_horizons_bars": [
+    1,
+    2,
+    3,
+    5,
+    10,
+    20
+  ],
+  "leakage_ok": true,
+  "status_counts_all_scenarios": {
+    "OOS_FAILED": 970,
+    "COST_INEFFICIENT": 286,
+    "UNSTABLE": 4
+  },
+  "status_counts_base": {
+    "UNSTABLE": 4,
+    "OOS_FAILED": 322,
+    "COST_INEFFICIENT": 94
+  },
+  "n_candidates_before_filtering": 14,
+  "n_surviving_costs": 2,
+  "n_surviving_oos": 7,
+  "n_surviving_multiple_testing": 237,
+  "final_candidate_set": [],
+  "rejected_categories": {
+    "UNSTABLE": 4,
+    "OOS_FAILED": 322,
+    "COST_INEFFICIENT": 94
+  },
+  "best_by_research_score": {
+    "experiment_id": "3845ba52-6f76-46ad-8225-e5abac69700d",
+    "matrix_row": {
+      "feature": [
+        "moving_average"
+      ],
+      "signal": "trend_signal",
+      "instrument": "BTCUSDT",
+      "timeframe": "1h",
+      "dataset_kind": "DERIVED",
+      "holding_period_bars": 10,
+      "holding_period_minutes": 600.0,
+      "trades": 2139,
+      "trades_per_day": 2139.0,
+      "signals_per_day": 2139.0,
+      "long_trades": 1070,
+      "short_trades": 1069,
+      "long_observations": 27529,
+      "short_observations": 25000,
+      "flat_observations": 20,
+      "gross_return": 31.11006288727645,
+      "net_return": 2.7625822364247976,
+      "gross_Sharpe": 1.0025581077765173,
+      "Sharpe": 0.5512589352511671,
+      "gross_edge_per_trade": 0.006330435658189349,
+      "net_edge_per_trade": 0.006330435658189349,
+      "drawdown": 0.8190950694428998,
+      "IC": 0.011141079825124767,
+      "IC_type": "time_series_IC",
+      "turnover": 492.2509657652857,
+      "cost": 2.1385000000000005,
+      "cost_scenario": "BASE",
+      "OOS_performance": 0.019479990863862328,
+      "train_to_oos_degradation": -0.5722958494104077,
+      "validation_to_oos_degradation": -0.9838269968027162,
+      "robustness": 0.46309978217986303,
+      "classification": "FRAGILE_ALPHA",
+      "research_status": "UNSTABLE",
+      "result_class": "research_simulated",
+      "sample_flag": null,
+      "disclaimer": "Research evidence is not a profitability guarantee. Research / simulated result only. Not live performance.",
+      "gap_excluded_observations": 220
+    },
+    "score": {
+      "score": 0.46309978217986303,
+      "components": {
+        "net_sharpe": 0.38781473381279175,
+        "net_expectancy": 0.8165217829094675,
+        "oos": 0.2548699977159656,
+        "ic": 0.5222821596502495,
+        "ic_stability": 1.0,
+        "drawdown": 0.18090493055710022,
+        "turnover": 0.0,
+        "cost_sensitivity": 1.0,
+        "parameter_stability": 0.5,
+        "regime_stability": 0.0
+      },
+      "weights": {
+        "net_sharpe": 0.18,
+        "net_expectancy": 0.1,
+        "oos": 0.18,
+        "ic": 0.12,
+        "ic_stability": 0.08,
+        "drawdown": 0.1,
+        "turnover": 0.06,
+        "cost_sensitivity": 0.08,
+        "parameter_stability": 0.05,
+        "regime_stability": 0.05
+      },
+      "formula_doc": "\nscore = \u03a3 w_i * component_i\n\nComponents (higher better): net Sharpe, expectancy, OOS, IC, IC stability,\ndrawdown (inverted), turnover (inverted), cost sensitivity, parameter/regime stability.\nRaw return is NOT the sole ranking criterion.\n"
+    }
+  },
+  "best_by_oos": {
+    "experiment_id": "e51a7fd2-0e69-4386-9712-17a700d9c826",
+    "matrix_row": {
+      "feature": [
+        "rolling_zscore"
+      ],
+      "signal": "mean_reversion_signal",
+      "instrument": "BTCUSDT",
+      "timeframe": "1h",
+      "dataset_kind": "DERIVED",
+      "holding_period_bars": 20,
+      "holding_period_minutes": 1200.0,
+      "trades": 1857,
+      "trades_per_day": 1857.0,
+      "signals_per_day": 1857.0,
+      "long_trades": 903,
+      "short_trades": 954,
+      "long_observations": 23080,
+      "short_observations": 25530,
+      "flat_observations": 3939,
+      "gross_return": -0.9181897188310454,
+      "net_return": -0.9871986594673514,
+      "gross_Sharpe": -0.2747356056103537,
+      "Sharpe": -0.6770576205203984,
+      "gross_edge_per_trade": -0.007591327000999644,
+      "net_edge_per_trade": -0.007591327000999644,
+      "drawdown": 0.9927393834937174,
+      "IC": -0.003470730187431557,
+      "IC_type": "time_series_IC",
+      "turnover": 427.3387504995338,
+      "cost": 1.8565,
+      "cost_scenario": "BASE",
+      "OOS_performance": 0.38629445123978906,
+      "train_to_oos_degradation": 1.2266236061830236,
+      "validation_to_oos_degradation": 1.4572208897706682,
+      "robustness": 0.18985210878301906,
+      "classification": "FRAGILE_ALPHA",
+      "research_status": "UNSTABLE",
+      "result_class": "research_simulated",
+      "sample_flag": null,
+      "disclaimer": "Research evidence is not a profitability guarantee. Research / simulated result only. Not live performance.",
+      "gap_excluded_observations": 420
+    }
+  },
+  "most_robust": {
+    "experiment_id": "3749dc63-667a-4dde-9afb-95f9490ac2e7",
+    "signal_id": "volatility_signal",
+    "timeframe": "1h",
+    "holding_bars": 20,
+    "neighborhood_net_sharpe": {
+      "lb18": -0.7643042801442367,
+      "lb19": -0.782968873106042,
+      "lb20": -0.8248484098563348,
+      "lb21": -0.5981872089082968,
+      "lb22": -0.5812603880451456
+    },
+    "stability": {
+      "stability_score": 0.8417537855069874,
+      "fragile": false,
+      "center": -0.7643042801442367,
+      "neighbor_mean": -0.6968162199789548,
+      "reason": "stable across nearby parameters"
+    }
+  },
+  "most_cost_sensitive": {
+    "experiment_id": "409e766a-7333-4382-8260-55521d6c7d21",
+    "signal_id": "momentum_signal",
+    "timeframe": "1h",
+    "sensitivity": [
+      {
+        "multiplier": 1.0,
+        "cost_model": {
+          "commission_bps": 1.0,
+          "spread_bps": 2.0,
+          "slippage_bps": 2.0
+        },
+        "net_sharpe": 0.22780072340017968,
+        "net_pnl": -0.19313208414812333,
+        "alpha_survives_costs": false
+      },
+      {
+        "multiplier": 2.0,
+        "cost_model": {
+          "commission_bps": 2.0,
+          "spread_bps": 4.0,
+          "slippage_bps": 4.0
+        },
+        "net_sharpe": -0.16155762295383636,
+        "net_pnl": -0.8744408286123382,
+        "alpha_survives_costs": false
+      },
+      {
+        "multiplier": 3.0,
+        "cost_model": {
+          "commission_bps": 3.0,
+          "spread_bps": 6.0,
+          "slippage_bps": 6.0
+        },
+        "net_sharpe": -0.5488275145865288,
+        "net_pnl": -0.9804978194118854,
+        "alpha_survives_costs": false
+      }
+    ],
+    "edge_disappears_at_multiplier": 1.0
+  },
+  "most_frequent": {
+    "experiment_id": "3eca2078-c2f2-471b-9726-32af5afbd6ba",
+    "trades_per_day": 320.01277372262774,
+    "matrix_row": {
+      "feature": [
+        "volume_change",
+        "momentum"
+      ],
+      "signal": "volume_signal",
+      "instrument": "BTCUSDT",
+      "timeframe": "1m",
+      "dataset_kind": "SOURCE",
+      "holding_period_bars": 1,
+      "holding_period_minutes": 1.0,
+      "trades": 701468,
+      "trades_per_day": 320.01277372262774,
+      "signals_per_day": 701468.0,
+      "long_trades": 351905,
+      "short_trades": 349563,
+      "long_observations": 770974,
+      "short_observations": 769926,
+      "flat_observations": 1611491,
+      "gross_return": -0.9464483606611988,
+      "net_return": -1.0,
+      "gross_Sharpe": -0.5325214791342672,
+      "Sharpe": -162.6317001339317,
+      "gross_edge_per_trade": 0.0005160645304748355,
+      "net_edge_per_trade": 0.0005160645304748355,
+      "drawdown": 1.0,
+      "IC": -0.009518525725363186,
+      "IC_type": "time_series_IC",
+      "turnover": 161495.64431569562,
+      "cost": 701.4680000000001,
+      "cost_scenario": "BASE",
+      "OOS_performance": -206.44525244743028,
+      "train_to_oos_degradation": -61.53426314279548,
+      "validation_to_oos_degradation": 9.498614986965151,
+      "robustness": 0.176295876478287,
+      "classification": "OOS_FAILURE",
+      "research_status": "OOS_FAILED",
+      "result_class": "research_simulated",
+      "sample_flag": null,
+      "disclaimer": "Research evidence is not a profitability guarantee. Research / simulated result only. Not live performance.",
+      "gap_excluded_observations": 44,
+      "trades_per_day_method": "total_trades / n_calendar_days",
+      "calendar_days": 2192
+    }
+  },
+  "trade_frequency_summary": {
+    "average_trades_per_day": 33.227338590545706,
+    "median_trades_per_day": 7.898038321167883,
+    "n": 420,
+    "calendar_days": 2192,
+    "method": "total_trades / n_calendar_days"
+  },
+  "signal_correlation": {
+    "signals": [
+      "momentum_signal",
+      "price_action_signal",
+      "trend_signal",
+      "volatility_signal",
+      "volume_signal"
+    ],
+    "correlation": [
+      [
+        1.0,
+        0.7075298253127392,
+        0.6544101914655569,
+        0.0492616294882063,
+        0.6969375102033275
+      ],
+      [
+        0.7075298253127391,
+        1.0,
+        0.4905406749584586,
+        0.048704723150043844,
+        0.6328196374403905
+      ],
+      [
+        0.6544101914655568,
+        0.4905406749584586,
+        0.9999999999999999,
+        0.043225351222393175,
+        0.5121950814892154
+      ],
+      [
+        0.0492616294882063,
+        0.04870472315004385,
+        0.04322535122239318,
+        1.0,
+        0.024090663514204157
+      ],
+      [
+        0.6969375102033275,
+        0.6328196374403905,
+        0.5121950814892154,
+        0.024090663514204153,
+        1.0
+      ]
+    ],
+    "note": "Highly correlated signals are not independent discoveries."
+  },
+  "cross_timeframe": [
+    {
+      "signal_id": "momentum_signal",
+      "by_timeframe": {
+        "1m": {
+          "experiment_id": "0d3b9f03-a202-4bce-bd05-fd77716a9b91",
+          "lookback": 20,
+          "holding_bars": 1,
+          "net_sharpe": -60.15108398513713,
+          "oos_sharpe": -71.86948402324157,
+          "research_status": "OOS_FAILED",
+          "score": 0.17976502270262718
+        },
+        "5m": {
+          "experiment_id": "7b0a1f5a-de0e-48a2-9db5-7880f502deec",
+          "lookback": 20,
+          "holding_bars": 1,
+          "net_sharpe": -14.625405611272708,
+          "oos_sharpe": -17.186870982396115,
+          "research_status": "OOS_FAILED",
+          "score": 0.18662206554528865
+        },
+        "15m": {
+          "experiment_id": "5e306885-5cd4-4a97-b083-3baeb1ae33b1",
+          "lookback": 20,
+          "holding_bars": 20,
+          "net_sharpe": -1.5140125410191805,
+          "oos_sharpe": -0.5476499042976466,
+          "research_status": "OOS_FAILED",
+          "score": 0.1739420900039575
+        },
+        "30m": {
+          "experiment_id": "a3cd34e4-74ea-41ad-bc42-e291ddf8660f",
+          "lookback": 20,
+          "holding_bars": 20,
+          "net_sharpe": 0.268704496029334,
+          "oos_sharpe": 0.05276003547493303,
+          "research_status": "COST_INEFFICIENT",
+          "score": 0.3409385835942628
+        },
+        "1h": {
+          "experiment_id": "3aa71d03-5ee5-4b56-88a7-56a10f894901",
+          "lookback": 20,
+          "holding_bars": 5,
+          "net_sharpe": 0.38287311772141297,
+          "oos_sharpe": -0.33086504989011,
+          "research_status": "OOS_FAILED",
+          "score": 0.44420022651604824
+        }
+      },
+      "persists_neighboring_horizons": false,
+      "flag": "sign_inconsistent_across_tf"
+    },
+    {
+      "signal_id": "price_action_signal",
+      "by_timeframe": {
+        "1m": {
+          "experiment_id": "6863eb56-6a93-4853-b860-4ce3c1980a10",
+          "lookback": 10,
+          "holding_bars": 1,
+          "net_sharpe": -103.67965016245765,
+          "oos_sharpe": -124.07400537965577,
+          "research_status": "OOS_FAILED",
+          "score": 0.17803991923134577
+        },
+        "5m": {
+          "experiment_id": "7338493d-db37-47cf-87d7-b40268ed55ba",
+          "lookback": 10,
+          "holding_bars": 1,
+          "net_sharpe": -22.433032182068267,
+          "oos_sharpe": -27.183609805689528,
+          "research_status": "OOS_FAILED",
+          "score": 0.18424555018666286
+        },
+        "15m": {
+          "experiment_id": "3aed9774-ea43-431a-a39e-b1fdad1e257a",
+          "lookback": 10,
+          "holding_bars": 1,
+          "net_sharpe": -7.706755134635513,
+          "oos_sharpe": -9.74157072901728,
+          "research_status": "OOS_FAILED",
+          "score": 0.16776314953442092
+        },
+        "30m": {
+          "experiment_id": "e50f1279-e3d8-464f-87ef-6fcc3bb04d80",
+          "lookback": 20,
+          "holding_bars": 20,
+          "net_sharpe": -0.1079108334221533,
+          "oos_sharpe": -0.47251615964678084,
+          "research_status": "COST_INEFFICIENT",
+          "score": 0.31734657181273146
+        },
+        "1h": {
+          "experiment_id": "22560244-7726-47d3-aa90-092c8222e4a0",
+          "lookback": 10,
+          "holding_bars": 20,
+          "net_sharpe": 0.06247287369823064,
+          "oos_sharpe": -0.15056916036705084,
+          "research_status": "COST_INEFFICIENT",
+          "score": 0.3622459422810268
+        }
+      },
+      "persists_neighboring_horizons": false,
+      "flag": "sign_inconsistent_across_tf"
+    },
+    {
+      "signal_id": "trend_signal",
+      "by_timeframe": {
+        "1m": {
+          "experiment_id": "2634808b-3cb3-4326-8fc6-501acb0d2037",
+          "lookback": 20,
+          "holding_bars": 1,
+          "net_sharpe": -66.70119650909355,
+          "oos_sharpe": -78.2475055470218,
+          "research_status": "OOS_FAILED",
+          "score": 0.18240554994609792
+        },
+        "5m": {
+          "experiment_id": "63a02b45-972a-406a-be1d-7ddd689df751",
+          "lookback": 20,
+          "holding_bars": 1,
+          "net_sharpe": -17.03756272186154,
+          "oos_sharpe": -19.354123515762872,
+          "research_status": "OOS_FAILED",
+          "score": 0.1912805824719711
+        },
+        "15m": {
+          "experiment_id": "2399c248-c0ce-400e-8bd0-950a4fdcfaf6",
+          "lookback": 20,
+          "holding_bars": 20,
+          "net_sharpe": -1.279414931828048,
+          "oos_sharpe": -0.49330529534393575,
+          "research_status": "OOS_FAILED",
+          "score": 0.18014668452618476
+        },
+        "30m": {
+          "experiment_id": "ed6d0ff4-6e0b-4ad1-8aa3-e36c60dcfe65",
+          "lookback": 10,
+          "holding_bars": 20,
+          "net_sharpe": -0.267883029432331,
+          "oos_sharpe": 0.13873718386044112,
+          "research_status": "UNSTABLE",
+          "score": 0.2550770456737802
+        },
+        "1h": {
+          "experiment_id": "3845ba52-6f76-46ad-8225-e5abac69700d",
+          "lookback": 20,
+          "holding_bars": 10,
+          "net_sharpe": 0.5512589352511671,
+          "oos_sharpe": 0.019479990863862328,
+          "research_status": "UNSTABLE",
+          "score": 0.46309978217986303
+        }
+      },
+      "persists_neighboring_horizons": false,
+      "flag": "sign_inconsistent_across_tf"
+    },
+    {
+      "signal_id": "volatility_signal",
+      "by_timeframe": {
+        "1m": {
+          "experiment_id": "4cf39643-1a18-4130-a8ba-48a83f6855eb",
+          "lookback": 10,
+          "holding_bars": 5,
+          "net_sharpe": -43.19288603267753,
+          "oos_sharpe": -55.80252449683561,
+          "research_status": "OOS_FAILED",
+          "score": 0.1758853567053176
+        },
+        "5m": {
+          "experiment_id": "72ff0bf8-1213-4b8b-b191-64c50895fcb8",
+          "lookback": 10,
+          "holding_bars": 20,
+          "net_sharpe": -2.8519444698162655,
+          "oos_sharpe": -3.2016731023624443,
+          "research_status": "COST_INEFFICIENT",
+          "score": 0.17580286226115782
+        },
+        "15m": {
+          "experiment_id": "b40621d7-8137-4a7e-89a2-6003e21dfb15",
+          "lookback": 10,
+          "holding_bars": 20,
+          "net_sharpe": -1.1075434061740332,
+          "oos_sharpe": -0.6322591011425518,
+          "research_status": "OOS_FAILED",
+          "score": 0.19235619281343802
+        },
+        "30m": {
+          "experiment_id": "e80aab6e-e156-4a5b-99ad-fcc0ff8bafed",
+          "lookback": 10,
+          "holding_bars": 20,
+          "net_sharpe": -0.6130029456044461,
+          "oos_sharpe": -0.304426886810267,
+          "research_status": "OOS_FAILED",
+          "score": 0.22417253359517916
+        },
+        "1h": {
+          "experiment_id": "3749dc63-667a-4dde-9afb-95f9490ac2e7",
+          "lookback": 10,
+          "holding_bars": 20,
+          "net_sharpe": 0.058653966439912796,
+          "oos_sharpe": 0.0714839926491228,
+          "research_status": "COST_INEFFICIENT",
+          "score": 0.3307911595386495
+        }
+      },
+      "persists_neighboring_horizons": false,
+      "flag": "sign_inconsistent_across_tf"
+    },
+    {
+      "signal_id": "volume_signal",
+      "by_timeframe": {
+        "1m": {
+          "experiment_id": "372fc7cd-b31d-49c7-93a8-ee9d365266c6",
+          "lookback": 20,
+          "holding_bars": 1,
+          "net_sharpe": -149.1957507982593,
+          "oos_sharpe": -189.7431286118813,
+          "research_status": "OOS_FAILED",
+          "score": 0.17633791941962926
+        },
+        "5m": {
+          "experiment_id": "321bc512-4f87-4bbd-8256-a4dd9b437316",
+          "lookback": 10,
+          "holding_bars": 1,
+          "net_sharpe": -31.702511096996886,
+          "oos_sharpe": -40.338726129352715,
+          "research_status": "OOS_FAILED",
+          "score": 0.1811564948838208
+        },
+        "15m": {
+          "experiment_id": "f2faa503-8593-41dd-ae5e-0adba6d240c8",
+          "lookback": 20,
+          "holding_bars": 1,
+          "net_sharpe": -8.399980049817328,
+          "oos_sharpe": -10.650277176848512,
+          "research_status": "COST_INEFFICIENT",
+          "score": 0.24296978939734457
+        },
+        "30m": {
+          "experiment_id": "c16922a4-5dd3-4d8e-89ed-ac104a0dbe85",
+          "lookback": 20,
+          "holding_bars": 20,
+          "net_sharpe": -0.2077482524707754,
+          "oos_sharpe": -0.9857523890096902,
+          "research_status": "COST_INEFFICIENT",
+          "score": 0.2894645726520573
+        },
+        "1h": {
+          "experiment_id": "570ed35b-f487-426a-803d-880683d145f0",
+          "lookback": 10,
+          "holding_bars": 20,
+          "net_sharpe": 0.07477273769170797,
+          "oos_sharpe": -0.4315497574095226,
+          "research_status": "COST_INEFFICIENT",
+          "score": 0.3487549788684432
+        }
+      },
+      "persists_neighboring_horizons": false,
+      "flag": "sign_inconsistent_across_tf"
+    }
+  ],
+  "major_limitations": [
+    "Research evidence is not a profitability guarantee.",
+    "Single-instrument BTC time-series IC is not cross-sectional IC.",
+    "Multiple-testing p-values approximate and may be optimistic under autocorrelation.",
+    "Capacity/liquidity figures from OHLCV are estimates only.",
+    "No live trading was performed.",
+    "Candidates are not PRODUCTION_READY.",
+    "1m is SOURCE; 5m/15m/30m/1h are DERIVED via causal session-aware resampling."
+  ],
+  "executive_summary": "Ran 1260 experiments (420 BASE) across 5 timeframes and 6 holding horizons on registered BTCUSDT datasets. Leakage suite OK. Zero experiments received CANDIDATE status after cost-aware OOS gates (statuses dominated by OOS_FAILED and COST_INEFFICIENT). A diversified near-miss watchlist of 7 families is recorded for future research only. Research evidence is not a profitability guarantee.",
+  "n_final_candidates": 0,
+  "research_watchlist_near_misses": [
+    {
+      "experiment_id": "3845ba52-6f76-46ad-8225-e5abac69700d",
+      "signal_id": "trend_signal",
+      "family": "trend",
+      "timeframe": "1h",
+      "dataset_kind": "DERIVED",
+      "lookback": 20,
+      "holding_bars": 10,
+      "holding_minutes": 600.0,
+      "research_status": "UNSTABLE",
+      "alpha_research_score": 0.46309978217986303,
+      "net_sharpe": 0.5512589352511671,
+      "oos_sharpe": 0.019479990863862328,
+      "net_return": 2.7625822364247976,
+      "trades_per_day": 0.9758211678832117,
+      "gate_outcome": "DID_NOT_SURVIVE_CANDIDATE_GATES",
+      "not_candidate": true,
+      "not_production_ready": true,
+      "disclaimer": "Research evidence is not a profitability guarantee."
+    },
+    {
+      "experiment_id": "3aa71d03-5ee5-4b56-88a7-56a10f894901",
+      "signal_id": "momentum_signal",
+      "family": "momentum",
+      "timeframe": "1h",
+      "dataset_kind": "DERIVED",
+      "lookback": 20,
+      "holding_bars": 5,
+      "holding_minutes": 300.0,
+      "research_status": "OOS_FAILED",
+      "alpha_research_score": 0.44420022651604824,
+      "net_sharpe": 0.38287311772141297,
+      "oos_sharpe": -0.33086504989011,
+      "net_return": 0.686362037609336,
+      "trades_per_day": 1.177463503649635,
+      "gate_outcome": "DID_NOT_SURVIVE_CANDIDATE_GATES",
+      "not_candidate": true,
+      "not_production_ready": true,
+      "disclaimer": "Research evidence is not a profitability guarantee."
+    },
+    {
+      "experiment_id": "22560244-7726-47d3-aa90-092c8222e4a0",
+      "signal_id": "price_action_signal",
+      "family": "price_action",
+      "timeframe": "1h",
+      "dataset_kind": "DERIVED",
+      "lookback": 10,
+      "holding_bars": 20,
+      "holding_minutes": 1200.0,
+      "research_status": "COST_INEFFICIENT",
+      "alpha_research_score": 0.3622459422810268,
+      "net_sharpe": 0.06247287369823064,
+      "oos_sharpe": -0.15056916036705084,
+      "net_return": -0.6167803110721104,
+      "trades_per_day": 0.7737226277372263,
+      "gate_outcome": "DID_NOT_SURVIVE_CANDIDATE_GATES",
+      "not_candidate": true,
+      "not_production_ready": true,
+      "disclaimer": "Research evidence is not a profitability guarantee."
+    },
+    {
+      "experiment_id": "570ed35b-f487-426a-803d-880683d145f0",
+      "signal_id": "volume_signal",
+      "family": "volume",
+      "timeframe": "1h",
+      "dataset_kind": "DERIVED",
+      "lookback": 10,
+      "holding_bars": 20,
+      "holding_minutes": 1200.0,
+      "research_status": "COST_INEFFICIENT",
+      "alpha_research_score": 0.3487549788684432,
+      "net_sharpe": 0.07477273769170797,
+      "oos_sharpe": -0.4315497574095226,
+      "net_return": -0.5820670599358735,
+      "trades_per_day": 0.8467153284671532,
+      "gate_outcome": "DID_NOT_SURVIVE_CANDIDATE_GATES",
+      "not_candidate": true,
+      "not_production_ready": true,
+      "disclaimer": "Research evidence is not a profitability guarantee."
+    },
+    {
+      "experiment_id": "3749dc63-667a-4dde-9afb-95f9490ac2e7",
+      "signal_id": "volatility_signal",
+      "family": "volatility",
+      "timeframe": "1h",
+      "dataset_kind": "DERIVED",
+      "lookback": 10,
+      "holding_bars": 20,
+      "holding_minutes": 1200.0,
+      "research_status": "COST_INEFFICIENT",
+      "alpha_research_score": 0.3307911595386495,
+      "net_sharpe": 0.058653966439912796,
+      "oos_sharpe": 0.0714839926491228,
+      "net_return": -0.6406362350463223,
+      "trades_per_day": 0.5825729927007299,
+      "gate_outcome": "DID_NOT_SURVIVE_CANDIDATE_GATES",
+      "not_candidate": true,
+      "not_production_ready": true,
+      "disclaimer": "Research evidence is not a profitability guarantee."
+    },
+    {
+      "experiment_id": "95d66147-b5c3-4f08-a3ac-a40c19e656c5",
+      "signal_id": "breakout_signal",
+      "family": "breakout",
+      "timeframe": "1h",
+      "dataset_kind": "DERIVED",
+      "lookback": 20,
+      "holding_bars": 20,
+      "holding_minutes": 1200.0,
+      "research_status": "OOS_FAILED",
+      "alpha_research_score": 0.28220705208667574,
+      "net_sharpe": -0.32342059538066753,
+      "oos_sharpe": -1.2469498703830955,
+      "net_return": -0.910121154060521,
+      "trades_per_day": 0.8476277372262774,
+      "gate_outcome": "DID_NOT_SURVIVE_CANDIDATE_GATES",
+      "not_candidate": true,
+      "not_production_ready": true,
+      "disclaimer": "Research evidence is not a profitability guarantee."
+    },
+    {
+      "experiment_id": "92d8fdfc-0496-4c33-a113-535bc966dcae",
+      "signal_id": "mean_reversion_signal",
+      "family": "mean_reversion",
+      "timeframe": "1m",
+      "dataset_kind": "SOURCE",
+      "lookback": 20,
+      "holding_bars": 20,
+      "holding_minutes": 20.0,
+      "research_status": "COST_INEFFICIENT",
+      "alpha_research_score": 0.25602696927904656,
+      "net_sharpe": -19.481630689928178,
+      "oos_sharpe": -27.047873425911114,
+      "net_return": -1.0,
+      "trades_per_day": 50.16697080291971,
+      "gate_outcome": "DID_NOT_SURVIVE_CANDIDATE_GATES",
+      "not_candidate": true,
+      "not_production_ready": true,
+      "disclaimer": "Research evidence is not a profitability guarantee."
+    }
+  ]
+}

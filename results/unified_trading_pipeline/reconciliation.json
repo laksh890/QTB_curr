@@ -1,0 +1,342 @@
+{
+  "disclaimer": "UNIFIED TRADING PIPELINE \u2014 integration validation only. PIPELINE WORKS \u2260 STRATEGY WORKS \u2260 PROFITABLE \u2260 ROBUST \u2260 PRODUCTION READY.",
+  "batch1": {
+    "ok": true,
+    "starting_capital": 1000000.0,
+    "realized": 0.0,
+    "unrealized": -3.4626774226043953,
+    "fees": 0.0,
+    "financing": 0.0,
+    "ending_equity": 999996.5373225772,
+    "expected_equity": 999996.5373225772,
+    "discrepancy": 0.0,
+    "tolerance": 0.0001,
+    "detail": "reconciled via equity = cash + position_market_value",
+    "cash": 752582.0718898273,
+    "position_market_value": 247414.46543274997,
+    "cash_plus_mv_equity": 999996.5373225772,
+    "checks": {
+      "cash_plus_mv": {
+        "ok": true,
+        "expected": 999996.5373225772,
+        "gap": 0.0
+      },
+      "prompt_identity": {
+        "ok": true,
+        "expected": 999996.5373225774,
+        "gap": -2.3283064365386963e-10
+      },
+      "cash_plus_unrealized": {
+        "ok": false,
+        "expected": 752578.6092124047,
+        "gap": 247417.9281101725
+      }
+    },
+    "identity": "equity = cash + position_market_value; cash settles buys/sells/fees; Starting + Realized + Unrealized - Fees - Financing \u2248 Ending (or cash + unrealized when realized is settled into cash)",
+    "position_fill_replay": {
+      "ok": true,
+      "n_fills": 4,
+      "final_quantities": {
+        "AAA": 1440.8101265599998,
+        "BBB": 999.99749999,
+        "CCC": 2133.34311109
+      },
+      "steps": [
+        {
+          "instrument": "AAA",
+          "side": "buy",
+          "quantity": 499.99999999,
+          "position_before": 0.0,
+          "position_after": 499.99999999,
+          "expected_after": 499.99999999,
+          "ok": true
+        },
+        {
+          "instrument": "BBB",
+          "side": "buy",
+          "quantity": 999.99749999,
+          "position_before": 0.0,
+          "position_after": 999.99749999,
+          "expected_after": 999.99749999,
+          "ok": true
+        },
+        {
+          "instrument": "CCC",
+          "side": "buy",
+          "quantity": 2133.34311109,
+          "position_before": 0.0,
+          "position_after": 2133.34311109,
+          "expected_after": 2133.34311109,
+          "ok": true
+        },
+        {
+          "instrument": "AAA",
+          "side": "buy",
+          "quantity": 940.81012657,
+          "position_before": 499.99999999,
+          "position_after": 1440.8101265599998,
+          "expected_after": 1440.8101265599998,
+          "ok": true
+        }
+      ],
+      "matches_final_positions": true,
+      "final_mismatches": []
+    },
+    "cash_fill_replay": {
+      "ok": true,
+      "initial_cash": 1000000.0,
+      "replayed_cash": 752582.0718898273,
+      "n_events": 4,
+      "events": [
+        {
+          "instrument": "AAA",
+          "side": "buy",
+          "notional": 50002.49999899995,
+          "fee": 0.0,
+          "cash_before": 1000000.0,
+          "cash_after": 949997.500001
+        },
+        {
+          "instrument": "BBB",
+          "side": "buy",
+          "notional": 49994.87501200005,
+          "fee": 0.0,
+          "cash_before": 949997.500001,
+          "cash_after": 900002.6249889999
+        },
+        {
+          "instrument": "CCC",
+          "side": "buy",
+          "notional": 53344.244492805454,
+          "fee": 0.0,
+          "cash_before": 900002.6249889999,
+          "cash_after": 846658.3804961945
+        },
+        {
+          "instrument": "AAA",
+          "side": "buy",
+          "notional": 94076.30860636715,
+          "fee": 0.0,
+          "cash_before": 846658.3804961945,
+          "cash_after": 752582.0718898273
+        }
+      ],
+      "tolerance": 0.0001,
+      "matches_ledger": true,
+      "ledger_cash": 752582.0718898273
+    },
+    "equity_snapshots": {
+      "ok": true,
+      "n_snapshots": 0,
+      "n_checked": 0,
+      "n_gaps": 0,
+      "gaps": [],
+      "tolerance": 0.0001
+    },
+    "capital_identity": {
+      "ok": true,
+      "starting_capital": 1000000.0,
+      "realized": 0.0,
+      "unrealized": -3.4626774226043953,
+      "fees": 0.0,
+      "financing": 0.0,
+      "ending_equity": 999996.5373225772,
+      "expected_equity": 999996.5373225772,
+      "discrepancy": 0.0,
+      "tolerance": 0.0001,
+      "detail": "reconciled via equity = cash + position_market_value",
+      "cash": 752582.0718898273,
+      "position_market_value": 247414.46543274997,
+      "cash_plus_mv_equity": 999996.5373225772,
+      "checks": {
+        "cash_plus_mv": {
+          "ok": true,
+          "expected": 999996.5373225772,
+          "gap": 0.0
+        },
+        "prompt_identity": {
+          "ok": true,
+          "expected": 999996.5373225774,
+          "gap": -2.3283064365386963e-10
+        },
+        "cash_plus_unrealized": {
+          "ok": false,
+          "expected": 752578.6092124047,
+          "gap": 247417.9281101725
+        }
+      },
+      "identity": "equity = cash + position_market_value; cash settles buys/sells/fees; Starting + Realized + Unrealized - Fees - Financing \u2248 Ending (or cash + unrealized when realized is settled into cash)"
+    },
+    "outcome": "RECONCILIATION_OK"
+  },
+  "batch2": {
+    "ok": true,
+    "starting_capital": 1000000.0,
+    "realized": 0.0,
+    "unrealized": 2570.6930602373955,
+    "fees": 0.0,
+    "financing": 0.0,
+    "ending_equity": 1002570.6930602372,
+    "expected_equity": 1002570.6930602372,
+    "discrepancy": 0.0,
+    "tolerance": 0.0001,
+    "detail": "reconciled via equity = cash + position_market_value",
+    "cash": 752582.0718898273,
+    "position_market_value": 249988.62117040998,
+    "cash_plus_mv_equity": 1002570.6930602372,
+    "checks": {
+      "cash_plus_mv": {
+        "ok": true,
+        "expected": 1002570.6930602372,
+        "gap": 0.0
+      },
+      "prompt_identity": {
+        "ok": true,
+        "expected": 1002570.6930602374,
+        "gap": -2.3283064365386963e-10
+      },
+      "cash_plus_unrealized": {
+        "ok": false,
+        "expected": 755152.7649500647,
+        "gap": 247417.9281101725
+      }
+    },
+    "identity": "equity = cash + position_market_value; cash settles buys/sells/fees; Starting + Realized + Unrealized - Fees - Financing \u2248 Ending (or cash + unrealized when realized is settled into cash)",
+    "position_fill_replay": {
+      "ok": true,
+      "n_fills": 4,
+      "final_quantities": {
+        "AAA": 1440.8101265599998,
+        "BBB": 999.99749999,
+        "CCC": 2133.34311109
+      },
+      "steps": [
+        {
+          "instrument": "AAA",
+          "side": "buy",
+          "quantity": 499.99999999,
+          "position_before": 0.0,
+          "position_after": 499.99999999,
+          "expected_after": 499.99999999,
+          "ok": true
+        },
+        {
+          "instrument": "BBB",
+          "side": "buy",
+          "quantity": 999.99749999,
+          "position_before": 0.0,
+          "position_after": 999.99749999,
+          "expected_after": 999.99749999,
+          "ok": true
+        },
+        {
+          "instrument": "CCC",
+          "side": "buy",
+          "quantity": 2133.34311109,
+          "position_before": 0.0,
+          "position_after": 2133.34311109,
+          "expected_after": 2133.34311109,
+          "ok": true
+        },
+        {
+          "instrument": "AAA",
+          "side": "buy",
+          "quantity": 940.81012657,
+          "position_before": 499.99999999,
+          "position_after": 1440.8101265599998,
+          "expected_after": 1440.8101265599998,
+          "ok": true
+        }
+      ],
+      "matches_final_positions": true,
+      "final_mismatches": []
+    },
+    "cash_fill_replay": {
+      "ok": true,
+      "initial_cash": 1000000.0,
+      "replayed_cash": 752582.0718898273,
+      "n_events": 4,
+      "events": [
+        {
+          "instrument": "AAA",
+          "side": "buy",
+          "notional": 50002.49999899995,
+          "fee": 0.0,
+          "cash_before": 1000000.0,
+          "cash_after": 949997.500001
+        },
+        {
+          "instrument": "BBB",
+          "side": "buy",
+          "notional": 49994.87501200005,
+          "fee": 0.0,
+          "cash_before": 949997.500001,
+          "cash_after": 900002.6249889999
+        },
+        {
+          "instrument": "CCC",
+          "side": "buy",
+          "notional": 53344.244492805454,
+          "fee": 0.0,
+          "cash_before": 900002.6249889999,
+          "cash_after": 846658.3804961945
+        },
+        {
+          "instrument": "AAA",
+          "side": "buy",
+          "notional": 94076.30860636715,
+          "fee": 0.0,
+          "cash_before": 846658.3804961945,
+          "cash_after": 752582.0718898273
+        }
+      ],
+      "tolerance": 0.0001,
+      "matches_ledger": true,
+      "ledger_cash": 752582.0718898273
+    },
+    "equity_snapshots": {
+      "ok": true,
+      "n_snapshots": 0,
+      "n_checked": 0,
+      "n_gaps": 0,
+      "gaps": [],
+      "tolerance": 0.0001
+    },
+    "capital_identity": {
+      "ok": true,
+      "starting_capital": 1000000.0,
+      "realized": 0.0,
+      "unrealized": 2570.6930602373955,
+      "fees": 0.0,
+      "financing": 0.0,
+      "ending_equity": 1002570.6930602372,
+      "expected_equity": 1002570.6930602372,
+      "discrepancy": 0.0,
+      "tolerance": 0.0001,
+      "detail": "reconciled via equity = cash + position_market_value",
+      "cash": 752582.0718898273,
+      "position_market_value": 249988.62117040998,
+      "cash_plus_mv_equity": 1002570.6930602372,
+      "checks": {
+        "cash_plus_mv": {
+          "ok": true,
+          "expected": 1002570.6930602372,
+          "gap": 0.0
+        },
+        "prompt_identity": {
+          "ok": true,
+          "expected": 1002570.6930602374,
+          "gap": -2.3283064365386963e-10
+        },
+        "cash_plus_unrealized": {
+          "ok": false,
+          "expected": 755152.7649500647,
+          "gap": 247417.9281101725
+        }
+      },
+      "identity": "equity = cash + position_market_value; cash settles buys/sells/fees; Starting + Realized + Unrealized - Fees - Financing \u2248 Ending (or cash + unrealized when realized is settled into cash)"
+    },
+    "outcome": "RECONCILIATION_OK"
+  },
+  "status": "PASS"
+}

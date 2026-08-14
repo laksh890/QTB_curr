@@ -1,0 +1,349 @@
+{
+  "HMM": {
+    "status": "PARTIALLY_IMPLEMENTED",
+    "source": [
+      "iqrp/app/regimes/hmm"
+    ],
+    "tests": [
+      "iqrp/tests/integration/test_hmm_pipeline.py",
+      "iqrp/tests/unit/hmm/test_hmm_core.py",
+      "iqrp/tests/unit/hmm/test_hmm_coverage.py",
+      "iqrp/tests/unit/hmm/test_hmm_gaps.py",
+      "iqrp/tests/unit/hmm/test_hmm_synthetic.py"
+    ],
+    "docs": [
+      "iqrp/docs/BaumWelch.md",
+      "iqrp/docs/BayesianRegimeSwitching.md",
+      "iqrp/docs/FeatureEngineering.md",
+      "iqrp/docs/ForwardBackward.md",
+      "iqrp/docs/GaussianHMM.md",
+      "iqrp/docs/HiddenMarkovModel.md",
+      "iqrp/docs/RegimeFramework.md",
+      "iqrp/docs/SimulationEngine.md",
+      "iqrp/docs/StateSpaceFramework.md",
+      "iqrp/docs/VariationalInference.md"
+    ],
+    "executable_smoke": null,
+    "integrated_into_alpha_research": false,
+    "integrated_into_backtest_runner": false,
+    "notes": "Full HMM package with tests; default ensure_regime_models_loaded() only imports mock_regime unless modules passed | PARTIAL: code+tests exist, but default regime loader is mock-only and alpha_research is not wired.",
+    "evidence": {
+      "n_sources": 1,
+      "n_tests": 5,
+      "n_docs": 11
+    }
+  },
+  "Markov_switching": {
+    "status": "PARTIALLY_IMPLEMENTED",
+    "source": [
+      "iqrp/app/regimes/markov"
+    ],
+    "tests": [
+      "iqrp/tests/integration/test_hmm_pipeline.py",
+      "iqrp/tests/integration/test_markov_pipeline.py",
+      "iqrp/tests/unit/hmm/test_hmm_core.py",
+      "iqrp/tests/unit/hmm/test_hmm_coverage.py",
+      "iqrp/tests/unit/hmm/test_hmm_gaps.py",
+      "iqrp/tests/unit/hmm/test_hmm_synthetic.py",
+      "iqrp/tests/unit/markov/test_markov_core.py",
+      "iqrp/tests/unit/markov/test_markov_coverage.py",
+      "iqrp/tests/unit/markov/test_markov_gaps.py",
+      "iqrp/tests/unit/markov/test_markov_synthetic.py",
+      "iqrp/tests/unit/math/test_math_core.py",
+      "iqrp/tests/unit/math/test_math_gaps.py"
+    ],
+    "docs": [
+      "iqrp/docs/BayesianRegimeSwitching.md",
+      "iqrp/docs/FeatureEngineering.md",
+      "iqrp/docs/Forecasting.md",
+      "iqrp/docs/HiddenMarkovModel.md",
+      "iqrp/docs/MarkovEngine.md",
+      "iqrp/docs/MonteCarlo.md",
+      "iqrp/docs/PersistenceAnalysis.md",
+      "iqrp/docs/RegimeFramework.md",
+      "iqrp/docs/SimulationEngine.md",
+      "iqrp/docs/StateSpaceFramework.md"
+    ],
+    "executable_smoke": null,
+    "integrated_into_alpha_research": false,
+    "integrated_into_backtest_runner": false,
+    "notes": "Markov chain regime model registered when module imported | PARTIAL: code+tests exist, but default regime loader is mock-only and alpha_research is not wired.",
+    "evidence": {
+      "n_sources": 1,
+      "n_tests": 12,
+      "n_docs": 12
+    }
+  },
+  "GMM_regimes": {
+    "status": "PARTIALLY_IMPLEMENTED",
+    "source": [
+      "iqrp/app/regimes/gmm"
+    ],
+    "tests": [
+      "iqrp/tests/integration/test_gmm_pipeline.py",
+      "iqrp/tests/unit/gmm/test_gmm_core.py",
+      "iqrp/tests/unit/gmm/test_gmm_coverage.py",
+      "iqrp/tests/unit/gmm/test_gmm_final.py",
+      "iqrp/tests/unit/gmm/test_gmm_gaps.py",
+      "iqrp/tests/unit/gmm/test_gmm_gaps2.py",
+      "iqrp/tests/unit/gmm/test_gmm_synthetic.py"
+    ],
+    "docs": [
+      "iqrp/docs/BayesianGaussianMixture.md",
+      "iqrp/docs/ExpectationMaximization.md",
+      "iqrp/docs/GaussianMixture.md",
+      "iqrp/docs/RegimeFramework.md"
+    ],
+    "executable_smoke": null,
+    "integrated_into_alpha_research": false,
+    "integrated_into_backtest_runner": false,
+    "notes": "GMM regime model present | PARTIAL: code+tests exist, but default regime loader is mock-only and alpha_research is not wired.",
+    "evidence": {
+      "n_sources": 1,
+      "n_tests": 7,
+      "n_docs": 4
+    }
+  },
+  "Bayesian_regime": {
+    "status": "PARTIALLY_IMPLEMENTED",
+    "source": [
+      "iqrp/app/regimes/bayesian"
+    ],
+    "tests": [
+      "iqrp/tests/integration/test_bayesian_pipeline.py",
+      "iqrp/tests/unit/bayesian/test_bayesian_core.py",
+      "iqrp/tests/unit/bayesian/test_bayesian_coverage.py",
+      "iqrp/tests/unit/bayesian/test_bayesian_final_gaps.py",
+      "iqrp/tests/unit/bayesian/test_bayesian_gaps.py",
+      "iqrp/tests/unit/bayesian/test_bayesian_gaps2.py",
+      "iqrp/tests/unit/bayesian/test_bayesian_synthetic.py",
+      "iqrp/tests/unit/forecast_intelligence/test_intelligence_core.py",
+      "iqrp/tests/unit/forecast_intelligence/test_intelligence_gaps.py",
+      "iqrp/tests/unit/forecast_intelligence/test_intelligence_gaps2.py",
+      "iqrp/tests/unit/gmm/test_gmm_core.py",
+      "iqrp/tests/unit/gmm/test_gmm_final.py",
+      "iqrp/tests/unit/gmm/test_gmm_gaps2.py",
+      "iqrp/tests/unit/markov/test_markov_core.py",
+      "iqrp/tests/unit/markov/test_markov_coverage.py",
+      "iqrp/tests/unit/markov/test_markov_gaps.py",
+      "iqrp/tests/unit/math/test_math_core.py",
+      "iqrp/tests/unit/math/test_math_coverage.py",
+      "iqrp/tests/unit/neural_forecasting/test_neural_gaps.py",
+      "iqrp/tests/unit/timeseries/test_timeseries_core.py"
+    ],
+    "docs": [
+      "iqrp/docs/AutoML.md",
+      "iqrp/docs/BayesianGaussianMixture.md",
+      "iqrp/docs/BayesianInference.md",
+      "iqrp/docs/BayesianRegimeSwitching.md",
+      "iqrp/docs/ChangePointDetection.md",
+      "iqrp/docs/DynamicEnsembling.md",
+      "iqrp/docs/FeatureEngineering.md",
+      "iqrp/docs/HyperparameterOptimization.md",
+      "iqrp/docs/MarkovEngine.md",
+      "iqrp/docs/Priors.md"
+    ],
+    "executable_smoke": null,
+    "integrated_into_alpha_research": false,
+    "integrated_into_backtest_runner": false,
+    "notes": "Bayesian regime model present | PARTIAL: code+tests exist, but default regime loader is mock-only and alpha_research is not wired.",
+    "evidence": {
+      "n_sources": 1,
+      "n_tests": 25,
+      "n_docs": 12
+    }
+  },
+  "Kalman_regime": {
+    "status": "PARTIALLY_IMPLEMENTED",
+    "source": [
+      "iqrp/app/regimes/kalman"
+    ],
+    "tests": [
+      "iqrp/tests/integration/test_kalman_pipeline.py",
+      "iqrp/tests/unit/kalman/test_kalman_core.py",
+      "iqrp/tests/unit/kalman/test_kalman_coverage.py",
+      "iqrp/tests/unit/kalman/test_kalman_final.py",
+      "iqrp/tests/unit/kalman/test_kalman_gaps.py",
+      "iqrp/tests/unit/kalman/test_kalman_gaps2.py",
+      "iqrp/tests/unit/kalman/test_kalman_synthetic.py"
+    ],
+    "docs": [
+      "iqrp/docs/AdaptiveFiltering.md",
+      "iqrp/docs/ExtendedKalmanFilter.md",
+      "iqrp/docs/KalmanFilter.md",
+      "iqrp/docs/KalmanSmoother.md",
+      "iqrp/docs/RaoBlackwellizedPF.md",
+      "iqrp/docs/RegimeFramework.md",
+      "iqrp/docs/StateSpaceFramework.md",
+      "iqrp/docs/UnscentedKalmanFilter.md"
+    ],
+    "executable_smoke": null,
+    "integrated_into_alpha_research": false,
+    "integrated_into_backtest_runner": false,
+    "notes": "Kalman regime model present | PARTIAL: code+tests exist, but default regime loader is mock-only and alpha_research is not wired.",
+    "evidence": {
+      "n_sources": 1,
+      "n_tests": 7,
+      "n_docs": 8
+    }
+  },
+  "Particle_regime": {
+    "status": "PARTIALLY_IMPLEMENTED",
+    "source": [
+      "iqrp/app/regimes/particle"
+    ],
+    "tests": [
+      "iqrp/tests/integration/test_particle_pipeline.py",
+      "iqrp/tests/unit/particle/test_particle_core.py",
+      "iqrp/tests/unit/particle/test_particle_coverage.py",
+      "iqrp/tests/unit/particle/test_particle_final.py",
+      "iqrp/tests/unit/particle/test_particle_gaps.py",
+      "iqrp/tests/unit/particle/test_particle_gaps2.py",
+      "iqrp/tests/unit/particle/test_particle_synthetic.py"
+    ],
+    "docs": [
+      "iqrp/docs/AdaptiveResampling.md",
+      "iqrp/docs/ParticleFilter.md",
+      "iqrp/docs/ParticleRejuvenation.md",
+      "iqrp/docs/RaoBlackwellizedPF.md",
+      "iqrp/docs/RegimeFramework.md",
+      "iqrp/docs/SequentialMonteCarlo.md",
+      "iqrp/docs/StateSpaceFramework.md"
+    ],
+    "executable_smoke": null,
+    "integrated_into_alpha_research": false,
+    "integrated_into_backtest_runner": false,
+    "notes": "Particle regime model present | PARTIAL: code+tests exist, but default regime loader is mock-only and alpha_research is not wired.",
+    "evidence": {
+      "n_sources": 1,
+      "n_tests": 7,
+      "n_docs": 7
+    }
+  },
+  "Ensemble_regime": {
+    "status": "IMPLEMENTED",
+    "source": [
+      "iqrp/app/regimes/ensemble"
+    ],
+    "tests": [
+      "iqrp/tests/integration/test_bayesian_pipeline.py",
+      "iqrp/tests/integration/test_ensemble_pipeline.py",
+      "iqrp/tests/integration/test_feature_research.py",
+      "iqrp/tests/integration/test_forecast_intelligence_pipeline.py",
+      "iqrp/tests/integration/test_forecasting_pipeline.py",
+      "iqrp/tests/integration/test_gmm_pipeline.py",
+      "iqrp/tests/integration/test_hmm_pipeline.py",
+      "iqrp/tests/integration/test_kalman_pipeline.py",
+      "iqrp/tests/integration/test_labels_pipeline.py",
+      "iqrp/tests/integration/test_markov_pipeline.py",
+      "iqrp/tests/integration/test_neural_forecasting_pipeline.py",
+      "iqrp/tests/integration/test_particle_pipeline.py",
+      "iqrp/tests/integration/test_regimes_pipeline.py",
+      "iqrp/tests/integration/test_simulation_pipeline.py",
+      "iqrp/tests/integration/test_transformer_forecasting_pipeline.py",
+      "iqrp/tests/integration/test_tree_forecasting_pipeline.py",
+      "iqrp/tests/integration/test_volatility_forecasting_pipeline.py",
+      "iqrp/tests/unit/alpha/test_coverage_final.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps2.py"
+    ],
+    "docs": [
+      "iqrp/docs/AdaptiveFiltering.md",
+      "iqrp/docs/AdaptiveResampling.md",
+      "iqrp/docs/AlphaResearch.md",
+      "iqrp/docs/Architecture.md",
+      "iqrp/docs/BaumWelch.md",
+      "iqrp/docs/BayesianInference.md",
+      "iqrp/docs/BayesianRegimeSwitching.md",
+      "iqrp/docs/Calibration.md",
+      "iqrp/docs/DataArchitecture.md",
+      "iqrp/docs/DynamicEnsembling.md"
+    ],
+    "executable_smoke": null,
+    "integrated_into_alpha_research": false,
+    "integrated_into_backtest_runner": false,
+    "notes": "Ensemble regime model present",
+    "evidence": {
+      "n_sources": 1,
+      "n_tests": 105,
+      "n_docs": 12
+    }
+  },
+  "Change_point": {
+    "status": "IMPLEMENTED",
+    "source": [
+      "iqrp/app/timeseries/change_points"
+    ],
+    "tests": [
+      "iqrp/tests/integration/test_timeseries_pipeline.py",
+      "iqrp/tests/unit/timeseries/test_timeseries_core.py",
+      "iqrp/tests/unit/timeseries/test_timeseries_gaps.py",
+      "iqrp/tests/unit/timeseries/test_timeseries_gaps2.py",
+      "iqrp/tests/unit/timeseries/test_timeseries_gaps3.py",
+      "iqrp/tests/unit/timeseries/test_timeseries_gaps4.py"
+    ],
+    "docs": [
+      "iqrp/docs/ChangePointDetection.md",
+      "iqrp/docs/LeakagePrevention.md",
+      "iqrp/docs/TimeSeriesAnalytics.md"
+    ],
+    "executable_smoke": null,
+    "integrated_into_alpha_research": false,
+    "integrated_into_backtest_runner": false,
+    "notes": "Time-series change-point utilities",
+    "evidence": {
+      "n_sources": 1,
+      "n_tests": 6,
+      "n_docs": 3
+    }
+  },
+  "Simple_backtest_regimes": {
+    "status": "IMPLEMENTED",
+    "source": [
+      "iqrp/app/backtesting/scenarios/regime.py"
+    ],
+    "tests": [
+      "iqrp/tests/integration/backtesting/test_acceptance_user_shaped_data.py",
+      "iqrp/tests/integration/backtesting/test_alpha_research.py",
+      "iqrp/tests/integration/backtesting/test_e2e_operational.py",
+      "iqrp/tests/integration/backtesting/test_horizon_research.py",
+      "iqrp/tests/integration/data/test_intraday_acquisition.py",
+      "iqrp/tests/integration/test_bayesian_pipeline.py",
+      "iqrp/tests/integration/test_ensemble_pipeline.py",
+      "iqrp/tests/integration/test_feature_research.py",
+      "iqrp/tests/integration/test_forecast_intelligence_pipeline.py",
+      "iqrp/tests/integration/test_forecasting_pipeline.py",
+      "iqrp/tests/integration/test_gmm_pipeline.py",
+      "iqrp/tests/integration/test_hmm_pipeline.py",
+      "iqrp/tests/integration/test_kalman_pipeline.py",
+      "iqrp/tests/integration/test_labels_pipeline.py",
+      "iqrp/tests/integration/test_markov_pipeline.py",
+      "iqrp/tests/integration/test_neural_forecasting_pipeline.py",
+      "iqrp/tests/integration/test_particle_pipeline.py",
+      "iqrp/tests/integration/test_regimes_pipeline.py",
+      "iqrp/tests/integration/test_simulation_pipeline.py",
+      "iqrp/tests/integration/test_transformer_forecasting_pipeline.py"
+    ],
+    "docs": [
+      "iqrp/docs/AdaptiveFiltering.md",
+      "iqrp/docs/AdaptiveResampling.md",
+      "iqrp/docs/AlphaResearch.md",
+      "iqrp/docs/AlphaResearchEngine.md",
+      "iqrp/docs/Architecture.md",
+      "iqrp/docs/BacktestConfiguration.md",
+      "iqrp/docs/BacktestExecution.md",
+      "iqrp/docs/BacktestReports.md",
+      "iqrp/docs/BacktestRunner.md",
+      "iqrp/docs/BacktestValidation.md"
+    ],
+    "executable_smoke": null,
+    "integrated_into_alpha_research": false,
+    "integrated_into_backtest_runner": false,
+    "notes": "Heuristic high/low vol / trending labels used by alpha_research analytics \u2014 descriptive diagnostic, not HMM",
+    "evidence": {
+      "n_sources": 1,
+      "n_tests": 136,
+      "n_docs": 12
+    }
+  }
+}

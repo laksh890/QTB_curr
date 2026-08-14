@@ -1,0 +1,4022 @@
+{
+  "disclaimer": "UNIFIED TRADING PIPELINE \u2014 integration validation only. PIPELINE WORKS \u2260 STRATEGY WORKS \u2260 PROFITABLE \u2260 ROBUST \u2260 PRODUCTION READY.",
+  "records": [
+    {
+      "candidate_id": "cA",
+      "signal_id": "syn_a",
+      "model_id": "synthetic",
+      "model_version": "1.0.0",
+      "dataset_id": "syn@1",
+      "dataset_checksum": "abc",
+      "risk_decision_id": "risk_f98c17d071894034",
+      "portfolio_decision_id": "port_80435ea500fd4b37",
+      "order_id": "ord_f416d3c2f59c4f65",
+      "fill_ids": [
+        "fill|ord_4a976bcae5ad4bc0|SIM-947565fa131c|499.99999999"
+      ],
+      "trade_ids": [],
+      "extra": {
+        "expected_horizon": 5,
+        "signal_timeframe": "",
+        "execution_timeframe": "",
+        "all_order_ids": [
+          "ord_f416d3c2f59c4f65"
+        ],
+        "execution_report": {
+          "execution_id": "ex_3e031bba98334468",
+          "status": "FILLED",
+          "state": "COMPLETED",
+          "algo": "market",
+          "parents": [
+            {
+              "parent_id": "par_be4a713cbd8a4977",
+              "instrument": "AAA",
+              "side": "BUY",
+              "quantity": 499.99999999,
+              "filled_qty": 499.99999999,
+              "residual_qty": 0.0,
+              "strategy_id": "cA",
+              "portfolio_id": null,
+              "urgency": "NORMAL",
+              "algo": "market",
+              "state": "COMPLETED",
+              "child_ids": [
+                "ord_4a976bcae5ad4bc0"
+              ],
+              "created_at": "2026-08-14T15:45:49.808217+00:00",
+              "updated_at": "2026-08-14T15:45:49.808656+00:00",
+              "metadata": {}
+            }
+          ],
+          "children": [
+            {
+              "order_id": "ord_4a976bcae5ad4bc0",
+              "parent_id": "par_be4a713cbd8a4977",
+              "strategy_id": "cA",
+              "portfolio_id": null,
+              "account_id": null,
+              "instrument": "AAA",
+              "side": "BUY",
+              "quantity": 499.99999999,
+              "filled_qty": 499.99999999,
+              "residual_qty": 0.0,
+              "price": null,
+              "stop_price": null,
+              "order_type": "MARKET",
+              "time_in_force": "DAY",
+              "venue": "SIM",
+              "algo": "market",
+              "urgency": "NORMAL",
+              "state": "FILLED",
+              "client_order_id": "ord_4a976bcae5ad4bc0",
+              "idempotency_key": "cA|AAA|BUY|499.99999999|MARKET|None|ord_4a976bcae5ad4bc0",
+              "venue_order_id": "SIM-947565fa131c",
+              "avg_fill_price": 100.005,
+              "created_at": "2026-08-14T15:45:49.808389+00:00",
+              "updated_at": "2026-08-14T15:45:49.808643+00:00",
+              "submitted_at": "2026-08-14T15:45:49.808570+00:00",
+              "acknowledged_at": "2026-08-14T15:45:49.808604+00:00",
+              "completed_at": "2026-08-14T15:45:49.808640+00:00",
+              "reject_reason": null,
+              "tags": {
+                "slice": 0,
+                "not_before_offset": 0.0
+              },
+              "audit": [
+                {
+                  "event": "state_transition",
+                  "from": "CREATED",
+                  "to": "VALIDATING",
+                  "reason": "begin_validation",
+                  "actor": "system"
+                },
+                {
+                  "event": "state_transition",
+                  "from": "VALIDATING",
+                  "to": "APPROVED",
+                  "reason": "approved",
+                  "actor": "system"
+                },
+                {
+                  "event": "state_transition",
+                  "from": "APPROVED",
+                  "to": "SUBMITTED",
+                  "reason": "submitted",
+                  "actor": "system"
+                },
+                {
+                  "event": "state_transition",
+                  "from": "SUBMITTED",
+                  "to": "ACKNOWLEDGED",
+                  "reason": "acknowledged",
+                  "actor": "system"
+                },
+                {
+                  "event": "fill",
+                  "event_id": "fill|ord_4a976bcae5ad4bc0|SIM-947565fa131c|499.99999999",
+                  "fill_qty": 499.99999999,
+                  "fill_price": 100.005,
+                  "filled_qty": 499.99999999,
+                  "residual_qty": 0.0,
+                  "avg_fill_price": 100.005
+                },
+                {
+                  "event": "state_transition",
+                  "from": "ACKNOWLEDGED",
+                  "to": "FILLED",
+                  "reason": "filled",
+                  "actor": "system"
+                }
+              ],
+              "metadata": {
+                "role": "child"
+              }
+            }
+          ],
+          "fills": [
+            {
+              "order_id": "ord_4a976bcae5ad4bc0",
+              "instrument": "AAA",
+              "quantity": 499.99999999,
+              "qty": 499.99999999,
+              "price": 100.005,
+              "fill_price": 100.005,
+              "venue": "SIM",
+              "event_id": "fill|ord_4a976bcae5ad4bc0|SIM-947565fa131c|499.99999999"
+            }
+          ],
+          "routing": [
+            {
+              "accepted": true,
+              "order_id": "ord_4a976bcae5ad4bc0",
+              "instrument": "AAA",
+              "side": "BUY",
+              "quantity": 499.99999999,
+              "mode": "single",
+              "primary_venue_id": "SIM",
+              "allocations": [
+                {
+                  "venue_id": "SIM",
+                  "quantity": 499.99999999,
+                  "score": 0.961416227359591,
+                  "fillable_qty": 499.99999999,
+                  "weight": 1.0
+                }
+              ],
+              "scores": [
+                {
+                  "venue_id": "SIM",
+                  "score": 0.961416227359591,
+                  "components": {
+                    "price": 1.0,
+                    "fees": 0.8333333333333334,
+                    "spread": 0.9090909090909842,
+                    "liquidity": 1.0,
+                    "impact": 0.9781283844174248,
+                    "fill_prob": 0.95,
+                    "latency": 0.9090909090909091,
+                    "reliability": 1.0
+                  },
+                  "raw": {
+                    "expected_price": 100.00947235956176,
+                    "fee_bps": 1.0,
+                    "spread_bps": 0.9999999999990905,
+                    "impact_bps": 0.44721359549548584,
+                    "liquidity_score": 1.0,
+                    "fillable_qty": 499.99999999,
+                    "fill_probability": 0.95,
+                    "latency_ms": 5.0,
+                    "reliability": 1.0,
+                    "preference": 1.0
+                  }
+                }
+              ],
+              "costs": {
+                "SIM": {
+                  "venue_id": "SIM",
+                  "expected_price": 100.00947235956176,
+                  "mid": 100.0,
+                  "spread_bps": 0.9999999999990905,
+                  "fee_bps": 1.0,
+                  "fee_notional": 5.000473617878078,
+                  "impact_bps": 0.44721359549548584,
+                  "impact_notional": 2.2362797858315755,
+                  "spread_notional": 2.500236808936765,
+                  "total_cost_bps": 1.947213595495031,
+                  "total_cost_notional": 9.736990212646418,
+                  "notional": 50004.73617878078
+                }
+              },
+              "liquidity": {
+                "SIM": {
+                  "venue_id": "SIM",
+                  "instrument": "AAA",
+                  "available_qty": 1000000000000.0,
+                  "adv": 1000000.0,
+                  "liquidity_score": 1.0,
+                  "participation": 0.00049999999999,
+                  "fillable_qty": 499.99999999,
+                  "depth_ok": true,
+                  "reasons": []
+                }
+              },
+              "fallback": {
+                "primary_venue_id": "SIM",
+                "steps": [],
+                "cursor": 0
+              },
+              "rejections": [],
+              "residual_qty": 0.0,
+              "timestamp": "2026-08-14T15:45:49.808479+00:00",
+              "metadata": {
+                "urgency": "NORMAL",
+                "order_type": "MARKET",
+                "impact_coeff": 0.1
+              }
+            }
+          ],
+          "pre_trade": {
+            "by_parent": [
+              {
+                "parent_id": "par_be4a713cbd8a4977",
+                "instrument": "AAA",
+                "costs": {
+                  "name": "pre_trade_cost_estimate",
+                  "side": "buy",
+                  "quantity": 499.99999999,
+                  "mid": 100.0,
+                  "notional": 49999.999999,
+                  "total_cost": 16.27910196581206,
+                  "total_cost_bps": 3.2558203932275283,
+                  "expected_slippage": 0.019558203932275288,
+                  "expected_slippage_bps": 1.9558203932275287,
+                  "expected_market_impact": 0.004472135954954859,
+                  "expected_market_impact_bps": 0.4472135954954859,
+                  "expected_total_cost": 16.27910196581206,
+                  "components": {
+                    "commissions": 4.9999999999,
+                    "exchange_fees": 1.4999999999699998,
+                    "slippage": 9.779101965942061,
+                    "market_impact": 0.0,
+                    "financing": 0.0,
+                    "borrow": 0.0,
+                    "fx": 0.0,
+                    "spread_informational": 2.49999999995,
+                    "impact_informational": 2.236067977432708
+                  },
+                  "details": {
+                    "commissions": {
+                      "name": "commission_cost",
+                      "total": 4.9999999999,
+                      "notional": 49999.999999,
+                      "quantity": 499.99999999,
+                      "price": 100.0,
+                      "commission_bps": 1.0,
+                      "commission_per_share": 0.0,
+                      "min_commission": 0.0
+                    },
+                    "exchange_fees": {
+                      "name": "exchange_fees",
+                      "total": 1.4999999999699998,
+                      "notional": 49999.999999,
+                      "fee_bps": 0.3,
+                      "fee_per_share": 0.0,
+                      "liquidity_role": "taker"
+                    },
+                    "spread": {
+                      "name": "spread_cost",
+                      "total": 2.49999999995,
+                      "spread_px": 0.005,
+                      "spread_bps": 0.5,
+                      "notional": 49999.999999,
+                      "half_spread": true
+                    },
+                    "slippage": {
+                      "name": "slippage_cost",
+                      "total": 9.779101965942061,
+                      "slippage_px": 0.019558203932275288,
+                      "slippage_bps": 1.9558203932275287,
+                      "notional": 49999.999999,
+                      "components": {
+                        "spread": 0.005,
+                        "volatility": 0.0,
+                        "liquidity": 0.00749999999985,
+                        "temporary_impact": 0.004472135954954859,
+                        "permanent_impact": 0.0022360679774774293,
+                        "delay": 0.0
+                      },
+                      "detail": {
+                        "name": "estimate_slippage",
+                        "side": "buy",
+                        "quantity": 499.99999999,
+                        "mid": 100.0,
+                        "expected_slippage": 0.019558203932275288,
+                        "expected_slippage_bps": 1.9558203932275287,
+                        "expected_slippage_notional": 9.779101965942061,
+                        "notional": 49999.999999,
+                        "components": {
+                          "spread": 0.005,
+                          "volatility": 0.0,
+                          "liquidity": 0.00749999999985,
+                          "temporary_impact": 0.004472135954954859,
+                          "permanent_impact": 0.0022360679774774293,
+                          "delay": 0.0
+                        },
+                        "breakdown": {
+                          "spread": 0.005,
+                          "temporary_impact": 0.004472135954954859,
+                          "permanent_impact": 0.0022360679774774293,
+                          "volatility": 0.0,
+                          "liquidity": 0.00749999999985,
+                          "size": 0.0022360679774774293,
+                          "participation": 0.00034999999999299995,
+                          "delay": 0.0,
+                          "total": 0.019558203932275288,
+                          "total_bps": 1.9558203932275287,
+                          "metadata": {
+                            "side": "buy",
+                            "quantity": 499.99999999,
+                            "participation_rate": 0.00049999999999,
+                            "mid": 100.0
+                          }
+                        },
+                        "spread_detail": {
+                          "name": "spread_slippage",
+                          "slippage": 0.005,
+                          "slippage_bps": 0.5,
+                          "half_spread": true,
+                          "spread": 0.01,
+                          "mid": 100.0
+                        },
+                        "impact_detail": {
+                          "name": "market_impact",
+                          "temporary_impact": 0.004472135954954859,
+                          "permanent_impact": 0.0022360679774774293,
+                          "slippage": 0.004472135954954859,
+                          "slippage_bps": 0.4472135954954859,
+                          "participation": 0.00049999999999,
+                          "impact_coeff": 0.1,
+                          "source": "analytic"
+                        },
+                        "volatility_detail": {
+                          "name": "volatility_slippage",
+                          "slippage": 0.0,
+                          "slippage_bps": 0.0,
+                          "volatility": 0.02,
+                          "time_fraction": 0.0,
+                          "coeff": 0.25
+                        },
+                        "liquidity_detail": {
+                          "name": "liquidity_slippage",
+                          "slippage": 0.00749999999985,
+                          "slippage_bps": 0.749999999985,
+                          "participation": 0.00049999999999,
+                          "liquidity": 1.0,
+                          "coeff": 0.15
+                        },
+                        "participation": 0.00049999999999
+                      }
+                    },
+                    "market_impact": {
+                      "name": "market_impact_cost",
+                      "total": 2.236067977432708,
+                      "impact_px": 0.004472135954954859,
+                      "impact_bps": 0.4472135954954859,
+                      "temporary_impact": 0.004472135954954859,
+                      "permanent_impact": 0.0022360679774774293,
+                      "participation": 0.00049999999999,
+                      "detail": {
+                        "name": "market_impact",
+                        "temporary_impact": 0.004472135954954859,
+                        "permanent_impact": 0.0022360679774774293,
+                        "slippage": 0.004472135954954859,
+                        "slippage_bps": 0.4472135954954859,
+                        "participation": 0.00049999999999,
+                        "impact_coeff": 0.1,
+                        "source": "analytic"
+                      }
+                    },
+                    "financing": {
+                      "name": "financing_cost",
+                      "total": 0.0,
+                      "notional": 49999.999999,
+                      "rate": 0.0,
+                      "days": 0.0,
+                      "day_count": 360.0
+                    },
+                    "borrow": {
+                      "name": "borrow_cost",
+                      "total": 0.0,
+                      "notional": 49999.999999,
+                      "borrow_rate": 0.0,
+                      "days": 0.0,
+                      "is_short": false
+                    }
+                  }
+                },
+                "slippage": {
+                  "name": "estimate_slippage",
+                  "side": "buy",
+                  "quantity": 499.99999999,
+                  "mid": 100.0,
+                  "expected_slippage": 0.019558203932275288,
+                  "expected_slippage_bps": 1.9558203932275287,
+                  "expected_slippage_notional": 9.779101965942061,
+                  "notional": 49999.999999,
+                  "components": {
+                    "spread": 0.005,
+                    "volatility": 0.0,
+                    "liquidity": 0.00749999999985,
+                    "temporary_impact": 0.004472135954954859,
+                    "permanent_impact": 0.0022360679774774293,
+                    "delay": 0.0
+                  },
+                  "breakdown": {
+                    "spread": 0.005,
+                    "temporary_impact": 0.004472135954954859,
+                    "permanent_impact": 0.0022360679774774293,
+                    "volatility": 0.0,
+                    "liquidity": 0.00749999999985,
+                    "size": 0.0022360679774774293,
+                    "participation": 0.00034999999999299995,
+                    "delay": 0.0,
+                    "total": 0.019558203932275288,
+                    "total_bps": 1.9558203932275287,
+                    "metadata": {
+                      "side": "buy",
+                      "quantity": 499.99999999,
+                      "participation_rate": 0.00049999999999,
+                      "mid": 100.0
+                    }
+                  },
+                  "spread_detail": {
+                    "name": "spread_slippage",
+                    "slippage": 0.005,
+                    "slippage_bps": 0.5,
+                    "half_spread": true,
+                    "spread": 0.01,
+                    "mid": 100.0
+                  },
+                  "impact_detail": {
+                    "name": "market_impact",
+                    "temporary_impact": 0.004472135954954859,
+                    "permanent_impact": 0.0022360679774774293,
+                    "slippage": 0.004472135954954859,
+                    "slippage_bps": 0.4472135954954859,
+                    "participation": 0.00049999999999,
+                    "impact_coeff": 0.1,
+                    "source": "analytic"
+                  },
+                  "volatility_detail": {
+                    "name": "volatility_slippage",
+                    "slippage": 0.0,
+                    "slippage_bps": 0.0,
+                    "volatility": 0.02,
+                    "time_fraction": 0.0,
+                    "coeff": 0.25
+                  },
+                  "liquidity_detail": {
+                    "name": "liquidity_slippage",
+                    "slippage": 0.00749999999985,
+                    "slippage_bps": 0.749999999985,
+                    "participation": 0.00049999999999,
+                    "liquidity": 1.0,
+                    "coeff": 0.15
+                  },
+                  "participation": 0.00049999999999
+                }
+              }
+            ]
+          },
+          "post_trade": {
+            "by_parent": [
+              {
+                "parent_id": "par_be4a713cbd8a4977",
+                "instrument": "AAA",
+                "name": "post_trade_cost_analysis",
+                "side": "buy",
+                "vwap": 100.005,
+                "filled_quantity": 499.99999999,
+                "parent_quantity": 499.99999999,
+                "residual_quantity": 0.0,
+                "arrival_price": 100.0,
+                "decision_price": 100.0,
+                "mid": 100.0,
+                "realized_cost": 9.00032499981772,
+                "realized_cost_bps": 1.7999750012494828,
+                "realized_slippage": 2.4999999999477263,
+                "realized_slippage_bps": 0.49999999999954525,
+                "realized_market_impact": 2.4999999999477263,
+                "implementation_shortfall": 9.00032499981772,
+                "implementation_shortfall_bps": 1.8000649999995453,
+                "cost_attribution": {
+                  "delay_cost": 0.0,
+                  "trading_cost": 2.4999999999477263,
+                  "spread_cost": 0.0,
+                  "commissions": 5.000249999899995,
+                  "exchange_fees": 1.5000749999699983,
+                  "financing": 0.0,
+                  "borrow": 0.0,
+                  "fx": 0.0,
+                  "opportunity_cost": 0.0
+                },
+                "benchmarks": {
+                  "arrival_slippage_bps": 0.49999999999954525,
+                  "decision_slippage_bps": 0.49999999999954525,
+                  "vwap_slippage_bps": null,
+                  "twap_slippage_bps": null
+                },
+                "components": {
+                  "commissions": 5.000249999899995,
+                  "exchange_fees": 1.5000749999699983,
+                  "spread": 0.0,
+                  "slippage": 2.4999999999477263,
+                  "market_impact": 2.4999999999477263,
+                  "financing": 0.0,
+                  "borrow": 0.0,
+                  "fx": 0.0,
+                  "opportunity": 0.0
+                },
+                "fill_rate": 1.0,
+                "details": {
+                  "commissions": {
+                    "name": "commission_cost",
+                    "total": 5.000249999899995,
+                    "notional": 50002.49999899995,
+                    "quantity": 499.99999999,
+                    "price": 100.005,
+                    "commission_bps": 1.0,
+                    "commission_per_share": 0.0,
+                    "min_commission": 0.0
+                  },
+                  "exchange_fees": {
+                    "name": "exchange_fees",
+                    "total": 1.5000749999699983,
+                    "notional": 50002.49999899995,
+                    "fee_bps": 0.3,
+                    "fee_per_share": 0.0,
+                    "liquidity_role": "taker"
+                  },
+                  "spread": {
+                    "name": "spread_cost",
+                    "total": 0.0,
+                    "spread_px": 0.0,
+                    "spread_bps": 0.0,
+                    "notional": 49999.999999,
+                    "half_spread": true
+                  },
+                  "financing": {
+                    "name": "financing_cost",
+                    "total": 0.0,
+                    "notional": 50002.49999899995,
+                    "rate": 0.0,
+                    "days": 0.0,
+                    "day_count": 360.0
+                  },
+                  "borrow": {
+                    "name": "borrow_cost",
+                    "total": 0.0,
+                    "notional": 50002.49999899995,
+                    "borrow_rate": 0.0,
+                    "days": 0.0,
+                    "is_short": false
+                  }
+                },
+                "adv": 1000000.0,
+                "volatility": 0.02
+              }
+            ]
+          },
+          "analytics": {
+            "by_parent": [
+              {
+                "parent_id": "par_be4a713cbd8a4977",
+                "instrument": "AAA",
+                "side": "BUY",
+                "ordered_qty": 499.99999999,
+                "filled_qty": 499.99999999,
+                "exec_vwap": 100.005,
+                "fill_rate": {
+                  "ordered_qty": 499.99999999,
+                  "filled_qty": 499.99999999,
+                  "residual_qty": 0.0,
+                  "fill_rate": 1.0
+                },
+                "implementation_shortfall": {
+                  "arrival_price": 100.0,
+                  "decision_price": 100.0,
+                  "exec_vwap": 100.005,
+                  "filled_qty": 499.99999999,
+                  "implementation_shortfall_bps": 0.49999999999954525,
+                  "decision_slippage_bps": 0.49999999999954525,
+                  "implementation_shortfall_cost": 2.4999999999477263,
+                  "notional_at_arrival": 49999.999999
+                },
+                "arrival_slippage": {
+                  "arrival_price": 100.0,
+                  "exec_vwap": 100.005,
+                  "filled_qty": 499.99999999,
+                  "arrival_slippage_bps": 0.49999999999954525
+                },
+                "latency": {
+                  "n": 1,
+                  "avg_decision_to_submit_ms": 0.16,
+                  "avg_submit_to_ack_ms": 0.039,
+                  "avg_ack_to_fill_ms": 0.016,
+                  "avg_end_to_end_ms": 0.215,
+                  "p50_end_to_end_ms": 0.215,
+                  "p95_end_to_end_ms": 0.215,
+                  "records": [
+                    {
+                      "record_id": "lat_a9723c70f1e7",
+                      "order_id": "ord_4a976bcae5ad4bc0",
+                      "decision_at": "2026-08-14T15:45:49.808403+00:00",
+                      "submit_at": "2026-08-14T15:45:49.808563+00:00",
+                      "ack_at": "2026-08-14T15:45:49.808602+00:00",
+                      "fill_at": "2026-08-14T15:45:49.808618+00:00",
+                      "decision_to_submit_ms": 0.16,
+                      "submit_to_ack_ms": 0.039,
+                      "ack_to_fill_ms": 0.016,
+                      "decision_to_fill_ms": 0.215,
+                      "end_to_end_ms": 0.215,
+                      "metadata": {}
+                    }
+                  ]
+                },
+                "pre_trade_estimate": {
+                  "name": "pre_trade_cost_estimate",
+                  "side": "buy",
+                  "quantity": 499.99999999,
+                  "mid": 100.0,
+                  "notional": 49999.999999,
+                  "total_cost": 16.27910196581206,
+                  "total_cost_bps": 3.2558203932275283,
+                  "expected_slippage": 0.019558203932275288,
+                  "expected_slippage_bps": 1.9558203932275287,
+                  "expected_market_impact": 0.004472135954954859,
+                  "expected_market_impact_bps": 0.4472135954954859,
+                  "expected_total_cost": 16.27910196581206,
+                  "components": {
+                    "commissions": 4.9999999999,
+                    "exchange_fees": 1.4999999999699998,
+                    "slippage": 9.779101965942061,
+                    "market_impact": 0.0,
+                    "financing": 0.0,
+                    "borrow": 0.0,
+                    "fx": 0.0,
+                    "spread_informational": 2.49999999995,
+                    "impact_informational": 2.236067977432708
+                  },
+                  "details": {
+                    "commissions": {
+                      "name": "commission_cost",
+                      "total": 4.9999999999,
+                      "notional": 49999.999999,
+                      "quantity": 499.99999999,
+                      "price": 100.0,
+                      "commission_bps": 1.0,
+                      "commission_per_share": 0.0,
+                      "min_commission": 0.0
+                    },
+                    "exchange_fees": {
+                      "name": "exchange_fees",
+                      "total": 1.4999999999699998,
+                      "notional": 49999.999999,
+                      "fee_bps": 0.3,
+                      "fee_per_share": 0.0,
+                      "liquidity_role": "taker"
+                    },
+                    "spread": {
+                      "name": "spread_cost",
+                      "total": 2.49999999995,
+                      "spread_px": 0.005,
+                      "spread_bps": 0.5,
+                      "notional": 49999.999999,
+                      "half_spread": true
+                    },
+                    "slippage": {
+                      "name": "slippage_cost",
+                      "total": 9.779101965942061,
+                      "slippage_px": 0.019558203932275288,
+                      "slippage_bps": 1.9558203932275287,
+                      "notional": 49999.999999,
+                      "components": {
+                        "spread": 0.005,
+                        "volatility": 0.0,
+                        "liquidity": 0.00749999999985,
+                        "temporary_impact": 0.004472135954954859,
+                        "permanent_impact": 0.0022360679774774293,
+                        "delay": 0.0
+                      },
+                      "detail": {
+                        "name": "estimate_slippage",
+                        "side": "buy",
+                        "quantity": 499.99999999,
+                        "mid": 100.0,
+                        "expected_slippage": 0.019558203932275288,
+                        "expected_slippage_bps": 1.9558203932275287,
+                        "expected_slippage_notional": 9.779101965942061,
+                        "notional": 49999.999999,
+                        "components": {
+                          "spread": 0.005,
+                          "volatility": 0.0,
+                          "liquidity": 0.00749999999985,
+                          "temporary_impact": 0.004472135954954859,
+                          "permanent_impact": 0.0022360679774774293,
+                          "delay": 0.0
+                        },
+                        "breakdown": {
+                          "spread": 0.005,
+                          "temporary_impact": 0.004472135954954859,
+                          "permanent_impact": 0.0022360679774774293,
+                          "volatility": 0.0,
+                          "liquidity": 0.00749999999985,
+                          "size": 0.0022360679774774293,
+                          "participation": 0.00034999999999299995,
+                          "delay": 0.0,
+                          "total": 0.019558203932275288,
+                          "total_bps": 1.9558203932275287,
+                          "metadata": {
+                            "side": "buy",
+                            "quantity": 499.99999999,
+                            "participation_rate": 0.00049999999999,
+                            "mid": 100.0
+                          }
+                        },
+                        "spread_detail": {
+                          "name": "spread_slippage",
+                          "slippage": 0.005,
+                          "slippage_bps": 0.5,
+                          "half_spread": true,
+                          "spread": 0.01,
+                          "mid": 100.0
+                        },
+                        "impact_detail": {
+                          "name": "market_impact",
+                          "temporary_impact": 0.004472135954954859,
+                          "permanent_impact": 0.0022360679774774293,
+                          "slippage": 0.004472135954954859,
+                          "slippage_bps": 0.4472135954954859,
+                          "participation": 0.00049999999999,
+                          "impact_coeff": 0.1,
+                          "source": "analytic"
+                        },
+                        "volatility_detail": {
+                          "name": "volatility_slippage",
+                          "slippage": 0.0,
+                          "slippage_bps": 0.0,
+                          "volatility": 0.02,
+                          "time_fraction": 0.0,
+                          "coeff": 0.25
+                        },
+                        "liquidity_detail": {
+                          "name": "liquidity_slippage",
+                          "slippage": 0.00749999999985,
+                          "slippage_bps": 0.749999999985,
+                          "participation": 0.00049999999999,
+                          "liquidity": 1.0,
+                          "coeff": 0.15
+                        },
+                        "participation": 0.00049999999999
+                      }
+                    },
+                    "market_impact": {
+                      "name": "market_impact_cost",
+                      "total": 2.236067977432708,
+                      "impact_px": 0.004472135954954859,
+                      "impact_bps": 0.4472135954954859,
+                      "temporary_impact": 0.004472135954954859,
+                      "permanent_impact": 0.0022360679774774293,
+                      "participation": 0.00049999999999,
+                      "detail": {
+                        "name": "market_impact",
+                        "temporary_impact": 0.004472135954954859,
+                        "permanent_impact": 0.0022360679774774293,
+                        "slippage": 0.004472135954954859,
+                        "slippage_bps": 0.4472135954954859,
+                        "participation": 0.00049999999999,
+                        "impact_coeff": 0.1,
+                        "source": "analytic"
+                      }
+                    },
+                    "financing": {
+                      "name": "financing_cost",
+                      "total": 0.0,
+                      "notional": 49999.999999,
+                      "rate": 0.0,
+                      "days": 0.0,
+                      "day_count": 360.0
+                    },
+                    "borrow": {
+                      "name": "borrow_cost",
+                      "total": 0.0,
+                      "notional": 49999.999999,
+                      "borrow_rate": 0.0,
+                      "days": 0.0,
+                      "is_short": false
+                    }
+                  }
+                },
+                "post_trade_costs": {
+                  "name": "post_trade_cost_analysis",
+                  "side": "buy",
+                  "vwap": 100.005,
+                  "filled_quantity": 499.99999999,
+                  "parent_quantity": 499.99999999,
+                  "residual_quantity": 0.0,
+                  "arrival_price": 100.0,
+                  "decision_price": 100.0,
+                  "mid": 100.0,
+                  "realized_cost": 9.00032499981772,
+                  "realized_cost_bps": 1.7999750012494828,
+                  "realized_slippage": 2.4999999999477263,
+                  "realized_slippage_bps": 0.49999999999954525,
+                  "realized_market_impact": 2.4999999999477263,
+                  "implementation_shortfall": 9.00032499981772,
+                  "implementation_shortfall_bps": 1.8000649999995453,
+                  "cost_attribution": {
+                    "delay_cost": 0.0,
+                    "trading_cost": 2.4999999999477263,
+                    "spread_cost": 0.0,
+                    "commissions": 5.000249999899995,
+                    "exchange_fees": 1.5000749999699983,
+                    "financing": 0.0,
+                    "borrow": 0.0,
+                    "fx": 0.0,
+                    "opportunity_cost": 0.0
+                  },
+                  "benchmarks": {
+                    "arrival_slippage_bps": 0.49999999999954525,
+                    "decision_slippage_bps": 0.49999999999954525,
+                    "vwap_slippage_bps": null,
+                    "twap_slippage_bps": null
+                  },
+                  "components": {
+                    "commissions": 5.000249999899995,
+                    "exchange_fees": 1.5000749999699983,
+                    "spread": 0.0,
+                    "slippage": 2.4999999999477263,
+                    "market_impact": 2.4999999999477263,
+                    "financing": 0.0,
+                    "borrow": 0.0,
+                    "fx": 0.0,
+                    "opportunity": 0.0
+                  },
+                  "fill_rate": 1.0,
+                  "details": {
+                    "commissions": {
+                      "name": "commission_cost",
+                      "total": 5.000249999899995,
+                      "notional": 50002.49999899995,
+                      "quantity": 499.99999999,
+                      "price": 100.005,
+                      "commission_bps": 1.0,
+                      "commission_per_share": 0.0,
+                      "min_commission": 0.0
+                    },
+                    "exchange_fees": {
+                      "name": "exchange_fees",
+                      "total": 1.5000749999699983,
+                      "notional": 50002.49999899995,
+                      "fee_bps": 0.3,
+                      "fee_per_share": 0.0,
+                      "liquidity_role": "taker"
+                    },
+                    "spread": {
+                      "name": "spread_cost",
+                      "total": 0.0,
+                      "spread_px": 0.0,
+                      "spread_bps": 0.0,
+                      "notional": 49999.999999,
+                      "half_spread": true
+                    },
+                    "financing": {
+                      "name": "financing_cost",
+                      "total": 0.0,
+                      "notional": 50002.49999899995,
+                      "rate": 0.0,
+                      "days": 0.0,
+                      "day_count": 360.0
+                    },
+                    "borrow": {
+                      "name": "borrow_cost",
+                      "total": 0.0,
+                      "notional": 50002.49999899995,
+                      "borrow_rate": 0.0,
+                      "days": 0.0,
+                      "is_short": false
+                    }
+                  },
+                  "adv": 1000000.0,
+                  "volatility": 0.02
+                },
+                "vwap_slippage": {
+                  "label": "vwap",
+                  "benchmark_price": 100.0,
+                  "exec_vwap": 100.005,
+                  "filled_qty": 499.99999999,
+                  "slippage_bps": 0.49999999999954525
+                },
+                "twap_slippage": {
+                  "label": "twap",
+                  "benchmark_price": 100.0,
+                  "exec_vwap": 100.005,
+                  "filled_qty": 499.99999999,
+                  "slippage_bps": 0.49999999999954525
+                }
+              }
+            ]
+          },
+          "latency": {
+            "n": 1,
+            "avg_decision_to_submit_ms": 0.16,
+            "avg_submit_to_ack_ms": 0.039,
+            "avg_ack_to_fill_ms": 0.016,
+            "avg_end_to_end_ms": 0.215,
+            "p50_end_to_end_ms": 0.215,
+            "p95_end_to_end_ms": 0.215,
+            "records": [
+              {
+                "record_id": "lat_a9723c70f1e7",
+                "order_id": "ord_4a976bcae5ad4bc0",
+                "decision_at": "2026-08-14T15:45:49.808403+00:00",
+                "submit_at": "2026-08-14T15:45:49.808563+00:00",
+                "ack_at": "2026-08-14T15:45:49.808602+00:00",
+                "fill_at": "2026-08-14T15:45:49.808618+00:00",
+                "decision_to_submit_ms": 0.16,
+                "submit_to_ack_ms": 0.039,
+                "ack_to_fill_ms": 0.016,
+                "decision_to_fill_ms": 0.215,
+                "end_to_end_ms": 0.215,
+                "metadata": {}
+              }
+            ]
+          },
+          "audit": [
+            {
+              "action": "planned",
+              "timestamp": "2026-08-14T15:45:49.808225+00:00",
+              "details": {
+                "n_parents": 1
+              }
+            },
+            {
+              "action": "pre_trade",
+              "timestamp": "2026-08-14T15:45:49.808306+00:00",
+              "details": {
+                "parent_id": "par_be4a713cbd8a4977",
+                "total_cost": 16.27910196581206
+              }
+            },
+            {
+              "action": "algo_plan",
+              "timestamp": "2026-08-14T15:45:49.808375+00:00",
+              "details": {
+                "parent_id": "par_be4a713cbd8a4977",
+                "n_slices": 1,
+                "qty": 499.99999999
+              }
+            },
+            {
+              "action": "submit",
+              "timestamp": "2026-08-14T15:45:49.808584+00:00",
+              "details": {
+                "order_id": "ord_4a976bcae5ad4bc0",
+                "venue": "SIM"
+              }
+            },
+            {
+              "action": "fill",
+              "timestamp": "2026-08-14T15:45:49.808652+00:00",
+              "details": {
+                "order_id": "ord_4a976bcae5ad4bc0",
+                "qty": 499.99999999,
+                "price": 100.005
+              }
+            }
+          ],
+          "errors": [],
+          "metadata": {
+            "urgency": "NORMAL",
+            "simulation_mode": true
+          }
+        }
+      }
+    },
+    {
+      "candidate_id": "cB",
+      "signal_id": "syn_b",
+      "model_id": "synthetic",
+      "model_version": "1.0.0",
+      "dataset_id": "syn@1",
+      "dataset_checksum": "abc",
+      "risk_decision_id": "risk_feb315269743420e",
+      "portfolio_decision_id": "port_e84fcf0eaac44492",
+      "order_id": "ord_84552abfefc54fcf",
+      "fill_ids": [
+        "fill|ord_388e2283ec544e10|SIM-a559802feeec|999.99749999"
+      ],
+      "trade_ids": [],
+      "extra": {
+        "expected_horizon": 5,
+        "signal_timeframe": "",
+        "execution_timeframe": "",
+        "all_order_ids": [
+          "ord_84552abfefc54fcf"
+        ],
+        "execution_report": {
+          "execution_id": "ex_03be52c848dc473e",
+          "status": "FILLED",
+          "state": "COMPLETED",
+          "algo": "market",
+          "parents": [
+            {
+              "parent_id": "par_760ef292876641bd",
+              "instrument": "BBB",
+              "side": "SELL",
+              "quantity": 999.99749999,
+              "filled_qty": 999.99749999,
+              "residual_qty": 0.0,
+              "strategy_id": "cB",
+              "portfolio_id": null,
+              "urgency": "NORMAL",
+              "algo": "market",
+              "state": "COMPLETED",
+              "child_ids": [
+                "ord_388e2283ec544e10"
+              ],
+              "created_at": "2026-08-14T15:45:49.809394+00:00",
+              "updated_at": "2026-08-14T15:45:49.809717+00:00",
+              "metadata": {}
+            }
+          ],
+          "children": [
+            {
+              "order_id": "ord_388e2283ec544e10",
+              "parent_id": "par_760ef292876641bd",
+              "strategy_id": "cB",
+              "portfolio_id": null,
+              "account_id": null,
+              "instrument": "BBB",
+              "side": "SELL",
+              "quantity": 999.99749999,
+              "filled_qty": 999.99749999,
+              "residual_qty": 0.0,
+              "price": null,
+              "stop_price": null,
+              "order_type": "MARKET",
+              "time_in_force": "DAY",
+              "venue": "SIM",
+              "algo": "market",
+              "urgency": "NORMAL",
+              "state": "FILLED",
+              "client_order_id": "ord_388e2283ec544e10",
+              "idempotency_key": "cB|BBB|SELL|999.99749999|MARKET|None|ord_388e2283ec544e10",
+              "venue_order_id": "SIM-a559802feeec",
+              "avg_fill_price": 49.995,
+              "created_at": "2026-08-14T15:45:49.809518+00:00",
+              "updated_at": "2026-08-14T15:45:49.809705+00:00",
+              "submitted_at": "2026-08-14T15:45:49.809639+00:00",
+              "acknowledged_at": "2026-08-14T15:45:49.809671+00:00",
+              "completed_at": "2026-08-14T15:45:49.809703+00:00",
+              "reject_reason": null,
+              "tags": {
+                "slice": 0,
+                "not_before_offset": 0.0
+              },
+              "audit": [
+                {
+                  "event": "state_transition",
+                  "from": "CREATED",
+                  "to": "VALIDATING",
+                  "reason": "begin_validation",
+                  "actor": "system"
+                },
+                {
+                  "event": "state_transition",
+                  "from": "VALIDATING",
+                  "to": "APPROVED",
+                  "reason": "approved",
+                  "actor": "system"
+                },
+                {
+                  "event": "state_transition",
+                  "from": "APPROVED",
+                  "to": "SUBMITTED",
+                  "reason": "submitted",
+                  "actor": "system"
+                },
+                {
+                  "event": "state_transition",
+                  "from": "SUBMITTED",
+                  "to": "ACKNOWLEDGED",
+                  "reason": "acknowledged",
+                  "actor": "system"
+                },
+                {
+                  "event": "fill",
+                  "event_id": "fill|ord_388e2283ec544e10|SIM-a559802feeec|999.99749999",
+                  "fill_qty": 999.99749999,
+                  "fill_price": 49.995,
+                  "filled_qty": 999.99749999,
+                  "residual_qty": 0.0,
+                  "avg_fill_price": 49.995
+                },
+                {
+                  "event": "state_transition",
+                  "from": "ACKNOWLEDGED",
+                  "to": "FILLED",
+                  "reason": "filled",
+                  "actor": "system"
+                }
+              ],
+              "metadata": {
+                "role": "child"
+              }
+            }
+          ],
+          "fills": [
+            {
+              "order_id": "ord_388e2283ec544e10",
+              "instrument": "BBB",
+              "quantity": 999.99749999,
+              "qty": 999.99749999,
+              "price": 49.995,
+              "fill_price": 49.995,
+              "venue": "SIM",
+              "event_id": "fill|ord_388e2283ec544e10|SIM-a559802feeec|999.99749999"
+            }
+          ],
+          "routing": [
+            {
+              "accepted": true,
+              "order_id": "ord_388e2283ec544e10",
+              "instrument": "BBB",
+              "side": "SELL",
+              "quantity": 999.99749999,
+              "mode": "single",
+              "primary_venue_id": "SIM",
+              "allocations": [
+                {
+                  "venue_id": "SIM",
+                  "quantity": 999.99749999,
+                  "score": 0.9525232031878107,
+                  "fillable_qty": 999.99749999,
+                  "weight": 1.0
+                }
+              ],
+              "scores": [
+                {
+                  "venue_id": "SIM",
+                  "score": 0.9525232031878107,
+                  "components": {
+                    "price": 1.0,
+                    "fees": 0.8333333333333334,
+                    "spread": 0.8333333333332623,
+                    "liquidity": 1.0,
+                    "impact": 0.9693466071107043,
+                    "fill_prob": 0.95,
+                    "latency": 0.9090909090909091,
+                    "reliability": 1.0
+                  },
+                  "raw": {
+                    "expected_price": 49.991838042520065,
+                    "fee_bps": 1.0,
+                    "spread_bps": 2.000000000001023,
+                    "impact_bps": 0.6324547414606043,
+                    "liquidity_score": 1.0,
+                    "fillable_qty": 999.99749999,
+                    "fill_probability": 0.95,
+                    "latency_ms": 5.0,
+                    "reliability": 1.0,
+                    "preference": 1.0
+                  }
+                }
+              ],
+              "costs": {
+                "SIM": {
+                  "venue_id": "SIM",
+                  "expected_price": 49.991838042520065,
+                  "mid": 50.0,
+                  "spread_bps": 2.000000000001023,
+                  "fee_bps": 1.0,
+                  "fee_notional": 4.999171306242504,
+                  "impact_bps": 0.6324547414606043,
+                  "impact_notional": 3.161749596006875,
+                  "spread_notional": 4.999171306245062,
+                  "total_cost_bps": 2.632454741461116,
+                  "total_cost_notional": 13.16009220849444,
+                  "notional": 49991.71306242504
+                }
+              },
+              "liquidity": {
+                "SIM": {
+                  "venue_id": "SIM",
+                  "instrument": "BBB",
+                  "available_qty": 1000000000000.0,
+                  "adv": 1000000.0,
+                  "liquidity_score": 1.0,
+                  "participation": 0.00099999749999,
+                  "fillable_qty": 999.99749999,
+                  "depth_ok": true,
+                  "reasons": []
+                }
+              },
+              "fallback": {
+                "primary_venue_id": "SIM",
+                "steps": [],
+                "cursor": 0
+              },
+              "rejections": [],
+              "residual_qty": 0.0,
+              "timestamp": "2026-08-14T15:45:49.809567+00:00",
+              "metadata": {
+                "urgency": "NORMAL",
+                "order_type": "MARKET",
+                "impact_coeff": 0.1
+              }
+            }
+          ],
+          "pre_trade": {
+            "by_parent": [
+              {
+                "parent_id": "par_760ef292876641bd",
+                "instrument": "BBB",
+                "costs": {
+                  "name": "pre_trade_cost_estimate",
+                  "side": "sell",
+                  "quantity": 999.99749999,
+                  "mid": 50.0,
+                  "notional": 49999.8749995,
+                  "total_cost": 24.09333070215776,
+                  "total_cost_bps": 4.818678187175207,
+                  "expected_slippage": 0.017593390935876033,
+                  "expected_slippage_bps": 3.5186781871752064,
+                  "expected_market_impact": 0.003162273707303022,
+                  "expected_market_impact_bps": 0.6324547414606043,
+                  "expected_total_cost": 24.09333070215776,
+                  "components": {
+                    "commissions": 4.9999874999500005,
+                    "exchange_fees": 1.499996249985,
+                    "slippage": 17.59334695222276,
+                    "market_impact": 0.0,
+                    "financing": 0.0,
+                    "borrow": 0.0,
+                    "fx": 0.0,
+                    "spread_informational": 4.9999874999500005,
+                    "impact_informational": 3.162265801587131
+                  },
+                  "details": {
+                    "commissions": {
+                      "name": "commission_cost",
+                      "total": 4.9999874999500005,
+                      "notional": 49999.8749995,
+                      "quantity": 999.99749999,
+                      "price": 50.0,
+                      "commission_bps": 1.0,
+                      "commission_per_share": 0.0,
+                      "min_commission": 0.0
+                    },
+                    "exchange_fees": {
+                      "name": "exchange_fees",
+                      "total": 1.499996249985,
+                      "notional": 49999.8749995,
+                      "fee_bps": 0.3,
+                      "fee_per_share": 0.0,
+                      "liquidity_role": "taker"
+                    },
+                    "spread": {
+                      "name": "spread_cost",
+                      "total": 4.9999874999500005,
+                      "spread_px": 0.005,
+                      "spread_bps": 1.0,
+                      "notional": 49999.8749995,
+                      "half_spread": true
+                    },
+                    "slippage": {
+                      "name": "slippage_cost",
+                      "total": 17.59334695222276,
+                      "slippage_px": 0.017593390935876033,
+                      "slippage_bps": 3.5186781871752064,
+                      "notional": 49999.8749995,
+                      "components": {
+                        "spread": 0.005,
+                        "volatility": 0.0,
+                        "liquidity": 0.007499981249925,
+                        "temporary_impact": 0.003162273707303022,
+                        "permanent_impact": 0.001581136853651511,
+                        "delay": 0.0
+                      },
+                      "detail": {
+                        "name": "estimate_slippage",
+                        "side": "sell",
+                        "quantity": 999.99749999,
+                        "mid": 50.0,
+                        "expected_slippage": 0.017593390935876033,
+                        "expected_slippage_bps": 3.5186781871752064,
+                        "expected_slippage_notional": 17.59334695222276,
+                        "notional": 49999.8749995,
+                        "components": {
+                          "spread": 0.005,
+                          "volatility": 0.0,
+                          "liquidity": 0.007499981249925,
+                          "temporary_impact": 0.003162273707303022,
+                          "permanent_impact": 0.001581136853651511,
+                          "delay": 0.0
+                        },
+                        "breakdown": {
+                          "spread": 0.005,
+                          "temporary_impact": 0.003162273707303022,
+                          "permanent_impact": 0.001581136853651511,
+                          "volatility": 0.0,
+                          "liquidity": 0.007499981249925,
+                          "size": 0.001581136853651511,
+                          "participation": 0.0003499991249965,
+                          "delay": 0.0,
+                          "total": 0.017593390935876033,
+                          "total_bps": 3.5186781871752064,
+                          "metadata": {
+                            "side": "sell",
+                            "quantity": 999.99749999,
+                            "participation_rate": 0.00099999749999,
+                            "mid": 50.0
+                          }
+                        },
+                        "spread_detail": {
+                          "name": "spread_slippage",
+                          "slippage": 0.005,
+                          "slippage_bps": 1.0,
+                          "half_spread": true,
+                          "spread": 0.01,
+                          "mid": 50.0
+                        },
+                        "impact_detail": {
+                          "name": "market_impact",
+                          "temporary_impact": 0.003162273707303022,
+                          "permanent_impact": 0.001581136853651511,
+                          "slippage": 0.003162273707303022,
+                          "slippage_bps": 0.6324547414606043,
+                          "participation": 0.00099999749999,
+                          "impact_coeff": 0.1,
+                          "source": "analytic"
+                        },
+                        "volatility_detail": {
+                          "name": "volatility_slippage",
+                          "slippage": 0.0,
+                          "slippage_bps": 0.0,
+                          "volatility": 0.02,
+                          "time_fraction": 0.0,
+                          "coeff": 0.25
+                        },
+                        "liquidity_detail": {
+                          "name": "liquidity_slippage",
+                          "slippage": 0.007499981249925,
+                          "slippage_bps": 1.499996249985,
+                          "participation": 0.00099999749999,
+                          "liquidity": 1.0,
+                          "coeff": 0.15
+                        },
+                        "participation": 0.00099999749999
+                      }
+                    },
+                    "market_impact": {
+                      "name": "market_impact_cost",
+                      "total": 3.162265801587131,
+                      "impact_px": 0.003162273707303022,
+                      "impact_bps": 0.6324547414606043,
+                      "temporary_impact": 0.003162273707303022,
+                      "permanent_impact": 0.001581136853651511,
+                      "participation": 0.00099999749999,
+                      "detail": {
+                        "name": "market_impact",
+                        "temporary_impact": 0.003162273707303022,
+                        "permanent_impact": 0.001581136853651511,
+                        "slippage": 0.003162273707303022,
+                        "slippage_bps": 0.6324547414606043,
+                        "participation": 0.00099999749999,
+                        "impact_coeff": 0.1,
+                        "source": "analytic"
+                      }
+                    },
+                    "financing": {
+                      "name": "financing_cost",
+                      "total": 0.0,
+                      "notional": 49999.8749995,
+                      "rate": 0.0,
+                      "days": 0.0,
+                      "day_count": 360.0
+                    },
+                    "borrow": {
+                      "name": "borrow_cost",
+                      "total": 0.0,
+                      "notional": 49999.8749995,
+                      "borrow_rate": 0.0,
+                      "days": 0.0,
+                      "day_count": 360.0,
+                      "is_short": true
+                    }
+                  }
+                },
+                "slippage": {
+                  "name": "estimate_slippage",
+                  "side": "sell",
+                  "quantity": 999.99749999,
+                  "mid": 50.0,
+                  "expected_slippage": 0.017593390935876033,
+                  "expected_slippage_bps": 3.5186781871752064,
+                  "expected_slippage_notional": 17.59334695222276,
+                  "notional": 49999.8749995,
+                  "components": {
+                    "spread": 0.005,
+                    "volatility": 0.0,
+                    "liquidity": 0.007499981249925,
+                    "temporary_impact": 0.003162273707303022,
+                    "permanent_impact": 0.001581136853651511,
+                    "delay": 0.0
+                  },
+                  "breakdown": {
+                    "spread": 0.005,
+                    "temporary_impact": 0.003162273707303022,
+                    "permanent_impact": 0.001581136853651511,
+                    "volatility": 0.0,
+                    "liquidity": 0.007499981249925,
+                    "size": 0.001581136853651511,
+                    "participation": 0.0003499991249965,
+                    "delay": 0.0,
+                    "total": 0.017593390935876033,
+                    "total_bps": 3.5186781871752064,
+                    "metadata": {
+                      "side": "sell",
+                      "quantity": 999.99749999,
+                      "participation_rate": 0.00099999749999,
+                      "mid": 50.0
+                    }
+                  },
+                  "spread_detail": {
+                    "name": "spread_slippage",
+                    "slippage": 0.005,
+                    "slippage_bps": 1.0,
+                    "half_spread": true,
+                    "spread": 0.01,
+                    "mid": 50.0
+                  },
+                  "impact_detail": {
+                    "name": "market_impact",
+                    "temporary_impact": 0.003162273707303022,
+                    "permanent_impact": 0.001581136853651511,
+                    "slippage": 0.003162273707303022,
+                    "slippage_bps": 0.6324547414606043,
+                    "participation": 0.00099999749999,
+                    "impact_coeff": 0.1,
+                    "source": "analytic"
+                  },
+                  "volatility_detail": {
+                    "name": "volatility_slippage",
+                    "slippage": 0.0,
+                    "slippage_bps": 0.0,
+                    "volatility": 0.02,
+                    "time_fraction": 0.0,
+                    "coeff": 0.25
+                  },
+                  "liquidity_detail": {
+                    "name": "liquidity_slippage",
+                    "slippage": 0.007499981249925,
+                    "slippage_bps": 1.499996249985,
+                    "participation": 0.00099999749999,
+                    "liquidity": 1.0,
+                    "coeff": 0.15
+                  },
+                  "participation": 0.00099999749999
+                }
+              }
+            ]
+          },
+          "post_trade": {
+            "by_parent": [
+              {
+                "parent_id": "par_760ef292876641bd",
+                "instrument": "BBB",
+                "name": "post_trade_cost_analysis",
+                "side": "sell",
+                "vwap": 49.995,
+                "filled_quantity": 999.99749999,
+                "parent_quantity": 999.99749999,
+                "residual_quantity": 0.0,
+                "arrival_price": 50.0,
+                "decision_price": 50.0,
+                "mid": 50.0,
+                "realized_cost": 11.499321251512566,
+                "realized_cost_bps": 2.300100010001512,
+                "realized_slippage": 4.999987499952558,
+                "realized_slippage_bps": 1.0000000000005116,
+                "realized_market_impact": 4.999987499952558,
+                "implementation_shortfall": 11.499321251512566,
+                "implementation_shortfall_bps": 2.2998700000005114,
+                "cost_attribution": {
+                  "delay_cost": 0.0,
+                  "trading_cost": 4.999987499952558,
+                  "spread_cost": 0.0,
+                  "commissions": 4.999487501200005,
+                  "exchange_fees": 1.4998462503600014,
+                  "financing": 0.0,
+                  "borrow": 0.0,
+                  "fx": 0.0,
+                  "opportunity_cost": 0.0
+                },
+                "benchmarks": {
+                  "arrival_slippage_bps": 1.0000000000005116,
+                  "decision_slippage_bps": 1.0000000000005116,
+                  "vwap_slippage_bps": null,
+                  "twap_slippage_bps": null
+                },
+                "components": {
+                  "commissions": 4.999487501200005,
+                  "exchange_fees": 1.4998462503600014,
+                  "spread": 0.0,
+                  "slippage": 4.999987499952558,
+                  "market_impact": 4.999987499952558,
+                  "financing": 0.0,
+                  "borrow": 0.0,
+                  "fx": 0.0,
+                  "opportunity": 0.0
+                },
+                "fill_rate": 1.0,
+                "details": {
+                  "commissions": {
+                    "name": "commission_cost",
+                    "total": 4.999487501200005,
+                    "notional": 49994.87501200005,
+                    "quantity": 999.99749999,
+                    "price": 49.995,
+                    "commission_bps": 1.0,
+                    "commission_per_share": 0.0,
+                    "min_commission": 0.0
+                  },
+                  "exchange_fees": {
+                    "name": "exchange_fees",
+                    "total": 1.4998462503600014,
+                    "notional": 49994.87501200005,
+                    "fee_bps": 0.3,
+                    "fee_per_share": 0.0,
+                    "liquidity_role": "taker"
+                  },
+                  "spread": {
+                    "name": "spread_cost",
+                    "total": 0.0,
+                    "spread_px": 0.0,
+                    "spread_bps": 0.0,
+                    "notional": 49999.8749995,
+                    "half_spread": true
+                  },
+                  "financing": {
+                    "name": "financing_cost",
+                    "total": 0.0,
+                    "notional": 49994.87501200005,
+                    "rate": 0.0,
+                    "days": 0.0,
+                    "day_count": 360.0
+                  },
+                  "borrow": {
+                    "name": "borrow_cost",
+                    "total": 0.0,
+                    "notional": 49994.87501200005,
+                    "borrow_rate": 0.0,
+                    "days": 0.0,
+                    "day_count": 360.0,
+                    "is_short": true
+                  }
+                },
+                "adv": 1000000.0,
+                "volatility": 0.02
+              }
+            ]
+          },
+          "analytics": {
+            "by_parent": [
+              {
+                "parent_id": "par_760ef292876641bd",
+                "instrument": "BBB",
+                "side": "SELL",
+                "ordered_qty": 999.99749999,
+                "filled_qty": 999.99749999,
+                "exec_vwap": 49.995,
+                "fill_rate": {
+                  "ordered_qty": 999.99749999,
+                  "filled_qty": 999.99749999,
+                  "residual_qty": 0.0,
+                  "fill_rate": 1.0
+                },
+                "implementation_shortfall": {
+                  "arrival_price": 50.0,
+                  "decision_price": 50.0,
+                  "exec_vwap": 49.995,
+                  "filled_qty": 999.99749999,
+                  "implementation_shortfall_bps": 1.0000000000005116,
+                  "decision_slippage_bps": 1.0000000000005116,
+                  "implementation_shortfall_cost": 4.999987499952558,
+                  "notional_at_arrival": 49999.8749995
+                },
+                "arrival_slippage": {
+                  "arrival_price": 50.0,
+                  "exec_vwap": 49.995,
+                  "filled_qty": 999.99749999,
+                  "arrival_slippage_bps": 1.0000000000005116
+                },
+                "latency": {
+                  "n": 1,
+                  "avg_decision_to_submit_ms": 0.103,
+                  "avg_submit_to_ack_ms": 0.034999999999999996,
+                  "avg_ack_to_fill_ms": 0.014,
+                  "avg_end_to_end_ms": 0.152,
+                  "p50_end_to_end_ms": 0.152,
+                  "p95_end_to_end_ms": 0.152,
+                  "records": [
+                    {
+                      "record_id": "lat_244c720b8961",
+                      "order_id": "ord_388e2283ec544e10",
+                      "decision_at": "2026-08-14T15:45:49.809531+00:00",
+                      "submit_at": "2026-08-14T15:45:49.809634+00:00",
+                      "ack_at": "2026-08-14T15:45:49.809669+00:00",
+                      "fill_at": "2026-08-14T15:45:49.809683+00:00",
+                      "decision_to_submit_ms": 0.103,
+                      "submit_to_ack_ms": 0.034999999999999996,
+                      "ack_to_fill_ms": 0.014,
+                      "decision_to_fill_ms": 0.152,
+                      "end_to_end_ms": 0.152,
+                      "metadata": {}
+                    }
+                  ]
+                },
+                "pre_trade_estimate": {
+                  "name": "pre_trade_cost_estimate",
+                  "side": "sell",
+                  "quantity": 999.99749999,
+                  "mid": 50.0,
+                  "notional": 49999.8749995,
+                  "total_cost": 24.09333070215776,
+                  "total_cost_bps": 4.818678187175207,
+                  "expected_slippage": 0.017593390935876033,
+                  "expected_slippage_bps": 3.5186781871752064,
+                  "expected_market_impact": 0.003162273707303022,
+                  "expected_market_impact_bps": 0.6324547414606043,
+                  "expected_total_cost": 24.09333070215776,
+                  "components": {
+                    "commissions": 4.9999874999500005,
+                    "exchange_fees": 1.499996249985,
+                    "slippage": 17.59334695222276,
+                    "market_impact": 0.0,
+                    "financing": 0.0,
+                    "borrow": 0.0,
+                    "fx": 0.0,
+                    "spread_informational": 4.9999874999500005,
+                    "impact_informational": 3.162265801587131
+                  },
+                  "details": {
+                    "commissions": {
+                      "name": "commission_cost",
+                      "total": 4.9999874999500005,
+                      "notional": 49999.8749995,
+                      "quantity": 999.99749999,
+                      "price": 50.0,
+                      "commission_bps": 1.0,
+                      "commission_per_share": 0.0,
+                      "min_commission": 0.0
+                    },
+                    "exchange_fees": {
+                      "name": "exchange_fees",
+                      "total": 1.499996249985,
+                      "notional": 49999.8749995,
+                      "fee_bps": 0.3,
+                      "fee_per_share": 0.0,
+                      "liquidity_role": "taker"
+                    },
+                    "spread": {
+                      "name": "spread_cost",
+                      "total": 4.9999874999500005,
+                      "spread_px": 0.005,
+                      "spread_bps": 1.0,
+                      "notional": 49999.8749995,
+                      "half_spread": true
+                    },
+                    "slippage": {
+                      "name": "slippage_cost",
+                      "total": 17.59334695222276,
+                      "slippage_px": 0.017593390935876033,
+                      "slippage_bps": 3.5186781871752064,
+                      "notional": 49999.8749995,
+                      "components": {
+                        "spread": 0.005,
+                        "volatility": 0.0,
+                        "liquidity": 0.007499981249925,
+                        "temporary_impact": 0.003162273707303022,
+                        "permanent_impact": 0.001581136853651511,
+                        "delay": 0.0
+                      },
+                      "detail": {
+                        "name": "estimate_slippage",
+                        "side": "sell",
+                        "quantity": 999.99749999,
+                        "mid": 50.0,
+                        "expected_slippage": 0.017593390935876033,
+                        "expected_slippage_bps": 3.5186781871752064,
+                        "expected_slippage_notional": 17.59334695222276,
+                        "notional": 49999.8749995,
+                        "components": {
+                          "spread": 0.005,
+                          "volatility": 0.0,
+                          "liquidity": 0.007499981249925,
+                          "temporary_impact": 0.003162273707303022,
+                          "permanent_impact": 0.001581136853651511,
+                          "delay": 0.0
+                        },
+                        "breakdown": {
+                          "spread": 0.005,
+                          "temporary_impact": 0.003162273707303022,
+                          "permanent_impact": 0.001581136853651511,
+                          "volatility": 0.0,
+                          "liquidity": 0.007499981249925,
+                          "size": 0.001581136853651511,
+                          "participation": 0.0003499991249965,
+                          "delay": 0.0,
+                          "total": 0.017593390935876033,
+                          "total_bps": 3.5186781871752064,
+                          "metadata": {
+                            "side": "sell",
+                            "quantity": 999.99749999,
+                            "participation_rate": 0.00099999749999,
+                            "mid": 50.0
+                          }
+                        },
+                        "spread_detail": {
+                          "name": "spread_slippage",
+                          "slippage": 0.005,
+                          "slippage_bps": 1.0,
+                          "half_spread": true,
+                          "spread": 0.01,
+                          "mid": 50.0
+                        },
+                        "impact_detail": {
+                          "name": "market_impact",
+                          "temporary_impact": 0.003162273707303022,
+                          "permanent_impact": 0.001581136853651511,
+                          "slippage": 0.003162273707303022,
+                          "slippage_bps": 0.6324547414606043,
+                          "participation": 0.00099999749999,
+                          "impact_coeff": 0.1,
+                          "source": "analytic"
+                        },
+                        "volatility_detail": {
+                          "name": "volatility_slippage",
+                          "slippage": 0.0,
+                          "slippage_bps": 0.0,
+                          "volatility": 0.02,
+                          "time_fraction": 0.0,
+                          "coeff": 0.25
+                        },
+                        "liquidity_detail": {
+                          "name": "liquidity_slippage",
+                          "slippage": 0.007499981249925,
+                          "slippage_bps": 1.499996249985,
+                          "participation": 0.00099999749999,
+                          "liquidity": 1.0,
+                          "coeff": 0.15
+                        },
+                        "participation": 0.00099999749999
+                      }
+                    },
+                    "market_impact": {
+                      "name": "market_impact_cost",
+                      "total": 3.162265801587131,
+                      "impact_px": 0.003162273707303022,
+                      "impact_bps": 0.6324547414606043,
+                      "temporary_impact": 0.003162273707303022,
+                      "permanent_impact": 0.001581136853651511,
+                      "participation": 0.00099999749999,
+                      "detail": {
+                        "name": "market_impact",
+                        "temporary_impact": 0.003162273707303022,
+                        "permanent_impact": 0.001581136853651511,
+                        "slippage": 0.003162273707303022,
+                        "slippage_bps": 0.6324547414606043,
+                        "participation": 0.00099999749999,
+                        "impact_coeff": 0.1,
+                        "source": "analytic"
+                      }
+                    },
+                    "financing": {
+                      "name": "financing_cost",
+                      "total": 0.0,
+                      "notional": 49999.8749995,
+                      "rate": 0.0,
+                      "days": 0.0,
+                      "day_count": 360.0
+                    },
+                    "borrow": {
+                      "name": "borrow_cost",
+                      "total": 0.0,
+                      "notional": 49999.8749995,
+                      "borrow_rate": 0.0,
+                      "days": 0.0,
+                      "day_count": 360.0,
+                      "is_short": true
+                    }
+                  }
+                },
+                "post_trade_costs": {
+                  "name": "post_trade_cost_analysis",
+                  "side": "sell",
+                  "vwap": 49.995,
+                  "filled_quantity": 999.99749999,
+                  "parent_quantity": 999.99749999,
+                  "residual_quantity": 0.0,
+                  "arrival_price": 50.0,
+                  "decision_price": 50.0,
+                  "mid": 50.0,
+                  "realized_cost": 11.499321251512566,
+                  "realized_cost_bps": 2.300100010001512,
+                  "realized_slippage": 4.999987499952558,
+                  "realized_slippage_bps": 1.0000000000005116,
+                  "realized_market_impact": 4.999987499952558,
+                  "implementation_shortfall": 11.499321251512566,
+                  "implementation_shortfall_bps": 2.2998700000005114,
+                  "cost_attribution": {
+                    "delay_cost": 0.0,
+                    "trading_cost": 4.999987499952558,
+                    "spread_cost": 0.0,
+                    "commissions": 4.999487501200005,
+                    "exchange_fees": 1.4998462503600014,
+                    "financing": 0.0,
+                    "borrow": 0.0,
+                    "fx": 0.0,
+                    "opportunity_cost": 0.0
+                  },
+                  "benchmarks": {
+                    "arrival_slippage_bps": 1.0000000000005116,
+                    "decision_slippage_bps": 1.0000000000005116,
+                    "vwap_slippage_bps": null,
+                    "twap_slippage_bps": null
+                  },
+                  "components": {
+                    "commissions": 4.999487501200005,
+                    "exchange_fees": 1.4998462503600014,
+                    "spread": 0.0,
+                    "slippage": 4.999987499952558,
+                    "market_impact": 4.999987499952558,
+                    "financing": 0.0,
+                    "borrow": 0.0,
+                    "fx": 0.0,
+                    "opportunity": 0.0
+                  },
+                  "fill_rate": 1.0,
+                  "details": {
+                    "commissions": {
+                      "name": "commission_cost",
+                      "total": 4.999487501200005,
+                      "notional": 49994.87501200005,
+                      "quantity": 999.99749999,
+                      "price": 49.995,
+                      "commission_bps": 1.0,
+                      "commission_per_share": 0.0,
+                      "min_commission": 0.0
+                    },
+                    "exchange_fees": {
+                      "name": "exchange_fees",
+                      "total": 1.4998462503600014,
+                      "notional": 49994.87501200005,
+                      "fee_bps": 0.3,
+                      "fee_per_share": 0.0,
+                      "liquidity_role": "taker"
+                    },
+                    "spread": {
+                      "name": "spread_cost",
+                      "total": 0.0,
+                      "spread_px": 0.0,
+                      "spread_bps": 0.0,
+                      "notional": 49999.8749995,
+                      "half_spread": true
+                    },
+                    "financing": {
+                      "name": "financing_cost",
+                      "total": 0.0,
+                      "notional": 49994.87501200005,
+                      "rate": 0.0,
+                      "days": 0.0,
+                      "day_count": 360.0
+                    },
+                    "borrow": {
+                      "name": "borrow_cost",
+                      "total": 0.0,
+                      "notional": 49994.87501200005,
+                      "borrow_rate": 0.0,
+                      "days": 0.0,
+                      "day_count": 360.0,
+                      "is_short": true
+                    }
+                  },
+                  "adv": 1000000.0,
+                  "volatility": 0.02
+                },
+                "vwap_slippage": {
+                  "label": "vwap",
+                  "benchmark_price": 50.0,
+                  "exec_vwap": 49.995,
+                  "filled_qty": 999.99749999,
+                  "slippage_bps": 1.0000000000005116
+                },
+                "twap_slippage": {
+                  "label": "twap",
+                  "benchmark_price": 50.0,
+                  "exec_vwap": 49.995,
+                  "filled_qty": 999.99749999,
+                  "slippage_bps": 1.0000000000005116
+                }
+              }
+            ]
+          },
+          "latency": {
+            "n": 1,
+            "avg_decision_to_submit_ms": 0.103,
+            "avg_submit_to_ack_ms": 0.034999999999999996,
+            "avg_ack_to_fill_ms": 0.014,
+            "avg_end_to_end_ms": 0.152,
+            "p50_end_to_end_ms": 0.152,
+            "p95_end_to_end_ms": 0.152,
+            "records": [
+              {
+                "record_id": "lat_244c720b8961",
+                "order_id": "ord_388e2283ec544e10",
+                "decision_at": "2026-08-14T15:45:49.809531+00:00",
+                "submit_at": "2026-08-14T15:45:49.809634+00:00",
+                "ack_at": "2026-08-14T15:45:49.809669+00:00",
+                "fill_at": "2026-08-14T15:45:49.809683+00:00",
+                "decision_to_submit_ms": 0.103,
+                "submit_to_ack_ms": 0.034999999999999996,
+                "ack_to_fill_ms": 0.014,
+                "decision_to_fill_ms": 0.152,
+                "end_to_end_ms": 0.152,
+                "metadata": {}
+              }
+            ]
+          },
+          "audit": [
+            {
+              "action": "planned",
+              "timestamp": "2026-08-14T15:45:49.809400+00:00",
+              "details": {
+                "n_parents": 1
+              }
+            },
+            {
+              "action": "pre_trade",
+              "timestamp": "2026-08-14T15:45:49.809456+00:00",
+              "details": {
+                "parent_id": "par_760ef292876641bd",
+                "total_cost": 24.09333070215776
+              }
+            },
+            {
+              "action": "algo_plan",
+              "timestamp": "2026-08-14T15:45:49.809506+00:00",
+              "details": {
+                "parent_id": "par_760ef292876641bd",
+                "n_slices": 1,
+                "qty": 999.99749999
+              }
+            },
+            {
+              "action": "submit",
+              "timestamp": "2026-08-14T15:45:49.809654+00:00",
+              "details": {
+                "order_id": "ord_388e2283ec544e10",
+                "venue": "SIM"
+              }
+            },
+            {
+              "action": "fill",
+              "timestamp": "2026-08-14T15:45:49.809713+00:00",
+              "details": {
+                "order_id": "ord_388e2283ec544e10",
+                "qty": 999.99749999,
+                "price": 49.995
+              }
+            }
+          ],
+          "errors": [],
+          "metadata": {
+            "urgency": "NORMAL",
+            "simulation_mode": true
+          }
+        }
+      }
+    },
+    {
+      "candidate_id": "cC",
+      "signal_id": "syn_c",
+      "model_id": "synthetic",
+      "model_version": "1.0.0",
+      "dataset_id": "syn@1",
+      "dataset_checksum": "abc",
+      "risk_decision_id": "risk_0ee1b09e660b41ea",
+      "portfolio_decision_id": "port_4e71c51922de4d82",
+      "order_id": "ord_07e31af95c9443c5",
+      "fill_ids": [
+        "fill|ord_2ddcf250fb9c4bfd|SIM-1262dce08854|2133.34311109"
+      ],
+      "trade_ids": [],
+      "extra": {
+        "expected_horizon": 3,
+        "signal_timeframe": "",
+        "execution_timeframe": "",
+        "all_order_ids": [
+          "ord_07e31af95c9443c5"
+        ],
+        "execution_report": {
+          "execution_id": "ex_24e5ead791bd4ac4",
+          "status": "FILLED",
+          "state": "COMPLETED",
+          "algo": "market",
+          "parents": [
+            {
+              "parent_id": "par_e49a607ab67f49f9",
+              "instrument": "CCC",
+              "side": "BUY",
+              "quantity": 2133.34311109,
+              "filled_qty": 2133.34311109,
+              "residual_qty": 0.0,
+              "strategy_id": "cC",
+              "portfolio_id": null,
+              "urgency": "NORMAL",
+              "algo": "market",
+              "state": "COMPLETED",
+              "child_ids": [
+                "ord_2ddcf250fb9c4bfd"
+              ],
+              "created_at": "2026-08-14T15:45:49.810320+00:00",
+              "updated_at": "2026-08-14T15:45:49.810578+00:00",
+              "metadata": {}
+            }
+          ],
+          "children": [
+            {
+              "order_id": "ord_2ddcf250fb9c4bfd",
+              "parent_id": "par_e49a607ab67f49f9",
+              "strategy_id": "cC",
+              "portfolio_id": null,
+              "account_id": null,
+              "instrument": "CCC",
+              "side": "BUY",
+              "quantity": 2133.34311109,
+              "filled_qty": 2133.34311109,
+              "residual_qty": 0.0,
+              "price": null,
+              "stop_price": null,
+              "order_type": "MARKET",
+              "time_in_force": "DAY",
+              "venue": "SIM",
+              "algo": "market",
+              "urgency": "NORMAL",
+              "state": "FILLED",
+              "client_order_id": "ord_2ddcf250fb9c4bfd",
+              "idempotency_key": "cC|CCC|BUY|2133.34311109|MARKET|None|ord_2ddcf250fb9c4bfd",
+              "venue_order_id": "SIM-1262dce08854",
+              "avg_fill_price": 25.005,
+              "created_at": "2026-08-14T15:45:49.810423+00:00",
+              "updated_at": "2026-08-14T15:45:49.810568+00:00",
+              "submitted_at": "2026-08-14T15:45:49.810516+00:00",
+              "acknowledged_at": "2026-08-14T15:45:49.810539+00:00",
+              "completed_at": "2026-08-14T15:45:49.810566+00:00",
+              "reject_reason": null,
+              "tags": {
+                "slice": 0,
+                "not_before_offset": 0.0
+              },
+              "audit": [
+                {
+                  "event": "state_transition",
+                  "from": "CREATED",
+                  "to": "VALIDATING",
+                  "reason": "begin_validation",
+                  "actor": "system"
+                },
+                {
+                  "event": "state_transition",
+                  "from": "VALIDATING",
+                  "to": "APPROVED",
+                  "reason": "approved",
+                  "actor": "system"
+                },
+                {
+                  "event": "state_transition",
+                  "from": "APPROVED",
+                  "to": "SUBMITTED",
+                  "reason": "submitted",
+                  "actor": "system"
+                },
+                {
+                  "event": "state_transition",
+                  "from": "SUBMITTED",
+                  "to": "ACKNOWLEDGED",
+                  "reason": "acknowledged",
+                  "actor": "system"
+                },
+                {
+                  "event": "fill",
+                  "event_id": "fill|ord_2ddcf250fb9c4bfd|SIM-1262dce08854|2133.34311109",
+                  "fill_qty": 2133.34311109,
+                  "fill_price": 25.005,
+                  "filled_qty": 2133.34311109,
+                  "residual_qty": 0.0,
+                  "avg_fill_price": 25.005
+                },
+                {
+                  "event": "state_transition",
+                  "from": "ACKNOWLEDGED",
+                  "to": "FILLED",
+                  "reason": "filled",
+                  "actor": "system"
+                }
+              ],
+              "metadata": {
+                "role": "child"
+              }
+            }
+          ],
+          "fills": [
+            {
+              "order_id": "ord_2ddcf250fb9c4bfd",
+              "instrument": "CCC",
+              "quantity": 2133.34311109,
+              "qty": 2133.34311109,
+              "price": 25.005,
+              "fill_price": 25.005,
+              "venue": "SIM",
+              "event_id": "fill|ord_2ddcf250fb9c4bfd|SIM-1262dce08854|2133.34311109"
+            }
+          ],
+          "routing": [
+            {
+              "accepted": true,
+              "order_id": "ord_2ddcf250fb9c4bfd",
+              "instrument": "CCC",
+              "side": "BUY",
+              "quantity": 2133.34311109,
+              "mode": "single",
+              "primary_venue_id": "SIM",
+              "allocations": [
+                {
+                  "venue_id": "SIM",
+                  "quantity": 2133.34311109,
+                  "score": 0.9385941048408761,
+                  "fillable_qty": 2133.34311109,
+                  "weight": 1.0
+                }
+              ],
+              "scores": [
+                {
+                  "venue_id": "SIM",
+                  "score": 0.9385941048408761,
+                  "components": {
+                    "price": 1.0,
+                    "fees": 0.8333333333333334,
+                    "spread": 0.7142857142857549,
+                    "liquidity": 1.0,
+                    "impact": 0.9558510308294786,
+                    "fill_prob": 0.95,
+                    "latency": 0.9090909090909091,
+                    "reliability": 1.0
+                  },
+                  "raw": {
+                    "expected_price": 25.00730986825039,
+                    "fee_bps": 1.0,
+                    "spread_bps": 3.999999999999204,
+                    "impact_bps": 0.923762547647392,
+                    "liquidity_score": 1.0,
+                    "fillable_qty": 2133.34311109,
+                    "fill_probability": 0.95,
+                    "latency_ms": 5.0,
+                    "reliability": 1.0,
+                    "preference": 1.0
+                  }
+                }
+              ],
+              "costs": {
+                "SIM": {
+                  "venue_id": "SIM",
+                  "expected_price": 25.00730986825039,
+                  "mid": 25.0,
+                  "spread_bps": 3.999999999999204,
+                  "fee_bps": 1.0,
+                  "fee_notional": 5.334917223432495,
+                  "impact_bps": 0.923762547647392,
+                  "impact_notional": 4.928196725805951,
+                  "spread_notional": 10.669834446862865,
+                  "total_cost_bps": 3.9237625476469935,
+                  "total_cost_notional": 20.93294839610131,
+                  "notional": 53349.17223432494
+                }
+              },
+              "liquidity": {
+                "SIM": {
+                  "venue_id": "SIM",
+                  "instrument": "CCC",
+                  "available_qty": 1000000000000.0,
+                  "adv": 1000000.0,
+                  "liquidity_score": 1.0,
+                  "participation": 0.0021333431110900003,
+                  "fillable_qty": 2133.34311109,
+                  "depth_ok": true,
+                  "reasons": []
+                }
+              },
+              "fallback": {
+                "primary_venue_id": "SIM",
+                "steps": [],
+                "cursor": 0
+              },
+              "rejections": [],
+              "residual_qty": 0.0,
+              "timestamp": "2026-08-14T15:45:49.810467+00:00",
+              "metadata": {
+                "urgency": "NORMAL",
+                "order_type": "MARKET",
+                "impact_coeff": 0.1
+              }
+            }
+          ],
+          "pre_trade": {
+            "by_parent": [
+              {
+                "parent_id": "par_e49a607ab67f49f9",
+                "instrument": "CCC",
+                "costs": {
+                  "name": "pre_trade_cost_estimate",
+                  "side": "buy",
+                  "quantity": 2133.34311109,
+                  "mid": 25.0,
+                  "notional": 53333.57777725,
+                  "total_cost": 42.85348977520992,
+                  "total_cost_bps": 8.034992505882387,
+                  "expected_slippage": 0.01683748126470597,
+                  "expected_slippage_bps": 6.734992505882388,
+                  "expected_market_impact": 0.00230940636911848,
+                  "expected_market_impact_bps": 0.9237625476473921,
+                  "expected_total_cost": 42.85348977520992,
+                  "components": {
+                    "commissions": 5.333357777725,
+                    "exchange_fees": 1.6000073333174998,
+                    "slippage": 35.920124664167425,
+                    "market_impact": 0.0,
+                    "financing": 0.0,
+                    "borrow": 0.0,
+                    "fx": 0.0,
+                    "spread_informational": 10.66671555545,
+                    "impact_informational": 4.926756168266279
+                  },
+                  "details": {
+                    "commissions": {
+                      "name": "commission_cost",
+                      "total": 5.333357777725,
+                      "notional": 53333.57777725,
+                      "quantity": 2133.34311109,
+                      "price": 25.0,
+                      "commission_bps": 1.0,
+                      "commission_per_share": 0.0,
+                      "min_commission": 0.0
+                    },
+                    "exchange_fees": {
+                      "name": "exchange_fees",
+                      "total": 1.6000073333174998,
+                      "notional": 53333.57777725,
+                      "fee_bps": 0.3,
+                      "fee_per_share": 0.0,
+                      "liquidity_role": "taker"
+                    },
+                    "spread": {
+                      "name": "spread_cost",
+                      "total": 10.66671555545,
+                      "spread_px": 0.005,
+                      "spread_bps": 2.0,
+                      "notional": 53333.57777725,
+                      "half_spread": true
+                    },
+                    "slippage": {
+                      "name": "slippage_cost",
+                      "total": 35.920124664167425,
+                      "slippage_px": 0.01683748126470597,
+                      "slippage_bps": 6.734992505882388,
+                      "notional": 53333.57777725,
+                      "components": {
+                        "spread": 0.005,
+                        "volatility": 0.0,
+                        "liquidity": 0.0080000366665875,
+                        "temporary_impact": 0.00230940636911848,
+                        "permanent_impact": 0.00115470318455924,
+                        "delay": 0.0
+                      },
+                      "detail": {
+                        "name": "estimate_slippage",
+                        "side": "buy",
+                        "quantity": 2133.34311109,
+                        "mid": 25.0,
+                        "expected_slippage": 0.01683748126470597,
+                        "expected_slippage_bps": 6.734992505882388,
+                        "expected_slippage_notional": 35.920124664167425,
+                        "notional": 53333.57777725,
+                        "components": {
+                          "spread": 0.005,
+                          "volatility": 0.0,
+                          "liquidity": 0.0080000366665875,
+                          "temporary_impact": 0.00230940636911848,
+                          "permanent_impact": 0.00115470318455924,
+                          "delay": 0.0
+                        },
+                        "breakdown": {
+                          "spread": 0.005,
+                          "temporary_impact": 0.00230940636911848,
+                          "permanent_impact": 0.00115470318455924,
+                          "volatility": 0.0,
+                          "liquidity": 0.0080000366665875,
+                          "size": 0.00115470318455924,
+                          "participation": 0.00037333504444075005,
+                          "delay": 0.0,
+                          "total": 0.01683748126470597,
+                          "total_bps": 6.734992505882388,
+                          "metadata": {
+                            "side": "buy",
+                            "quantity": 2133.34311109,
+                            "participation_rate": 0.0021333431110900003,
+                            "mid": 25.0
+                          }
+                        },
+                        "spread_detail": {
+                          "name": "spread_slippage",
+                          "slippage": 0.005,
+                          "slippage_bps": 2.0,
+                          "half_spread": true,
+                          "spread": 0.01,
+                          "mid": 25.0
+                        },
+                        "impact_detail": {
+                          "name": "market_impact",
+                          "temporary_impact": 0.00230940636911848,
+                          "permanent_impact": 0.00115470318455924,
+                          "slippage": 0.00230940636911848,
+                          "slippage_bps": 0.9237625476473921,
+                          "participation": 0.0021333431110900003,
+                          "impact_coeff": 0.1,
+                          "source": "analytic"
+                        },
+                        "volatility_detail": {
+                          "name": "volatility_slippage",
+                          "slippage": 0.0,
+                          "slippage_bps": 0.0,
+                          "volatility": 0.02,
+                          "time_fraction": 0.0,
+                          "coeff": 0.25
+                        },
+                        "liquidity_detail": {
+                          "name": "liquidity_slippage",
+                          "slippage": 0.0080000366665875,
+                          "slippage_bps": 3.2000146666350004,
+                          "participation": 0.0021333431110900003,
+                          "liquidity": 1.0,
+                          "coeff": 0.15
+                        },
+                        "participation": 0.0021333431110900003
+                      }
+                    },
+                    "market_impact": {
+                      "name": "market_impact_cost",
+                      "total": 4.926756168266279,
+                      "impact_px": 0.00230940636911848,
+                      "impact_bps": 0.9237625476473921,
+                      "temporary_impact": 0.00230940636911848,
+                      "permanent_impact": 0.00115470318455924,
+                      "participation": 0.0021333431110900003,
+                      "detail": {
+                        "name": "market_impact",
+                        "temporary_impact": 0.00230940636911848,
+                        "permanent_impact": 0.00115470318455924,
+                        "slippage": 0.00230940636911848,
+                        "slippage_bps": 0.9237625476473921,
+                        "participation": 0.0021333431110900003,
+                        "impact_coeff": 0.1,
+                        "source": "analytic"
+                      }
+                    },
+                    "financing": {
+                      "name": "financing_cost",
+                      "total": 0.0,
+                      "notional": 53333.57777725,
+                      "rate": 0.0,
+                      "days": 0.0,
+                      "day_count": 360.0
+                    },
+                    "borrow": {
+                      "name": "borrow_cost",
+                      "total": 0.0,
+                      "notional": 53333.57777725,
+                      "borrow_rate": 0.0,
+                      "days": 0.0,
+                      "is_short": false
+                    }
+                  }
+                },
+                "slippage": {
+                  "name": "estimate_slippage",
+                  "side": "buy",
+                  "quantity": 2133.34311109,
+                  "mid": 25.0,
+                  "expected_slippage": 0.01683748126470597,
+                  "expected_slippage_bps": 6.734992505882388,
+                  "expected_slippage_notional": 35.920124664167425,
+                  "notional": 53333.57777725,
+                  "components": {
+                    "spread": 0.005,
+                    "volatility": 0.0,
+                    "liquidity": 0.0080000366665875,
+                    "temporary_impact": 0.00230940636911848,
+                    "permanent_impact": 0.00115470318455924,
+                    "delay": 0.0
+                  },
+                  "breakdown": {
+                    "spread": 0.005,
+                    "temporary_impact": 0.00230940636911848,
+                    "permanent_impact": 0.00115470318455924,
+                    "volatility": 0.0,
+                    "liquidity": 0.0080000366665875,
+                    "size": 0.00115470318455924,
+                    "participation": 0.00037333504444075005,
+                    "delay": 0.0,
+                    "total": 0.01683748126470597,
+                    "total_bps": 6.734992505882388,
+                    "metadata": {
+                      "side": "buy",
+                      "quantity": 2133.34311109,
+                      "participation_rate": 0.0021333431110900003,
+                      "mid": 25.0
+                    }
+                  },
+                  "spread_detail": {
+                    "name": "spread_slippage",
+                    "slippage": 0.005,
+                    "slippage_bps": 2.0,
+                    "half_spread": true,
+                    "spread": 0.01,
+                    "mid": 25.0
+                  },
+                  "impact_detail": {
+                    "name": "market_impact",
+                    "temporary_impact": 0.00230940636911848,
+                    "permanent_impact": 0.00115470318455924,
+                    "slippage": 0.00230940636911848,
+                    "slippage_bps": 0.9237625476473921,
+                    "participation": 0.0021333431110900003,
+                    "impact_coeff": 0.1,
+                    "source": "analytic"
+                  },
+                  "volatility_detail": {
+                    "name": "volatility_slippage",
+                    "slippage": 0.0,
+                    "slippage_bps": 0.0,
+                    "volatility": 0.02,
+                    "time_fraction": 0.0,
+                    "coeff": 0.25
+                  },
+                  "liquidity_detail": {
+                    "name": "liquidity_slippage",
+                    "slippage": 0.0080000366665875,
+                    "slippage_bps": 3.2000146666350004,
+                    "participation": 0.0021333431110900003,
+                    "liquidity": 1.0,
+                    "coeff": 0.15
+                  },
+                  "participation": 0.0021333431110900003
+                }
+              }
+            ]
+          },
+          "post_trade": {
+            "by_parent": [
+              {
+                "parent_id": "par_e49a607ab67f49f9",
+                "instrument": "CCC",
+                "name": "post_trade_cost_analysis",
+                "side": "buy",
+                "vwap": 25.005,
+                "filled_quantity": 2133.34311109,
+                "parent_quantity": 2133.34311109,
+                "residual_quantity": 0.0,
+                "arrival_price": 25.0,
+                "decision_price": 25.0,
+                "mid": 25.0,
+                "realized_cost": 17.60146733951259,
+                "realized_cost_bps": 3.299600079983606,
+                "realized_slippage": 10.666715555447878,
+                "realized_slippage_bps": 1.999999999999602,
+                "realized_market_impact": 10.666715555447878,
+                "implementation_shortfall": 17.60146733951259,
+                "implementation_shortfall_bps": 3.3002599999996023,
+                "cost_attribution": {
+                  "delay_cost": 0.0,
+                  "trading_cost": 10.666715555447878,
+                  "spread_cost": 0.0,
+                  "commissions": 5.3344244492805455,
+                  "exchange_fees": 1.6003273347841636,
+                  "financing": 0.0,
+                  "borrow": 0.0,
+                  "fx": 0.0,
+                  "opportunity_cost": 0.0
+                },
+                "benchmarks": {
+                  "arrival_slippage_bps": 1.999999999999602,
+                  "decision_slippage_bps": 1.999999999999602,
+                  "vwap_slippage_bps": null,
+                  "twap_slippage_bps": null
+                },
+                "components": {
+                  "commissions": 5.3344244492805455,
+                  "exchange_fees": 1.6003273347841636,
+                  "spread": 0.0,
+                  "slippage": 10.666715555447878,
+                  "market_impact": 10.666715555447878,
+                  "financing": 0.0,
+                  "borrow": 0.0,
+                  "fx": 0.0,
+                  "opportunity": 0.0
+                },
+                "fill_rate": 1.0,
+                "details": {
+                  "commissions": {
+                    "name": "commission_cost",
+                    "total": 5.3344244492805455,
+                    "notional": 53344.244492805454,
+                    "quantity": 2133.34311109,
+                    "price": 25.005,
+                    "commission_bps": 1.0,
+                    "commission_per_share": 0.0,
+                    "min_commission": 0.0
+                  },
+                  "exchange_fees": {
+                    "name": "exchange_fees",
+                    "total": 1.6003273347841636,
+                    "notional": 53344.244492805454,
+                    "fee_bps": 0.3,
+                    "fee_per_share": 0.0,
+                    "liquidity_role": "taker"
+                  },
+                  "spread": {
+                    "name": "spread_cost",
+                    "total": 0.0,
+                    "spread_px": 0.0,
+                    "spread_bps": 0.0,
+                    "notional": 53333.57777725,
+                    "half_spread": true
+                  },
+                  "financing": {
+                    "name": "financing_cost",
+                    "total": 0.0,
+                    "notional": 53344.244492805454,
+                    "rate": 0.0,
+                    "days": 0.0,
+                    "day_count": 360.0
+                  },
+                  "borrow": {
+                    "name": "borrow_cost",
+                    "total": 0.0,
+                    "notional": 53344.244492805454,
+                    "borrow_rate": 0.0,
+                    "days": 0.0,
+                    "is_short": false
+                  }
+                },
+                "adv": 1000000.0,
+                "volatility": 0.02
+              }
+            ]
+          },
+          "analytics": {
+            "by_parent": [
+              {
+                "parent_id": "par_e49a607ab67f49f9",
+                "instrument": "CCC",
+                "side": "BUY",
+                "ordered_qty": 2133.34311109,
+                "filled_qty": 2133.34311109,
+                "exec_vwap": 25.005,
+                "fill_rate": {
+                  "ordered_qty": 2133.34311109,
+                  "filled_qty": 2133.34311109,
+                  "residual_qty": 0.0,
+                  "fill_rate": 1.0
+                },
+                "implementation_shortfall": {
+                  "arrival_price": 25.0,
+                  "decision_price": 25.0,
+                  "exec_vwap": 25.005,
+                  "filled_qty": 2133.34311109,
+                  "implementation_shortfall_bps": 1.999999999999602,
+                  "decision_slippage_bps": 1.999999999999602,
+                  "implementation_shortfall_cost": 10.666715555447878,
+                  "notional_at_arrival": 53333.57777725
+                },
+                "arrival_slippage": {
+                  "arrival_price": 25.0,
+                  "exec_vwap": 25.005,
+                  "filled_qty": 2133.34311109,
+                  "arrival_slippage_bps": 1.999999999999602
+                },
+                "latency": {
+                  "n": 1,
+                  "avg_decision_to_submit_ms": 0.078,
+                  "avg_submit_to_ack_ms": 0.024,
+                  "avg_ack_to_fill_ms": 0.014,
+                  "avg_end_to_end_ms": 0.116,
+                  "p50_end_to_end_ms": 0.116,
+                  "p95_end_to_end_ms": 0.116,
+                  "records": [
+                    {
+                      "record_id": "lat_b67402b2db44",
+                      "order_id": "ord_2ddcf250fb9c4bfd",
+                      "decision_at": "2026-08-14T15:45:49.810435+00:00",
+                      "submit_at": "2026-08-14T15:45:49.810513+00:00",
+                      "ack_at": "2026-08-14T15:45:49.810537+00:00",
+                      "fill_at": "2026-08-14T15:45:49.810551+00:00",
+                      "decision_to_submit_ms": 0.078,
+                      "submit_to_ack_ms": 0.024,
+                      "ack_to_fill_ms": 0.014,
+                      "decision_to_fill_ms": 0.116,
+                      "end_to_end_ms": 0.116,
+                      "metadata": {}
+                    }
+                  ]
+                },
+                "pre_trade_estimate": {
+                  "name": "pre_trade_cost_estimate",
+                  "side": "buy",
+                  "quantity": 2133.34311109,
+                  "mid": 25.0,
+                  "notional": 53333.57777725,
+                  "total_cost": 42.85348977520992,
+                  "total_cost_bps": 8.034992505882387,
+                  "expected_slippage": 0.01683748126470597,
+                  "expected_slippage_bps": 6.734992505882388,
+                  "expected_market_impact": 0.00230940636911848,
+                  "expected_market_impact_bps": 0.9237625476473921,
+                  "expected_total_cost": 42.85348977520992,
+                  "components": {
+                    "commissions": 5.333357777725,
+                    "exchange_fees": 1.6000073333174998,
+                    "slippage": 35.920124664167425,
+                    "market_impact": 0.0,
+                    "financing": 0.0,
+                    "borrow": 0.0,
+                    "fx": 0.0,
+                    "spread_informational": 10.66671555545,
+                    "impact_informational": 4.926756168266279
+                  },
+                  "details": {
+                    "commissions": {
+                      "name": "commission_cost",
+                      "total": 5.333357777725,
+                      "notional": 53333.57777725,
+                      "quantity": 2133.34311109,
+                      "price": 25.0,
+                      "commission_bps": 1.0,
+                      "commission_per_share": 0.0,
+                      "min_commission": 0.0
+                    },
+                    "exchange_fees": {
+                      "name": "exchange_fees",
+                      "total": 1.6000073333174998,
+                      "notional": 53333.57777725,
+                      "fee_bps": 0.3,
+                      "fee_per_share": 0.0,
+                      "liquidity_role": "taker"
+                    },
+                    "spread": {
+                      "name": "spread_cost",
+                      "total": 10.66671555545,
+                      "spread_px": 0.005,
+                      "spread_bps": 2.0,
+                      "notional": 53333.57777725,
+                      "half_spread": true
+                    },
+                    "slippage": {
+                      "name": "slippage_cost",
+                      "total": 35.920124664167425,
+                      "slippage_px": 0.01683748126470597,
+                      "slippage_bps": 6.734992505882388,
+                      "notional": 53333.57777725,
+                      "components": {
+                        "spread": 0.005,
+                        "volatility": 0.0,
+                        "liquidity": 0.0080000366665875,
+                        "temporary_impact": 0.00230940636911848,
+                        "permanent_impact": 0.00115470318455924,
+                        "delay": 0.0
+                      },
+                      "detail": {
+                        "name": "estimate_slippage",
+                        "side": "buy",
+                        "quantity": 2133.34311109,
+                        "mid": 25.0,
+                        "expected_slippage": 0.01683748126470597,
+                        "expected_slippage_bps": 6.734992505882388,
+                        "expected_slippage_notional": 35.920124664167425,
+                        "notional": 53333.57777725,
+                        "components": {
+                          "spread": 0.005,
+                          "volatility": 0.0,
+                          "liquidity": 0.0080000366665875,
+                          "temporary_impact": 0.00230940636911848,
+                          "permanent_impact": 0.00115470318455924,
+                          "delay": 0.0
+                        },
+                        "breakdown": {
+                          "spread": 0.005,
+                          "temporary_impact": 0.00230940636911848,
+                          "permanent_impact": 0.00115470318455924,
+                          "volatility": 0.0,
+                          "liquidity": 0.0080000366665875,
+                          "size": 0.00115470318455924,
+                          "participation": 0.00037333504444075005,
+                          "delay": 0.0,
+                          "total": 0.01683748126470597,
+                          "total_bps": 6.734992505882388,
+                          "metadata": {
+                            "side": "buy",
+                            "quantity": 2133.34311109,
+                            "participation_rate": 0.0021333431110900003,
+                            "mid": 25.0
+                          }
+                        },
+                        "spread_detail": {
+                          "name": "spread_slippage",
+                          "slippage": 0.005,
+                          "slippage_bps": 2.0,
+                          "half_spread": true,
+                          "spread": 0.01,
+                          "mid": 25.0
+                        },
+                        "impact_detail": {
+                          "name": "market_impact",
+                          "temporary_impact": 0.00230940636911848,
+                          "permanent_impact": 0.00115470318455924,
+                          "slippage": 0.00230940636911848,
+                          "slippage_bps": 0.9237625476473921,
+                          "participation": 0.0021333431110900003,
+                          "impact_coeff": 0.1,
+                          "source": "analytic"
+                        },
+                        "volatility_detail": {
+                          "name": "volatility_slippage",
+                          "slippage": 0.0,
+                          "slippage_bps": 0.0,
+                          "volatility": 0.02,
+                          "time_fraction": 0.0,
+                          "coeff": 0.25
+                        },
+                        "liquidity_detail": {
+                          "name": "liquidity_slippage",
+                          "slippage": 0.0080000366665875,
+                          "slippage_bps": 3.2000146666350004,
+                          "participation": 0.0021333431110900003,
+                          "liquidity": 1.0,
+                          "coeff": 0.15
+                        },
+                        "participation": 0.0021333431110900003
+                      }
+                    },
+                    "market_impact": {
+                      "name": "market_impact_cost",
+                      "total": 4.926756168266279,
+                      "impact_px": 0.00230940636911848,
+                      "impact_bps": 0.9237625476473921,
+                      "temporary_impact": 0.00230940636911848,
+                      "permanent_impact": 0.00115470318455924,
+                      "participation": 0.0021333431110900003,
+                      "detail": {
+                        "name": "market_impact",
+                        "temporary_impact": 0.00230940636911848,
+                        "permanent_impact": 0.00115470318455924,
+                        "slippage": 0.00230940636911848,
+                        "slippage_bps": 0.9237625476473921,
+                        "participation": 0.0021333431110900003,
+                        "impact_coeff": 0.1,
+                        "source": "analytic"
+                      }
+                    },
+                    "financing": {
+                      "name": "financing_cost",
+                      "total": 0.0,
+                      "notional": 53333.57777725,
+                      "rate": 0.0,
+                      "days": 0.0,
+                      "day_count": 360.0
+                    },
+                    "borrow": {
+                      "name": "borrow_cost",
+                      "total": 0.0,
+                      "notional": 53333.57777725,
+                      "borrow_rate": 0.0,
+                      "days": 0.0,
+                      "is_short": false
+                    }
+                  }
+                },
+                "post_trade_costs": {
+                  "name": "post_trade_cost_analysis",
+                  "side": "buy",
+                  "vwap": 25.005,
+                  "filled_quantity": 2133.34311109,
+                  "parent_quantity": 2133.34311109,
+                  "residual_quantity": 0.0,
+                  "arrival_price": 25.0,
+                  "decision_price": 25.0,
+                  "mid": 25.0,
+                  "realized_cost": 17.60146733951259,
+                  "realized_cost_bps": 3.299600079983606,
+                  "realized_slippage": 10.666715555447878,
+                  "realized_slippage_bps": 1.999999999999602,
+                  "realized_market_impact": 10.666715555447878,
+                  "implementation_shortfall": 17.60146733951259,
+                  "implementation_shortfall_bps": 3.3002599999996023,
+                  "cost_attribution": {
+                    "delay_cost": 0.0,
+                    "trading_cost": 10.666715555447878,
+                    "spread_cost": 0.0,
+                    "commissions": 5.3344244492805455,
+                    "exchange_fees": 1.6003273347841636,
+                    "financing": 0.0,
+                    "borrow": 0.0,
+                    "fx": 0.0,
+                    "opportunity_cost": 0.0
+                  },
+                  "benchmarks": {
+                    "arrival_slippage_bps": 1.999999999999602,
+                    "decision_slippage_bps": 1.999999999999602,
+                    "vwap_slippage_bps": null,
+                    "twap_slippage_bps": null
+                  },
+                  "components": {
+                    "commissions": 5.3344244492805455,
+                    "exchange_fees": 1.6003273347841636,
+                    "spread": 0.0,
+                    "slippage": 10.666715555447878,
+                    "market_impact": 10.666715555447878,
+                    "financing": 0.0,
+                    "borrow": 0.0,
+                    "fx": 0.0,
+                    "opportunity": 0.0
+                  },
+                  "fill_rate": 1.0,
+                  "details": {
+                    "commissions": {
+                      "name": "commission_cost",
+                      "total": 5.3344244492805455,
+                      "notional": 53344.244492805454,
+                      "quantity": 2133.34311109,
+                      "price": 25.005,
+                      "commission_bps": 1.0,
+                      "commission_per_share": 0.0,
+                      "min_commission": 0.0
+                    },
+                    "exchange_fees": {
+                      "name": "exchange_fees",
+                      "total": 1.6003273347841636,
+                      "notional": 53344.244492805454,
+                      "fee_bps": 0.3,
+                      "fee_per_share": 0.0,
+                      "liquidity_role": "taker"
+                    },
+                    "spread": {
+                      "name": "spread_cost",
+                      "total": 0.0,
+                      "spread_px": 0.0,
+                      "spread_bps": 0.0,
+                      "notional": 53333.57777725,
+                      "half_spread": true
+                    },
+                    "financing": {
+                      "name": "financing_cost",
+                      "total": 0.0,
+                      "notional": 53344.244492805454,
+                      "rate": 0.0,
+                      "days": 0.0,
+                      "day_count": 360.0
+                    },
+                    "borrow": {
+                      "name": "borrow_cost",
+                      "total": 0.0,
+                      "notional": 53344.244492805454,
+                      "borrow_rate": 0.0,
+                      "days": 0.0,
+                      "is_short": false
+                    }
+                  },
+                  "adv": 1000000.0,
+                  "volatility": 0.02
+                },
+                "vwap_slippage": {
+                  "label": "vwap",
+                  "benchmark_price": 25.0,
+                  "exec_vwap": 25.005,
+                  "filled_qty": 2133.34311109,
+                  "slippage_bps": 1.999999999999602
+                },
+                "twap_slippage": {
+                  "label": "twap",
+                  "benchmark_price": 25.0,
+                  "exec_vwap": 25.005,
+                  "filled_qty": 2133.34311109,
+                  "slippage_bps": 1.999999999999602
+                }
+              }
+            ]
+          },
+          "latency": {
+            "n": 1,
+            "avg_decision_to_submit_ms": 0.078,
+            "avg_submit_to_ack_ms": 0.024,
+            "avg_ack_to_fill_ms": 0.014,
+            "avg_end_to_end_ms": 0.116,
+            "p50_end_to_end_ms": 0.116,
+            "p95_end_to_end_ms": 0.116,
+            "records": [
+              {
+                "record_id": "lat_b67402b2db44",
+                "order_id": "ord_2ddcf250fb9c4bfd",
+                "decision_at": "2026-08-14T15:45:49.810435+00:00",
+                "submit_at": "2026-08-14T15:45:49.810513+00:00",
+                "ack_at": "2026-08-14T15:45:49.810537+00:00",
+                "fill_at": "2026-08-14T15:45:49.810551+00:00",
+                "decision_to_submit_ms": 0.078,
+                "submit_to_ack_ms": 0.024,
+                "ack_to_fill_ms": 0.014,
+                "decision_to_fill_ms": 0.116,
+                "end_to_end_ms": 0.116,
+                "metadata": {}
+              }
+            ]
+          },
+          "audit": [
+            {
+              "action": "planned",
+              "timestamp": "2026-08-14T15:45:49.810325+00:00",
+              "details": {
+                "n_parents": 1
+              }
+            },
+            {
+              "action": "pre_trade",
+              "timestamp": "2026-08-14T15:45:49.810371+00:00",
+              "details": {
+                "parent_id": "par_e49a607ab67f49f9",
+                "total_cost": 42.85348977520992
+              }
+            },
+            {
+              "action": "algo_plan",
+              "timestamp": "2026-08-14T15:45:49.810411+00:00",
+              "details": {
+                "parent_id": "par_e49a607ab67f49f9",
+                "n_slices": 1,
+                "qty": 2133.34311109
+              }
+            },
+            {
+              "action": "submit",
+              "timestamp": "2026-08-14T15:45:49.810527+00:00",
+              "details": {
+                "order_id": "ord_2ddcf250fb9c4bfd",
+                "venue": "SIM"
+              }
+            },
+            {
+              "action": "fill",
+              "timestamp": "2026-08-14T15:45:49.810575+00:00",
+              "details": {
+                "order_id": "ord_2ddcf250fb9c4bfd",
+                "qty": 2133.34311109,
+                "price": 25.005
+              }
+            }
+          ],
+          "errors": [],
+          "metadata": {
+            "urgency": "NORMAL",
+            "simulation_mode": true
+          }
+        }
+      }
+    },
+    {
+      "candidate_id": "cD",
+      "signal_id": "syn_d",
+      "model_id": "synthetic",
+      "model_version": "1.0.0",
+      "dataset_id": "syn@1",
+      "dataset_checksum": "abc",
+      "risk_decision_id": "risk_999d2e8219e64b55",
+      "portfolio_decision_id": "port_afef06cbd40540ba",
+      "order_id": "ord_a147fa6124024010",
+      "fill_ids": [
+        "fill|ord_c9afa7f15d5a4ceb|SIM-2b832158917d|940.81012657"
+      ],
+      "trade_ids": [],
+      "extra": {
+        "expected_horizon": 2,
+        "signal_timeframe": "",
+        "execution_timeframe": "",
+        "all_order_ids": [
+          "ord_a147fa6124024010"
+        ],
+        "execution_report": {
+          "execution_id": "ex_de87bb56129344a8",
+          "status": "FILLED",
+          "state": "COMPLETED",
+          "algo": "market",
+          "parents": [
+            {
+              "parent_id": "par_102c53e968f1457b",
+              "instrument": "AAA",
+              "side": "SELL",
+              "quantity": 940.81012657,
+              "filled_qty": 940.81012657,
+              "residual_qty": 0.0,
+              "strategy_id": "cD",
+              "portfolio_id": null,
+              "urgency": "NORMAL",
+              "algo": "market",
+              "state": "COMPLETED",
+              "child_ids": [
+                "ord_c9afa7f15d5a4ceb"
+              ],
+              "created_at": "2026-08-14T15:45:49.811154+00:00",
+              "updated_at": "2026-08-14T15:45:49.811396+00:00",
+              "metadata": {}
+            }
+          ],
+          "children": [
+            {
+              "order_id": "ord_c9afa7f15d5a4ceb",
+              "parent_id": "par_102c53e968f1457b",
+              "strategy_id": "cD",
+              "portfolio_id": null,
+              "account_id": null,
+              "instrument": "AAA",
+              "side": "SELL",
+              "quantity": 940.81012657,
+              "filled_qty": 940.81012657,
+              "residual_qty": 0.0,
+              "price": null,
+              "stop_price": null,
+              "order_type": "MARKET",
+              "time_in_force": "DAY",
+              "venue": "SIM",
+              "algo": "market",
+              "urgency": "NORMAL",
+              "state": "FILLED",
+              "client_order_id": "ord_c9afa7f15d5a4ceb",
+              "idempotency_key": "cD|AAA|SELL|940.81012657|MARKET|None|ord_c9afa7f15d5a4ceb",
+              "venue_order_id": "SIM-2b832158917d",
+              "avg_fill_price": 99.995,
+              "created_at": "2026-08-14T15:45:49.811250+00:00",
+              "updated_at": "2026-08-14T15:45:49.811385+00:00",
+              "submitted_at": "2026-08-14T15:45:49.811335+00:00",
+              "acknowledged_at": "2026-08-14T15:45:49.811357+00:00",
+              "completed_at": "2026-08-14T15:45:49.811383+00:00",
+              "reject_reason": null,
+              "tags": {
+                "slice": 0,
+                "not_before_offset": 0.0
+              },
+              "audit": [
+                {
+                  "event": "state_transition",
+                  "from": "CREATED",
+                  "to": "VALIDATING",
+                  "reason": "begin_validation",
+                  "actor": "system"
+                },
+                {
+                  "event": "state_transition",
+                  "from": "VALIDATING",
+                  "to": "APPROVED",
+                  "reason": "approved",
+                  "actor": "system"
+                },
+                {
+                  "event": "state_transition",
+                  "from": "APPROVED",
+                  "to": "SUBMITTED",
+                  "reason": "submitted",
+                  "actor": "system"
+                },
+                {
+                  "event": "state_transition",
+                  "from": "SUBMITTED",
+                  "to": "ACKNOWLEDGED",
+                  "reason": "acknowledged",
+                  "actor": "system"
+                },
+                {
+                  "event": "fill",
+                  "event_id": "fill|ord_c9afa7f15d5a4ceb|SIM-2b832158917d|940.81012657",
+                  "fill_qty": 940.81012657,
+                  "fill_price": 99.995,
+                  "filled_qty": 940.81012657,
+                  "residual_qty": 0.0,
+                  "avg_fill_price": 99.995
+                },
+                {
+                  "event": "state_transition",
+                  "from": "ACKNOWLEDGED",
+                  "to": "FILLED",
+                  "reason": "filled",
+                  "actor": "system"
+                }
+              ],
+              "metadata": {
+                "role": "child"
+              }
+            }
+          ],
+          "fills": [
+            {
+              "order_id": "ord_c9afa7f15d5a4ceb",
+              "instrument": "AAA",
+              "quantity": 940.81012657,
+              "qty": 940.81012657,
+              "price": 99.995,
+              "fill_price": 99.995,
+              "venue": "SIM",
+              "event_id": "fill|ord_c9afa7f15d5a4ceb|SIM-2b832158917d|940.81012657"
+            }
+          ],
+          "routing": [
+            {
+              "accepted": true,
+              "order_id": "ord_c9afa7f15d5a4ceb",
+              "instrument": "AAA",
+              "side": "SELL",
+              "quantity": 940.81012657,
+              "mode": "single",
+              "primary_venue_id": "SIM",
+              "allocations": [
+                {
+                  "venue_id": "SIM",
+                  "quantity": 940.81012657,
+                  "score": 0.9602329972210883,
+                  "fillable_qty": 940.81012657,
+                  "weight": 1.0
+                }
+              ],
+              "scores": [
+                {
+                  "venue_id": "SIM",
+                  "score": 0.9602329972210883,
+                  "components": {
+                    "price": 1.0,
+                    "fees": 0.8333333333333334,
+                    "spread": 0.9090909090909842,
+                    "liquidity": 1.0,
+                    "impact": 0.970240183494074,
+                    "fill_prob": 0.95,
+                    "latency": 0.9090909090909091,
+                    "reliability": 1.0
+                  },
+                  "raw": {
+                    "expected_price": 99.98886578106713,
+                    "fee_bps": 1.0,
+                    "spread_bps": 0.9999999999990905,
+                    "impact_bps": 0.6134525659152467,
+                    "liquidity_score": 1.0,
+                    "fillable_qty": 940.81012657,
+                    "fill_probability": 0.95,
+                    "latency_ms": 5.0,
+                    "reliability": 1.0,
+                    "preference": 1.0
+                  }
+                }
+              ],
+              "costs": {
+                "SIM": {
+                  "venue_id": "SIM",
+                  "expected_price": 99.98886578106713,
+                  "mid": 100.0,
+                  "spread_bps": 0.9999999999990905,
+                  "fee_bps": 1.0,
+                  "fee_notional": 9.40705374710765,
+                  "impact_bps": 0.6134525659152467,
+                  "impact_notional": 5.770781258865824,
+                  "spread_notional": 4.7035268735495475,
+                  "total_cost_bps": 2.1134525659147916,
+                  "total_cost_notional": 19.88136187952302,
+                  "notional": 94070.5374710765
+                }
+              },
+              "liquidity": {
+                "SIM": {
+                  "venue_id": "SIM",
+                  "instrument": "AAA",
+                  "available_qty": 1000000000000.0,
+                  "adv": 1000000.0,
+                  "liquidity_score": 1.0,
+                  "participation": 0.00094081012657,
+                  "fillable_qty": 940.81012657,
+                  "depth_ok": true,
+                  "reasons": []
+                }
+              },
+              "fallback": {
+                "primary_venue_id": "SIM",
+                "steps": [],
+                "cursor": 0
+              },
+              "rejections": [],
+              "residual_qty": 0.0,
+              "timestamp": "2026-08-14T15:45:49.811289+00:00",
+              "metadata": {
+                "urgency": "NORMAL",
+                "order_type": "MARKET",
+                "impact_coeff": 0.1
+              }
+            }
+          ],
+          "pre_trade": {
+            "by_parent": [
+              {
+                "parent_id": "par_102c53e968f1457b",
+                "instrument": "AAA",
+                "costs": {
+                  "name": "pre_trade_cost_estimate",
+                  "side": "sell",
+                  "quantity": 940.81012657,
+                  "mid": 100.0,
+                  "notional": 94081.012657,
+                  "total_cost": 39.48816007084078,
+                  "total_cost_bps": 4.197250747587771,
+                  "expected_slippage": 0.028972507475877703,
+                  "expected_slippage_bps": 2.8972507475877705,
+                  "expected_market_impact": 0.006134525659152467,
+                  "expected_market_impact_bps": 0.6134525659152467,
+                  "expected_total_cost": 39.48816007084078,
+                  "components": {
+                    "commissions": 9.408101265700001,
+                    "exchange_fees": 2.8224303797099997,
+                    "slippage": 27.257628425430774,
+                    "market_impact": 0.0,
+                    "financing": 0.0,
+                    "borrow": 0.0,
+                    "fx": 0.0,
+                    "spread_informational": 4.70405063285,
+                    "impact_informational": 5.771423861834145
+                  },
+                  "details": {
+                    "commissions": {
+                      "name": "commission_cost",
+                      "total": 9.408101265700001,
+                      "notional": 94081.012657,
+                      "quantity": 940.81012657,
+                      "price": 100.0,
+                      "commission_bps": 1.0,
+                      "commission_per_share": 0.0,
+                      "min_commission": 0.0
+                    },
+                    "exchange_fees": {
+                      "name": "exchange_fees",
+                      "total": 2.8224303797099997,
+                      "notional": 94081.012657,
+                      "fee_bps": 0.3,
+                      "fee_per_share": 0.0,
+                      "liquidity_role": "taker"
+                    },
+                    "spread": {
+                      "name": "spread_cost",
+                      "total": 4.70405063285,
+                      "spread_px": 0.005,
+                      "spread_bps": 0.5,
+                      "notional": 94081.012657,
+                      "half_spread": true
+                    },
+                    "slippage": {
+                      "name": "slippage_cost",
+                      "total": 27.257628425430774,
+                      "slippage_px": 0.028972507475877703,
+                      "slippage_bps": 2.8972507475877705,
+                      "notional": 94081.012657,
+                      "components": {
+                        "spread": 0.005,
+                        "volatility": 0.0,
+                        "liquidity": 0.01411215189855,
+                        "temporary_impact": 0.006134525659152467,
+                        "permanent_impact": 0.0030672628295762335,
+                        "delay": 0.0
+                      },
+                      "detail": {
+                        "name": "estimate_slippage",
+                        "side": "sell",
+                        "quantity": 940.81012657,
+                        "mid": 100.0,
+                        "expected_slippage": 0.028972507475877703,
+                        "expected_slippage_bps": 2.8972507475877705,
+                        "expected_slippage_notional": 27.257628425430774,
+                        "notional": 94081.012657,
+                        "components": {
+                          "spread": 0.005,
+                          "volatility": 0.0,
+                          "liquidity": 0.01411215189855,
+                          "temporary_impact": 0.006134525659152467,
+                          "permanent_impact": 0.0030672628295762335,
+                          "delay": 0.0
+                        },
+                        "breakdown": {
+                          "spread": 0.005,
+                          "temporary_impact": 0.006134525659152467,
+                          "permanent_impact": 0.0030672628295762335,
+                          "volatility": 0.0,
+                          "liquidity": 0.01411215189855,
+                          "size": 0.0030672628295762335,
+                          "participation": 0.000658567088599,
+                          "delay": 0.0,
+                          "total": 0.028972507475877703,
+                          "total_bps": 2.8972507475877705,
+                          "metadata": {
+                            "side": "sell",
+                            "quantity": 940.81012657,
+                            "participation_rate": 0.00094081012657,
+                            "mid": 100.0
+                          }
+                        },
+                        "spread_detail": {
+                          "name": "spread_slippage",
+                          "slippage": 0.005,
+                          "slippage_bps": 0.5,
+                          "half_spread": true,
+                          "spread": 0.01,
+                          "mid": 100.0
+                        },
+                        "impact_detail": {
+                          "name": "market_impact",
+                          "temporary_impact": 0.006134525659152467,
+                          "permanent_impact": 0.0030672628295762335,
+                          "slippage": 0.006134525659152467,
+                          "slippage_bps": 0.6134525659152467,
+                          "participation": 0.00094081012657,
+                          "impact_coeff": 0.1,
+                          "source": "analytic"
+                        },
+                        "volatility_detail": {
+                          "name": "volatility_slippage",
+                          "slippage": 0.0,
+                          "slippage_bps": 0.0,
+                          "volatility": 0.02,
+                          "time_fraction": 0.0,
+                          "coeff": 0.25
+                        },
+                        "liquidity_detail": {
+                          "name": "liquidity_slippage",
+                          "slippage": 0.01411215189855,
+                          "slippage_bps": 1.411215189855,
+                          "participation": 0.00094081012657,
+                          "liquidity": 1.0,
+                          "coeff": 0.15
+                        },
+                        "participation": 0.00094081012657
+                      }
+                    },
+                    "market_impact": {
+                      "name": "market_impact_cost",
+                      "total": 5.771423861834145,
+                      "impact_px": 0.006134525659152467,
+                      "impact_bps": 0.6134525659152467,
+                      "temporary_impact": 0.006134525659152467,
+                      "permanent_impact": 0.0030672628295762335,
+                      "participation": 0.00094081012657,
+                      "detail": {
+                        "name": "market_impact",
+                        "temporary_impact": 0.006134525659152467,
+                        "permanent_impact": 0.0030672628295762335,
+                        "slippage": 0.006134525659152467,
+                        "slippage_bps": 0.6134525659152467,
+                        "participation": 0.00094081012657,
+                        "impact_coeff": 0.1,
+                        "source": "analytic"
+                      }
+                    },
+                    "financing": {
+                      "name": "financing_cost",
+                      "total": 0.0,
+                      "notional": 94081.012657,
+                      "rate": 0.0,
+                      "days": 0.0,
+                      "day_count": 360.0
+                    },
+                    "borrow": {
+                      "name": "borrow_cost",
+                      "total": 0.0,
+                      "notional": 94081.012657,
+                      "borrow_rate": 0.0,
+                      "days": 0.0,
+                      "day_count": 360.0,
+                      "is_short": true
+                    }
+                  }
+                },
+                "slippage": {
+                  "name": "estimate_slippage",
+                  "side": "sell",
+                  "quantity": 940.81012657,
+                  "mid": 100.0,
+                  "expected_slippage": 0.028972507475877703,
+                  "expected_slippage_bps": 2.8972507475877705,
+                  "expected_slippage_notional": 27.257628425430774,
+                  "notional": 94081.012657,
+                  "components": {
+                    "spread": 0.005,
+                    "volatility": 0.0,
+                    "liquidity": 0.01411215189855,
+                    "temporary_impact": 0.006134525659152467,
+                    "permanent_impact": 0.0030672628295762335,
+                    "delay": 0.0
+                  },
+                  "breakdown": {
+                    "spread": 0.005,
+                    "temporary_impact": 0.006134525659152467,
+                    "permanent_impact": 0.0030672628295762335,
+                    "volatility": 0.0,
+                    "liquidity": 0.01411215189855,
+                    "size": 0.0030672628295762335,
+                    "participation": 0.000658567088599,
+                    "delay": 0.0,
+                    "total": 0.028972507475877703,
+                    "total_bps": 2.8972507475877705,
+                    "metadata": {
+                      "side": "sell",
+                      "quantity": 940.81012657,
+                      "participation_rate": 0.00094081012657,
+                      "mid": 100.0
+                    }
+                  },
+                  "spread_detail": {
+                    "name": "spread_slippage",
+                    "slippage": 0.005,
+                    "slippage_bps": 0.5,
+                    "half_spread": true,
+                    "spread": 0.01,
+                    "mid": 100.0
+                  },
+                  "impact_detail": {
+                    "name": "market_impact",
+                    "temporary_impact": 0.006134525659152467,
+                    "permanent_impact": 0.0030672628295762335,
+                    "slippage": 0.006134525659152467,
+                    "slippage_bps": 0.6134525659152467,
+                    "participation": 0.00094081012657,
+                    "impact_coeff": 0.1,
+                    "source": "analytic"
+                  },
+                  "volatility_detail": {
+                    "name": "volatility_slippage",
+                    "slippage": 0.0,
+                    "slippage_bps": 0.0,
+                    "volatility": 0.02,
+                    "time_fraction": 0.0,
+                    "coeff": 0.25
+                  },
+                  "liquidity_detail": {
+                    "name": "liquidity_slippage",
+                    "slippage": 0.01411215189855,
+                    "slippage_bps": 1.411215189855,
+                    "participation": 0.00094081012657,
+                    "liquidity": 1.0,
+                    "coeff": 0.15
+                  },
+                  "participation": 0.00094081012657
+                }
+              }
+            ]
+          },
+          "post_trade": {
+            "by_parent": [
+              {
+                "parent_id": "par_102c53e968f1457b",
+                "instrument": "AAA",
+                "name": "post_trade_cost_analysis",
+                "side": "sell",
+                "vwap": 99.995,
+                "filled_quantity": 940.81012657,
+                "parent_quantity": 940.81012657,
+                "residual_quantity": 0.0,
+                "arrival_price": 100.0,
+                "decision_price": 100.0,
+                "mid": 100.0,
+                "realized_cost": 16.93397075167345,
+                "realized_cost_bps": 1.8000250012496075,
+                "realized_slippage": 4.704050632845721,
+                "realized_slippage_bps": 0.49999999999954525,
+                "realized_market_impact": 4.704050632845721,
+                "implementation_shortfall": 16.93397075167345,
+                "implementation_shortfall_bps": 1.799934999999545,
+                "cost_attribution": {
+                  "delay_cost": 0.0,
+                  "trading_cost": 4.704050632845721,
+                  "spread_cost": 0.0,
+                  "commissions": 9.407630860636715,
+                  "exchange_fees": 2.8222892581910144,
+                  "financing": 0.0,
+                  "borrow": 0.0,
+                  "fx": 0.0,
+                  "opportunity_cost": 0.0
+                },
+                "benchmarks": {
+                  "arrival_slippage_bps": 0.49999999999954525,
+                  "decision_slippage_bps": 0.49999999999954525,
+                  "vwap_slippage_bps": null,
+                  "twap_slippage_bps": null
+                },
+                "components": {
+                  "commissions": 9.407630860636715,
+                  "exchange_fees": 2.8222892581910144,
+                  "spread": 0.0,
+                  "slippage": 4.704050632845721,
+                  "market_impact": 4.704050632845721,
+                  "financing": 0.0,
+                  "borrow": 0.0,
+                  "fx": 0.0,
+                  "opportunity": 0.0
+                },
+                "fill_rate": 1.0,
+                "details": {
+                  "commissions": {
+                    "name": "commission_cost",
+                    "total": 9.407630860636715,
+                    "notional": 94076.30860636715,
+                    "quantity": 940.81012657,
+                    "price": 99.995,
+                    "commission_bps": 1.0,
+                    "commission_per_share": 0.0,
+                    "min_commission": 0.0
+                  },
+                  "exchange_fees": {
+                    "name": "exchange_fees",
+                    "total": 2.8222892581910144,
+                    "notional": 94076.30860636715,
+                    "fee_bps": 0.3,
+                    "fee_per_share": 0.0,
+                    "liquidity_role": "taker"
+                  },
+                  "spread": {
+                    "name": "spread_cost",
+                    "total": 0.0,
+                    "spread_px": 0.0,
+                    "spread_bps": 0.0,
+                    "notional": 94081.012657,
+                    "half_spread": true
+                  },
+                  "financing": {
+                    "name": "financing_cost",
+                    "total": 0.0,
+                    "notional": 94076.30860636715,
+                    "rate": 0.0,
+                    "days": 0.0,
+                    "day_count": 360.0
+                  },
+                  "borrow": {
+                    "name": "borrow_cost",
+                    "total": 0.0,
+                    "notional": 94076.30860636715,
+                    "borrow_rate": 0.0,
+                    "days": 0.0,
+                    "day_count": 360.0,
+                    "is_short": true
+                  }
+                },
+                "adv": 1000000.0,
+                "volatility": 0.02
+              }
+            ]
+          },
+          "analytics": {
+            "by_parent": [
+              {
+                "parent_id": "par_102c53e968f1457b",
+                "instrument": "AAA",
+                "side": "SELL",
+                "ordered_qty": 940.81012657,
+                "filled_qty": 940.81012657,
+                "exec_vwap": 99.995,
+                "fill_rate": {
+                  "ordered_qty": 940.81012657,
+                  "filled_qty": 940.81012657,
+                  "residual_qty": 0.0,
+                  "fill_rate": 1.0
+                },
+                "implementation_shortfall": {
+                  "arrival_price": 100.0,
+                  "decision_price": 100.0,
+                  "exec_vwap": 99.995,
+                  "filled_qty": 940.81012657,
+                  "implementation_shortfall_bps": 0.49999999999954525,
+                  "decision_slippage_bps": 0.49999999999954525,
+                  "implementation_shortfall_cost": 4.704050632845722,
+                  "notional_at_arrival": 94081.012657
+                },
+                "arrival_slippage": {
+                  "arrival_price": 100.0,
+                  "exec_vwap": 99.995,
+                  "filled_qty": 940.81012657,
+                  "arrival_slippage_bps": 0.49999999999954525
+                },
+                "latency": {
+                  "n": 1,
+                  "avg_decision_to_submit_ms": 0.07100000000000001,
+                  "avg_submit_to_ack_ms": 0.024,
+                  "avg_ack_to_fill_ms": 0.011,
+                  "avg_end_to_end_ms": 0.106,
+                  "p50_end_to_end_ms": 0.106,
+                  "p95_end_to_end_ms": 0.106,
+                  "records": [
+                    {
+                      "record_id": "lat_b4bc26314993",
+                      "order_id": "ord_c9afa7f15d5a4ceb",
+                      "decision_at": "2026-08-14T15:45:49.811261+00:00",
+                      "submit_at": "2026-08-14T15:45:49.811332+00:00",
+                      "ack_at": "2026-08-14T15:45:49.811356+00:00",
+                      "fill_at": "2026-08-14T15:45:49.811367+00:00",
+                      "decision_to_submit_ms": 0.07100000000000001,
+                      "submit_to_ack_ms": 0.024,
+                      "ack_to_fill_ms": 0.011,
+                      "decision_to_fill_ms": 0.106,
+                      "end_to_end_ms": 0.106,
+                      "metadata": {}
+                    }
+                  ]
+                },
+                "pre_trade_estimate": {
+                  "name": "pre_trade_cost_estimate",
+                  "side": "sell",
+                  "quantity": 940.81012657,
+                  "mid": 100.0,
+                  "notional": 94081.012657,
+                  "total_cost": 39.48816007084078,
+                  "total_cost_bps": 4.197250747587771,
+                  "expected_slippage": 0.028972507475877703,
+                  "expected_slippage_bps": 2.8972507475877705,
+                  "expected_market_impact": 0.006134525659152467,
+                  "expected_market_impact_bps": 0.6134525659152467,
+                  "expected_total_cost": 39.48816007084078,
+                  "components": {
+                    "commissions": 9.408101265700001,
+                    "exchange_fees": 2.8224303797099997,
+                    "slippage": 27.257628425430774,
+                    "market_impact": 0.0,
+                    "financing": 0.0,
+                    "borrow": 0.0,
+                    "fx": 0.0,
+                    "spread_informational": 4.70405063285,
+                    "impact_informational": 5.771423861834145
+                  },
+                  "details": {
+                    "commissions": {
+                      "name": "commission_cost",
+                      "total": 9.408101265700001,
+                      "notional": 94081.012657,
+                      "quantity": 940.81012657,
+                      "price": 100.0,
+                      "commission_bps": 1.0,
+                      "commission_per_share": 0.0,
+                      "min_commission": 0.0
+                    },
+                    "exchange_fees": {
+                      "name": "exchange_fees",
+                      "total": 2.8224303797099997,
+                      "notional": 94081.012657,
+                      "fee_bps": 0.3,
+                      "fee_per_share": 0.0,
+                      "liquidity_role": "taker"
+                    },
+                    "spread": {
+                      "name": "spread_cost",
+                      "total": 4.70405063285,
+                      "spread_px": 0.005,
+                      "spread_bps": 0.5,
+                      "notional": 94081.012657,
+                      "half_spread": true
+                    },
+                    "slippage": {
+                      "name": "slippage_cost",
+                      "total": 27.257628425430774,
+                      "slippage_px": 0.028972507475877703,
+                      "slippage_bps": 2.8972507475877705,
+                      "notional": 94081.012657,
+                      "components": {
+                        "spread": 0.005,
+                        "volatility": 0.0,
+                        "liquidity": 0.01411215189855,
+                        "temporary_impact": 0.006134525659152467,
+                        "permanent_impact": 0.0030672628295762335,
+                        "delay": 0.0
+                      },
+                      "detail": {
+                        "name": "estimate_slippage",
+                        "side": "sell",
+                        "quantity": 940.81012657,
+                        "mid": 100.0,
+                        "expected_slippage": 0.028972507475877703,
+                        "expected_slippage_bps": 2.8972507475877705,
+                        "expected_slippage_notional": 27.257628425430774,
+                        "notional": 94081.012657,
+                        "components": {
+                          "spread": 0.005,
+                          "volatility": 0.0,
+                          "liquidity": 0.01411215189855,
+                          "temporary_impact": 0.006134525659152467,
+                          "permanent_impact": 0.0030672628295762335,
+                          "delay": 0.0
+                        },
+                        "breakdown": {
+                          "spread": 0.005,
+                          "temporary_impact": 0.006134525659152467,
+                          "permanent_impact": 0.0030672628295762335,
+                          "volatility": 0.0,
+                          "liquidity": 0.01411215189855,
+                          "size": 0.0030672628295762335,
+                          "participation": 0.000658567088599,
+                          "delay": 0.0,
+                          "total": 0.028972507475877703,
+                          "total_bps": 2.8972507475877705,
+                          "metadata": {
+                            "side": "sell",
+                            "quantity": 940.81012657,
+                            "participation_rate": 0.00094081012657,
+                            "mid": 100.0
+                          }
+                        },
+                        "spread_detail": {
+                          "name": "spread_slippage",
+                          "slippage": 0.005,
+                          "slippage_bps": 0.5,
+                          "half_spread": true,
+                          "spread": 0.01,
+                          "mid": 100.0
+                        },
+                        "impact_detail": {
+                          "name": "market_impact",
+                          "temporary_impact": 0.006134525659152467,
+                          "permanent_impact": 0.0030672628295762335,
+                          "slippage": 0.006134525659152467,
+                          "slippage_bps": 0.6134525659152467,
+                          "participation": 0.00094081012657,
+                          "impact_coeff": 0.1,
+                          "source": "analytic"
+                        },
+                        "volatility_detail": {
+                          "name": "volatility_slippage",
+                          "slippage": 0.0,
+                          "slippage_bps": 0.0,
+                          "volatility": 0.02,
+                          "time_fraction": 0.0,
+                          "coeff": 0.25
+                        },
+                        "liquidity_detail": {
+                          "name": "liquidity_slippage",
+                          "slippage": 0.01411215189855,
+                          "slippage_bps": 1.411215189855,
+                          "participation": 0.00094081012657,
+                          "liquidity": 1.0,
+                          "coeff": 0.15
+                        },
+                        "participation": 0.00094081012657
+                      }
+                    },
+                    "market_impact": {
+                      "name": "market_impact_cost",
+                      "total": 5.771423861834145,
+                      "impact_px": 0.006134525659152467,
+                      "impact_bps": 0.6134525659152467,
+                      "temporary_impact": 0.006134525659152467,
+                      "permanent_impact": 0.0030672628295762335,
+                      "participation": 0.00094081012657,
+                      "detail": {
+                        "name": "market_impact",
+                        "temporary_impact": 0.006134525659152467,
+                        "permanent_impact": 0.0030672628295762335,
+                        "slippage": 0.006134525659152467,
+                        "slippage_bps": 0.6134525659152467,
+                        "participation": 0.00094081012657,
+                        "impact_coeff": 0.1,
+                        "source": "analytic"
+                      }
+                    },
+                    "financing": {
+                      "name": "financing_cost",
+                      "total": 0.0,
+                      "notional": 94081.012657,
+                      "rate": 0.0,
+                      "days": 0.0,
+                      "day_count": 360.0
+                    },
+                    "borrow": {
+                      "name": "borrow_cost",
+                      "total": 0.0,
+                      "notional": 94081.012657,
+                      "borrow_rate": 0.0,
+                      "days": 0.0,
+                      "day_count": 360.0,
+                      "is_short": true
+                    }
+                  }
+                },
+                "post_trade_costs": {
+                  "name": "post_trade_cost_analysis",
+                  "side": "sell",
+                  "vwap": 99.995,
+                  "filled_quantity": 940.81012657,
+                  "parent_quantity": 940.81012657,
+                  "residual_quantity": 0.0,
+                  "arrival_price": 100.0,
+                  "decision_price": 100.0,
+                  "mid": 100.0,
+                  "realized_cost": 16.93397075167345,
+                  "realized_cost_bps": 1.8000250012496075,
+                  "realized_slippage": 4.704050632845721,
+                  "realized_slippage_bps": 0.49999999999954525,
+                  "realized_market_impact": 4.704050632845721,
+                  "implementation_shortfall": 16.93397075167345,
+                  "implementation_shortfall_bps": 1.799934999999545,
+                  "cost_attribution": {
+                    "delay_cost": 0.0,
+                    "trading_cost": 4.704050632845721,
+                    "spread_cost": 0.0,
+                    "commissions": 9.407630860636715,
+                    "exchange_fees": 2.8222892581910144,
+                    "financing": 0.0,
+                    "borrow": 0.0,
+                    "fx": 0.0,
+                    "opportunity_cost": 0.0
+                  },
+                  "benchmarks": {
+                    "arrival_slippage_bps": 0.49999999999954525,
+                    "decision_slippage_bps": 0.49999999999954525,
+                    "vwap_slippage_bps": null,
+                    "twap_slippage_bps": null
+                  },
+                  "components": {
+                    "commissions": 9.407630860636715,
+                    "exchange_fees": 2.8222892581910144,
+                    "spread": 0.0,
+                    "slippage": 4.704050632845721,
+                    "market_impact": 4.704050632845721,
+                    "financing": 0.0,
+                    "borrow": 0.0,
+                    "fx": 0.0,
+                    "opportunity": 0.0
+                  },
+                  "fill_rate": 1.0,
+                  "details": {
+                    "commissions": {
+                      "name": "commission_cost",
+                      "total": 9.407630860636715,
+                      "notional": 94076.30860636715,
+                      "quantity": 940.81012657,
+                      "price": 99.995,
+                      "commission_bps": 1.0,
+                      "commission_per_share": 0.0,
+                      "min_commission": 0.0
+                    },
+                    "exchange_fees": {
+                      "name": "exchange_fees",
+                      "total": 2.8222892581910144,
+                      "notional": 94076.30860636715,
+                      "fee_bps": 0.3,
+                      "fee_per_share": 0.0,
+                      "liquidity_role": "taker"
+                    },
+                    "spread": {
+                      "name": "spread_cost",
+                      "total": 0.0,
+                      "spread_px": 0.0,
+                      "spread_bps": 0.0,
+                      "notional": 94081.012657,
+                      "half_spread": true
+                    },
+                    "financing": {
+                      "name": "financing_cost",
+                      "total": 0.0,
+                      "notional": 94076.30860636715,
+                      "rate": 0.0,
+                      "days": 0.0,
+                      "day_count": 360.0
+                    },
+                    "borrow": {
+                      "name": "borrow_cost",
+                      "total": 0.0,
+                      "notional": 94076.30860636715,
+                      "borrow_rate": 0.0,
+                      "days": 0.0,
+                      "day_count": 360.0,
+                      "is_short": true
+                    }
+                  },
+                  "adv": 1000000.0,
+                  "volatility": 0.02
+                },
+                "vwap_slippage": {
+                  "label": "vwap",
+                  "benchmark_price": 100.0,
+                  "exec_vwap": 99.995,
+                  "filled_qty": 940.81012657,
+                  "slippage_bps": 0.49999999999954525
+                },
+                "twap_slippage": {
+                  "label": "twap",
+                  "benchmark_price": 100.0,
+                  "exec_vwap": 99.995,
+                  "filled_qty": 940.81012657,
+                  "slippage_bps": 0.49999999999954525
+                }
+              }
+            ]
+          },
+          "latency": {
+            "n": 1,
+            "avg_decision_to_submit_ms": 0.07100000000000001,
+            "avg_submit_to_ack_ms": 0.024,
+            "avg_ack_to_fill_ms": 0.011,
+            "avg_end_to_end_ms": 0.106,
+            "p50_end_to_end_ms": 0.106,
+            "p95_end_to_end_ms": 0.106,
+            "records": [
+              {
+                "record_id": "lat_b4bc26314993",
+                "order_id": "ord_c9afa7f15d5a4ceb",
+                "decision_at": "2026-08-14T15:45:49.811261+00:00",
+                "submit_at": "2026-08-14T15:45:49.811332+00:00",
+                "ack_at": "2026-08-14T15:45:49.811356+00:00",
+                "fill_at": "2026-08-14T15:45:49.811367+00:00",
+                "decision_to_submit_ms": 0.07100000000000001,
+                "submit_to_ack_ms": 0.024,
+                "ack_to_fill_ms": 0.011,
+                "decision_to_fill_ms": 0.106,
+                "end_to_end_ms": 0.106,
+                "metadata": {}
+              }
+            ]
+          },
+          "audit": [
+            {
+              "action": "planned",
+              "timestamp": "2026-08-14T15:45:49.811159+00:00",
+              "details": {
+                "n_parents": 1
+              }
+            },
+            {
+              "action": "pre_trade",
+              "timestamp": "2026-08-14T15:45:49.811203+00:00",
+              "details": {
+                "parent_id": "par_102c53e968f1457b",
+                "total_cost": 39.48816007084078
+              }
+            },
+            {
+              "action": "algo_plan",
+              "timestamp": "2026-08-14T15:45:49.811240+00:00",
+              "details": {
+                "parent_id": "par_102c53e968f1457b",
+                "n_slices": 1,
+                "qty": 940.81012657
+              }
+            },
+            {
+              "action": "submit",
+              "timestamp": "2026-08-14T15:45:49.811346+00:00",
+              "details": {
+                "order_id": "ord_c9afa7f15d5a4ceb",
+                "venue": "SIM"
+              }
+            },
+            {
+              "action": "fill",
+              "timestamp": "2026-08-14T15:45:49.811393+00:00",
+              "details": {
+                "order_id": "ord_c9afa7f15d5a4ceb",
+                "qty": 940.81012657,
+                "price": 99.995
+              }
+            }
+          ],
+          "errors": [],
+          "metadata": {
+            "urgency": "NORMAL",
+            "simulation_mode": true
+          }
+        }
+      }
+    }
+  ],
+  "status": "PASS"
+}

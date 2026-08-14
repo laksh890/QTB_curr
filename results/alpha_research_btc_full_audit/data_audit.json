@@ -1,0 +1,146 @@
+{
+  "ok": true,
+  "datasets": [
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "registry_checksum": "eb6c6488167b598b85e883946ea5fbedb5a9b13850c5599389cf0f18302a09fe",
+      "file_checksum": "eb6c6488167b598b85e883946ea5fbedb5a9b13850c5599389cf0f18302a09fe",
+      "campaign_checksum": "eb6c6488167b598b85e883946ea5fbedb5a9b13850c5599389cf0f18302a09fe",
+      "checksum_matches_registry": true,
+      "checksum_matches_campaign": true,
+      "frequency_kind_expected": "SOURCE",
+      "frequency_kind_campaign": "SOURCE",
+      "kind_ok": true,
+      "path": "data/btcusdt/btcusdt_intraday_1m.parquet",
+      "row_count_file": 3152391,
+      "row_count_campaign": 3152391,
+      "source": "binance_vision_public_historical",
+      "timezone_registry": "UTC"
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "registry_checksum": "8743b419c92b661ad94309662eab2f5696f5c68b871f094474496cd524e6688f",
+      "file_checksum": "8743b419c92b661ad94309662eab2f5696f5c68b871f094474496cd524e6688f",
+      "campaign_checksum": "8743b419c92b661ad94309662eab2f5696f5c68b871f094474496cd524e6688f",
+      "checksum_matches_registry": true,
+      "checksum_matches_campaign": true,
+      "frequency_kind_expected": "DERIVED",
+      "frequency_kind_campaign": "DERIVED",
+      "kind_ok": true,
+      "path": "data/btcusdt/btcusdt_intraday_5m.parquet",
+      "row_count_file": 630482,
+      "row_count_campaign": 630482,
+      "source": "derived:btcusdt_intraday_1m@1.0.0",
+      "timezone_registry": "UTC"
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "registry_checksum": "74cc6c8ea63345b6e27e4abf2d42a48b99f3e1365d9e935bacd77e9b9997de80",
+      "file_checksum": "74cc6c8ea63345b6e27e4abf2d42a48b99f3e1365d9e935bacd77e9b9997de80",
+      "campaign_checksum": "74cc6c8ea63345b6e27e4abf2d42a48b99f3e1365d9e935bacd77e9b9997de80",
+      "checksum_matches_registry": true,
+      "checksum_matches_campaign": true,
+      "frequency_kind_expected": "DERIVED",
+      "frequency_kind_campaign": "DERIVED",
+      "kind_ok": true,
+      "path": "data/btcusdt/btcusdt_intraday_15m.parquet",
+      "row_count_file": 210163,
+      "row_count_campaign": 210163,
+      "source": "derived:btcusdt_intraday_1m@1.0.0",
+      "timezone_registry": "UTC"
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "registry_checksum": "3c5f41cf8dba5f04966e2a91f481e534b1ccb167be1ca9b5d6218a4ebb4a38fa",
+      "file_checksum": "3c5f41cf8dba5f04966e2a91f481e534b1ccb167be1ca9b5d6218a4ebb4a38fa",
+      "campaign_checksum": "3c5f41cf8dba5f04966e2a91f481e534b1ccb167be1ca9b5d6218a4ebb4a38fa",
+      "checksum_matches_registry": true,
+      "checksum_matches_campaign": true,
+      "frequency_kind_expected": "DERIVED",
+      "frequency_kind_campaign": "DERIVED",
+      "kind_ok": true,
+      "path": "data/btcusdt/btcusdt_intraday_30m.parquet",
+      "row_count_file": 105086,
+      "row_count_campaign": 105086,
+      "source": "derived:btcusdt_intraday_1m@1.0.0",
+      "timezone_registry": "UTC"
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "registry_checksum": "f3ecf67059770b4d7948dec8618e8f4e28f5bd33b0556437dffb3124432f1a03",
+      "file_checksum": "f3ecf67059770b4d7948dec8618e8f4e28f5bd33b0556437dffb3124432f1a03",
+      "campaign_checksum": "f3ecf67059770b4d7948dec8618e8f4e28f5bd33b0556437dffb3124432f1a03",
+      "checksum_matches_registry": true,
+      "checksum_matches_campaign": true,
+      "frequency_kind_expected": "DERIVED",
+      "frequency_kind_campaign": "DERIVED",
+      "kind_ok": true,
+      "path": "data/btcusdt/btcusdt_intraday_1h.parquet",
+      "row_count_file": 52549,
+      "row_count_campaign": 52549,
+      "source": "derived:btcusdt_intraday_1m@1.0.0",
+      "timezone_registry": "UTC"
+    }
+  ],
+  "silent_substitution": false,
+  "note": "1m SOURCE; higher TFs DERIVED from Prompt 34 resampling.",
+  "disclaimer": "Research evidence is not a profitability guarantee.",
+  "nifty_validation_notes": [
+    {
+      "key": "nifty50_daily@1.0.0",
+      "verify_checksum": true,
+      "path_exists": true
+    },
+    {
+      "key": "nifty50_intraday_15m@1.0.0",
+      "verify_checksum": false,
+      "path_exists": true
+    },
+    {
+      "key": "nifty50_intraday_15m@1.0.1",
+      "verify_checksum": true,
+      "path_exists": true
+    },
+    {
+      "key": "nifty50_intraday_1h@1.0.0",
+      "verify_checksum": false,
+      "path_exists": true
+    },
+    {
+      "key": "nifty50_intraday_1h@1.0.1",
+      "verify_checksum": true,
+      "path_exists": true
+    },
+    {
+      "key": "nifty50_intraday_1m@1.0.0",
+      "verify_checksum": true,
+      "path_exists": true
+    },
+    {
+      "key": "nifty50_intraday_30m@1.0.0",
+      "verify_checksum": false,
+      "path_exists": true
+    },
+    {
+      "key": "nifty50_intraday_30m@1.0.1",
+      "verify_checksum": true,
+      "path_exists": true
+    },
+    {
+      "key": "nifty50_intraday_5m@1.0.0",
+      "verify_checksum": false,
+      "path_exists": true
+    },
+    {
+      "key": "nifty50_intraday_5m@1.0.1",
+      "verify_checksum": true,
+      "path_exists": true
+    }
+  ],
+  "nifty_note": "Some nifty50_*@1.0.0 entries fail raw checksum; @1.0.1 and verify_checksum/canonical paths may differ. Unrelated to BTC Prompt 35 datasets."
+}

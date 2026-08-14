@@ -1,0 +1,26 @@
+{
+  "formula": "mean(r)/std(r,ddof=1) * sqrt(periods_per_year)",
+  "risk_free": 0.0,
+  "annualization_by_timeframe": {
+    "1m": 362880.0,
+    "5m": 72576.0,
+    "15m": 24192.0,
+    "30m": 12096.0,
+    "1h": 6048.0
+  },
+  "not_assuming_daily_only": true,
+  "btc_24x7_bars_per_day": {
+    "1m": 1440.0,
+    "5m": 288.0,
+    "15m": 96.0,
+    "30m": 48.0,
+    "1h": 24.0
+  },
+  "hand_check_1h": {
+    "ppy": 6048.0,
+    "sharpe": -0.35406324587463317,
+    "independent": -0.35406324587463317,
+    "match": true
+  },
+  "disclaimer": "Research evidence is not a profitability guarantee."
+}

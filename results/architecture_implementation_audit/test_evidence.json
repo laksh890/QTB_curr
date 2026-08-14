@@ -1,0 +1,483 @@
+{
+  "n_test_files": 202,
+  "by_area": {
+    "integration/backtesting": {
+      "n": 4,
+      "files": [
+        "iqrp/tests/integration/backtesting/test_horizon_research.py",
+        "iqrp/tests/integration/backtesting/test_alpha_research.py",
+        "iqrp/tests/integration/backtesting/test_acceptance_user_shaped_data.py",
+        "iqrp/tests/integration/backtesting/test_e2e_operational.py"
+      ]
+    },
+    "integration/data": {
+      "n": 1,
+      "files": [
+        "iqrp/tests/integration/data/test_intraday_acquisition.py"
+      ]
+    },
+    "integration/test_bayesian_pipeline.py": {
+      "n": 1,
+      "files": [
+        "iqrp/tests/integration/test_bayesian_pipeline.py"
+      ]
+    },
+    "integration/test_config_integration.py": {
+      "n": 1,
+      "files": [
+        "iqrp/tests/integration/test_config_integration.py"
+      ]
+    },
+    "integration/test_data_pipeline.py": {
+      "n": 1,
+      "files": [
+        "iqrp/tests/integration/test_data_pipeline.py"
+      ]
+    },
+    "integration/test_ensemble_pipeline.py": {
+      "n": 1,
+      "files": [
+        "iqrp/tests/integration/test_ensemble_pipeline.py"
+      ]
+    },
+    "integration/test_feature_research.py": {
+      "n": 1,
+      "files": [
+        "iqrp/tests/integration/test_feature_research.py"
+      ]
+    },
+    "integration/test_features_pipeline.py": {
+      "n": 1,
+      "files": [
+        "iqrp/tests/integration/test_features_pipeline.py"
+      ]
+    },
+    "integration/test_forecast_intelligence_pipeline.py": {
+      "n": 1,
+      "files": [
+        "iqrp/tests/integration/test_forecast_intelligence_pipeline.py"
+      ]
+    },
+    "integration/test_forecasting_pipeline.py": {
+      "n": 1,
+      "files": [
+        "iqrp/tests/integration/test_forecasting_pipeline.py"
+      ]
+    },
+    "integration/test_gmm_pipeline.py": {
+      "n": 1,
+      "files": [
+        "iqrp/tests/integration/test_gmm_pipeline.py"
+      ]
+    },
+    "integration/test_hmm_pipeline.py": {
+      "n": 1,
+      "files": [
+        "iqrp/tests/integration/test_hmm_pipeline.py"
+      ]
+    },
+    "integration/test_kalman_pipeline.py": {
+      "n": 1,
+      "files": [
+        "iqrp/tests/integration/test_kalman_pipeline.py"
+      ]
+    },
+    "integration/test_labels_pipeline.py": {
+      "n": 1,
+      "files": [
+        "iqrp/tests/integration/test_labels_pipeline.py"
+      ]
+    },
+    "integration/test_markov_pipeline.py": {
+      "n": 1,
+      "files": [
+        "iqrp/tests/integration/test_markov_pipeline.py"
+      ]
+    },
+    "integration/test_neural_forecasting_pipeline.py": {
+      "n": 1,
+      "files": [
+        "iqrp/tests/integration/test_neural_forecasting_pipeline.py"
+      ]
+    },
+    "integration/test_particle_pipeline.py": {
+      "n": 1,
+      "files": [
+        "iqrp/tests/integration/test_particle_pipeline.py"
+      ]
+    },
+    "integration/test_regimes_pipeline.py": {
+      "n": 1,
+      "files": [
+        "iqrp/tests/integration/test_regimes_pipeline.py"
+      ]
+    },
+    "integration/test_simulation_pipeline.py": {
+      "n": 1,
+      "files": [
+        "iqrp/tests/integration/test_simulation_pipeline.py"
+      ]
+    },
+    "integration/test_state_space_pipeline.py": {
+      "n": 1,
+      "files": [
+        "iqrp/tests/integration/test_state_space_pipeline.py"
+      ]
+    },
+    "integration/test_statistical_forecasting_pipeline.py": {
+      "n": 1,
+      "files": [
+        "iqrp/tests/integration/test_statistical_forecasting_pipeline.py"
+      ]
+    },
+    "integration/test_timeseries_pipeline.py": {
+      "n": 1,
+      "files": [
+        "iqrp/tests/integration/test_timeseries_pipeline.py"
+      ]
+    },
+    "integration/test_transformer_forecasting_pipeline.py": {
+      "n": 1,
+      "files": [
+        "iqrp/tests/integration/test_transformer_forecasting_pipeline.py"
+      ]
+    },
+    "integration/test_tree_forecasting_pipeline.py": {
+      "n": 1,
+      "files": [
+        "iqrp/tests/integration/test_tree_forecasting_pipeline.py"
+      ]
+    },
+    "integration/test_volatility_forecasting_pipeline.py": {
+      "n": 1,
+      "files": [
+        "iqrp/tests/integration/test_volatility_forecasting_pipeline.py"
+      ]
+    },
+    "unit/alpha": {
+      "n": 12,
+      "files": [
+        "iqrp/tests/unit/alpha/test_coverage_final.py",
+        "iqrp/tests/unit/alpha/test_coverage_gaps4.py",
+        "iqrp/tests/unit/alpha/test_discovery_leakage.py",
+        "iqrp/tests/unit/alpha/test_phase11.py",
+        "iqrp/tests/unit/alpha/test_coverage_gaps.py",
+        "iqrp/tests/unit/alpha/test_research_metrics.py",
+        "iqrp/tests/unit/alpha/test_coverage_gaps2.py",
+        "iqrp/tests/unit/alpha/test_cross_ensemble_monitor.py",
+        "iqrp/tests/unit/alpha/test_engine_api.py",
+        "iqrp/tests/unit/alpha/test_coverage_gaps3.py",
+        "iqrp/tests/unit/alpha/test_backtest_economics.py",
+        "iqrp/tests/unit/alpha/test_statistical_validation.py"
+      ]
+    },
+    "unit/backtesting": {
+      "n": 30,
+      "files": [
+        "iqrp/tests/unit/backtesting/test_pit_corporate.py",
+        "iqrp/tests/unit/backtesting/test_capacity_robustness.py",
+        "iqrp/tests/unit/backtesting/test_horizon_research.py",
+        "iqrp/tests/unit/backtesting/test_alpha_research.py",
+        "iqrp/tests/unit/backtesting/test_event_engine.py",
+        "iqrp/tests/unit/backtesting/test_alpha_campaign.py",
+        "iqrp/tests/unit/backtesting/test_reports_serializer_registry.py",
+        "iqrp/tests/unit/backtesting/test_scenarios.py",
+        "iqrp/tests/unit/backtesting/test_engine.py",
+        "iqrp/tests/unit/backtesting/test_walk_forward.py",
+        "iqrp/tests/unit/backtesting/test_coverage_gaps.py",
+        "iqrp/tests/unit/backtesting/test_gates_paper_registry.py",
+        "iqrp/tests/unit/backtesting/test_phase13.py",
+        "iqrp/tests/unit/backtesting/test_rolling_retraining.py",
+        "iqrp/tests/unit/backtesting/test_performance.py"
+      ]
+    },
+    "unit/bayesian": {
+      "n": 6,
+      "files": [
+        "iqrp/tests/unit/bayesian/test_bayesian_gaps2.py",
+        "iqrp/tests/unit/bayesian/test_bayesian_coverage.py",
+        "iqrp/tests/unit/bayesian/test_bayesian_synthetic.py",
+        "iqrp/tests/unit/bayesian/test_bayesian_core.py",
+        "iqrp/tests/unit/bayesian/test_bayesian_final_gaps.py",
+        "iqrp/tests/unit/bayesian/test_bayesian_gaps.py"
+      ]
+    },
+    "unit/data": {
+      "n": 7,
+      "files": [
+        "iqrp/tests/unit/data/test_binance_vision.py",
+        "iqrp/tests/unit/data/test_historical_intraday.py",
+        "iqrp/tests/unit/data/test_models.py",
+        "iqrp/tests/unit/data/test_pipeline.py",
+        "iqrp/tests/unit/data/test_coverage_gaps.py",
+        "iqrp/tests/unit/data/test_exchange.py",
+        "iqrp/tests/unit/data/test_coverage_extra.py"
+      ]
+    },
+    "unit/ensemble": {
+      "n": 7,
+      "files": [
+        "iqrp/tests/unit/ensemble/test_ensemble_final.py",
+        "iqrp/tests/unit/ensemble/test_ensemble_gaps3.py",
+        "iqrp/tests/unit/ensemble/test_ensemble_gaps2.py",
+        "iqrp/tests/unit/ensemble/test_ensemble_coverage.py",
+        "iqrp/tests/unit/ensemble/test_ensemble_gaps.py",
+        "iqrp/tests/unit/ensemble/test_ensemble_synthetic.py",
+        "iqrp/tests/unit/ensemble/test_ensemble_core.py"
+      ]
+    },
+    "unit/execution": {
+      "n": 11,
+      "files": [
+        "iqrp/tests/unit/execution/test_smart_routing.py",
+        "iqrp/tests/unit/execution/test_slippage_costs.py",
+        "iqrp/tests/unit/execution/test_coverage_final.py",
+        "iqrp/tests/unit/execution/test_order_validation.py",
+        "iqrp/tests/unit/execution/test_phase12.py",
+        "iqrp/tests/unit/execution/test_algorithms.py",
+        "iqrp/tests/unit/execution/test_coverage_final2.py",
+        "iqrp/tests/unit/execution/test_coverage_gaps.py",
+        "iqrp/tests/unit/execution/test_engine_api.py",
+        "iqrp/tests/unit/execution/test_coverage_micro.py",
+        "iqrp/tests/unit/execution/test_order_lifecycle.py"
+      ]
+    },
+    "unit/features": {
+      "n": 3,
+      "files": [
+        "iqrp/tests/unit/features/test_research_core.py",
+        "iqrp/tests/unit/features/test_core.py",
+        "iqrp/tests/unit/features/test_coverage.py"
+      ]
+    },
+    "unit/forecast_intelligence": {
+      "n": 5,
+      "files": [
+        "iqrp/tests/unit/forecast_intelligence/test_intelligence_gaps.py",
+        "iqrp/tests/unit/forecast_intelligence/test_intelligence_gaps4.py",
+        "iqrp/tests/unit/forecast_intelligence/test_intelligence_gaps2.py",
+        "iqrp/tests/unit/forecast_intelligence/test_intelligence_gaps3.py",
+        "iqrp/tests/unit/forecast_intelligence/test_intelligence_core.py"
+      ]
+    },
+    "unit/forecasting": {
+      "n": 4,
+      "files": [
+        "iqrp/tests/unit/forecasting/test_forecasting_gaps3.py",
+        "iqrp/tests/unit/forecasting/test_forecasting_gaps.py",
+        "iqrp/tests/unit/forecasting/test_forecasting_gaps2.py",
+        "iqrp/tests/unit/forecasting/test_forecasting_core.py"
+      ]
+    },
+    "unit/gmm": {
+      "n": 6,
+      "files": [
+        "iqrp/tests/unit/gmm/test_gmm_gaps2.py",
+        "iqrp/tests/unit/gmm/test_gmm_synthetic.py",
+        "iqrp/tests/unit/gmm/test_gmm_core.py",
+        "iqrp/tests/unit/gmm/test_gmm_gaps.py",
+        "iqrp/tests/unit/gmm/test_gmm_final.py",
+        "iqrp/tests/unit/gmm/test_gmm_coverage.py"
+      ]
+    },
+    "unit/hmm": {
+      "n": 4,
+      "files": [
+        "iqrp/tests/unit/hmm/test_hmm_gaps.py",
+        "iqrp/tests/unit/hmm/test_hmm_coverage.py",
+        "iqrp/tests/unit/hmm/test_hmm_core.py",
+        "iqrp/tests/unit/hmm/test_hmm_synthetic.py"
+      ]
+    },
+    "unit/kalman": {
+      "n": 6,
+      "files": [
+        "iqrp/tests/unit/kalman/test_kalman_core.py",
+        "iqrp/tests/unit/kalman/test_kalman_coverage.py",
+        "iqrp/tests/unit/kalman/test_kalman_gaps.py",
+        "iqrp/tests/unit/kalman/test_kalman_synthetic.py",
+        "iqrp/tests/unit/kalman/test_kalman_gaps2.py",
+        "iqrp/tests/unit/kalman/test_kalman_final.py"
+      ]
+    },
+    "unit/labels": {
+      "n": 1,
+      "files": [
+        "iqrp/tests/unit/labels/test_labels_core.py"
+      ]
+    },
+    "unit/markov": {
+      "n": 4,
+      "files": [
+        "iqrp/tests/unit/markov/test_markov_coverage.py",
+        "iqrp/tests/unit/markov/test_markov_gaps.py",
+        "iqrp/tests/unit/markov/test_markov_synthetic.py",
+        "iqrp/tests/unit/markov/test_markov_core.py"
+      ]
+    },
+    "unit/math": {
+      "n": 3,
+      "files": [
+        "iqrp/tests/unit/math/test_math_gaps.py",
+        "iqrp/tests/unit/math/test_math_coverage.py",
+        "iqrp/tests/unit/math/test_math_core.py"
+      ]
+    },
+    "unit/neural_forecasting": {
+      "n": 3,
+      "files": [
+        "iqrp/tests/unit/neural_forecasting/test_neural_gaps.py",
+        "iqrp/tests/unit/neural_forecasting/test_neural_gaps2.py",
+        "iqrp/tests/unit/neural_forecasting/test_neural_core.py"
+      ]
+    },
+    "unit/particle": {
+      "n": 6,
+      "files": [
+        "iqrp/tests/unit/particle/test_particle_final.py",
+        "iqrp/tests/unit/particle/test_particle_coverage.py",
+        "iqrp/tests/unit/particle/test_particle_gaps2.py",
+        "iqrp/tests/unit/particle/test_particle_gaps.py",
+        "iqrp/tests/unit/particle/test_particle_core.py",
+        "iqrp/tests/unit/particle/test_particle_synthetic.py"
+      ]
+    },
+    "unit/portfolio": {
+      "n": 10,
+      "files": [
+        "iqrp/tests/unit/portfolio/test_estimators_construction.py",
+        "iqrp/tests/unit/portfolio/test_coverage_final.py",
+        "iqrp/tests/unit/portfolio/test_optimization.py",
+        "iqrp/tests/unit/portfolio/test_phase10.py",
+        "iqrp/tests/unit/portfolio/test_robust_multiperiod.py",
+        "iqrp/tests/unit/portfolio/test_coverage_gaps.py",
+        "iqrp/tests/unit/portfolio/test_coverage_gaps2.py",
+        "iqrp/tests/unit/portfolio/test_constraints_costs.py",
+        "iqrp/tests/unit/portfolio/test_engine_api.py",
+        "iqrp/tests/unit/portfolio/test_coverage_gaps3.py"
+      ]
+    },
+    "unit/regimes": {
+      "n": 1,
+      "files": [
+        "iqrp/tests/unit/regimes/test_regimes_core.py"
+      ]
+    },
+    "unit/risk": {
+      "n": 12,
+      "files": [
+        "iqrp/tests/unit/risk/test_market_portfolio.py",
+        "iqrp/tests/unit/risk/test_agg_monitor_misc.py",
+        "iqrp/tests/unit/risk/test_phase09_validation.py",
+        "iqrp/tests/unit/risk/test_capital_ensemble_gaps.py",
+        "iqrp/tests/unit/risk/test_capital_allocation.py",
+        "iqrp/tests/unit/risk/test_risk_ensemble.py",
+        "iqrp/tests/unit/risk/test_coverage_gaps.py",
+        "iqrp/tests/unit/risk/test_stress_sim_model.py",
+        "iqrp/tests/unit/risk/test_ensemble_risk.py",
+        "iqrp/tests/unit/risk/test_engine_api.py",
+        "iqrp/tests/unit/risk/test_sizing_leverage_limits.py",
+        "iqrp/tests/unit/risk/test_tail.py"
+      ]
+    },
+    "unit/simulation": {
+      "n": 1,
+      "files": [
+        "iqrp/tests/unit/simulation/test_simulation_core.py"
+      ]
+    },
+    "unit/state_space": {
+      "n": 4,
+      "files": [
+        "iqrp/tests/unit/state_space/test_state_space_gaps.py",
+        "iqrp/tests/unit/state_space/test_state_space_stability.py",
+        "iqrp/tests/unit/state_space/test_state_space_core.py",
+        "iqrp/tests/unit/state_space/test_state_space_coverage.py"
+      ]
+    },
+    "unit/statistical_forecasting": {
+      "n": 4,
+      "files": [
+        "iqrp/tests/unit/statistical_forecasting/test_statistical_core.py",
+        "iqrp/tests/unit/statistical_forecasting/test_statistical_gaps.py",
+        "iqrp/tests/unit/statistical_forecasting/test_statistical_gaps2.py",
+        "iqrp/tests/unit/statistical_forecasting/test_statistical_gaps3.py"
+      ]
+    },
+    "unit/test_cli.py": {
+      "n": 1,
+      "files": [
+        "iqrp/tests/unit/test_cli.py"
+      ]
+    },
+    "unit/test_common.py": {
+      "n": 1,
+      "files": [
+        "iqrp/tests/unit/test_common.py"
+      ]
+    },
+    "unit/test_config.py": {
+      "n": 1,
+      "files": [
+        "iqrp/tests/unit/test_config.py"
+      ]
+    },
+    "unit/test_container.py": {
+      "n": 1,
+      "files": [
+        "iqrp/tests/unit/test_container.py"
+      ]
+    },
+    "unit/test_exceptions.py": {
+      "n": 1,
+      "files": [
+        "iqrp/tests/unit/test_exceptions.py"
+      ]
+    },
+    "unit/test_logging.py": {
+      "n": 1,
+      "files": [
+        "iqrp/tests/unit/test_logging.py"
+      ]
+    },
+    "unit/timeseries": {
+      "n": 5,
+      "files": [
+        "iqrp/tests/unit/timeseries/test_timeseries_core.py",
+        "iqrp/tests/unit/timeseries/test_timeseries_gaps2.py",
+        "iqrp/tests/unit/timeseries/test_timeseries_gaps3.py",
+        "iqrp/tests/unit/timeseries/test_timeseries_gaps4.py",
+        "iqrp/tests/unit/timeseries/test_timeseries_gaps.py"
+      ]
+    },
+    "unit/transformer_forecasting": {
+      "n": 3,
+      "files": [
+        "iqrp/tests/unit/transformer_forecasting/test_transformer_core.py",
+        "iqrp/tests/unit/transformer_forecasting/test_transformer_gaps2.py",
+        "iqrp/tests/unit/transformer_forecasting/test_transformer_gaps.py"
+      ]
+    },
+    "unit/tree_forecasting": {
+      "n": 4,
+      "files": [
+        "iqrp/tests/unit/tree_forecasting/test_tree_gaps2.py",
+        "iqrp/tests/unit/tree_forecasting/test_tree_gaps3.py",
+        "iqrp/tests/unit/tree_forecasting/test_tree_gaps.py",
+        "iqrp/tests/unit/tree_forecasting/test_tree_core.py"
+      ]
+    },
+    "unit/volatility_forecasting": {
+      "n": 6,
+      "files": [
+        "iqrp/tests/unit/volatility_forecasting/test_volatility_multivariate.py",
+        "iqrp/tests/unit/volatility_forecasting/test_volatility_gaps2.py",
+        "iqrp/tests/unit/volatility_forecasting/test_volatility_gaps3.py",
+        "iqrp/tests/unit/volatility_forecasting/test_volatility_core.py",
+        "iqrp/tests/unit/volatility_forecasting/test_volatility_recovery.py",
+        "iqrp/tests/unit/volatility_forecasting/test_volatility_gaps.py"
+      ]
+    }
+  },
+  "note": "Presence of tests supports IMPLEMENTED; absence \u2192 IMPLEMENTED_UNVERIFIED if source exists"
+}

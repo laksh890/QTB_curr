@@ -1,0 +1,9 @@
+{
+  "disclaimer": "MODEL\u2192ALPHA INTEGRATION VALIDATION \u2014 wiring only. Not a profitability claim. Research evidence is not a guarantee.",
+  "n_model": 600,
+  "n_exec": 2000,
+  "n_aligned": 2000,
+  "alignment": "merge_asof_backward",
+  "causal": true,
+  "status": "PASS"
+}

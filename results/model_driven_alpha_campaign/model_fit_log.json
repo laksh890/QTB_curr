@@ -1,0 +1,1096 @@
+{
+  "items": [
+    {
+      "adapter_id": "garch_volatility_v1",
+      "tf": "5m",
+      "status": "PASS",
+      "slices": {
+        "train": [
+          0,
+          15000
+        ],
+        "validation": [
+          15000,
+          22500
+        ],
+        "oos": [
+          22500,
+          30000
+        ]
+      },
+      "meta": {
+        "source_model": "garch",
+        "model_version": "1.0.0",
+        "forecast_timestamp": "2024-11-09 21:55:00+00:00",
+        "signal_timestamp": "2024-12-31 23:55:00+00:00",
+        "source_timeframe": "campaign",
+        "execution_timeframe": "campaign",
+        "lookback": 15000,
+        "horizon": 1,
+        "threshold": {
+          "kind": "volatility_expansion",
+          "long_threshold": 0.0,
+          "short_threshold": 0.0,
+          "long_prob": 0.55,
+          "short_prob": 0.45,
+          "vol_z_threshold": 0.5,
+          "vol_lookback": 20,
+          "regime_map": {},
+          "flat_on_unknown_regime": true,
+          "allow_short": true
+        },
+        "configuration_id": "garch_volatility_v1",
+        "disclaimer": "Research wiring validation only \u2014 not a profitability claim."
+      }
+    },
+    {
+      "adapter_id": "garch_volatility_v1",
+      "tf": "15m",
+      "status": "PASS",
+      "slices": {
+        "train": [
+          0,
+          12500
+        ],
+        "validation": [
+          12500,
+          18750
+        ],
+        "oos": [
+          18750,
+          25000
+        ]
+      },
+      "meta": {
+        "source_model": "garch",
+        "model_version": "1.0.0",
+        "forecast_timestamp": "2024-08-23 18:45:00+00:00",
+        "signal_timestamp": "2024-12-31 23:45:00+00:00",
+        "source_timeframe": "campaign",
+        "execution_timeframe": "campaign",
+        "lookback": 12500,
+        "horizon": 1,
+        "threshold": {
+          "kind": "volatility_expansion",
+          "long_threshold": 0.0,
+          "short_threshold": 0.0,
+          "long_prob": 0.55,
+          "short_prob": 0.45,
+          "vol_z_threshold": 0.5,
+          "vol_lookback": 20,
+          "regime_map": {},
+          "flat_on_unknown_regime": true,
+          "allow_short": true
+        },
+        "configuration_id": "garch_volatility_v1",
+        "disclaimer": "Research wiring validation only \u2014 not a profitability claim."
+      }
+    },
+    {
+      "adapter_id": "garch_volatility_v1",
+      "tf": "30m",
+      "status": "PASS",
+      "slices": {
+        "train": [
+          0,
+          10000
+        ],
+        "validation": [
+          10000,
+          15000
+        ],
+        "oos": [
+          15000,
+          20000
+        ]
+      },
+      "meta": {
+        "source_model": "garch",
+        "model_version": "1.0.0",
+        "forecast_timestamp": "2024-06-06 15:30:00+00:00",
+        "signal_timestamp": "2024-12-31 23:30:00+00:00",
+        "source_timeframe": "campaign",
+        "execution_timeframe": "campaign",
+        "lookback": 10000,
+        "horizon": 1,
+        "threshold": {
+          "kind": "volatility_expansion",
+          "long_threshold": 0.0,
+          "short_threshold": 0.0,
+          "long_prob": 0.55,
+          "short_prob": 0.45,
+          "vol_z_threshold": 0.5,
+          "vol_lookback": 20,
+          "regime_map": {},
+          "flat_on_unknown_regime": true,
+          "allow_short": true
+        },
+        "configuration_id": "garch_volatility_v1",
+        "disclaimer": "Research wiring validation only \u2014 not a profitability claim."
+      }
+    },
+    {
+      "adapter_id": "garch_volatility_v1",
+      "tf": "1h",
+      "status": "PASS",
+      "slices": {
+        "train": [
+          0,
+          10000
+        ],
+        "validation": [
+          10000,
+          15000
+        ],
+        "oos": [
+          15000,
+          20000
+        ]
+      },
+      "meta": {
+        "source_model": "garch",
+        "model_version": "1.0.0",
+        "forecast_timestamp": "2023-11-11 07:00:00+00:00",
+        "signal_timestamp": "2024-12-31 23:00:00+00:00",
+        "source_timeframe": "campaign",
+        "execution_timeframe": "campaign",
+        "lookback": 10000,
+        "horizon": 1,
+        "threshold": {
+          "kind": "volatility_expansion",
+          "long_threshold": 0.0,
+          "short_threshold": 0.0,
+          "long_prob": 0.55,
+          "short_prob": 0.45,
+          "vol_z_threshold": 0.5,
+          "vol_lookback": 20,
+          "regime_map": {},
+          "flat_on_unknown_regime": true,
+          "allow_short": true
+        },
+        "configuration_id": "garch_volatility_v1",
+        "disclaimer": "Research wiring validation only \u2014 not a profitability claim."
+      }
+    },
+    {
+      "adapter_id": "arima_return_v1",
+      "tf": "15m",
+      "status": "PASS",
+      "slices": {
+        "train": [
+          0,
+          12500
+        ],
+        "validation": [
+          12500,
+          18750
+        ],
+        "oos": [
+          18750,
+          25000
+        ]
+      },
+      "meta": {
+        "source_model": "arima",
+        "model_version": "1.0.0",
+        "forecast_timestamp": "2024-08-23 18:45:00+00:00",
+        "signal_timestamp": "2024-12-31 23:45:00+00:00",
+        "source_timeframe": "campaign",
+        "execution_timeframe": "campaign",
+        "lookback": 12500,
+        "horizon": 1,
+        "threshold": {
+          "kind": "return_threshold",
+          "long_threshold": 0.0,
+          "short_threshold": 0.0,
+          "long_prob": 0.55,
+          "short_prob": 0.45,
+          "vol_z_threshold": 0.5,
+          "vol_lookback": 20,
+          "regime_map": {},
+          "flat_on_unknown_regime": true,
+          "allow_short": true
+        },
+        "configuration_id": "arima_return_v1",
+        "disclaimer": "Research wiring validation only \u2014 not a profitability claim."
+      }
+    },
+    {
+      "adapter_id": "arima_return_v1",
+      "tf": "30m",
+      "status": "PASS",
+      "slices": {
+        "train": [
+          0,
+          10000
+        ],
+        "validation": [
+          10000,
+          15000
+        ],
+        "oos": [
+          15000,
+          20000
+        ]
+      },
+      "meta": {
+        "source_model": "arima",
+        "model_version": "1.0.0",
+        "forecast_timestamp": "2024-06-06 15:30:00+00:00",
+        "signal_timestamp": "2024-12-31 23:30:00+00:00",
+        "source_timeframe": "campaign",
+        "execution_timeframe": "campaign",
+        "lookback": 10000,
+        "horizon": 1,
+        "threshold": {
+          "kind": "return_threshold",
+          "long_threshold": 0.0,
+          "short_threshold": 0.0,
+          "long_prob": 0.55,
+          "short_prob": 0.45,
+          "vol_z_threshold": 0.5,
+          "vol_lookback": 20,
+          "regime_map": {},
+          "flat_on_unknown_regime": true,
+          "allow_short": true
+        },
+        "configuration_id": "arima_return_v1",
+        "disclaimer": "Research wiring validation only \u2014 not a profitability claim."
+      }
+    },
+    {
+      "adapter_id": "arima_return_v1",
+      "tf": "1h",
+      "status": "PASS",
+      "slices": {
+        "train": [
+          0,
+          10000
+        ],
+        "validation": [
+          10000,
+          15000
+        ],
+        "oos": [
+          15000,
+          20000
+        ]
+      },
+      "meta": {
+        "source_model": "arima",
+        "model_version": "1.0.0",
+        "forecast_timestamp": "2023-11-11 07:00:00+00:00",
+        "signal_timestamp": "2024-12-31 23:00:00+00:00",
+        "source_timeframe": "campaign",
+        "execution_timeframe": "campaign",
+        "lookback": 10000,
+        "horizon": 1,
+        "threshold": {
+          "kind": "return_threshold",
+          "long_threshold": 0.0,
+          "short_threshold": 0.0,
+          "long_prob": 0.55,
+          "short_prob": 0.45,
+          "vol_z_threshold": 0.5,
+          "vol_lookback": 20,
+          "regime_map": {},
+          "flat_on_unknown_regime": true,
+          "allow_short": true
+        },
+        "configuration_id": "arima_return_v1",
+        "disclaimer": "Research wiring validation only \u2014 not a profitability claim."
+      }
+    },
+    {
+      "adapter_id": "xgb_return_v1",
+      "tf": "15m",
+      "status": "PASS",
+      "slices": {
+        "train": [
+          0,
+          12500
+        ],
+        "validation": [
+          12500,
+          18750
+        ],
+        "oos": [
+          18750,
+          25000
+        ]
+      },
+      "meta": {
+        "source_model": "xgboost",
+        "model_version": "1.0.0",
+        "forecast_timestamp": "2024-08-23 18:45:00+00:00",
+        "signal_timestamp": "2024-12-31 23:45:00+00:00",
+        "source_timeframe": "campaign",
+        "execution_timeframe": "campaign",
+        "lookback": 12500,
+        "horizon": 1,
+        "threshold": {
+          "kind": "return_threshold",
+          "long_threshold": 0.0,
+          "short_threshold": 0.0,
+          "long_prob": 0.55,
+          "short_prob": 0.45,
+          "vol_z_threshold": 0.5,
+          "vol_lookback": 20,
+          "regime_map": {},
+          "flat_on_unknown_regime": true,
+          "allow_short": true
+        },
+        "configuration_id": "xgb_return_v1",
+        "disclaimer": "Research wiring validation only \u2014 not a profitability claim."
+      }
+    },
+    {
+      "adapter_id": "xgb_return_v1",
+      "tf": "30m",
+      "status": "PASS",
+      "slices": {
+        "train": [
+          0,
+          10000
+        ],
+        "validation": [
+          10000,
+          15000
+        ],
+        "oos": [
+          15000,
+          20000
+        ]
+      },
+      "meta": {
+        "source_model": "xgboost",
+        "model_version": "1.0.0",
+        "forecast_timestamp": "2024-06-06 15:30:00+00:00",
+        "signal_timestamp": "2024-12-31 23:30:00+00:00",
+        "source_timeframe": "campaign",
+        "execution_timeframe": "campaign",
+        "lookback": 10000,
+        "horizon": 1,
+        "threshold": {
+          "kind": "return_threshold",
+          "long_threshold": 0.0,
+          "short_threshold": 0.0,
+          "long_prob": 0.55,
+          "short_prob": 0.45,
+          "vol_z_threshold": 0.5,
+          "vol_lookback": 20,
+          "regime_map": {},
+          "flat_on_unknown_regime": true,
+          "allow_short": true
+        },
+        "configuration_id": "xgb_return_v1",
+        "disclaimer": "Research wiring validation only \u2014 not a profitability claim."
+      }
+    },
+    {
+      "adapter_id": "xgb_return_v1",
+      "tf": "1h",
+      "status": "PASS",
+      "slices": {
+        "train": [
+          0,
+          10000
+        ],
+        "validation": [
+          10000,
+          15000
+        ],
+        "oos": [
+          15000,
+          20000
+        ]
+      },
+      "meta": {
+        "source_model": "xgboost",
+        "model_version": "1.0.0",
+        "forecast_timestamp": "2023-11-11 07:00:00+00:00",
+        "signal_timestamp": "2024-12-31 23:00:00+00:00",
+        "source_timeframe": "campaign",
+        "execution_timeframe": "campaign",
+        "lookback": 10000,
+        "horizon": 1,
+        "threshold": {
+          "kind": "return_threshold",
+          "long_threshold": 0.0,
+          "short_threshold": 0.0,
+          "long_prob": 0.55,
+          "short_prob": 0.45,
+          "vol_z_threshold": 0.5,
+          "vol_lookback": 20,
+          "regime_map": {},
+          "flat_on_unknown_regime": true,
+          "allow_short": true
+        },
+        "configuration_id": "xgb_return_v1",
+        "disclaimer": "Research wiring validation only \u2014 not a profitability claim."
+      }
+    },
+    {
+      "adapter_id": "lgbm_return_v1",
+      "tf": "15m",
+      "status": "PASS",
+      "slices": {
+        "train": [
+          0,
+          12500
+        ],
+        "validation": [
+          12500,
+          18750
+        ],
+        "oos": [
+          18750,
+          25000
+        ]
+      },
+      "meta": {
+        "source_model": "lightgbm",
+        "model_version": "1.0.0",
+        "forecast_timestamp": "2024-08-23 18:45:00+00:00",
+        "signal_timestamp": "2024-12-31 23:45:00+00:00",
+        "source_timeframe": "campaign",
+        "execution_timeframe": "campaign",
+        "lookback": 12500,
+        "horizon": 1,
+        "threshold": {
+          "kind": "return_threshold",
+          "long_threshold": 0.0,
+          "short_threshold": 0.0,
+          "long_prob": 0.55,
+          "short_prob": 0.45,
+          "vol_z_threshold": 0.5,
+          "vol_lookback": 20,
+          "regime_map": {},
+          "flat_on_unknown_regime": true,
+          "allow_short": true
+        },
+        "configuration_id": "lgbm_return_v1",
+        "disclaimer": "Research wiring validation only \u2014 not a profitability claim."
+      }
+    },
+    {
+      "adapter_id": "lgbm_return_v1",
+      "tf": "30m",
+      "status": "PASS",
+      "slices": {
+        "train": [
+          0,
+          10000
+        ],
+        "validation": [
+          10000,
+          15000
+        ],
+        "oos": [
+          15000,
+          20000
+        ]
+      },
+      "meta": {
+        "source_model": "lightgbm",
+        "model_version": "1.0.0",
+        "forecast_timestamp": "2024-06-06 15:30:00+00:00",
+        "signal_timestamp": "2024-12-31 23:30:00+00:00",
+        "source_timeframe": "campaign",
+        "execution_timeframe": "campaign",
+        "lookback": 10000,
+        "horizon": 1,
+        "threshold": {
+          "kind": "return_threshold",
+          "long_threshold": 0.0,
+          "short_threshold": 0.0,
+          "long_prob": 0.55,
+          "short_prob": 0.45,
+          "vol_z_threshold": 0.5,
+          "vol_lookback": 20,
+          "regime_map": {},
+          "flat_on_unknown_regime": true,
+          "allow_short": true
+        },
+        "configuration_id": "lgbm_return_v1",
+        "disclaimer": "Research wiring validation only \u2014 not a profitability claim."
+      }
+    },
+    {
+      "adapter_id": "lgbm_return_v1",
+      "tf": "1h",
+      "status": "PASS",
+      "slices": {
+        "train": [
+          0,
+          10000
+        ],
+        "validation": [
+          10000,
+          15000
+        ],
+        "oos": [
+          15000,
+          20000
+        ]
+      },
+      "meta": {
+        "source_model": "lightgbm",
+        "model_version": "1.0.0",
+        "forecast_timestamp": "2023-11-11 07:00:00+00:00",
+        "signal_timestamp": "2024-12-31 23:00:00+00:00",
+        "source_timeframe": "campaign",
+        "execution_timeframe": "campaign",
+        "lookback": 10000,
+        "horizon": 1,
+        "threshold": {
+          "kind": "return_threshold",
+          "long_threshold": 0.0,
+          "short_threshold": 0.0,
+          "long_prob": 0.55,
+          "short_prob": 0.45,
+          "vol_z_threshold": 0.5,
+          "vol_lookback": 20,
+          "regime_map": {},
+          "flat_on_unknown_regime": true,
+          "allow_short": true
+        },
+        "configuration_id": "lgbm_return_v1",
+        "disclaimer": "Research wiring validation only \u2014 not a profitability claim."
+      }
+    },
+    {
+      "adapter_id": "cat_return_v1",
+      "tf": "15m",
+      "status": "PASS",
+      "slices": {
+        "train": [
+          0,
+          12500
+        ],
+        "validation": [
+          12500,
+          18750
+        ],
+        "oos": [
+          18750,
+          25000
+        ]
+      },
+      "meta": {
+        "source_model": "catboost",
+        "model_version": "1.0.0",
+        "forecast_timestamp": "2024-08-23 18:45:00+00:00",
+        "signal_timestamp": "2024-12-31 23:45:00+00:00",
+        "source_timeframe": "campaign",
+        "execution_timeframe": "campaign",
+        "lookback": 12500,
+        "horizon": 1,
+        "threshold": {
+          "kind": "return_threshold",
+          "long_threshold": 0.0,
+          "short_threshold": 0.0,
+          "long_prob": 0.55,
+          "short_prob": 0.45,
+          "vol_z_threshold": 0.5,
+          "vol_lookback": 20,
+          "regime_map": {},
+          "flat_on_unknown_regime": true,
+          "allow_short": true
+        },
+        "configuration_id": "cat_return_v1",
+        "disclaimer": "Research wiring validation only \u2014 not a profitability claim."
+      }
+    },
+    {
+      "adapter_id": "cat_return_v1",
+      "tf": "30m",
+      "status": "PASS",
+      "slices": {
+        "train": [
+          0,
+          10000
+        ],
+        "validation": [
+          10000,
+          15000
+        ],
+        "oos": [
+          15000,
+          20000
+        ]
+      },
+      "meta": {
+        "source_model": "catboost",
+        "model_version": "1.0.0",
+        "forecast_timestamp": "2024-06-06 15:30:00+00:00",
+        "signal_timestamp": "2024-12-31 23:30:00+00:00",
+        "source_timeframe": "campaign",
+        "execution_timeframe": "campaign",
+        "lookback": 10000,
+        "horizon": 1,
+        "threshold": {
+          "kind": "return_threshold",
+          "long_threshold": 0.0,
+          "short_threshold": 0.0,
+          "long_prob": 0.55,
+          "short_prob": 0.45,
+          "vol_z_threshold": 0.5,
+          "vol_lookback": 20,
+          "regime_map": {},
+          "flat_on_unknown_regime": true,
+          "allow_short": true
+        },
+        "configuration_id": "cat_return_v1",
+        "disclaimer": "Research wiring validation only \u2014 not a profitability claim."
+      }
+    },
+    {
+      "adapter_id": "cat_return_v1",
+      "tf": "1h",
+      "status": "PASS",
+      "slices": {
+        "train": [
+          0,
+          10000
+        ],
+        "validation": [
+          10000,
+          15000
+        ],
+        "oos": [
+          15000,
+          20000
+        ]
+      },
+      "meta": {
+        "source_model": "catboost",
+        "model_version": "1.0.0",
+        "forecast_timestamp": "2023-11-11 07:00:00+00:00",
+        "signal_timestamp": "2024-12-31 23:00:00+00:00",
+        "source_timeframe": "campaign",
+        "execution_timeframe": "campaign",
+        "lookback": 10000,
+        "horizon": 1,
+        "threshold": {
+          "kind": "return_threshold",
+          "long_threshold": 0.0,
+          "short_threshold": 0.0,
+          "long_prob": 0.55,
+          "short_prob": 0.45,
+          "vol_z_threshold": 0.5,
+          "vol_lookback": 20,
+          "regime_map": {},
+          "flat_on_unknown_regime": true,
+          "allow_short": true
+        },
+        "configuration_id": "cat_return_v1",
+        "disclaimer": "Research wiring validation only \u2014 not a profitability claim."
+      }
+    },
+    {
+      "adapter_id": "lstm_return_v1",
+      "tf": "30m",
+      "status": "PASS",
+      "slices": {
+        "train": [
+          0,
+          10000
+        ],
+        "validation": [
+          10000,
+          15000
+        ],
+        "oos": [
+          15000,
+          20000
+        ]
+      },
+      "meta": {
+        "source_model": "lstm",
+        "model_version": "1.0.0",
+        "forecast_timestamp": "2024-06-06 15:30:00+00:00",
+        "signal_timestamp": "2024-12-31 23:30:00+00:00",
+        "source_timeframe": "campaign",
+        "execution_timeframe": "campaign",
+        "lookback": 10000,
+        "horizon": 1,
+        "threshold": {
+          "kind": "return_threshold",
+          "long_threshold": 0.0,
+          "short_threshold": 0.0,
+          "long_prob": 0.55,
+          "short_prob": 0.45,
+          "vol_z_threshold": 0.5,
+          "vol_lookback": 20,
+          "regime_map": {},
+          "flat_on_unknown_regime": true,
+          "allow_short": true
+        },
+        "configuration_id": "lstm_return_v1",
+        "disclaimer": "Research wiring validation only \u2014 not a profitability claim."
+      }
+    },
+    {
+      "adapter_id": "lstm_return_v1",
+      "tf": "1h",
+      "status": "PASS",
+      "slices": {
+        "train": [
+          0,
+          10000
+        ],
+        "validation": [
+          10000,
+          15000
+        ],
+        "oos": [
+          15000,
+          20000
+        ]
+      },
+      "meta": {
+        "source_model": "lstm",
+        "model_version": "1.0.0",
+        "forecast_timestamp": "2023-11-11 07:00:00+00:00",
+        "signal_timestamp": "2024-12-31 23:00:00+00:00",
+        "source_timeframe": "campaign",
+        "execution_timeframe": "campaign",
+        "lookback": 10000,
+        "horizon": 1,
+        "threshold": {
+          "kind": "return_threshold",
+          "long_threshold": 0.0,
+          "short_threshold": 0.0,
+          "long_prob": 0.55,
+          "short_prob": 0.45,
+          "vol_z_threshold": 0.5,
+          "vol_lookback": 20,
+          "regime_map": {},
+          "flat_on_unknown_regime": true,
+          "allow_short": true
+        },
+        "configuration_id": "lstm_return_v1",
+        "disclaimer": "Research wiring validation only \u2014 not a profitability claim."
+      }
+    },
+    {
+      "adapter_id": "gru_return_v1",
+      "tf": "1h",
+      "status": "PASS",
+      "slices": {
+        "train": [
+          0,
+          10000
+        ],
+        "validation": [
+          10000,
+          15000
+        ],
+        "oos": [
+          15000,
+          20000
+        ]
+      },
+      "meta": {
+        "source_model": "gru",
+        "model_version": "1.0.0",
+        "forecast_timestamp": "2023-11-11 07:00:00+00:00",
+        "signal_timestamp": "2024-12-31 23:00:00+00:00",
+        "source_timeframe": "campaign",
+        "execution_timeframe": "campaign",
+        "lookback": 10000,
+        "horizon": 1,
+        "threshold": {
+          "kind": "return_threshold",
+          "long_threshold": 0.0,
+          "short_threshold": 0.0,
+          "long_prob": 0.55,
+          "short_prob": 0.45,
+          "vol_z_threshold": 0.5,
+          "vol_lookback": 20,
+          "regime_map": {},
+          "flat_on_unknown_regime": true,
+          "allow_short": true
+        },
+        "configuration_id": "gru_return_v1",
+        "disclaimer": "Research wiring validation only \u2014 not a profitability claim."
+      }
+    },
+    {
+      "adapter_id": "mlp_return_v1",
+      "tf": "1h",
+      "status": "PASS",
+      "slices": {
+        "train": [
+          0,
+          10000
+        ],
+        "validation": [
+          10000,
+          15000
+        ],
+        "oos": [
+          15000,
+          20000
+        ]
+      },
+      "meta": {
+        "source_model": "mlp",
+        "model_version": "1.0.0",
+        "forecast_timestamp": "2023-11-11 07:00:00+00:00",
+        "signal_timestamp": "2024-12-31 23:00:00+00:00",
+        "source_timeframe": "campaign",
+        "execution_timeframe": "campaign",
+        "lookback": 10000,
+        "horizon": 1,
+        "threshold": {
+          "kind": "return_threshold",
+          "long_threshold": 0.0,
+          "short_threshold": 0.0,
+          "long_prob": 0.55,
+          "short_prob": 0.45,
+          "vol_z_threshold": 0.5,
+          "vol_lookback": 20,
+          "regime_map": {},
+          "flat_on_unknown_regime": true,
+          "allow_short": true
+        },
+        "configuration_id": "mlp_return_v1",
+        "disclaimer": "Research wiring validation only \u2014 not a profitability claim."
+      }
+    },
+    {
+      "adapter_id": "transformer_return_v1",
+      "tf": "1h",
+      "status": "PASS",
+      "slices": {
+        "train": [
+          0,
+          10000
+        ],
+        "validation": [
+          10000,
+          15000
+        ],
+        "oos": [
+          15000,
+          20000
+        ]
+      },
+      "meta": {
+        "source_model": "tide",
+        "model_version": "1.0.0",
+        "forecast_timestamp": "2023-11-11 07:00:00+00:00",
+        "signal_timestamp": "2024-12-31 23:00:00+00:00",
+        "source_timeframe": "campaign",
+        "execution_timeframe": "campaign",
+        "lookback": 10000,
+        "horizon": 1,
+        "threshold": {
+          "kind": "return_threshold",
+          "long_threshold": 0.0,
+          "short_threshold": 0.0,
+          "long_prob": 0.55,
+          "short_prob": 0.45,
+          "vol_z_threshold": 0.5,
+          "vol_lookback": 20,
+          "regime_map": {},
+          "flat_on_unknown_regime": true,
+          "allow_short": true
+        },
+        "configuration_id": "transformer_return_v1",
+        "disclaimer": "Research wiring validation only \u2014 not a profitability claim."
+      }
+    },
+    {
+      "adapter_id": "hmm_regime_v1",
+      "tf": "15m",
+      "status": "PASS",
+      "slices": {
+        "train": [
+          0,
+          12500
+        ],
+        "validation": [
+          12500,
+          18750
+        ],
+        "oos": [
+          18750,
+          25000
+        ]
+      },
+      "meta": {
+        "source_model": "hmm",
+        "model_version": "1.0.0",
+        "forecast_timestamp": "2024-08-23 18:45:00+00:00",
+        "signal_timestamp": "2024-12-31 23:45:00+00:00",
+        "source_timeframe": "campaign",
+        "execution_timeframe": "campaign",
+        "lookback": 12500,
+        "horizon": 1,
+        "threshold": {
+          "kind": "regime_label_map",
+          "long_threshold": 0.0,
+          "short_threshold": 0.0,
+          "long_prob": 0.55,
+          "short_prob": 0.45,
+          "vol_z_threshold": 0.5,
+          "vol_lookback": 20,
+          "regime_map": {
+            "0": 0.0,
+            "1": 1.0,
+            "2": -1.0
+          },
+          "flat_on_unknown_regime": true,
+          "allow_short": true
+        },
+        "configuration_id": "hmm_regime_v1",
+        "disclaimer": "Research wiring validation only \u2014 not a profitability claim."
+      }
+    },
+    {
+      "adapter_id": "hmm_regime_v1",
+      "tf": "30m",
+      "status": "PASS",
+      "slices": {
+        "train": [
+          0,
+          10000
+        ],
+        "validation": [
+          10000,
+          15000
+        ],
+        "oos": [
+          15000,
+          20000
+        ]
+      },
+      "meta": {
+        "source_model": "hmm",
+        "model_version": "1.0.0",
+        "forecast_timestamp": "2024-06-06 15:30:00+00:00",
+        "signal_timestamp": "2024-12-31 23:30:00+00:00",
+        "source_timeframe": "campaign",
+        "execution_timeframe": "campaign",
+        "lookback": 10000,
+        "horizon": 1,
+        "threshold": {
+          "kind": "regime_label_map",
+          "long_threshold": 0.0,
+          "short_threshold": 0.0,
+          "long_prob": 0.55,
+          "short_prob": 0.45,
+          "vol_z_threshold": 0.5,
+          "vol_lookback": 20,
+          "regime_map": {
+            "0": 0.0,
+            "1": 1.0,
+            "2": -1.0
+          },
+          "flat_on_unknown_regime": true,
+          "allow_short": true
+        },
+        "configuration_id": "hmm_regime_v1",
+        "disclaimer": "Research wiring validation only \u2014 not a profitability claim."
+      }
+    },
+    {
+      "adapter_id": "hmm_regime_v1",
+      "tf": "1h",
+      "status": "PASS",
+      "slices": {
+        "train": [
+          0,
+          10000
+        ],
+        "validation": [
+          10000,
+          15000
+        ],
+        "oos": [
+          15000,
+          20000
+        ]
+      },
+      "meta": {
+        "source_model": "hmm",
+        "model_version": "1.0.0",
+        "forecast_timestamp": "2023-11-11 07:00:00+00:00",
+        "signal_timestamp": "2024-12-31 23:00:00+00:00",
+        "source_timeframe": "campaign",
+        "execution_timeframe": "campaign",
+        "lookback": 10000,
+        "horizon": 1,
+        "threshold": {
+          "kind": "regime_label_map",
+          "long_threshold": 0.0,
+          "short_threshold": 0.0,
+          "long_prob": 0.55,
+          "short_prob": 0.45,
+          "vol_z_threshold": 0.5,
+          "vol_lookback": 20,
+          "regime_map": {
+            "0": 0.0,
+            "1": 1.0,
+            "2": -1.0
+          },
+          "flat_on_unknown_regime": true,
+          "allow_short": true
+        },
+        "configuration_id": "hmm_regime_v1",
+        "disclaimer": "Research wiring validation only \u2014 not a profitability claim."
+      }
+    },
+    {
+      "adapter_id": "markov_regime_v1",
+      "tf": "1h",
+      "status": "PASS",
+      "slices": {
+        "train": [
+          0,
+          10000
+        ],
+        "validation": [
+          10000,
+          15000
+        ],
+        "oos": [
+          15000,
+          20000
+        ]
+      },
+      "meta": {
+        "source_model": "markov_chain",
+        "model_version": "1.0.0",
+        "forecast_timestamp": "2023-11-11 07:00:00+00:00",
+        "signal_timestamp": "2024-12-31 23:00:00+00:00",
+        "source_timeframe": "campaign",
+        "execution_timeframe": "campaign",
+        "lookback": 10000,
+        "horizon": 1,
+        "threshold": {
+          "kind": "regime_label_map",
+          "long_threshold": 0.0,
+          "short_threshold": 0.0,
+          "long_prob": 0.55,
+          "short_prob": 0.45,
+          "vol_z_threshold": 0.5,
+          "vol_lookback": 20,
+          "regime_map": {
+            "0": 0.0,
+            "1": 1.0,
+            "2": -1.0
+          },
+          "flat_on_unknown_regime": true,
+          "allow_short": true
+        },
+        "configuration_id": "markov_regime_v1",
+        "disclaimer": "Research wiring validation only \u2014 not a profitability claim."
+      }
+    }
+  ],
+  "disclaimer": "MODEL-DRIVEN ALPHA RESEARCH \u2014 predefined protocol. Research evidence is not a profitability guarantee. MODEL IMPLEMENTED \u2260 FORECAST \u2260 SIGNAL \u2260 OOS \u2260 COST-SURVIVAL \u2260 ROBUST \u2260 PROFITABLE \u2260 LIVE-READY."
+}

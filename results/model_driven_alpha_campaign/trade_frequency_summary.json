@@ -1,0 +1,25 @@
+{
+  "disclaimer": "MODEL-DRIVEN ALPHA RESEARCH \u2014 predefined protocol. Research evidence is not a profitability guarantee. MODEL IMPLEMENTED \u2260 FORECAST \u2260 SIGNAL \u2260 OOS \u2260 COST-SURVIVAL \u2260 ROBUST \u2260 PROFITABLE \u2260 LIVE-READY.",
+  "median_trades_per_day_base": 2.787,
+  "high_frequency_cost_inefficient": 264,
+  "by_family_median_trades_per_day": {
+    "ARIMA": 0.0012,
+    "CatBoost": 1.4082,
+    "Combination": 1.1147999999999998,
+    "Ensemble": 1.5312,
+    "GARCH": 3.276,
+    "GRU": 1.7004,
+    "HMM": 1.3874399999999998,
+    "LSTM": 2.6567999999999996,
+    "LightGBM": 1.3776,
+    "MLP": 1.9596,
+    "MTF": 5.1983999999999995,
+    "Markov": 0.0,
+    "Reference": 8.59392,
+    "Transformer": 1.8815999999999997,
+    "XGBoost": 2.6382,
+    "VAR": null,
+    "VECM": null,
+    "GMM": null
+  }
+}

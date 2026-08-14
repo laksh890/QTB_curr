@@ -1,0 +1,308 @@
+{
+  "features": [
+    {
+      "feature_id": "ATR",
+      "version": "1.0.0",
+      "description": "Average true range",
+      "inputs": [
+        "high",
+        "low",
+        "close"
+      ],
+      "output_schema": [
+        "ATR"
+      ],
+      "timeframe": "native",
+      "lookback": 14,
+      "parameters": {},
+      "dependencies": [],
+      "availability": "always",
+      "warmup": 14,
+      "family": "volatility",
+      "nan_behavior": "leading_nan_during_warmup",
+      "normalization": null,
+      "disclaimer": "RESEARCH FEATURE \u2014 not a profitability claim."
+    },
+    {
+      "feature_id": "EMA",
+      "version": "1.0.0",
+      "description": "Exponential moving average",
+      "inputs": [
+        "close"
+      ],
+      "output_schema": [
+        "EMA"
+      ],
+      "timeframe": "native",
+      "lookback": 20,
+      "parameters": {},
+      "dependencies": [],
+      "availability": "always",
+      "warmup": 20,
+      "family": "trend",
+      "nan_behavior": "leading_nan_during_warmup",
+      "normalization": null,
+      "disclaimer": "RESEARCH FEATURE \u2014 not a profitability claim."
+    },
+    {
+      "feature_id": "MACD",
+      "version": "1.0.0",
+      "description": "MACD line",
+      "inputs": [
+        "close"
+      ],
+      "output_schema": [
+        "MACD"
+      ],
+      "timeframe": "native",
+      "lookback": 26,
+      "parameters": {
+        "fast": 12,
+        "slow": 26
+      },
+      "dependencies": [],
+      "availability": "always",
+      "warmup": 26,
+      "family": "trend",
+      "nan_behavior": "leading_nan_during_warmup",
+      "normalization": null,
+      "disclaimer": "RESEARCH FEATURE \u2014 not a profitability claim."
+    },
+    {
+      "feature_id": "RSI",
+      "version": "1.0.0",
+      "description": "Relative strength index",
+      "inputs": [
+        "close"
+      ],
+      "output_schema": [
+        "RSI"
+      ],
+      "timeframe": "native",
+      "lookback": 14,
+      "parameters": {},
+      "dependencies": [],
+      "availability": "always",
+      "warmup": 14,
+      "family": "mean_reversion",
+      "nan_behavior": "leading_nan_during_warmup",
+      "normalization": null,
+      "disclaimer": "RESEARCH FEATURE \u2014 not a profitability claim."
+    },
+    {
+      "feature_id": "VWAP_distance",
+      "version": "1.0.0",
+      "description": "Distance to rolling VWAP",
+      "inputs": [
+        "close",
+        "volume"
+      ],
+      "output_schema": [
+        "VWAP_distance"
+      ],
+      "timeframe": "native",
+      "lookback": 20,
+      "parameters": {},
+      "dependencies": [],
+      "availability": "always",
+      "warmup": 20,
+      "family": "volume",
+      "nan_behavior": "leading_nan_during_warmup",
+      "normalization": null,
+      "disclaimer": "RESEARCH FEATURE \u2014 not a profitability claim."
+    },
+    {
+      "feature_id": "log_returns",
+      "version": "1.0.0",
+      "description": "Log N-bar return",
+      "inputs": [
+        "close"
+      ],
+      "output_schema": [
+        "log_returns"
+      ],
+      "timeframe": "native",
+      "lookback": 1,
+      "parameters": {},
+      "dependencies": [],
+      "availability": "always",
+      "warmup": 1,
+      "family": "momentum",
+      "nan_behavior": "leading_nan_during_warmup",
+      "normalization": null,
+      "disclaimer": "RESEARCH FEATURE \u2014 not a profitability claim."
+    },
+    {
+      "feature_id": "momentum",
+      "version": "1.0.0",
+      "description": "N-bar momentum (= return)",
+      "inputs": [
+        "close"
+      ],
+      "output_schema": [
+        "momentum"
+      ],
+      "timeframe": "native",
+      "lookback": 20,
+      "parameters": {},
+      "dependencies": [],
+      "availability": "always",
+      "warmup": 20,
+      "family": "momentum",
+      "nan_behavior": "leading_nan_during_warmup",
+      "normalization": null,
+      "disclaimer": "RESEARCH FEATURE \u2014 not a profitability claim."
+    },
+    {
+      "feature_id": "moving_average",
+      "version": "1.0.0",
+      "description": "Simple moving average",
+      "inputs": [
+        "close"
+      ],
+      "output_schema": [
+        "moving_average"
+      ],
+      "timeframe": "native",
+      "lookback": 20,
+      "parameters": {},
+      "dependencies": [],
+      "availability": "always",
+      "warmup": 20,
+      "family": "trend",
+      "nan_behavior": "leading_nan_during_warmup",
+      "normalization": null,
+      "disclaimer": "RESEARCH FEATURE \u2014 not a profitability claim."
+    },
+    {
+      "feature_id": "range",
+      "version": "1.0.0",
+      "description": "(high-low)/close",
+      "inputs": [
+        "high",
+        "low",
+        "close"
+      ],
+      "output_schema": [
+        "range"
+      ],
+      "timeframe": "native",
+      "lookback": 1,
+      "parameters": {},
+      "dependencies": [],
+      "availability": "always",
+      "warmup": 1,
+      "family": "price_action",
+      "nan_behavior": "leading_nan_during_warmup",
+      "normalization": null,
+      "disclaimer": "RESEARCH FEATURE \u2014 not a profitability claim."
+    },
+    {
+      "feature_id": "returns",
+      "version": "1.0.0",
+      "description": "Simple N-bar return",
+      "inputs": [
+        "close"
+      ],
+      "output_schema": [
+        "returns"
+      ],
+      "timeframe": "native",
+      "lookback": 1,
+      "parameters": {},
+      "dependencies": [],
+      "availability": "always",
+      "warmup": 1,
+      "family": "momentum",
+      "nan_behavior": "leading_nan_during_warmup",
+      "normalization": null,
+      "disclaimer": "RESEARCH FEATURE \u2014 not a profitability claim."
+    },
+    {
+      "feature_id": "rolling_zscore",
+      "version": "1.0.0",
+      "description": "Price rolling z-score",
+      "inputs": [
+        "close"
+      ],
+      "output_schema": [
+        "rolling_zscore"
+      ],
+      "timeframe": "native",
+      "lookback": 20,
+      "parameters": {},
+      "dependencies": [],
+      "availability": "always",
+      "warmup": 20,
+      "family": "mean_reversion",
+      "nan_behavior": "leading_nan_during_warmup",
+      "normalization": null,
+      "disclaimer": "RESEARCH FEATURE \u2014 not a profitability claim."
+    },
+    {
+      "feature_id": "true_range",
+      "version": "1.0.0",
+      "description": "True range",
+      "inputs": [
+        "high",
+        "low",
+        "close"
+      ],
+      "output_schema": [
+        "true_range"
+      ],
+      "timeframe": "native",
+      "lookback": 1,
+      "parameters": {},
+      "dependencies": [],
+      "availability": "always",
+      "warmup": 1,
+      "family": "price_action",
+      "nan_behavior": "leading_nan_during_warmup",
+      "normalization": null,
+      "disclaimer": "RESEARCH FEATURE \u2014 not a profitability claim."
+    },
+    {
+      "feature_id": "volatility",
+      "version": "1.0.0",
+      "description": "Rolling return volatility",
+      "inputs": [
+        "close"
+      ],
+      "output_schema": [
+        "volatility"
+      ],
+      "timeframe": "native",
+      "lookback": 20,
+      "parameters": {},
+      "dependencies": [],
+      "availability": "always",
+      "warmup": 20,
+      "family": "volatility",
+      "nan_behavior": "leading_nan_during_warmup",
+      "normalization": null,
+      "disclaimer": "RESEARCH FEATURE \u2014 not a profitability claim."
+    },
+    {
+      "feature_id": "volume_change",
+      "version": "1.0.0",
+      "description": "Volume change",
+      "inputs": [
+        "volume"
+      ],
+      "output_schema": [
+        "volume_change"
+      ],
+      "timeframe": "native",
+      "lookback": 1,
+      "parameters": {},
+      "dependencies": [],
+      "availability": "always",
+      "warmup": 1,
+      "family": "volume",
+      "nan_behavior": "leading_nan_during_warmup",
+      "normalization": null,
+      "disclaimer": "RESEARCH FEATURE \u2014 not a profitability claim."
+    }
+  ]
+}

@@ -1,0 +1,527 @@
+{
+  "disclaimer": "MODEL\u2192ALPHA INTEGRATION VALIDATION \u2014 wiring only. Not a profitability claim. Research evidence is not a guarantee.",
+  "rows": [
+    {
+      "model": "GARCH",
+      "adapter_id": "garch_volatility_v1_1h",
+      "model_exists": true,
+      "forecast": "PASS",
+      "adapter": "PASS",
+      "signal_registry": "PASS",
+      "alpha": "PASS",
+      "oos": "PASS",
+      "backtest": "PASS",
+      "meta": {
+        "source_model": "garch",
+        "model_version": "1.0.0",
+        "forecast_timestamp": "2024-12-19 11:00:00+00:00",
+        "signal_timestamp": "2024-12-31 23:00:00+00:00",
+        "source_timeframe": "1h",
+        "execution_timeframe": "1h",
+        "lookback": 300,
+        "horizon": 1,
+        "threshold": {
+          "kind": "volatility_expansion",
+          "long_threshold": 0.0,
+          "short_threshold": 0.0,
+          "long_prob": 0.55,
+          "short_prob": 0.45,
+          "vol_z_threshold": 0.5,
+          "vol_lookback": 20,
+          "regime_map": {},
+          "flat_on_unknown_regime": true,
+          "allow_short": true
+        },
+        "configuration_id": "garch_volatility_v1_1h",
+        "disclaimer": "Research wiring validation only \u2014 not a profitability claim."
+      },
+      "slices": {
+        "train": [
+          0,
+          300
+        ],
+        "validation": [
+          300,
+          450
+        ],
+        "oos": [
+          450,
+          600
+        ]
+      },
+      "alpha_keys": [
+        "bars_per_day",
+        "classification",
+        "classification_reason",
+        "cost_scenario",
+        "costs",
+        "decay",
+        "embargo_bars",
+        "experiment",
+        "experiment_id",
+        "ic",
+        "importance",
+        "leakage",
+        "matrix_row",
+        "mtf",
+        "n_sessions",
+        "oos",
+        "periods_per_year",
+        "positions",
+        "purge_bars",
+        "regime",
+        "research_status",
+        "score",
+        "signal_meta",
+        "signal_series",
+        "time_of_day"
+      ],
+      "classification": "SAMPLE_TOO_SHORT",
+      "claims": {
+        "MODEL_EXISTS": true,
+        "MODEL_CAN_GENERATE_FORECAST": true,
+        "FORECAST_CAN_GENERATE_SIGNAL": true,
+        "SIGNAL_CAN_ENTER_ALPHA_RESEARCH": true,
+        "SIGNAL_CAN_BE_BACKTESTED": true,
+        "SIGNAL_HAS_POSITIVE_PERFORMANCE": null
+      }
+    },
+    {
+      "model": "ARIMA",
+      "adapter_id": "arima_return_v1_1h",
+      "model_exists": true,
+      "forecast": "PASS",
+      "adapter": "PASS",
+      "signal_registry": "PASS",
+      "alpha": "PASS",
+      "oos": "PASS",
+      "backtest": "PASS",
+      "meta": {
+        "source_model": "arima",
+        "model_version": "1.0.0",
+        "forecast_timestamp": "2024-12-19 11:00:00+00:00",
+        "signal_timestamp": "2024-12-31 23:00:00+00:00",
+        "source_timeframe": "1h",
+        "execution_timeframe": "1h",
+        "lookback": 300,
+        "horizon": 1,
+        "threshold": {
+          "kind": "return_threshold",
+          "long_threshold": 0.0,
+          "short_threshold": 0.0,
+          "long_prob": 0.55,
+          "short_prob": 0.45,
+          "vol_z_threshold": 0.5,
+          "vol_lookback": 20,
+          "regime_map": {},
+          "flat_on_unknown_regime": true,
+          "allow_short": true
+        },
+        "configuration_id": "arima_return_v1_1h",
+        "disclaimer": "Research wiring validation only \u2014 not a profitability claim."
+      },
+      "slices": {
+        "train": [
+          0,
+          300
+        ],
+        "validation": [
+          300,
+          450
+        ],
+        "oos": [
+          450,
+          600
+        ]
+      },
+      "alpha_keys": [
+        "bars_per_day",
+        "classification",
+        "classification_reason",
+        "cost_scenario",
+        "costs",
+        "decay",
+        "embargo_bars",
+        "experiment",
+        "experiment_id",
+        "ic",
+        "importance",
+        "leakage",
+        "matrix_row",
+        "mtf",
+        "n_sessions",
+        "oos",
+        "periods_per_year",
+        "positions",
+        "purge_bars",
+        "regime",
+        "research_status",
+        "score",
+        "signal_meta",
+        "signal_series",
+        "time_of_day"
+      ],
+      "classification": "SAMPLE_TOO_SHORT",
+      "claims": {
+        "MODEL_EXISTS": true,
+        "MODEL_CAN_GENERATE_FORECAST": true,
+        "FORECAST_CAN_GENERATE_SIGNAL": true,
+        "SIGNAL_CAN_ENTER_ALPHA_RESEARCH": true,
+        "SIGNAL_CAN_BE_BACKTESTED": true,
+        "SIGNAL_HAS_POSITIVE_PERFORMANCE": null
+      }
+    },
+    {
+      "model": "XGBoost",
+      "adapter_id": "xgb_return_v1_1h",
+      "model_exists": true,
+      "forecast": "PASS",
+      "adapter": "PASS",
+      "signal_registry": "PASS",
+      "alpha": "PASS",
+      "oos": "PASS",
+      "backtest": "PASS",
+      "meta": {
+        "source_model": "xgboost",
+        "model_version": "1.0.0",
+        "forecast_timestamp": "2024-12-19 11:00:00+00:00",
+        "signal_timestamp": "2024-12-31 23:00:00+00:00",
+        "source_timeframe": "1h",
+        "execution_timeframe": "1h",
+        "lookback": 300,
+        "horizon": 1,
+        "threshold": {
+          "kind": "return_threshold",
+          "long_threshold": 0.0,
+          "short_threshold": 0.0,
+          "long_prob": 0.55,
+          "short_prob": 0.45,
+          "vol_z_threshold": 0.5,
+          "vol_lookback": 20,
+          "regime_map": {},
+          "flat_on_unknown_regime": true,
+          "allow_short": true
+        },
+        "configuration_id": "xgb_return_v1_1h",
+        "disclaimer": "Research wiring validation only \u2014 not a profitability claim."
+      },
+      "slices": {
+        "train": [
+          0,
+          300
+        ],
+        "validation": [
+          300,
+          450
+        ],
+        "oos": [
+          450,
+          600
+        ]
+      },
+      "alpha_keys": [
+        "bars_per_day",
+        "classification",
+        "classification_reason",
+        "cost_scenario",
+        "costs",
+        "decay",
+        "embargo_bars",
+        "experiment",
+        "experiment_id",
+        "ic",
+        "importance",
+        "leakage",
+        "matrix_row",
+        "mtf",
+        "n_sessions",
+        "oos",
+        "periods_per_year",
+        "positions",
+        "purge_bars",
+        "regime",
+        "research_status",
+        "score",
+        "signal_meta",
+        "signal_series",
+        "time_of_day"
+      ],
+      "classification": "SAMPLE_TOO_SHORT",
+      "claims": {
+        "MODEL_EXISTS": true,
+        "MODEL_CAN_GENERATE_FORECAST": true,
+        "FORECAST_CAN_GENERATE_SIGNAL": true,
+        "SIGNAL_CAN_ENTER_ALPHA_RESEARCH": true,
+        "SIGNAL_CAN_BE_BACKTESTED": true,
+        "SIGNAL_HAS_POSITIVE_PERFORMANCE": null
+      }
+    },
+    {
+      "model": "LSTM",
+      "adapter_id": "lstm_return_v1_1h",
+      "model_exists": true,
+      "forecast": "PASS",
+      "adapter": "PASS",
+      "signal_registry": "PASS",
+      "alpha": "PASS",
+      "oos": "PASS",
+      "backtest": "PASS",
+      "meta": {
+        "source_model": "lstm",
+        "model_version": "1.0.0",
+        "forecast_timestamp": "2024-12-19 11:00:00+00:00",
+        "signal_timestamp": "2024-12-31 23:00:00+00:00",
+        "source_timeframe": "1h",
+        "execution_timeframe": "1h",
+        "lookback": 300,
+        "horizon": 1,
+        "threshold": {
+          "kind": "return_threshold",
+          "long_threshold": 0.0,
+          "short_threshold": 0.0,
+          "long_prob": 0.55,
+          "short_prob": 0.45,
+          "vol_z_threshold": 0.5,
+          "vol_lookback": 20,
+          "regime_map": {},
+          "flat_on_unknown_regime": true,
+          "allow_short": true
+        },
+        "configuration_id": "lstm_return_v1_1h",
+        "disclaimer": "Research wiring validation only \u2014 not a profitability claim."
+      },
+      "slices": {
+        "train": [
+          0,
+          300
+        ],
+        "validation": [
+          300,
+          450
+        ],
+        "oos": [
+          450,
+          600
+        ]
+      },
+      "alpha_keys": [
+        "bars_per_day",
+        "classification",
+        "classification_reason",
+        "cost_scenario",
+        "costs",
+        "decay",
+        "embargo_bars",
+        "experiment",
+        "experiment_id",
+        "ic",
+        "importance",
+        "leakage",
+        "matrix_row",
+        "mtf",
+        "n_sessions",
+        "oos",
+        "periods_per_year",
+        "positions",
+        "purge_bars",
+        "regime",
+        "research_status",
+        "score",
+        "signal_meta",
+        "signal_series",
+        "time_of_day"
+      ],
+      "classification": "SAMPLE_TOO_SHORT",
+      "claims": {
+        "MODEL_EXISTS": true,
+        "MODEL_CAN_GENERATE_FORECAST": true,
+        "FORECAST_CAN_GENERATE_SIGNAL": true,
+        "SIGNAL_CAN_ENTER_ALPHA_RESEARCH": true,
+        "SIGNAL_CAN_BE_BACKTESTED": true,
+        "SIGNAL_HAS_POSITIVE_PERFORMANCE": null
+      }
+    },
+    {
+      "model": "Transformer_TiDE",
+      "adapter_id": "transformer_return_v1_1h",
+      "model_exists": true,
+      "forecast": "PASS",
+      "adapter": "PASS",
+      "signal_registry": "PASS",
+      "alpha": "PASS",
+      "oos": "PASS",
+      "backtest": "PASS",
+      "meta": {
+        "source_model": "tide",
+        "model_version": "1.0.0",
+        "forecast_timestamp": "2024-12-19 11:00:00+00:00",
+        "signal_timestamp": "2024-12-31 23:00:00+00:00",
+        "source_timeframe": "1h",
+        "execution_timeframe": "1h",
+        "lookback": 300,
+        "horizon": 1,
+        "threshold": {
+          "kind": "return_threshold",
+          "long_threshold": 0.0,
+          "short_threshold": 0.0,
+          "long_prob": 0.55,
+          "short_prob": 0.45,
+          "vol_z_threshold": 0.5,
+          "vol_lookback": 20,
+          "regime_map": {},
+          "flat_on_unknown_regime": true,
+          "allow_short": true
+        },
+        "configuration_id": "transformer_return_v1_1h",
+        "disclaimer": "Research wiring validation only \u2014 not a profitability claim."
+      },
+      "slices": {
+        "train": [
+          0,
+          300
+        ],
+        "validation": [
+          300,
+          450
+        ],
+        "oos": [
+          450,
+          600
+        ]
+      },
+      "alpha_keys": [
+        "bars_per_day",
+        "classification",
+        "classification_reason",
+        "cost_scenario",
+        "costs",
+        "decay",
+        "embargo_bars",
+        "experiment",
+        "experiment_id",
+        "ic",
+        "importance",
+        "leakage",
+        "matrix_row",
+        "mtf",
+        "n_sessions",
+        "oos",
+        "periods_per_year",
+        "positions",
+        "purge_bars",
+        "regime",
+        "research_status",
+        "score",
+        "signal_meta",
+        "signal_series",
+        "time_of_day"
+      ],
+      "classification": "SAMPLE_TOO_SHORT",
+      "claims": {
+        "MODEL_EXISTS": true,
+        "MODEL_CAN_GENERATE_FORECAST": true,
+        "FORECAST_CAN_GENERATE_SIGNAL": true,
+        "SIGNAL_CAN_ENTER_ALPHA_RESEARCH": true,
+        "SIGNAL_CAN_BE_BACKTESTED": true,
+        "SIGNAL_HAS_POSITIVE_PERFORMANCE": null
+      }
+    },
+    {
+      "model": "HMM",
+      "adapter_id": "hmm_regime_v1_1h",
+      "model_exists": true,
+      "forecast": "PASS",
+      "adapter": "PASS",
+      "signal_registry": "PASS",
+      "alpha": "PASS",
+      "oos": "PASS",
+      "backtest": "PASS",
+      "meta": {
+        "source_model": "hmm",
+        "model_version": "1.0.0",
+        "forecast_timestamp": "2024-12-19 11:00:00+00:00",
+        "signal_timestamp": "2024-12-31 23:00:00+00:00",
+        "source_timeframe": "1h",
+        "execution_timeframe": "1h",
+        "lookback": 300,
+        "horizon": 1,
+        "threshold": {
+          "kind": "regime_label_map",
+          "long_threshold": 0.0,
+          "short_threshold": 0.0,
+          "long_prob": 0.55,
+          "short_prob": 0.45,
+          "vol_z_threshold": 0.5,
+          "vol_lookback": 20,
+          "regime_map": {
+            "0": 0.0,
+            "1": 1.0,
+            "2": -1.0
+          },
+          "flat_on_unknown_regime": true,
+          "allow_short": true
+        },
+        "configuration_id": "hmm_regime_v1_1h",
+        "disclaimer": "Research wiring validation only \u2014 not a profitability claim."
+      },
+      "slices": {
+        "train": [
+          0,
+          300
+        ],
+        "validation": [
+          300,
+          450
+        ],
+        "oos": [
+          450,
+          600
+        ]
+      },
+      "alpha_keys": [
+        "bars_per_day",
+        "classification",
+        "classification_reason",
+        "cost_scenario",
+        "costs",
+        "decay",
+        "embargo_bars",
+        "experiment",
+        "experiment_id",
+        "ic",
+        "importance",
+        "leakage",
+        "matrix_row",
+        "mtf",
+        "n_sessions",
+        "oos",
+        "periods_per_year",
+        "positions",
+        "purge_bars",
+        "regime",
+        "research_status",
+        "score",
+        "signal_meta",
+        "signal_series",
+        "time_of_day"
+      ],
+      "classification": "SAMPLE_TOO_SHORT",
+      "claims": {
+        "MODEL_EXISTS": true,
+        "MODEL_CAN_GENERATE_FORECAST": true,
+        "FORECAST_CAN_GENERATE_SIGNAL": true,
+        "SIGNAL_CAN_ENTER_ALPHA_RESEARCH": true,
+        "SIGNAL_CAN_BE_BACKTESTED": true,
+        "SIGNAL_HAS_POSITIVE_PERFORMANCE": null
+      }
+    }
+  ],
+  "signals_ready": [
+    "garch_volatility_v1_1h",
+    "arima_return_v1_1h",
+    "xgb_return_v1_1h",
+    "lstm_return_v1_1h",
+    "transformer_return_v1_1h",
+    "hmm_regime_v1_1h"
+  ]
+}

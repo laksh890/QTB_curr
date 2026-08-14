@@ -1,0 +1,240 @@
+{
+  "disclaimer": "MODEL\u2192ALPHA INTEGRATION VALIDATION \u2014 wiring only. Not a profitability claim. Research evidence is not a guarantee.",
+  "adapters": [
+    {
+      "adapter_id": "arima_return_v1_1h",
+      "model_id": "arima",
+      "model_family": "statistical",
+      "model_version": "1.0.0",
+      "input_schema": [
+        "target"
+      ],
+      "output_type": "forecast",
+      "timeframe": "1h",
+      "horizon": 1,
+      "causal": true,
+      "signal_mapping": {
+        "kind": "return_threshold",
+        "long_threshold": 0.0,
+        "short_threshold": 0.0,
+        "long_prob": 0.55,
+        "short_prob": 0.45,
+        "vol_z_threshold": 0.5,
+        "vol_lookback": 20,
+        "regime_map": {},
+        "flat_on_unknown_regime": true,
+        "allow_short": true
+      },
+      "availability": "available",
+      "status": "registered",
+      "factory_path": "iqrp.app.forecasting.statistical.create_statistical_model",
+      "notes": "Existing ARIMA level/return forecast \u2192 threshold signal",
+      "holding_bars": 1,
+      "signal_id": "arima_return_v1_1h",
+      "disclaimer": "MODEL\u2192SIGNAL ADAPTER \u2014 wiring validation only, not a profitability claim."
+    },
+    {
+      "adapter_id": "garch_volatility_v1_1h",
+      "model_id": "garch",
+      "model_family": "volatility",
+      "model_version": "1.0.0",
+      "input_schema": [
+        "returns"
+      ],
+      "output_type": "forecast",
+      "timeframe": "1h",
+      "horizon": 1,
+      "causal": true,
+      "signal_mapping": {
+        "kind": "volatility_expansion",
+        "long_threshold": 0.0,
+        "short_threshold": 0.0,
+        "long_prob": 0.55,
+        "short_prob": 0.45,
+        "vol_z_threshold": 0.5,
+        "vol_lookback": 20,
+        "regime_map": {},
+        "flat_on_unknown_regime": true,
+        "allow_short": true
+      },
+      "availability": "available",
+      "status": "registered",
+      "factory_path": "iqrp.app.forecasting.volatility.create_volatility_model",
+      "notes": "Existing GARCH \u2192 vol-expansion/contraction tilt (wiring only)",
+      "holding_bars": 1,
+      "signal_id": "garch_volatility_v1_1h",
+      "disclaimer": "MODEL\u2192SIGNAL ADAPTER \u2014 wiring validation only, not a profitability claim."
+    },
+    {
+      "adapter_id": "hmm_regime_v1_1h",
+      "model_id": "hmm",
+      "model_family": "regime",
+      "model_version": "1.0.0",
+      "input_schema": [
+        "features"
+      ],
+      "output_type": "regime",
+      "timeframe": "1h",
+      "horizon": 1,
+      "causal": true,
+      "signal_mapping": {
+        "kind": "regime_label_map",
+        "long_threshold": 0.0,
+        "short_threshold": 0.0,
+        "long_prob": 0.55,
+        "short_prob": 0.45,
+        "vol_z_threshold": 0.5,
+        "vol_lookback": 20,
+        "regime_map": {
+          "0": 0.0,
+          "1": 1.0,
+          "2": -1.0
+        },
+        "flat_on_unknown_regime": true,
+        "allow_short": true
+      },
+      "availability": "available",
+      "status": "registered",
+      "factory_path": "iqrp.app.regimes.hmm.model",
+      "notes": "Existing HMM; explicit module load required (default registry is mock-only)",
+      "holding_bars": 1,
+      "signal_id": "hmm_regime_v1_1h",
+      "disclaimer": "MODEL\u2192SIGNAL ADAPTER \u2014 wiring validation only, not a profitability claim."
+    },
+    {
+      "adapter_id": "lstm_return_v1_1h",
+      "model_id": "lstm",
+      "model_family": "neural",
+      "model_version": "1.0.0",
+      "input_schema": [
+        "features",
+        "target"
+      ],
+      "output_type": "forecast",
+      "timeframe": "1h",
+      "horizon": 1,
+      "causal": true,
+      "signal_mapping": {
+        "kind": "return_threshold",
+        "long_threshold": 0.0,
+        "short_threshold": 0.0,
+        "long_prob": 0.55,
+        "short_prob": 0.45,
+        "vol_z_threshold": 0.5,
+        "vol_lookback": 20,
+        "regime_map": {},
+        "flat_on_unknown_regime": true,
+        "allow_short": true
+      },
+      "availability": "partial",
+      "status": "registered",
+      "factory_path": "iqrp.app.forecasting.neural.create_neural_model",
+      "notes": "Existing LSTM; may be UNAVAILABLE if training constraints fail in smoke",
+      "holding_bars": 1,
+      "signal_id": "lstm_return_v1_1h",
+      "disclaimer": "MODEL\u2192SIGNAL ADAPTER \u2014 wiring validation only, not a profitability claim."
+    },
+    {
+      "adapter_id": "mock_regime_v1_1h",
+      "model_id": "mock_regime",
+      "model_family": "regime",
+      "model_version": "1.0.0",
+      "input_schema": [
+        "features"
+      ],
+      "output_type": "regime",
+      "timeframe": "1h",
+      "horizon": 1,
+      "causal": true,
+      "signal_mapping": {
+        "kind": "regime_label_map",
+        "long_threshold": 0.0,
+        "short_threshold": 0.0,
+        "long_prob": 0.55,
+        "short_prob": 0.45,
+        "vol_z_threshold": 0.5,
+        "vol_lookback": 20,
+        "regime_map": {
+          "0": 0.0,
+          "1": 1.0,
+          "2": -1.0
+        },
+        "flat_on_unknown_regime": true,
+        "allow_short": true
+      },
+      "availability": "available",
+      "status": "registered",
+      "factory_path": "iqrp.app.regimes.models.mock",
+      "notes": "Default-loadable mock regime for wiring validation",
+      "holding_bars": 1,
+      "signal_id": "mock_regime_v1_1h",
+      "disclaimer": "MODEL\u2192SIGNAL ADAPTER \u2014 wiring validation only, not a profitability claim."
+    },
+    {
+      "adapter_id": "transformer_return_v1_1h",
+      "model_id": "tide",
+      "model_family": "transformer",
+      "model_version": "1.0.0",
+      "input_schema": [
+        "features",
+        "target"
+      ],
+      "output_type": "forecast",
+      "timeframe": "1h",
+      "horizon": 1,
+      "causal": true,
+      "signal_mapping": {
+        "kind": "return_threshold",
+        "long_threshold": 0.0,
+        "short_threshold": 0.0,
+        "long_prob": 0.55,
+        "short_prob": 0.45,
+        "vol_z_threshold": 0.5,
+        "vol_lookback": 20,
+        "regime_map": {},
+        "flat_on_unknown_regime": true,
+        "allow_short": true
+      },
+      "availability": "partial",
+      "status": "registered",
+      "factory_path": "iqrp.app.forecasting.transformers.create_transformer_model",
+      "notes": "Existing transformer (TiDE); may be UNAVAILABLE in smoke",
+      "holding_bars": 1,
+      "signal_id": "transformer_return_v1_1h",
+      "disclaimer": "MODEL\u2192SIGNAL ADAPTER \u2014 wiring validation only, not a profitability claim."
+    },
+    {
+      "adapter_id": "xgb_return_v1_1h",
+      "model_id": "xgboost",
+      "model_family": "tree_ml",
+      "model_version": "1.0.0",
+      "input_schema": [
+        "features",
+        "target"
+      ],
+      "output_type": "forecast",
+      "timeframe": "1h",
+      "horizon": 1,
+      "causal": true,
+      "signal_mapping": {
+        "kind": "return_threshold",
+        "long_threshold": 0.0,
+        "short_threshold": 0.0,
+        "long_prob": 0.55,
+        "short_prob": 0.45,
+        "vol_z_threshold": 0.5,
+        "vol_lookback": 20,
+        "regime_map": {},
+        "flat_on_unknown_regime": true,
+        "allow_short": true
+      },
+      "availability": "available",
+      "status": "registered",
+      "factory_path": "iqrp.app.forecasting.tree_models.create_tree_model",
+      "notes": "Existing XGBoost forecast \u2192 threshold signal",
+      "holding_bars": 1,
+      "signal_id": "xgb_return_v1_1h",
+      "disclaimer": "MODEL\u2192SIGNAL ADAPTER \u2014 wiring validation only, not a profitability claim."
+    }
+  ]
+}

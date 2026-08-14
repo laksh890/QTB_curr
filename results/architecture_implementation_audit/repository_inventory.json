@@ -1,0 +1,135 @@
+{
+  "generated_at": "2026-08-14T15:18:12.125863+00:00",
+  "packages": [
+    {
+      "package": "iqrp.app.alpha",
+      "path": "iqrp/app/alpha",
+      "n_python_files": 78
+    },
+    {
+      "package": "iqrp.app.api",
+      "path": "iqrp/app/api",
+      "n_python_files": 1
+    },
+    {
+      "package": "iqrp.app.backtesting",
+      "path": "iqrp/app/backtesting",
+      "n_python_files": 149
+    },
+    {
+      "package": "iqrp.app.common",
+      "path": "iqrp/app/common",
+      "n_python_files": 7
+    },
+    {
+      "package": "iqrp.app.config",
+      "path": "iqrp/app/config",
+      "n_python_files": 3
+    },
+    {
+      "package": "iqrp.app.core",
+      "path": "iqrp/app/core",
+      "n_python_files": 4
+    },
+    {
+      "package": "iqrp.app.dashboard",
+      "path": "iqrp/app/dashboard",
+      "n_python_files": 1
+    },
+    {
+      "package": "iqrp.app.data",
+      "path": "iqrp/app/data",
+      "n_python_files": 47
+    },
+    {
+      "package": "iqrp.app.execution",
+      "path": "iqrp/app/execution",
+      "n_python_files": 64
+    },
+    {
+      "package": "iqrp.app.features",
+      "path": "iqrp/app/features",
+      "n_python_files": 49
+    },
+    {
+      "package": "iqrp.app.forecasting",
+      "path": "iqrp/app/forecasting",
+      "n_python_files": 301
+    },
+    {
+      "package": "iqrp.app.labels",
+      "path": "iqrp/app/labels",
+      "n_python_files": 27
+    },
+    {
+      "package": "iqrp.app.live",
+      "path": "iqrp/app/live",
+      "n_python_files": 1
+    },
+    {
+      "package": "iqrp.app.logging",
+      "path": "iqrp/app/logging",
+      "n_python_files": 3
+    },
+    {
+      "package": "iqrp.app.math",
+      "path": "iqrp/app/math",
+      "n_python_files": 34
+    },
+    {
+      "package": "iqrp.app.portfolio",
+      "path": "iqrp/app/portfolio",
+      "n_python_files": 78
+    },
+    {
+      "package": "iqrp.app.regimes",
+      "path": "iqrp/app/regimes",
+      "n_python_files": 143
+    },
+    {
+      "package": "iqrp.app.risk",
+      "path": "iqrp/app/risk",
+      "n_python_files": 109
+    },
+    {
+      "package": "iqrp.app.simulation",
+      "path": "iqrp/app/simulation",
+      "n_python_files": 35
+    },
+    {
+      "package": "iqrp.app.state_space",
+      "path": "iqrp/app/state_space",
+      "n_python_files": 37
+    },
+    {
+      "package": "iqrp.app.timeseries",
+      "path": "iqrp/app/timeseries",
+      "n_python_files": 86
+    }
+  ],
+  "total_packages": 21,
+  "total_python_files_under_app": 1257,
+  "top_level": [
+    "iqrp.app.alpha",
+    "iqrp.app.api",
+    "iqrp.app.backtesting",
+    "iqrp.app.common",
+    "iqrp.app.config",
+    "iqrp.app.core",
+    "iqrp.app.dashboard",
+    "iqrp.app.data",
+    "iqrp.app.execution",
+    "iqrp.app.features",
+    "iqrp.app.forecasting",
+    "iqrp.app.labels",
+    "iqrp.app.live",
+    "iqrp.app.logging",
+    "iqrp.app.math",
+    "iqrp.app.portfolio",
+    "iqrp.app.regimes",
+    "iqrp.app.risk",
+    "iqrp.app.simulation",
+    "iqrp.app.state_space",
+    "iqrp.app.timeseries"
+  ]
+}

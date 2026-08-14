@@ -1,0 +1,351 @@
+{
+  "n_pool_reconstructed": 16,
+  "campaign_before_filtering": 14,
+  "gates": {
+    "min_trades": 10,
+    "min_oos_sharpe": 0.0,
+    "min_net_expectancy": 0.0,
+    "max_drawdown": 0.4,
+    "min_neighborhood_stability": 0.35,
+    "min_sessions_for_significance": 60,
+    "require_positive_net_alpha": true
+  },
+  "experiments": [
+    {
+      "experiment_id": "3845ba52-6f76-46ad-8225-e5abac69700d",
+      "signal": "trend_signal",
+      "timeframe": "1h",
+      "lookback": 20,
+      "holding_bars": 10,
+      "net_sharpe": 0.5512589352511671,
+      "oos_sharpe": 0.019479990863862328,
+      "net_return": 2.7625822364247976,
+      "gross_return": 31.11006288727645,
+      "research_status": "UNSTABLE",
+      "failed_gate": "UNSTABLE/FRAGILE",
+      "exact_reason": "fragile classification (drawdown or instability)",
+      "metric": {
+        "drawdown": 0.8190950694428998,
+        "max_drawdown_gate": 0.4
+      },
+      "threshold": {
+        "max_drawdown": 0.4
+      }
+    },
+    {
+      "experiment_id": "3aa71d03-5ee5-4b56-88a7-56a10f894901",
+      "signal": "momentum_signal",
+      "timeframe": "1h",
+      "lookback": 20,
+      "holding_bars": 5,
+      "net_sharpe": 0.38287311772141297,
+      "oos_sharpe": -0.33086504989011,
+      "net_return": 0.686362037609336,
+      "gross_return": 21.416462749049927,
+      "research_status": "OOS_FAILED",
+      "failed_gate": "OOS_FAILED",
+      "exact_reason": "OOS Sharpe below min_oos_sharpe",
+      "metric": {
+        "oos_sharpe": -0.33086504989011
+      },
+      "threshold": {
+        "min_oos_sharpe": 0.0
+      }
+    },
+    {
+      "experiment_id": "409e766a-7333-4382-8260-55521d6c7d21",
+      "signal": "momentum_signal",
+      "timeframe": "1h",
+      "lookback": 20,
+      "holding_bars": 10,
+      "net_sharpe": 0.22780072340017968,
+      "oos_sharpe": 0.05355873389174057,
+      "net_return": -0.19313208414812333,
+      "gross_return": 4.175434501188201,
+      "research_status": "COST_INEFFICIENT",
+      "failed_gate": "COST_INEFFICIENT",
+      "exact_reason": "edge collapses after costs / net non-positive while gross positive or Sharpe collapse rule",
+      "metric": {
+        "gross_return": 4.175434501188201,
+        "net_return": -0.19313208414812333,
+        "net_sharpe": 0.22780072340017968
+      },
+      "threshold": "{'net_pnl>0 & net_sharpe>0 required for survive; collapse if gross>0>=net or gs>=1 & ns<0.5'}"
+    },
+    {
+      "experiment_id": "3fa01c99-3016-49b1-8517-ff56b0703f77",
+      "signal": "trend_signal",
+      "timeframe": "1h",
+      "lookback": 20,
+      "holding_bars": 5,
+      "net_sharpe": 0.13897625157600144,
+      "oos_sharpe": -0.3219638790612501,
+      "net_return": -0.4736934252458682,
+      "gross_return": 9.33084441918635,
+      "research_status": "COST_INEFFICIENT",
+      "failed_gate": "COST_INEFFICIENT",
+      "exact_reason": "edge collapses after costs / net non-positive while gross positive or Sharpe collapse rule",
+      "metric": {
+        "gross_return": 9.33084441918635,
+        "net_return": -0.4736934252458682,
+        "net_sharpe": 0.13897625157600144
+      },
+      "threshold": "{'net_pnl>0 & net_sharpe>0 required for survive; collapse if gross>0>=net or gs>=1 & ns<0.5'}"
+    },
+    {
+      "experiment_id": "22560244-7726-47d3-aa90-092c8222e4a0",
+      "signal": "price_action_signal",
+      "timeframe": "1h",
+      "lookback": 10,
+      "holding_bars": 20,
+      "net_sharpe": 0.06247287369823064,
+      "oos_sharpe": -0.15056916036705084,
+      "net_return": -0.6167803110721104,
+      "gross_return": 1.092951010889541,
+      "research_status": "COST_INEFFICIENT",
+      "failed_gate": "COST_INEFFICIENT",
+      "exact_reason": "edge collapses after costs / net non-positive while gross positive or Sharpe collapse rule",
+      "metric": {
+        "gross_return": 1.092951010889541,
+        "net_return": -0.6167803110721104,
+        "net_sharpe": 0.06247287369823064
+      },
+      "threshold": "{'net_pnl>0 & net_sharpe>0 required for survive; collapse if gross>0>=net or gs>=1 & ns<0.5'}"
+    },
+    {
+      "experiment_id": "570ed35b-f487-426a-803d-880683d145f0",
+      "signal": "volume_signal",
+      "timeframe": "1h",
+      "lookback": 10,
+      "holding_bars": 20,
+      "net_sharpe": 0.07477273769170797,
+      "oos_sharpe": -0.4315497574095226,
+      "net_return": -0.5820670599358735,
+      "gross_return": 1.6772797428308208,
+      "research_status": "COST_INEFFICIENT",
+      "failed_gate": "COST_INEFFICIENT",
+      "exact_reason": "edge collapses after costs / net non-positive while gross positive or Sharpe collapse rule",
+      "metric": {
+        "gross_return": 1.6772797428308208,
+        "net_return": -0.5820670599358735,
+        "net_sharpe": 0.07477273769170797
+      },
+      "threshold": "{'net_pnl>0 & net_sharpe>0 required for survive; collapse if gross>0>=net or gs>=1 & ns<0.5'}"
+    },
+    {
+      "experiment_id": "a3cd34e4-74ea-41ad-bc42-e291ddf8660f",
+      "signal": "momentum_signal",
+      "timeframe": "30m",
+      "lookback": 20,
+      "holding_bars": 20,
+      "net_sharpe": 0.268704496029334,
+      "oos_sharpe": 0.05276003547493303,
+      "net_return": -0.040516658350704615,
+      "gross_return": 12.890069262031012,
+      "research_status": "COST_INEFFICIENT",
+      "failed_gate": "COST_INEFFICIENT",
+      "exact_reason": "edge collapses after costs / net non-positive while gross positive or Sharpe collapse rule",
+      "metric": {
+        "gross_return": 12.890069262031012,
+        "net_return": -0.040516658350704615,
+        "net_sharpe": 0.268704496029334
+      },
+      "threshold": "{'net_pnl>0 & net_sharpe>0 required for survive; collapse if gross>0>=net or gs>=1 & ns<0.5'}"
+    },
+    {
+      "experiment_id": "c54cefc0-2fa4-4405-851b-26a9602abebb",
+      "signal": "momentum_signal",
+      "timeframe": "1h",
+      "lookback": 10,
+      "holding_bars": 10,
+      "net_sharpe": 0.1820291209382755,
+      "oos_sharpe": -0.22230611596450126,
+      "net_return": -0.35167731971539296,
+      "gross_return": 8.919731599799018,
+      "research_status": "COST_INEFFICIENT",
+      "failed_gate": "COST_INEFFICIENT",
+      "exact_reason": "edge collapses after costs / net non-positive while gross positive or Sharpe collapse rule",
+      "metric": {
+        "gross_return": 8.919731599799018,
+        "net_return": -0.35167731971539296,
+        "net_sharpe": 0.1820291209382755
+      },
+      "threshold": "{'net_pnl>0 & net_sharpe>0 required for survive; collapse if gross>0>=net or gs>=1 & ns<0.5'}"
+    },
+    {
+      "experiment_id": "3749dc63-667a-4dde-9afb-95f9490ac2e7",
+      "signal": "volatility_signal",
+      "timeframe": "1h",
+      "lookback": 10,
+      "holding_bars": 20,
+      "net_sharpe": 0.058653966439912796,
+      "oos_sharpe": 0.0714839926491228,
+      "net_return": -0.6406362350463223,
+      "gross_return": 0.28905598690325207,
+      "research_status": "COST_INEFFICIENT",
+      "failed_gate": "COST_INEFFICIENT",
+      "exact_reason": "edge collapses after costs / net non-positive while gross positive or Sharpe collapse rule",
+      "metric": {
+        "gross_return": 0.28905598690325207,
+        "net_return": -0.6406362350463223,
+        "net_sharpe": 0.058653966439912796
+      },
+      "threshold": "{'net_pnl>0 & net_sharpe>0 required for survive; collapse if gross>0>=net or gs>=1 & ns<0.5'}"
+    },
+    {
+      "experiment_id": "f7166d2f-6fef-4573-a21a-3bb5eb7d7114",
+      "signal": "momentum_signal",
+      "timeframe": "1h",
+      "lookback": 20,
+      "holding_bars": 3,
+      "net_sharpe": 0.1288686439360759,
+      "oos_sharpe": -0.968810318329618,
+      "net_return": -0.4987358700050304,
+      "gross_return": 13.796846505546046,
+      "research_status": "COST_INEFFICIENT",
+      "failed_gate": "COST_INEFFICIENT",
+      "exact_reason": "edge collapses after costs / net non-positive while gross positive or Sharpe collapse rule",
+      "metric": {
+        "gross_return": 13.796846505546046,
+        "net_return": -0.4987358700050304,
+        "net_sharpe": 0.1288686439360759
+      },
+      "threshold": "{'net_pnl>0 & net_sharpe>0 required for survive; collapse if gross>0>=net or gs>=1 & ns<0.5'}"
+    },
+    {
+      "experiment_id": "3f4edfb4-9bac-423d-901a-6072b3acf934",
+      "signal": "trend_signal",
+      "timeframe": "1h",
+      "lookback": 20,
+      "holding_bars": 20,
+      "net_sharpe": 0.06552360000673027,
+      "oos_sharpe": -1.1988721412852448,
+      "net_return": -0.6272585940532642,
+      "gross_return": 0.46608940686481115,
+      "research_status": "COST_INEFFICIENT",
+      "failed_gate": "COST_INEFFICIENT",
+      "exact_reason": "edge collapses after costs / net non-positive while gross positive or Sharpe collapse rule",
+      "metric": {
+        "gross_return": 0.46608940686481115,
+        "net_return": -0.6272585940532642,
+        "net_sharpe": 0.06552360000673027
+      },
+      "threshold": "{'net_pnl>0 & net_sharpe>0 required for survive; collapse if gross>0>=net or gs>=1 & ns<0.5'}"
+    },
+    {
+      "experiment_id": "5b734dc6-519f-449a-8363-ddfa6198cf98",
+      "signal": "momentum_signal",
+      "timeframe": "1h",
+      "lookback": 10,
+      "holding_bars": 20,
+      "net_sharpe": 0.09731412155757686,
+      "oos_sharpe": -0.8275753925521958,
+      "net_return": -0.5665533561360429,
+      "gross_return": 0.6540740078080289,
+      "research_status": "COST_INEFFICIENT",
+      "failed_gate": "COST_INEFFICIENT",
+      "exact_reason": "edge collapses after costs / net non-positive while gross positive or Sharpe collapse rule",
+      "metric": {
+        "gross_return": 0.6540740078080289,
+        "net_return": -0.5665533561360429,
+        "net_sharpe": 0.09731412155757686
+      },
+      "threshold": "{'net_pnl>0 & net_sharpe>0 required for survive; collapse if gross>0>=net or gs>=1 & ns<0.5'}"
+    },
+    {
+      "experiment_id": "95d66147-b5c3-4f08-a3ac-a40c19e656c5",
+      "signal": "breakout_signal",
+      "timeframe": "1h",
+      "lookback": 20,
+      "holding_bars": 20,
+      "net_sharpe": -0.32342059538066753,
+      "oos_sharpe": -1.2469498703830955,
+      "net_return": -0.910121154060521,
+      "gross_return": -0.42283856794009766,
+      "research_status": "OOS_FAILED",
+      "failed_gate": "OOS_FAILED",
+      "exact_reason": "OOS Sharpe below min_oos_sharpe",
+      "metric": {
+        "oos_sharpe": -1.2469498703830955
+      },
+      "threshold": {
+        "min_oos_sharpe": 0.0
+      }
+    },
+    {
+      "experiment_id": "f7740690-9283-4b11-8cd6-1a92816010a9",
+      "signal": "trend_signal",
+      "timeframe": "1h",
+      "lookback": 10,
+      "holding_bars": 10,
+      "net_sharpe": 0.034773189621177,
+      "oos_sharpe": -0.5567604871706799,
+      "net_return": -0.6793111900813766,
+      "gross_return": 3.4373405297120287,
+      "research_status": "COST_INEFFICIENT",
+      "failed_gate": "COST_INEFFICIENT",
+      "exact_reason": "edge collapses after costs / net non-positive while gross positive or Sharpe collapse rule",
+      "metric": {
+        "gross_return": 3.4373405297120287,
+        "net_return": -0.6793111900813766,
+        "net_sharpe": 0.034773189621177
+      },
+      "threshold": "{'net_pnl>0 & net_sharpe>0 required for survive; collapse if gross>0>=net or gs>=1 & ns<0.5'}"
+    },
+    {
+      "experiment_id": "4b5295f2-57ee-4bf5-a962-862099a7b194",
+      "signal": "trend_signal",
+      "timeframe": "1h",
+      "lookback": 10,
+      "holding_bars": 20,
+      "net_sharpe": 0.06271532392803285,
+      "oos_sharpe": -1.6958119516331904,
+      "net_return": -0.6330211396798855,
+      "gross_return": 0.4104223669347804,
+      "research_status": "COST_INEFFICIENT",
+      "failed_gate": "COST_INEFFICIENT",
+      "exact_reason": "edge collapses after costs / net non-positive while gross positive or Sharpe collapse rule",
+      "metric": {
+        "gross_return": 0.4104223669347804,
+        "net_return": -0.6330211396798855,
+        "net_sharpe": 0.06271532392803285
+      },
+      "threshold": "{'net_pnl>0 & net_sharpe>0 required for survive; collapse if gross>0>=net or gs>=1 & ns<0.5'}"
+    },
+    {
+      "experiment_id": "92d8fdfc-0496-4c33-a113-535bc966dcae",
+      "signal": "mean_reversion_signal",
+      "timeframe": "1m",
+      "lookback": 20,
+      "holding_bars": 20,
+      "net_sharpe": -19.481630689928178,
+      "oos_sharpe": -27.047873425911114,
+      "net_return": -1.0,
+      "gross_return": 393316.2911070255,
+      "research_status": "COST_INEFFICIENT",
+      "failed_gate": "COST_INEFFICIENT",
+      "exact_reason": "edge collapses after costs / net non-positive while gross positive or Sharpe collapse rule",
+      "metric": {
+        "gross_return": 393316.2911070255,
+        "net_return": -1.0,
+        "net_sharpe": -19.481630689928178
+      },
+      "threshold": "{'net_pnl>0 & net_sharpe>0 required for survive; collapse if gross>0>=net or gs>=1 & ns<0.5'}"
+    }
+  ],
+  "gate_order": [
+    "SAMPLE_TOO_SHORT / INSUFFICIENT_DATA",
+    "COST_INEFFICIENT (alpha_collapses_after_costs)",
+    "OOS_FAILURE (oos_sharpe < min_oos_sharpe)",
+    "FRAGILE / UNSTABLE (drawdown or fragile flag)",
+    "ROBUST/PROMISING positive filters",
+    "Campaign CANDIDATE requires ROBUST/CONDITIONAL + cost survive + OOS>0"
+  ],
+  "selection_effects": [
+    "OOS metrics are computed for all BASE experiments before classification \u2014 not only cost survivors.",
+    "Campaign final CANDIDATE filter additionally requires research_status in {CANDIDATE,CONDITIONAL} AND cost survival AND OOS>0.",
+    "FDR was computed on IC p-values for all BASE experiments; it did not create CANDIDATEs.",
+    "Deep-dive robustness/slippage used top-K by research score \u2014 selection on full-sample score (in-sample ranking effect for diagnostics only)."
+  ],
+  "disclaimer": "Research evidence is not a profitability guarantee."
+}

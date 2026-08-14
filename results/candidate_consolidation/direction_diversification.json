@@ -1,0 +1,91 @@
+{
+  "n_long_short_pairs": 13,
+  "median_corr_val": -0.17797161219099003,
+  "independent_sides": true,
+  "direction_counts": {
+    "LONG": 93,
+    "LONG_SHORT": 23,
+    "SHORT": 13
+  },
+  "sample": [
+    {
+      "long": "mdc_031f3155a31e7062",
+      "short": "mdc_50898bec5bf99099",
+      "val_corr": -0.4168850771680284,
+      "abs_corr": 0.4168850771680284
+    },
+    {
+      "long": "mdc_1361621b538bd930",
+      "short": "mdc_ad786dac3c66daeb",
+      "val_corr": -0.17797161219099003,
+      "abs_corr": 0.17797161219099003
+    },
+    {
+      "long": "mdc_1dc3c9761e80f81c",
+      "short": "mdc_1366eb063c96bd09",
+      "val_corr": -0.10988425704753886,
+      "abs_corr": 0.10988425704753886
+    },
+    {
+      "long": "mdc_18a517e70fce1a2f",
+      "short": "mdc_a627de466de38e08",
+      "val_corr": -0.17062552659082666,
+      "abs_corr": 0.17062552659082666
+    },
+    {
+      "long": "mdc_1a7ec2fadcbe5129",
+      "short": "mdc_678609c534d68189",
+      "val_corr": -0.17797161219099003,
+      "abs_corr": 0.17797161219099003
+    },
+    {
+      "long": "mdc_aa25caf5a0a04dc2",
+      "short": "mdc_2c0edd3b5a69ca83",
+      "val_corr": -0.2322657552019032,
+      "abs_corr": 0.2322657552019032
+    },
+    {
+      "long": "mdc_6f008c954ea26bf5",
+      "short": "mdc_36eb8ebeca066850",
+      "val_corr": -0.17515914796271562,
+      "abs_corr": 0.17515914796271562
+    },
+    {
+      "long": "mdc_df580039cda31237",
+      "short": "mdc_be80cb247303bb8c",
+      "val_corr": -0.3664672859592759,
+      "abs_corr": 0.3664672859592759
+    },
+    {
+      "long": "mdc_6cacbba19ad9b8d3",
+      "short": "mdc_eb281f6d7961dd89",
+      "val_corr": -0.22192997758739405,
+      "abs_corr": 0.22192997758739405
+    },
+    {
+      "long": "mdc_61438f8a108ae268",
+      "short": "mdc_953ada34cefc6465",
+      "val_corr": -0.17797161219099003,
+      "abs_corr": 0.17797161219099003
+    },
+    {
+      "long": "mdc_97e5cdb98ab5a15d",
+      "short": "mdc_9e477e1d1e8166cf",
+      "val_corr": -0.16700793456695345,
+      "abs_corr": 0.16700793456695345
+    },
+    {
+      "long": "mdc_bcab10034fd66fe3",
+      "short": "mdc_6528eee052f7feb1",
+      "val_corr": -0.16700793456695343,
+      "abs_corr": 0.16700793456695343
+    },
+    {
+      "long": "mdc_8cbf8475db61e0ec",
+      "short": "mdc_ce441f34fbac37a9",
+      "val_corr": -0.17515914796271562,
+      "abs_corr": 0.17515914796271562
+    }
+  ],
+  "note": "Do not assume long/short symmetry."
+}

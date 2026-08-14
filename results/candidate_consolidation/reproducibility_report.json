@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "pair": [
+    "mdc_0069b1076c73906e",
+    "mdc_0166c26db49126b2"
+  ],
+  "corr_run1": NaN,
+  "corr_run2": NaN,
+  "n_clusters": 8,
+  "seed": 40,
+  "period_alignment": "per_candidate_daily_chronological_50_25_25_intersection",
+  "defect_fix": "v1 used global 1h validation calendar which did not overlap shorter TF windows (NaN correlations). Fixed to per-candidate daily splits + intersection.",
+  "thresholds": {
+    "corr_highly_redundant": 0.85,
+    "cluster_merge_corr": 0.7
+  },
+  "disclaimer": "CANDIDATE CONSOLIDATION RESEARCH \u2014 predefined protocol. Research evidence is not a profitability guarantee. DISTINCT_RESEARCH_CANDIDATE \u2260 PROFITABLE \u2260 PRODUCTION_READY \u2260 LIVE_READY. Prompt 39 artifacts are immutable inputs."
+}

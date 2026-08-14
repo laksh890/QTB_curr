@@ -1,0 +1,65 @@
+{
+  "by_timeframe": {
+    "1m": {
+      "tz": "UTC",
+      "monotonic_increasing": true,
+      "duplicate_timestamps": 0,
+      "n_gaps_gt_1_5x": 22,
+      "bars_per_day_crypto_convention": 1440.0,
+      "annualization_ppy": 362880.0,
+      "n_calendar_days": 2192,
+      "start": "2019-01-01 00:00:00+00:00",
+      "end": "2024-12-31 23:59:00+00:00"
+    },
+    "5m": {
+      "tz": "UTC",
+      "monotonic_increasing": true,
+      "duplicate_timestamps": 0,
+      "n_gaps_gt_1_5x": 21,
+      "bars_per_day_crypto_convention": 288.0,
+      "annualization_ppy": 72576.0,
+      "n_calendar_days": 2192,
+      "start": "2019-01-01 00:00:00+00:00",
+      "end": "2024-12-31 23:55:00+00:00"
+    },
+    "15m": {
+      "tz": "UTC",
+      "monotonic_increasing": true,
+      "duplicate_timestamps": 0,
+      "n_gaps_gt_1_5x": 21,
+      "bars_per_day_crypto_convention": 96.0,
+      "annualization_ppy": 24192.0,
+      "n_calendar_days": 2192,
+      "start": "2019-01-01 00:00:00+00:00",
+      "end": "2024-12-31 23:45:00+00:00"
+    },
+    "30m": {
+      "tz": "UTC",
+      "monotonic_increasing": true,
+      "duplicate_timestamps": 0,
+      "n_gaps_gt_1_5x": 21,
+      "bars_per_day_crypto_convention": 48.0,
+      "annualization_ppy": 12096.0,
+      "n_calendar_days": 2192,
+      "start": "2019-01-01 00:00:00+00:00",
+      "end": "2024-12-31 23:30:00+00:00"
+    },
+    "1h": {
+      "tz": "UTC",
+      "monotonic_increasing": true,
+      "duplicate_timestamps": 0,
+      "n_gaps_gt_1_5x": 20,
+      "bars_per_day_crypto_convention": 24.0,
+      "annualization_ppy": 6048.0,
+      "n_calendar_days": 2192,
+      "start": "2019-01-01 00:00:00+00:00",
+      "end": "2024-12-31 23:00:00+00:00"
+    }
+  },
+  "ok": true,
+  "nse_calendar_used": false,
+  "campaign_timezone": "UTC",
+  "campaign_market_type": "crypto",
+  "nse_not_used": true,
+  "disclaimer": "Research evidence is not a profitability guarantee."
+}

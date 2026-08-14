@@ -1,0 +1,128 @@
+{
+  "Historical_providers_Yahoo_Binance": {
+    "status": "IMPLEMENTED",
+    "source": [
+      "iqrp/app/data/historical"
+    ],
+    "tests": [
+      "iqrp/tests/integration/backtesting/test_acceptance_user_shaped_data.py",
+      "iqrp/tests/integration/backtesting/test_alpha_research.py",
+      "iqrp/tests/integration/backtesting/test_e2e_operational.py",
+      "iqrp/tests/integration/backtesting/test_horizon_research.py",
+      "iqrp/tests/integration/data/test_intraday_acquisition.py",
+      "iqrp/tests/integration/test_bayesian_pipeline.py",
+      "iqrp/tests/integration/test_data_pipeline.py",
+      "iqrp/tests/integration/test_ensemble_pipeline.py",
+      "iqrp/tests/integration/test_feature_research.py",
+      "iqrp/tests/integration/test_features_pipeline.py",
+      "iqrp/tests/integration/test_forecast_intelligence_pipeline.py",
+      "iqrp/tests/integration/test_forecasting_pipeline.py",
+      "iqrp/tests/integration/test_gmm_pipeline.py",
+      "iqrp/tests/integration/test_hmm_pipeline.py",
+      "iqrp/tests/integration/test_kalman_pipeline.py",
+      "iqrp/tests/integration/test_labels_pipeline.py",
+      "iqrp/tests/integration/test_markov_pipeline.py",
+      "iqrp/tests/integration/test_neural_forecasting_pipeline.py",
+      "iqrp/tests/integration/test_particle_pipeline.py",
+      "iqrp/tests/integration/test_regimes_pipeline.py"
+    ],
+    "docs": [],
+    "executable_smoke": null,
+    "integrated_into_alpha_research": false,
+    "integrated_into_backtest_runner": false,
+    "notes": "Yahoo equity + Binance Vision crypto providers; DEVELOPMENT/RESEARCH tier BTC/NIFTY data \u2014 not institutional-grade claim",
+    "evidence": {
+      "n_sources": 1,
+      "n_tests": 158,
+      "n_docs": 0
+    }
+  },
+  "Dataset_registry_checksums": {
+    "status": "IMPLEMENTED",
+    "source": [
+      "iqrp/app/backtesting/data/dataset_registry.py"
+    ],
+    "tests": [
+      "iqrp/tests/integration/backtesting/test_acceptance_user_shaped_data.py",
+      "iqrp/tests/integration/backtesting/test_alpha_research.py",
+      "iqrp/tests/integration/data/test_intraday_acquisition.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps.py",
+      "iqrp/tests/unit/backtesting/operational/test_dataset_registry.py",
+      "iqrp/tests/unit/data/test_historical_intraday.py"
+    ],
+    "docs": [],
+    "executable_smoke": null,
+    "integrated_into_alpha_research": false,
+    "integrated_into_backtest_runner": true,
+    "notes": "Immutable registry with checksums used by Prompt 34/35",
+    "evidence": {
+      "n_sources": 1,
+      "n_tests": 6,
+      "n_docs": 0
+    }
+  },
+  "Calendars_resampling_validation": {
+    "status": "IMPLEMENTED",
+    "source": [
+      "iqrp/app/data/historical"
+    ],
+    "tests": [
+      "iqrp/tests/integration/data/test_intraday_acquisition.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps2.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps3.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps4.py",
+      "iqrp/tests/unit/backtesting/operational/test_pit_universe_continuous.py",
+      "iqrp/tests/unit/backtesting/test_horizon_research.py",
+      "iqrp/tests/unit/data/test_binance_vision.py",
+      "iqrp/tests/unit/data/test_historical_intraday.py",
+      "iqrp/tests/unit/execution/test_coverage_final.py",
+      "iqrp/tests/unit/execution/test_coverage_final2.py",
+      "iqrp/tests/unit/math/test_math_core.py",
+      "iqrp/tests/unit/particle/test_particle_core.py",
+      "iqrp/tests/unit/particle/test_particle_coverage.py",
+      "iqrp/tests/unit/particle/test_particle_final.py",
+      "iqrp/tests/unit/particle/test_particle_gaps.py",
+      "iqrp/tests/unit/particle/test_particle_gaps2.py",
+      "iqrp/tests/unit/particle/test_particle_synthetic.py",
+      "iqrp/tests/unit/portfolio/test_coverage_gaps3.py",
+      "iqrp/tests/unit/transformer_forecasting/test_transformer_gaps.py"
+    ],
+    "docs": [],
+    "executable_smoke": null,
+    "integrated_into_alpha_research": false,
+    "integrated_into_backtest_runner": false,
+    "notes": "NSE + crypto 24x7 calendars; session-aware resample; quality validation",
+    "evidence": {
+      "n_sources": 1,
+      "n_tests": 20,
+      "n_docs": 0
+    }
+  },
+  "Order_book_PIT_continuous_futures": {
+    "status": "NOT_IMPLEMENTED",
+    "source": [],
+    "tests": [],
+    "docs": [
+      "iqrp/docs/BacktestingPlatform.md",
+      "iqrp/docs/DataArchitecture.md",
+      "iqrp/docs/DataPipeline.md",
+      "iqrp/docs/ExecutionAlgorithms.md",
+      "iqrp/docs/OrderManager.md",
+      "iqrp/docs/Phase11_AlphaResearch.md",
+      "iqrp/docs/Phase12_ExecutionPlatform.md",
+      "iqrp/docs/Phase13_BacktestingPlatform.md",
+      "iqrp/docs/PointInTimeData.md",
+      "iqrp/docs/PositionReconciliation.md"
+    ],
+    "executable_smoke": null,
+    "integrated_into_alpha_research": false,
+    "integrated_into_backtest_runner": false,
+    "notes": "No institutional order-book/PIT/continuous-futures production feed identified; microstructure features are Polars feature defs requiring richer inputs",
+    "evidence": {
+      "n_sources": 0,
+      "n_tests": 0,
+      "n_docs": 12
+    }
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "campaign_id": "alpha_research_btc_full_v1",
+  "output_dir": "results/alpha_research_btc_full",
+  "registry_path": "dataset_registry.json",
+  "dataset_keys": {
+    "1m": "btcusdt_intraday_1m@1.0.0",
+    "5m": "btcusdt_intraday_5m@1.0.0",
+    "15m": "btcusdt_intraday_15m@1.0.0",
+    "30m": "btcusdt_intraday_30m@1.0.0",
+    "1h": "btcusdt_intraday_1h@1.0.0"
+  },
+  "timeframes": [
+    "1m",
+    "5m",
+    "15m",
+    "30m",
+    "1h"
+  ],
+  "holding_bars": [
+    1,
+    2,
+    3,
+    5,
+    10,
+    20
+  ],
+  "lookbacks": [
+    10,
+    20
+  ],
+  "neighborhood_lookbacks": [
+    18,
+    19,
+    20,
+    21,
+    22
+  ],
+  "signal_ids": null,
+  "cost_scenarios": [
+    "BASE",
+    "MODERATE",
+    "ADVERSE"
+  ],
+  "slippage_multipliers": [
+    1.0,
+    2.0,
+    3.0
+  ],
+  "train_frac": 0.5,
+  "validation_frac": 0.25,
+  "n_walk_forward_windows": 3,
+  "random_seed": 0,
+  "market_type": "crypto",
+  "timezone": "UTC",
+  "top_k_deep": 25,
+  "software_version": "iqrp-alpha-research-0.1.0",
+  "started_at": "2026-08-14T14:10:10.217079+00:00"
+}

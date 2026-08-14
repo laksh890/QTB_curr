@@ -1,0 +1,315 @@
+{
+  "disclaimer": "MODEL-DRIVEN ALPHA RESEARCH \u2014 predefined protocol. Research evidence is not a profitability guarantee. MODEL IMPLEMENTED \u2260 FORECAST \u2260 SIGNAL \u2260 OOS \u2260 COST-SURVIVAL \u2260 ROBUST \u2260 PROFITABLE \u2260 LIVE-READY.",
+  "grid": {
+    "1m": {
+      "1": {
+        "available_experiments": 21,
+        "oos_survivors": 0,
+        "cost_survivors": 0,
+        "robust_survivors": 0,
+        "candidate_count": 0,
+        "median_net_sharpe": -82.73278717686776,
+        "median_trades_per_day": 176.256,
+        "median_holding_bars": 4.333536461507211
+      },
+      "2": {
+        "available_experiments": 21,
+        "oos_survivors": 0,
+        "cost_survivors": 0,
+        "robust_survivors": 0,
+        "candidate_count": 0,
+        "median_net_sharpe": -63.66106279097895,
+        "median_trades_per_day": 147.816,
+        "median_holding_bars": 5.8207954000958315
+      },
+      "3": {
+        "available_experiments": 21,
+        "oos_survivors": 0,
+        "cost_survivors": 0,
+        "robust_survivors": 0,
+        "candidate_count": 0,
+        "median_net_sharpe": -54.79784268756286,
+        "median_trades_per_day": 129.672,
+        "median_holding_bars": 7.250616269515201
+      },
+      "5": {
+        "available_experiments": 21,
+        "oos_survivors": 0,
+        "cost_survivors": 0,
+        "robust_survivors": 0,
+        "candidate_count": 0,
+        "median_net_sharpe": -43.05989082353159,
+        "median_trades_per_day": 109.944,
+        "median_holding_bars": 9.786635792259345
+      },
+      "10": {
+        "available_experiments": 21,
+        "oos_survivors": 0,
+        "cost_survivors": 0,
+        "robust_survivors": 0,
+        "candidate_count": 0,
+        "median_net_sharpe": -31.301616442231108,
+        "median_trades_per_day": 85.86,
+        "median_holding_bars": 16.232546459065794
+      },
+      "20": {
+        "available_experiments": 21,
+        "oos_survivors": 0,
+        "cost_survivors": 0,
+        "robust_survivors": 0,
+        "candidate_count": 0,
+        "median_net_sharpe": -20.411542338793744,
+        "median_trades_per_day": 63.684,
+        "median_holding_bars": 28.229777256740913
+      }
+    },
+    "5m": {
+      "1": {
+        "available_experiments": 36,
+        "oos_survivors": 6,
+        "cost_survivors": 6,
+        "robust_survivors": 6,
+        "candidate_count": 6,
+        "median_net_sharpe": -16.412698705676647,
+        "median_trades_per_day": 31.368,
+        "median_holding_bars": 7.782331027142098
+      },
+      "2": {
+        "available_experiments": 36,
+        "oos_survivors": 6,
+        "cost_survivors": 6,
+        "robust_survivors": 6,
+        "candidate_count": 6,
+        "median_net_sharpe": -13.2146946482507,
+        "median_trades_per_day": 25.8816,
+        "median_holding_bars": 9.189389118434235
+      },
+      "3": {
+        "available_experiments": 36,
+        "oos_survivors": 6,
+        "cost_survivors": 6,
+        "robust_survivors": 6,
+        "candidate_count": 6,
+        "median_net_sharpe": -10.636674995825336,
+        "median_trades_per_day": 22.2864,
+        "median_holding_bars": 10.920802996830275
+      },
+      "5": {
+        "available_experiments": 36,
+        "oos_survivors": 4,
+        "cost_survivors": 4,
+        "robust_survivors": 3,
+        "candidate_count": 3,
+        "median_net_sharpe": -9.159334549693671,
+        "median_trades_per_day": 18.72,
+        "median_holding_bars": 14.488376287936212
+      },
+      "10": {
+        "available_experiments": 36,
+        "oos_survivors": 5,
+        "cost_survivors": 4,
+        "robust_survivors": 4,
+        "candidate_count": 4,
+        "median_net_sharpe": -6.285602405923899,
+        "median_trades_per_day": 14.7648,
+        "median_holding_bars": 21.747920571464725
+      },
+      "20": {
+        "available_experiments": 36,
+        "oos_survivors": 6,
+        "cost_survivors": 4,
+        "robust_survivors": 5,
+        "candidate_count": 4,
+        "median_net_sharpe": -3.5611047215779292,
+        "median_trades_per_day": 11.078399999999998,
+        "median_holding_bars": 37.02567274100652
+      }
+    },
+    "15m": {
+      "1": {
+        "available_experiments": 54,
+        "oos_survivors": 4,
+        "cost_survivors": 3,
+        "robust_survivors": 3,
+        "candidate_count": 3,
+        "median_net_sharpe": -5.780731682728234,
+        "median_trades_per_day": 10.56576,
+        "median_holding_bars": 6.476774937367084
+      },
+      "2": {
+        "available_experiments": 54,
+        "oos_survivors": 4,
+        "cost_survivors": 3,
+        "robust_survivors": 3,
+        "candidate_count": 3,
+        "median_net_sharpe": -4.394215127412796,
+        "median_trades_per_day": 8.94144,
+        "median_holding_bars": 8.134177279544472
+      },
+      "3": {
+        "available_experiments": 54,
+        "oos_survivors": 4,
+        "cost_survivors": 3,
+        "robust_survivors": 3,
+        "candidate_count": 3,
+        "median_net_sharpe": -3.943714554212387,
+        "median_trades_per_day": 7.687679999999999,
+        "median_holding_bars": 9.51011721448332
+      },
+      "5": {
+        "available_experiments": 54,
+        "oos_survivors": 4,
+        "cost_survivors": 3,
+        "robust_survivors": 3,
+        "candidate_count": 3,
+        "median_net_sharpe": -3.0757283425492377,
+        "median_trades_per_day": 5.65056,
+        "median_holding_bars": 12.489160439660886
+      },
+      "10": {
+        "available_experiments": 54,
+        "oos_survivors": 10,
+        "cost_survivors": 3,
+        "robust_survivors": 2,
+        "candidate_count": 2,
+        "median_net_sharpe": -1.6707725681703645,
+        "median_trades_per_day": 3.88992,
+        "median_holding_bars": 23.7733002541676
+      },
+      "20": {
+        "available_experiments": 54,
+        "oos_survivors": 17,
+        "cost_survivors": 7,
+        "robust_survivors": 6,
+        "candidate_count": 6,
+        "median_net_sharpe": -1.3675872795772779,
+        "median_trades_per_day": 2.50176,
+        "median_holding_bars": 37.49119994661359
+      }
+    },
+    "30m": {
+      "1": {
+        "available_experiments": 51,
+        "oos_survivors": 4,
+        "cost_survivors": 1,
+        "robust_survivors": 1,
+        "candidate_count": 1,
+        "median_net_sharpe": -2.9766159588649233,
+        "median_trades_per_day": 5.2536,
+        "median_holding_bars": 4.071098799630656
+      },
+      "2": {
+        "available_experiments": 51,
+        "oos_survivors": 7,
+        "cost_survivors": 1,
+        "robust_survivors": 1,
+        "candidate_count": 1,
+        "median_net_sharpe": -2.363412287931757,
+        "median_trades_per_day": 3.8064,
+        "median_holding_bars": 6.020905923344948
+      },
+      "3": {
+        "available_experiments": 51,
+        "oos_survivors": 7,
+        "cost_survivors": 2,
+        "robust_survivors": 2,
+        "candidate_count": 2,
+        "median_net_sharpe": -1.9581385924935506,
+        "median_trades_per_day": 3.276,
+        "median_holding_bars": 7.667119565217392
+      },
+      "5": {
+        "available_experiments": 51,
+        "oos_survivors": 13,
+        "cost_survivors": 3,
+        "robust_survivors": 3,
+        "candidate_count": 3,
+        "median_net_sharpe": -1.4426964375330291,
+        "median_trades_per_day": 2.7312,
+        "median_holding_bars": 10.481268011527378
+      },
+      "10": {
+        "available_experiments": 51,
+        "oos_survivors": 16,
+        "cost_survivors": 4,
+        "robust_survivors": 3,
+        "candidate_count": 3,
+        "median_net_sharpe": -0.7704082631465335,
+        "median_trades_per_day": 1.8816,
+        "median_holding_bars": 16.763297872340427
+      },
+      "20": {
+        "available_experiments": 51,
+        "oos_survivors": 19,
+        "cost_survivors": 9,
+        "robust_survivors": 7,
+        "candidate_count": 7,
+        "median_net_sharpe": -0.37159900302188426,
+        "median_trades_per_day": 1.212,
+        "median_holding_bars": 29.780864197530864
+      }
+    },
+    "1h": {
+      "1": {
+        "available_experiments": 105,
+        "oos_survivors": 6,
+        "cost_survivors": 4,
+        "robust_survivors": 3,
+        "candidate_count": 3,
+        "median_net_sharpe": -1.6004302896088505,
+        "median_trades_per_day": 2.76,
+        "median_holding_bars": 3.027255029201817
+      },
+      "2": {
+        "available_experiments": 105,
+        "oos_survivors": 11,
+        "cost_survivors": 6,
+        "robust_survivors": 5,
+        "candidate_count": 5,
+        "median_net_sharpe": -1.0856719469042158,
+        "median_trades_per_day": 2.0256,
+        "median_holding_bars": 4.755102040816326
+      },
+      "3": {
+        "available_experiments": 105,
+        "oos_survivors": 14,
+        "cost_survivors": 9,
+        "robust_survivors": 6,
+        "candidate_count": 6,
+        "median_net_sharpe": -0.9533606298390381,
+        "median_trades_per_day": 1.7424,
+        "median_holding_bars": 6.215980629539952
+      },
+      "5": {
+        "available_experiments": 105,
+        "oos_survivors": 17,
+        "cost_survivors": 13,
+        "robust_survivors": 8,
+        "candidate_count": 8,
+        "median_net_sharpe": -0.9116955871072654,
+        "median_trades_per_day": 1.284,
+        "median_holding_bars": 9.108247422680412
+      },
+      "10": {
+        "available_experiments": 105,
+        "oos_survivors": 27,
+        "cost_survivors": 30,
+        "robust_survivors": 16,
+        "candidate_count": 16,
+        "median_net_sharpe": -0.5486667522347929,
+        "median_trades_per_day": 0.9191999999999999,
+        "median_holding_bars": 15.404699738903394
+      },
+      "20": {
+        "available_experiments": 105,
+        "oos_survivors": 40,
+        "cost_survivors": 34,
+        "robust_survivors": 26,
+        "candidate_count": 25,
+        "median_net_sharpe": -0.5218732944933893,
+        "median_trades_per_day": 0.6083999999999999,
+        "median_holding_bars": 27.026615969581748
+      }
+    }
+  }
+}

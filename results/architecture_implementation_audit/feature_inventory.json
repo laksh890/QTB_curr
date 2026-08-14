@@ -1,0 +1,107 @@
+{
+  "alpha_research_reference_features": {
+    "status": "IMPLEMENTED",
+    "ids": [
+      "returns",
+      "log_returns",
+      "volatility",
+      "ATR",
+      "RSI",
+      "moving_average",
+      "EMA",
+      "MACD",
+      "momentum",
+      "rolling_zscore",
+      "volume_change",
+      "VWAP_distance",
+      "range",
+      "true_range"
+    ],
+    "families": [
+      "momentum",
+      "volatility",
+      "mean_reversion",
+      "trend",
+      "volume",
+      "price_action"
+    ],
+    "causal": true,
+    "source": "iqrp/app/backtesting/alpha_research/reference_features.py"
+  },
+  "broader_feature_platform": {
+    "status": "IMPLEMENTED",
+    "source": [
+      "iqrp/app/features"
+    ],
+    "tests": [
+      "iqrp/tests/integration/backtesting/test_alpha_research.py",
+      "iqrp/tests/integration/backtesting/test_horizon_research.py",
+      "iqrp/tests/integration/test_feature_research.py",
+      "iqrp/tests/integration/test_features_pipeline.py",
+      "iqrp/tests/integration/test_forecast_intelligence_pipeline.py",
+      "iqrp/tests/integration/test_forecasting_pipeline.py",
+      "iqrp/tests/integration/test_neural_forecasting_pipeline.py",
+      "iqrp/tests/integration/test_transformer_forecasting_pipeline.py",
+      "iqrp/tests/integration/test_tree_forecasting_pipeline.py",
+      "iqrp/tests/unit/alpha/test_coverage_final.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps2.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps3.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps4.py",
+      "iqrp/tests/unit/alpha/test_discovery_leakage.py",
+      "iqrp/tests/unit/alpha/test_engine_api.py",
+      "iqrp/tests/unit/alpha/test_research_metrics.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps4.py",
+      "iqrp/tests/unit/backtesting/operational/test_pit_universe_continuous.py"
+    ],
+    "docs": [],
+    "executable_smoke": null,
+    "integrated_into_alpha_research": false,
+    "integrated_into_backtest_runner": false,
+    "notes": "Large feature engineering package (momentum/trend/vol/volume/microstructure/liquidity/cross_asset); separate from alpha_research FeatureRegistry used in campaigns",
+    "evidence": {
+      "n_sources": 1,
+      "n_tests": 59,
+      "n_docs": 0
+    }
+  },
+  "microstructure_features": {
+    "status": "PARTIALLY_IMPLEMENTED",
+    "source": [
+      "iqrp/app/features/microstructure/features.py"
+    ],
+    "tests": [
+      "iqrp/tests/integration/backtesting/test_alpha_research.py",
+      "iqrp/tests/integration/backtesting/test_horizon_research.py",
+      "iqrp/tests/integration/test_feature_research.py",
+      "iqrp/tests/integration/test_features_pipeline.py",
+      "iqrp/tests/integration/test_forecast_intelligence_pipeline.py",
+      "iqrp/tests/integration/test_forecasting_pipeline.py",
+      "iqrp/tests/integration/test_neural_forecasting_pipeline.py",
+      "iqrp/tests/integration/test_transformer_forecasting_pipeline.py",
+      "iqrp/tests/integration/test_tree_forecasting_pipeline.py",
+      "iqrp/tests/unit/alpha/test_coverage_final.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps2.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps3.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps4.py",
+      "iqrp/tests/unit/alpha/test_discovery_leakage.py",
+      "iqrp/tests/unit/alpha/test_engine_api.py",
+      "iqrp/tests/unit/alpha/test_research_metrics.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps4.py",
+      "iqrp/tests/unit/backtesting/operational/test_pit_universe_continuous.py"
+    ],
+    "docs": [],
+    "executable_smoke": null,
+    "integrated_into_alpha_research": false,
+    "integrated_into_backtest_runner": false,
+    "notes": "AmihudIlliquidity, Microprice, RollSpread, TradeImbalance classes \u2014 require non-OHLCV fields; not used in BTC OHLCV alpha campaign | PARTIAL: feature classes exist but BTC/NIFTY OHLCV campaigns cannot supply true OB fields.",
+    "evidence": {
+      "n_sources": 1,
+      "n_tests": 60,
+      "n_docs": 0
+    }
+  }
+}

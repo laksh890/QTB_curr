@@ -1,0 +1,58 @@
+{
+  "disclaimer": "UNIFIED TRADING PIPELINE \u2014 integration validation only. PIPELINE WORKS \u2260 STRATEGY WORKS \u2260 PROFITABLE \u2260 ROBUST \u2260 PRODUCTION READY.",
+  "sample": [
+    {
+      "candidate_id": "cA",
+      "portfolio": {
+        "portfolio_decision_id": "port_80435ea500fd4b37",
+        "outcome": "PORTFOLIO_APPROVED",
+        "target_position_weight": 0.05,
+        "current_position_weight": 0.0,
+        "delta_weight": 0.05,
+        "reason": "PORTFOLIO_CONSTRAINTS_OK",
+        "constraint_reasons": []
+      }
+    },
+    {
+      "candidate_id": "cB",
+      "portfolio": {
+        "portfolio_decision_id": "port_e84fcf0eaac44492",
+        "outcome": "PORTFOLIO_APPROVED",
+        "target_position_weight": -0.05,
+        "current_position_weight": 0.0,
+        "delta_weight": -0.05,
+        "reason": "PORTFOLIO_CONSTRAINTS_OK",
+        "constraint_reasons": []
+      }
+    },
+    {
+      "candidate_id": "cC",
+      "portfolio": {
+        "portfolio_decision_id": "port_4e71c51922de4d82",
+        "outcome": "PORTFOLIO_REDUCED",
+        "target_position_weight": 0.05333344444447222,
+        "current_position_weight": 0.0,
+        "delta_weight": 0.05333344444447222,
+        "reason": "MAX_GROSS_SCALE:0.12",
+        "constraint_reasons": [
+          "MAX_GROSS_SCALE:0.12"
+        ]
+      }
+    },
+    {
+      "candidate_id": "cD",
+      "portfolio": {
+        "portfolio_decision_id": "port_afef06cbd40540ba",
+        "outcome": "PORTFOLIO_REDUCED",
+        "target_position_weight": -0.04408137265936657,
+        "current_position_weight": 0.05000040833873757,
+        "delta_weight": -0.09408178099810413,
+        "reason": "MAX_GROSS_SCALE:0.12",
+        "constraint_reasons": [
+          "MAX_GROSS_SCALE:0.12"
+        ]
+      }
+    }
+  ],
+  "status": "PASS"
+}

@@ -1,0 +1,34 @@
+{
+  "disclaimer": "FINAL SYSTEM ARCHITECTURE AUDIT \u2014 evidence only. PIPELINE WORKS \u2260 STRATEGY WORKS \u2260 PROFITABLE \u2260 PRODUCTION/LIVE READY. STATISTICAL VALIDITY remains LIMITED per Prompt 36.",
+  "registered_signal_ids": [
+    "breakout_signal",
+    "mean_reversion_signal",
+    "momentum_signal",
+    "price_action_signal",
+    "trend_signal",
+    "volatility_signal",
+    "volume_signal"
+  ],
+  "reference_expected": [
+    "breakout_signal",
+    "mean_reversion_signal",
+    "momentum_signal",
+    "price_action_signal",
+    "trend_signal",
+    "volatility_signal",
+    "volume_signal"
+  ],
+  "reference_present": [
+    "breakout_signal",
+    "mean_reversion_signal",
+    "momentum_signal",
+    "price_action_signal",
+    "trend_signal",
+    "volatility_signal",
+    "volume_signal"
+  ],
+  "missing_reference": [],
+  "model_signals_auto_injected": [],
+  "prompt35_path_intact": true,
+  "status": "PASS"
+}

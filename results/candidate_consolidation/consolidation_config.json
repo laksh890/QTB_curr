@@ -1,0 +1,44 @@
+{
+  "consolidation_id": "candidate_consolidation_v1",
+  "prompt39_dir": "results/model_driven_alpha_campaign",
+  "output_dir": "results/candidate_consolidation",
+  "registry_path": "dataset_registry.json",
+  "random_seed": 40,
+  "software_version": "iqrp-candidate-consolidation-0.1.0",
+  "corr_highly_redundant": 0.85,
+  "corr_related": 0.5,
+  "cluster_merge_corr": 0.7,
+  "freq_low": 1.0,
+  "freq_moderate": 5.0,
+  "freq_high": 20.0,
+  "overtrading_trades_per_day": 10.0,
+  "stability_degraded_ratio": 0.5,
+  "conf_eps": 0.05,
+  "market_type": "crypto",
+  "timezone": "UTC",
+  "smoke": false,
+  "max_candidates_smoke": 12,
+  "disclaimer": "CANDIDATE CONSOLIDATION RESEARCH \u2014 predefined protocol. Research evidence is not a profitability guarantee. DISTINCT_RESEARCH_CANDIDATE \u2260 PROFITABLE \u2260 PRODUCTION_READY \u2260 LIVE_READY. Prompt 39 artifacts are immutable inputs.",
+  "ensemble_methods": [
+    "equal_weight",
+    "confidence_weighted",
+    "regime_conditioned",
+    "majority_vote"
+  ],
+  "cost_names": [
+    "BASE",
+    "MODERATE",
+    "ADVERSE"
+  ],
+  "weighting_formula": "confidence: w_i = max(validation_net_sharpe_i, 0) + conf_eps; normalize; NO OOS metrics enter weights.",
+  "clustering_method": "Connected components on validation |Pearson| of calendar-daily net returns >= cluster_merge_corr (0.7). Each candidate's daily series is split chronologically 50/25/25; pairwise validation correlation uses the intersection of those validation dates. Not optimized against OOS profitability.",
+  "redundancy_rules": {
+    "HIGHLY_REDUNDANT": "|val_pearson_daily_net| >= 0.85",
+    "RELATED": "0.5 <= |val_pearson_daily_net| < 0.85",
+    "DISTINCT": "|val_pearson_daily_net| < 0.5"
+  },
+  "representative_rule": "One representative per cluster: highest VALIDATION net Sharpe (ties: lower trades/day, then experiment_id). OOS not used for selection.",
+  "distinct_research_candidate_rule": "Cluster representatives that: reconstruct OK; trades/day <= overtrading threshold; not pairwise HIGHLY_REDUNDANT to an already-kept rep (val corr); BASE cost survival already implied by P39 CANDIDATE. OOS metrics recorded for evaluation only \u2014 not used to maximize Sharpe.",
+  "started_at": "2026-08-14T16:43:40.260880+00:00",
+  "n_input_candidates": 129
+}

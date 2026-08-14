@@ -1,0 +1,1693 @@
+{
+  "results": [
+    {
+      "experiment_id": "3845ba52-6f76-46ad-8225-e5abac69700d",
+      "signal_id": "trend_signal",
+      "timeframe": "1h",
+      "holding_bars": 10,
+      "neighborhood_net_sharpe": {
+        "lb18": 0.4539978388226224,
+        "lb19": 0.4365164017219561,
+        "lb20": 0.5512589352511671,
+        "lb21": -0.12823507011317978,
+        "lb22": -0.23675854833521487
+      },
+      "stability": {
+        "stability_score": 0.0,
+        "fragile": true,
+        "center": 0.5512589352511671,
+        "neighbor_mean": 0.13138015552404597,
+        "reason": "FRAGILE parameter island"
+      }
+    },
+    {
+      "experiment_id": "3aa71d03-5ee5-4b56-88a7-56a10f894901",
+      "signal_id": "momentum_signal",
+      "timeframe": "1h",
+      "holding_bars": 5,
+      "neighborhood_net_sharpe": {
+        "lb18": 0.3156403285845951,
+        "lb19": 0.2813500679531917,
+        "lb20": 0.38287311772141297,
+        "lb21": 0.08798010069295759,
+        "lb22": -0.23336376645870657
+      },
+      "stability": {
+        "stability_score": 0.0,
+        "fragile": true,
+        "center": 0.38287311772141297,
+        "neighbor_mean": 0.11290168269300943,
+        "reason": "FRAGILE parameter island"
+      }
+    },
+    {
+      "experiment_id": "409e766a-7333-4382-8260-55521d6c7d21",
+      "signal_id": "momentum_signal",
+      "timeframe": "1h",
+      "holding_bars": 10,
+      "neighborhood_net_sharpe": {
+        "lb18": 0.30843297345814985,
+        "lb19": 0.25388045827654393,
+        "lb20": 0.22780072340017968,
+        "lb21": -0.35237247027137725,
+        "lb22": -0.2435604032740962
+      },
+      "stability": {
+        "stability_score": 0.0,
+        "fragile": true,
+        "center": 0.22780072340017968,
+        "neighbor_mean": -0.008404860452694903,
+        "reason": "FRAGILE parameter island"
+      }
+    },
+    {
+      "experiment_id": "3fa01c99-3016-49b1-8517-ff56b0703f77",
+      "signal_id": "trend_signal",
+      "timeframe": "1h",
+      "holding_bars": 5,
+      "neighborhood_net_sharpe": {
+        "lb18": -0.06291152819424692,
+        "lb19": 0.01056062529092591,
+        "lb20": 0.13897625157600144,
+        "lb21": -0.16965603060917653,
+        "lb22": -0.3441384884150218
+      },
+      "stability": {
+        "stability_score": 0.0,
+        "fragile": true,
+        "center": 0.13897625157600144,
+        "neighbor_mean": -0.14153635548187984,
+        "reason": "FRAGILE parameter island"
+      }
+    },
+    {
+      "experiment_id": "22560244-7726-47d3-aa90-092c8222e4a0",
+      "signal_id": "price_action_signal",
+      "timeframe": "1h",
+      "holding_bars": 20,
+      "neighborhood_net_sharpe": {
+        "lb18": -0.023691672516934766,
+        "lb19": -0.13684062254952578,
+        "lb20": -0.20407219862985643,
+        "lb21": -0.17129145454078104,
+        "lb22": -0.009753812790609828
+      },
+      "stability": {
+        "stability_score": 0.19563830926235148,
+        "fragile": false,
+        "center": -0.023691672516934766,
+        "neighbor_mean": -0.13048952212769327,
+        "reason": "stable across nearby parameters"
+      }
+    },
+    {
+      "experiment_id": "570ed35b-f487-426a-803d-880683d145f0",
+      "signal_id": "volume_signal",
+      "timeframe": "1h",
+      "holding_bars": 20,
+      "neighborhood_net_sharpe": {
+        "lb18": -0.4460260807356964,
+        "lb19": -0.18767811543953547,
+        "lb20": -0.2192037110968234,
+        "lb21": -0.31149940022597083,
+        "lb22": 0.16244163221166458
+      },
+      "stability": {
+        "stability_score": 0.0,
+        "fragile": false,
+        "center": -0.4460260807356964,
+        "neighbor_mean": -0.13898489863766628,
+        "reason": "stable across nearby parameters"
+      }
+    },
+    {
+      "experiment_id": "6a02c521-5bd5-412c-9732-c7f5e65c26c7",
+      "signal_id": "trend_signal",
+      "timeframe": "1h",
+      "holding_bars": 3,
+      "neighborhood_net_sharpe": {
+        "lb18": -0.3409101749886998,
+        "lb19": -0.23383552224466939,
+        "lb20": -0.10426960713475714,
+        "lb21": -0.36182348089764155,
+        "lb22": -0.10212255635784073
+      },
+      "stability": {
+        "stability_score": 0.45605184786938835,
+        "fragile": false,
+        "center": -0.10426960713475714,
+        "neighbor_mean": -0.2596729336222129,
+        "reason": "stable across nearby parameters"
+      }
+    },
+    {
+      "experiment_id": "a3cd34e4-74ea-41ad-bc42-e291ddf8660f",
+      "signal_id": "momentum_signal",
+      "timeframe": "30m",
+      "holding_bars": 20,
+      "neighborhood_net_sharpe": {
+        "lb18": -0.22102078340086853,
+        "lb19": -0.018773556129408123,
+        "lb20": 0.268704496029334,
+        "lb21": 0.05228692468516423,
+        "lb22": 0.24489137965666505
+      },
+      "stability": {
+        "stability_score": 0.0,
+        "fragile": true,
+        "center": 0.268704496029334,
+        "neighbor_mean": 0.01434599120288816,
+        "reason": "FRAGILE parameter island"
+      }
+    },
+    {
+      "experiment_id": "5258f347-3dbb-49bf-b3c0-c02e5a4720ce",
+      "signal_id": "momentum_signal",
+      "timeframe": "1h",
+      "holding_bars": 2,
+      "neighborhood_net_sharpe": {
+        "lb18": -0.2332894701736521,
+        "lb19": -0.4633877059510263,
+        "lb20": -0.11085721003259187,
+        "lb21": 0.08617750575761035,
+        "lb22": 0.2092090572849658
+      },
+      "stability": {
+        "stability_score": 0.0,
+        "fragile": false,
+        "center": -0.11085721003259187,
+        "neighbor_mean": -0.10032265327052554,
+        "reason": "stable across nearby parameters"
+      }
+    },
+    {
+      "experiment_id": "c54cefc0-2fa4-4405-851b-26a9602abebb",
+      "signal_id": "momentum_signal",
+      "timeframe": "1h",
+      "holding_bars": 10,
+      "neighborhood_net_sharpe": {
+        "lb18": 0.30843297345814985,
+        "lb19": 0.25388045827654393,
+        "lb20": 0.22780072340017968,
+        "lb21": -0.35237247027137725,
+        "lb22": -0.2435604032740962
+      },
+      "stability": {
+        "stability_score": 0.0,
+        "fragile": true,
+        "center": 0.30843297345814985,
+        "neighbor_mean": -0.028562922967187467,
+        "reason": "FRAGILE parameter island"
+      }
+    },
+    {
+      "experiment_id": "3749dc63-667a-4dde-9afb-95f9490ac2e7",
+      "signal_id": "volatility_signal",
+      "timeframe": "1h",
+      "holding_bars": 20,
+      "neighborhood_net_sharpe": {
+        "lb18": -0.7643042801442367,
+        "lb19": -0.782968873106042,
+        "lb20": -0.8248484098563348,
+        "lb21": -0.5981872089082968,
+        "lb22": -0.5812603880451456
+      },
+      "stability": {
+        "stability_score": 0.8417537855069874,
+        "fragile": false,
+        "center": -0.7643042801442367,
+        "neighbor_mean": -0.6968162199789548,
+        "reason": "stable across nearby parameters"
+      }
+    },
+    {
+      "experiment_id": "f7166d2f-6fef-4573-a21a-3bb5eb7d7114",
+      "signal_id": "momentum_signal",
+      "timeframe": "1h",
+      "holding_bars": 3,
+      "neighborhood_net_sharpe": {
+        "lb18": 0.046758748668850894,
+        "lb19": -0.23372495156536652,
+        "lb20": 0.1288686439360759,
+        "lb21": 0.16639318389466326,
+        "lb22": 0.19106469007113774
+      },
+      "stability": {
+        "stability_score": 0.0,
+        "fragile": true,
+        "center": 0.1288686439360759,
+        "neighbor_mean": 0.04262291776732135,
+        "reason": "FRAGILE parameter island"
+      }
+    },
+    {
+      "experiment_id": "0d5f5a77-8c01-4978-b0c8-eecee9aad5ba",
+      "signal_id": "volume_signal",
+      "timeframe": "1h",
+      "holding_bars": 10,
+      "neighborhood_net_sharpe": {
+        "lb18": -0.07089499278646974,
+        "lb19": -0.013522536472296343,
+        "lb20": -0.39809993862968523,
+        "lb21": -0.3545840201821302,
+        "lb22": -0.27080666949010573
+      },
+      "stability": {
+        "stability_score": 0.22727807494977548,
+        "fragile": false,
+        "center": -0.07089499278646974,
+        "neighbor_mean": -0.2592532911935544,
+        "reason": "stable across nearby parameters"
+      }
+    },
+    {
+      "experiment_id": "bc41f826-371e-4c65-9b41-c2be3165da32",
+      "signal_id": "volume_signal",
+      "timeframe": "1h",
+      "holding_bars": 3,
+      "neighborhood_net_sharpe": {
+        "lb18": -0.523396045228934,
+        "lb19": -0.4618695266396874,
+        "lb20": -0.31456909447191395,
+        "lb21": -0.5082770697022982,
+        "lb22": -0.695891487255804
+      },
+      "stability": {
+        "stability_score": 0.7268962642133676,
+        "fragile": false,
+        "center": -0.31456909447191395,
+        "neighbor_mean": -0.547358532206681,
+        "reason": "stable across nearby parameters"
+      }
+    },
+    {
+      "experiment_id": "9f35e263-4479-4aa8-9a9d-c40e55168892",
+      "signal_id": "volume_signal",
+      "timeframe": "1h",
+      "holding_bars": 20,
+      "neighborhood_net_sharpe": {
+        "lb18": -0.4460260807356964,
+        "lb19": -0.18767811543953547,
+        "lb20": -0.2192037110968234,
+        "lb21": -0.31149940022597083,
+        "lb22": 0.16244163221166458
+      },
+      "stability": {
+        "stability_score": 0.0,
+        "fragile": false,
+        "center": -0.2192037110968234,
+        "neighbor_mean": -0.1956904910473845,
+        "reason": "stable across nearby parameters"
+      }
+    },
+    {
+      "experiment_id": "e50f1279-e3d8-464f-87ef-6fcc3bb04d80",
+      "signal_id": "price_action_signal",
+      "timeframe": "30m",
+      "holding_bars": 20,
+      "neighborhood_net_sharpe": {
+        "lb18": -0.09268876449524631,
+        "lb19": -0.1760916356109295,
+        "lb20": -0.1079108334221533,
+        "lb21": -0.20547816738558644,
+        "lb22": -0.16855466214627296
+      },
+      "stability": {
+        "stability_score": 0.6813014633579879,
+        "fragile": false,
+        "center": -0.1079108334221533,
+        "neighbor_mean": -0.1607033074095088,
+        "reason": "stable across nearby parameters"
+      }
+    },
+    {
+      "experiment_id": "77f801f3-5b9a-4187-a174-cd3b132cb89a",
+      "signal_id": "trend_signal",
+      "timeframe": "1h",
+      "holding_bars": 2,
+      "neighborhood_net_sharpe": {
+        "lb18": -0.5681178493876982,
+        "lb19": -0.5422552953781465,
+        "lb20": -0.38316107212512346,
+        "lb21": -0.7512512993028475,
+        "lb22": -0.2559651051046469
+      },
+      "stability": {
+        "stability_score": 0.6222814109330386,
+        "fragile": false,
+        "center": -0.38316107212512346,
+        "neighbor_mean": -0.5293973872933347,
+        "reason": "stable across nearby parameters"
+      }
+    },
+    {
+      "experiment_id": "3f4edfb4-9bac-423d-901a-6072b3acf934",
+      "signal_id": "trend_signal",
+      "timeframe": "1h",
+      "holding_bars": 20,
+      "neighborhood_net_sharpe": {
+        "lb18": 0.034069583229021934,
+        "lb19": 0.030784357555487012,
+        "lb20": 0.06552360000673027,
+        "lb21": -0.3225437511828643,
+        "lb22": -0.18073557073407656
+      },
+      "stability": {
+        "stability_score": 0.0,
+        "fragile": true,
+        "center": 0.06552360000673027,
+        "neighbor_mean": -0.10960634528310798,
+        "reason": "FRAGILE parameter island"
+      }
+    },
+    {
+      "experiment_id": "7d3533f1-abbd-4efb-8a1d-ddf5176f6f39",
+      "signal_id": "momentum_signal",
+      "timeframe": "1h",
+      "holding_bars": 20,
+      "neighborhood_net_sharpe": {
+        "lb18": 0.008454500031937333,
+        "lb19": -0.08351293879621581,
+        "lb20": -0.14069637182664033,
+        "lb21": -0.054184147936303856,
+        "lb22": -0.10790282807438195
+      },
+      "stability": {
+        "stability_score": 0.2494567547548262,
+        "fragile": false,
+        "center": -0.14069637182664033,
+        "neighbor_mean": -0.05928635369374107,
+        "reason": "stable across nearby parameters"
+      }
+    },
+    {
+      "experiment_id": "43699581-3e61-47b8-ab06-5904fdd9c5a6",
+      "signal_id": "price_action_signal",
+      "timeframe": "1h",
+      "holding_bars": 20,
+      "neighborhood_net_sharpe": {
+        "lb18": -0.023691672516934766,
+        "lb19": -0.13684062254952578,
+        "lb20": -0.20407219862985643,
+        "lb21": -0.17129145454078104,
+        "lb22": -0.009753812790609828
+      },
+      "stability": {
+        "stability_score": 0.19563830926235148,
+        "fragile": false,
+        "center": -0.20407219862985643,
+        "neighbor_mean": -0.08539439059946285,
+        "reason": "stable across nearby parameters"
+      }
+    },
+    {
+      "experiment_id": "5b734dc6-519f-449a-8363-ddfa6198cf98",
+      "signal_id": "momentum_signal",
+      "timeframe": "1h",
+      "holding_bars": 20,
+      "neighborhood_net_sharpe": {
+        "lb18": 0.008454500031937333,
+        "lb19": -0.08351293879621581,
+        "lb20": -0.14069637182664033,
+        "lb21": -0.054184147936303856,
+        "lb22": -0.10790282807438195
+      },
+      "stability": {
+        "stability_score": 0.2494567547548262,
+        "fragile": true,
+        "center": 0.008454500031937333,
+        "neighbor_mean": -0.09657407165838548,
+        "reason": "FRAGILE parameter island"
+      }
+    },
+    {
+      "experiment_id": "27415442-5e8e-4191-84da-84e715a9c01f",
+      "signal_id": "momentum_signal",
+      "timeframe": "1h",
+      "holding_bars": 1,
+      "neighborhood_net_sharpe": {
+        "lb18": -0.48922194325510876,
+        "lb19": -0.6090053346764783,
+        "lb20": -0.5406567396059481,
+        "lb21": -0.4238025292841608,
+        "lb22": -0.22587206977849236
+      },
+      "stability": {
+        "stability_score": 0.6802783578283171,
+        "fragile": false,
+        "center": -0.5406567396059481,
+        "neighbor_mean": -0.43697546924856007,
+        "reason": "stable across nearby parameters"
+      }
+    },
+    {
+      "experiment_id": "e19f3a7f-5a82-413a-9678-f44173ffbcc2",
+      "signal_id": "price_action_signal",
+      "timeframe": "1h",
+      "holding_bars": 10,
+      "neighborhood_net_sharpe": {
+        "lb18": -0.06661244785200052,
+        "lb19": -0.2818270794666667,
+        "lb20": -0.3913098836234389,
+        "lb21": -0.32428146416568043,
+        "lb22": -0.4100974757760355
+      },
+      "stability": {
+        "stability_score": 0.5333462715725622,
+        "fragile": false,
+        "center": -0.06661244785200052,
+        "neighbor_mean": -0.35187897575795535,
+        "reason": "stable across nearby parameters"
+      }
+    },
+    {
+      "experiment_id": "144963be-6396-4ac7-8410-6e5d174e9686",
+      "signal_id": "volume_signal",
+      "timeframe": "1h",
+      "holding_bars": 5,
+      "neighborhood_net_sharpe": {
+        "lb18": -0.32269240804936167,
+        "lb19": -0.6095786763827922,
+        "lb20": -0.3771487827098633,
+        "lb21": -0.5264255685530361,
+        "lb22": -0.425234003099386
+      },
+      "stability": {
+        "stability_score": 0.7444748571604916,
+        "fragile": false,
+        "center": -0.3771487827098633,
+        "neighbor_mean": -0.47098266402114397,
+        "reason": "stable across nearby parameters"
+      }
+    },
+    {
+      "experiment_id": "c16922a4-5dd3-4d8e-89ed-ac104a0dbe85",
+      "signal_id": "volume_signal",
+      "timeframe": "30m",
+      "holding_bars": 20,
+      "neighborhood_net_sharpe": {
+        "lb18": -0.42077715504222324,
+        "lb19": -0.6407567383810447,
+        "lb20": -0.2077482524707754,
+        "lb21": 0.3323183745043941,
+        "lb22": -0.2644755437266899
+      },
+      "stability": {
+        "stability_score": 0.0,
+        "fragile": false,
+        "center": -0.2077482524707754,
+        "neighbor_mean": -0.248422765661391,
+        "reason": "stable across nearby parameters"
+      }
+    }
+  ],
+  "period_splits": [
+    {
+      "experiment_id": "3845ba52-6f76-46ad-8225-e5abac69700d",
+      "signal_id": "trend_signal",
+      "timeframe": "1h",
+      "periods": [
+        {
+          "period": "early",
+          "n": 17516,
+          "start": "2019-01-01 00:00:00+00:00",
+          "end": "2021-01-01 16:00:00+00:00",
+          "net_sharpe": 1.4396096407432848,
+          "net_pnl": 6.0362272586696415,
+          "trades": 691,
+          "trades_per_day": 691.0
+        },
+        {
+          "period": "middle",
+          "n": 17516,
+          "start": "2021-01-01 17:00:00+00:00",
+          "end": "2023-01-02 01:00:00+00:00",
+          "net_sharpe": -0.5054384637580581,
+          "net_pnl": -0.7758305634557927,
+          "trades": 697,
+          "trades_per_day": 697.0
+        },
+        {
+          "period": "later",
+          "n": 17517,
+          "start": "2023-01-02 02:00:00+00:00",
+          "end": "2024-12-31 23:00:00+00:00",
+          "net_sharpe": -0.204487248991492,
+          "net_pnl": -0.3730224688882815,
+          "trades": 748,
+          "trades_per_day": 748.0
+        }
+      ]
+    },
+    {
+      "experiment_id": "3aa71d03-5ee5-4b56-88a7-56a10f894901",
+      "signal_id": "momentum_signal",
+      "timeframe": "1h",
+      "periods": [
+        {
+          "period": "early",
+          "n": 17516,
+          "start": "2019-01-01 00:00:00+00:00",
+          "end": "2021-01-01 16:00:00+00:00",
+          "net_sharpe": 0.9583182956717026,
+          "net_pnl": 2.10581642599217,
+          "trades": 891,
+          "trades_per_day": 891.0
+        },
+        {
+          "period": "middle",
+          "n": 17516,
+          "start": "2021-01-01 17:00:00+00:00",
+          "end": "2023-01-02 01:00:00+00:00",
+          "net_sharpe": -0.12295434754316467,
+          "net_pnl": -0.5498509838837031,
+          "trades": 821,
+          "trades_per_day": 821.0
+        },
+        {
+          "period": "later",
+          "n": 17517,
+          "start": "2023-01-02 02:00:00+00:00",
+          "end": "2024-12-31 23:00:00+00:00",
+          "net_sharpe": -0.5798845539446257,
+          "net_pnl": -0.5940809388326966,
+          "trades": 911,
+          "trades_per_day": 911.0
+        }
+      ]
+    },
+    {
+      "experiment_id": "409e766a-7333-4382-8260-55521d6c7d21",
+      "signal_id": "momentum_signal",
+      "timeframe": "1h",
+      "periods": [
+        {
+          "period": "early",
+          "n": 17516,
+          "start": "2019-01-01 00:00:00+00:00",
+          "end": "2021-01-01 16:00:00+00:00",
+          "net_sharpe": 0.7298439178605816,
+          "net_pnl": 1.1052603806329069,
+          "trades": 623,
+          "trades_per_day": 623.0
+        },
+        {
+          "period": "middle",
+          "n": 17516,
+          "start": "2021-01-01 17:00:00+00:00",
+          "end": "2023-01-02 01:00:00+00:00",
+          "net_sharpe": -0.4761942313897025,
+          "net_pnl": -0.76338732374945,
+          "trades": 595,
+          "trades_per_day": 595.0
+        },
+        {
+          "period": "later",
+          "n": 17517,
+          "start": "2023-01-02 02:00:00+00:00",
+          "end": "2024-12-31 23:00:00+00:00",
+          "net_sharpe": -0.6089669743993746,
+          "net_pnl": -0.6065646120024746,
+          "trades": 653,
+          "trades_per_day": 653.0
+        }
+      ]
+    },
+    {
+      "experiment_id": "3fa01c99-3016-49b1-8517-ff56b0703f77",
+      "signal_id": "trend_signal",
+      "timeframe": "1h",
+      "periods": [
+        {
+          "period": "early",
+          "n": 17516,
+          "start": "2019-01-01 00:00:00+00:00",
+          "end": "2021-01-01 16:00:00+00:00",
+          "net_sharpe": 0.43579681564427625,
+          "net_pnl": 0.27613261807066514,
+          "trades": 977,
+          "trades_per_day": 977.0
+        },
+        {
+          "period": "middle",
+          "n": 17516,
+          "start": "2021-01-01 17:00:00+00:00",
+          "end": "2023-01-02 01:00:00+00:00",
+          "net_sharpe": -0.38951049803110926,
+          "net_pnl": -0.7239287523957645,
+          "trades": 1016,
+          "trades_per_day": 1016.0
+        },
+        {
+          "period": "later",
+          "n": 17517,
+          "start": "2023-01-02 02:00:00+00:00",
+          "end": "2024-12-31 23:00:00+00:00",
+          "net_sharpe": -0.4821661938315343,
+          "net_pnl": -0.546229905186935,
+          "trades": 1033,
+          "trades_per_day": 1033.0
+        }
+      ]
+    },
+    {
+      "experiment_id": "22560244-7726-47d3-aa90-092c8222e4a0",
+      "signal_id": "price_action_signal",
+      "timeframe": "1h",
+      "periods": [
+        {
+          "period": "early",
+          "n": 17516,
+          "start": "2019-01-01 00:00:00+00:00",
+          "end": "2021-01-01 16:00:00+00:00",
+          "net_sharpe": 0.30171116698034295,
+          "net_pnl": 0.026527926957410353,
+          "trades": 563,
+          "trades_per_day": 563.0
+        },
+        {
+          "period": "middle",
+          "n": 17516,
+          "start": "2021-01-01 17:00:00+00:00",
+          "end": "2023-01-02 01:00:00+00:00",
+          "net_sharpe": -0.2711751803052058,
+          "net_pnl": -0.6455808910585072,
+          "trades": 575,
+          "trades_per_day": 575.0
+        },
+        {
+          "period": "later",
+          "n": 17517,
+          "start": "2023-01-02 02:00:00+00:00",
+          "end": "2024-12-31 23:00:00+00:00",
+          "net_sharpe": -0.8603474393999416,
+          "net_pnl": -0.6966944713396186,
+          "trades": 583,
+          "trades_per_day": 583.0
+        }
+      ]
+    },
+    {
+      "experiment_id": "570ed35b-f487-426a-803d-880683d145f0",
+      "signal_id": "volume_signal",
+      "timeframe": "1h",
+      "periods": [
+        {
+          "period": "early",
+          "n": 17516,
+          "start": "2019-01-01 00:00:00+00:00",
+          "end": "2021-01-01 16:00:00+00:00",
+          "net_sharpe": 0.0075673126990592685,
+          "net_pnl": -0.3674105438556734,
+          "trades": 629,
+          "trades_per_day": 629.0
+        },
+        {
+          "period": "middle",
+          "n": 17516,
+          "start": "2021-01-01 17:00:00+00:00",
+          "end": "2023-01-02 01:00:00+00:00",
+          "net_sharpe": -0.07667341659759254,
+          "net_pnl": -0.48754000067919967,
+          "trades": 612,
+          "trades_per_day": 612.0
+        },
+        {
+          "period": "later",
+          "n": 17517,
+          "start": "2023-01-02 02:00:00+00:00",
+          "end": "2024-12-31 23:00:00+00:00",
+          "net_sharpe": 0.3517633745305028,
+          "net_pnl": 0.19478759338675777,
+          "trades": 614,
+          "trades_per_day": 614.0
+        }
+      ]
+    },
+    {
+      "experiment_id": "6a02c521-5bd5-412c-9732-c7f5e65c26c7",
+      "signal_id": "trend_signal",
+      "timeframe": "1h",
+      "periods": [
+        {
+          "period": "early",
+          "n": 17516,
+          "start": "2019-01-01 00:00:00+00:00",
+          "end": "2021-01-01 16:00:00+00:00",
+          "net_sharpe": 0.1548592184923842,
+          "net_pnl": -0.20977675899676984,
+          "trades": 1291,
+          "trades_per_day": 1291.0
+        },
+        {
+          "period": "middle",
+          "n": 17516,
+          "start": "2021-01-01 17:00:00+00:00",
+          "end": "2023-01-02 01:00:00+00:00",
+          "net_sharpe": -0.6715528121593516,
+          "net_pnl": -0.8360453729238305,
+          "trades": 1317,
+          "trades_per_day": 1317.0
+        },
+        {
+          "period": "later",
+          "n": 17517,
+          "start": "2023-01-02 02:00:00+00:00",
+          "end": "2024-12-31 23:00:00+00:00",
+          "net_sharpe": -0.6914633764555486,
+          "net_pnl": -0.645554354663754,
+          "trades": 1275,
+          "trades_per_day": 1275.0
+        }
+      ]
+    },
+    {
+      "experiment_id": "a3cd34e4-74ea-41ad-bc42-e291ddf8660f",
+      "signal_id": "momentum_signal",
+      "timeframe": "30m",
+      "periods": [
+        {
+          "period": "early",
+          "n": 35028,
+          "start": "2019-01-01 00:00:00+00:00",
+          "end": "2021-01-01 18:00:00+00:00",
+          "net_sharpe": 1.0311984116202455,
+          "net_pnl": 2.5040613034617443,
+          "trades": 885,
+          "trades_per_day": 885.0
+        },
+        {
+          "period": "middle",
+          "n": 35029,
+          "start": "2021-01-01 18:30:00+00:00",
+          "end": "2023-01-02 04:00:00+00:00",
+          "net_sharpe": -0.6613291125110148,
+          "net_pnl": -0.8428125665161562,
+          "trades": 935,
+          "trades_per_day": 935.0
+        },
+        {
+          "period": "later",
+          "n": 35029,
+          "start": "2023-01-02 04:30:00+00:00",
+          "end": "2024-12-31 23:30:00+00:00",
+          "net_sharpe": 0.036766177180918895,
+          "net_pnl": -0.17353353294545415,
+          "trades": 893,
+          "trades_per_day": 893.0
+        }
+      ]
+    },
+    {
+      "experiment_id": "5258f347-3dbb-49bf-b3c0-c02e5a4720ce",
+      "signal_id": "momentum_signal",
+      "timeframe": "1h",
+      "periods": [
+        {
+          "period": "early",
+          "n": 17516,
+          "start": "2019-01-01 00:00:00+00:00",
+          "end": "2021-01-01 16:00:00+00:00",
+          "net_sharpe": 0.5270460758461604,
+          "net_pnl": 0.4905410659849132,
+          "trades": 1421,
+          "trades_per_day": 1421.0
+        },
+        {
+          "period": "middle",
+          "n": 17516,
+          "start": "2021-01-01 17:00:00+00:00",
+          "end": "2023-01-02 01:00:00+00:00",
+          "net_sharpe": -0.6544259656697864,
+          "net_pnl": -0.8305400625811399,
+          "trades": 1329,
+          "trades_per_day": 1329.0
+        },
+        {
+          "period": "later",
+          "n": 17517,
+          "start": "2023-01-02 02:00:00+00:00",
+          "end": "2024-12-31 23:00:00+00:00",
+          "net_sharpe": -0.25910276327267656,
+          "net_pnl": -0.41356067910734606,
+          "trades": 1413,
+          "trades_per_day": 1413.0
+        }
+      ]
+    },
+    {
+      "experiment_id": "c54cefc0-2fa4-4405-851b-26a9602abebb",
+      "signal_id": "momentum_signal",
+      "timeframe": "1h",
+      "periods": [
+        {
+          "period": "early",
+          "n": 17516,
+          "start": "2019-01-01 00:00:00+00:00",
+          "end": "2021-01-01 16:00:00+00:00",
+          "net_sharpe": 1.0835532319941192,
+          "net_pnl": 2.8405687755911173,
+          "trades": 900,
+          "trades_per_day": 900.0
+        },
+        {
+          "period": "middle",
+          "n": 17516,
+          "start": "2021-01-01 17:00:00+00:00",
+          "end": "2023-01-02 01:00:00+00:00",
+          "net_sharpe": -0.6707204094694524,
+          "net_pnl": -0.8342178250692482,
+          "trades": 917,
+          "trades_per_day": 917.0
+        },
+        {
+          "period": "later",
+          "n": 17517,
+          "start": "2023-01-02 02:00:00+00:00",
+          "end": "2024-12-31 23:00:00+00:00",
+          "net_sharpe": 0.0126720096874001,
+          "net_pnl": -0.19393148099806945,
+          "trades": 914,
+          "trades_per_day": 914.0
+        }
+      ]
+    },
+    {
+      "experiment_id": "3749dc63-667a-4dde-9afb-95f9490ac2e7",
+      "signal_id": "volatility_signal",
+      "timeframe": "1h",
+      "periods": [
+        {
+          "period": "early",
+          "n": 17516,
+          "start": "2019-01-01 00:00:00+00:00",
+          "end": "2021-01-01 16:00:00+00:00",
+          "net_sharpe": 0.14589981143610434,
+          "net_pnl": -0.22346898676493077,
+          "trades": 410,
+          "trades_per_day": 410.0
+        },
+        {
+          "period": "middle",
+          "n": 17516,
+          "start": "2021-01-01 17:00:00+00:00",
+          "end": "2023-01-02 01:00:00+00:00",
+          "net_sharpe": -0.6090230685502821,
+          "net_pnl": -0.812328916292464,
+          "trades": 426,
+          "trades_per_day": 426.0
+        },
+        {
+          "period": "later",
+          "n": 17517,
+          "start": "2023-01-02 02:00:00+00:00",
+          "end": "2024-12-31 23:00:00+00:00",
+          "net_sharpe": -0.5962062222066825,
+          "net_pnl": -0.6001374622193791,
+          "trades": 431,
+          "trades_per_day": 431.0
+        }
+      ]
+    },
+    {
+      "experiment_id": "f7166d2f-6fef-4573-a21a-3bb5eb7d7114",
+      "signal_id": "momentum_signal",
+      "timeframe": "1h",
+      "periods": [
+        {
+          "period": "early",
+          "n": 17516,
+          "start": "2019-01-01 00:00:00+00:00",
+          "end": "2021-01-01 16:00:00+00:00",
+          "net_sharpe": 0.7800209162156212,
+          "net_pnl": 1.2931023132377857,
+          "trades": 1137,
+          "trades_per_day": 1137.0
+        },
+        {
+          "period": "middle",
+          "n": 17516,
+          "start": "2021-01-01 17:00:00+00:00",
+          "end": "2023-01-02 01:00:00+00:00",
+          "net_sharpe": 0.09321256061240628,
+          "net_pnl": -0.3322425705985884,
+          "trades": 1063,
+          "trades_per_day": 1063.0
+        },
+        {
+          "period": "later",
+          "n": 17517,
+          "start": "2023-01-02 02:00:00+00:00",
+          "end": "2024-12-31 23:00:00+00:00",
+          "net_sharpe": -0.20681690548401357,
+          "net_pnl": -0.3760253717225719,
+          "trades": 1141,
+          "trades_per_day": 1141.0
+        }
+      ]
+    },
+    {
+      "experiment_id": "0d5f5a77-8c01-4978-b0c8-eecee9aad5ba",
+      "signal_id": "volume_signal",
+      "timeframe": "1h",
+      "periods": [
+        {
+          "period": "early",
+          "n": 17516,
+          "start": "2019-01-01 00:00:00+00:00",
+          "end": "2021-01-01 16:00:00+00:00",
+          "net_sharpe": -0.19204843172787997,
+          "net_pnl": -0.5161663657736577,
+          "trades": 1158,
+          "trades_per_day": 1158.0
+        },
+        {
+          "period": "middle",
+          "n": 17516,
+          "start": "2021-01-01 17:00:00+00:00",
+          "end": "2023-01-02 01:00:00+00:00",
+          "net_sharpe": -0.8434573498272796,
+          "net_pnl": -0.8497731510617242,
+          "trades": 1171,
+          "trades_per_day": 1171.0
+        },
+        {
+          "period": "later",
+          "n": 17517,
+          "start": "2023-01-02 02:00:00+00:00",
+          "end": "2024-12-31 23:00:00+00:00",
+          "net_sharpe": -0.0394425069575864,
+          "net_pnl": -0.2153521616191144,
+          "trades": 1076,
+          "trades_per_day": 1076.0
+        }
+      ]
+    },
+    {
+      "experiment_id": "bc41f826-371e-4c65-9b41-c2be3165da32",
+      "signal_id": "volume_signal",
+      "timeframe": "1h",
+      "periods": [
+        {
+          "period": "early",
+          "n": 17516,
+          "start": "2019-01-01 00:00:00+00:00",
+          "end": "2021-01-01 16:00:00+00:00",
+          "net_sharpe": 0.23029680778105463,
+          "net_pnl": -0.03172328161775828,
+          "trades": 2000,
+          "trades_per_day": 2000.0
+        },
+        {
+          "period": "middle",
+          "n": 17516,
+          "start": "2021-01-01 17:00:00+00:00",
+          "end": "2023-01-02 01:00:00+00:00",
+          "net_sharpe": -0.6846611718747528,
+          "net_pnl": -0.7677660879297458,
+          "trades": 1944,
+          "trades_per_day": 1944.0
+        },
+        {
+          "period": "later",
+          "n": 17517,
+          "start": "2023-01-02 02:00:00+00:00",
+          "end": "2024-12-31 23:00:00+00:00",
+          "net_sharpe": -0.5994641952407935,
+          "net_pnl": -0.5397108248323699,
+          "trades": 1858,
+          "trades_per_day": 1858.0
+        }
+      ]
+    },
+    {
+      "experiment_id": "9f35e263-4479-4aa8-9a9d-c40e55168892",
+      "signal_id": "volume_signal",
+      "timeframe": "1h",
+      "periods": [
+        {
+          "period": "early",
+          "n": 17516,
+          "start": "2019-01-01 00:00:00+00:00",
+          "end": "2021-01-01 16:00:00+00:00",
+          "net_sharpe": 0.5756715759255414,
+          "net_pnl": 0.6169742994833425,
+          "trades": 662,
+          "trades_per_day": 662.0
+        },
+        {
+          "period": "middle",
+          "n": 17516,
+          "start": "2021-01-01 17:00:00+00:00",
+          "end": "2023-01-02 01:00:00+00:00",
+          "net_sharpe": -0.8826222826231435,
+          "net_pnl": -0.8693557339304743,
+          "trades": 648,
+          "trades_per_day": 648.0
+        },
+        {
+          "period": "later",
+          "n": 17517,
+          "start": "2023-01-02 02:00:00+00:00",
+          "end": "2024-12-31 23:00:00+00:00",
+          "net_sharpe": -0.4018287612993024,
+          "net_pnl": -0.47676519887297897,
+          "trades": 628,
+          "trades_per_day": 628.0
+        }
+      ]
+    },
+    {
+      "experiment_id": "e50f1279-e3d8-464f-87ef-6fcc3bb04d80",
+      "signal_id": "price_action_signal",
+      "timeframe": "30m",
+      "periods": [
+        {
+          "period": "early",
+          "n": 35028,
+          "start": "2019-01-01 00:00:00+00:00",
+          "end": "2021-01-01 18:00:00+00:00",
+          "net_sharpe": 0.4433708563928366,
+          "net_pnl": 0.295577319026215,
+          "trades": 1102,
+          "trades_per_day": 1102.0
+        },
+        {
+          "period": "middle",
+          "n": 35029,
+          "start": "2021-01-01 18:30:00+00:00",
+          "end": "2023-01-02 04:00:00+00:00",
+          "net_sharpe": -0.10575961448107649,
+          "net_pnl": -0.5411912073338132,
+          "trades": 1111,
+          "trades_per_day": 1111.0
+        },
+        {
+          "period": "later",
+          "n": 35029,
+          "start": "2023-01-02 04:30:00+00:00",
+          "end": "2024-12-31 23:30:00+00:00",
+          "net_sharpe": -0.04160079089173826,
+          "net_pnl": -0.23912413580651326,
+          "trades": 1078,
+          "trades_per_day": 1078.0
+        }
+      ]
+    },
+    {
+      "experiment_id": "77f801f3-5b9a-4187-a174-cd3b132cb89a",
+      "signal_id": "trend_signal",
+      "timeframe": "1h",
+      "periods": [
+        {
+          "period": "early",
+          "n": 17516,
+          "start": "2019-01-01 00:00:00+00:00",
+          "end": "2021-01-01 16:00:00+00:00",
+          "net_sharpe": 0.2237586774082314,
+          "net_pnl": -0.11253664775382122,
+          "trades": 1535,
+          "trades_per_day": 1535.0
+        },
+        {
+          "period": "middle",
+          "n": 17516,
+          "start": "2021-01-01 17:00:00+00:00",
+          "end": "2023-01-02 01:00:00+00:00",
+          "net_sharpe": -0.6507812201336557,
+          "net_pnl": -0.8307653119111259,
+          "trades": 1581,
+          "trades_per_day": 1581.0
+        },
+        {
+          "period": "later",
+          "n": 17517,
+          "start": "2023-01-02 02:00:00+00:00",
+          "end": "2024-12-31 23:00:00+00:00",
+          "net_sharpe": -0.9328550264840823,
+          "net_pnl": -0.7336352984337964,
+          "trades": 1583,
+          "trades_per_day": 1583.0
+        }
+      ]
+    },
+    {
+      "experiment_id": "3f4edfb4-9bac-423d-901a-6072b3acf934",
+      "signal_id": "trend_signal",
+      "timeframe": "1h",
+      "periods": [
+        {
+          "period": "early",
+          "n": 17516,
+          "start": "2019-01-01 00:00:00+00:00",
+          "end": "2021-01-01 16:00:00+00:00",
+          "net_sharpe": 1.203689585037411,
+          "net_pnl": 3.7059891215810206,
+          "trades": 443,
+          "trades_per_day": 443.0
+        },
+        {
+          "period": "middle",
+          "n": 17516,
+          "start": "2021-01-01 17:00:00+00:00",
+          "end": "2023-01-02 01:00:00+00:00",
+          "net_sharpe": -0.07363452402697425,
+          "net_pnl": -0.5063020247949657,
+          "trades": 432,
+          "trades_per_day": 432.0
+        },
+        {
+          "period": "later",
+          "n": 17517,
+          "start": "2023-01-02 02:00:00+00:00",
+          "end": "2024-12-31 23:00:00+00:00",
+          "net_sharpe": 0.34474305511633957,
+          "net_pnl": 0.18311013197637305,
+          "trades": 463,
+          "trades_per_day": 463.0
+        }
+      ]
+    },
+    {
+      "experiment_id": "7d3533f1-abbd-4efb-8a1d-ddf5176f6f39",
+      "signal_id": "momentum_signal",
+      "timeframe": "1h",
+      "periods": [
+        {
+          "period": "early",
+          "n": 17516,
+          "start": "2019-01-01 00:00:00+00:00",
+          "end": "2021-01-01 16:00:00+00:00",
+          "net_sharpe": 0.2648243532851497,
+          "net_pnl": -0.04508770443737531,
+          "trades": 477,
+          "trades_per_day": 477.0
+        },
+        {
+          "period": "middle",
+          "n": 17516,
+          "start": "2021-01-01 17:00:00+00:00",
+          "end": "2023-01-02 01:00:00+00:00",
+          "net_sharpe": -0.07282368767921155,
+          "net_pnl": -0.5057911260699653,
+          "trades": 442,
+          "trades_per_day": 442.0
+        },
+        {
+          "period": "later",
+          "n": 17517,
+          "start": "2023-01-02 02:00:00+00:00",
+          "end": "2024-12-31 23:00:00+00:00",
+          "net_sharpe": -0.19912799857030386,
+          "net_pnl": -0.3680182622687138,
+          "trades": 488,
+          "trades_per_day": 488.0
+        }
+      ]
+    },
+    {
+      "experiment_id": "43699581-3e61-47b8-ab06-5904fdd9c5a6",
+      "signal_id": "price_action_signal",
+      "timeframe": "1h",
+      "periods": [
+        {
+          "period": "early",
+          "n": 17516,
+          "start": "2019-01-01 00:00:00+00:00",
+          "end": "2021-01-01 16:00:00+00:00",
+          "net_sharpe": 0.624705859979403,
+          "net_pnl": 0.7579761641217393,
+          "trades": 570,
+          "trades_per_day": 570.0
+        },
+        {
+          "period": "middle",
+          "n": 17516,
+          "start": "2021-01-01 17:00:00+00:00",
+          "end": "2023-01-02 01:00:00+00:00",
+          "net_sharpe": -0.23193682948959274,
+          "net_pnl": -0.6192129921220066,
+          "trades": 576,
+          "trades_per_day": 576.0
+        },
+        {
+          "period": "later",
+          "n": 17517,
+          "start": "2023-01-02 02:00:00+00:00",
+          "end": "2024-12-31 23:00:00+00:00",
+          "net_sharpe": -1.6015351616568565,
+          "net_pnl": -0.8686551976401219,
+          "trades": 603,
+          "trades_per_day": 603.0
+        }
+      ]
+    },
+    {
+      "experiment_id": "5b734dc6-519f-449a-8363-ddfa6198cf98",
+      "signal_id": "momentum_signal",
+      "timeframe": "1h",
+      "periods": [
+        {
+          "period": "early",
+          "n": 17516,
+          "start": "2019-01-01 00:00:00+00:00",
+          "end": "2021-01-01 16:00:00+00:00",
+          "net_sharpe": 0.8228635223705251,
+          "net_pnl": 1.4636071148706034,
+          "trades": 449,
+          "trades_per_day": 449.0
+        },
+        {
+          "period": "middle",
+          "n": 17516,
+          "start": "2021-01-01 17:00:00+00:00",
+          "end": "2023-01-02 01:00:00+00:00",
+          "net_sharpe": 0.2085765508376861,
+          "net_pnl": -0.1745762676096928,
+          "trades": 425,
+          "trades_per_day": 425.0
+        },
+        {
+          "period": "later",
+          "n": 17517,
+          "start": "2023-01-02 02:00:00+00:00",
+          "end": "2024-12-31 23:00:00+00:00",
+          "net_sharpe": 0.22999302017680018,
+          "net_pnl": 0.03644866344545483,
+          "trades": 444,
+          "trades_per_day": 444.0
+        }
+      ]
+    },
+    {
+      "experiment_id": "27415442-5e8e-4191-84da-84e715a9c01f",
+      "signal_id": "momentum_signal",
+      "timeframe": "1h",
+      "periods": [
+        {
+          "period": "early",
+          "n": 17516,
+          "start": "2019-01-01 00:00:00+00:00",
+          "end": "2021-01-01 16:00:00+00:00",
+          "net_sharpe": -0.057044420413397884,
+          "net_pnl": -0.45348032342982014,
+          "trades": 2019,
+          "trades_per_day": 2019.0
+        },
+        {
+          "period": "middle",
+          "n": 17516,
+          "start": "2021-01-01 17:00:00+00:00",
+          "end": "2023-01-02 01:00:00+00:00",
+          "net_sharpe": -0.9497680714845661,
+          "net_pnl": -0.9026144590729431,
+          "trades": 1919,
+          "trades_per_day": 1919.0
+        },
+        {
+          "period": "later",
+          "n": 17517,
+          "start": "2023-01-02 02:00:00+00:00",
+          "end": "2024-12-31 23:00:00+00:00",
+          "net_sharpe": -0.6971646662411289,
+          "net_pnl": -0.65087329427895,
+          "trades": 1997,
+          "trades_per_day": 1997.0
+        }
+      ]
+    },
+    {
+      "experiment_id": "e19f3a7f-5a82-413a-9678-f44173ffbcc2",
+      "signal_id": "price_action_signal",
+      "timeframe": "1h",
+      "periods": [
+        {
+          "period": "early",
+          "n": 17516,
+          "start": "2019-01-01 00:00:00+00:00",
+          "end": "2021-01-01 16:00:00+00:00",
+          "net_sharpe": -0.05115805353442042,
+          "net_pnl": -0.4238363855868652,
+          "trades": 1032,
+          "trades_per_day": 1032.0
+        },
+        {
+          "period": "middle",
+          "n": 17516,
+          "start": "2021-01-01 17:00:00+00:00",
+          "end": "2023-01-02 01:00:00+00:00",
+          "net_sharpe": -0.7058336184893889,
+          "net_pnl": -0.8315901038150754,
+          "trades": 1026,
+          "trades_per_day": 1026.0
+        },
+        {
+          "period": "later",
+          "n": 17517,
+          "start": "2023-01-02 02:00:00+00:00",
+          "end": "2024-12-31 23:00:00+00:00",
+          "net_sharpe": 0.05891184639603411,
+          "net_pnl": -0.1365364575974598,
+          "trades": 983,
+          "trades_per_day": 983.0
+        }
+      ]
+    },
+    {
+      "experiment_id": "144963be-6396-4ac7-8410-6e5d174e9686",
+      "signal_id": "volume_signal",
+      "timeframe": "1h",
+      "periods": [
+        {
+          "period": "early",
+          "n": 17516,
+          "start": "2019-01-01 00:00:00+00:00",
+          "end": "2021-01-01 16:00:00+00:00",
+          "net_sharpe": 0.08997121870951247,
+          "net_pnl": -0.23109184128864713,
+          "trades": 1566,
+          "trades_per_day": 1566.0
+        },
+        {
+          "period": "middle",
+          "n": 17516,
+          "start": "2021-01-01 17:00:00+00:00",
+          "end": "2023-01-02 01:00:00+00:00",
+          "net_sharpe": -0.5094906484345761,
+          "net_pnl": -0.7159634054017847,
+          "trades": 1481,
+          "trades_per_day": 1481.0
+        },
+        {
+          "period": "later",
+          "n": 17517,
+          "start": "2023-01-02 02:00:00+00:00",
+          "end": "2024-12-31 23:00:00+00:00",
+          "net_sharpe": -0.8675702288333585,
+          "net_pnl": -0.6633075974762916,
+          "trades": 1492,
+          "trades_per_day": 1492.0
+        }
+      ]
+    },
+    {
+      "experiment_id": "c16922a4-5dd3-4d8e-89ed-ac104a0dbe85",
+      "signal_id": "volume_signal",
+      "timeframe": "30m",
+      "periods": [
+        {
+          "period": "early",
+          "n": 35028,
+          "start": "2019-01-01 00:00:00+00:00",
+          "end": "2021-01-01 18:00:00+00:00",
+          "net_sharpe": 0.09790537157887744,
+          "net_pnl": -0.2507750386741695,
+          "trades": 1256,
+          "trades_per_day": 1256.0
+        },
+        {
+          "period": "middle",
+          "n": 35029,
+          "start": "2021-01-01 18:30:00+00:00",
+          "end": "2023-01-02 04:00:00+00:00",
+          "net_sharpe": -0.12579613733672176,
+          "net_pnl": -0.5346761503190838,
+          "trades": 1239,
+          "trades_per_day": 1239.0
+        },
+        {
+          "period": "later",
+          "n": 35029,
+          "start": "2023-01-02 04:30:00+00:00",
+          "end": "2024-12-31 23:30:00+00:00",
+          "net_sharpe": -0.7721382663504935,
+          "net_pnl": -0.6586334672372729,
+          "trades": 1219,
+          "trades_per_day": 1219.0
+        }
+      ]
+    }
+  ],
+  "cross_timeframe": [
+    {
+      "signal_id": "momentum_signal",
+      "by_timeframe": {
+        "1m": {
+          "experiment_id": "0d3b9f03-a202-4bce-bd05-fd77716a9b91",
+          "lookback": 20,
+          "holding_bars": 1,
+          "net_sharpe": -60.15108398513713,
+          "oos_sharpe": -71.86948402324157,
+          "research_status": "OOS_FAILED",
+          "score": 0.17976502270262718
+        },
+        "5m": {
+          "experiment_id": "7b0a1f5a-de0e-48a2-9db5-7880f502deec",
+          "lookback": 20,
+          "holding_bars": 1,
+          "net_sharpe": -14.625405611272708,
+          "oos_sharpe": -17.186870982396115,
+          "research_status": "OOS_FAILED",
+          "score": 0.18662206554528865
+        },
+        "15m": {
+          "experiment_id": "5e306885-5cd4-4a97-b083-3baeb1ae33b1",
+          "lookback": 20,
+          "holding_bars": 20,
+          "net_sharpe": -1.5140125410191805,
+          "oos_sharpe": -0.5476499042976466,
+          "research_status": "OOS_FAILED",
+          "score": 0.1739420900039575
+        },
+        "30m": {
+          "experiment_id": "a3cd34e4-74ea-41ad-bc42-e291ddf8660f",
+          "lookback": 20,
+          "holding_bars": 20,
+          "net_sharpe": 0.268704496029334,
+          "oos_sharpe": 0.05276003547493303,
+          "research_status": "COST_INEFFICIENT",
+          "score": 0.3409385835942628
+        },
+        "1h": {
+          "experiment_id": "3aa71d03-5ee5-4b56-88a7-56a10f894901",
+          "lookback": 20,
+          "holding_bars": 5,
+          "net_sharpe": 0.38287311772141297,
+          "oos_sharpe": -0.33086504989011,
+          "research_status": "OOS_FAILED",
+          "score": 0.44420022651604824
+        }
+      },
+      "persists_neighboring_horizons": false,
+      "flag": "sign_inconsistent_across_tf"
+    },
+    {
+      "signal_id": "price_action_signal",
+      "by_timeframe": {
+        "1m": {
+          "experiment_id": "6863eb56-6a93-4853-b860-4ce3c1980a10",
+          "lookback": 10,
+          "holding_bars": 1,
+          "net_sharpe": -103.67965016245765,
+          "oos_sharpe": -124.07400537965577,
+          "research_status": "OOS_FAILED",
+          "score": 0.17803991923134577
+        },
+        "5m": {
+          "experiment_id": "7338493d-db37-47cf-87d7-b40268ed55ba",
+          "lookback": 10,
+          "holding_bars": 1,
+          "net_sharpe": -22.433032182068267,
+          "oos_sharpe": -27.183609805689528,
+          "research_status": "OOS_FAILED",
+          "score": 0.18424555018666286
+        },
+        "15m": {
+          "experiment_id": "3aed9774-ea43-431a-a39e-b1fdad1e257a",
+          "lookback": 10,
+          "holding_bars": 1,
+          "net_sharpe": -7.706755134635513,
+          "oos_sharpe": -9.74157072901728,
+          "research_status": "OOS_FAILED",
+          "score": 0.16776314953442092
+        },
+        "30m": {
+          "experiment_id": "e50f1279-e3d8-464f-87ef-6fcc3bb04d80",
+          "lookback": 20,
+          "holding_bars": 20,
+          "net_sharpe": -0.1079108334221533,
+          "oos_sharpe": -0.47251615964678084,
+          "research_status": "COST_INEFFICIENT",
+          "score": 0.31734657181273146
+        },
+        "1h": {
+          "experiment_id": "22560244-7726-47d3-aa90-092c8222e4a0",
+          "lookback": 10,
+          "holding_bars": 20,
+          "net_sharpe": 0.06247287369823064,
+          "oos_sharpe": -0.15056916036705084,
+          "research_status": "COST_INEFFICIENT",
+          "score": 0.3622459422810268
+        }
+      },
+      "persists_neighboring_horizons": false,
+      "flag": "sign_inconsistent_across_tf"
+    },
+    {
+      "signal_id": "trend_signal",
+      "by_timeframe": {
+        "1m": {
+          "experiment_id": "2634808b-3cb3-4326-8fc6-501acb0d2037",
+          "lookback": 20,
+          "holding_bars": 1,
+          "net_sharpe": -66.70119650909355,
+          "oos_sharpe": -78.2475055470218,
+          "research_status": "OOS_FAILED",
+          "score": 0.18240554994609792
+        },
+        "5m": {
+          "experiment_id": "63a02b45-972a-406a-be1d-7ddd689df751",
+          "lookback": 20,
+          "holding_bars": 1,
+          "net_sharpe": -17.03756272186154,
+          "oos_sharpe": -19.354123515762872,
+          "research_status": "OOS_FAILED",
+          "score": 0.1912805824719711
+        },
+        "15m": {
+          "experiment_id": "2399c248-c0ce-400e-8bd0-950a4fdcfaf6",
+          "lookback": 20,
+          "holding_bars": 20,
+          "net_sharpe": -1.279414931828048,
+          "oos_sharpe": -0.49330529534393575,
+          "research_status": "OOS_FAILED",
+          "score": 0.18014668452618476
+        },
+        "30m": {
+          "experiment_id": "ed6d0ff4-6e0b-4ad1-8aa3-e36c60dcfe65",
+          "lookback": 10,
+          "holding_bars": 20,
+          "net_sharpe": -0.267883029432331,
+          "oos_sharpe": 0.13873718386044112,
+          "research_status": "UNSTABLE",
+          "score": 0.2550770456737802
+        },
+        "1h": {
+          "experiment_id": "3845ba52-6f76-46ad-8225-e5abac69700d",
+          "lookback": 20,
+          "holding_bars": 10,
+          "net_sharpe": 0.5512589352511671,
+          "oos_sharpe": 0.019479990863862328,
+          "research_status": "UNSTABLE",
+          "score": 0.46309978217986303
+        }
+      },
+      "persists_neighboring_horizons": false,
+      "flag": "sign_inconsistent_across_tf"
+    },
+    {
+      "signal_id": "volatility_signal",
+      "by_timeframe": {
+        "1m": {
+          "experiment_id": "4cf39643-1a18-4130-a8ba-48a83f6855eb",
+          "lookback": 10,
+          "holding_bars": 5,
+          "net_sharpe": -43.19288603267753,
+          "oos_sharpe": -55.80252449683561,
+          "research_status": "OOS_FAILED",
+          "score": 0.1758853567053176
+        },
+        "5m": {
+          "experiment_id": "72ff0bf8-1213-4b8b-b191-64c50895fcb8",
+          "lookback": 10,
+          "holding_bars": 20,
+          "net_sharpe": -2.8519444698162655,
+          "oos_sharpe": -3.2016731023624443,
+          "research_status": "COST_INEFFICIENT",
+          "score": 0.17580286226115782
+        },
+        "15m": {
+          "experiment_id": "b40621d7-8137-4a7e-89a2-6003e21dfb15",
+          "lookback": 10,
+          "holding_bars": 20,
+          "net_sharpe": -1.1075434061740332,
+          "oos_sharpe": -0.6322591011425518,
+          "research_status": "OOS_FAILED",
+          "score": 0.19235619281343802
+        },
+        "30m": {
+          "experiment_id": "e80aab6e-e156-4a5b-99ad-fcc0ff8bafed",
+          "lookback": 10,
+          "holding_bars": 20,
+          "net_sharpe": -0.6130029456044461,
+          "oos_sharpe": -0.304426886810267,
+          "research_status": "OOS_FAILED",
+          "score": 0.22417253359517916
+        },
+        "1h": {
+          "experiment_id": "3749dc63-667a-4dde-9afb-95f9490ac2e7",
+          "lookback": 10,
+          "holding_bars": 20,
+          "net_sharpe": 0.058653966439912796,
+          "oos_sharpe": 0.0714839926491228,
+          "research_status": "COST_INEFFICIENT",
+          "score": 0.3307911595386495
+        }
+      },
+      "persists_neighboring_horizons": false,
+      "flag": "sign_inconsistent_across_tf"
+    },
+    {
+      "signal_id": "volume_signal",
+      "by_timeframe": {
+        "1m": {
+          "experiment_id": "372fc7cd-b31d-49c7-93a8-ee9d365266c6",
+          "lookback": 20,
+          "holding_bars": 1,
+          "net_sharpe": -149.1957507982593,
+          "oos_sharpe": -189.7431286118813,
+          "research_status": "OOS_FAILED",
+          "score": 0.17633791941962926
+        },
+        "5m": {
+          "experiment_id": "321bc512-4f87-4bbd-8256-a4dd9b437316",
+          "lookback": 10,
+          "holding_bars": 1,
+          "net_sharpe": -31.702511096996886,
+          "oos_sharpe": -40.338726129352715,
+          "research_status": "OOS_FAILED",
+          "score": 0.1811564948838208
+        },
+        "15m": {
+          "experiment_id": "f2faa503-8593-41dd-ae5e-0adba6d240c8",
+          "lookback": 20,
+          "holding_bars": 1,
+          "net_sharpe": -8.399980049817328,
+          "oos_sharpe": -10.650277176848512,
+          "research_status": "COST_INEFFICIENT",
+          "score": 0.24296978939734457
+        },
+        "30m": {
+          "experiment_id": "c16922a4-5dd3-4d8e-89ed-ac104a0dbe85",
+          "lookback": 20,
+          "holding_bars": 20,
+          "net_sharpe": -0.2077482524707754,
+          "oos_sharpe": -0.9857523890096902,
+          "research_status": "COST_INEFFICIENT",
+          "score": 0.2894645726520573
+        },
+        "1h": {
+          "experiment_id": "570ed35b-f487-426a-803d-880683d145f0",
+          "lookback": 10,
+          "holding_bars": 20,
+          "net_sharpe": 0.07477273769170797,
+          "oos_sharpe": -0.4315497574095226,
+          "research_status": "COST_INEFFICIENT",
+          "score": 0.3487549788684432
+        }
+      },
+      "persists_neighboring_horizons": false,
+      "flag": "sign_inconsistent_across_tf"
+    }
+  ]
+}

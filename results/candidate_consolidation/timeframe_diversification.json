@@ -1,0 +1,109 @@
+{
+  "group_key": "timeframe",
+  "n_groups": 4,
+  "groups": {
+    "15m": 20,
+    "1h": 63,
+    "5m": 29,
+    "30m": 17
+  },
+  "median_within_abs_corr_val": 0.7359014293541419,
+  "median_across_abs_corr_val": 0.758571510199355,
+  "mean_within_abs_corr_val": 0.6897173391947397,
+  "mean_across_abs_corr_val": 0.5579697100083276,
+  "diversified": false,
+  "note": "Diversified if across-group dependence meaningfully below within-group (validation).",
+  "pairs": [
+    {
+      "timeframe_pair": [
+        "15m",
+        "15m"
+      ],
+      "average_dependence_val": 0.5080890468055824,
+      "median_dependence_val": 0.4957285102927712,
+      "oos_dependence": 0.6322626960064863
+    },
+    {
+      "timeframe_pair": [
+        "15m",
+        "1h"
+      ],
+      "average_dependence_val": null,
+      "median_dependence_val": null,
+      "oos_dependence": 0.6183112301702356
+    },
+    {
+      "timeframe_pair": [
+        "15m",
+        "30m"
+      ],
+      "average_dependence_val": 0.5579697100083276,
+      "median_dependence_val": 0.758571510199355,
+      "oos_dependence": 0.6494442413176937
+    },
+    {
+      "timeframe_pair": [
+        "15m",
+        "5m"
+      ],
+      "average_dependence_val": null,
+      "median_dependence_val": null,
+      "oos_dependence": 0.3190722219800381
+    },
+    {
+      "timeframe_pair": [
+        "1h",
+        "1h"
+      ],
+      "average_dependence_val": 0.7224767624690519,
+      "median_dependence_val": 0.7490408971812712,
+      "oos_dependence": 0.7235203020425385
+    },
+    {
+      "timeframe_pair": [
+        "1h",
+        "30m"
+      ],
+      "average_dependence_val": null,
+      "median_dependence_val": null,
+      "oos_dependence": 0.8258172264738967
+    },
+    {
+      "timeframe_pair": [
+        "1h",
+        "5m"
+      ],
+      "average_dependence_val": null,
+      "median_dependence_val": null,
+      "oos_dependence": 0.43155641363820446
+    },
+    {
+      "timeframe_pair": [
+        "30m",
+        "30m"
+      ],
+      "average_dependence_val": 0.814022214839054,
+      "median_dependence_val": 0.9154374486306436,
+      "oos_dependence": 0.9502516542246395
+    },
+    {
+      "timeframe_pair": [
+        "30m",
+        "5m"
+      ],
+      "average_dependence_val": null,
+      "median_dependence_val": null,
+      "oos_dependence": 0.619032623349773
+    },
+    {
+      "timeframe_pair": [
+        "5m",
+        "5m"
+      ],
+      "average_dependence_val": 0.5754926072035597,
+      "median_dependence_val": 0.6557728836692118,
+      "oos_dependence": 0.4904843529851746
+    }
+  ],
+  "disclaimer": "CANDIDATE CONSOLIDATION RESEARCH \u2014 predefined protocol. Research evidence is not a profitability guarantee. DISTINCT_RESEARCH_CANDIDATE \u2260 PROFITABLE \u2260 PRODUCTION_READY \u2260 LIVE_READY. Prompt 39 artifacts are immutable inputs."
+}

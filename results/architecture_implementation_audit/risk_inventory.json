@@ -1,0 +1,541 @@
+{
+  "Risk_framework_package": {
+    "status": "IMPLEMENTED",
+    "source": [
+      "iqrp/app/risk"
+    ],
+    "tests": [
+      "iqrp/tests/integration/backtesting/test_acceptance_user_shaped_data.py",
+      "iqrp/tests/integration/backtesting/test_e2e_operational.py",
+      "iqrp/tests/integration/test_volatility_forecasting_pipeline.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps2.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps4.py",
+      "iqrp/tests/unit/alpha/test_cross_ensemble_monitor.py",
+      "iqrp/tests/unit/alpha/test_engine_api.py",
+      "iqrp/tests/unit/backtesting/operational/test_correctness_audit.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps2.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps3.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps4.py",
+      "iqrp/tests/unit/backtesting/operational/test_nested_config.py",
+      "iqrp/tests/unit/backtesting/operational/test_runner_internals.py",
+      "iqrp/tests/unit/backtesting/operational/test_runner_lifecycle.py",
+      "iqrp/tests/unit/backtesting/test_capacity_robustness.py",
+      "iqrp/tests/unit/backtesting/test_coverage_gaps.py",
+      "iqrp/tests/unit/backtesting/test_event_engine.py",
+      "iqrp/tests/unit/backtesting/test_performance.py"
+    ],
+    "docs": [
+      "iqrp/docs/AlphaResearch.md",
+      "iqrp/docs/AlphaResearchEngine.md",
+      "iqrp/docs/Architecture.md",
+      "iqrp/docs/BacktestConfiguration.md",
+      "iqrp/docs/BacktestExecution.md",
+      "iqrp/docs/BacktestReports.md",
+      "iqrp/docs/BacktestRunner.md",
+      "iqrp/docs/BacktestingPlatform.md",
+      "iqrp/docs/BlackLitterman.md",
+      "iqrp/docs/CapacityManagement.md"
+    ],
+    "executable_smoke": null,
+    "integrated_into_alpha_research": false,
+    "integrated_into_backtest_runner": false,
+    "notes": "Risk package exists with tests; NOT consumed by Prompt 35 alpha campaign outputs",
+    "evidence": {
+      "n_sources": 1,
+      "n_tests": 49,
+      "n_docs": 12
+    }
+  },
+  "Position_sizing": {
+    "status": "IMPLEMENTED",
+    "source": [
+      "iqrp/app/risk/sizing"
+    ],
+    "tests": [
+      "iqrp/tests/integration/backtesting/test_acceptance_user_shaped_data.py",
+      "iqrp/tests/integration/backtesting/test_alpha_research.py",
+      "iqrp/tests/integration/backtesting/test_e2e_operational.py",
+      "iqrp/tests/integration/test_config_integration.py",
+      "iqrp/tests/integration/test_timeseries_pipeline.py",
+      "iqrp/tests/integration/test_volatility_forecasting_pipeline.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps2.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps3.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps4.py",
+      "iqrp/tests/unit/alpha/test_cross_ensemble_monitor.py",
+      "iqrp/tests/unit/alpha/test_engine_api.py",
+      "iqrp/tests/unit/backtesting/operational/test_accounting.py",
+      "iqrp/tests/unit/backtesting/operational/test_correctness_audit.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps2.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps3.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps4.py",
+      "iqrp/tests/unit/backtesting/operational/test_nested_config.py",
+      "iqrp/tests/unit/backtesting/operational/test_runner_internals.py"
+    ],
+    "docs": [
+      "iqrp/docs/AlphaResearch.md",
+      "iqrp/docs/AlphaResearchEngine.md",
+      "iqrp/docs/Architecture.md",
+      "iqrp/docs/BacktestConfiguration.md",
+      "iqrp/docs/BacktestExecution.md",
+      "iqrp/docs/BacktestReports.md",
+      "iqrp/docs/BacktestRunner.md",
+      "iqrp/docs/BacktestingPlatform.md",
+      "iqrp/docs/BlackLitterman.md",
+      "iqrp/docs/CapacityManagement.md"
+    ],
+    "executable_smoke": null,
+    "integrated_into_alpha_research": false,
+    "integrated_into_backtest_runner": false,
+    "notes": "Risk package exists with tests; NOT consumed by Prompt 35 alpha campaign outputs",
+    "evidence": {
+      "n_sources": 1,
+      "n_tests": 69,
+      "n_docs": 12
+    }
+  },
+  "Portfolio_risk": {
+    "status": "IMPLEMENTED",
+    "source": [
+      "iqrp/app/risk/portfolio"
+    ],
+    "tests": [
+      "iqrp/tests/integration/backtesting/test_acceptance_user_shaped_data.py",
+      "iqrp/tests/integration/backtesting/test_e2e_operational.py",
+      "iqrp/tests/integration/test_volatility_forecasting_pipeline.py",
+      "iqrp/tests/unit/alpha/test_backtest_economics.py",
+      "iqrp/tests/unit/alpha/test_coverage_final.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps2.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps3.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps4.py",
+      "iqrp/tests/unit/alpha/test_cross_ensemble_monitor.py",
+      "iqrp/tests/unit/alpha/test_engine_api.py",
+      "iqrp/tests/unit/backtesting/operational/test_accounting.py",
+      "iqrp/tests/unit/backtesting/operational/test_correctness_audit.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps2.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps3.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps4.py",
+      "iqrp/tests/unit/backtesting/operational/test_nested_config.py",
+      "iqrp/tests/unit/backtesting/operational/test_runner_internals.py",
+      "iqrp/tests/unit/backtesting/operational/test_runner_lifecycle.py"
+    ],
+    "docs": [
+      "iqrp/docs/AlphaResearch.md",
+      "iqrp/docs/AlphaResearchEngine.md",
+      "iqrp/docs/Architecture.md",
+      "iqrp/docs/BacktestConfiguration.md",
+      "iqrp/docs/BacktestExecution.md",
+      "iqrp/docs/BacktestReports.md",
+      "iqrp/docs/BacktestRunner.md",
+      "iqrp/docs/BacktestingPlatform.md",
+      "iqrp/docs/BlackLitterman.md",
+      "iqrp/docs/CapacityManagement.md"
+    ],
+    "executable_smoke": null,
+    "integrated_into_alpha_research": false,
+    "integrated_into_backtest_runner": false,
+    "notes": "Risk package exists with tests; NOT consumed by Prompt 35 alpha campaign outputs",
+    "evidence": {
+      "n_sources": 1,
+      "n_tests": 54,
+      "n_docs": 12
+    }
+  },
+  "VaR_tail": {
+    "status": "IMPLEMENTED",
+    "source": [
+      "iqrp/app/risk/tail"
+    ],
+    "tests": [
+      "iqrp/tests/integration/backtesting/test_acceptance_user_shaped_data.py",
+      "iqrp/tests/integration/backtesting/test_e2e_operational.py",
+      "iqrp/tests/integration/test_forecast_intelligence_pipeline.py",
+      "iqrp/tests/integration/test_gmm_pipeline.py",
+      "iqrp/tests/integration/test_kalman_pipeline.py",
+      "iqrp/tests/integration/test_statistical_forecasting_pipeline.py",
+      "iqrp/tests/integration/test_volatility_forecasting_pipeline.py",
+      "iqrp/tests/unit/alpha/test_coverage_final.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps2.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps3.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps4.py",
+      "iqrp/tests/unit/alpha/test_cross_ensemble_monitor.py",
+      "iqrp/tests/unit/alpha/test_engine_api.py",
+      "iqrp/tests/unit/alpha/test_statistical_validation.py",
+      "iqrp/tests/unit/backtesting/operational/test_correctness_audit.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps2.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps3.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps4.py"
+    ],
+    "docs": [
+      "iqrp/docs/AlphaResearch.md",
+      "iqrp/docs/AlphaResearchEngine.md",
+      "iqrp/docs/Architecture.md",
+      "iqrp/docs/BacktestConfiguration.md",
+      "iqrp/docs/BacktestExecution.md",
+      "iqrp/docs/BacktestReports.md",
+      "iqrp/docs/BacktestRunner.md",
+      "iqrp/docs/BacktestingPlatform.md",
+      "iqrp/docs/BlackLitterman.md",
+      "iqrp/docs/CapacityManagement.md"
+    ],
+    "executable_smoke": null,
+    "integrated_into_alpha_research": false,
+    "integrated_into_backtest_runner": false,
+    "notes": "Risk package exists with tests; NOT consumed by Prompt 35 alpha campaign outputs",
+    "evidence": {
+      "n_sources": 1,
+      "n_tests": 110,
+      "n_docs": 12
+    }
+  },
+  "Stress": {
+    "status": "IMPLEMENTED",
+    "source": [
+      "iqrp/app/risk/stress"
+    ],
+    "tests": [
+      "iqrp/tests/integration/backtesting/test_acceptance_user_shaped_data.py",
+      "iqrp/tests/integration/backtesting/test_e2e_operational.py",
+      "iqrp/tests/integration/test_forecast_intelligence_pipeline.py",
+      "iqrp/tests/integration/test_neural_forecasting_pipeline.py",
+      "iqrp/tests/integration/test_simulation_pipeline.py",
+      "iqrp/tests/integration/test_volatility_forecasting_pipeline.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps2.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps4.py",
+      "iqrp/tests/unit/alpha/test_cross_ensemble_monitor.py",
+      "iqrp/tests/unit/alpha/test_engine_api.py",
+      "iqrp/tests/unit/backtesting/operational/test_correctness_audit.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps2.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps3.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps4.py",
+      "iqrp/tests/unit/backtesting/operational/test_nested_config.py",
+      "iqrp/tests/unit/backtesting/operational/test_runner_internals.py",
+      "iqrp/tests/unit/backtesting/operational/test_runner_lifecycle.py",
+      "iqrp/tests/unit/backtesting/test_capacity_robustness.py"
+    ],
+    "docs": [
+      "iqrp/docs/AlphaResearch.md",
+      "iqrp/docs/AlphaResearchEngine.md",
+      "iqrp/docs/Architecture.md",
+      "iqrp/docs/BacktestConfiguration.md",
+      "iqrp/docs/BacktestExecution.md",
+      "iqrp/docs/BacktestReports.md",
+      "iqrp/docs/BacktestRunner.md",
+      "iqrp/docs/BacktestValidation.md",
+      "iqrp/docs/BacktestingPlatform.md",
+      "iqrp/docs/BlackLitterman.md"
+    ],
+    "executable_smoke": null,
+    "integrated_into_alpha_research": false,
+    "integrated_into_backtest_runner": false,
+    "notes": "Risk package exists with tests; NOT consumed by Prompt 35 alpha campaign outputs",
+    "evidence": {
+      "n_sources": 1,
+      "n_tests": 63,
+      "n_docs": 12
+    }
+  },
+  "MonteCarlo_simulation": {
+    "status": "IMPLEMENTED",
+    "source": [
+      "iqrp/app/risk/simulation"
+    ],
+    "tests": [
+      "iqrp/tests/integration/backtesting/test_acceptance_user_shaped_data.py",
+      "iqrp/tests/integration/backtesting/test_e2e_operational.py",
+      "iqrp/tests/integration/test_volatility_forecasting_pipeline.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps2.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps4.py",
+      "iqrp/tests/unit/alpha/test_cross_ensemble_monitor.py",
+      "iqrp/tests/unit/alpha/test_engine_api.py",
+      "iqrp/tests/unit/backtesting/operational/test_correctness_audit.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps2.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps3.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps4.py",
+      "iqrp/tests/unit/backtesting/operational/test_nested_config.py",
+      "iqrp/tests/unit/backtesting/operational/test_runner_internals.py",
+      "iqrp/tests/unit/backtesting/operational/test_runner_lifecycle.py",
+      "iqrp/tests/unit/backtesting/test_capacity_robustness.py",
+      "iqrp/tests/unit/backtesting/test_coverage_gaps.py",
+      "iqrp/tests/unit/backtesting/test_event_engine.py",
+      "iqrp/tests/unit/backtesting/test_performance.py"
+    ],
+    "docs": [
+      "iqrp/docs/AlphaResearch.md",
+      "iqrp/docs/AlphaResearchEngine.md",
+      "iqrp/docs/Architecture.md",
+      "iqrp/docs/BacktestConfiguration.md",
+      "iqrp/docs/BacktestExecution.md",
+      "iqrp/docs/BacktestReports.md",
+      "iqrp/docs/BacktestRunner.md",
+      "iqrp/docs/BacktestingPlatform.md",
+      "iqrp/docs/BlackLitterman.md",
+      "iqrp/docs/CapacityManagement.md"
+    ],
+    "executable_smoke": null,
+    "integrated_into_alpha_research": false,
+    "integrated_into_backtest_runner": false,
+    "notes": "Risk package exists with tests; NOT consumed by Prompt 35 alpha campaign outputs",
+    "evidence": {
+      "n_sources": 1,
+      "n_tests": 50,
+      "n_docs": 12
+    }
+  },
+  "Kelly_capital": {
+    "status": "IMPLEMENTED",
+    "source": [
+      "iqrp/app/risk/capital"
+    ],
+    "tests": [
+      "iqrp/tests/integration/backtesting/test_acceptance_user_shaped_data.py",
+      "iqrp/tests/integration/backtesting/test_e2e_operational.py",
+      "iqrp/tests/integration/test_volatility_forecasting_pipeline.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps2.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps4.py",
+      "iqrp/tests/unit/alpha/test_cross_ensemble_monitor.py",
+      "iqrp/tests/unit/alpha/test_engine_api.py",
+      "iqrp/tests/unit/backtesting/operational/test_correctness_audit.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps2.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps3.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps4.py",
+      "iqrp/tests/unit/backtesting/operational/test_nested_config.py",
+      "iqrp/tests/unit/backtesting/operational/test_runner_internals.py",
+      "iqrp/tests/unit/backtesting/operational/test_runner_lifecycle.py",
+      "iqrp/tests/unit/backtesting/test_capacity_robustness.py",
+      "iqrp/tests/unit/backtesting/test_coverage_gaps.py",
+      "iqrp/tests/unit/backtesting/test_event_engine.py",
+      "iqrp/tests/unit/backtesting/test_performance.py"
+    ],
+    "docs": [
+      "iqrp/docs/AlphaResearch.md",
+      "iqrp/docs/AlphaResearchEngine.md",
+      "iqrp/docs/Architecture.md",
+      "iqrp/docs/BacktestConfiguration.md",
+      "iqrp/docs/BacktestExecution.md",
+      "iqrp/docs/BacktestReports.md",
+      "iqrp/docs/BacktestRunner.md",
+      "iqrp/docs/BacktestingPlatform.md",
+      "iqrp/docs/BlackLitterman.md",
+      "iqrp/docs/CapacityManagement.md"
+    ],
+    "executable_smoke": null,
+    "integrated_into_alpha_research": false,
+    "integrated_into_backtest_runner": false,
+    "notes": "Risk package exists with tests; NOT consumed by Prompt 35 alpha campaign outputs",
+    "evidence": {
+      "n_sources": 1,
+      "n_tests": 49,
+      "n_docs": 12
+    }
+  },
+  "Leverage": {
+    "status": "IMPLEMENTED",
+    "source": [
+      "iqrp/app/risk/leverage"
+    ],
+    "tests": [
+      "iqrp/tests/integration/backtesting/test_acceptance_user_shaped_data.py",
+      "iqrp/tests/integration/backtesting/test_e2e_operational.py",
+      "iqrp/tests/integration/test_volatility_forecasting_pipeline.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps2.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps4.py",
+      "iqrp/tests/unit/alpha/test_cross_ensemble_monitor.py",
+      "iqrp/tests/unit/alpha/test_engine_api.py",
+      "iqrp/tests/unit/backtesting/operational/test_accounting.py",
+      "iqrp/tests/unit/backtesting/operational/test_correctness_audit.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps2.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps3.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps4.py",
+      "iqrp/tests/unit/backtesting/operational/test_nested_config.py",
+      "iqrp/tests/unit/backtesting/operational/test_runner_internals.py",
+      "iqrp/tests/unit/backtesting/operational/test_runner_lifecycle.py",
+      "iqrp/tests/unit/backtesting/test_capacity_robustness.py",
+      "iqrp/tests/unit/backtesting/test_coverage_gaps.py",
+      "iqrp/tests/unit/backtesting/test_event_engine.py"
+    ],
+    "docs": [
+      "iqrp/docs/AlphaResearch.md",
+      "iqrp/docs/AlphaResearchEngine.md",
+      "iqrp/docs/Architecture.md",
+      "iqrp/docs/BacktestConfiguration.md",
+      "iqrp/docs/BacktestExecution.md",
+      "iqrp/docs/BacktestReports.md",
+      "iqrp/docs/BacktestRunner.md",
+      "iqrp/docs/BacktestingPlatform.md",
+      "iqrp/docs/BlackLitterman.md",
+      "iqrp/docs/CapacityManagement.md"
+    ],
+    "executable_smoke": null,
+    "integrated_into_alpha_research": false,
+    "integrated_into_backtest_runner": false,
+    "notes": "Risk package exists with tests; NOT consumed by Prompt 35 alpha campaign outputs",
+    "evidence": {
+      "n_sources": 1,
+      "n_tests": 50,
+      "n_docs": 12
+    }
+  },
+  "Limits": {
+    "status": "IMPLEMENTED",
+    "source": [
+      "iqrp/app/risk/limits"
+    ],
+    "tests": [
+      "iqrp/tests/integration/backtesting/test_acceptance_user_shaped_data.py",
+      "iqrp/tests/integration/backtesting/test_e2e_operational.py",
+      "iqrp/tests/integration/test_volatility_forecasting_pipeline.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps2.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps4.py",
+      "iqrp/tests/unit/alpha/test_cross_ensemble_monitor.py",
+      "iqrp/tests/unit/alpha/test_engine_api.py",
+      "iqrp/tests/unit/backtesting/operational/test_correctness_audit.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps2.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps3.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps4.py",
+      "iqrp/tests/unit/backtesting/operational/test_nested_config.py",
+      "iqrp/tests/unit/backtesting/operational/test_runner_internals.py",
+      "iqrp/tests/unit/backtesting/operational/test_runner_lifecycle.py",
+      "iqrp/tests/unit/backtesting/test_capacity_robustness.py",
+      "iqrp/tests/unit/backtesting/test_coverage_gaps.py",
+      "iqrp/tests/unit/backtesting/test_event_engine.py",
+      "iqrp/tests/unit/backtesting/test_performance.py"
+    ],
+    "docs": [
+      "iqrp/docs/AlphaResearch.md",
+      "iqrp/docs/AlphaResearchEngine.md",
+      "iqrp/docs/Architecture.md",
+      "iqrp/docs/BacktestConfiguration.md",
+      "iqrp/docs/BacktestExecution.md",
+      "iqrp/docs/BacktestReports.md",
+      "iqrp/docs/BacktestRunner.md",
+      "iqrp/docs/BacktestingPlatform.md",
+      "iqrp/docs/BlackLitterman.md",
+      "iqrp/docs/CapacityManagement.md"
+    ],
+    "executable_smoke": null,
+    "integrated_into_alpha_research": false,
+    "integrated_into_backtest_runner": false,
+    "notes": "Risk package exists with tests; NOT consumed by Prompt 35 alpha campaign outputs",
+    "evidence": {
+      "n_sources": 1,
+      "n_tests": 49,
+      "n_docs": 12
+    }
+  },
+  "Risk_ensemble": {
+    "status": "IMPLEMENTED",
+    "source": [
+      "iqrp/app/risk/ensemble"
+    ],
+    "tests": [
+      "iqrp/tests/integration/backtesting/test_acceptance_user_shaped_data.py",
+      "iqrp/tests/integration/backtesting/test_e2e_operational.py",
+      "iqrp/tests/integration/test_volatility_forecasting_pipeline.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps2.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps4.py",
+      "iqrp/tests/unit/alpha/test_cross_ensemble_monitor.py",
+      "iqrp/tests/unit/alpha/test_engine_api.py",
+      "iqrp/tests/unit/backtesting/operational/test_correctness_audit.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps2.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps3.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps4.py",
+      "iqrp/tests/unit/backtesting/operational/test_nested_config.py",
+      "iqrp/tests/unit/backtesting/operational/test_runner_internals.py",
+      "iqrp/tests/unit/backtesting/operational/test_runner_lifecycle.py",
+      "iqrp/tests/unit/backtesting/test_capacity_robustness.py",
+      "iqrp/tests/unit/backtesting/test_coverage_gaps.py",
+      "iqrp/tests/unit/backtesting/test_event_engine.py",
+      "iqrp/tests/unit/backtesting/test_performance.py"
+    ],
+    "docs": [
+      "iqrp/docs/AlphaResearch.md",
+      "iqrp/docs/AlphaResearchEngine.md",
+      "iqrp/docs/Architecture.md",
+      "iqrp/docs/BacktestConfiguration.md",
+      "iqrp/docs/BacktestExecution.md",
+      "iqrp/docs/BacktestReports.md",
+      "iqrp/docs/BacktestRunner.md",
+      "iqrp/docs/BacktestingPlatform.md",
+      "iqrp/docs/BlackLitterman.md",
+      "iqrp/docs/CapacityManagement.md"
+    ],
+    "executable_smoke": null,
+    "integrated_into_alpha_research": false,
+    "integrated_into_backtest_runner": false,
+    "notes": "Risk package exists with tests; NOT consumed by Prompt 35 alpha campaign outputs",
+    "evidence": {
+      "n_sources": 1,
+      "n_tests": 49,
+      "n_docs": 12
+    }
+  },
+  "Correlation_dependency": {
+    "status": "IMPLEMENTED",
+    "source": [
+      "iqrp/app/timeseries/dependence"
+    ],
+    "tests": [
+      "iqrp/tests/integration/backtesting/test_acceptance_user_shaped_data.py",
+      "iqrp/tests/integration/backtesting/test_e2e_operational.py",
+      "iqrp/tests/integration/test_feature_research.py",
+      "iqrp/tests/integration/test_forecasting_pipeline.py",
+      "iqrp/tests/integration/test_volatility_forecasting_pipeline.py",
+      "iqrp/tests/unit/alpha/test_coverage_final.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps2.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps3.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps4.py",
+      "iqrp/tests/unit/alpha/test_cross_ensemble_monitor.py",
+      "iqrp/tests/unit/alpha/test_engine_api.py",
+      "iqrp/tests/unit/alpha/test_research_metrics.py",
+      "iqrp/tests/unit/backtesting/operational/test_correctness_audit.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps2.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps3.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps4.py",
+      "iqrp/tests/unit/backtesting/operational/test_nested_config.py",
+      "iqrp/tests/unit/backtesting/operational/test_runner_internals.py"
+    ],
+    "docs": [
+      "iqrp/docs/AlphaResearch.md",
+      "iqrp/docs/AlphaResearchEngine.md",
+      "iqrp/docs/Architecture.md",
+      "iqrp/docs/BacktestConfiguration.md",
+      "iqrp/docs/BacktestExecution.md",
+      "iqrp/docs/BacktestReports.md",
+      "iqrp/docs/BacktestRunner.md",
+      "iqrp/docs/BacktestingPlatform.md",
+      "iqrp/docs/BlackLitterman.md",
+      "iqrp/docs/CapacityManagement.md"
+    ],
+    "executable_smoke": null,
+    "integrated_into_alpha_research": false,
+    "integrated_into_backtest_runner": false,
+    "notes": "Risk package exists with tests; NOT consumed by Prompt 35 alpha campaign outputs",
+    "evidence": {
+      "n_sources": 1,
+      "n_tests": 74,
+      "n_docs": 12
+    }
+  }
+}

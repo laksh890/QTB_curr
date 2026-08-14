@@ -1,0 +1,8 @@
+{
+  "metric_type": "time_series_predictive_correlation",
+  "not_cross_sectional": true,
+  "engine_h1_pearson": 0.008490556937459474,
+  "independent_h1_pearson": 0.008490556937459474,
+  "match": true,
+  "disclaimer": "Research evidence is not a profitability guarantee."
+}

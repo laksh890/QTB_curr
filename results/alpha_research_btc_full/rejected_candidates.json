@@ -1,0 +1,6306 @@
+{
+  "rejected": [
+    {
+      "experiment_id": "3845ba52-6f76-46ad-8225-e5abac69700d",
+      "category": "UNSTABLE",
+      "reason": "drawdown exceeds gate",
+      "signal_id": "trend_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "3aa71d03-5ee5-4b56-88a7-56a10f894901",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "momentum_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "409e766a-7333-4382-8260-55521d6c7d21",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "momentum_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "3fa01c99-3016-49b1-8517-ff56b0703f77",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "trend_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "22560244-7726-47d3-aa90-092c8222e4a0",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "price_action_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "570ed35b-f487-426a-803d-880683d145f0",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "volume_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "6a02c521-5bd5-412c-9732-c7f5e65c26c7",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "trend_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "a3cd34e4-74ea-41ad-bc42-e291ddf8660f",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "momentum_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "5258f347-3dbb-49bf-b3c0-c02e5a4720ce",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "momentum_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "c54cefc0-2fa4-4405-851b-26a9602abebb",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "momentum_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "3749dc63-667a-4dde-9afb-95f9490ac2e7",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "volatility_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "f7166d2f-6fef-4573-a21a-3bb5eb7d7114",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "momentum_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "0d5f5a77-8c01-4978-b0c8-eecee9aad5ba",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "volume_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "bc41f826-371e-4c65-9b41-c2be3165da32",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "volume_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "9f35e263-4479-4aa8-9a9d-c40e55168892",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volume_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "e50f1279-e3d8-464f-87ef-6fcc3bb04d80",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "price_action_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "77f801f3-5b9a-4187-a174-cd3b132cb89a",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "trend_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "3f4edfb4-9bac-423d-901a-6072b3acf934",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "trend_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "7d3533f1-abbd-4efb-8a1d-ddf5176f6f39",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "momentum_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "43699581-3e61-47b8-ab06-5904fdd9c5a6",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "price_action_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "5b734dc6-519f-449a-8363-ddfa6198cf98",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "momentum_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "27415442-5e8e-4191-84da-84e715a9c01f",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "momentum_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "e19f3a7f-5a82-413a-9678-f44173ffbcc2",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "price_action_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "144963be-6396-4ac7-8410-6e5d174e9686",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "volume_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "c16922a4-5dd3-4d8e-89ed-ac104a0dbe85",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "volume_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "5c25f3c9-0d9b-48c9-8ad6-b29881d3c720",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "volume_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "59b97ec4-c4df-468e-a63c-83d201ecb1b9",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "price_action_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "49318f3d-bf73-4b6d-98d5-3fd918df92f9",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "price_action_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "e0fc3bf3-f6ed-491c-abec-965d4a866439",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "volume_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "e3921bff-8c3a-4b74-ab9d-14166c312b16",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "volume_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "24432728-ef82-4a1c-adb0-c3fcaa1b5f01",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "trend_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "a81b337f-ac94-4f1f-b178-355ea927cf70",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "price_action_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "95d66147-b5c3-4f08-a3ac-a40c19e656c5",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "breakout_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "b7db68c4-fe99-4785-9594-49792155f710",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "price_action_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "f7740690-9283-4b11-8cd6-1a92816010a9",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "trend_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "7c388a40-e75d-4790-ba90-d27cf829714b",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "momentum_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "27fafcdf-14bf-4872-b52d-a230f80818ec",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "price_action_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "299e13a1-5ff1-4afc-b039-f9ae111c7fb4",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "momentum_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "3b12e1a0-3cc1-4f97-a2a2-c233b06abe9a",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "price_action_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "ae588126-c72d-4d4e-9182-6ede498aa091",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "volume_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "65d58994-48cd-42c9-818e-d33810c38cda",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "volume_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "e6dac53e-cea0-45c2-9a75-015a2b080ff3",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "volume_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "8908972f-a9c9-445e-b770-3bb7baf55d80",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "price_action_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "8c418a01-938d-467f-98c2-33e1a7cd588d",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "price_action_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "963fa994-9bf1-4320-9d04-85ef779e51e9",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "price_action_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "486d8cd6-c1cc-4cbb-afe9-3d2f986ddf74",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "volume_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "f3561af3-4a7c-4c85-a080-e37d2eb4a2f9",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "volume_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "d266839c-b9d1-4cd4-9db6-86afbe25cb47",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "price_action_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "4b5295f2-57ee-4bf5-a962-862099a7b194",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "trend_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "62987a0d-2a69-4112-9f97-3d4878ca24fa",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "momentum_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "92d8fdfc-0496-4c33-a113-535bc966dcae",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "mean_reversion_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "c7b229b5-6191-4275-9ab5-df5177d6dadd",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "mean_reversion_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "aa3c62ec-4dea-432b-ae76-a131650fd1bb",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "mean_reversion_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "e98eea2f-8919-4d86-b78d-aa4d446952aa",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "mean_reversion_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "ed6d0ff4-6e0b-4ad1-8aa3-e36c60dcfe65",
+      "category": "UNSTABLE",
+      "reason": "drawdown exceeds gate",
+      "signal_id": "trend_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "67af5393-8a6c-4b24-8618-c1769628bbf2",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "mean_reversion_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "26ba6831-9660-4783-814c-473a1513cc31",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "mean_reversion_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "cb1dac2a-37e5-4e00-ac46-3b02cc8434f6",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "mean_reversion_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "686ea83e-023f-418c-a640-8410fa0810af",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "momentum_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "8e434641-4158-4e2b-9ecf-1d88cc30fa78",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "mean_reversion_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "8a31eeee-6302-4b44-8f05-c9b0184753f6",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "mean_reversion_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "4be8d02c-e75c-408a-9c2e-767a658df14f",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "breakout_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "35ae1c1d-91eb-4c0f-b27f-b702498bbf6c",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "volume_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "7f0c7c37-5597-403e-adc4-fd1aa0a340bd",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "mean_reversion_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "041cae78-a1ed-4bc1-9d77-a62b3bbcde2f",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "price_action_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "29fa7c68-2431-4d18-bdc0-1d3df21432b2",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "mean_reversion_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "eb456d07-199e-436a-b5c3-079826f6e8e1",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "mean_reversion_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "8f4c2240-3929-495e-9e8e-af25e9e79aae",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "mean_reversion_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "8f79775a-b7ee-47a8-b63c-186f83d2ba92",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "mean_reversion_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "96b117e0-9ba1-47a4-85ec-59d20e563a22",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "mean_reversion_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "ab1f230b-2cbc-4798-8844-8b7a29e2ea4f",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "breakout_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "2698ff20-4447-4fac-9ef8-4ae4e3e6d96e",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "breakout_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "6f6b8dd8-a1f4-4207-9f64-90bf6b2c734e",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "breakout_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "9f2f653f-f00a-4ec1-9794-57b2443b4f91",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volatility_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "02410612-1a42-44cd-8f1d-52c9fefceed6",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "mean_reversion_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "62ed6431-89cc-4898-997d-8be5cc767a62",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "breakout_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "f6745b76-1642-4787-a2fc-d7e91dc05c98",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volume_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "bdd2f0f3-6c13-4567-97ae-9522306ff9fa",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "mean_reversion_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "91ee5d43-7b81-45e8-ac16-291e541797e8",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "price_action_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "b45b3102-ab23-4e3c-93dc-d44f5ba77426",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "mean_reversion_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "15ff7265-981d-4be2-92c1-e684d70c1e56",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volume_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "6c79bcd4-0b8f-406b-8290-b50ef5fafc87",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "mean_reversion_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "57d38017-9c5f-4ca7-89aa-4ec9bbbd95b9",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "price_action_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "ce87cd89-b3ce-4164-94c7-170ce40e55ad",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "mean_reversion_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "55ece4a1-c1e6-4695-a07e-82b6b41cf8ec",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volume_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "5cb394ef-2357-4d17-bac7-f823462615b1",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "mean_reversion_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "e62629d5-bfde-4ee0-8283-153b508c9071",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "price_action_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "cc8c4096-f7e8-4db9-847b-b75c2c9cb132",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "mean_reversion_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "8764e341-ebb2-4968-b1f1-58e94518647e",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "mean_reversion_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "302a5921-eee1-4e88-8f1d-44d8e8e4429a",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "mean_reversion_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "f2faa503-8593-41dd-ae5e-0adba6d240c8",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "volume_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "9d9beeba-ac07-45ab-ab0d-875c1cc05392",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "momentum_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "52714d07-1052-400f-9234-6fea254339e3",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "mean_reversion_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "df3b2e3a-a164-4ec9-ba2e-cf27dcb34ac0",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volume_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "dafb8546-fea3-4f85-bd41-cacf85974734",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "mean_reversion_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "0ebc96ed-3661-4de2-8758-ddb1938cf388",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volume_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "dd9616c3-f479-4ffb-ae00-4a9f5a7d01b2",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volume_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "43c2a8a7-7145-4e9c-b51e-083fa9d58b8f",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "trend_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "940a9f81-ec18-4bd6-9750-7b7187e8d45a",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volume_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "a9426785-bed8-4425-8d76-63549c148af4",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "price_action_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "9e72843f-d291-46c1-81b9-f797ffdba9c3",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "mean_reversion_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "17d23022-1498-4f81-a698-77b803ec4146",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volume_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "403892f0-58c2-4a1a-922d-6a880d13023e",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volatility_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "dcb50475-47e7-473c-8800-30f59e9decc5",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "momentum_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "a9b86e7a-5ed9-4d94-9be1-b6f4ca53304d",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volatility_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "595087d2-927c-40f1-b119-38f3e625e990",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "mean_reversion_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "ef8b3fa7-0a34-4ee0-bfeb-59d7a86c88bb",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "mean_reversion_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "13f3fbed-fd81-4540-bc01-75a004cd08f3",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "mean_reversion_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "107f3520-3372-49c0-9ddb-b80b267d9d4f",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "mean_reversion_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "f0ee4f39-ded4-4182-a8e4-15e0dd200c15",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "mean_reversion_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "610fe880-def0-4882-8485-200757e1eb63",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "mean_reversion_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "617c5587-b345-49af-82e4-30208539a0ac",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "breakout_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "bcfc54f1-2c14-42ee-8533-5a04b4dbf2e4",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "momentum_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "d510ccc6-4d2e-40ce-b81e-5bcc7a35c7fc",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "mean_reversion_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "e697a088-e640-4e4d-9bfa-2ba85b914828",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "trend_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "279bcbc2-eded-466d-87fb-098768cb8924",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "momentum_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "be24ddb5-6f93-4312-9051-9b203cc8751e",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "mean_reversion_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "34f6245c-cc16-4814-9d01-edda564c7147",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volatility_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "e80aab6e-e156-4a5b-99ad-fcc0ff8bafed",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volatility_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "a0177da1-a0f0-4e3e-8ae5-b3b5935b7a48",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "momentum_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "2ac4d238-263a-4c27-bfbd-751d31eb675d",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volatility_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "5c0ee8e0-2d81-47e2-ba3d-2d86dbf84e83",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volatility_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "6af984d0-6513-4dbc-a6d8-1a0af7369d72",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "breakout_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "d9663016-626e-4332-a858-4364938d8f9e",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "trend_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "c382e338-7bf0-4195-872f-191c8200da1a",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "mean_reversion_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "3d52a926-b531-49c8-a3b7-edcdb50a4923",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "mean_reversion_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "8696dddb-d5c9-4fc2-806c-96f7d2372531",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "mean_reversion_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "6ead2f3a-c54a-4de8-aa1e-e35a26d2b103",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "breakout_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "7529db37-c85c-4757-8628-4fec4b673fd5",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "breakout_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "5f8b4d45-44c3-442f-b884-2a85d7193780",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "mean_reversion_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "3c22f086-4bbc-4d53-bf05-5acd4034a5a4",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "volatility_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "36082545-02f7-4d08-ac7f-a38266a365a7",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "breakout_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "324d1936-f2be-454f-854d-461afe6b1a80",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "mean_reversion_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "fe575cf2-6568-437c-87b8-ed3dd8d8a097",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "trend_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "341f63bb-9bca-4706-9f6c-249c6033e844",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volume_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "13b38800-fcc0-41a5-bfba-3ffaf6119b93",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "breakout_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "645afbe7-0303-46d2-9377-aa85dc8357c0",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "trend_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "42bb5a07-c9c1-49b6-aec6-535c1bcfcd00",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volatility_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "83cfa79a-b5d0-4256-9e92-f128463397da",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "mean_reversion_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "1c3d552f-d3c4-4e0d-82e8-2b4f486fa006",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volume_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "90e71260-5f09-4552-9b4a-785aed2ad788",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "trend_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "9ec6864b-d960-4f44-9585-42d1c90d88a1",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volume_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "c55f22ea-9964-4a25-bba6-149aedc6737c",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volume_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "f26a6d62-9632-4653-8744-ee427dafa62d",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volume_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "81f3925d-36d1-47e4-b0aa-424d8d30595a",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volume_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "56b4cc3c-bf5e-4dc7-9fa3-24894efa0835",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "breakout_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "7d8a44c5-8230-4467-8b35-7d1964fb0dcb",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "mean_reversion_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "98b374ed-b06c-4c36-af8c-1142bb9f35e9",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volatility_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "5bb51a34-8e1e-4557-b3e6-09e181c3097b",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volatility_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "52019d7a-37a1-421e-981a-25589b4e9a0d",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volatility_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "b40621d7-8137-4a7e-89a2-6003e21dfb15",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volatility_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "5c757155-52fa-4037-8559-95f54db3e476",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volatility_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "63a02b45-972a-406a-be1d-7ddd689df751",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "trend_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "3af2a1de-a0ad-4b14-8d60-db912ca56384",
+      "category": "UNSTABLE",
+      "reason": "drawdown exceeds gate",
+      "signal_id": "mean_reversion_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "e51a7fd2-0e69-4386-9712-17a700d9c826",
+      "category": "UNSTABLE",
+      "reason": "drawdown exceeds gate",
+      "signal_id": "mean_reversion_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "bc0fc707-40f7-4e5b-9c06-7e9f435596e6",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "trend_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "4db2c10f-4c0e-494a-a5fa-a4e071564f8a",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "trend_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "0fb62a02-093b-4015-b027-6bb0f0b0967b",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "breakout_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "12beae2e-d41a-461f-a18f-e5cceffe7d4f",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "trend_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "36f8b2ed-90bb-4c4f-ae10-ffc13fcc21a1",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "breakout_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "61d2c29e-8ad9-4c20-a014-5453c822d7a4",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "breakout_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "b250d7f3-d1a9-4db7-abaa-e95a0adb67f8",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "breakout_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "5eef35c6-5144-40f6-b7c4-ce367f5bba7c",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "breakout_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "7b0a1f5a-de0e-48a2-9db5-7880f502deec",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "momentum_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "a54f31ed-7243-4cc5-a815-c1f1fc141844",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "momentum_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "73879fa0-f0cb-42af-ae86-ead1a51c4c5b",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "trend_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "ec4d1ebf-4e6c-4958-b8eb-b39f4b1368c5",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "breakout_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "36cf87a3-67ab-464a-a189-18a0d9d18ca0",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "breakout_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "f3c9e432-9ea0-49d3-980f-db53b49e79c9",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "trend_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "9fa5a8ca-19c9-47ae-8053-d98fd528da4d",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "trend_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "16f19ee5-c70d-4a16-a29d-eddffafc27f0",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "breakout_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "7338493d-db37-47cf-87d7-b40268ed55ba",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "price_action_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "1d1f6835-f221-410e-a553-490af2e6ca89",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "trend_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "ef339a16-1ff8-48bc-bf3f-ccbeaa28c16d",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "trend_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "199fa4ff-21f8-4ce6-a377-f07a25495a01",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "breakout_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "8972a049-4a7a-497b-935f-617ad32d9253",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "breakout_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "a55277f8-1315-4dc8-a379-21affc1338ef",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "price_action_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "f0048e32-d49e-46ef-9239-aeeafefbf8a1",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "momentum_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "d8100453-e18d-4197-a6d7-a50563ed8160",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "breakout_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "6efb288c-68db-4c29-9be1-70eea284f6d3",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "breakout_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "78ba90c9-1774-49ad-8f3e-c8c5678cbbb9",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "momentum_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "ecd57a95-e3c2-4de2-aa86-9ab6b6b65c7e",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "trend_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "2634808b-3cb3-4326-8fc6-501acb0d2037",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "trend_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "37c2e25e-1e13-4ffe-9110-8535076fe4b1",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "price_action_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "c14043e3-d47e-422d-afe9-bb27809ef375",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "breakout_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "cbf41a24-41cb-4cca-ab17-efaacd364e33",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "trend_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "f0019c12-024c-44f8-9b5c-af84afd1956b",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "breakout_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "98c46280-1b9d-47db-901d-87da0a5a457a",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "price_action_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "bc5a90d4-5fee-4aeb-974b-5b1d01f5b126",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "momentum_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "4ebe27e2-40c0-4cb4-b2e8-743992e0e34e",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "price_action_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "2ad48156-3c76-4496-b32b-86fcd8d9a466",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "breakout_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "b728ac30-0706-46a4-8d01-1cfafdacb3ae",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "price_action_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "c69771fe-4b5d-419b-8acb-b3ed8653f0e9",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "trend_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "321bc512-4f87-4bbd-8256-a4dd9b437316",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volume_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "6f526f45-497d-42a5-9855-fcdedc6ecda3",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "momentum_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "995af184-11d0-4add-9ec2-d1ff9cc8718f",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volume_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "d34cefeb-46c4-496f-9199-08f7e4489564",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "breakout_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "3bec3bdd-6a7c-4512-afe0-1de360f0bd48",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "price_action_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "8ee7b4ff-8232-4cd9-b2d9-ae3151c18dd7",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "momentum_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "f28e7c5b-06ce-4743-b99e-a41d645e13e7",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "breakout_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "12bfcd6c-f914-4bc6-9765-978dedaffa4c",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "price_action_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "2dd31783-cc14-4242-b887-6819cce2c846",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "breakout_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "eb84ff06-b0e5-4e84-869d-60c2ff245f7c",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volume_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "3267138e-f809-41f0-bdc8-66eb07acba6f",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volume_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "2399c248-c0ce-400e-8bd0-950a4fdcfaf6",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "trend_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "df246284-931e-47e3-be2b-ae2156a9dca9",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volume_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "1973865c-c284-4f7c-b28a-11856f904ef7",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "momentum_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "bbb02038-6798-46ed-a3e6-46a1579c37ed",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "breakout_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "50fc33d7-31bd-4985-9281-1a278c450319",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volume_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "8999d465-40c2-4d2c-bd73-83d802d89891",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "price_action_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "6d0eafad-6d5c-4dc2-8972-45d191a709df",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "trend_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "0d3b9f03-a202-4bce-bd05-fd77716a9b91",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "momentum_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "316b60a7-140f-444a-aebc-64b438eb4ae5",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "breakout_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "931c6e7a-da09-4bf1-a01d-0293bf66ffdd",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "breakout_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "e986230a-8447-4fc8-8d58-e29d43a833ee",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volume_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "289f8303-809a-4843-9996-1b1fa083d391",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "trend_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "5f1ffdf9-6456-4429-aa0f-ca5e93c3d714",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "price_action_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "48bc9fda-4b36-41d5-a052-032f9e12a442",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "price_action_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "b0ad4e5b-bf4b-45d0-899e-52ae33852e2a",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volume_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "fc66dcbb-aff8-4f05-be46-320a7f081b56",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "momentum_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "74674d52-fff6-4f25-8a03-16dcabc87eab",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volume_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "8390526d-7897-449d-8a18-e8ef69965f7f",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "trend_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "93f98d14-b75c-4b65-8e5c-b9b51f124336",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volume_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "3fe7d472-939d-462b-9d73-f3871fd17719",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "trend_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "646295f1-0e9d-4ad1-b854-a55ec2526948",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volume_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "971ff259-09af-4058-bac1-2a6fc339a54f",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "trend_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "19457e0a-7585-406e-b489-562a05e0572d",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "momentum_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "1b421d8a-849a-4731-81da-7b3db8600c32",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "price_action_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "3208fb59-4344-4141-8999-97213caa18aa",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "breakout_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "153d1bb0-7f53-4919-a5ef-77f7d58f4c3e",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "trend_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "fccd0b5f-cbd0-43df-a35d-3cc9b1038033",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volume_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "25c5723a-4f5a-4e00-bc7e-e8d7e9d16976",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "momentum_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "a83a552e-d294-452b-994c-8f790f047c58",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "trend_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "bae7091f-df0e-4d3c-b0de-7c52ce1b0bdf",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "trend_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "104f4740-e188-404f-817e-8a05310f5445",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "momentum_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "ab235b48-78e6-4640-9846-d7cea08ba9b0",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "trend_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "4ea078a9-026e-47cd-8da6-0782cff8bdec",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "breakout_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "920d7059-9bf6-4c0a-9395-1bf5a09e4751",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "trend_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "22b8772d-9e3b-4e42-b0cf-d970e2967492",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "momentum_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "6863eb56-6a93-4853-b860-4ce3c1980a10",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "price_action_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "eefff6e1-b894-4214-83eb-bd969d6b96b5",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "breakout_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "690e4a49-1c0a-40a9-ae4b-6b5d320007b9",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "momentum_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "bea70e61-a5d1-4a4c-a4f8-fbb69597b009",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "momentum_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "afaa6802-c64f-41ed-88cf-04c08e622e1d",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "momentum_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "60035180-eb75-4ae6-8eb7-d0ca9f130e66",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "price_action_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "1443c47b-7f38-401b-806a-d334bdd01f59",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "momentum_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "5f8ae6ee-c0f7-4c68-ab32-062774eee03e",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "trend_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "4ba576d7-5bbc-480d-bfa3-a635b7fd3d74",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "breakout_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "3ea6be23-a6fb-4764-86ff-486a0b5adbc9",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "breakout_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "c6704f68-0fd5-4f90-9f54-d0212518de0a",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "breakout_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "1bc750bb-ac51-4339-986b-fd1630605e3d",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "momentum_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "9c720045-2802-4078-bf43-5881baae307a",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "price_action_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "d3a7ab71-be3e-43a2-97d3-44a7574c4c67",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "trend_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "162e178d-3a71-4d55-a7e6-ceb8163363af",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "trend_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "8ee527b1-7cb0-4902-9205-3b612b6dfb31",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "price_action_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "47581ab7-6105-43c3-b59d-c86bdff540bf",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "trend_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "3b061a4e-b6f2-4f26-962e-7caf0715536b",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "momentum_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "b5748459-4396-489e-a145-e87b42fe1ed6",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "breakout_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "0231b3be-f6a6-4f03-9674-38884d355654",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "breakout_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "4a8724ba-d257-4d66-b72a-de777235180d",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "price_action_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "b5ac9b81-d820-41e1-9f56-db4d840ecb1a",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "price_action_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "58f2a82c-5716-40c5-ab17-3418b55a3d43",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "momentum_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "8c7ca4c7-563e-42d3-944c-b4d8980d756e",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "price_action_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "75ba9781-f215-4563-94a9-19038bd365ee",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "breakout_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "34e2d1cf-c5a2-4d8b-97f5-f10d5ac36b27",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "price_action_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "465112f3-28a1-4446-b267-e5a0f373358e",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "trend_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "372fc7cd-b31d-49c7-93a8-ee9d365266c6",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volume_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "97b8d735-235d-4cae-b3bf-9670e268a64f",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "trend_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "3eca2078-c2f2-471b-9726-32af5afbd6ba",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volume_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "bccae758-0926-4f2c-ab50-3401ccb5695b",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "breakout_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "6cb7f5e0-efee-4b4b-a6e5-bf5811025d3f",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volume_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "08b839fd-2dab-4121-a0a8-70d878c558b9",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "trend_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "bb203913-d0e8-4901-aad0-b3a06969ff14",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volume_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "4bf8a4e0-2fe0-4fa5-a7d7-903ed25f44a9",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volume_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "766cc505-f15a-4969-bf7a-ff1af7856a65",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "price_action_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "9741cac2-9296-4069-a206-de8d0345b955",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "momentum_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "869ef94b-84ae-4177-b247-90217faa17d3",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "breakout_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "c647b205-04c5-4c51-a7ae-f4d41683f2c4",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "price_action_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "722fa8ef-bfe1-4ed3-97ac-06ae95c4d16a",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volume_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "0d5feb38-79eb-4ba9-a54d-79125e7aef00",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volume_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "4cf39643-1a18-4130-a8ba-48a83f6855eb",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volatility_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "7621ce4e-b910-4b75-a951-c401b4a89fd4",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volatility_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "a23427d9-077e-42c0-864e-a575e3dafb9c",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volatility_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "d3c038fe-1221-4d04-b325-0159f5af7b88",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volatility_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "1a51bb19-a4f1-4b3b-bf8a-e47bd07e693d",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volatility_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "1a03cfa6-a596-4dca-b7fb-57b297b0de81",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volatility_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "58f98c94-4e70-4739-a214-9cefa020c9b1",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "price_action_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "72ff0bf8-1213-4b8b-b191-64c50895fcb8",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "volatility_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "93cbbb85-8c64-4d87-a055-c79691671bd3",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "breakout_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "8b44dc79-da78-44e3-9966-01e17d65dd90",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "breakout_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "495ab3d9-bb7f-4194-930d-e9d66471952d",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volatility_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "6c493bc0-1cbf-4a29-a75b-d11d0b7a4c5e",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volatility_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "db5609e7-6c73-48d2-9ca6-1395a914dc4d",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volume_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "9fb5ad16-4d61-4559-9e54-1ddf60a87752",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volume_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "517b4a09-66a5-481f-96f8-33da0be2ad41",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volatility_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "99c61530-7c73-41e3-b2e0-be0ecc7bd998",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volatility_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "eeea87a8-7b19-40f7-bc85-51229c053e15",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volatility_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "d525088d-beff-47cb-a5de-54cc5e88bfaa",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volatility_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "929ba2f2-e48f-463c-a0de-843fd91e65a6",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "price_action_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "2eb80829-a2a8-476c-bbbb-f752fd0ea380",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "momentum_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "9997eaca-8808-4385-af0b-4341a58eedf9",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "volatility_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "af22469e-9588-47d0-bddf-b36f85c45cac",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "breakout_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "83170696-8a38-43de-b522-901bbecf0726",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volume_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "53df151d-a664-4617-8d40-25dfed799e29",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "trend_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "7132649b-f33c-426a-832e-822c6cf7f1d6",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volatility_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "a7041dc5-f97d-46bb-aab4-38fdb5725796",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volatility_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "4a6bc664-7a72-477c-8429-73daff6fc652",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volume_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "ac43098c-dbb7-4cbb-b7e0-ab92ada968d5",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volatility_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "8971f07d-897d-4e02-9ec7-2ba49ad5c06d",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volatility_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "3135a6ef-1fdd-4382-baa4-e158a472e759",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volatility_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "1eeb69a5-ed4e-42a2-80e2-c6dedad25c0f",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volatility_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "c15b4708-378b-47ec-8b7b-3c6b92628a42",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volatility_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "b8cef35d-3ec5-49e1-ba60-b5c7476b952c",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volatility_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "e166d4fb-d3d0-4d41-be5f-2525828f0ee1",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "breakout_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "fc69f429-4e1c-493a-8d07-a184dcd0f807",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "momentum_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "5aa07859-5a33-4213-8ad4-c845d08e9bb3",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volatility_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "c9508d32-56db-487e-bcc2-0c266d9f03ed",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volatility_signal",
+      "timeframe": "5m"
+    },
+    {
+      "experiment_id": "90aa30ad-3d57-4c41-8845-832467b5e48b",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volume_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "893c6843-f27d-4e51-b3d1-6366ad359485",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volatility_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "70accae5-5116-4f7d-b8cc-29c7e3e6e792",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volatility_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "d6732ab8-3cc6-4912-9df1-b45c62c37fb2",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volatility_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "ff4eee26-7574-459c-a4ad-1616a3f22f34",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "momentum_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "e56b3212-2606-4fa6-9cbc-939ae61be69f",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volatility_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "d1783cd7-8021-464d-985d-3739f4482b08",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "momentum_signal",
+      "timeframe": "1m"
+    },
+    {
+      "experiment_id": "c86d3196-6d66-4072-b560-58996476727a",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volatility_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "841f4789-ddeb-43bf-bc01-52691c87e52a",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "breakout_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "a69d971c-f040-49a1-8365-27027ada6bb6",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volatility_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "e6c9fd77-91b7-45fc-8f57-f9ce29d7e0c7",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volatility_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "6f74e86a-1062-4093-8720-8e7c2f329442",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "breakout_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "5e306885-5cd4-4a97-b083-3baeb1ae33b1",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "momentum_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "18ef08ff-c26a-4ebe-b4fe-0e3d879b2ff2",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volatility_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "d3daa59c-de9e-4b31-920e-8a892c4f71d3",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "price_action_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "51978cd8-f001-4928-94a3-8e6917592d0e",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volatility_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "30bec285-287c-4768-8a60-441c3c63dbf4",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volatility_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "d5ccd097-8998-4b44-8201-30d63958f181",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volatility_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "b0229e43-13a0-4994-9f12-224bca6eb9b4",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "trend_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "fabe89d0-1df5-4db7-a4ab-3a2ae9cd5cb0",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volatility_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "4f4d2cab-bc9e-49f2-aa48-36e5a6e760da",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "breakout_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "3d1dc1f2-86f6-4775-ae72-199cf2c54498",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "trend_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "83009c33-5718-416a-ae74-c3ba212cb156",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volatility_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "aac6bbad-c45c-427d-a661-7b73c39d1a66",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volatility_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "44752bf1-d43e-486f-ba5a-741622bdccd6",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volatility_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "656765f4-e98c-4e49-8459-ea5136098b13",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "breakout_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "610e4161-0245-4052-b8a1-1f5fe071b4a2",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volatility_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "7a79ada7-e2f3-4986-ba4b-6835c3b8b5f7",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volatility_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "a3d6e18c-7f0f-45ba-89ea-f75b10796852",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "breakout_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "7b0fd1fb-999f-4792-ae00-fc957427fe8f",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volatility_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "77ea21c2-94af-4144-b92a-a0febc28bdfc",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volatility_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "ddefb767-11d7-46f4-a9e1-4450332eee49",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "momentum_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "341282e4-8503-43d3-9014-636515e2c494",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "momentum_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "3ec79120-5537-4b56-a831-acd499629c82",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "trend_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "83df6fa1-85d9-47a5-801a-c12918f85323",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "breakout_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "fcc22e2b-c60c-469c-b954-4bf02e64a995",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "momentum_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "7c94c218-baa9-4b63-b29f-3fd0710c9bfd",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "breakout_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "6caab8bf-bf71-4922-aab9-7c7d26eb5b5c",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "price_action_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "d732fdc4-11e5-46d6-bfe9-394c84c32615",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "trend_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "3aed9774-ea43-431a-a39e-b1fdad1e257a",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "price_action_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "42c8cff1-4330-4f9f-a47b-e6ab1048d02e",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "trend_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "4de1d810-eb7e-4766-ac3b-24175f48d2d5",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "price_action_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "f3046df8-621c-40fe-a851-9b673dbe6c41",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "breakout_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "3fecd87d-59e8-4ba7-960d-4b9d2bcc9e66",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "trend_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "55c2326c-f857-48e1-89d7-ddf29d49f030",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "breakout_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "4289d82b-6a37-4c38-9b32-846d3a204c02",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "momentum_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "62d3efce-8269-40c6-ada6-56589bbe4edc",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "price_action_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "67bbdb00-8bb0-4b35-b139-32156e56f6d4",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "breakout_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "e978c9c5-4251-4239-b696-f86c669f3ba2",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volatility_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "fe090a86-e258-4ffc-8ef4-7fbaa86a59c2",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "trend_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "f041e92c-4ef1-4ac5-ae75-d14a3167f77d",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "price_action_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "6a973db9-5cb6-4d50-a22b-bc1ed5f47522",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "breakout_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "fa51f2d4-26f9-4f35-9d9d-9ac7e8527433",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "momentum_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "563301d2-c6db-43cf-bd6c-eeb5b6d48dcf",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volume_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "375961ae-7971-4bcf-aaed-8e04170e020c",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "price_action_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "7ae45ca2-3a18-408d-a056-075c4e2c60ad",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "price_action_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "c9a2f930-8972-4bca-aab2-8557790224f0",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "momentum_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "39b68de0-adb4-4a39-aef7-2e820623a17f",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "price_action_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "a4890311-47fe-4d0e-82ed-7f6e036401e1",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "trend_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "83513934-506b-453d-b6cc-fbfb60dc09e4",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "trend_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "41b184ed-6166-474b-a4e3-b717343457dc",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "price_action_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "fe5867eb-c7e7-477a-9c39-4ba0fc629ebe",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "momentum_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "491fdeb5-6bba-4530-b8e7-37d61880191c",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volume_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "c371ba52-2925-42a5-82ba-177d72d8b2c7",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "momentum_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "8d2c6b64-ff2a-41b0-a0ff-483628206849",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "momentum_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "963da589-9284-44f0-a4f2-252141b3ad5e",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volume_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "81e840e3-1be7-4f1a-b87e-8cb80d1ff070",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "price_action_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "959ffb55-efee-4e7e-89ec-95f098e8403b",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "trend_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "533ee554-ee78-46c0-b2de-65dd406b16f6",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "price_action_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "1b085d65-d26b-482a-8842-1385725aeb09",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "trend_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "851eb39f-d94f-41cf-b9a6-4f8dd5dc3117",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "trend_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "d25bd9e9-43cb-486d-863e-cdd59181cbee",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volume_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "26dd30ed-a0d4-427a-9914-3b252116b1ab",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volume_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "a6d0757d-7722-4ab1-97c2-45e652a86bd0",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "price_action_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "e2e23d81-a489-404f-9d48-ca446fa5d419",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volume_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "e1bd2455-0c4d-480d-ba14-ad994b6510b3",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "trend_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "f26aecc0-1c0e-4fad-b45e-57b6ceed64b9",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "price_action_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "ab1ac7d4-a2fb-497e-9867-ed9bee36c88b",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "price_action_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "670d543b-70e6-4297-add3-a0efaeb4f1bb",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "price_action_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "782c3df4-3de4-4045-a22b-93e12b870159",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "momentum_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "6bd68d0e-2f8b-4505-8473-55c98dca6785",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "price_action_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "eaf7eb07-2d16-4591-95d3-33e0e655bc8d",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "momentum_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "76649cb9-e999-44a4-a52d-34c21e68f3c8",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "momentum_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "d1168050-636c-468f-b518-21cbf0faab2a",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "momentum_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "e87b4b2e-0222-4453-af98-15ae8a0a6293",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "momentum_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "ab2f4a90-e55b-4f06-ab9a-2aef0d772753",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "momentum_signal",
+      "timeframe": "15m"
+    },
+    {
+      "experiment_id": "6586914d-3b50-4e5d-883c-bdf8bcdf9d12",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "volatility_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "ba0b4828-f558-4502-9dc7-f6a35c839893",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "mean_reversion_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "ea726bce-93a2-4586-87a0-045e837926b7",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "mean_reversion_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "4f05dcb0-6178-4cd3-bae3-b1baa63ad459",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "mean_reversion_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "ed345907-93ec-45cb-b2d7-20ae05597ec7",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "mean_reversion_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "714e5d1f-8e78-4b6b-bda1-1123d42833cf",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "mean_reversion_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "b0188348-7490-4d92-945a-2839eee9c82b",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "mean_reversion_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "f2fa7bb2-e411-4264-a813-8854e18a312f",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "mean_reversion_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "e43a80b7-e584-4a12-abdf-740bcbd99c85",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "mean_reversion_signal",
+      "timeframe": "30m"
+    },
+    {
+      "experiment_id": "e33dcf78-6d70-44ac-af0b-a175f680c246",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "mean_reversion_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "e671ccc6-c1d5-4f5c-b2c0-a4a398db4950",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "mean_reversion_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "baf31ddf-7f82-4e7c-8a0c-3702fcc21780",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "mean_reversion_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "ca36787c-0459-4198-8b84-5e7246ae1b20",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "mean_reversion_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "105dd3cb-6737-4fa9-8107-b27e76dfcbfc",
+      "category": "COST_INEFFICIENT",
+      "reason": "edge collapses after realistic costs",
+      "signal_id": "mean_reversion_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "1d1500cc-ea57-46a8-b53f-5efb0cb29ae8",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "mean_reversion_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "a8581f22-2ead-4a0e-a270-77393db59eee",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "mean_reversion_signal",
+      "timeframe": "1h"
+    },
+    {
+      "experiment_id": "e99f56e8-6dcd-4556-bd52-dd04571d1481",
+      "category": "OOS_FAILED",
+      "reason": "OOS Sharpe below threshold",
+      "signal_id": "mean_reversion_signal",
+      "timeframe": "1h"
+    }
+  ],
+  "gap_exclusions": [
+    {
+      "timeframe": "1h",
+      "signal_id": "breakout_signal",
+      "lookback": 10,
+      "holding_bars": 1,
+      "excluded_observations": 40,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "breakout_signal",
+      "lookback": 10,
+      "holding_bars": 2,
+      "excluded_observations": 60,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "breakout_signal",
+      "lookback": 10,
+      "holding_bars": 3,
+      "excluded_observations": 80,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "breakout_signal",
+      "lookback": 10,
+      "holding_bars": 5,
+      "excluded_observations": 120,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "breakout_signal",
+      "lookback": 10,
+      "holding_bars": 10,
+      "excluded_observations": 220,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "breakout_signal",
+      "lookback": 10,
+      "holding_bars": 20,
+      "excluded_observations": 420,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "breakout_signal",
+      "lookback": 20,
+      "holding_bars": 1,
+      "excluded_observations": 40,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "breakout_signal",
+      "lookback": 20,
+      "holding_bars": 2,
+      "excluded_observations": 60,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "breakout_signal",
+      "lookback": 20,
+      "holding_bars": 3,
+      "excluded_observations": 80,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "breakout_signal",
+      "lookback": 20,
+      "holding_bars": 5,
+      "excluded_observations": 120,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "breakout_signal",
+      "lookback": 20,
+      "holding_bars": 10,
+      "excluded_observations": 220,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "breakout_signal",
+      "lookback": 20,
+      "holding_bars": 20,
+      "excluded_observations": 420,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 10,
+      "holding_bars": 1,
+      "excluded_observations": 40,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 10,
+      "holding_bars": 2,
+      "excluded_observations": 60,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 10,
+      "holding_bars": 3,
+      "excluded_observations": 80,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 10,
+      "holding_bars": 5,
+      "excluded_observations": 120,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 10,
+      "holding_bars": 10,
+      "excluded_observations": 220,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 10,
+      "holding_bars": 20,
+      "excluded_observations": 420,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 20,
+      "holding_bars": 1,
+      "excluded_observations": 40,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 20,
+      "holding_bars": 2,
+      "excluded_observations": 60,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 20,
+      "holding_bars": 3,
+      "excluded_observations": 80,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 20,
+      "holding_bars": 5,
+      "excluded_observations": 120,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 20,
+      "holding_bars": 10,
+      "excluded_observations": 220,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 20,
+      "holding_bars": 20,
+      "excluded_observations": 420,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "momentum_signal",
+      "lookback": 10,
+      "holding_bars": 1,
+      "excluded_observations": 40,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "momentum_signal",
+      "lookback": 10,
+      "holding_bars": 2,
+      "excluded_observations": 60,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "momentum_signal",
+      "lookback": 10,
+      "holding_bars": 3,
+      "excluded_observations": 80,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "momentum_signal",
+      "lookback": 10,
+      "holding_bars": 5,
+      "excluded_observations": 120,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "momentum_signal",
+      "lookback": 10,
+      "holding_bars": 10,
+      "excluded_observations": 220,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "momentum_signal",
+      "lookback": 10,
+      "holding_bars": 20,
+      "excluded_observations": 420,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "momentum_signal",
+      "lookback": 20,
+      "holding_bars": 1,
+      "excluded_observations": 40,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "momentum_signal",
+      "lookback": 20,
+      "holding_bars": 2,
+      "excluded_observations": 60,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "momentum_signal",
+      "lookback": 20,
+      "holding_bars": 3,
+      "excluded_observations": 80,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "momentum_signal",
+      "lookback": 20,
+      "holding_bars": 5,
+      "excluded_observations": 120,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "momentum_signal",
+      "lookback": 20,
+      "holding_bars": 10,
+      "excluded_observations": 220,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "momentum_signal",
+      "lookback": 20,
+      "holding_bars": 20,
+      "excluded_observations": 420,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "price_action_signal",
+      "lookback": 10,
+      "holding_bars": 1,
+      "excluded_observations": 40,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "price_action_signal",
+      "lookback": 10,
+      "holding_bars": 2,
+      "excluded_observations": 60,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "price_action_signal",
+      "lookback": 10,
+      "holding_bars": 3,
+      "excluded_observations": 80,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "price_action_signal",
+      "lookback": 10,
+      "holding_bars": 5,
+      "excluded_observations": 120,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "price_action_signal",
+      "lookback": 10,
+      "holding_bars": 10,
+      "excluded_observations": 220,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "price_action_signal",
+      "lookback": 10,
+      "holding_bars": 20,
+      "excluded_observations": 420,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "price_action_signal",
+      "lookback": 20,
+      "holding_bars": 1,
+      "excluded_observations": 40,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "price_action_signal",
+      "lookback": 20,
+      "holding_bars": 2,
+      "excluded_observations": 60,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "price_action_signal",
+      "lookback": 20,
+      "holding_bars": 3,
+      "excluded_observations": 80,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "price_action_signal",
+      "lookback": 20,
+      "holding_bars": 5,
+      "excluded_observations": 120,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "price_action_signal",
+      "lookback": 20,
+      "holding_bars": 10,
+      "excluded_observations": 220,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "price_action_signal",
+      "lookback": 20,
+      "holding_bars": 20,
+      "excluded_observations": 420,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "trend_signal",
+      "lookback": 10,
+      "holding_bars": 1,
+      "excluded_observations": 40,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "trend_signal",
+      "lookback": 10,
+      "holding_bars": 2,
+      "excluded_observations": 60,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "trend_signal",
+      "lookback": 10,
+      "holding_bars": 3,
+      "excluded_observations": 80,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "trend_signal",
+      "lookback": 10,
+      "holding_bars": 5,
+      "excluded_observations": 120,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "trend_signal",
+      "lookback": 10,
+      "holding_bars": 10,
+      "excluded_observations": 220,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "trend_signal",
+      "lookback": 10,
+      "holding_bars": 20,
+      "excluded_observations": 420,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "trend_signal",
+      "lookback": 20,
+      "holding_bars": 1,
+      "excluded_observations": 40,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "trend_signal",
+      "lookback": 20,
+      "holding_bars": 2,
+      "excluded_observations": 60,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "trend_signal",
+      "lookback": 20,
+      "holding_bars": 3,
+      "excluded_observations": 80,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "trend_signal",
+      "lookback": 20,
+      "holding_bars": 5,
+      "excluded_observations": 120,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "trend_signal",
+      "lookback": 20,
+      "holding_bars": 10,
+      "excluded_observations": 220,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "trend_signal",
+      "lookback": 20,
+      "holding_bars": 20,
+      "excluded_observations": 420,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "volatility_signal",
+      "lookback": 10,
+      "holding_bars": 1,
+      "excluded_observations": 40,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "volatility_signal",
+      "lookback": 10,
+      "holding_bars": 2,
+      "excluded_observations": 60,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "volatility_signal",
+      "lookback": 10,
+      "holding_bars": 3,
+      "excluded_observations": 80,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "volatility_signal",
+      "lookback": 10,
+      "holding_bars": 5,
+      "excluded_observations": 120,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "volatility_signal",
+      "lookback": 10,
+      "holding_bars": 10,
+      "excluded_observations": 220,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "volatility_signal",
+      "lookback": 10,
+      "holding_bars": 20,
+      "excluded_observations": 420,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "volatility_signal",
+      "lookback": 20,
+      "holding_bars": 1,
+      "excluded_observations": 40,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "volatility_signal",
+      "lookback": 20,
+      "holding_bars": 2,
+      "excluded_observations": 60,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "volatility_signal",
+      "lookback": 20,
+      "holding_bars": 3,
+      "excluded_observations": 80,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "volatility_signal",
+      "lookback": 20,
+      "holding_bars": 5,
+      "excluded_observations": 120,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "volatility_signal",
+      "lookback": 20,
+      "holding_bars": 10,
+      "excluded_observations": 220,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "volatility_signal",
+      "lookback": 20,
+      "holding_bars": 20,
+      "excluded_observations": 420,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "volume_signal",
+      "lookback": 10,
+      "holding_bars": 1,
+      "excluded_observations": 40,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "volume_signal",
+      "lookback": 10,
+      "holding_bars": 2,
+      "excluded_observations": 60,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "volume_signal",
+      "lookback": 10,
+      "holding_bars": 3,
+      "excluded_observations": 80,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "volume_signal",
+      "lookback": 10,
+      "holding_bars": 5,
+      "excluded_observations": 120,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "volume_signal",
+      "lookback": 10,
+      "holding_bars": 10,
+      "excluded_observations": 220,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "volume_signal",
+      "lookback": 10,
+      "holding_bars": 20,
+      "excluded_observations": 420,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "volume_signal",
+      "lookback": 20,
+      "holding_bars": 1,
+      "excluded_observations": 40,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "volume_signal",
+      "lookback": 20,
+      "holding_bars": 2,
+      "excluded_observations": 60,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "volume_signal",
+      "lookback": 20,
+      "holding_bars": 3,
+      "excluded_observations": 80,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "volume_signal",
+      "lookback": 20,
+      "holding_bars": 5,
+      "excluded_observations": 120,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "volume_signal",
+      "lookback": 20,
+      "holding_bars": 10,
+      "excluded_observations": 220,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1h",
+      "signal_id": "volume_signal",
+      "lookback": 20,
+      "holding_bars": 20,
+      "excluded_observations": 420,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "breakout_signal",
+      "lookback": 10,
+      "holding_bars": 1,
+      "excluded_observations": 42,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "breakout_signal",
+      "lookback": 10,
+      "holding_bars": 2,
+      "excluded_observations": 63,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "breakout_signal",
+      "lookback": 10,
+      "holding_bars": 3,
+      "excluded_observations": 84,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "breakout_signal",
+      "lookback": 10,
+      "holding_bars": 5,
+      "excluded_observations": 126,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "breakout_signal",
+      "lookback": 10,
+      "holding_bars": 10,
+      "excluded_observations": 231,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "breakout_signal",
+      "lookback": 10,
+      "holding_bars": 20,
+      "excluded_observations": 441,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "breakout_signal",
+      "lookback": 20,
+      "holding_bars": 1,
+      "excluded_observations": 42,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "breakout_signal",
+      "lookback": 20,
+      "holding_bars": 2,
+      "excluded_observations": 63,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "breakout_signal",
+      "lookback": 20,
+      "holding_bars": 3,
+      "excluded_observations": 84,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "breakout_signal",
+      "lookback": 20,
+      "holding_bars": 5,
+      "excluded_observations": 126,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "breakout_signal",
+      "lookback": 20,
+      "holding_bars": 10,
+      "excluded_observations": 231,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "breakout_signal",
+      "lookback": 20,
+      "holding_bars": 20,
+      "excluded_observations": 441,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 10,
+      "holding_bars": 1,
+      "excluded_observations": 42,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 10,
+      "holding_bars": 2,
+      "excluded_observations": 63,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 10,
+      "holding_bars": 3,
+      "excluded_observations": 84,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 10,
+      "holding_bars": 5,
+      "excluded_observations": 126,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 10,
+      "holding_bars": 10,
+      "excluded_observations": 231,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 10,
+      "holding_bars": 20,
+      "excluded_observations": 441,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 20,
+      "holding_bars": 1,
+      "excluded_observations": 42,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 20,
+      "holding_bars": 2,
+      "excluded_observations": 63,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 20,
+      "holding_bars": 3,
+      "excluded_observations": 84,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 20,
+      "holding_bars": 5,
+      "excluded_observations": 126,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 20,
+      "holding_bars": 10,
+      "excluded_observations": 231,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 20,
+      "holding_bars": 20,
+      "excluded_observations": 441,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "momentum_signal",
+      "lookback": 10,
+      "holding_bars": 1,
+      "excluded_observations": 42,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "momentum_signal",
+      "lookback": 10,
+      "holding_bars": 2,
+      "excluded_observations": 63,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "momentum_signal",
+      "lookback": 10,
+      "holding_bars": 3,
+      "excluded_observations": 84,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "momentum_signal",
+      "lookback": 10,
+      "holding_bars": 5,
+      "excluded_observations": 126,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "momentum_signal",
+      "lookback": 10,
+      "holding_bars": 10,
+      "excluded_observations": 231,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "momentum_signal",
+      "lookback": 10,
+      "holding_bars": 20,
+      "excluded_observations": 441,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "momentum_signal",
+      "lookback": 20,
+      "holding_bars": 1,
+      "excluded_observations": 42,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "momentum_signal",
+      "lookback": 20,
+      "holding_bars": 2,
+      "excluded_observations": 63,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "momentum_signal",
+      "lookback": 20,
+      "holding_bars": 3,
+      "excluded_observations": 84,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "momentum_signal",
+      "lookback": 20,
+      "holding_bars": 5,
+      "excluded_observations": 126,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "momentum_signal",
+      "lookback": 20,
+      "holding_bars": 10,
+      "excluded_observations": 231,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "momentum_signal",
+      "lookback": 20,
+      "holding_bars": 20,
+      "excluded_observations": 441,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "price_action_signal",
+      "lookback": 10,
+      "holding_bars": 1,
+      "excluded_observations": 42,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "price_action_signal",
+      "lookback": 10,
+      "holding_bars": 2,
+      "excluded_observations": 63,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "price_action_signal",
+      "lookback": 10,
+      "holding_bars": 3,
+      "excluded_observations": 84,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "price_action_signal",
+      "lookback": 10,
+      "holding_bars": 5,
+      "excluded_observations": 126,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "price_action_signal",
+      "lookback": 10,
+      "holding_bars": 10,
+      "excluded_observations": 231,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "price_action_signal",
+      "lookback": 10,
+      "holding_bars": 20,
+      "excluded_observations": 441,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "price_action_signal",
+      "lookback": 20,
+      "holding_bars": 1,
+      "excluded_observations": 42,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "price_action_signal",
+      "lookback": 20,
+      "holding_bars": 2,
+      "excluded_observations": 63,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "price_action_signal",
+      "lookback": 20,
+      "holding_bars": 3,
+      "excluded_observations": 84,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "price_action_signal",
+      "lookback": 20,
+      "holding_bars": 5,
+      "excluded_observations": 126,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "price_action_signal",
+      "lookback": 20,
+      "holding_bars": 10,
+      "excluded_observations": 231,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "price_action_signal",
+      "lookback": 20,
+      "holding_bars": 20,
+      "excluded_observations": 441,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "trend_signal",
+      "lookback": 10,
+      "holding_bars": 1,
+      "excluded_observations": 42,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "trend_signal",
+      "lookback": 10,
+      "holding_bars": 2,
+      "excluded_observations": 63,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "trend_signal",
+      "lookback": 10,
+      "holding_bars": 3,
+      "excluded_observations": 84,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "trend_signal",
+      "lookback": 10,
+      "holding_bars": 5,
+      "excluded_observations": 126,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "trend_signal",
+      "lookback": 10,
+      "holding_bars": 10,
+      "excluded_observations": 231,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "trend_signal",
+      "lookback": 10,
+      "holding_bars": 20,
+      "excluded_observations": 441,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "trend_signal",
+      "lookback": 20,
+      "holding_bars": 1,
+      "excluded_observations": 42,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "trend_signal",
+      "lookback": 20,
+      "holding_bars": 2,
+      "excluded_observations": 63,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "trend_signal",
+      "lookback": 20,
+      "holding_bars": 3,
+      "excluded_observations": 84,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "trend_signal",
+      "lookback": 20,
+      "holding_bars": 5,
+      "excluded_observations": 126,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "trend_signal",
+      "lookback": 20,
+      "holding_bars": 10,
+      "excluded_observations": 231,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "trend_signal",
+      "lookback": 20,
+      "holding_bars": 20,
+      "excluded_observations": 441,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "volatility_signal",
+      "lookback": 10,
+      "holding_bars": 1,
+      "excluded_observations": 42,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "volatility_signal",
+      "lookback": 10,
+      "holding_bars": 2,
+      "excluded_observations": 63,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "volatility_signal",
+      "lookback": 10,
+      "holding_bars": 3,
+      "excluded_observations": 84,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "volatility_signal",
+      "lookback": 10,
+      "holding_bars": 5,
+      "excluded_observations": 126,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "volatility_signal",
+      "lookback": 10,
+      "holding_bars": 10,
+      "excluded_observations": 231,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "volatility_signal",
+      "lookback": 10,
+      "holding_bars": 20,
+      "excluded_observations": 441,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "volatility_signal",
+      "lookback": 20,
+      "holding_bars": 1,
+      "excluded_observations": 42,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "volatility_signal",
+      "lookback": 20,
+      "holding_bars": 2,
+      "excluded_observations": 63,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "volatility_signal",
+      "lookback": 20,
+      "holding_bars": 3,
+      "excluded_observations": 84,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "volatility_signal",
+      "lookback": 20,
+      "holding_bars": 5,
+      "excluded_observations": 126,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "volatility_signal",
+      "lookback": 20,
+      "holding_bars": 10,
+      "excluded_observations": 231,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "volatility_signal",
+      "lookback": 20,
+      "holding_bars": 20,
+      "excluded_observations": 441,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "volume_signal",
+      "lookback": 10,
+      "holding_bars": 1,
+      "excluded_observations": 42,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "volume_signal",
+      "lookback": 10,
+      "holding_bars": 2,
+      "excluded_observations": 63,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "volume_signal",
+      "lookback": 10,
+      "holding_bars": 3,
+      "excluded_observations": 84,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "volume_signal",
+      "lookback": 10,
+      "holding_bars": 5,
+      "excluded_observations": 126,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "volume_signal",
+      "lookback": 10,
+      "holding_bars": 10,
+      "excluded_observations": 231,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "volume_signal",
+      "lookback": 10,
+      "holding_bars": 20,
+      "excluded_observations": 441,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "volume_signal",
+      "lookback": 20,
+      "holding_bars": 1,
+      "excluded_observations": 42,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "volume_signal",
+      "lookback": 20,
+      "holding_bars": 2,
+      "excluded_observations": 63,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "volume_signal",
+      "lookback": 20,
+      "holding_bars": 3,
+      "excluded_observations": 84,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "volume_signal",
+      "lookback": 20,
+      "holding_bars": 5,
+      "excluded_observations": 126,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "volume_signal",
+      "lookback": 20,
+      "holding_bars": 10,
+      "excluded_observations": 231,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "30m",
+      "signal_id": "volume_signal",
+      "lookback": 20,
+      "holding_bars": 20,
+      "excluded_observations": 441,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "breakout_signal",
+      "lookback": 10,
+      "holding_bars": 1,
+      "excluded_observations": 42,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "breakout_signal",
+      "lookback": 10,
+      "holding_bars": 2,
+      "excluded_observations": 63,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "breakout_signal",
+      "lookback": 10,
+      "holding_bars": 3,
+      "excluded_observations": 84,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "breakout_signal",
+      "lookback": 10,
+      "holding_bars": 5,
+      "excluded_observations": 126,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "breakout_signal",
+      "lookback": 10,
+      "holding_bars": 10,
+      "excluded_observations": 231,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "breakout_signal",
+      "lookback": 10,
+      "holding_bars": 20,
+      "excluded_observations": 441,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "breakout_signal",
+      "lookback": 20,
+      "holding_bars": 1,
+      "excluded_observations": 42,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "breakout_signal",
+      "lookback": 20,
+      "holding_bars": 2,
+      "excluded_observations": 63,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "breakout_signal",
+      "lookback": 20,
+      "holding_bars": 3,
+      "excluded_observations": 84,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "breakout_signal",
+      "lookback": 20,
+      "holding_bars": 5,
+      "excluded_observations": 126,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "breakout_signal",
+      "lookback": 20,
+      "holding_bars": 10,
+      "excluded_observations": 231,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "breakout_signal",
+      "lookback": 20,
+      "holding_bars": 20,
+      "excluded_observations": 441,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 10,
+      "holding_bars": 1,
+      "excluded_observations": 42,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 10,
+      "holding_bars": 2,
+      "excluded_observations": 63,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 10,
+      "holding_bars": 3,
+      "excluded_observations": 84,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 10,
+      "holding_bars": 5,
+      "excluded_observations": 126,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 10,
+      "holding_bars": 10,
+      "excluded_observations": 231,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 10,
+      "holding_bars": 20,
+      "excluded_observations": 441,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 20,
+      "holding_bars": 1,
+      "excluded_observations": 42,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 20,
+      "holding_bars": 2,
+      "excluded_observations": 63,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 20,
+      "holding_bars": 3,
+      "excluded_observations": 84,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 20,
+      "holding_bars": 5,
+      "excluded_observations": 126,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 20,
+      "holding_bars": 10,
+      "excluded_observations": 231,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 20,
+      "holding_bars": 20,
+      "excluded_observations": 441,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "momentum_signal",
+      "lookback": 10,
+      "holding_bars": 1,
+      "excluded_observations": 42,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "momentum_signal",
+      "lookback": 10,
+      "holding_bars": 2,
+      "excluded_observations": 63,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "momentum_signal",
+      "lookback": 10,
+      "holding_bars": 3,
+      "excluded_observations": 84,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "momentum_signal",
+      "lookback": 10,
+      "holding_bars": 5,
+      "excluded_observations": 126,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "momentum_signal",
+      "lookback": 10,
+      "holding_bars": 10,
+      "excluded_observations": 231,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "momentum_signal",
+      "lookback": 10,
+      "holding_bars": 20,
+      "excluded_observations": 441,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "momentum_signal",
+      "lookback": 20,
+      "holding_bars": 1,
+      "excluded_observations": 42,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "momentum_signal",
+      "lookback": 20,
+      "holding_bars": 2,
+      "excluded_observations": 63,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "momentum_signal",
+      "lookback": 20,
+      "holding_bars": 3,
+      "excluded_observations": 84,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "momentum_signal",
+      "lookback": 20,
+      "holding_bars": 5,
+      "excluded_observations": 126,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "momentum_signal",
+      "lookback": 20,
+      "holding_bars": 10,
+      "excluded_observations": 231,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "momentum_signal",
+      "lookback": 20,
+      "holding_bars": 20,
+      "excluded_observations": 441,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "price_action_signal",
+      "lookback": 10,
+      "holding_bars": 1,
+      "excluded_observations": 42,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "price_action_signal",
+      "lookback": 10,
+      "holding_bars": 2,
+      "excluded_observations": 63,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "price_action_signal",
+      "lookback": 10,
+      "holding_bars": 3,
+      "excluded_observations": 84,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "price_action_signal",
+      "lookback": 10,
+      "holding_bars": 5,
+      "excluded_observations": 126,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "price_action_signal",
+      "lookback": 10,
+      "holding_bars": 10,
+      "excluded_observations": 231,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "price_action_signal",
+      "lookback": 10,
+      "holding_bars": 20,
+      "excluded_observations": 441,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "price_action_signal",
+      "lookback": 20,
+      "holding_bars": 1,
+      "excluded_observations": 42,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "price_action_signal",
+      "lookback": 20,
+      "holding_bars": 2,
+      "excluded_observations": 63,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "price_action_signal",
+      "lookback": 20,
+      "holding_bars": 3,
+      "excluded_observations": 84,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "price_action_signal",
+      "lookback": 20,
+      "holding_bars": 5,
+      "excluded_observations": 126,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "price_action_signal",
+      "lookback": 20,
+      "holding_bars": 10,
+      "excluded_observations": 231,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "price_action_signal",
+      "lookback": 20,
+      "holding_bars": 20,
+      "excluded_observations": 441,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "trend_signal",
+      "lookback": 10,
+      "holding_bars": 1,
+      "excluded_observations": 42,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "trend_signal",
+      "lookback": 10,
+      "holding_bars": 2,
+      "excluded_observations": 63,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "trend_signal",
+      "lookback": 10,
+      "holding_bars": 3,
+      "excluded_observations": 84,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "trend_signal",
+      "lookback": 10,
+      "holding_bars": 5,
+      "excluded_observations": 126,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "trend_signal",
+      "lookback": 10,
+      "holding_bars": 10,
+      "excluded_observations": 231,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "trend_signal",
+      "lookback": 10,
+      "holding_bars": 20,
+      "excluded_observations": 441,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "trend_signal",
+      "lookback": 20,
+      "holding_bars": 1,
+      "excluded_observations": 42,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "trend_signal",
+      "lookback": 20,
+      "holding_bars": 2,
+      "excluded_observations": 63,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "trend_signal",
+      "lookback": 20,
+      "holding_bars": 3,
+      "excluded_observations": 84,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "trend_signal",
+      "lookback": 20,
+      "holding_bars": 5,
+      "excluded_observations": 126,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "trend_signal",
+      "lookback": 20,
+      "holding_bars": 10,
+      "excluded_observations": 231,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "trend_signal",
+      "lookback": 20,
+      "holding_bars": 20,
+      "excluded_observations": 441,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "volatility_signal",
+      "lookback": 10,
+      "holding_bars": 1,
+      "excluded_observations": 42,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "volatility_signal",
+      "lookback": 10,
+      "holding_bars": 2,
+      "excluded_observations": 63,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "volatility_signal",
+      "lookback": 10,
+      "holding_bars": 3,
+      "excluded_observations": 84,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "volatility_signal",
+      "lookback": 10,
+      "holding_bars": 5,
+      "excluded_observations": 126,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "volatility_signal",
+      "lookback": 10,
+      "holding_bars": 10,
+      "excluded_observations": 231,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "volatility_signal",
+      "lookback": 10,
+      "holding_bars": 20,
+      "excluded_observations": 441,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "volatility_signal",
+      "lookback": 20,
+      "holding_bars": 1,
+      "excluded_observations": 42,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "volatility_signal",
+      "lookback": 20,
+      "holding_bars": 2,
+      "excluded_observations": 63,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "volatility_signal",
+      "lookback": 20,
+      "holding_bars": 3,
+      "excluded_observations": 84,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "volatility_signal",
+      "lookback": 20,
+      "holding_bars": 5,
+      "excluded_observations": 126,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "volatility_signal",
+      "lookback": 20,
+      "holding_bars": 10,
+      "excluded_observations": 231,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "volatility_signal",
+      "lookback": 20,
+      "holding_bars": 20,
+      "excluded_observations": 441,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "volume_signal",
+      "lookback": 10,
+      "holding_bars": 1,
+      "excluded_observations": 42,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "volume_signal",
+      "lookback": 10,
+      "holding_bars": 2,
+      "excluded_observations": 63,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "volume_signal",
+      "lookback": 10,
+      "holding_bars": 3,
+      "excluded_observations": 84,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "volume_signal",
+      "lookback": 10,
+      "holding_bars": 5,
+      "excluded_observations": 126,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "volume_signal",
+      "lookback": 10,
+      "holding_bars": 10,
+      "excluded_observations": 231,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "volume_signal",
+      "lookback": 10,
+      "holding_bars": 20,
+      "excluded_observations": 441,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "volume_signal",
+      "lookback": 20,
+      "holding_bars": 1,
+      "excluded_observations": 42,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "volume_signal",
+      "lookback": 20,
+      "holding_bars": 2,
+      "excluded_observations": 63,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "volume_signal",
+      "lookback": 20,
+      "holding_bars": 3,
+      "excluded_observations": 84,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "volume_signal",
+      "lookback": 20,
+      "holding_bars": 5,
+      "excluded_observations": 126,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "volume_signal",
+      "lookback": 20,
+      "holding_bars": 10,
+      "excluded_observations": 231,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "15m",
+      "signal_id": "volume_signal",
+      "lookback": 20,
+      "holding_bars": 20,
+      "excluded_observations": 441,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "breakout_signal",
+      "lookback": 10,
+      "holding_bars": 1,
+      "excluded_observations": 42,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "breakout_signal",
+      "lookback": 10,
+      "holding_bars": 2,
+      "excluded_observations": 63,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "breakout_signal",
+      "lookback": 10,
+      "holding_bars": 3,
+      "excluded_observations": 84,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "breakout_signal",
+      "lookback": 10,
+      "holding_bars": 5,
+      "excluded_observations": 126,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "breakout_signal",
+      "lookback": 10,
+      "holding_bars": 10,
+      "excluded_observations": 231,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "breakout_signal",
+      "lookback": 10,
+      "holding_bars": 20,
+      "excluded_observations": 441,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "breakout_signal",
+      "lookback": 20,
+      "holding_bars": 1,
+      "excluded_observations": 42,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "breakout_signal",
+      "lookback": 20,
+      "holding_bars": 2,
+      "excluded_observations": 63,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "breakout_signal",
+      "lookback": 20,
+      "holding_bars": 3,
+      "excluded_observations": 84,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "breakout_signal",
+      "lookback": 20,
+      "holding_bars": 5,
+      "excluded_observations": 126,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "breakout_signal",
+      "lookback": 20,
+      "holding_bars": 10,
+      "excluded_observations": 231,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "breakout_signal",
+      "lookback": 20,
+      "holding_bars": 20,
+      "excluded_observations": 441,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 10,
+      "holding_bars": 1,
+      "excluded_observations": 42,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 10,
+      "holding_bars": 2,
+      "excluded_observations": 63,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 10,
+      "holding_bars": 3,
+      "excluded_observations": 84,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 10,
+      "holding_bars": 5,
+      "excluded_observations": 126,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 10,
+      "holding_bars": 10,
+      "excluded_observations": 231,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 10,
+      "holding_bars": 20,
+      "excluded_observations": 441,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 20,
+      "holding_bars": 1,
+      "excluded_observations": 42,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 20,
+      "holding_bars": 2,
+      "excluded_observations": 63,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 20,
+      "holding_bars": 3,
+      "excluded_observations": 84,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 20,
+      "holding_bars": 5,
+      "excluded_observations": 126,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 20,
+      "holding_bars": 10,
+      "excluded_observations": 231,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 20,
+      "holding_bars": 20,
+      "excluded_observations": 441,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "momentum_signal",
+      "lookback": 10,
+      "holding_bars": 1,
+      "excluded_observations": 42,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "momentum_signal",
+      "lookback": 10,
+      "holding_bars": 2,
+      "excluded_observations": 63,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "momentum_signal",
+      "lookback": 10,
+      "holding_bars": 3,
+      "excluded_observations": 84,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "momentum_signal",
+      "lookback": 10,
+      "holding_bars": 5,
+      "excluded_observations": 126,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "momentum_signal",
+      "lookback": 10,
+      "holding_bars": 10,
+      "excluded_observations": 231,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "momentum_signal",
+      "lookback": 10,
+      "holding_bars": 20,
+      "excluded_observations": 441,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "momentum_signal",
+      "lookback": 20,
+      "holding_bars": 1,
+      "excluded_observations": 42,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "momentum_signal",
+      "lookback": 20,
+      "holding_bars": 2,
+      "excluded_observations": 63,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "momentum_signal",
+      "lookback": 20,
+      "holding_bars": 3,
+      "excluded_observations": 84,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "momentum_signal",
+      "lookback": 20,
+      "holding_bars": 5,
+      "excluded_observations": 126,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "momentum_signal",
+      "lookback": 20,
+      "holding_bars": 10,
+      "excluded_observations": 231,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "momentum_signal",
+      "lookback": 20,
+      "holding_bars": 20,
+      "excluded_observations": 441,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "price_action_signal",
+      "lookback": 10,
+      "holding_bars": 1,
+      "excluded_observations": 42,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "price_action_signal",
+      "lookback": 10,
+      "holding_bars": 2,
+      "excluded_observations": 63,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "price_action_signal",
+      "lookback": 10,
+      "holding_bars": 3,
+      "excluded_observations": 84,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "price_action_signal",
+      "lookback": 10,
+      "holding_bars": 5,
+      "excluded_observations": 126,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "price_action_signal",
+      "lookback": 10,
+      "holding_bars": 10,
+      "excluded_observations": 231,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "price_action_signal",
+      "lookback": 10,
+      "holding_bars": 20,
+      "excluded_observations": 441,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "price_action_signal",
+      "lookback": 20,
+      "holding_bars": 1,
+      "excluded_observations": 42,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "price_action_signal",
+      "lookback": 20,
+      "holding_bars": 2,
+      "excluded_observations": 63,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "price_action_signal",
+      "lookback": 20,
+      "holding_bars": 3,
+      "excluded_observations": 84,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "price_action_signal",
+      "lookback": 20,
+      "holding_bars": 5,
+      "excluded_observations": 126,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "price_action_signal",
+      "lookback": 20,
+      "holding_bars": 10,
+      "excluded_observations": 231,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "price_action_signal",
+      "lookback": 20,
+      "holding_bars": 20,
+      "excluded_observations": 441,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "trend_signal",
+      "lookback": 10,
+      "holding_bars": 1,
+      "excluded_observations": 42,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "trend_signal",
+      "lookback": 10,
+      "holding_bars": 2,
+      "excluded_observations": 63,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "trend_signal",
+      "lookback": 10,
+      "holding_bars": 3,
+      "excluded_observations": 84,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "trend_signal",
+      "lookback": 10,
+      "holding_bars": 5,
+      "excluded_observations": 126,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "trend_signal",
+      "lookback": 10,
+      "holding_bars": 10,
+      "excluded_observations": 231,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "trend_signal",
+      "lookback": 10,
+      "holding_bars": 20,
+      "excluded_observations": 441,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "trend_signal",
+      "lookback": 20,
+      "holding_bars": 1,
+      "excluded_observations": 42,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "trend_signal",
+      "lookback": 20,
+      "holding_bars": 2,
+      "excluded_observations": 63,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "trend_signal",
+      "lookback": 20,
+      "holding_bars": 3,
+      "excluded_observations": 84,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "trend_signal",
+      "lookback": 20,
+      "holding_bars": 5,
+      "excluded_observations": 126,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "trend_signal",
+      "lookback": 20,
+      "holding_bars": 10,
+      "excluded_observations": 231,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "trend_signal",
+      "lookback": 20,
+      "holding_bars": 20,
+      "excluded_observations": 441,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "volatility_signal",
+      "lookback": 10,
+      "holding_bars": 1,
+      "excluded_observations": 42,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "volatility_signal",
+      "lookback": 10,
+      "holding_bars": 2,
+      "excluded_observations": 63,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "volatility_signal",
+      "lookback": 10,
+      "holding_bars": 3,
+      "excluded_observations": 84,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "volatility_signal",
+      "lookback": 10,
+      "holding_bars": 5,
+      "excluded_observations": 126,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "volatility_signal",
+      "lookback": 10,
+      "holding_bars": 10,
+      "excluded_observations": 231,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "volatility_signal",
+      "lookback": 10,
+      "holding_bars": 20,
+      "excluded_observations": 441,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "volatility_signal",
+      "lookback": 20,
+      "holding_bars": 1,
+      "excluded_observations": 42,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "volatility_signal",
+      "lookback": 20,
+      "holding_bars": 2,
+      "excluded_observations": 63,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "volatility_signal",
+      "lookback": 20,
+      "holding_bars": 3,
+      "excluded_observations": 84,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "volatility_signal",
+      "lookback": 20,
+      "holding_bars": 5,
+      "excluded_observations": 126,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "volatility_signal",
+      "lookback": 20,
+      "holding_bars": 10,
+      "excluded_observations": 231,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "volatility_signal",
+      "lookback": 20,
+      "holding_bars": 20,
+      "excluded_observations": 441,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "volume_signal",
+      "lookback": 10,
+      "holding_bars": 1,
+      "excluded_observations": 42,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "volume_signal",
+      "lookback": 10,
+      "holding_bars": 2,
+      "excluded_observations": 63,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "volume_signal",
+      "lookback": 10,
+      "holding_bars": 3,
+      "excluded_observations": 84,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "volume_signal",
+      "lookback": 10,
+      "holding_bars": 5,
+      "excluded_observations": 126,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "volume_signal",
+      "lookback": 10,
+      "holding_bars": 10,
+      "excluded_observations": 231,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "volume_signal",
+      "lookback": 10,
+      "holding_bars": 20,
+      "excluded_observations": 441,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "volume_signal",
+      "lookback": 20,
+      "holding_bars": 1,
+      "excluded_observations": 42,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "volume_signal",
+      "lookback": 20,
+      "holding_bars": 2,
+      "excluded_observations": 63,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "volume_signal",
+      "lookback": 20,
+      "holding_bars": 3,
+      "excluded_observations": 84,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "volume_signal",
+      "lookback": 20,
+      "holding_bars": 5,
+      "excluded_observations": 126,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "volume_signal",
+      "lookback": 20,
+      "holding_bars": 10,
+      "excluded_observations": 231,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "5m",
+      "signal_id": "volume_signal",
+      "lookback": 20,
+      "holding_bars": 20,
+      "excluded_observations": 441,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "breakout_signal",
+      "lookback": 10,
+      "holding_bars": 1,
+      "excluded_observations": 44,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "breakout_signal",
+      "lookback": 10,
+      "holding_bars": 2,
+      "excluded_observations": 66,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "breakout_signal",
+      "lookback": 10,
+      "holding_bars": 3,
+      "excluded_observations": 88,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "breakout_signal",
+      "lookback": 10,
+      "holding_bars": 5,
+      "excluded_observations": 132,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "breakout_signal",
+      "lookback": 10,
+      "holding_bars": 10,
+      "excluded_observations": 242,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "breakout_signal",
+      "lookback": 10,
+      "holding_bars": 20,
+      "excluded_observations": 462,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "breakout_signal",
+      "lookback": 20,
+      "holding_bars": 1,
+      "excluded_observations": 44,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "breakout_signal",
+      "lookback": 20,
+      "holding_bars": 2,
+      "excluded_observations": 66,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "breakout_signal",
+      "lookback": 20,
+      "holding_bars": 3,
+      "excluded_observations": 88,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "breakout_signal",
+      "lookback": 20,
+      "holding_bars": 5,
+      "excluded_observations": 132,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "breakout_signal",
+      "lookback": 20,
+      "holding_bars": 10,
+      "excluded_observations": 242,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "breakout_signal",
+      "lookback": 20,
+      "holding_bars": 20,
+      "excluded_observations": 462,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 10,
+      "holding_bars": 1,
+      "excluded_observations": 44,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 10,
+      "holding_bars": 2,
+      "excluded_observations": 66,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 10,
+      "holding_bars": 3,
+      "excluded_observations": 88,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 10,
+      "holding_bars": 5,
+      "excluded_observations": 132,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 10,
+      "holding_bars": 10,
+      "excluded_observations": 242,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 10,
+      "holding_bars": 20,
+      "excluded_observations": 462,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 20,
+      "holding_bars": 1,
+      "excluded_observations": 44,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 20,
+      "holding_bars": 2,
+      "excluded_observations": 66,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 20,
+      "holding_bars": 3,
+      "excluded_observations": 88,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 20,
+      "holding_bars": 5,
+      "excluded_observations": 132,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 20,
+      "holding_bars": 10,
+      "excluded_observations": 242,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 20,
+      "holding_bars": 20,
+      "excluded_observations": 462,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "momentum_signal",
+      "lookback": 10,
+      "holding_bars": 1,
+      "excluded_observations": 44,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "momentum_signal",
+      "lookback": 10,
+      "holding_bars": 2,
+      "excluded_observations": 66,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "momentum_signal",
+      "lookback": 10,
+      "holding_bars": 3,
+      "excluded_observations": 88,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "momentum_signal",
+      "lookback": 10,
+      "holding_bars": 5,
+      "excluded_observations": 132,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "momentum_signal",
+      "lookback": 10,
+      "holding_bars": 10,
+      "excluded_observations": 242,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "momentum_signal",
+      "lookback": 10,
+      "holding_bars": 20,
+      "excluded_observations": 462,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "momentum_signal",
+      "lookback": 20,
+      "holding_bars": 1,
+      "excluded_observations": 44,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "momentum_signal",
+      "lookback": 20,
+      "holding_bars": 2,
+      "excluded_observations": 66,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "momentum_signal",
+      "lookback": 20,
+      "holding_bars": 3,
+      "excluded_observations": 88,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "momentum_signal",
+      "lookback": 20,
+      "holding_bars": 5,
+      "excluded_observations": 132,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "momentum_signal",
+      "lookback": 20,
+      "holding_bars": 10,
+      "excluded_observations": 242,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "momentum_signal",
+      "lookback": 20,
+      "holding_bars": 20,
+      "excluded_observations": 462,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "price_action_signal",
+      "lookback": 10,
+      "holding_bars": 1,
+      "excluded_observations": 44,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "price_action_signal",
+      "lookback": 10,
+      "holding_bars": 2,
+      "excluded_observations": 66,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "price_action_signal",
+      "lookback": 10,
+      "holding_bars": 3,
+      "excluded_observations": 88,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "price_action_signal",
+      "lookback": 10,
+      "holding_bars": 5,
+      "excluded_observations": 132,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "price_action_signal",
+      "lookback": 10,
+      "holding_bars": 10,
+      "excluded_observations": 242,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "price_action_signal",
+      "lookback": 10,
+      "holding_bars": 20,
+      "excluded_observations": 462,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "price_action_signal",
+      "lookback": 20,
+      "holding_bars": 1,
+      "excluded_observations": 44,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "price_action_signal",
+      "lookback": 20,
+      "holding_bars": 2,
+      "excluded_observations": 66,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "price_action_signal",
+      "lookback": 20,
+      "holding_bars": 3,
+      "excluded_observations": 88,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "price_action_signal",
+      "lookback": 20,
+      "holding_bars": 5,
+      "excluded_observations": 132,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "price_action_signal",
+      "lookback": 20,
+      "holding_bars": 10,
+      "excluded_observations": 242,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "price_action_signal",
+      "lookback": 20,
+      "holding_bars": 20,
+      "excluded_observations": 462,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "trend_signal",
+      "lookback": 10,
+      "holding_bars": 1,
+      "excluded_observations": 44,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "trend_signal",
+      "lookback": 10,
+      "holding_bars": 2,
+      "excluded_observations": 66,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "trend_signal",
+      "lookback": 10,
+      "holding_bars": 3,
+      "excluded_observations": 88,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "trend_signal",
+      "lookback": 10,
+      "holding_bars": 5,
+      "excluded_observations": 132,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "trend_signal",
+      "lookback": 10,
+      "holding_bars": 10,
+      "excluded_observations": 242,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "trend_signal",
+      "lookback": 10,
+      "holding_bars": 20,
+      "excluded_observations": 462,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "trend_signal",
+      "lookback": 20,
+      "holding_bars": 1,
+      "excluded_observations": 44,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "trend_signal",
+      "lookback": 20,
+      "holding_bars": 2,
+      "excluded_observations": 66,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "trend_signal",
+      "lookback": 20,
+      "holding_bars": 3,
+      "excluded_observations": 88,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "trend_signal",
+      "lookback": 20,
+      "holding_bars": 5,
+      "excluded_observations": 132,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "trend_signal",
+      "lookback": 20,
+      "holding_bars": 10,
+      "excluded_observations": 242,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "trend_signal",
+      "lookback": 20,
+      "holding_bars": 20,
+      "excluded_observations": 462,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "volatility_signal",
+      "lookback": 10,
+      "holding_bars": 1,
+      "excluded_observations": 44,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "volatility_signal",
+      "lookback": 10,
+      "holding_bars": 2,
+      "excluded_observations": 66,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "volatility_signal",
+      "lookback": 10,
+      "holding_bars": 3,
+      "excluded_observations": 88,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "volatility_signal",
+      "lookback": 10,
+      "holding_bars": 5,
+      "excluded_observations": 132,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "volatility_signal",
+      "lookback": 10,
+      "holding_bars": 10,
+      "excluded_observations": 242,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "volatility_signal",
+      "lookback": 10,
+      "holding_bars": 20,
+      "excluded_observations": 462,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "volatility_signal",
+      "lookback": 20,
+      "holding_bars": 1,
+      "excluded_observations": 44,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "volatility_signal",
+      "lookback": 20,
+      "holding_bars": 2,
+      "excluded_observations": 66,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "volatility_signal",
+      "lookback": 20,
+      "holding_bars": 3,
+      "excluded_observations": 88,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "volatility_signal",
+      "lookback": 20,
+      "holding_bars": 5,
+      "excluded_observations": 132,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "volatility_signal",
+      "lookback": 20,
+      "holding_bars": 10,
+      "excluded_observations": 242,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "volatility_signal",
+      "lookback": 20,
+      "holding_bars": 20,
+      "excluded_observations": 462,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "volume_signal",
+      "lookback": 10,
+      "holding_bars": 1,
+      "excluded_observations": 44,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "volume_signal",
+      "lookback": 10,
+      "holding_bars": 2,
+      "excluded_observations": 66,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "volume_signal",
+      "lookback": 10,
+      "holding_bars": 3,
+      "excluded_observations": 88,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "volume_signal",
+      "lookback": 10,
+      "holding_bars": 5,
+      "excluded_observations": 132,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "volume_signal",
+      "lookback": 10,
+      "holding_bars": 10,
+      "excluded_observations": 242,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "volume_signal",
+      "lookback": 10,
+      "holding_bars": 20,
+      "excluded_observations": 462,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "volume_signal",
+      "lookback": 20,
+      "holding_bars": 1,
+      "excluded_observations": 44,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "volume_signal",
+      "lookback": 20,
+      "holding_bars": 2,
+      "excluded_observations": 66,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "volume_signal",
+      "lookback": 20,
+      "holding_bars": 3,
+      "excluded_observations": 88,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "volume_signal",
+      "lookback": 20,
+      "holding_bars": 5,
+      "excluded_observations": 132,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "volume_signal",
+      "lookback": 20,
+      "holding_bars": 10,
+      "excluded_observations": 242,
+      "reason": "forward window crosses known gap"
+    },
+    {
+      "timeframe": "1m",
+      "signal_id": "volume_signal",
+      "lookback": 20,
+      "holding_bars": 20,
+      "excluded_observations": 462,
+      "reason": "forward window crosses known gap"
+    }
+  ]
+}

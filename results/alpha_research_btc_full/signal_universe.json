@@ -1,0 +1,120 @@
+{
+  "signals": [
+    {
+      "signal_id": "breakout_signal",
+      "version": "1.0.0",
+      "description": "Break prior N-bar high/low",
+      "feature_ids": [
+        "momentum"
+      ],
+      "kind": "categorical",
+      "parameters": {
+        "lookback": 20
+      },
+      "family": "breakout",
+      "holding_bars": 1,
+      "allow_short": true,
+      "disclaimer": "RESEARCH SIGNAL \u2014 not a profitability claim."
+    },
+    {
+      "signal_id": "mean_reversion_signal",
+      "version": "1.0.0",
+      "description": "Fade rolling z-score extremes",
+      "feature_ids": [
+        "rolling_zscore"
+      ],
+      "kind": "categorical",
+      "parameters": {
+        "lookback": 20,
+        "entry_z": 1.0
+      },
+      "family": "mean_reversion",
+      "holding_bars": 1,
+      "allow_short": true,
+      "disclaimer": "RESEARCH SIGNAL \u2014 not a profitability claim."
+    },
+    {
+      "signal_id": "momentum_signal",
+      "version": "1.0.0",
+      "description": "Sign of N-bar momentum",
+      "feature_ids": [
+        "momentum"
+      ],
+      "kind": "categorical",
+      "parameters": {
+        "lookback": 20,
+        "threshold": 0.0
+      },
+      "family": "momentum",
+      "holding_bars": 1,
+      "allow_short": true,
+      "disclaimer": "RESEARCH SIGNAL \u2014 not a profitability claim."
+    },
+    {
+      "signal_id": "price_action_signal",
+      "version": "1.0.0",
+      "description": "Range-confirmed return sign",
+      "feature_ids": [
+        "range",
+        "returns"
+      ],
+      "kind": "categorical",
+      "parameters": {
+        "lookback": 1
+      },
+      "family": "price_action",
+      "holding_bars": 1,
+      "allow_short": true,
+      "disclaimer": "RESEARCH SIGNAL \u2014 not a profitability claim."
+    },
+    {
+      "signal_id": "trend_signal",
+      "version": "1.0.0",
+      "description": "Price vs moving average",
+      "feature_ids": [
+        "moving_average"
+      ],
+      "kind": "categorical",
+      "parameters": {
+        "lookback": 20
+      },
+      "family": "trend",
+      "holding_bars": 1,
+      "allow_short": true,
+      "disclaimer": "RESEARCH SIGNAL \u2014 not a profitability claim."
+    },
+    {
+      "signal_id": "volatility_signal",
+      "version": "1.0.0",
+      "description": "Vol regime tilt",
+      "feature_ids": [
+        "volatility"
+      ],
+      "kind": "categorical",
+      "parameters": {
+        "lookback": 20
+      },
+      "family": "volatility",
+      "holding_bars": 1,
+      "allow_short": true,
+      "disclaimer": "RESEARCH SIGNAL \u2014 not a profitability claim."
+    },
+    {
+      "signal_id": "volume_signal",
+      "version": "1.0.0",
+      "description": "Volume-confirmed momentum",
+      "feature_ids": [
+        "volume_change",
+        "momentum"
+      ],
+      "kind": "categorical",
+      "parameters": {
+        "lookback": 10
+      },
+      "family": "volume",
+      "holding_bars": 1,
+      "allow_short": true,
+      "disclaimer": "RESEARCH SIGNAL \u2014 not a profitability claim."
+    }
+  ]
+}

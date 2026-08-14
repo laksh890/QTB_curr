@@ -1,0 +1,182 @@
+{
+  "ensembles": [
+    {
+      "ensemble_id": "cdc_3ead53d805422ea0",
+      "method": "equal_weight",
+      "timeframe": "1h",
+      "members": [
+        "mdc_801488267ad484dc",
+        "mdc_3ed979ee7d9dabe6",
+        "mdc_a0f769fc20835273"
+      ],
+      "weights": null,
+      "weight_basis": "equal_weight",
+      "oos_used_for_weights": false,
+      "seed": 40
+    },
+    {
+      "ensemble_id": "cdc_4031d610033dcda6",
+      "method": "confidence_weighted",
+      "timeframe": "1h",
+      "members": [
+        "mdc_801488267ad484dc",
+        "mdc_3ed979ee7d9dabe6",
+        "mdc_a0f769fc20835273"
+      ],
+      "weights": [
+        0.7603168105227643,
+        0.2233502902741125,
+        0.016332899203123145
+      ],
+      "weight_basis": "validation_net_sharpe",
+      "oos_used_for_weights": false,
+      "seed": 40
+    },
+    {
+      "ensemble_id": "cdc_2498c0dcea552c87",
+      "method": "majority_vote",
+      "timeframe": "1h",
+      "members": [
+        "mdc_801488267ad484dc",
+        "mdc_3ed979ee7d9dabe6",
+        "mdc_a0f769fc20835273"
+      ],
+      "weights": null,
+      "weight_basis": "majority_vote",
+      "oos_used_for_weights": false,
+      "seed": 40
+    },
+    {
+      "ensemble_id": "cdc_2e96270bf57ee343",
+      "method": "regime_conditioned",
+      "timeframe": "1h",
+      "members": [
+        "mdc_801488267ad484dc",
+        "mdc_3ed979ee7d9dabe6",
+        "mdc_a0f769fc20835273"
+      ],
+      "weights": null,
+      "weight_basis": "regime_conditioned",
+      "oos_used_for_weights": false,
+      "seed": 40
+    },
+    {
+      "ensemble_id": "cdc_c2e0f43310f1f23d",
+      "method": "equal_weight",
+      "timeframe": "15m",
+      "members": [
+        "mdc_99aa952c5d5f6ff7",
+        "mdc_6f008c954ea26bf5",
+        "mdc_4992167889db9b2e"
+      ],
+      "weights": null,
+      "weight_basis": "equal_weight",
+      "oos_used_for_weights": false,
+      "seed": 40
+    },
+    {
+      "ensemble_id": "cdc_ece32fb95dfb76eb",
+      "method": "confidence_weighted",
+      "timeframe": "15m",
+      "members": [
+        "mdc_99aa952c5d5f6ff7",
+        "mdc_6f008c954ea26bf5",
+        "mdc_4992167889db9b2e"
+      ],
+      "weights": [
+        0.5417193678238041,
+        0.45533575382465036,
+        0.002944878351545513
+      ],
+      "weight_basis": "validation_net_sharpe",
+      "oos_used_for_weights": false,
+      "seed": 40
+    },
+    {
+      "ensemble_id": "cdc_327c7fd269d45fd1",
+      "method": "majority_vote",
+      "timeframe": "15m",
+      "members": [
+        "mdc_99aa952c5d5f6ff7",
+        "mdc_6f008c954ea26bf5",
+        "mdc_4992167889db9b2e"
+      ],
+      "weights": null,
+      "weight_basis": "majority_vote",
+      "oos_used_for_weights": false,
+      "seed": 40
+    },
+    {
+      "ensemble_id": "cdc_d805c90442a7303e",
+      "method": "regime_conditioned",
+      "timeframe": "15m",
+      "members": [
+        "mdc_99aa952c5d5f6ff7",
+        "mdc_6f008c954ea26bf5",
+        "mdc_4992167889db9b2e"
+      ],
+      "weights": null,
+      "weight_basis": "regime_conditioned",
+      "oos_used_for_weights": false,
+      "seed": 40
+    },
+    {
+      "ensemble_id": "cdc_b6e48b107a26d65d",
+      "method": "equal_weight",
+      "timeframe": "5m",
+      "members": [
+        "mdc_51a60a3264845365",
+        "mdc_678609c534d68189"
+      ],
+      "weights": null,
+      "weight_basis": "equal_weight",
+      "oos_used_for_weights": false,
+      "seed": 40
+    },
+    {
+      "ensemble_id": "cdc_568818239b45257e",
+      "method": "confidence_weighted",
+      "timeframe": "5m",
+      "members": [
+        "mdc_51a60a3264845365",
+        "mdc_678609c534d68189"
+      ],
+      "weights": [
+        0.6993879232085806,
+        0.30061207679141944
+      ],
+      "weight_basis": "validation_net_sharpe",
+      "oos_used_for_weights": false,
+      "seed": 40
+    },
+    {
+      "ensemble_id": "cdc_8b2e5cf5235a392b",
+      "method": "majority_vote",
+      "timeframe": "5m",
+      "members": [
+        "mdc_51a60a3264845365",
+        "mdc_678609c534d68189"
+      ],
+      "weights": null,
+      "weight_basis": "majority_vote",
+      "oos_used_for_weights": false,
+      "seed": 40
+    }
+  ],
+  "multiple_testing": {
+    "method": "fdr_bh",
+    "n": 11,
+    "n_surviving": 6,
+    "surviving_ids": [
+      "cdc_c2e0f43310f1f23d",
+      "cdc_ece32fb95dfb76eb",
+      "cdc_327c7fd269d45fd1",
+      "cdc_b6e48b107a26d65d",
+      "cdc_568818239b45257e",
+      "cdc_8b2e5cf5235a392b"
+    ],
+    "note": "Exploratory; ensembles not independent discoveries. Autocorrelation limitations apply.",
+    "disclaimer": "CANDIDATE CONSOLIDATION RESEARCH \u2014 predefined protocol. Research evidence is not a profitability guarantee. DISTINCT_RESEARCH_CANDIDATE \u2260 PROFITABLE \u2260 PRODUCTION_READY \u2260 LIVE_READY. Prompt 39 artifacts are immutable inputs."
+  },
+  "disclaimer": "CANDIDATE CONSOLIDATION RESEARCH \u2014 predefined protocol. Research evidence is not a profitability guarantee. DISTINCT_RESEARCH_CANDIDATE \u2260 PROFITABLE \u2260 PRODUCTION_READY \u2260 LIVE_READY. Prompt 39 artifacts are immutable inputs."
+}

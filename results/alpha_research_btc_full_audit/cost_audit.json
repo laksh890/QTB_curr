@@ -1,0 +1,67 @@
+{
+  "assumption": "NAV=1, |\u0394w|=1 (full flip or entry from flat)",
+  "commission_bps": 1.0,
+  "spread_bps": 2.0,
+  "slippage_bps": 2.0,
+  "total_trade_bps": 5.0,
+  "cost_fraction_of_NAV": 0.0005,
+  "engine_formula": "cost_t = |\u0394position_t| * (commission+spread+slippage)/10000",
+  "buy_sell_symmetry": true,
+  "short_entry_exit_symmetry": true,
+  "double_counting_detected": false,
+  "hand_decomposition": {
+    "commission": 0.5161,
+    "spread": 1.0322,
+    "slippage": 1.0322,
+    "sum": 2.5805,
+    "engine_transaction_costs": 2.5805000000000002,
+    "match": true
+  },
+  "scenarios": {
+    "BASE": {
+      "model": {
+        "commission_bps": 1.0,
+        "spread_bps": 2.0,
+        "slippage_bps": 2.0
+      },
+      "total_bps": 5.0,
+      "multiplier_vs_BASE_total": 1.0
+    },
+    "MODERATE": {
+      "model": {
+        "commission_bps": 2.0,
+        "spread_bps": 4.0,
+        "slippage_bps": 4.0
+      },
+      "total_bps": 10.0,
+      "multiplier_vs_BASE_total": 2.0
+    },
+    "ADVERSE": {
+      "model": {
+        "commission_bps": 4.0,
+        "spread_bps": 8.0,
+        "slippage_bps": 8.0
+      },
+      "total_bps": 20.0,
+      "multiplier_vs_BASE_total": 4.0
+    }
+  },
+  "scenario_behavior_change": false,
+  "scenario_note": "MODERATE/ADVERSE reprice identical positions; strategy path unchanged.",
+  "disclaimer": "Research evidence is not a profitability guarantee.",
+  "gate_name": "COST_INEFFICIENT",
+  "implementation_locations": [
+    "iqrp/app/backtesting/horizon/costs.py::gross_vs_net_sharpe \u2192 cost_inefficient if gross_sharpe>=1 and net_sharpe<0.5",
+    "iqrp/app/backtesting/alpha_research/analytics.py::evaluate_cost_aware \u2192 alpha_collapses_after_costs if cost_inefficient OR (gross_pnl>0 and net_pnl<=0)",
+    "iqrp/app/backtesting/alpha_research/ranking.py::classify_alpha \u2192 COST_INEFFICIENT if alpha_collapses_after_costs"
+  ],
+  "thresholds": {
+    "gross_sharpe_high": 1.0,
+    "net_sharpe_collapse": 0.5,
+    "also": "gross_pnl > 0 and net_pnl <= 0",
+    "alpha_survives_costs": "net_pnl>0 AND net_sharpe>0 AND not cost_inefficient"
+  },
+  "documented_in_defaults": true,
+  "arbitrary_undocumented": false,
+  "audit_only_no_change": true
+}

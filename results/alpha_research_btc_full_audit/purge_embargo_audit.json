@@ -1,0 +1,13 @@
+{
+  "configured_purge_bars": "holding_bars (per experiment)",
+  "configured_embargo_bars": "holding_bars (per experiment)",
+  "example_holding": 5,
+  "actual_train_trimmed": 5,
+  "actual_val_trimmed": 5,
+  "actual_oos_trimmed": 5,
+  "expected_train_trim": 5,
+  "expected_val_oos_trim": 5,
+  "off_by_one_detected": false,
+  "implementation": "apply_purge_embargo in walk_forward.py",
+  "disclaimer": "Research evidence is not a profitability guarantee."
+}

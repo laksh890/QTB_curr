@@ -1,0 +1,289 @@
+{
+  "horizon": {
+    "Horizon_research_engine": {
+      "status": "IMPLEMENTED",
+      "source": [
+        "iqrp/app/backtesting/horizon/costs.py",
+        "iqrp/app/backtesting/horizon/availability.py",
+        "iqrp/app/backtesting/horizon/__init__.py",
+        "iqrp/app/backtesting/horizon/trade_analytics.py",
+        "iqrp/app/backtesting/horizon/metrics.py",
+        "iqrp/app/backtesting/horizon/walk_forward.py",
+        "iqrp/app/backtesting/horizon/overtrading.py",
+        "iqrp/app/backtesting/horizon/report.py",
+        "iqrp/app/backtesting/horizon/multiple_testing.py",
+        "iqrp/app/backtesting/horizon/capacity.py",
+        "iqrp/app/backtesting/horizon/neighborhood.py",
+        "iqrp/app/backtesting/horizon/half_life.py",
+        "iqrp/app/backtesting/horizon/simulate.py",
+        "iqrp/app/backtesting/horizon/config.py",
+        "iqrp/app/backtesting/horizon/resampling.py",
+        "iqrp/app/backtesting/horizon/turnover.py",
+        "iqrp/app/backtesting/horizon/ranking.py",
+        "iqrp/app/backtesting/horizon/types.py",
+        "iqrp/app/backtesting/horizon/engine.py",
+        "iqrp/app/backtesting/horizon/parse.py"
+      ],
+      "tests": [
+        "iqrp/tests/integration/backtesting/test_horizon_research.py",
+        "iqrp/tests/integration/test_bayesian_pipeline.py",
+        "iqrp/tests/integration/test_ensemble_pipeline.py",
+        "iqrp/tests/integration/test_forecast_intelligence_pipeline.py",
+        "iqrp/tests/integration/test_forecasting_pipeline.py",
+        "iqrp/tests/integration/test_gmm_pipeline.py",
+        "iqrp/tests/integration/test_hmm_pipeline.py",
+        "iqrp/tests/integration/test_kalman_pipeline.py",
+        "iqrp/tests/integration/test_labels_pipeline.py",
+        "iqrp/tests/integration/test_markov_pipeline.py",
+        "iqrp/tests/integration/test_neural_forecasting_pipeline.py",
+        "iqrp/tests/integration/test_particle_pipeline.py",
+        "iqrp/tests/integration/test_state_space_pipeline.py",
+        "iqrp/tests/integration/test_statistical_forecasting_pipeline.py",
+        "iqrp/tests/integration/test_transformer_forecasting_pipeline.py",
+        "iqrp/tests/integration/test_tree_forecasting_pipeline.py",
+        "iqrp/tests/integration/test_volatility_forecasting_pipeline.py",
+        "iqrp/tests/unit/alpha/test_coverage_final.py",
+        "iqrp/tests/unit/alpha/test_coverage_gaps.py",
+        "iqrp/tests/unit/alpha/test_coverage_gaps2.py"
+      ],
+      "docs": [],
+      "executable_smoke": null,
+      "integrated_into_alpha_research": false,
+      "integrated_into_backtest_runner": true,
+      "notes": "Holding horizons, costs, turnover, walk-forward helpers, capacity estimates; consumes positions/returns \u2014 typically reference signals via research engines",
+      "evidence": {
+        "n_sources": 20,
+        "n_tests": 90,
+        "n_docs": 0
+      }
+    }
+  },
+  "backtesting": {
+    "EventDrivenEngine": {
+      "status": "IMPLEMENTED",
+      "source": [
+        "iqrp/app/backtesting/event_engine"
+      ],
+      "tests": [
+        "iqrp/tests/integration/backtesting/test_acceptance_user_shaped_data.py",
+        "iqrp/tests/integration/backtesting/test_alpha_research.py",
+        "iqrp/tests/integration/backtesting/test_e2e_operational.py",
+        "iqrp/tests/integration/backtesting/test_horizon_research.py",
+        "iqrp/tests/integration/data/test_intraday_acquisition.py",
+        "iqrp/tests/integration/test_simulation_pipeline.py",
+        "iqrp/tests/unit/alpha/test_backtest_economics.py",
+        "iqrp/tests/unit/alpha/test_coverage_final.py",
+        "iqrp/tests/unit/alpha/test_coverage_gaps.py",
+        "iqrp/tests/unit/alpha/test_coverage_gaps2.py",
+        "iqrp/tests/unit/alpha/test_coverage_gaps3.py",
+        "iqrp/tests/unit/alpha/test_coverage_gaps4.py",
+        "iqrp/tests/unit/alpha/test_discovery_leakage.py",
+        "iqrp/tests/unit/backtesting/operational/test_accounting.py",
+        "iqrp/tests/unit/backtesting/operational/test_cli_and_shim.py",
+        "iqrp/tests/unit/backtesting/operational/test_correctness_audit.py",
+        "iqrp/tests/unit/backtesting/operational/test_coverage_gaps.py",
+        "iqrp/tests/unit/backtesting/operational/test_coverage_gaps2.py",
+        "iqrp/tests/unit/backtesting/operational/test_coverage_gaps3.py",
+        "iqrp/tests/unit/backtesting/operational/test_coverage_gaps4.py"
+      ],
+      "docs": [],
+      "executable_smoke": null,
+      "integrated_into_alpha_research": false,
+      "integrated_into_backtest_runner": true,
+      "notes": "Event engine package present",
+      "evidence": {
+        "n_sources": 1,
+        "n_tests": 55,
+        "n_docs": 0
+      }
+    },
+    "BacktestRunner": {
+      "status": "IMPLEMENTED",
+      "source": [
+        "iqrp/app/backtesting/runner"
+      ],
+      "tests": [
+        "iqrp/tests/integration/backtesting/test_acceptance_user_shaped_data.py",
+        "iqrp/tests/integration/backtesting/test_alpha_research.py",
+        "iqrp/tests/integration/backtesting/test_e2e_operational.py",
+        "iqrp/tests/integration/backtesting/test_horizon_research.py",
+        "iqrp/tests/integration/data/test_intraday_acquisition.py",
+        "iqrp/tests/unit/alpha/test_backtest_economics.py",
+        "iqrp/tests/unit/alpha/test_coverage_final.py",
+        "iqrp/tests/unit/alpha/test_coverage_gaps.py",
+        "iqrp/tests/unit/alpha/test_coverage_gaps2.py",
+        "iqrp/tests/unit/alpha/test_coverage_gaps3.py",
+        "iqrp/tests/unit/alpha/test_coverage_gaps4.py",
+        "iqrp/tests/unit/backtesting/operational/test_accounting.py",
+        "iqrp/tests/unit/backtesting/operational/test_cli_and_shim.py",
+        "iqrp/tests/unit/backtesting/operational/test_correctness_audit.py",
+        "iqrp/tests/unit/backtesting/operational/test_coverage_gaps.py",
+        "iqrp/tests/unit/backtesting/operational/test_coverage_gaps2.py",
+        "iqrp/tests/unit/backtesting/operational/test_coverage_gaps3.py",
+        "iqrp/tests/unit/backtesting/operational/test_coverage_gaps4.py",
+        "iqrp/tests/unit/backtesting/operational/test_data_adapters.py",
+        "iqrp/tests/unit/backtesting/operational/test_dataset_registry.py"
+      ],
+      "docs": [],
+      "executable_smoke": null,
+      "integrated_into_alpha_research": false,
+      "integrated_into_backtest_runner": true,
+      "notes": "BacktestRunner pipeline with synthetic E2E tests",
+      "evidence": {
+        "n_sources": 1,
+        "n_tests": 44,
+        "n_docs": 0
+      }
+    },
+    "Accounting_reconciliation": {
+      "status": "IMPLEMENTED",
+      "source": [
+        "iqrp/app/backtesting/accounting"
+      ],
+      "tests": [
+        "iqrp/tests/integration/backtesting/test_acceptance_user_shaped_data.py",
+        "iqrp/tests/integration/backtesting/test_alpha_research.py",
+        "iqrp/tests/integration/backtesting/test_e2e_operational.py",
+        "iqrp/tests/integration/data/test_intraday_acquisition.py",
+        "iqrp/tests/unit/backtesting/operational/test_accounting.py",
+        "iqrp/tests/unit/backtesting/operational/test_correctness_audit.py",
+        "iqrp/tests/unit/backtesting/operational/test_coverage_gaps.py",
+        "iqrp/tests/unit/backtesting/operational/test_coverage_gaps2.py",
+        "iqrp/tests/unit/backtesting/operational/test_coverage_gaps3.py",
+        "iqrp/tests/unit/execution/test_coverage_final.py",
+        "iqrp/tests/unit/execution/test_coverage_final2.py",
+        "iqrp/tests/unit/execution/test_coverage_gaps.py"
+      ],
+      "docs": [],
+      "executable_smoke": null,
+      "integrated_into_alpha_research": false,
+      "integrated_into_backtest_runner": false,
+      "notes": "Accounting/reconciliation modules exist for runner path; alpha_research uses simplified return attribution",
+      "evidence": {
+        "n_sources": 1,
+        "n_tests": 12,
+        "n_docs": 0
+      }
+    },
+    "Walk_forward_scenarios_reporting": {
+      "status": "IMPLEMENTED",
+      "source": [
+        "iqrp/app/backtesting/walk_forward",
+        "iqrp/app/backtesting/scenarios",
+        "iqrp/app/backtesting/reports.py"
+      ],
+      "tests": [
+        "iqrp/tests/integration/backtesting/test_acceptance_user_shaped_data.py",
+        "iqrp/tests/integration/backtesting/test_alpha_research.py",
+        "iqrp/tests/integration/backtesting/test_e2e_operational.py",
+        "iqrp/tests/integration/backtesting/test_horizon_research.py",
+        "iqrp/tests/integration/data/test_intraday_acquisition.py",
+        "iqrp/tests/integration/test_feature_research.py",
+        "iqrp/tests/integration/test_forecast_intelligence_pipeline.py",
+        "iqrp/tests/integration/test_simulation_pipeline.py",
+        "iqrp/tests/unit/alpha/test_backtest_economics.py",
+        "iqrp/tests/unit/alpha/test_coverage_final.py",
+        "iqrp/tests/unit/alpha/test_coverage_gaps.py",
+        "iqrp/tests/unit/alpha/test_coverage_gaps2.py",
+        "iqrp/tests/unit/alpha/test_coverage_gaps3.py",
+        "iqrp/tests/unit/alpha/test_coverage_gaps4.py",
+        "iqrp/tests/unit/alpha/test_phase11.py",
+        "iqrp/tests/unit/backtesting/operational/test_accounting.py",
+        "iqrp/tests/unit/backtesting/operational/test_cli_and_shim.py",
+        "iqrp/tests/unit/backtesting/operational/test_correctness_audit.py",
+        "iqrp/tests/unit/backtesting/operational/test_coverage_gaps.py",
+        "iqrp/tests/unit/backtesting/operational/test_coverage_gaps2.py"
+      ],
+      "docs": [],
+      "executable_smoke": null,
+      "integrated_into_alpha_research": false,
+      "integrated_into_backtest_runner": false,
+      "notes": "Present in backtesting platform",
+      "evidence": {
+        "n_sources": 3,
+        "n_tests": 71,
+        "n_docs": 0
+      }
+    }
+  },
+  "forecasting": {
+    "Forecasting_framework": {
+      "status": "IMPLEMENTED",
+      "source": [
+        "iqrp/app/forecasting"
+      ],
+      "tests": [
+        "iqrp/tests/integration/test_bayesian_pipeline.py",
+        "iqrp/tests/integration/test_ensemble_pipeline.py",
+        "iqrp/tests/integration/test_forecast_intelligence_pipeline.py",
+        "iqrp/tests/integration/test_forecasting_pipeline.py",
+        "iqrp/tests/integration/test_gmm_pipeline.py",
+        "iqrp/tests/integration/test_hmm_pipeline.py",
+        "iqrp/tests/integration/test_kalman_pipeline.py",
+        "iqrp/tests/integration/test_markov_pipeline.py",
+        "iqrp/tests/integration/test_neural_forecasting_pipeline.py",
+        "iqrp/tests/integration/test_particle_pipeline.py",
+        "iqrp/tests/integration/test_state_space_pipeline.py",
+        "iqrp/tests/integration/test_statistical_forecasting_pipeline.py",
+        "iqrp/tests/integration/test_transformer_forecasting_pipeline.py",
+        "iqrp/tests/integration/test_tree_forecasting_pipeline.py",
+        "iqrp/tests/integration/test_volatility_forecasting_pipeline.py",
+        "iqrp/tests/unit/forecast_intelligence/test_intelligence_core.py",
+        "iqrp/tests/unit/forecast_intelligence/test_intelligence_gaps.py",
+        "iqrp/tests/unit/forecast_intelligence/test_intelligence_gaps2.py",
+        "iqrp/tests/unit/forecast_intelligence/test_intelligence_gaps3.py",
+        "iqrp/tests/unit/forecast_intelligence/test_intelligence_gaps4.py"
+      ],
+      "docs": [],
+      "executable_smoke": null,
+      "integrated_into_alpha_research": false,
+      "integrated_into_backtest_runner": false,
+      "notes": "Large forecasting platform: statistical/vol/neural/transformers/trees + intelligence; produces Forecast objects; not feeding alpha_research",
+      "evidence": {
+        "n_sources": 1,
+        "n_tests": 47,
+        "n_docs": 0
+      }
+    },
+    "Point_and_probabilistic_forecasts": {
+      "status": "IMPLEMENTED",
+      "source": [
+        "iqrp/app/forecasting/base",
+        "iqrp/app/forecasting/neural/probabilistic",
+        "iqrp/app/forecasting/transformers/probabilistic"
+      ],
+      "tests": [
+        "iqrp/tests/integration/test_bayesian_pipeline.py",
+        "iqrp/tests/integration/test_ensemble_pipeline.py",
+        "iqrp/tests/integration/test_forecast_intelligence_pipeline.py",
+        "iqrp/tests/integration/test_forecasting_pipeline.py",
+        "iqrp/tests/integration/test_gmm_pipeline.py",
+        "iqrp/tests/integration/test_hmm_pipeline.py",
+        "iqrp/tests/integration/test_kalman_pipeline.py",
+        "iqrp/tests/integration/test_markov_pipeline.py",
+        "iqrp/tests/integration/test_neural_forecasting_pipeline.py",
+        "iqrp/tests/integration/test_particle_pipeline.py",
+        "iqrp/tests/integration/test_regimes_pipeline.py",
+        "iqrp/tests/integration/test_state_space_pipeline.py",
+        "iqrp/tests/integration/test_statistical_forecasting_pipeline.py",
+        "iqrp/tests/integration/test_transformer_forecasting_pipeline.py",
+        "iqrp/tests/integration/test_tree_forecasting_pipeline.py",
+        "iqrp/tests/integration/test_volatility_forecasting_pipeline.py",
+        "iqrp/tests/unit/alpha/test_coverage_gaps.py",
+        "iqrp/tests/unit/alpha/test_coverage_gaps2.py",
+        "iqrp/tests/unit/alpha/test_discovery_leakage.py",
+        "iqrp/tests/unit/alpha/test_engine_api.py"
+      ],
+      "docs": [],
+      "executable_smoke": null,
+      "integrated_into_alpha_research": false,
+      "integrated_into_backtest_runner": false,
+      "notes": "Forecast object + probabilistic modules exist in forecasting package",
+      "evidence": {
+        "n_sources": 3,
+        "n_tests": 88,
+        "n_docs": 0
+      }
+    }
+  }
+}

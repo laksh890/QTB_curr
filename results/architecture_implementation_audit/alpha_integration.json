@@ -1,0 +1,105 @@
+{
+  "FeatureRegistry": {
+    "status": "IMPLEMENTED",
+    "source": [
+      "iqrp/app/backtesting/alpha_research/features.py"
+    ],
+    "tests": [
+      "iqrp/tests/integration/backtesting/test_alpha_research.py",
+      "iqrp/tests/unit/backtesting/test_alpha_campaign.py",
+      "iqrp/tests/unit/backtesting/test_alpha_research.py",
+      "iqrp/tests/unit/features/test_core.py",
+      "iqrp/tests/unit/features/test_coverage.py"
+    ],
+    "docs": [],
+    "executable_smoke": null,
+    "integrated_into_alpha_research": true,
+    "integrated_into_backtest_runner": false,
+    "notes": "Reference OHLCV features; causal",
+    "evidence": {
+      "n_sources": 1,
+      "n_tests": 5,
+      "n_docs": 0
+    }
+  },
+  "SignalRegistry": {
+    "status": "IMPLEMENTED",
+    "source": [
+      "iqrp/app/backtesting/alpha_research/signals.py",
+      "iqrp/app/backtesting/alpha_research/reference_signals.py"
+    ],
+    "tests": [
+      "iqrp/tests/integration/backtesting/test_alpha_research.py",
+      "iqrp/tests/unit/alpha/test_coverage_final.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps2.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps3.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps4.py",
+      "iqrp/tests/unit/alpha/test_discovery_leakage.py",
+      "iqrp/tests/unit/alpha/test_engine_api.py",
+      "iqrp/tests/unit/backtesting/test_alpha_campaign.py",
+      "iqrp/tests/unit/backtesting/test_alpha_research.py"
+    ],
+    "docs": [],
+    "executable_smoke": null,
+    "integrated_into_alpha_research": true,
+    "integrated_into_backtest_runner": false,
+    "notes": "7 reference signals: momentum/mean-reversion/breakout/vol/volume/trend/price_action",
+    "evidence": {
+      "n_sources": 2,
+      "n_tests": 10,
+      "n_docs": 0
+    }
+  },
+  "Leakage_MTF_Analytics_Campaign": {
+    "status": "IMPLEMENTED",
+    "source": [
+      "iqrp/app/backtesting/alpha_research/__init__.py",
+      "iqrp/app/backtesting/alpha_research/reference_signals.py",
+      "iqrp/app/backtesting/alpha_research/reference_features.py",
+      "iqrp/app/backtesting/alpha_research/signals.py",
+      "iqrp/app/backtesting/alpha_research/campaign.py",
+      "iqrp/app/backtesting/alpha_research/mtf.py",
+      "iqrp/app/backtesting/alpha_research/multiple_testing.py",
+      "iqrp/app/backtesting/alpha_research/experiments.py",
+      "iqrp/app/backtesting/alpha_research/leakage.py",
+      "iqrp/app/backtesting/alpha_research/normalize.py",
+      "iqrp/app/backtesting/alpha_research/analytics.py",
+      "iqrp/app/backtesting/alpha_research/features.py",
+      "iqrp/app/backtesting/alpha_research/ranking.py",
+      "iqrp/app/backtesting/alpha_research/types.py",
+      "iqrp/app/backtesting/alpha_research/audit_prompt35.py",
+      "iqrp/app/backtesting/alpha_research/engine.py"
+    ],
+    "tests": [
+      "iqrp/tests/integration/backtesting/test_alpha_research.py",
+      "iqrp/tests/unit/backtesting/test_alpha_campaign.py",
+      "iqrp/tests/unit/backtesting/test_alpha_research.py"
+    ],
+    "docs": [],
+    "executable_smoke": null,
+    "integrated_into_alpha_research": true,
+    "integrated_into_backtest_runner": true,
+    "notes": "Leakage suite, MTF merge_asof, IC/decay/TOD, OOS/purge, costs, ranking, BTC campaign runner",
+    "evidence": {
+      "n_sources": 16,
+      "n_tests": 3,
+      "n_docs": 0
+    }
+  },
+  "Model_family_adapters_into_alpha": {
+    "status": "NOT_IMPLEMENTED",
+    "source": [],
+    "tests": [],
+    "docs": [],
+    "executable_smoke": null,
+    "integrated_into_alpha_research": false,
+    "integrated_into_backtest_runner": false,
+    "notes": "No imports from forecasting/regimes/portfolio into backtesting.alpha_research",
+    "evidence": {
+      "n_sources": 0,
+      "n_tests": 0,
+      "n_docs": 0
+    }
+  }
+}

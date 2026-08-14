@@ -1,0 +1,11 @@
+{
+  "configured_n_windows": 3,
+  "deep_dive_experiments_with_wf": 25,
+  "total_window_records": 75,
+  "successful_oos_windows": 75,
+  "failed_oos_windows": 0,
+  "windows_silently_dropped": false,
+  "synthetic_slice_count": 3,
+  "chronological": true,
+  "disclaimer": "Research evidence is not a profitability guarantee."
+}

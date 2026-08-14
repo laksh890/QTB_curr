@@ -1,0 +1,97 @@
+{
+  "seed": 0,
+  "software_version": "iqrp-alpha-research-0.1.0",
+  "campaign_experiment_count": 1260,
+  "campaign_base_count": 420,
+  "campaign_final_candidates": 0,
+  "status_distribution_base": {
+    "OOS_FAILED": 322,
+    "COST_INEFFICIENT": 94,
+    "UNSTABLE": 4
+  },
+  "subset_recomputes": [
+    {
+      "signal_id": "mean_reversion_signal",
+      "lookback": 10,
+      "holding_bars": 1,
+      "stored_net_sharpe": -2.2424516116094115,
+      "recomputed_net_sharpe": -2.2424516116094115,
+      "stored_status": "COST_INEFFICIENT",
+      "recomputed_status": "COST_INEFFICIENT",
+      "stored_oos": -3.1098571102376065,
+      "recomputed_oos": -3.1098571102376065,
+      "net_sharpe_abs_diff": 0.0,
+      "status_match": true
+    },
+    {
+      "signal_id": "mean_reversion_signal",
+      "lookback": 20,
+      "holding_bars": 3,
+      "stored_net_sharpe": -1.5042275054840857,
+      "recomputed_net_sharpe": -1.5042275054840857,
+      "stored_status": "OOS_FAILED",
+      "recomputed_status": "OOS_FAILED",
+      "stored_oos": -1.8318384707611195,
+      "recomputed_oos": -1.8318384707611195,
+      "net_sharpe_abs_diff": 0.0,
+      "status_match": true
+    },
+    {
+      "signal_id": "trend_signal",
+      "lookback": 20,
+      "holding_bars": 1,
+      "stored_net_sharpe": -0.9953980536042278,
+      "recomputed_net_sharpe": -0.9953980536042278,
+      "stored_status": "COST_INEFFICIENT",
+      "recomputed_status": "COST_INEFFICIENT",
+      "stored_oos": -1.7392660314176311,
+      "recomputed_oos": -1.7392660314176311,
+      "net_sharpe_abs_diff": 0.0,
+      "status_match": true
+    },
+    {
+      "signal_id": "momentum_signal",
+      "lookback": 20,
+      "holding_bars": 1,
+      "stored_net_sharpe": -0.5406567396059481,
+      "recomputed_net_sharpe": -0.5406567396059481,
+      "stored_status": "COST_INEFFICIENT",
+      "recomputed_status": "COST_INEFFICIENT",
+      "stored_oos": -1.2789045089710758,
+      "recomputed_oos": -1.2789045089710758,
+      "net_sharpe_abs_diff": 0.0,
+      "status_match": true
+    },
+    {
+      "signal_id": "momentum_signal",
+      "lookback": 10,
+      "holding_bars": 5,
+      "stored_net_sharpe": -0.2691311895593059,
+      "recomputed_net_sharpe": -0.2691311895593059,
+      "stored_status": "COST_INEFFICIENT",
+      "recomputed_status": "COST_INEFFICIENT",
+      "stored_oos": -0.9531658442161116,
+      "recomputed_oos": -0.9531658442161116,
+      "net_sharpe_abs_diff": 0.0,
+      "status_match": true
+    },
+    {
+      "signal_id": "trend_signal",
+      "lookback": 20,
+      "holding_bars": 10,
+      "stored_net_sharpe": 0.5512589352511671,
+      "recomputed_net_sharpe": 0.5512589352511671,
+      "stored_status": "UNSTABLE",
+      "recomputed_status": "UNSTABLE",
+      "stored_oos": 0.019479990863862328,
+      "recomputed_oos": 0.019479990863862328,
+      "net_sharpe_abs_diff": 0.0,
+      "status_match": true
+    }
+  ],
+  "max_abs_sharpe_diff": 0.0,
+  "all_status_match": true,
+  "original_artifacts_preserved": true,
+  "audit_output_dir": "results/alpha_research_btc_full_audit",
+  "disclaimer": "Research evidence is not a profitability guarantee."
+}

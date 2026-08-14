@@ -1,0 +1,24 @@
+{
+  "disclaimer": "FINAL SYSTEM ARCHITECTURE AUDIT \u2014 evidence only. PIPELINE WORKS \u2260 STRATEGY WORKS \u2260 PROFITABLE \u2260 PRODUCTION/LIVE READY. STATISTICAL VALIDITY remains LIMITED per Prompt 36.",
+  "status": "PASS",
+  "dataset_id": "btcusdt_intraday_1h@1.0.0",
+  "n_bars": 400,
+  "path": "BTC\u2192GARCH\u2192adapter\u2192alpha\u2192candidate\u2192risk\u2192portfolio\u2192execution\u2192accounting\u2192recon",
+  "outcomes": [
+    "FILL_COMPLETE",
+    "RISK_REJECTED",
+    "ORDER_REJECTED"
+  ],
+  "batch1_equity": 999999.9973283748,
+  "batch2_equity": 1000049.9973283178,
+  "positions": {
+    "BTCUSDT": 0.53432504
+  },
+  "lineage_ok": true,
+  "reconciliation_ok": true,
+  "risk_rejection_exercised": true,
+  "fills_present": true,
+  "long_short_exercised": true,
+  "profitability_claimed": false,
+  "leakage_note": "adapter OOS train-fit + future-column rejection; alpha leakage suite available"
+}

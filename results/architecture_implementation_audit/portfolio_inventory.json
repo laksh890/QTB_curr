@@ -1,0 +1,297 @@
+{
+  "Mean_Variance": {
+    "status": "IMPLEMENTED",
+    "source": [
+      "iqrp/app/portfolio/optimization/mean_variance.py"
+    ],
+    "tests": [
+      "iqrp/tests/integration/backtesting/test_alpha_research.py",
+      "iqrp/tests/integration/backtesting/test_e2e_operational.py",
+      "iqrp/tests/integration/test_bayesian_pipeline.py",
+      "iqrp/tests/integration/test_feature_research.py",
+      "iqrp/tests/integration/test_features_pipeline.py",
+      "iqrp/tests/integration/test_forecast_intelligence_pipeline.py",
+      "iqrp/tests/integration/test_forecasting_pipeline.py",
+      "iqrp/tests/integration/test_hmm_pipeline.py",
+      "iqrp/tests/integration/test_kalman_pipeline.py",
+      "iqrp/tests/integration/test_particle_pipeline.py",
+      "iqrp/tests/integration/test_timeseries_pipeline.py",
+      "iqrp/tests/integration/test_volatility_forecasting_pipeline.py",
+      "iqrp/tests/unit/alpha/test_backtest_economics.py",
+      "iqrp/tests/unit/alpha/test_coverage_final.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps2.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps3.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps4.py",
+      "iqrp/tests/unit/alpha/test_cross_ensemble_monitor.py",
+      "iqrp/tests/unit/alpha/test_discovery_leakage.py"
+    ],
+    "docs": [
+      "iqrp/docs/BlackLitterman.md",
+      "iqrp/docs/MeanVariance.md",
+      "iqrp/docs/MultiPeriodOptimization.md",
+      "iqrp/docs/Phase10_PortfolioConstruction.md",
+      "iqrp/docs/PortfolioConstruction.md",
+      "iqrp/docs/RobustOptimization.md"
+    ],
+    "executable_smoke": null,
+    "integrated_into_alpha_research": false,
+    "integrated_into_backtest_runner": false,
+    "notes": "Portfolio optimization module present; not integrated with alpha_research candidate pipeline (Prompt 35 stopped before portfolio)",
+    "evidence": {
+      "n_sources": 1,
+      "n_tests": 115,
+      "n_docs": 6
+    }
+  },
+  "Black_Litterman": {
+    "status": "IMPLEMENTED",
+    "source": [
+      "iqrp/app/portfolio/optimization/black_litterman.py"
+    ],
+    "tests": [
+      "iqrp/tests/integration/backtesting/test_e2e_operational.py",
+      "iqrp/tests/integration/test_volatility_forecasting_pipeline.py",
+      "iqrp/tests/unit/alpha/test_backtest_economics.py",
+      "iqrp/tests/unit/alpha/test_coverage_final.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps2.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps3.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps4.py",
+      "iqrp/tests/unit/backtesting/operational/test_accounting.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps2.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps3.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps4.py",
+      "iqrp/tests/unit/backtesting/operational/test_nested_config.py",
+      "iqrp/tests/unit/backtesting/operational/test_runner_internals.py",
+      "iqrp/tests/unit/backtesting/test_coverage_gaps.py",
+      "iqrp/tests/unit/backtesting/test_event_engine.py",
+      "iqrp/tests/unit/particle/test_particle_core.py",
+      "iqrp/tests/unit/particle/test_particle_coverage.py",
+      "iqrp/tests/unit/portfolio/test_constraints_costs.py",
+      "iqrp/tests/unit/portfolio/test_coverage_final.py"
+    ],
+    "docs": [
+      "iqrp/docs/BlackLitterman.md",
+      "iqrp/docs/MeanVariance.md",
+      "iqrp/docs/Phase10_PortfolioConstruction.md",
+      "iqrp/docs/PortfolioConstruction.md"
+    ],
+    "executable_smoke": null,
+    "integrated_into_alpha_research": false,
+    "integrated_into_backtest_runner": false,
+    "notes": "Portfolio optimization module present; not integrated with alpha_research candidate pipeline (Prompt 35 stopped before portfolio)",
+    "evidence": {
+      "n_sources": 1,
+      "n_tests": 36,
+      "n_docs": 4
+    }
+  },
+  "Risk_Parity": {
+    "status": "IMPLEMENTED",
+    "source": [
+      "iqrp/app/portfolio/optimization/risk_parity.py"
+    ],
+    "tests": [
+      "iqrp/tests/integration/backtesting/test_acceptance_user_shaped_data.py",
+      "iqrp/tests/integration/backtesting/test_e2e_operational.py",
+      "iqrp/tests/integration/test_volatility_forecasting_pipeline.py",
+      "iqrp/tests/unit/alpha/test_backtest_economics.py",
+      "iqrp/tests/unit/alpha/test_coverage_final.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps2.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps3.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps4.py",
+      "iqrp/tests/unit/alpha/test_cross_ensemble_monitor.py",
+      "iqrp/tests/unit/alpha/test_engine_api.py",
+      "iqrp/tests/unit/backtesting/operational/test_accounting.py",
+      "iqrp/tests/unit/backtesting/operational/test_correctness_audit.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps2.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps3.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps4.py",
+      "iqrp/tests/unit/backtesting/operational/test_nested_config.py",
+      "iqrp/tests/unit/backtesting/operational/test_runner_internals.py",
+      "iqrp/tests/unit/backtesting/operational/test_runner_lifecycle.py"
+    ],
+    "docs": [
+      "iqrp/docs/Phase10_PortfolioConstruction.md",
+      "iqrp/docs/PortfolioConstruction.md",
+      "iqrp/docs/RiskParity.md"
+    ],
+    "executable_smoke": null,
+    "integrated_into_alpha_research": false,
+    "integrated_into_backtest_runner": false,
+    "notes": "Portfolio optimization module present; not integrated with alpha_research candidate pipeline (Prompt 35 stopped before portfolio)",
+    "evidence": {
+      "n_sources": 1,
+      "n_tests": 54,
+      "n_docs": 3
+    }
+  },
+  "HRP_hierarchical": {
+    "status": "IMPLEMENTED",
+    "source": [
+      "iqrp/app/portfolio/optimization/hierarchical.py"
+    ],
+    "tests": [
+      "iqrp/tests/integration/backtesting/test_e2e_operational.py",
+      "iqrp/tests/integration/test_volatility_forecasting_pipeline.py",
+      "iqrp/tests/unit/alpha/test_backtest_economics.py",
+      "iqrp/tests/unit/alpha/test_coverage_final.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps2.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps3.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps4.py",
+      "iqrp/tests/unit/backtesting/operational/test_accounting.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps2.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps3.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps4.py",
+      "iqrp/tests/unit/backtesting/operational/test_nested_config.py",
+      "iqrp/tests/unit/backtesting/operational/test_runner_internals.py",
+      "iqrp/tests/unit/backtesting/test_coverage_gaps.py",
+      "iqrp/tests/unit/backtesting/test_event_engine.py",
+      "iqrp/tests/unit/portfolio/test_constraints_costs.py",
+      "iqrp/tests/unit/portfolio/test_coverage_final.py",
+      "iqrp/tests/unit/portfolio/test_coverage_gaps.py",
+      "iqrp/tests/unit/portfolio/test_coverage_gaps2.py"
+    ],
+    "docs": [],
+    "executable_smoke": null,
+    "integrated_into_alpha_research": false,
+    "integrated_into_backtest_runner": false,
+    "notes": "Portfolio optimization module present; not integrated with alpha_research candidate pipeline (Prompt 35 stopped before portfolio)",
+    "evidence": {
+      "n_sources": 1,
+      "n_tests": 34,
+      "n_docs": 0
+    }
+  },
+  "CVaR_opt": {
+    "status": "IMPLEMENTED",
+    "source": [
+      "iqrp/app/portfolio/optimization/cvar.py"
+    ],
+    "tests": [
+      "iqrp/tests/integration/backtesting/test_e2e_operational.py",
+      "iqrp/tests/integration/test_volatility_forecasting_pipeline.py",
+      "iqrp/tests/unit/alpha/test_backtest_economics.py",
+      "iqrp/tests/unit/alpha/test_coverage_final.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps2.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps3.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps4.py",
+      "iqrp/tests/unit/backtesting/operational/test_accounting.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps2.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps3.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps4.py",
+      "iqrp/tests/unit/backtesting/operational/test_nested_config.py",
+      "iqrp/tests/unit/backtesting/operational/test_runner_internals.py",
+      "iqrp/tests/unit/backtesting/test_coverage_gaps.py",
+      "iqrp/tests/unit/backtesting/test_event_engine.py",
+      "iqrp/tests/unit/backtesting/test_gates_paper_registry.py",
+      "iqrp/tests/unit/backtesting/test_performance.py",
+      "iqrp/tests/unit/portfolio/test_constraints_costs.py",
+      "iqrp/tests/unit/portfolio/test_coverage_final.py"
+    ],
+    "docs": [],
+    "executable_smoke": null,
+    "integrated_into_alpha_research": false,
+    "integrated_into_backtest_runner": false,
+    "notes": "Portfolio optimization module present; not integrated with alpha_research candidate pipeline (Prompt 35 stopped before portfolio)",
+    "evidence": {
+      "n_sources": 1,
+      "n_tests": 38,
+      "n_docs": 0
+    }
+  },
+  "Constraints": {
+    "status": "IMPLEMENTED",
+    "source": [
+      "iqrp/app/portfolio/constraints"
+    ],
+    "tests": [
+      "iqrp/tests/integration/backtesting/test_e2e_operational.py",
+      "iqrp/tests/integration/test_volatility_forecasting_pipeline.py",
+      "iqrp/tests/unit/alpha/test_backtest_economics.py",
+      "iqrp/tests/unit/alpha/test_coverage_final.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps2.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps3.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps4.py",
+      "iqrp/tests/unit/backtesting/operational/test_accounting.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps2.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps3.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps4.py",
+      "iqrp/tests/unit/backtesting/operational/test_nested_config.py",
+      "iqrp/tests/unit/backtesting/operational/test_runner_internals.py",
+      "iqrp/tests/unit/backtesting/test_coverage_gaps.py",
+      "iqrp/tests/unit/backtesting/test_event_engine.py",
+      "iqrp/tests/unit/portfolio/test_constraints_costs.py",
+      "iqrp/tests/unit/portfolio/test_coverage_final.py",
+      "iqrp/tests/unit/portfolio/test_coverage_gaps.py",
+      "iqrp/tests/unit/portfolio/test_coverage_gaps2.py"
+    ],
+    "docs": [
+      "iqrp/docs/BacktestingPlatform.md",
+      "iqrp/docs/CapacityManagement.md",
+      "iqrp/docs/CapitalAllocation.md",
+      "iqrp/docs/ExecutionPlatform.md",
+      "iqrp/docs/MeanVariance.md",
+      "iqrp/docs/MultiPeriodOptimization.md",
+      "iqrp/docs/Phase10_PortfolioConstruction.md",
+      "iqrp/docs/PortfolioConstraints.md",
+      "iqrp/docs/PortfolioConstruction.md",
+      "iqrp/docs/RiskParity.md"
+    ],
+    "executable_smoke": null,
+    "integrated_into_alpha_research": false,
+    "integrated_into_backtest_runner": false,
+    "notes": "Portfolio optimization module present; not integrated with alpha_research candidate pipeline (Prompt 35 stopped before portfolio)",
+    "evidence": {
+      "n_sources": 1,
+      "n_tests": 34,
+      "n_docs": 12
+    }
+  },
+  "Covariance_models": {
+    "status": "IMPLEMENTED",
+    "source": [
+      "iqrp/app/portfolio/covariance"
+    ],
+    "tests": [
+      "iqrp/tests/integration/backtesting/test_e2e_operational.py",
+      "iqrp/tests/integration/test_gmm_pipeline.py",
+      "iqrp/tests/integration/test_kalman_pipeline.py",
+      "iqrp/tests/integration/test_volatility_forecasting_pipeline.py",
+      "iqrp/tests/unit/alpha/test_backtest_economics.py",
+      "iqrp/tests/unit/alpha/test_coverage_final.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps2.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps3.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps4.py",
+      "iqrp/tests/unit/backtesting/operational/test_accounting.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps2.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps3.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps4.py",
+      "iqrp/tests/unit/backtesting/operational/test_nested_config.py",
+      "iqrp/tests/unit/backtesting/operational/test_runner_internals.py",
+      "iqrp/tests/unit/backtesting/test_coverage_gaps.py",
+      "iqrp/tests/unit/backtesting/test_event_engine.py",
+      "iqrp/tests/unit/bayesian/test_bayesian_final_gaps.py",
+      "iqrp/tests/unit/bayesian/test_bayesian_gaps.py"
+    ],
+    "docs": [
+      "iqrp/docs/CovarianceModels.md"
+    ],
+    "executable_smoke": null,
+    "integrated_into_alpha_research": false,
+    "integrated_into_backtest_runner": false,
+    "notes": "Portfolio optimization module present; not integrated with alpha_research candidate pipeline (Prompt 35 stopped before portfolio)",
+    "evidence": {
+      "n_sources": 1,
+      "n_tests": 63,
+      "n_docs": 1
+    }
+  }
+}

@@ -1,0 +1,226 @@
+{
+  "disclaimer": "FINAL SYSTEM ARCHITECTURE AUDIT \u2014 evidence only. PIPELINE WORKS \u2260 STRATEGY WORKS \u2260 PROFITABLE \u2260 PRODUCTION/LIVE READY. STATISTICAL VALIDITY remains LIMITED per Prompt 36.",
+  "registry_path": "dataset_registry.json",
+  "n_registered": 15,
+  "btcusdt": [
+    {
+      "dataset_id": "btcusdt_intraday_15m",
+      "version": "1.0.0",
+      "kind": "DERIVED",
+      "timeframe": "15m",
+      "path": "data/btcusdt/btcusdt_intraday_15m.parquet",
+      "exists": true,
+      "checksum": "74cc6c8ea63345b6e27e4abf2d42a48b99f3e1365d9e935bacd77e9b9997de80",
+      "source": "derived:btcusdt_intraday_1m@1.0.0",
+      "known_limitations": [
+        "Derived bars are aggregations of source bars; not equivalent to a native vendor feed.",
+        "Missing source bars are not fabricated before aggregation."
+      ]
+    },
+    {
+      "dataset_id": "btcusdt_intraday_1h",
+      "version": "1.0.0",
+      "kind": "DERIVED",
+      "timeframe": "1h",
+      "path": "data/btcusdt/btcusdt_intraday_1h.parquet",
+      "exists": true,
+      "checksum": "f3ecf67059770b4d7948dec8618e8f4e28f5bd33b0556437dffb3124432f1a03",
+      "source": "derived:btcusdt_intraday_1m@1.0.0",
+      "known_limitations": [
+        "Derived bars are aggregations of source bars; not equivalent to a native vendor feed.",
+        "Missing source bars are not fabricated before aggregation."
+      ]
+    },
+    {
+      "dataset_id": "btcusdt_intraday_1m",
+      "version": "1.0.0",
+      "kind": "SOURCE",
+      "timeframe": "1m",
+      "path": "data/btcusdt/btcusdt_intraday_1m.parquet",
+      "exists": true,
+      "checksum": "eb6c6488167b598b85e883946ea5fbedb5a9b13850c5599389cf0f18302a09fe",
+      "source": "binance_vision_public_historical",
+      "known_limitations": [
+        "1 month archive(s) unavailable; actual range may be shorter than requested (not fabricated).",
+        "Availability timestamps not provided by this archive; PIT of vendor revisions unknown.",
+        "DEVELOPMENT/RESEARCH data \u2014 not institutional-grade market data.",
+        "License status UNKNOWN unless independently established.",
+        "archive unavailable (404): https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1m/BTCUSDT-1m-2026-08.zip",
+        "data_tier=DEVELOPMENT/RESEARCH"
+      ]
+    },
+    {
+      "dataset_id": "btcusdt_intraday_30m",
+      "version": "1.0.0",
+      "kind": "DERIVED",
+      "timeframe": "30m",
+      "path": "data/btcusdt/btcusdt_intraday_30m.parquet",
+      "exists": true,
+      "checksum": "3c5f41cf8dba5f04966e2a91f481e534b1ccb167be1ca9b5d6218a4ebb4a38fa",
+      "source": "derived:btcusdt_intraday_1m@1.0.0",
+      "known_limitations": [
+        "Derived bars are aggregations of source bars; not equivalent to a native vendor feed.",
+        "Missing source bars are not fabricated before aggregation."
+      ]
+    },
+    {
+      "dataset_id": "btcusdt_intraday_5m",
+      "version": "1.0.0",
+      "kind": "DERIVED",
+      "timeframe": "5m",
+      "path": "data/btcusdt/btcusdt_intraday_5m.parquet",
+      "exists": true,
+      "checksum": "8743b419c92b661ad94309662eab2f5696f5c68b871f094474496cd524e6688f",
+      "source": "derived:btcusdt_intraday_1m@1.0.0",
+      "known_limitations": [
+        "Derived bars are aggregations of source bars; not equivalent to a native vendor feed.",
+        "Missing source bars are not fabricated before aggregation."
+      ]
+    }
+  ],
+  "nifty50": [
+    {
+      "dataset_id": "nifty50_daily",
+      "version": "1.0.0",
+      "kind": "SOURCE",
+      "timeframe": "1d",
+      "path": "data/nifty50/nifty50_daily.parquet",
+      "exists": true,
+      "checksum": "b59510ac07c5a331948fa3f79db82dedd070e27d2a447a51fa50112c7f540fb4",
+      "source": "local",
+      "known_limitations": []
+    },
+    {
+      "dataset_id": "nifty50_intraday_15m",
+      "version": "1.0.0",
+      "kind": "DERIVED",
+      "timeframe": "15m",
+      "path": "data/nifty50/nifty50_intraday_15m.parquet",
+      "exists": true,
+      "checksum": "c7cad1a909a75c4b1b12f74a4fa692a0f5a671e6b1e10b86cca04cea88c8c859",
+      "source": "derived:nifty50_intraday_1m@1.0.0",
+      "known_limitations": [
+        "Derived bars are aggregations of source bars; not equivalent to a native vendor feed.",
+        "Missing source bars are not fabricated before aggregation."
+      ]
+    },
+    {
+      "dataset_id": "nifty50_intraday_15m",
+      "version": "1.0.1",
+      "kind": "DERIVED",
+      "timeframe": "15m",
+      "path": "data/nifty50/nifty50_intraday_15m.parquet",
+      "exists": true,
+      "checksum": "cc7fc0d249feffbb1e2c8fa1f6e7938258755867b46cb988dd36f4536d34b9e7",
+      "source": "derived:nifty50_intraday_1m@1.0.0",
+      "known_limitations": [
+        "Derived bars are aggregations of source bars; not equivalent to a native vendor feed.",
+        "Missing source bars are not fabricated before aggregation."
+      ]
+    },
+    {
+      "dataset_id": "nifty50_intraday_1h",
+      "version": "1.0.0",
+      "kind": "DERIVED",
+      "timeframe": "1h",
+      "path": "data/nifty50/nifty50_intraday_1h.parquet",
+      "exists": true,
+      "checksum": "daa3a9e7172cce75c001e8dc1e285fb320f6577986c6872d8656726098ac38dd",
+      "source": "derived:nifty50_intraday_1m@1.0.0",
+      "known_limitations": [
+        "Derived bars are aggregations of source bars; not equivalent to a native vendor feed.",
+        "Missing source bars are not fabricated before aggregation."
+      ]
+    },
+    {
+      "dataset_id": "nifty50_intraday_1h",
+      "version": "1.0.1",
+      "kind": "DERIVED",
+      "timeframe": "1h",
+      "path": "data/nifty50/nifty50_intraday_1h.parquet",
+      "exists": true,
+      "checksum": "3ee8f827f17e238bc65c9bb2f572f9315da4101ba32d87906df63a1a46654da1",
+      "source": "derived:nifty50_intraday_1m@1.0.0",
+      "known_limitations": [
+        "Derived bars are aggregations of source bars; not equivalent to a native vendor feed.",
+        "Missing source bars are not fabricated before aggregation."
+      ]
+    },
+    {
+      "dataset_id": "nifty50_intraday_1m",
+      "version": "1.0.0",
+      "kind": "SOURCE",
+      "timeframe": "1m",
+      "path": "data/nifty50/nifty50_intraday_1m.parquet",
+      "exists": true,
+      "checksum": "e5d2c86754b774c379c299d5e351b4403529e94327aca9adfcef3d4c1676fb19",
+      "source": "yahoo_finance/yfinance",
+      "known_limitations": [
+        "Availability timestamps not provided by Yahoo; PIT of vendor revisions unknown.",
+        "DEVELOPMENT DATA \u2014 not institutional-grade.",
+        "License status UNKNOWN unless explicitly documented.",
+        "NIFTY index via Yahoo: adjustment semantics are source-defined; dataset marked unadjusted (auto_adjust=False).",
+        "fell back to period=8d for 1m due to empty start/end response"
+      ]
+    },
+    {
+      "dataset_id": "nifty50_intraday_30m",
+      "version": "1.0.0",
+      "kind": "DERIVED",
+      "timeframe": "30m",
+      "path": "data/nifty50/nifty50_intraday_30m.parquet",
+      "exists": true,
+      "checksum": "528c2e065277bd7be3eb7087f2c9f01c70df8263545b639beba560ddd0a9cb19",
+      "source": "derived:nifty50_intraday_1m@1.0.0",
+      "known_limitations": [
+        "Derived bars are aggregations of source bars; not equivalent to a native vendor feed.",
+        "Missing source bars are not fabricated before aggregation."
+      ]
+    },
+    {
+      "dataset_id": "nifty50_intraday_30m",
+      "version": "1.0.1",
+      "kind": "DERIVED",
+      "timeframe": "30m",
+      "path": "data/nifty50/nifty50_intraday_30m.parquet",
+      "exists": true,
+      "checksum": "08138642e985279b1f1dd2f11590f7011ec5a8263d763bdfb620f1ae0463b5ec",
+      "source": "derived:nifty50_intraday_1m@1.0.0",
+      "known_limitations": [
+        "Derived bars are aggregations of source bars; not equivalent to a native vendor feed.",
+        "Missing source bars are not fabricated before aggregation."
+      ]
+    },
+    {
+      "dataset_id": "nifty50_intraday_5m",
+      "version": "1.0.0",
+      "kind": "DERIVED",
+      "timeframe": "5m",
+      "path": "data/nifty50/nifty50_intraday_5m.parquet",
+      "exists": true,
+      "checksum": "1270b4dfad82f27a6d19edb1428c8b415eb27fdec13150f49278e8d4e1bbed75",
+      "source": "derived:nifty50_intraday_1m@1.0.0",
+      "known_limitations": [
+        "Derived bars are aggregations of source bars; not equivalent to a native vendor feed.",
+        "Missing source bars are not fabricated before aggregation."
+      ]
+    },
+    {
+      "dataset_id": "nifty50_intraday_5m",
+      "version": "1.0.1",
+      "kind": "DERIVED",
+      "timeframe": "5m",
+      "path": "data/nifty50/nifty50_intraday_5m.parquet",
+      "exists": true,
+      "checksum": "da8c7485755de36f949ebf8ed77d76b9f76c4228b17aa195566cdb263773c006",
+      "source": "derived:nifty50_intraday_1m@1.0.0",
+      "known_limitations": [
+        "Derived bars are aggregations of source bars; not equivalent to a native vendor feed.",
+        "Missing source bars are not fabricated before aggregation."
+      ]
+    }
+  ],
+  "data_grade": "DEVELOPMENT_RESEARCH",
+  "institutional_grade": false,
+  "note": "Yahoo/Binance Vision research OHLCV \u2014 not institutional order-book/PIT futures claim."
+}

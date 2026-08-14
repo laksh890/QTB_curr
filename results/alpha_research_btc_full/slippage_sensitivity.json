@@ -1,0 +1,1029 @@
+{
+  "results": [
+    {
+      "experiment_id": "3845ba52-6f76-46ad-8225-e5abac69700d",
+      "signal_id": "trend_signal",
+      "timeframe": "1h",
+      "sensitivity": [
+        {
+          "multiplier": 1.0,
+          "cost_model": {
+            "commission_bps": 1.0,
+            "spread_bps": 2.0,
+            "slippage_bps": 2.0
+          },
+          "net_sharpe": 0.5512589352511671,
+          "net_pnl": 2.7625822364247976,
+          "alpha_survives_costs": true
+        },
+        {
+          "multiplier": 2.0,
+          "cost_model": {
+            "commission_bps": 2.0,
+            "spread_bps": 4.0,
+            "slippage_bps": 4.0
+          },
+          "net_sharpe": 0.10181758045427859,
+          "net_pnl": -0.5600570148705333,
+          "alpha_survives_costs": false
+        },
+        {
+          "multiplier": 3.0,
+          "cost_model": {
+            "commission_bps": 3.0,
+            "spread_bps": 6.0,
+            "slippage_bps": 6.0
+          },
+          "net_sharpe": -0.3447403205383387,
+          "net_pnl": -0.9486700941149695,
+          "alpha_survives_costs": false
+        }
+      ],
+      "edge_disappears_at_multiplier": 2.0
+    },
+    {
+      "experiment_id": "3aa71d03-5ee5-4b56-88a7-56a10f894901",
+      "signal_id": "momentum_signal",
+      "timeframe": "1h",
+      "sensitivity": [
+        {
+          "multiplier": 1.0,
+          "cost_model": {
+            "commission_bps": 1.0,
+            "spread_bps": 2.0,
+            "slippage_bps": 2.0
+          },
+          "net_sharpe": 0.38287311772141297,
+          "net_pnl": 0.686362037609336,
+          "alpha_survives_costs": true
+        },
+        {
+          "multiplier": 2.0,
+          "cost_model": {
+            "commission_bps": 2.0,
+            "spread_bps": 4.0,
+            "slippage_bps": 4.0
+          },
+          "net_sharpe": -0.1583046614611749,
+          "net_pnl": -0.8734660891785833,
+          "alpha_survives_costs": false
+        },
+        {
+          "multiplier": 3.0,
+          "cost_model": {
+            "commission_bps": 3.0,
+            "spread_bps": 6.0,
+            "slippage_bps": 6.0
+          },
+          "net_sharpe": -0.6950717924414744,
+          "net_pnl": -0.9905303667461359,
+          "alpha_survives_costs": false
+        }
+      ],
+      "edge_disappears_at_multiplier": 2.0
+    },
+    {
+      "experiment_id": "409e766a-7333-4382-8260-55521d6c7d21",
+      "signal_id": "momentum_signal",
+      "timeframe": "1h",
+      "sensitivity": [
+        {
+          "multiplier": 1.0,
+          "cost_model": {
+            "commission_bps": 1.0,
+            "spread_bps": 2.0,
+            "slippage_bps": 2.0
+          },
+          "net_sharpe": 0.22780072340017968,
+          "net_pnl": -0.19313208414812333,
+          "alpha_survives_costs": false
+        },
+        {
+          "multiplier": 2.0,
+          "cost_model": {
+            "commission_bps": 2.0,
+            "spread_bps": 4.0,
+            "slippage_bps": 4.0
+          },
+          "net_sharpe": -0.16155762295383636,
+          "net_pnl": -0.8744408286123382,
+          "alpha_survives_costs": false
+        },
+        {
+          "multiplier": 3.0,
+          "cost_model": {
+            "commission_bps": 3.0,
+            "spread_bps": 6.0,
+            "slippage_bps": 6.0
+          },
+          "net_sharpe": -0.5488275145865288,
+          "net_pnl": -0.9804978194118854,
+          "alpha_survives_costs": false
+        }
+      ],
+      "edge_disappears_at_multiplier": 1.0
+    },
+    {
+      "experiment_id": "3fa01c99-3016-49b1-8517-ff56b0703f77",
+      "signal_id": "trend_signal",
+      "timeframe": "1h",
+      "sensitivity": [
+        {
+          "multiplier": 1.0,
+          "cost_model": {
+            "commission_bps": 1.0,
+            "spread_bps": 2.0,
+            "slippage_bps": 2.0
+          },
+          "net_sharpe": 0.13897625157600144,
+          "net_pnl": -0.4736934252458682,
+          "alpha_survives_costs": false
+        },
+        {
+          "multiplier": 2.0,
+          "cost_model": {
+            "commission_bps": 2.0,
+            "spread_bps": 4.0,
+            "slippage_bps": 4.0
+          },
+          "net_sharpe": -0.48109698538835316,
+          "net_pnl": -0.9732672603443001,
+          "alpha_survives_costs": false
+        },
+        {
+          "multiplier": 3.0,
+          "cost_model": {
+            "commission_bps": 3.0,
+            "spread_bps": 6.0,
+            "slippage_bps": 6.0
+          },
+          "net_sharpe": -1.094309784877421,
+          "net_pnl": -0.9986462226879237,
+          "alpha_survives_costs": false
+        }
+      ],
+      "edge_disappears_at_multiplier": 1.0
+    },
+    {
+      "experiment_id": "22560244-7726-47d3-aa90-092c8222e4a0",
+      "signal_id": "price_action_signal",
+      "timeframe": "1h",
+      "sensitivity": [
+        {
+          "multiplier": 1.0,
+          "cost_model": {
+            "commission_bps": 1.0,
+            "spread_bps": 2.0,
+            "slippage_bps": 2.0
+          },
+          "net_sharpe": 0.06247287369823064,
+          "net_pnl": -0.6167803110721104,
+          "alpha_survives_costs": false
+        },
+        {
+          "multiplier": 2.0,
+          "cost_model": {
+            "commission_bps": 2.0,
+            "spread_bps": 4.0,
+            "slippage_bps": 4.0
+          },
+          "net_sharpe": -0.3005084166269987,
+          "net_pnl": -0.929912302525771,
+          "alpha_survives_costs": false
+        },
+        {
+          "multiplier": 3.0,
+          "cost_model": {
+            "commission_bps": 3.0,
+            "spread_bps": 6.0,
+            "slippage_bps": 6.0
+          },
+          "net_sharpe": -0.6622607334548264,
+          "net_pnl": -0.9871961596395654,
+          "alpha_survives_costs": false
+        }
+      ],
+      "edge_disappears_at_multiplier": 1.0
+    },
+    {
+      "experiment_id": "570ed35b-f487-426a-803d-880683d145f0",
+      "signal_id": "volume_signal",
+      "timeframe": "1h",
+      "sensitivity": [
+        {
+          "multiplier": 1.0,
+          "cost_model": {
+            "commission_bps": 1.0,
+            "spread_bps": 2.0,
+            "slippage_bps": 2.0
+          },
+          "net_sharpe": 0.07477273769170797,
+          "net_pnl": -0.5820670599358735,
+          "alpha_survives_costs": false
+        },
+        {
+          "multiplier": 2.0,
+          "cost_model": {
+            "commission_bps": 2.0,
+            "spread_bps": 4.0,
+            "slippage_bps": 4.0
+          },
+          "net_sharpe": -0.3280623209900046,
+          "net_pnl": -0.9348343328580686,
+          "alpha_survives_costs": false
+        },
+        {
+          "multiplier": 3.0,
+          "cost_model": {
+            "commission_bps": 3.0,
+            "spread_bps": 6.0,
+            "slippage_bps": 6.0
+          },
+          "net_sharpe": -0.7296468637064726,
+          "net_pnl": -0.9898508473051596,
+          "alpha_survives_costs": false
+        }
+      ],
+      "edge_disappears_at_multiplier": 1.0
+    },
+    {
+      "experiment_id": "6a02c521-5bd5-412c-9732-c7f5e65c26c7",
+      "signal_id": "trend_signal",
+      "timeframe": "1h",
+      "sensitivity": [
+        {
+          "multiplier": 1.0,
+          "cost_model": {
+            "commission_bps": 1.0,
+            "spread_bps": 2.0,
+            "slippage_bps": 2.0
+          },
+          "net_sharpe": -0.10426960713475714,
+          "net_pnl": -0.8359997844856324,
+          "alpha_survives_costs": false
+        },
+        {
+          "multiplier": 2.0,
+          "cost_model": {
+            "commission_bps": 2.0,
+            "spread_bps": 4.0,
+            "slippage_bps": 4.0
+          },
+          "net_sharpe": -0.9087688369515853,
+          "net_pnl": -0.9966627217039391,
+          "alpha_survives_costs": false
+        },
+        {
+          "multiplier": 3.0,
+          "cost_model": {
+            "commission_bps": 3.0,
+            "spread_bps": 6.0,
+            "slippage_bps": 6.0
+          },
+          "net_sharpe": -1.6998164569795955,
+          "net_pnl": -0.9999323545003899,
+          "alpha_survives_costs": false
+        }
+      ],
+      "edge_disappears_at_multiplier": 1.0
+    },
+    {
+      "experiment_id": "a3cd34e4-74ea-41ad-bc42-e291ddf8660f",
+      "signal_id": "momentum_signal",
+      "timeframe": "30m",
+      "sensitivity": [
+        {
+          "multiplier": 1.0,
+          "cost_model": {
+            "commission_bps": 1.0,
+            "spread_bps": 2.0,
+            "slippage_bps": 2.0
+          },
+          "net_sharpe": 0.268704496029334,
+          "net_pnl": -0.040516658350704615,
+          "alpha_survives_costs": false
+        },
+        {
+          "multiplier": 2.0,
+          "cost_model": {
+            "commission_bps": 2.0,
+            "spread_bps": 4.0,
+            "slippage_bps": 4.0
+          },
+          "net_sharpe": -0.28395798519029175,
+          "net_pnl": -0.933899096313752,
+          "alpha_survives_costs": false
+        },
+        {
+          "multiplier": 3.0,
+          "cost_model": {
+            "commission_bps": 3.0,
+            "spread_bps": 6.0,
+            "slippage_bps": 6.0
+          },
+          "net_sharpe": -0.8335090987890772,
+          "net_pnl": -0.9954583678920561,
+          "alpha_survives_costs": false
+        }
+      ],
+      "edge_disappears_at_multiplier": 1.0
+    },
+    {
+      "experiment_id": "5258f347-3dbb-49bf-b3c0-c02e5a4720ce",
+      "signal_id": "momentum_signal",
+      "timeframe": "1h",
+      "sensitivity": [
+        {
+          "multiplier": 1.0,
+          "cost_model": {
+            "commission_bps": 1.0,
+            "spread_bps": 2.0,
+            "slippage_bps": 2.0
+          },
+          "net_sharpe": -0.11085721003259187,
+          "net_pnl": -0.8412964472841861,
+          "alpha_survives_costs": false
+        },
+        {
+          "multiplier": 2.0,
+          "cost_model": {
+            "commission_bps": 2.0,
+            "spread_bps": 4.0,
+            "slippage_bps": 4.0
+          },
+          "net_sharpe": -0.9744010953903797,
+          "net_pnl": -0.9975786099640308,
+          "alpha_survives_costs": false
+        },
+        {
+          "multiplier": 3.0,
+          "cost_model": {
+            "commission_bps": 3.0,
+            "spread_bps": 6.0,
+            "slippage_bps": 6.0
+          },
+          "net_sharpe": -1.8227895108312646,
+          "net_pnl": -0.9999632111945855,
+          "alpha_survives_costs": false
+        }
+      ],
+      "edge_disappears_at_multiplier": 1.0
+    },
+    {
+      "experiment_id": "c54cefc0-2fa4-4405-851b-26a9602abebb",
+      "signal_id": "momentum_signal",
+      "timeframe": "1h",
+      "sensitivity": [
+        {
+          "multiplier": 1.0,
+          "cost_model": {
+            "commission_bps": 1.0,
+            "spread_bps": 2.0,
+            "slippage_bps": 2.0
+          },
+          "net_sharpe": 0.1820291209382755,
+          "net_pnl": -0.35167731971539296,
+          "alpha_survives_costs": false
+        },
+        {
+          "multiplier": 2.0,
+          "cost_model": {
+            "commission_bps": 2.0,
+            "spread_bps": 4.0,
+            "slippage_bps": 4.0
+          },
+          "net_sharpe": -0.3886167573711645,
+          "net_pnl": -0.9577434228365079,
+          "alpha_survives_costs": false
+        },
+        {
+          "multiplier": 3.0,
+          "cost_model": {
+            "commission_bps": 3.0,
+            "spread_bps": 6.0,
+            "slippage_bps": 6.0
+          },
+          "net_sharpe": -0.9548846021924119,
+          "net_pnl": -0.9972533277592457,
+          "alpha_survives_costs": false
+        }
+      ],
+      "edge_disappears_at_multiplier": 1.0
+    },
+    {
+      "experiment_id": "3749dc63-667a-4dde-9afb-95f9490ac2e7",
+      "signal_id": "volatility_signal",
+      "timeframe": "1h",
+      "sensitivity": [
+        {
+          "multiplier": 1.0,
+          "cost_model": {
+            "commission_bps": 1.0,
+            "spread_bps": 2.0,
+            "slippage_bps": 2.0
+          },
+          "net_sharpe": 0.058653966439912796,
+          "net_pnl": -0.6406362350463223,
+          "alpha_survives_costs": false
+        },
+        {
+          "multiplier": 2.0,
+          "cost_model": {
+            "commission_bps": 2.0,
+            "spread_bps": 4.0,
+            "slippage_bps": 4.0
+          },
+          "net_sharpe": -0.2098067655405474,
+          "net_pnl": -0.8999444492442052,
+          "alpha_survives_costs": false
+        },
+        {
+          "multiplier": 3.0,
+          "cost_model": {
+            "commission_bps": 3.0,
+            "spread_bps": 6.0,
+            "slippage_bps": 6.0
+          },
+          "net_sharpe": -0.4776323712342024,
+          "net_pnl": -0.9721778061092642,
+          "alpha_survives_costs": false
+        }
+      ],
+      "edge_disappears_at_multiplier": 1.0
+    },
+    {
+      "experiment_id": "f7166d2f-6fef-4573-a21a-3bb5eb7d7114",
+      "signal_id": "momentum_signal",
+      "timeframe": "1h",
+      "sensitivity": [
+        {
+          "multiplier": 1.0,
+          "cost_model": {
+            "commission_bps": 1.0,
+            "spread_bps": 2.0,
+            "slippage_bps": 2.0
+          },
+          "net_sharpe": 0.1288686439360759,
+          "net_pnl": -0.4987358700050304,
+          "alpha_survives_costs": false
+        },
+        {
+          "multiplier": 2.0,
+          "cost_model": {
+            "commission_bps": 2.0,
+            "spread_bps": 4.0,
+            "slippage_bps": 4.0
+          },
+          "net_sharpe": -0.5755418979439976,
+          "net_pnl": -0.9830765873181477,
+          "alpha_survives_costs": false
+        },
+        {
+          "multiplier": 3.0,
+          "cost_model": {
+            "commission_bps": 3.0,
+            "spread_bps": 6.0,
+            "slippage_bps": 6.0
+          },
+          "net_sharpe": -1.2712449058543434,
+          "net_pnl": -0.999430583363212,
+          "alpha_survives_costs": false
+        }
+      ],
+      "edge_disappears_at_multiplier": 1.0
+    },
+    {
+      "experiment_id": "0d5f5a77-8c01-4978-b0c8-eecee9aad5ba",
+      "signal_id": "volume_signal",
+      "timeframe": "1h",
+      "sensitivity": [
+        {
+          "multiplier": 1.0,
+          "cost_model": {
+            "commission_bps": 1.0,
+            "spread_bps": 2.0,
+            "slippage_bps": 2.0
+          },
+          "net_sharpe": -0.3764090444598364,
+          "net_pnl": -0.9368771165902963,
+          "alpha_survives_costs": false
+        },
+        {
+          "multiplier": 2.0,
+          "cost_model": {
+            "commission_bps": 2.0,
+            "spread_bps": 4.0,
+            "slippage_bps": 4.0
+          },
+          "net_sharpe": -1.1486858090510963,
+          "net_pnl": -0.997916661793627,
+          "alpha_survives_costs": false
+        },
+        {
+          "multiplier": 3.0,
+          "cost_model": {
+            "commission_bps": 3.0,
+            "spread_bps": 6.0,
+            "slippage_bps": 6.0
+          },
+          "net_sharpe": -1.9157701406801464,
+          "net_pnl": -0.9999313811963964,
+          "alpha_survives_costs": false
+        }
+      ],
+      "edge_disappears_at_multiplier": 1.0
+    },
+    {
+      "experiment_id": "bc41f826-371e-4c65-9b41-c2be3165da32",
+      "signal_id": "volume_signal",
+      "timeframe": "1h",
+      "sensitivity": [
+        {
+          "multiplier": 1.0,
+          "cost_model": {
+            "commission_bps": 1.0,
+            "spread_bps": 2.0,
+            "slippage_bps": 2.0
+          },
+          "net_sharpe": -0.31456909447191395,
+          "net_pnl": -0.8928500202631252,
+          "alpha_survives_costs": false
+        },
+        {
+          "multiplier": 2.0,
+          "cost_model": {
+            "commission_bps": 2.0,
+            "spread_bps": 4.0,
+            "slippage_bps": 4.0
+          },
+          "net_sharpe": -1.7318434670464753,
+          "net_pnl": -0.9996808883288361,
+          "alpha_survives_costs": false
+        },
+        {
+          "multiplier": 3.0,
+          "cost_model": {
+            "commission_bps": 3.0,
+            "spread_bps": 6.0,
+            "slippage_bps": 6.0
+          },
+          "net_sharpe": -3.1318526605850208,
+          "net_pnl": -0.9999990528231256,
+          "alpha_survives_costs": false
+        }
+      ],
+      "edge_disappears_at_multiplier": 1.0
+    },
+    {
+      "experiment_id": "9f35e263-4479-4aa8-9a9d-c40e55168892",
+      "signal_id": "volume_signal",
+      "timeframe": "1h",
+      "sensitivity": [
+        {
+          "multiplier": 1.0,
+          "cost_model": {
+            "commission_bps": 1.0,
+            "spread_bps": 2.0,
+            "slippage_bps": 2.0
+          },
+          "net_sharpe": -0.2192037110968234,
+          "net_pnl": -0.884347938439741,
+          "alpha_survives_costs": false
+        },
+        {
+          "multiplier": 2.0,
+          "cost_model": {
+            "commission_bps": 2.0,
+            "spread_bps": 4.0,
+            "slippage_bps": 4.0
+          },
+          "net_sharpe": -0.6480012578303831,
+          "net_pnl": -0.983361314742105,
+          "alpha_survives_costs": false
+        },
+        {
+          "multiplier": 3.0,
+          "cost_model": {
+            "commission_bps": 3.0,
+            "spread_bps": 6.0,
+            "slippage_bps": 6.0
+          },
+          "net_sharpe": -1.0755004822041518,
+          "net_pnl": -0.997608918781437,
+          "alpha_survives_costs": false
+        }
+      ],
+      "edge_disappears_at_multiplier": 1.0
+    },
+    {
+      "experiment_id": "e50f1279-e3d8-464f-87ef-6fcc3bb04d80",
+      "signal_id": "price_action_signal",
+      "timeframe": "30m",
+      "sensitivity": [
+        {
+          "multiplier": 1.0,
+          "cost_model": {
+            "commission_bps": 1.0,
+            "spread_bps": 2.0,
+            "slippage_bps": 2.0
+          },
+          "net_sharpe": -0.1079108334221533,
+          "net_pnl": -0.8365825930479279,
+          "alpha_survives_costs": false
+        },
+        {
+          "multiplier": 2.0,
+          "cost_model": {
+            "commission_bps": 2.0,
+            "spread_bps": 4.0,
+            "slippage_bps": 4.0
+          },
+          "net_sharpe": -0.7910477320610353,
+          "net_pnl": -0.993724134073928,
+          "alpha_survives_costs": false
+        },
+        {
+          "multiplier": 3.0,
+          "cost_model": {
+            "commission_bps": 3.0,
+            "spread_bps": 6.0,
+            "slippage_bps": 6.0
+          },
+          "net_sharpe": -1.4704070658132808,
+          "net_pnl": -0.999759520519942,
+          "alpha_survives_costs": false
+        }
+      ],
+      "edge_disappears_at_multiplier": 1.0
+    },
+    {
+      "experiment_id": "77f801f3-5b9a-4187-a174-cd3b132cb89a",
+      "signal_id": "trend_signal",
+      "timeframe": "1h",
+      "sensitivity": [
+        {
+          "multiplier": 1.0,
+          "cost_model": {
+            "commission_bps": 1.0,
+            "spread_bps": 2.0,
+            "slippage_bps": 2.0
+          },
+          "net_sharpe": -0.38316107212512346,
+          "net_pnl": -0.9574201007632088,
+          "alpha_survives_costs": false
+        },
+        {
+          "multiplier": 2.0,
+          "cost_model": {
+            "commission_bps": 2.0,
+            "spread_bps": 4.0,
+            "slippage_bps": 4.0
+          },
+          "net_sharpe": -1.3491900131520589,
+          "net_pnl": -0.999623510528657,
+          "alpha_survives_costs": false
+        },
+        {
+          "multiplier": 3.0,
+          "cost_model": {
+            "commission_bps": 3.0,
+            "spread_bps": 6.0,
+            "slippage_bps": 6.0
+          },
+          "net_sharpe": -2.2920215156760215,
+          "net_pnl": -0.9999966869122161,
+          "alpha_survives_costs": false
+        }
+      ],
+      "edge_disappears_at_multiplier": 1.0
+    },
+    {
+      "experiment_id": "3f4edfb4-9bac-423d-901a-6072b3acf934",
+      "signal_id": "trend_signal",
+      "timeframe": "1h",
+      "sensitivity": [
+        {
+          "multiplier": 1.0,
+          "cost_model": {
+            "commission_bps": 1.0,
+            "spread_bps": 2.0,
+            "slippage_bps": 2.0
+          },
+          "net_sharpe": 0.06552360000673027,
+          "net_pnl": -0.6272585940532642,
+          "alpha_survives_costs": false
+        },
+        {
+          "multiplier": 2.0,
+          "cost_model": {
+            "commission_bps": 2.0,
+            "spread_bps": 4.0,
+            "slippage_bps": 4.0
+          },
+          "net_sharpe": -0.22139044976757144,
+          "net_pnl": -0.9053635889558793,
+          "alpha_survives_costs": false
+        },
+        {
+          "multiplier": 3.0,
+          "cost_model": {
+            "commission_bps": 3.0,
+            "spread_bps": 6.0,
+            "slippage_bps": 6.0
+          },
+          "net_sharpe": -0.5071134657992415,
+          "net_pnl": -0.9760055319379922,
+          "alpha_survives_costs": false
+        }
+      ],
+      "edge_disappears_at_multiplier": 1.0
+    },
+    {
+      "experiment_id": "7d3533f1-abbd-4efb-8a1d-ddf5176f6f39",
+      "signal_id": "momentum_signal",
+      "timeframe": "1h",
+      "sensitivity": [
+        {
+          "multiplier": 1.0,
+          "cost_model": {
+            "commission_bps": 1.0,
+            "spread_bps": 2.0,
+            "slippage_bps": 2.0
+          },
+          "net_sharpe": -0.14069637182664033,
+          "net_pnl": -0.8601749512183718,
+          "alpha_survives_costs": false
+        },
+        {
+          "multiplier": 2.0,
+          "cost_model": {
+            "commission_bps": 2.0,
+            "spread_bps": 4.0,
+            "slippage_bps": 4.0
+          },
+          "net_sharpe": -0.4300002021305361,
+          "net_pnl": -0.9648973123086098,
+          "alpha_survives_costs": false
+        },
+        {
+          "multiplier": 3.0,
+          "cost_model": {
+            "commission_bps": 3.0,
+            "spread_bps": 6.0,
+            "slippage_bps": 6.0
+          },
+          "net_sharpe": -0.7181611880308716,
+          "net_pnl": -0.991199782270685,
+          "alpha_survives_costs": false
+        }
+      ],
+      "edge_disappears_at_multiplier": 1.0
+    },
+    {
+      "experiment_id": "43699581-3e61-47b8-ab06-5904fdd9c5a6",
+      "signal_id": "price_action_signal",
+      "timeframe": "1h",
+      "sensitivity": [
+        {
+          "multiplier": 1.0,
+          "cost_model": {
+            "commission_bps": 1.0,
+            "spread_bps": 2.0,
+            "slippage_bps": 2.0
+          },
+          "net_sharpe": -0.20407219862985643,
+          "net_pnl": -0.8892142363101716,
+          "alpha_survives_costs": false
+        },
+        {
+          "multiplier": 2.0,
+          "cost_model": {
+            "commission_bps": 2.0,
+            "spread_bps": 4.0,
+            "slippage_bps": 4.0
+          },
+          "net_sharpe": -0.5682746735808808,
+          "net_pnl": -0.9798455929803932,
+          "alpha_survives_costs": false
+        },
+        {
+          "multiplier": 3.0,
+          "cost_model": {
+            "commission_bps": 3.0,
+            "spread_bps": 6.0,
+            "slippage_bps": 6.0
+          },
+          "net_sharpe": -0.9313322542772622,
+          "net_pnl": -0.9963376628630062,
+          "alpha_survives_costs": false
+        }
+      ],
+      "edge_disappears_at_multiplier": 1.0
+    },
+    {
+      "experiment_id": "5b734dc6-519f-449a-8363-ddfa6198cf98",
+      "signal_id": "momentum_signal",
+      "timeframe": "1h",
+      "sensitivity": [
+        {
+          "multiplier": 1.0,
+          "cost_model": {
+            "commission_bps": 1.0,
+            "spread_bps": 2.0,
+            "slippage_bps": 2.0
+          },
+          "net_sharpe": 0.09731412155757686,
+          "net_pnl": -0.5665533561360429,
+          "alpha_survives_costs": false
+        },
+        {
+          "multiplier": 2.0,
+          "cost_model": {
+            "commission_bps": 2.0,
+            "spread_bps": 4.0,
+            "slippage_bps": 4.0
+          },
+          "net_sharpe": -0.18340110791382325,
+          "net_pnl": -0.8865686657341437,
+          "alpha_survives_costs": false
+        },
+        {
+          "multiplier": 3.0,
+          "cost_model": {
+            "commission_bps": 3.0,
+            "spread_bps": 6.0,
+            "slippage_bps": 6.0
+          },
+          "net_sharpe": -0.46303065491263307,
+          "net_pnl": -0.9703553754842248,
+          "alpha_survives_costs": false
+        }
+      ],
+      "edge_disappears_at_multiplier": 1.0
+    },
+    {
+      "experiment_id": "27415442-5e8e-4191-84da-84e715a9c01f",
+      "signal_id": "momentum_signal",
+      "timeframe": "1h",
+      "sensitivity": [
+        {
+          "multiplier": 1.0,
+          "cost_model": {
+            "commission_bps": 1.0,
+            "spread_bps": 2.0,
+            "slippage_bps": 2.0
+          },
+          "net_sharpe": -0.5406567396059481,
+          "net_pnl": -0.9802376777606754,
+          "alpha_survives_costs": false
+        },
+        {
+          "multiplier": 2.0,
+          "cost_model": {
+            "commission_bps": 2.0,
+            "spread_bps": 4.0,
+            "slippage_bps": 4.0
+          },
+          "net_sharpe": -1.7540313963872805,
+          "net_pnl": -0.9999497355613757,
+          "alpha_survives_costs": false
+        },
+        {
+          "multiplier": 3.0,
+          "cost_model": {
+            "commission_bps": 3.0,
+            "spread_bps": 6.0,
+            "slippage_bps": 6.0
+          },
+          "net_sharpe": -2.9317929995727017,
+          "net_pnl": -0.9999998729218671,
+          "alpha_survives_costs": false
+        }
+      ],
+      "edge_disappears_at_multiplier": 1.0
+    },
+    {
+      "experiment_id": "e19f3a7f-5a82-413a-9678-f44173ffbcc2",
+      "signal_id": "price_action_signal",
+      "timeframe": "1h",
+      "sensitivity": [
+        {
+          "multiplier": 1.0,
+          "cost_model": {
+            "commission_bps": 1.0,
+            "spread_bps": 2.0,
+            "slippage_bps": 2.0
+          },
+          "net_sharpe": -0.2658433653289816,
+          "net_pnl": -0.9133837497171458,
+          "alpha_survives_costs": false
+        },
+        {
+          "multiplier": 2.0,
+          "cost_model": {
+            "commission_bps": 2.0,
+            "spread_bps": 4.0,
+            "slippage_bps": 4.0
+          },
+          "net_sharpe": -0.9171739799848053,
+          "net_pnl": -0.9957681334203337,
+          "alpha_survives_costs": false
+        },
+        {
+          "multiplier": 3.0,
+          "cost_model": {
+            "commission_bps": 3.0,
+            "spread_bps": 6.0,
+            "slippage_bps": 6.0
+          },
+          "net_sharpe": -1.5640861155157957,
+          "net_pnl": -0.999793674424213,
+          "alpha_survives_costs": false
+        }
+      ],
+      "edge_disappears_at_multiplier": 1.0
+    },
+    {
+      "experiment_id": "144963be-6396-4ac7-8410-6e5d174e9686",
+      "signal_id": "volume_signal",
+      "timeframe": "1h",
+      "sensitivity": [
+        {
+          "multiplier": 1.0,
+          "cost_model": {
+            "commission_bps": 1.0,
+            "spread_bps": 2.0,
+            "slippage_bps": 2.0
+          },
+          "net_sharpe": -0.3771487827098633,
+          "net_pnl": -0.9276677368669826,
+          "alpha_survives_costs": false
+        },
+        {
+          "multiplier": 2.0,
+          "cost_model": {
+            "commission_bps": 2.0,
+            "spread_bps": 4.0,
+            "slippage_bps": 4.0
+          },
+          "net_sharpe": -1.444977414748234,
+          "net_pnl": -0.9992364003116311,
+          "alpha_survives_costs": false
+        },
+        {
+          "multiplier": 3.0,
+          "cost_model": {
+            "commission_bps": 3.0,
+            "spread_bps": 6.0,
+            "slippage_bps": 6.0
+          },
+          "net_sharpe": -2.5029146025993603,
+          "net_pnl": -0.9999919602943125,
+          "alpha_survives_costs": false
+        }
+      ],
+      "edge_disappears_at_multiplier": 1.0
+    },
+    {
+      "experiment_id": "c16922a4-5dd3-4d8e-89ed-ac104a0dbe85",
+      "signal_id": "volume_signal",
+      "timeframe": "30m",
+      "sensitivity": [
+        {
+          "multiplier": 1.0,
+          "cost_model": {
+            "commission_bps": 1.0,
+            "spread_bps": 2.0,
+            "slippage_bps": 2.0
+          },
+          "net_sharpe": -0.2077482524707754,
+          "net_pnl": -0.8839320657967247,
+          "alpha_survives_costs": false
+        },
+        {
+          "multiplier": 2.0,
+          "cost_model": {
+            "commission_bps": 2.0,
+            "spread_bps": 4.0,
+            "slippage_bps": 4.0
+          },
+          "net_sharpe": -1.017735899308905,
+          "net_pnl": -0.9971843912420358,
+          "alpha_survives_costs": false
+        },
+        {
+          "multiplier": 3.0,
+          "cost_model": {
+            "commission_bps": 3.0,
+            "spread_bps": 6.0,
+            "slippage_bps": 6.0
+          },
+          "net_sharpe": -1.8232602627699712,
+          "net_pnl": -0.999931849384251,
+          "alpha_survives_costs": false
+        }
+      ],
+      "edge_disappears_at_multiplier": 1.0
+    }
+  ]
+}

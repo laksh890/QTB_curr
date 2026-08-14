@@ -1,0 +1,31 @@
+{
+  "train_frac": 0.5,
+  "validation_frac": 0.25,
+  "oos_frac_implied": 0.25,
+  "example_n": 1000,
+  "slices_before_purge": {
+    "train": [
+      0,
+      500
+    ],
+    "validation": [
+      500,
+      750
+    ],
+    "oos": [
+      750,
+      1000
+    ]
+  },
+  "counts_after_purge": {
+    "train": 495,
+    "validation": 245,
+    "oos": 245
+  },
+  "overlap_train_val": 0,
+  "overlap_train_oos": 0,
+  "overlap_val_oos": 0,
+  "parameter_selection_on_oos": false,
+  "note": "Campaign recorded all experiments; OOS used for classification gates, not for retuning.",
+  "disclaimer": "Research evidence is not a profitability guarantee."
+}

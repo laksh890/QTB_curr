@@ -1,0 +1,161 @@
+{
+  "disclaimer": "FINAL SYSTEM ARCHITECTURE AUDIT \u2014 evidence only. PIPELINE WORKS \u2260 STRATEGY WORKS \u2260 PROFITABLE \u2260 PRODUCTION/LIVE READY. STATISTICAL VALIDITY remains LIMITED per Prompt 36.",
+  "handoffs": [
+    {
+      "from": "Data",
+      "to": "Features/Models",
+      "status": "COMPLETE",
+      "evidence": "registered frames"
+    },
+    {
+      "from": "Models",
+      "to": "Adapters",
+      "status": "COMPLETE",
+      "evidence": "Prompt 37 matrix PASS\u00d76"
+    },
+    {
+      "from": "Adapters",
+      "to": "SignalRegistry",
+      "status": "COMPLETE",
+      "evidence": "opt-in registration"
+    },
+    {
+      "from": "Signals",
+      "to": "Alpha Research",
+      "status": "COMPLETE",
+      "evidence": "evaluate_candidate"
+    },
+    {
+      "from": "Alpha",
+      "to": "Candidate",
+      "status": "COMPLETE",
+      "evidence": "AlphaCandidate"
+    },
+    {
+      "from": "Candidate",
+      "to": "Risk/Sizing",
+      "status": "COMPLETE",
+      "evidence": "unified pipeline"
+    },
+    {
+      "from": "Risk",
+      "to": "Portfolio constraints",
+      "status": "COMPLETE",
+      "evidence": "constraint handoff"
+    },
+    {
+      "from": "Portfolio",
+      "to": "Execution",
+      "status": "COMPLETE",
+      "evidence": "plan_from_targets+SimVenue"
+    },
+    {
+      "from": "Execution",
+      "to": "Accounting/Recon",
+      "status": "COMPLETE",
+      "evidence": "fill ledger + audit"
+    },
+    {
+      "from": "Risk package VaR/Stress/MC",
+      "to": "Unified per-candidate path",
+      "status": "PARTIAL",
+      "evidence": "platforms exist; not all invoked each candidate"
+    },
+    {
+      "from": "Portfolio optimizers",
+      "to": "Unified path",
+      "status": "PARTIAL",
+      "evidence": "constraints only in cascade"
+    },
+    {
+      "from": "Execution",
+      "to": "Live broker",
+      "status": "MISSING",
+      "evidence": "simulation only"
+    }
+  ],
+  "model_rows": [
+    {
+      "model": "GARCH",
+      "model_exists": true,
+      "model_can_execute": true,
+      "forecast_regime_output": true,
+      "adapter": true,
+      "signal_registration": true,
+      "oos": true,
+      "cost_aware_backtest": true,
+      "candidate_handoff": true,
+      "unified_pipeline": true,
+      "pipeline_outcome": "FILL_COMPLETE"
+    },
+    {
+      "model": "ARIMA",
+      "model_exists": true,
+      "model_can_execute": true,
+      "forecast_regime_output": true,
+      "adapter": true,
+      "signal_registration": true,
+      "oos": true,
+      "cost_aware_backtest": true,
+      "candidate_handoff": true,
+      "unified_pipeline": true,
+      "pipeline_outcome": "FILL_COMPLETE"
+    },
+    {
+      "model": "XGBoost",
+      "model_exists": true,
+      "model_can_execute": true,
+      "forecast_regime_output": true,
+      "adapter": true,
+      "signal_registration": true,
+      "oos": true,
+      "cost_aware_backtest": true,
+      "candidate_handoff": true,
+      "unified_pipeline": true,
+      "pipeline_outcome": "FILL_COMPLETE"
+    },
+    {
+      "model": "LSTM",
+      "model_exists": true,
+      "model_can_execute": true,
+      "forecast_regime_output": true,
+      "adapter": true,
+      "signal_registration": true,
+      "oos": true,
+      "cost_aware_backtest": true,
+      "candidate_handoff": true,
+      "unified_pipeline": true,
+      "pipeline_outcome": "FILL_COMPLETE"
+    },
+    {
+      "model": "Transformer_TiDE",
+      "model_exists": true,
+      "model_can_execute": true,
+      "forecast_regime_output": true,
+      "adapter": true,
+      "signal_registration": true,
+      "oos": true,
+      "cost_aware_backtest": true,
+      "candidate_handoff": true,
+      "unified_pipeline": true,
+      "pipeline_outcome": "FILL_COMPLETE"
+    },
+    {
+      "model": "HMM",
+      "model_exists": true,
+      "model_can_execute": true,
+      "forecast_regime_output": true,
+      "adapter": true,
+      "signal_registration": true,
+      "oos": true,
+      "cost_aware_backtest": true,
+      "candidate_handoff": true,
+      "unified_pipeline": true,
+      "pipeline_outcome": "FILL_COMPLETE"
+    }
+  ],
+  "e2e": {
+    "status": "PASS",
+    "path": "BTC\u2192GARCH\u2192adapter\u2192alpha\u2192candidate\u2192risk\u2192portfolio\u2192execution\u2192accounting\u2192recon"
+  }
+}

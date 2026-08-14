@@ -1,0 +1,173 @@
+{
+  "Engle_Granger_cointegration": {
+    "status": "PARTIALLY_IMPLEMENTED",
+    "source": [
+      "iqrp/app/timeseries/dependence/cointegration.py"
+    ],
+    "tests": [
+      "iqrp/tests/integration/test_statistical_forecasting_pipeline.py",
+      "iqrp/tests/integration/test_timeseries_pipeline.py",
+      "iqrp/tests/unit/statistical_forecasting/test_statistical_core.py",
+      "iqrp/tests/unit/statistical_forecasting/test_statistical_gaps.py",
+      "iqrp/tests/unit/statistical_forecasting/test_statistical_gaps3.py",
+      "iqrp/tests/unit/timeseries/test_timeseries_core.py",
+      "iqrp/tests/unit/timeseries/test_timeseries_gaps2.py",
+      "iqrp/tests/unit/timeseries/test_timeseries_gaps3.py",
+      "iqrp/tests/unit/timeseries/test_timeseries_gaps4.py"
+    ],
+    "docs": [
+      "iqrp/docs/DCCGARCH.md",
+      "iqrp/docs/DependenceAnalysis.md",
+      "iqrp/docs/VECM.md"
+    ],
+    "executable_smoke": true,
+    "integrated_into_alpha_research": false,
+    "integrated_into_backtest_runner": false,
+    "notes": "Utility/analysis result; NOT a pairs-trading signal in alpha_research | PARTIAL: utilities/packages exist without pairs/alpha strategy wiring.",
+    "evidence": {
+      "n_sources": 1,
+      "n_tests": 9,
+      "n_docs": 3
+    }
+  },
+  "Johansen": {
+    "status": "PARTIALLY_IMPLEMENTED",
+    "source": [
+      "iqrp/app/timeseries/dependence/cointegration.py"
+    ],
+    "tests": [
+      "iqrp/tests/integration/test_statistical_forecasting_pipeline.py",
+      "iqrp/tests/integration/test_timeseries_pipeline.py",
+      "iqrp/tests/unit/statistical_forecasting/test_statistical_core.py",
+      "iqrp/tests/unit/statistical_forecasting/test_statistical_gaps.py",
+      "iqrp/tests/unit/statistical_forecasting/test_statistical_gaps2.py",
+      "iqrp/tests/unit/statistical_forecasting/test_statistical_gaps3.py",
+      "iqrp/tests/unit/timeseries/test_timeseries_core.py",
+      "iqrp/tests/unit/timeseries/test_timeseries_gaps2.py",
+      "iqrp/tests/unit/timeseries/test_timeseries_gaps3.py",
+      "iqrp/tests/unit/timeseries/test_timeseries_gaps4.py"
+    ],
+    "docs": [
+      "iqrp/docs/DependenceAnalysis.md",
+      "iqrp/docs/VECM.md"
+    ],
+    "executable_smoke": null,
+    "integrated_into_alpha_research": false,
+    "integrated_into_backtest_runner": false,
+    "notes": "johansen_trace exposed; not alpha signal | PARTIAL: utilities/packages exist without pairs/alpha strategy wiring.",
+    "evidence": {
+      "n_sources": 1,
+      "n_tests": 10,
+      "n_docs": 2
+    }
+  },
+  "Granger_causality": {
+    "status": "PARTIALLY_IMPLEMENTED",
+    "source": [
+      "iqrp/app/timeseries/dependence/granger.py"
+    ],
+    "tests": [
+      "iqrp/tests/integration/test_statistical_forecasting_pipeline.py",
+      "iqrp/tests/unit/statistical_forecasting/test_statistical_core.py",
+      "iqrp/tests/unit/statistical_forecasting/test_statistical_gaps.py",
+      "iqrp/tests/unit/statistical_forecasting/test_statistical_gaps3.py",
+      "iqrp/tests/unit/timeseries/test_timeseries_core.py",
+      "iqrp/tests/unit/timeseries/test_timeseries_gaps2.py",
+      "iqrp/tests/unit/timeseries/test_timeseries_gaps3.py",
+      "iqrp/tests/unit/timeseries/test_timeseries_gaps4.py"
+    ],
+    "docs": [
+      "iqrp/docs/DependenceAnalysis.md",
+      "iqrp/docs/VAR.md",
+      "iqrp/docs/VECM.md"
+    ],
+    "executable_smoke": null,
+    "integrated_into_alpha_research": false,
+    "integrated_into_backtest_runner": false,
+    "notes": "Dependence utility | PARTIAL: utilities/packages exist without pairs/alpha strategy wiring.",
+    "evidence": {
+      "n_sources": 1,
+      "n_tests": 8,
+      "n_docs": 3
+    }
+  },
+  "Pairs_trading_strategy": {
+    "status": "NOT_IMPLEMENTED",
+    "source": [],
+    "tests": [
+      "iqrp/tests/unit/alpha/test_coverage_final.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps4.py",
+      "iqrp/tests/unit/alpha/test_cross_ensemble_monitor.py",
+      "iqrp/tests/unit/features/test_coverage.py",
+      "iqrp/tests/unit/kalman/test_kalman_core.py",
+      "iqrp/tests/unit/kalman/test_kalman_coverage.py",
+      "iqrp/tests/unit/risk/test_capital_ensemble_gaps.py",
+      "iqrp/tests/unit/risk/test_risk_ensemble.py"
+    ],
+    "docs": [
+      "iqrp/docs/DependenceAnalysis.md",
+      "iqrp/docs/KalmanFilter.md",
+      "iqrp/docs/ModelRisk.md",
+      "iqrp/docs/MotifDiscovery.md",
+      "iqrp/docs/TransitionMatrix.md"
+    ],
+    "executable_smoke": null,
+    "integrated_into_alpha_research": false,
+    "integrated_into_backtest_runner": false,
+    "notes": "No pairs-trading strategy implementation located; cointegration exists as analysis utility only",
+    "evidence": {
+      "n_sources": 0,
+      "n_tests": 8,
+      "n_docs": 5
+    }
+  },
+  "Cross_sectional_mean_reversion": {
+    "status": "PARTIALLY_IMPLEMENTED",
+    "source": [
+      "iqrp/app/alpha/cross_section"
+    ],
+    "tests": [
+      "iqrp/tests/integration/backtesting/test_acceptance_user_shaped_data.py",
+      "iqrp/tests/integration/backtesting/test_alpha_research.py",
+      "iqrp/tests/integration/test_feature_research.py",
+      "iqrp/tests/integration/test_markov_pipeline.py",
+      "iqrp/tests/integration/test_transformer_forecasting_pipeline.py",
+      "iqrp/tests/unit/alpha/test_backtest_economics.py",
+      "iqrp/tests/unit/alpha/test_coverage_final.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps2.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps3.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps4.py",
+      "iqrp/tests/unit/alpha/test_cross_ensemble_monitor.py",
+      "iqrp/tests/unit/alpha/test_discovery_leakage.py",
+      "iqrp/tests/unit/alpha/test_engine_api.py",
+      "iqrp/tests/unit/alpha/test_phase11.py",
+      "iqrp/tests/unit/alpha/test_research_metrics.py",
+      "iqrp/tests/unit/alpha/test_statistical_validation.py",
+      "iqrp/tests/unit/backtesting/operational/test_strategy_registry.py",
+      "iqrp/tests/unit/backtesting/test_alpha_campaign.py",
+      "iqrp/tests/unit/backtesting/test_alpha_research.py"
+    ],
+    "docs": [
+      "iqrp/docs/AlphaResearch.md",
+      "iqrp/docs/AlphaResearchEngine.md",
+      "iqrp/docs/BacktestValidation.md",
+      "iqrp/docs/BacktestingPlatform.md",
+      "iqrp/docs/CapitalAllocation.md",
+      "iqrp/docs/CatBoost.md",
+      "iqrp/docs/ExecutionPlatform.md",
+      "iqrp/docs/ForecastingFramework.md",
+      "iqrp/docs/HorizonResearch.md",
+      "iqrp/docs/IntradayDataAcquisition.md"
+    ],
+    "executable_smoke": null,
+    "integrated_into_alpha_research": false,
+    "integrated_into_backtest_runner": false,
+    "notes": "Alpha cross-section package exists separately from backtesting.alpha_research reference signals | PARTIAL: utilities/packages exist without pairs/alpha strategy wiring.",
+    "evidence": {
+      "n_sources": 1,
+      "n_tests": 57,
+      "n_docs": 12
+    }
+  }
+}

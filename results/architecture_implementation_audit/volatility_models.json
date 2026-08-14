@@ -1,0 +1,362 @@
+{
+  "historical_volatility": {
+    "status": "IMPLEMENTED",
+    "source": [
+      "iqrp/app/forecasting/volatility/historical",
+      "iqrp/app/backtesting/alpha_research/reference_features.py"
+    ],
+    "tests": [
+      "iqrp/tests/integration/test_features_pipeline.py",
+      "iqrp/tests/integration/test_labels_pipeline.py",
+      "iqrp/tests/integration/test_simulation_pipeline.py",
+      "iqrp/tests/integration/test_tree_forecasting_pipeline.py",
+      "iqrp/tests/integration/test_volatility_forecasting_pipeline.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps3.py",
+      "iqrp/tests/unit/alpha/test_discovery_leakage.py",
+      "iqrp/tests/unit/backtesting/test_coverage_gaps.py",
+      "iqrp/tests/unit/backtesting/test_performance.py",
+      "iqrp/tests/unit/backtesting/test_scenarios.py",
+      "iqrp/tests/unit/ensemble/test_ensemble_gaps.py",
+      "iqrp/tests/unit/execution/test_algorithms.py",
+      "iqrp/tests/unit/execution/test_coverage_final.py",
+      "iqrp/tests/unit/execution/test_coverage_final2.py",
+      "iqrp/tests/unit/execution/test_coverage_micro.py",
+      "iqrp/tests/unit/execution/test_slippage_costs.py",
+      "iqrp/tests/unit/forecast_intelligence/test_intelligence_core.py",
+      "iqrp/tests/unit/forecast_intelligence/test_intelligence_gaps2.py",
+      "iqrp/tests/unit/forecast_intelligence/test_intelligence_gaps3.py",
+      "iqrp/tests/unit/forecast_intelligence/test_intelligence_gaps4.py"
+    ],
+    "docs": [
+      "iqrp/docs/AlphaResearchEngine.md",
+      "iqrp/docs/AutoML.md",
+      "iqrp/docs/CapacityManagement.md",
+      "iqrp/docs/DCCGARCH.md",
+      "iqrp/docs/DynamicEnsembling.md",
+      "iqrp/docs/EnsembleRegimeEngine.md",
+      "iqrp/docs/ExecutionCosts.md",
+      "iqrp/docs/ExtendedKalmanFilter.md",
+      "iqrp/docs/FeatureRegistry.md",
+      "iqrp/docs/FeatureResearchValidation.md"
+    ],
+    "executable_smoke": null,
+    "integrated_into_alpha_research": false,
+    "integrated_into_backtest_runner": false,
+    "notes": "Forecasting historical vol + alpha reference rolling volatility feature (OHLCV)",
+    "evidence": {
+      "n_sources": 2,
+      "n_tests": 47,
+      "n_docs": 12
+    }
+  },
+  "EWMA_volatility": {
+    "status": "IMPLEMENTED",
+    "source": [
+      "iqrp/app/forecasting/volatility/ewma"
+    ],
+    "tests": [
+      "iqrp/tests/integration/test_volatility_forecasting_pipeline.py",
+      "iqrp/tests/unit/labels/test_labels_core.py",
+      "iqrp/tests/unit/portfolio/test_coverage_gaps.py",
+      "iqrp/tests/unit/portfolio/test_engine_api.py",
+      "iqrp/tests/unit/portfolio/test_estimators_construction.py",
+      "iqrp/tests/unit/risk/test_capital_allocation.py",
+      "iqrp/tests/unit/risk/test_coverage_gaps.py",
+      "iqrp/tests/unit/risk/test_market_portfolio.py",
+      "iqrp/tests/unit/volatility_forecasting/test_volatility_core.py",
+      "iqrp/tests/unit/volatility_forecasting/test_volatility_gaps.py",
+      "iqrp/tests/unit/volatility_forecasting/test_volatility_gaps2.py",
+      "iqrp/tests/unit/volatility_forecasting/test_volatility_gaps3.py",
+      "iqrp/tests/unit/volatility_forecasting/test_volatility_multivariate.py",
+      "iqrp/tests/unit/volatility_forecasting/test_volatility_recovery.py"
+    ],
+    "docs": [
+      "iqrp/docs/DCCGARCH.md",
+      "iqrp/docs/LabelEngineering.md",
+      "iqrp/docs/RiskFramework.md",
+      "iqrp/docs/RiskIntegration.md",
+      "iqrp/docs/VaR.md",
+      "iqrp/docs/VolatilityForecasting.md",
+      "iqrp/docs/VolatilityModelSelection.md"
+    ],
+    "executable_smoke": null,
+    "integrated_into_alpha_research": false,
+    "integrated_into_backtest_runner": false,
+    "notes": "Executable in vol forecasting registry; NOT alpha campaign",
+    "evidence": {
+      "n_sources": 1,
+      "n_tests": 14,
+      "n_docs": 7
+    }
+  },
+  "GARCH": {
+    "status": "IMPLEMENTED",
+    "source": [
+      "iqrp/app/forecasting/volatility/garch/garch.py"
+    ],
+    "tests": [
+      "iqrp/tests/integration/test_volatility_forecasting_pipeline.py",
+      "iqrp/tests/unit/risk/test_capital_ensemble_gaps.py",
+      "iqrp/tests/unit/risk/test_risk_ensemble.py",
+      "iqrp/tests/unit/volatility_forecasting/test_volatility_core.py",
+      "iqrp/tests/unit/volatility_forecasting/test_volatility_gaps.py",
+      "iqrp/tests/unit/volatility_forecasting/test_volatility_gaps2.py",
+      "iqrp/tests/unit/volatility_forecasting/test_volatility_gaps3.py",
+      "iqrp/tests/unit/volatility_forecasting/test_volatility_multivariate.py",
+      "iqrp/tests/unit/volatility_forecasting/test_volatility_recovery.py"
+    ],
+    "docs": [
+      "iqrp/docs/DCCGARCH.md",
+      "iqrp/docs/ForecastingFramework.md",
+      "iqrp/docs/GARCHFamily.md",
+      "iqrp/docs/ModelRisk.md",
+      "iqrp/docs/RiskIntegration.md",
+      "iqrp/docs/RiskScoring.md",
+      "iqrp/docs/VolatilityForecasting.md",
+      "iqrp/docs/VolatilityModelSelection.md"
+    ],
+    "executable_smoke": true,
+    "integrated_into_alpha_research": false,
+    "integrated_into_backtest_runner": false,
+    "notes": "fit+forecast smoke OK; NOT wired to alpha_research",
+    "evidence": {
+      "n_sources": 1,
+      "n_tests": 9,
+      "n_docs": 8
+    }
+  },
+  "EGARCH": {
+    "status": "IMPLEMENTED",
+    "source": [
+      "iqrp/app/forecasting/volatility/egarch"
+    ],
+    "tests": [
+      "iqrp/tests/integration/test_volatility_forecasting_pipeline.py",
+      "iqrp/tests/unit/volatility_forecasting/test_volatility_core.py",
+      "iqrp/tests/unit/volatility_forecasting/test_volatility_gaps.py",
+      "iqrp/tests/unit/volatility_forecasting/test_volatility_gaps2.py",
+      "iqrp/tests/unit/volatility_forecasting/test_volatility_gaps3.py",
+      "iqrp/tests/unit/volatility_forecasting/test_volatility_multivariate.py",
+      "iqrp/tests/unit/volatility_forecasting/test_volatility_recovery.py"
+    ],
+    "docs": [
+      "iqrp/docs/GARCHFamily.md",
+      "iqrp/docs/RiskIntegration.md",
+      "iqrp/docs/VolatilityForecasting.md",
+      "iqrp/docs/VolatilityModelSelection.md"
+    ],
+    "executable_smoke": null,
+    "integrated_into_alpha_research": false,
+    "integrated_into_backtest_runner": false,
+    "notes": "In vol registry; NOT alpha campaign",
+    "evidence": {
+      "n_sources": 1,
+      "n_tests": 7,
+      "n_docs": 4
+    }
+  },
+  "GJR_GARCH": {
+    "status": "IMPLEMENTED",
+    "source": [
+      "iqrp/app/forecasting/volatility/gjr"
+    ],
+    "tests": [
+      "iqrp/tests/integration/test_volatility_forecasting_pipeline.py",
+      "iqrp/tests/unit/volatility_forecasting/test_volatility_core.py",
+      "iqrp/tests/unit/volatility_forecasting/test_volatility_gaps.py",
+      "iqrp/tests/unit/volatility_forecasting/test_volatility_gaps2.py",
+      "iqrp/tests/unit/volatility_forecasting/test_volatility_gaps3.py",
+      "iqrp/tests/unit/volatility_forecasting/test_volatility_multivariate.py",
+      "iqrp/tests/unit/volatility_forecasting/test_volatility_recovery.py"
+    ],
+    "docs": [
+      "iqrp/docs/GARCHFamily.md",
+      "iqrp/docs/RiskIntegration.md",
+      "iqrp/docs/VolatilityForecasting.md",
+      "iqrp/docs/VolatilityModelSelection.md"
+    ],
+    "executable_smoke": null,
+    "integrated_into_alpha_research": false,
+    "integrated_into_backtest_runner": false,
+    "notes": "In vol registry; NOT alpha campaign",
+    "evidence": {
+      "n_sources": 1,
+      "n_tests": 7,
+      "n_docs": 4
+    }
+  },
+  "FIGARCH": {
+    "status": "IMPLEMENTED",
+    "source": [
+      "iqrp/app/forecasting/volatility/figarch"
+    ],
+    "tests": [
+      "iqrp/tests/integration/test_volatility_forecasting_pipeline.py",
+      "iqrp/tests/unit/volatility_forecasting/test_volatility_core.py",
+      "iqrp/tests/unit/volatility_forecasting/test_volatility_gaps.py",
+      "iqrp/tests/unit/volatility_forecasting/test_volatility_gaps2.py",
+      "iqrp/tests/unit/volatility_forecasting/test_volatility_gaps3.py",
+      "iqrp/tests/unit/volatility_forecasting/test_volatility_multivariate.py",
+      "iqrp/tests/unit/volatility_forecasting/test_volatility_recovery.py"
+    ],
+    "docs": [
+      "iqrp/docs/GARCHFamily.md",
+      "iqrp/docs/VolatilityForecasting.md"
+    ],
+    "executable_smoke": null,
+    "integrated_into_alpha_research": false,
+    "integrated_into_backtest_runner": false,
+    "notes": "In vol registry",
+    "evidence": {
+      "n_sources": 1,
+      "n_tests": 7,
+      "n_docs": 2
+    }
+  },
+  "APARCH_ARCH": {
+    "status": "IMPLEMENTED",
+    "source": [
+      "iqrp/app/forecasting/volatility/aparch",
+      "iqrp/app/forecasting/volatility/arch"
+    ],
+    "tests": [
+      "iqrp/tests/integration/backtesting/test_alpha_research.py",
+      "iqrp/tests/integration/backtesting/test_horizon_research.py",
+      "iqrp/tests/integration/test_feature_research.py",
+      "iqrp/tests/integration/test_features_pipeline.py",
+      "iqrp/tests/integration/test_labels_pipeline.py",
+      "iqrp/tests/integration/test_neural_forecasting_pipeline.py",
+      "iqrp/tests/integration/test_simulation_pipeline.py",
+      "iqrp/tests/integration/test_transformer_forecasting_pipeline.py",
+      "iqrp/tests/integration/test_tree_forecasting_pipeline.py",
+      "iqrp/tests/integration/test_volatility_forecasting_pipeline.py",
+      "iqrp/tests/unit/alpha/test_coverage_final.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps2.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps3.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps4.py",
+      "iqrp/tests/unit/alpha/test_cross_ensemble_monitor.py",
+      "iqrp/tests/unit/alpha/test_discovery_leakage.py",
+      "iqrp/tests/unit/alpha/test_engine_api.py",
+      "iqrp/tests/unit/alpha/test_phase11.py",
+      "iqrp/tests/unit/alpha/test_research_metrics.py"
+    ],
+    "docs": [
+      "iqrp/docs/AlphaResearch.md",
+      "iqrp/docs/AlphaResearchEngine.md",
+      "iqrp/docs/Architecture.md",
+      "iqrp/docs/AttentionInfrastructure.md",
+      "iqrp/docs/AutoML.md",
+      "iqrp/docs/BacktestConfiguration.md",
+      "iqrp/docs/BacktestExecution.md",
+      "iqrp/docs/BacktestReports.md",
+      "iqrp/docs/BacktestRunner.md",
+      "iqrp/docs/BacktestValidation.md"
+    ],
+    "executable_smoke": null,
+    "integrated_into_alpha_research": false,
+    "integrated_into_backtest_runner": false,
+    "notes": "In vol registry",
+    "evidence": {
+      "n_sources": 2,
+      "n_tests": 92,
+      "n_docs": 12
+    }
+  },
+  "DCC_GARCH_BEKK": {
+    "status": "IMPLEMENTED",
+    "source": [
+      "iqrp/app/forecasting/volatility/multivariate"
+    ],
+    "tests": [
+      "iqrp/tests/integration/test_features_pipeline.py",
+      "iqrp/tests/integration/test_labels_pipeline.py",
+      "iqrp/tests/integration/test_simulation_pipeline.py",
+      "iqrp/tests/integration/test_tree_forecasting_pipeline.py",
+      "iqrp/tests/integration/test_volatility_forecasting_pipeline.py",
+      "iqrp/tests/unit/alpha/test_coverage_gaps3.py",
+      "iqrp/tests/unit/alpha/test_discovery_leakage.py",
+      "iqrp/tests/unit/backtesting/test_coverage_gaps.py",
+      "iqrp/tests/unit/backtesting/test_performance.py",
+      "iqrp/tests/unit/backtesting/test_scenarios.py",
+      "iqrp/tests/unit/ensemble/test_ensemble_gaps.py",
+      "iqrp/tests/unit/execution/test_algorithms.py",
+      "iqrp/tests/unit/execution/test_coverage_final.py",
+      "iqrp/tests/unit/execution/test_coverage_final2.py",
+      "iqrp/tests/unit/execution/test_coverage_micro.py",
+      "iqrp/tests/unit/execution/test_slippage_costs.py",
+      "iqrp/tests/unit/forecast_intelligence/test_intelligence_core.py",
+      "iqrp/tests/unit/forecast_intelligence/test_intelligence_gaps2.py",
+      "iqrp/tests/unit/forecast_intelligence/test_intelligence_gaps3.py",
+      "iqrp/tests/unit/forecast_intelligence/test_intelligence_gaps4.py"
+    ],
+    "docs": [
+      "iqrp/docs/AlphaResearchEngine.md",
+      "iqrp/docs/AutoML.md",
+      "iqrp/docs/CapacityManagement.md",
+      "iqrp/docs/DCCGARCH.md",
+      "iqrp/docs/DynamicEnsembling.md",
+      "iqrp/docs/EnsembleRegimeEngine.md",
+      "iqrp/docs/ExecutionCosts.md",
+      "iqrp/docs/ExtendedKalmanFilter.md",
+      "iqrp/docs/FeatureRegistry.md",
+      "iqrp/docs/FeatureResearchValidation.md"
+    ],
+    "executable_smoke": null,
+    "integrated_into_alpha_research": false,
+    "integrated_into_backtest_runner": false,
+    "notes": "Multivariate vol models present",
+    "evidence": {
+      "n_sources": 1,
+      "n_tests": 47,
+      "n_docs": 12
+    }
+  },
+  "component_GARCH": {
+    "status": "IMPLEMENTED",
+    "source": [
+      "iqrp/app/forecasting/volatility/cgarch"
+    ],
+    "tests": [
+      "iqrp/tests/unit/volatility_forecasting/test_volatility_core.py",
+      "iqrp/tests/unit/volatility_forecasting/test_volatility_gaps.py"
+    ],
+    "docs": [
+      "iqrp/docs/DCCGARCH.md",
+      "iqrp/docs/VolatilityForecasting.md"
+    ],
+    "executable_smoke": null,
+    "integrated_into_alpha_research": false,
+    "integrated_into_backtest_runner": false,
+    "notes": "In vol registry",
+    "evidence": {
+      "n_sources": 1,
+      "n_tests": 2,
+      "n_docs": 2
+    }
+  },
+  "stochastic_volatility": {
+    "status": "DOCUMENTATION_ONLY",
+    "source": [],
+    "tests": [],
+    "docs": [
+      "iqrp/docs/BacktestConfiguration.md",
+      "iqrp/docs/DependenceAnalysis.md",
+      "iqrp/docs/Forecasting.md",
+      "iqrp/docs/MonteCarlo.md",
+      "iqrp/docs/RegimeFramework.md",
+      "iqrp/docs/ScenarioTesting.md",
+      "iqrp/docs/SimulationEngine.md",
+      "iqrp/docs/StochasticModels.md"
+    ],
+    "executable_smoke": null,
+    "integrated_into_alpha_research": false,
+    "integrated_into_backtest_runner": false,
+    "notes": "No dedicated stochastic volatility package found under forecasting/volatility",
+    "evidence": {
+      "n_sources": 0,
+      "n_tests": 0,
+      "n_docs": 8
+    }
+  }
+}

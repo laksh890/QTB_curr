@@ -1,0 +1,3819 @@
+{
+  "n_planned_base_experiments": 420,
+  "timeframes": [
+    "1m",
+    "5m",
+    "15m",
+    "30m",
+    "1h"
+  ],
+  "holdings_bars": [
+    1,
+    2,
+    3,
+    5,
+    10,
+    20
+  ],
+  "lookbacks": [
+    10,
+    20
+  ],
+  "signals": [
+    "breakout_signal",
+    "mean_reversion_signal",
+    "momentum_signal",
+    "price_action_signal",
+    "trend_signal",
+    "volatility_signal",
+    "volume_signal"
+  ],
+  "cost_scenarios": [
+    "BASE",
+    "MODERATE",
+    "ADVERSE"
+  ],
+  "plan": [
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "breakout_signal",
+      "lookback": 10,
+      "holding_bars": 1,
+      "holding_minutes": 1.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "breakout_signal",
+      "lookback": 10,
+      "holding_bars": 2,
+      "holding_minutes": 2.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "breakout_signal",
+      "lookback": 10,
+      "holding_bars": 3,
+      "holding_minutes": 3.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "breakout_signal",
+      "lookback": 10,
+      "holding_bars": 5,
+      "holding_minutes": 5.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "breakout_signal",
+      "lookback": 10,
+      "holding_bars": 10,
+      "holding_minutes": 10.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "breakout_signal",
+      "lookback": 10,
+      "holding_bars": 20,
+      "holding_minutes": 20.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "breakout_signal",
+      "lookback": 20,
+      "holding_bars": 1,
+      "holding_minutes": 1.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "breakout_signal",
+      "lookback": 20,
+      "holding_bars": 2,
+      "holding_minutes": 2.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "breakout_signal",
+      "lookback": 20,
+      "holding_bars": 3,
+      "holding_minutes": 3.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "breakout_signal",
+      "lookback": 20,
+      "holding_bars": 5,
+      "holding_minutes": 5.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "breakout_signal",
+      "lookback": 20,
+      "holding_bars": 10,
+      "holding_minutes": 10.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "breakout_signal",
+      "lookback": 20,
+      "holding_bars": 20,
+      "holding_minutes": 20.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 10,
+      "holding_bars": 1,
+      "holding_minutes": 1.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 10,
+      "holding_bars": 2,
+      "holding_minutes": 2.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 10,
+      "holding_bars": 3,
+      "holding_minutes": 3.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 10,
+      "holding_bars": 5,
+      "holding_minutes": 5.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 10,
+      "holding_bars": 10,
+      "holding_minutes": 10.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 10,
+      "holding_bars": 20,
+      "holding_minutes": 20.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 20,
+      "holding_bars": 1,
+      "holding_minutes": 1.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 20,
+      "holding_bars": 2,
+      "holding_minutes": 2.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 20,
+      "holding_bars": 3,
+      "holding_minutes": 3.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 20,
+      "holding_bars": 5,
+      "holding_minutes": 5.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 20,
+      "holding_bars": 10,
+      "holding_minutes": 10.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 20,
+      "holding_bars": 20,
+      "holding_minutes": 20.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "momentum_signal",
+      "lookback": 10,
+      "holding_bars": 1,
+      "holding_minutes": 1.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "momentum_signal",
+      "lookback": 10,
+      "holding_bars": 2,
+      "holding_minutes": 2.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "momentum_signal",
+      "lookback": 10,
+      "holding_bars": 3,
+      "holding_minutes": 3.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "momentum_signal",
+      "lookback": 10,
+      "holding_bars": 5,
+      "holding_minutes": 5.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "momentum_signal",
+      "lookback": 10,
+      "holding_bars": 10,
+      "holding_minutes": 10.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "momentum_signal",
+      "lookback": 10,
+      "holding_bars": 20,
+      "holding_minutes": 20.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "momentum_signal",
+      "lookback": 20,
+      "holding_bars": 1,
+      "holding_minutes": 1.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "momentum_signal",
+      "lookback": 20,
+      "holding_bars": 2,
+      "holding_minutes": 2.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "momentum_signal",
+      "lookback": 20,
+      "holding_bars": 3,
+      "holding_minutes": 3.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "momentum_signal",
+      "lookback": 20,
+      "holding_bars": 5,
+      "holding_minutes": 5.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "momentum_signal",
+      "lookback": 20,
+      "holding_bars": 10,
+      "holding_minutes": 10.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "momentum_signal",
+      "lookback": 20,
+      "holding_bars": 20,
+      "holding_minutes": 20.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "price_action_signal",
+      "lookback": 10,
+      "holding_bars": 1,
+      "holding_minutes": 1.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "price_action_signal",
+      "lookback": 10,
+      "holding_bars": 2,
+      "holding_minutes": 2.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "price_action_signal",
+      "lookback": 10,
+      "holding_bars": 3,
+      "holding_minutes": 3.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "price_action_signal",
+      "lookback": 10,
+      "holding_bars": 5,
+      "holding_minutes": 5.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "price_action_signal",
+      "lookback": 10,
+      "holding_bars": 10,
+      "holding_minutes": 10.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "price_action_signal",
+      "lookback": 10,
+      "holding_bars": 20,
+      "holding_minutes": 20.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "price_action_signal",
+      "lookback": 20,
+      "holding_bars": 1,
+      "holding_minutes": 1.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "price_action_signal",
+      "lookback": 20,
+      "holding_bars": 2,
+      "holding_minutes": 2.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "price_action_signal",
+      "lookback": 20,
+      "holding_bars": 3,
+      "holding_minutes": 3.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "price_action_signal",
+      "lookback": 20,
+      "holding_bars": 5,
+      "holding_minutes": 5.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "price_action_signal",
+      "lookback": 20,
+      "holding_bars": 10,
+      "holding_minutes": 10.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "price_action_signal",
+      "lookback": 20,
+      "holding_bars": 20,
+      "holding_minutes": 20.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "trend_signal",
+      "lookback": 10,
+      "holding_bars": 1,
+      "holding_minutes": 1.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "trend_signal",
+      "lookback": 10,
+      "holding_bars": 2,
+      "holding_minutes": 2.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "trend_signal",
+      "lookback": 10,
+      "holding_bars": 3,
+      "holding_minutes": 3.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "trend_signal",
+      "lookback": 10,
+      "holding_bars": 5,
+      "holding_minutes": 5.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "trend_signal",
+      "lookback": 10,
+      "holding_bars": 10,
+      "holding_minutes": 10.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "trend_signal",
+      "lookback": 10,
+      "holding_bars": 20,
+      "holding_minutes": 20.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "trend_signal",
+      "lookback": 20,
+      "holding_bars": 1,
+      "holding_minutes": 1.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "trend_signal",
+      "lookback": 20,
+      "holding_bars": 2,
+      "holding_minutes": 2.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "trend_signal",
+      "lookback": 20,
+      "holding_bars": 3,
+      "holding_minutes": 3.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "trend_signal",
+      "lookback": 20,
+      "holding_bars": 5,
+      "holding_minutes": 5.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "trend_signal",
+      "lookback": 20,
+      "holding_bars": 10,
+      "holding_minutes": 10.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "trend_signal",
+      "lookback": 20,
+      "holding_bars": 20,
+      "holding_minutes": 20.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "volatility_signal",
+      "lookback": 10,
+      "holding_bars": 1,
+      "holding_minutes": 1.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "volatility_signal",
+      "lookback": 10,
+      "holding_bars": 2,
+      "holding_minutes": 2.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "volatility_signal",
+      "lookback": 10,
+      "holding_bars": 3,
+      "holding_minutes": 3.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "volatility_signal",
+      "lookback": 10,
+      "holding_bars": 5,
+      "holding_minutes": 5.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "volatility_signal",
+      "lookback": 10,
+      "holding_bars": 10,
+      "holding_minutes": 10.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "volatility_signal",
+      "lookback": 10,
+      "holding_bars": 20,
+      "holding_minutes": 20.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "volatility_signal",
+      "lookback": 20,
+      "holding_bars": 1,
+      "holding_minutes": 1.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "volatility_signal",
+      "lookback": 20,
+      "holding_bars": 2,
+      "holding_minutes": 2.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "volatility_signal",
+      "lookback": 20,
+      "holding_bars": 3,
+      "holding_minutes": 3.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "volatility_signal",
+      "lookback": 20,
+      "holding_bars": 5,
+      "holding_minutes": 5.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "volatility_signal",
+      "lookback": 20,
+      "holding_bars": 10,
+      "holding_minutes": 10.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "volatility_signal",
+      "lookback": 20,
+      "holding_bars": 20,
+      "holding_minutes": 20.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "volume_signal",
+      "lookback": 10,
+      "holding_bars": 1,
+      "holding_minutes": 1.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "volume_signal",
+      "lookback": 10,
+      "holding_bars": 2,
+      "holding_minutes": 2.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "volume_signal",
+      "lookback": 10,
+      "holding_bars": 3,
+      "holding_minutes": 3.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "volume_signal",
+      "lookback": 10,
+      "holding_bars": 5,
+      "holding_minutes": 5.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "volume_signal",
+      "lookback": 10,
+      "holding_bars": 10,
+      "holding_minutes": 10.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "volume_signal",
+      "lookback": 10,
+      "holding_bars": 20,
+      "holding_minutes": 20.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "volume_signal",
+      "lookback": 20,
+      "holding_bars": 1,
+      "holding_minutes": 1.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "volume_signal",
+      "lookback": 20,
+      "holding_bars": 2,
+      "holding_minutes": 2.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "volume_signal",
+      "lookback": 20,
+      "holding_bars": 3,
+      "holding_minutes": 3.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "volume_signal",
+      "lookback": 20,
+      "holding_bars": 5,
+      "holding_minutes": 5.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "volume_signal",
+      "lookback": 20,
+      "holding_bars": 10,
+      "holding_minutes": 10.0
+    },
+    {
+      "timeframe": "1m",
+      "dataset_id": "btcusdt_intraday_1m@1.0.0",
+      "dataset_kind": "SOURCE",
+      "signal_id": "volume_signal",
+      "lookback": 20,
+      "holding_bars": 20,
+      "holding_minutes": 20.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "breakout_signal",
+      "lookback": 10,
+      "holding_bars": 1,
+      "holding_minutes": 5.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "breakout_signal",
+      "lookback": 10,
+      "holding_bars": 2,
+      "holding_minutes": 10.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "breakout_signal",
+      "lookback": 10,
+      "holding_bars": 3,
+      "holding_minutes": 15.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "breakout_signal",
+      "lookback": 10,
+      "holding_bars": 5,
+      "holding_minutes": 25.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "breakout_signal",
+      "lookback": 10,
+      "holding_bars": 10,
+      "holding_minutes": 50.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "breakout_signal",
+      "lookback": 10,
+      "holding_bars": 20,
+      "holding_minutes": 100.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "breakout_signal",
+      "lookback": 20,
+      "holding_bars": 1,
+      "holding_minutes": 5.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "breakout_signal",
+      "lookback": 20,
+      "holding_bars": 2,
+      "holding_minutes": 10.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "breakout_signal",
+      "lookback": 20,
+      "holding_bars": 3,
+      "holding_minutes": 15.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "breakout_signal",
+      "lookback": 20,
+      "holding_bars": 5,
+      "holding_minutes": 25.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "breakout_signal",
+      "lookback": 20,
+      "holding_bars": 10,
+      "holding_minutes": 50.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "breakout_signal",
+      "lookback": 20,
+      "holding_bars": 20,
+      "holding_minutes": 100.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 10,
+      "holding_bars": 1,
+      "holding_minutes": 5.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 10,
+      "holding_bars": 2,
+      "holding_minutes": 10.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 10,
+      "holding_bars": 3,
+      "holding_minutes": 15.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 10,
+      "holding_bars": 5,
+      "holding_minutes": 25.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 10,
+      "holding_bars": 10,
+      "holding_minutes": 50.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 10,
+      "holding_bars": 20,
+      "holding_minutes": 100.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 20,
+      "holding_bars": 1,
+      "holding_minutes": 5.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 20,
+      "holding_bars": 2,
+      "holding_minutes": 10.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 20,
+      "holding_bars": 3,
+      "holding_minutes": 15.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 20,
+      "holding_bars": 5,
+      "holding_minutes": 25.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 20,
+      "holding_bars": 10,
+      "holding_minutes": 50.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 20,
+      "holding_bars": 20,
+      "holding_minutes": 100.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "momentum_signal",
+      "lookback": 10,
+      "holding_bars": 1,
+      "holding_minutes": 5.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "momentum_signal",
+      "lookback": 10,
+      "holding_bars": 2,
+      "holding_minutes": 10.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "momentum_signal",
+      "lookback": 10,
+      "holding_bars": 3,
+      "holding_minutes": 15.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "momentum_signal",
+      "lookback": 10,
+      "holding_bars": 5,
+      "holding_minutes": 25.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "momentum_signal",
+      "lookback": 10,
+      "holding_bars": 10,
+      "holding_minutes": 50.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "momentum_signal",
+      "lookback": 10,
+      "holding_bars": 20,
+      "holding_minutes": 100.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "momentum_signal",
+      "lookback": 20,
+      "holding_bars": 1,
+      "holding_minutes": 5.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "momentum_signal",
+      "lookback": 20,
+      "holding_bars": 2,
+      "holding_minutes": 10.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "momentum_signal",
+      "lookback": 20,
+      "holding_bars": 3,
+      "holding_minutes": 15.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "momentum_signal",
+      "lookback": 20,
+      "holding_bars": 5,
+      "holding_minutes": 25.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "momentum_signal",
+      "lookback": 20,
+      "holding_bars": 10,
+      "holding_minutes": 50.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "momentum_signal",
+      "lookback": 20,
+      "holding_bars": 20,
+      "holding_minutes": 100.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "price_action_signal",
+      "lookback": 10,
+      "holding_bars": 1,
+      "holding_minutes": 5.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "price_action_signal",
+      "lookback": 10,
+      "holding_bars": 2,
+      "holding_minutes": 10.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "price_action_signal",
+      "lookback": 10,
+      "holding_bars": 3,
+      "holding_minutes": 15.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "price_action_signal",
+      "lookback": 10,
+      "holding_bars": 5,
+      "holding_minutes": 25.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "price_action_signal",
+      "lookback": 10,
+      "holding_bars": 10,
+      "holding_minutes": 50.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "price_action_signal",
+      "lookback": 10,
+      "holding_bars": 20,
+      "holding_minutes": 100.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "price_action_signal",
+      "lookback": 20,
+      "holding_bars": 1,
+      "holding_minutes": 5.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "price_action_signal",
+      "lookback": 20,
+      "holding_bars": 2,
+      "holding_minutes": 10.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "price_action_signal",
+      "lookback": 20,
+      "holding_bars": 3,
+      "holding_minutes": 15.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "price_action_signal",
+      "lookback": 20,
+      "holding_bars": 5,
+      "holding_minutes": 25.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "price_action_signal",
+      "lookback": 20,
+      "holding_bars": 10,
+      "holding_minutes": 50.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "price_action_signal",
+      "lookback": 20,
+      "holding_bars": 20,
+      "holding_minutes": 100.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "trend_signal",
+      "lookback": 10,
+      "holding_bars": 1,
+      "holding_minutes": 5.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "trend_signal",
+      "lookback": 10,
+      "holding_bars": 2,
+      "holding_minutes": 10.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "trend_signal",
+      "lookback": 10,
+      "holding_bars": 3,
+      "holding_minutes": 15.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "trend_signal",
+      "lookback": 10,
+      "holding_bars": 5,
+      "holding_minutes": 25.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "trend_signal",
+      "lookback": 10,
+      "holding_bars": 10,
+      "holding_minutes": 50.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "trend_signal",
+      "lookback": 10,
+      "holding_bars": 20,
+      "holding_minutes": 100.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "trend_signal",
+      "lookback": 20,
+      "holding_bars": 1,
+      "holding_minutes": 5.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "trend_signal",
+      "lookback": 20,
+      "holding_bars": 2,
+      "holding_minutes": 10.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "trend_signal",
+      "lookback": 20,
+      "holding_bars": 3,
+      "holding_minutes": 15.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "trend_signal",
+      "lookback": 20,
+      "holding_bars": 5,
+      "holding_minutes": 25.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "trend_signal",
+      "lookback": 20,
+      "holding_bars": 10,
+      "holding_minutes": 50.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "trend_signal",
+      "lookback": 20,
+      "holding_bars": 20,
+      "holding_minutes": 100.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volatility_signal",
+      "lookback": 10,
+      "holding_bars": 1,
+      "holding_minutes": 5.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volatility_signal",
+      "lookback": 10,
+      "holding_bars": 2,
+      "holding_minutes": 10.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volatility_signal",
+      "lookback": 10,
+      "holding_bars": 3,
+      "holding_minutes": 15.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volatility_signal",
+      "lookback": 10,
+      "holding_bars": 5,
+      "holding_minutes": 25.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volatility_signal",
+      "lookback": 10,
+      "holding_bars": 10,
+      "holding_minutes": 50.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volatility_signal",
+      "lookback": 10,
+      "holding_bars": 20,
+      "holding_minutes": 100.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volatility_signal",
+      "lookback": 20,
+      "holding_bars": 1,
+      "holding_minutes": 5.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volatility_signal",
+      "lookback": 20,
+      "holding_bars": 2,
+      "holding_minutes": 10.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volatility_signal",
+      "lookback": 20,
+      "holding_bars": 3,
+      "holding_minutes": 15.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volatility_signal",
+      "lookback": 20,
+      "holding_bars": 5,
+      "holding_minutes": 25.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volatility_signal",
+      "lookback": 20,
+      "holding_bars": 10,
+      "holding_minutes": 50.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volatility_signal",
+      "lookback": 20,
+      "holding_bars": 20,
+      "holding_minutes": 100.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volume_signal",
+      "lookback": 10,
+      "holding_bars": 1,
+      "holding_minutes": 5.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volume_signal",
+      "lookback": 10,
+      "holding_bars": 2,
+      "holding_minutes": 10.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volume_signal",
+      "lookback": 10,
+      "holding_bars": 3,
+      "holding_minutes": 15.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volume_signal",
+      "lookback": 10,
+      "holding_bars": 5,
+      "holding_minutes": 25.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volume_signal",
+      "lookback": 10,
+      "holding_bars": 10,
+      "holding_minutes": 50.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volume_signal",
+      "lookback": 10,
+      "holding_bars": 20,
+      "holding_minutes": 100.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volume_signal",
+      "lookback": 20,
+      "holding_bars": 1,
+      "holding_minutes": 5.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volume_signal",
+      "lookback": 20,
+      "holding_bars": 2,
+      "holding_minutes": 10.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volume_signal",
+      "lookback": 20,
+      "holding_bars": 3,
+      "holding_minutes": 15.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volume_signal",
+      "lookback": 20,
+      "holding_bars": 5,
+      "holding_minutes": 25.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volume_signal",
+      "lookback": 20,
+      "holding_bars": 10,
+      "holding_minutes": 50.0
+    },
+    {
+      "timeframe": "5m",
+      "dataset_id": "btcusdt_intraday_5m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volume_signal",
+      "lookback": 20,
+      "holding_bars": 20,
+      "holding_minutes": 100.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "breakout_signal",
+      "lookback": 10,
+      "holding_bars": 1,
+      "holding_minutes": 15.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "breakout_signal",
+      "lookback": 10,
+      "holding_bars": 2,
+      "holding_minutes": 30.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "breakout_signal",
+      "lookback": 10,
+      "holding_bars": 3,
+      "holding_minutes": 45.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "breakout_signal",
+      "lookback": 10,
+      "holding_bars": 5,
+      "holding_minutes": 75.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "breakout_signal",
+      "lookback": 10,
+      "holding_bars": 10,
+      "holding_minutes": 150.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "breakout_signal",
+      "lookback": 10,
+      "holding_bars": 20,
+      "holding_minutes": 300.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "breakout_signal",
+      "lookback": 20,
+      "holding_bars": 1,
+      "holding_minutes": 15.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "breakout_signal",
+      "lookback": 20,
+      "holding_bars": 2,
+      "holding_minutes": 30.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "breakout_signal",
+      "lookback": 20,
+      "holding_bars": 3,
+      "holding_minutes": 45.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "breakout_signal",
+      "lookback": 20,
+      "holding_bars": 5,
+      "holding_minutes": 75.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "breakout_signal",
+      "lookback": 20,
+      "holding_bars": 10,
+      "holding_minutes": 150.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "breakout_signal",
+      "lookback": 20,
+      "holding_bars": 20,
+      "holding_minutes": 300.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 10,
+      "holding_bars": 1,
+      "holding_minutes": 15.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 10,
+      "holding_bars": 2,
+      "holding_minutes": 30.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 10,
+      "holding_bars": 3,
+      "holding_minutes": 45.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 10,
+      "holding_bars": 5,
+      "holding_minutes": 75.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 10,
+      "holding_bars": 10,
+      "holding_minutes": 150.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 10,
+      "holding_bars": 20,
+      "holding_minutes": 300.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 20,
+      "holding_bars": 1,
+      "holding_minutes": 15.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 20,
+      "holding_bars": 2,
+      "holding_minutes": 30.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 20,
+      "holding_bars": 3,
+      "holding_minutes": 45.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 20,
+      "holding_bars": 5,
+      "holding_minutes": 75.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 20,
+      "holding_bars": 10,
+      "holding_minutes": 150.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 20,
+      "holding_bars": 20,
+      "holding_minutes": 300.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "momentum_signal",
+      "lookback": 10,
+      "holding_bars": 1,
+      "holding_minutes": 15.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "momentum_signal",
+      "lookback": 10,
+      "holding_bars": 2,
+      "holding_minutes": 30.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "momentum_signal",
+      "lookback": 10,
+      "holding_bars": 3,
+      "holding_minutes": 45.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "momentum_signal",
+      "lookback": 10,
+      "holding_bars": 5,
+      "holding_minutes": 75.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "momentum_signal",
+      "lookback": 10,
+      "holding_bars": 10,
+      "holding_minutes": 150.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "momentum_signal",
+      "lookback": 10,
+      "holding_bars": 20,
+      "holding_minutes": 300.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "momentum_signal",
+      "lookback": 20,
+      "holding_bars": 1,
+      "holding_minutes": 15.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "momentum_signal",
+      "lookback": 20,
+      "holding_bars": 2,
+      "holding_minutes": 30.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "momentum_signal",
+      "lookback": 20,
+      "holding_bars": 3,
+      "holding_minutes": 45.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "momentum_signal",
+      "lookback": 20,
+      "holding_bars": 5,
+      "holding_minutes": 75.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "momentum_signal",
+      "lookback": 20,
+      "holding_bars": 10,
+      "holding_minutes": 150.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "momentum_signal",
+      "lookback": 20,
+      "holding_bars": 20,
+      "holding_minutes": 300.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "price_action_signal",
+      "lookback": 10,
+      "holding_bars": 1,
+      "holding_minutes": 15.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "price_action_signal",
+      "lookback": 10,
+      "holding_bars": 2,
+      "holding_minutes": 30.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "price_action_signal",
+      "lookback": 10,
+      "holding_bars": 3,
+      "holding_minutes": 45.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "price_action_signal",
+      "lookback": 10,
+      "holding_bars": 5,
+      "holding_minutes": 75.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "price_action_signal",
+      "lookback": 10,
+      "holding_bars": 10,
+      "holding_minutes": 150.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "price_action_signal",
+      "lookback": 10,
+      "holding_bars": 20,
+      "holding_minutes": 300.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "price_action_signal",
+      "lookback": 20,
+      "holding_bars": 1,
+      "holding_minutes": 15.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "price_action_signal",
+      "lookback": 20,
+      "holding_bars": 2,
+      "holding_minutes": 30.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "price_action_signal",
+      "lookback": 20,
+      "holding_bars": 3,
+      "holding_minutes": 45.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "price_action_signal",
+      "lookback": 20,
+      "holding_bars": 5,
+      "holding_minutes": 75.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "price_action_signal",
+      "lookback": 20,
+      "holding_bars": 10,
+      "holding_minutes": 150.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "price_action_signal",
+      "lookback": 20,
+      "holding_bars": 20,
+      "holding_minutes": 300.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "trend_signal",
+      "lookback": 10,
+      "holding_bars": 1,
+      "holding_minutes": 15.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "trend_signal",
+      "lookback": 10,
+      "holding_bars": 2,
+      "holding_minutes": 30.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "trend_signal",
+      "lookback": 10,
+      "holding_bars": 3,
+      "holding_minutes": 45.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "trend_signal",
+      "lookback": 10,
+      "holding_bars": 5,
+      "holding_minutes": 75.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "trend_signal",
+      "lookback": 10,
+      "holding_bars": 10,
+      "holding_minutes": 150.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "trend_signal",
+      "lookback": 10,
+      "holding_bars": 20,
+      "holding_minutes": 300.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "trend_signal",
+      "lookback": 20,
+      "holding_bars": 1,
+      "holding_minutes": 15.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "trend_signal",
+      "lookback": 20,
+      "holding_bars": 2,
+      "holding_minutes": 30.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "trend_signal",
+      "lookback": 20,
+      "holding_bars": 3,
+      "holding_minutes": 45.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "trend_signal",
+      "lookback": 20,
+      "holding_bars": 5,
+      "holding_minutes": 75.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "trend_signal",
+      "lookback": 20,
+      "holding_bars": 10,
+      "holding_minutes": 150.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "trend_signal",
+      "lookback": 20,
+      "holding_bars": 20,
+      "holding_minutes": 300.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volatility_signal",
+      "lookback": 10,
+      "holding_bars": 1,
+      "holding_minutes": 15.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volatility_signal",
+      "lookback": 10,
+      "holding_bars": 2,
+      "holding_minutes": 30.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volatility_signal",
+      "lookback": 10,
+      "holding_bars": 3,
+      "holding_minutes": 45.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volatility_signal",
+      "lookback": 10,
+      "holding_bars": 5,
+      "holding_minutes": 75.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volatility_signal",
+      "lookback": 10,
+      "holding_bars": 10,
+      "holding_minutes": 150.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volatility_signal",
+      "lookback": 10,
+      "holding_bars": 20,
+      "holding_minutes": 300.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volatility_signal",
+      "lookback": 20,
+      "holding_bars": 1,
+      "holding_minutes": 15.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volatility_signal",
+      "lookback": 20,
+      "holding_bars": 2,
+      "holding_minutes": 30.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volatility_signal",
+      "lookback": 20,
+      "holding_bars": 3,
+      "holding_minutes": 45.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volatility_signal",
+      "lookback": 20,
+      "holding_bars": 5,
+      "holding_minutes": 75.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volatility_signal",
+      "lookback": 20,
+      "holding_bars": 10,
+      "holding_minutes": 150.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volatility_signal",
+      "lookback": 20,
+      "holding_bars": 20,
+      "holding_minutes": 300.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volume_signal",
+      "lookback": 10,
+      "holding_bars": 1,
+      "holding_minutes": 15.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volume_signal",
+      "lookback": 10,
+      "holding_bars": 2,
+      "holding_minutes": 30.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volume_signal",
+      "lookback": 10,
+      "holding_bars": 3,
+      "holding_minutes": 45.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volume_signal",
+      "lookback": 10,
+      "holding_bars": 5,
+      "holding_minutes": 75.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volume_signal",
+      "lookback": 10,
+      "holding_bars": 10,
+      "holding_minutes": 150.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volume_signal",
+      "lookback": 10,
+      "holding_bars": 20,
+      "holding_minutes": 300.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volume_signal",
+      "lookback": 20,
+      "holding_bars": 1,
+      "holding_minutes": 15.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volume_signal",
+      "lookback": 20,
+      "holding_bars": 2,
+      "holding_minutes": 30.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volume_signal",
+      "lookback": 20,
+      "holding_bars": 3,
+      "holding_minutes": 45.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volume_signal",
+      "lookback": 20,
+      "holding_bars": 5,
+      "holding_minutes": 75.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volume_signal",
+      "lookback": 20,
+      "holding_bars": 10,
+      "holding_minutes": 150.0
+    },
+    {
+      "timeframe": "15m",
+      "dataset_id": "btcusdt_intraday_15m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volume_signal",
+      "lookback": 20,
+      "holding_bars": 20,
+      "holding_minutes": 300.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "breakout_signal",
+      "lookback": 10,
+      "holding_bars": 1,
+      "holding_minutes": 30.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "breakout_signal",
+      "lookback": 10,
+      "holding_bars": 2,
+      "holding_minutes": 60.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "breakout_signal",
+      "lookback": 10,
+      "holding_bars": 3,
+      "holding_minutes": 90.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "breakout_signal",
+      "lookback": 10,
+      "holding_bars": 5,
+      "holding_minutes": 150.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "breakout_signal",
+      "lookback": 10,
+      "holding_bars": 10,
+      "holding_minutes": 300.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "breakout_signal",
+      "lookback": 10,
+      "holding_bars": 20,
+      "holding_minutes": 600.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "breakout_signal",
+      "lookback": 20,
+      "holding_bars": 1,
+      "holding_minutes": 30.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "breakout_signal",
+      "lookback": 20,
+      "holding_bars": 2,
+      "holding_minutes": 60.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "breakout_signal",
+      "lookback": 20,
+      "holding_bars": 3,
+      "holding_minutes": 90.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "breakout_signal",
+      "lookback": 20,
+      "holding_bars": 5,
+      "holding_minutes": 150.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "breakout_signal",
+      "lookback": 20,
+      "holding_bars": 10,
+      "holding_minutes": 300.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "breakout_signal",
+      "lookback": 20,
+      "holding_bars": 20,
+      "holding_minutes": 600.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 10,
+      "holding_bars": 1,
+      "holding_minutes": 30.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 10,
+      "holding_bars": 2,
+      "holding_minutes": 60.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 10,
+      "holding_bars": 3,
+      "holding_minutes": 90.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 10,
+      "holding_bars": 5,
+      "holding_minutes": 150.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 10,
+      "holding_bars": 10,
+      "holding_minutes": 300.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 10,
+      "holding_bars": 20,
+      "holding_minutes": 600.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 20,
+      "holding_bars": 1,
+      "holding_minutes": 30.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 20,
+      "holding_bars": 2,
+      "holding_minutes": 60.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 20,
+      "holding_bars": 3,
+      "holding_minutes": 90.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 20,
+      "holding_bars": 5,
+      "holding_minutes": 150.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 20,
+      "holding_bars": 10,
+      "holding_minutes": 300.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 20,
+      "holding_bars": 20,
+      "holding_minutes": 600.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "momentum_signal",
+      "lookback": 10,
+      "holding_bars": 1,
+      "holding_minutes": 30.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "momentum_signal",
+      "lookback": 10,
+      "holding_bars": 2,
+      "holding_minutes": 60.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "momentum_signal",
+      "lookback": 10,
+      "holding_bars": 3,
+      "holding_minutes": 90.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "momentum_signal",
+      "lookback": 10,
+      "holding_bars": 5,
+      "holding_minutes": 150.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "momentum_signal",
+      "lookback": 10,
+      "holding_bars": 10,
+      "holding_minutes": 300.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "momentum_signal",
+      "lookback": 10,
+      "holding_bars": 20,
+      "holding_minutes": 600.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "momentum_signal",
+      "lookback": 20,
+      "holding_bars": 1,
+      "holding_minutes": 30.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "momentum_signal",
+      "lookback": 20,
+      "holding_bars": 2,
+      "holding_minutes": 60.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "momentum_signal",
+      "lookback": 20,
+      "holding_bars": 3,
+      "holding_minutes": 90.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "momentum_signal",
+      "lookback": 20,
+      "holding_bars": 5,
+      "holding_minutes": 150.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "momentum_signal",
+      "lookback": 20,
+      "holding_bars": 10,
+      "holding_minutes": 300.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "momentum_signal",
+      "lookback": 20,
+      "holding_bars": 20,
+      "holding_minutes": 600.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "price_action_signal",
+      "lookback": 10,
+      "holding_bars": 1,
+      "holding_minutes": 30.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "price_action_signal",
+      "lookback": 10,
+      "holding_bars": 2,
+      "holding_minutes": 60.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "price_action_signal",
+      "lookback": 10,
+      "holding_bars": 3,
+      "holding_minutes": 90.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "price_action_signal",
+      "lookback": 10,
+      "holding_bars": 5,
+      "holding_minutes": 150.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "price_action_signal",
+      "lookback": 10,
+      "holding_bars": 10,
+      "holding_minutes": 300.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "price_action_signal",
+      "lookback": 10,
+      "holding_bars": 20,
+      "holding_minutes": 600.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "price_action_signal",
+      "lookback": 20,
+      "holding_bars": 1,
+      "holding_minutes": 30.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "price_action_signal",
+      "lookback": 20,
+      "holding_bars": 2,
+      "holding_minutes": 60.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "price_action_signal",
+      "lookback": 20,
+      "holding_bars": 3,
+      "holding_minutes": 90.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "price_action_signal",
+      "lookback": 20,
+      "holding_bars": 5,
+      "holding_minutes": 150.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "price_action_signal",
+      "lookback": 20,
+      "holding_bars": 10,
+      "holding_minutes": 300.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "price_action_signal",
+      "lookback": 20,
+      "holding_bars": 20,
+      "holding_minutes": 600.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "trend_signal",
+      "lookback": 10,
+      "holding_bars": 1,
+      "holding_minutes": 30.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "trend_signal",
+      "lookback": 10,
+      "holding_bars": 2,
+      "holding_minutes": 60.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "trend_signal",
+      "lookback": 10,
+      "holding_bars": 3,
+      "holding_minutes": 90.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "trend_signal",
+      "lookback": 10,
+      "holding_bars": 5,
+      "holding_minutes": 150.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "trend_signal",
+      "lookback": 10,
+      "holding_bars": 10,
+      "holding_minutes": 300.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "trend_signal",
+      "lookback": 10,
+      "holding_bars": 20,
+      "holding_minutes": 600.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "trend_signal",
+      "lookback": 20,
+      "holding_bars": 1,
+      "holding_minutes": 30.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "trend_signal",
+      "lookback": 20,
+      "holding_bars": 2,
+      "holding_minutes": 60.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "trend_signal",
+      "lookback": 20,
+      "holding_bars": 3,
+      "holding_minutes": 90.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "trend_signal",
+      "lookback": 20,
+      "holding_bars": 5,
+      "holding_minutes": 150.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "trend_signal",
+      "lookback": 20,
+      "holding_bars": 10,
+      "holding_minutes": 300.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "trend_signal",
+      "lookback": 20,
+      "holding_bars": 20,
+      "holding_minutes": 600.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volatility_signal",
+      "lookback": 10,
+      "holding_bars": 1,
+      "holding_minutes": 30.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volatility_signal",
+      "lookback": 10,
+      "holding_bars": 2,
+      "holding_minutes": 60.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volatility_signal",
+      "lookback": 10,
+      "holding_bars": 3,
+      "holding_minutes": 90.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volatility_signal",
+      "lookback": 10,
+      "holding_bars": 5,
+      "holding_minutes": 150.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volatility_signal",
+      "lookback": 10,
+      "holding_bars": 10,
+      "holding_minutes": 300.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volatility_signal",
+      "lookback": 10,
+      "holding_bars": 20,
+      "holding_minutes": 600.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volatility_signal",
+      "lookback": 20,
+      "holding_bars": 1,
+      "holding_minutes": 30.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volatility_signal",
+      "lookback": 20,
+      "holding_bars": 2,
+      "holding_minutes": 60.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volatility_signal",
+      "lookback": 20,
+      "holding_bars": 3,
+      "holding_minutes": 90.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volatility_signal",
+      "lookback": 20,
+      "holding_bars": 5,
+      "holding_minutes": 150.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volatility_signal",
+      "lookback": 20,
+      "holding_bars": 10,
+      "holding_minutes": 300.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volatility_signal",
+      "lookback": 20,
+      "holding_bars": 20,
+      "holding_minutes": 600.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volume_signal",
+      "lookback": 10,
+      "holding_bars": 1,
+      "holding_minutes": 30.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volume_signal",
+      "lookback": 10,
+      "holding_bars": 2,
+      "holding_minutes": 60.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volume_signal",
+      "lookback": 10,
+      "holding_bars": 3,
+      "holding_minutes": 90.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volume_signal",
+      "lookback": 10,
+      "holding_bars": 5,
+      "holding_minutes": 150.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volume_signal",
+      "lookback": 10,
+      "holding_bars": 10,
+      "holding_minutes": 300.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volume_signal",
+      "lookback": 10,
+      "holding_bars": 20,
+      "holding_minutes": 600.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volume_signal",
+      "lookback": 20,
+      "holding_bars": 1,
+      "holding_minutes": 30.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volume_signal",
+      "lookback": 20,
+      "holding_bars": 2,
+      "holding_minutes": 60.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volume_signal",
+      "lookback": 20,
+      "holding_bars": 3,
+      "holding_minutes": 90.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volume_signal",
+      "lookback": 20,
+      "holding_bars": 5,
+      "holding_minutes": 150.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volume_signal",
+      "lookback": 20,
+      "holding_bars": 10,
+      "holding_minutes": 300.0
+    },
+    {
+      "timeframe": "30m",
+      "dataset_id": "btcusdt_intraday_30m@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volume_signal",
+      "lookback": 20,
+      "holding_bars": 20,
+      "holding_minutes": 600.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "breakout_signal",
+      "lookback": 10,
+      "holding_bars": 1,
+      "holding_minutes": 60.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "breakout_signal",
+      "lookback": 10,
+      "holding_bars": 2,
+      "holding_minutes": 120.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "breakout_signal",
+      "lookback": 10,
+      "holding_bars": 3,
+      "holding_minutes": 180.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "breakout_signal",
+      "lookback": 10,
+      "holding_bars": 5,
+      "holding_minutes": 300.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "breakout_signal",
+      "lookback": 10,
+      "holding_bars": 10,
+      "holding_minutes": 600.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "breakout_signal",
+      "lookback": 10,
+      "holding_bars": 20,
+      "holding_minutes": 1200.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "breakout_signal",
+      "lookback": 20,
+      "holding_bars": 1,
+      "holding_minutes": 60.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "breakout_signal",
+      "lookback": 20,
+      "holding_bars": 2,
+      "holding_minutes": 120.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "breakout_signal",
+      "lookback": 20,
+      "holding_bars": 3,
+      "holding_minutes": 180.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "breakout_signal",
+      "lookback": 20,
+      "holding_bars": 5,
+      "holding_minutes": 300.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "breakout_signal",
+      "lookback": 20,
+      "holding_bars": 10,
+      "holding_minutes": 600.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "breakout_signal",
+      "lookback": 20,
+      "holding_bars": 20,
+      "holding_minutes": 1200.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 10,
+      "holding_bars": 1,
+      "holding_minutes": 60.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 10,
+      "holding_bars": 2,
+      "holding_minutes": 120.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 10,
+      "holding_bars": 3,
+      "holding_minutes": 180.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 10,
+      "holding_bars": 5,
+      "holding_minutes": 300.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 10,
+      "holding_bars": 10,
+      "holding_minutes": 600.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 10,
+      "holding_bars": 20,
+      "holding_minutes": 1200.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 20,
+      "holding_bars": 1,
+      "holding_minutes": 60.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 20,
+      "holding_bars": 2,
+      "holding_minutes": 120.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 20,
+      "holding_bars": 3,
+      "holding_minutes": 180.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 20,
+      "holding_bars": 5,
+      "holding_minutes": 300.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 20,
+      "holding_bars": 10,
+      "holding_minutes": 600.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "mean_reversion_signal",
+      "lookback": 20,
+      "holding_bars": 20,
+      "holding_minutes": 1200.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "momentum_signal",
+      "lookback": 10,
+      "holding_bars": 1,
+      "holding_minutes": 60.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "momentum_signal",
+      "lookback": 10,
+      "holding_bars": 2,
+      "holding_minutes": 120.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "momentum_signal",
+      "lookback": 10,
+      "holding_bars": 3,
+      "holding_minutes": 180.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "momentum_signal",
+      "lookback": 10,
+      "holding_bars": 5,
+      "holding_minutes": 300.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "momentum_signal",
+      "lookback": 10,
+      "holding_bars": 10,
+      "holding_minutes": 600.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "momentum_signal",
+      "lookback": 10,
+      "holding_bars": 20,
+      "holding_minutes": 1200.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "momentum_signal",
+      "lookback": 20,
+      "holding_bars": 1,
+      "holding_minutes": 60.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "momentum_signal",
+      "lookback": 20,
+      "holding_bars": 2,
+      "holding_minutes": 120.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "momentum_signal",
+      "lookback": 20,
+      "holding_bars": 3,
+      "holding_minutes": 180.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "momentum_signal",
+      "lookback": 20,
+      "holding_bars": 5,
+      "holding_minutes": 300.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "momentum_signal",
+      "lookback": 20,
+      "holding_bars": 10,
+      "holding_minutes": 600.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "momentum_signal",
+      "lookback": 20,
+      "holding_bars": 20,
+      "holding_minutes": 1200.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "price_action_signal",
+      "lookback": 10,
+      "holding_bars": 1,
+      "holding_minutes": 60.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "price_action_signal",
+      "lookback": 10,
+      "holding_bars": 2,
+      "holding_minutes": 120.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "price_action_signal",
+      "lookback": 10,
+      "holding_bars": 3,
+      "holding_minutes": 180.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "price_action_signal",
+      "lookback": 10,
+      "holding_bars": 5,
+      "holding_minutes": 300.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "price_action_signal",
+      "lookback": 10,
+      "holding_bars": 10,
+      "holding_minutes": 600.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "price_action_signal",
+      "lookback": 10,
+      "holding_bars": 20,
+      "holding_minutes": 1200.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "price_action_signal",
+      "lookback": 20,
+      "holding_bars": 1,
+      "holding_minutes": 60.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "price_action_signal",
+      "lookback": 20,
+      "holding_bars": 2,
+      "holding_minutes": 120.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "price_action_signal",
+      "lookback": 20,
+      "holding_bars": 3,
+      "holding_minutes": 180.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "price_action_signal",
+      "lookback": 20,
+      "holding_bars": 5,
+      "holding_minutes": 300.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "price_action_signal",
+      "lookback": 20,
+      "holding_bars": 10,
+      "holding_minutes": 600.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "price_action_signal",
+      "lookback": 20,
+      "holding_bars": 20,
+      "holding_minutes": 1200.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "trend_signal",
+      "lookback": 10,
+      "holding_bars": 1,
+      "holding_minutes": 60.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "trend_signal",
+      "lookback": 10,
+      "holding_bars": 2,
+      "holding_minutes": 120.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "trend_signal",
+      "lookback": 10,
+      "holding_bars": 3,
+      "holding_minutes": 180.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "trend_signal",
+      "lookback": 10,
+      "holding_bars": 5,
+      "holding_minutes": 300.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "trend_signal",
+      "lookback": 10,
+      "holding_bars": 10,
+      "holding_minutes": 600.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "trend_signal",
+      "lookback": 10,
+      "holding_bars": 20,
+      "holding_minutes": 1200.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "trend_signal",
+      "lookback": 20,
+      "holding_bars": 1,
+      "holding_minutes": 60.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "trend_signal",
+      "lookback": 20,
+      "holding_bars": 2,
+      "holding_minutes": 120.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "trend_signal",
+      "lookback": 20,
+      "holding_bars": 3,
+      "holding_minutes": 180.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "trend_signal",
+      "lookback": 20,
+      "holding_bars": 5,
+      "holding_minutes": 300.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "trend_signal",
+      "lookback": 20,
+      "holding_bars": 10,
+      "holding_minutes": 600.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "trend_signal",
+      "lookback": 20,
+      "holding_bars": 20,
+      "holding_minutes": 1200.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volatility_signal",
+      "lookback": 10,
+      "holding_bars": 1,
+      "holding_minutes": 60.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volatility_signal",
+      "lookback": 10,
+      "holding_bars": 2,
+      "holding_minutes": 120.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volatility_signal",
+      "lookback": 10,
+      "holding_bars": 3,
+      "holding_minutes": 180.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volatility_signal",
+      "lookback": 10,
+      "holding_bars": 5,
+      "holding_minutes": 300.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volatility_signal",
+      "lookback": 10,
+      "holding_bars": 10,
+      "holding_minutes": 600.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volatility_signal",
+      "lookback": 10,
+      "holding_bars": 20,
+      "holding_minutes": 1200.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volatility_signal",
+      "lookback": 20,
+      "holding_bars": 1,
+      "holding_minutes": 60.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volatility_signal",
+      "lookback": 20,
+      "holding_bars": 2,
+      "holding_minutes": 120.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volatility_signal",
+      "lookback": 20,
+      "holding_bars": 3,
+      "holding_minutes": 180.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volatility_signal",
+      "lookback": 20,
+      "holding_bars": 5,
+      "holding_minutes": 300.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volatility_signal",
+      "lookback": 20,
+      "holding_bars": 10,
+      "holding_minutes": 600.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volatility_signal",
+      "lookback": 20,
+      "holding_bars": 20,
+      "holding_minutes": 1200.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volume_signal",
+      "lookback": 10,
+      "holding_bars": 1,
+      "holding_minutes": 60.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volume_signal",
+      "lookback": 10,
+      "holding_bars": 2,
+      "holding_minutes": 120.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volume_signal",
+      "lookback": 10,
+      "holding_bars": 3,
+      "holding_minutes": 180.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volume_signal",
+      "lookback": 10,
+      "holding_bars": 5,
+      "holding_minutes": 300.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volume_signal",
+      "lookback": 10,
+      "holding_bars": 10,
+      "holding_minutes": 600.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volume_signal",
+      "lookback": 10,
+      "holding_bars": 20,
+      "holding_minutes": 1200.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volume_signal",
+      "lookback": 20,
+      "holding_bars": 1,
+      "holding_minutes": 60.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volume_signal",
+      "lookback": 20,
+      "holding_bars": 2,
+      "holding_minutes": 120.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volume_signal",
+      "lookback": 20,
+      "holding_bars": 3,
+      "holding_minutes": 180.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volume_signal",
+      "lookback": 20,
+      "holding_bars": 5,
+      "holding_minutes": 300.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volume_signal",
+      "lookback": 20,
+      "holding_bars": 10,
+      "holding_minutes": 600.0
+    },
+    {
+      "timeframe": "1h",
+      "dataset_id": "btcusdt_intraday_1h@1.0.0",
+      "dataset_kind": "DERIVED",
+      "signal_id": "volume_signal",
+      "lookback": 20,
+      "holding_bars": 20,
+      "holding_minutes": 1200.0
+    }
+  ],
+  "disclaimer": "Research evidence is not a profitability guarantee."
+}

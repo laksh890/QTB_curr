@@ -1,0 +1,143 @@
+{
+  "XGBoost": {
+    "status": "IMPLEMENTED",
+    "source": [
+      "iqrp/app/forecasting/tree_models/xgboost"
+    ],
+    "tests": [
+      "iqrp/tests/integration/test_tree_forecasting_pipeline.py",
+      "iqrp/tests/unit/tree_forecasting/test_tree_core.py",
+      "iqrp/tests/unit/tree_forecasting/test_tree_gaps.py",
+      "iqrp/tests/unit/tree_forecasting/test_tree_gaps2.py",
+      "iqrp/tests/unit/tree_forecasting/test_tree_gaps3.py"
+    ],
+    "docs": [
+      "iqrp/docs/ForecastingFramework.md",
+      "iqrp/docs/SimulationEngine.md",
+      "iqrp/docs/TreeForecasting.md",
+      "iqrp/docs/XGBoost.md"
+    ],
+    "executable_smoke": null,
+    "integrated_into_alpha_research": false,
+    "integrated_into_backtest_runner": false,
+    "notes": "Tree forecasting package; NOT alpha_research",
+    "evidence": {
+      "n_sources": 1,
+      "n_tests": 5,
+      "n_docs": 4
+    }
+  },
+  "LightGBM": {
+    "status": "IMPLEMENTED",
+    "source": [
+      "iqrp/app/forecasting/tree_models/lightgbm"
+    ],
+    "tests": [
+      "iqrp/tests/integration/test_tree_forecasting_pipeline.py",
+      "iqrp/tests/unit/tree_forecasting/test_tree_core.py",
+      "iqrp/tests/unit/tree_forecasting/test_tree_gaps.py",
+      "iqrp/tests/unit/tree_forecasting/test_tree_gaps2.py",
+      "iqrp/tests/unit/tree_forecasting/test_tree_gaps3.py"
+    ],
+    "docs": [
+      "iqrp/docs/ForecastingFramework.md",
+      "iqrp/docs/LightGBM.md",
+      "iqrp/docs/TreeForecasting.md"
+    ],
+    "executable_smoke": null,
+    "integrated_into_alpha_research": false,
+    "integrated_into_backtest_runner": false,
+    "notes": "Tree forecasting package",
+    "evidence": {
+      "n_sources": 1,
+      "n_tests": 5,
+      "n_docs": 3
+    }
+  },
+  "CatBoost": {
+    "status": "IMPLEMENTED",
+    "source": [
+      "iqrp/app/forecasting/tree_models/catboost"
+    ],
+    "tests": [
+      "iqrp/tests/integration/test_tree_forecasting_pipeline.py",
+      "iqrp/tests/unit/tree_forecasting/test_tree_core.py",
+      "iqrp/tests/unit/tree_forecasting/test_tree_gaps.py",
+      "iqrp/tests/unit/tree_forecasting/test_tree_gaps2.py",
+      "iqrp/tests/unit/tree_forecasting/test_tree_gaps3.py"
+    ],
+    "docs": [
+      "iqrp/docs/CatBoost.md",
+      "iqrp/docs/ForecastingFramework.md",
+      "iqrp/docs/TreeForecasting.md"
+    ],
+    "executable_smoke": null,
+    "integrated_into_alpha_research": false,
+    "integrated_into_backtest_runner": false,
+    "notes": "Tree forecasting package",
+    "evidence": {
+      "n_sources": 1,
+      "n_tests": 5,
+      "n_docs": 3
+    }
+  },
+  "Sklearn_trees": {
+    "status": "IMPLEMENTED",
+    "source": [
+      "iqrp/app/forecasting/tree_models/sklearn"
+    ],
+    "tests": [
+      "iqrp/tests/integration/test_tree_forecasting_pipeline.py",
+      "iqrp/tests/unit/timeseries/test_timeseries_gaps2.py",
+      "iqrp/tests/unit/tree_forecasting/test_tree_core.py",
+      "iqrp/tests/unit/tree_forecasting/test_tree_gaps.py",
+      "iqrp/tests/unit/tree_forecasting/test_tree_gaps2.py",
+      "iqrp/tests/unit/tree_forecasting/test_tree_gaps3.py"
+    ],
+    "docs": [
+      "iqrp/docs/AnomalyDetection.md",
+      "iqrp/docs/TreeForecasting.md"
+    ],
+    "executable_smoke": null,
+    "integrated_into_alpha_research": false,
+    "integrated_into_backtest_runner": false,
+    "notes": "Sklearn tree wrappers in forecasting",
+    "evidence": {
+      "n_sources": 1,
+      "n_tests": 6,
+      "n_docs": 2
+    }
+  },
+  "Linear_logistic_general_ML_pipeline": {
+    "status": "IMPLEMENTED",
+    "source": [
+      "iqrp/app/forecasting/tree_models",
+      "iqrp/app/features"
+    ],
+    "tests": [
+      "iqrp/tests/integration/test_forecast_intelligence_pipeline.py",
+      "iqrp/tests/unit/alpha/test_research_metrics.py",
+      "iqrp/tests/unit/features/test_research_core.py",
+      "iqrp/tests/unit/forecast_intelligence/test_intelligence_core.py",
+      "iqrp/tests/unit/forecast_intelligence/test_intelligence_gaps2.py",
+      "iqrp/tests/unit/forecast_intelligence/test_intelligence_gaps3.py",
+      "iqrp/tests/unit/forecast_intelligence/test_intelligence_gaps4.py",
+      "iqrp/tests/unit/portfolio/test_coverage_gaps3.py"
+    ],
+    "docs": [
+      "iqrp/docs/AutoML.md",
+      "iqrp/docs/ChangePointDetection.md",
+      "iqrp/docs/ForecastIntelligence.md",
+      "iqrp/docs/MeanVariance.md"
+    ],
+    "executable_smoke": null,
+    "integrated_into_alpha_research": false,
+    "integrated_into_backtest_runner": false,
+    "notes": "No dedicated sklearn linear/logistic alpha training pipeline identified in alpha_research",
+    "evidence": {
+      "n_sources": 2,
+      "n_tests": 8,
+      "n_docs": 4
+    }
+  }
+}

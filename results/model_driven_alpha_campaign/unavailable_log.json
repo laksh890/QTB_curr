@@ -1,0 +1,320 @@
+{
+  "items": [
+    {
+      "source": "garch_volatility_v1",
+      "family": "GARCH",
+      "timeframe": "1m",
+      "status": "UNAVAILABLE",
+      "reason": "GARCH MLE on 1m research window exceeds campaign compute budget"
+    },
+    {
+      "source": "arima_return_v1",
+      "family": "ARIMA",
+      "timeframe": "1m",
+      "status": "UNAVAILABLE",
+      "reason": "ARIMA unfit for dense 1m campaign subsample"
+    },
+    {
+      "source": "arima_return_v1",
+      "family": "ARIMA",
+      "timeframe": "5m",
+      "status": "UNAVAILABLE",
+      "reason": "ARIMA reserved for coarser TFs in declared protocol"
+    },
+    {
+      "source": "var",
+      "family": "VAR",
+      "timeframe": "1m",
+      "status": "UNAVAILABLE",
+      "reason": "Single-asset BTCUSDT \u2014 VAR requires multivariate series"
+    },
+    {
+      "source": "var",
+      "family": "VAR",
+      "timeframe": "5m",
+      "status": "UNAVAILABLE",
+      "reason": "Single-asset BTCUSDT \u2014 VAR requires multivariate series"
+    },
+    {
+      "source": "var",
+      "family": "VAR",
+      "timeframe": "15m",
+      "status": "UNAVAILABLE",
+      "reason": "Single-asset BTCUSDT \u2014 VAR requires multivariate series"
+    },
+    {
+      "source": "var",
+      "family": "VAR",
+      "timeframe": "30m",
+      "status": "UNAVAILABLE",
+      "reason": "Single-asset BTCUSDT \u2014 VAR requires multivariate series"
+    },
+    {
+      "source": "var",
+      "family": "VAR",
+      "timeframe": "1h",
+      "status": "UNAVAILABLE",
+      "reason": "Single-asset BTCUSDT \u2014 VAR requires multivariate series"
+    },
+    {
+      "source": "vecm",
+      "family": "VECM",
+      "timeframe": "1m",
+      "status": "UNAVAILABLE",
+      "reason": "Single-asset BTCUSDT \u2014 VECM requires cointegrated multivariate series"
+    },
+    {
+      "source": "vecm",
+      "family": "VECM",
+      "timeframe": "5m",
+      "status": "UNAVAILABLE",
+      "reason": "Single-asset BTCUSDT \u2014 VECM requires cointegrated multivariate series"
+    },
+    {
+      "source": "vecm",
+      "family": "VECM",
+      "timeframe": "15m",
+      "status": "UNAVAILABLE",
+      "reason": "Single-asset BTCUSDT \u2014 VECM requires cointegrated multivariate series"
+    },
+    {
+      "source": "vecm",
+      "family": "VECM",
+      "timeframe": "30m",
+      "status": "UNAVAILABLE",
+      "reason": "Single-asset BTCUSDT \u2014 VECM requires cointegrated multivariate series"
+    },
+    {
+      "source": "vecm",
+      "family": "VECM",
+      "timeframe": "1h",
+      "status": "UNAVAILABLE",
+      "reason": "Single-asset BTCUSDT \u2014 VECM requires cointegrated multivariate series"
+    },
+    {
+      "source": "xgb_return_v1",
+      "family": "XGBoost",
+      "timeframe": "1m",
+      "status": "UNAVAILABLE",
+      "reason": "Tree ML on 1m excluded by protocol compute budget"
+    },
+    {
+      "source": "xgb_return_v1",
+      "family": "XGBoost",
+      "timeframe": "5m",
+      "status": "UNAVAILABLE",
+      "reason": "Tree ML reserved for >=15m in declared protocol"
+    },
+    {
+      "source": "lgbm_return_v1",
+      "family": "LightGBM",
+      "timeframe": "1m",
+      "status": "UNAVAILABLE",
+      "reason": "Tree ML on 1m excluded by protocol compute budget"
+    },
+    {
+      "source": "lgbm_return_v1",
+      "family": "LightGBM",
+      "timeframe": "5m",
+      "status": "UNAVAILABLE",
+      "reason": "Tree ML reserved for >=15m in declared protocol"
+    },
+    {
+      "source": "cat_return_v1",
+      "family": "CatBoost",
+      "timeframe": "1m",
+      "status": "UNAVAILABLE",
+      "reason": "Tree ML on 1m excluded by protocol compute budget"
+    },
+    {
+      "source": "cat_return_v1",
+      "family": "CatBoost",
+      "timeframe": "5m",
+      "status": "UNAVAILABLE",
+      "reason": "Tree ML reserved for >=15m in declared protocol"
+    },
+    {
+      "source": "lstm_return_v1",
+      "family": "LSTM",
+      "timeframe": "1m",
+      "status": "UNAVAILABLE",
+      "reason": "Neural training excluded on fine TFs by protocol"
+    },
+    {
+      "source": "lstm_return_v1",
+      "family": "LSTM",
+      "timeframe": "5m",
+      "status": "UNAVAILABLE",
+      "reason": "Neural training excluded on fine TFs by protocol"
+    },
+    {
+      "source": "lstm_return_v1",
+      "family": "LSTM",
+      "timeframe": "15m",
+      "status": "UNAVAILABLE",
+      "reason": "Neural training reserved for >=30m in declared protocol"
+    },
+    {
+      "source": "gru_return_v1",
+      "family": "GRU",
+      "timeframe": "1m",
+      "status": "UNAVAILABLE",
+      "reason": "GRU reserved for 1h in declared protocol"
+    },
+    {
+      "source": "gru_return_v1",
+      "family": "GRU",
+      "timeframe": "5m",
+      "status": "UNAVAILABLE",
+      "reason": "GRU reserved for 1h in declared protocol"
+    },
+    {
+      "source": "gru_return_v1",
+      "family": "GRU",
+      "timeframe": "15m",
+      "status": "UNAVAILABLE",
+      "reason": "GRU reserved for 1h in declared protocol"
+    },
+    {
+      "source": "gru_return_v1",
+      "family": "GRU",
+      "timeframe": "30m",
+      "status": "UNAVAILABLE",
+      "reason": "GRU reserved for 1h in declared protocol"
+    },
+    {
+      "source": "mlp_return_v1",
+      "family": "MLP",
+      "timeframe": "1m",
+      "status": "UNAVAILABLE",
+      "reason": "MLP reserved for 1h in declared protocol"
+    },
+    {
+      "source": "mlp_return_v1",
+      "family": "MLP",
+      "timeframe": "5m",
+      "status": "UNAVAILABLE",
+      "reason": "MLP reserved for 1h in declared protocol"
+    },
+    {
+      "source": "mlp_return_v1",
+      "family": "MLP",
+      "timeframe": "15m",
+      "status": "UNAVAILABLE",
+      "reason": "MLP reserved for 1h in declared protocol"
+    },
+    {
+      "source": "mlp_return_v1",
+      "family": "MLP",
+      "timeframe": "30m",
+      "status": "UNAVAILABLE",
+      "reason": "MLP reserved for 1h in declared protocol"
+    },
+    {
+      "source": "transformer_return_v1",
+      "family": "Transformer",
+      "timeframe": "1m",
+      "status": "UNAVAILABLE",
+      "reason": "Transformer reserved for 1h in declared protocol"
+    },
+    {
+      "source": "transformer_return_v1",
+      "family": "Transformer",
+      "timeframe": "5m",
+      "status": "UNAVAILABLE",
+      "reason": "Transformer reserved for 1h in declared protocol"
+    },
+    {
+      "source": "transformer_return_v1",
+      "family": "Transformer",
+      "timeframe": "15m",
+      "status": "UNAVAILABLE",
+      "reason": "Transformer reserved for 1h in declared protocol"
+    },
+    {
+      "source": "transformer_return_v1",
+      "family": "Transformer",
+      "timeframe": "30m",
+      "status": "UNAVAILABLE",
+      "reason": "Transformer reserved for 1h in declared protocol"
+    },
+    {
+      "source": "hmm_regime_v1",
+      "family": "HMM",
+      "timeframe": "1m",
+      "status": "UNAVAILABLE",
+      "reason": "HMM excluded on 1m by protocol compute budget"
+    },
+    {
+      "source": "hmm_regime_v1",
+      "family": "HMM",
+      "timeframe": "5m",
+      "status": "UNAVAILABLE",
+      "reason": "HMM reserved for >=15m in declared protocol"
+    },
+    {
+      "source": "gmm",
+      "family": "GMM",
+      "timeframe": "1m",
+      "status": "UNAVAILABLE",
+      "reason": "GMM regime model present in package but not registered in default adapter/pipeline path"
+    },
+    {
+      "source": "gmm",
+      "family": "GMM",
+      "timeframe": "5m",
+      "status": "UNAVAILABLE",
+      "reason": "GMM regime model present in package but not registered in default adapter/pipeline path"
+    },
+    {
+      "source": "gmm",
+      "family": "GMM",
+      "timeframe": "15m",
+      "status": "UNAVAILABLE",
+      "reason": "GMM regime model present in package but not registered in default adapter/pipeline path"
+    },
+    {
+      "source": "gmm",
+      "family": "GMM",
+      "timeframe": "30m",
+      "status": "UNAVAILABLE",
+      "reason": "GMM regime model present in package but not registered in default adapter/pipeline path"
+    },
+    {
+      "source": "gmm",
+      "family": "GMM",
+      "timeframe": "1h",
+      "status": "UNAVAILABLE",
+      "reason": "GMM regime model present in package but not registered in default adapter/pipeline path"
+    },
+    {
+      "source": "markov_regime_v1",
+      "family": "Markov",
+      "timeframe": "1m",
+      "status": "UNAVAILABLE",
+      "reason": "Markov reserved for 1h smoke in declared protocol"
+    },
+    {
+      "source": "markov_regime_v1",
+      "family": "Markov",
+      "timeframe": "5m",
+      "status": "UNAVAILABLE",
+      "reason": "Markov reserved for 1h smoke in declared protocol"
+    },
+    {
+      "source": "markov_regime_v1",
+      "family": "Markov",
+      "timeframe": "15m",
+      "status": "UNAVAILABLE",
+      "reason": "Markov reserved for 1h smoke in declared protocol"
+    },
+    {
+      "source": "markov_regime_v1",
+      "family": "Markov",
+      "timeframe": "30m",
+      "status": "UNAVAILABLE",
+      "reason": "Markov reserved for 1h smoke in declared protocol"
+    }
+  ],
+  "disclaimer": "MODEL-DRIVEN ALPHA RESEARCH \u2014 predefined protocol. Research evidence is not a profitability guarantee. MODEL IMPLEMENTED \u2260 FORECAST \u2260 SIGNAL \u2260 OOS \u2260 COST-SURVIVAL \u2260 ROBUST \u2260 PROFITABLE \u2260 LIVE-READY."
+}

@@ -1,0 +1,84 @@
+{
+  "disclaimer": "FINAL SYSTEM ARCHITECTURE AUDIT \u2014 evidence only. PIPELINE WORKS \u2260 STRATEGY WORKS \u2260 PROFITABLE \u2260 PRODUCTION/LIVE READY. STATISTICAL VALIDITY remains LIMITED per Prompt 36.",
+  "rows": [
+    {
+      "model": "GARCH",
+      "model_exists": true,
+      "model_can_execute": true,
+      "forecast_regime_output": true,
+      "adapter": true,
+      "signal_registration": true,
+      "oos": true,
+      "cost_aware_backtest": true,
+      "candidate_handoff": true,
+      "unified_pipeline": true,
+      "pipeline_outcome": "FILL_COMPLETE"
+    },
+    {
+      "model": "ARIMA",
+      "model_exists": true,
+      "model_can_execute": true,
+      "forecast_regime_output": true,
+      "adapter": true,
+      "signal_registration": true,
+      "oos": true,
+      "cost_aware_backtest": true,
+      "candidate_handoff": true,
+      "unified_pipeline": true,
+      "pipeline_outcome": "FILL_COMPLETE"
+    },
+    {
+      "model": "XGBoost",
+      "model_exists": true,
+      "model_can_execute": true,
+      "forecast_regime_output": true,
+      "adapter": true,
+      "signal_registration": true,
+      "oos": true,
+      "cost_aware_backtest": true,
+      "candidate_handoff": true,
+      "unified_pipeline": true,
+      "pipeline_outcome": "FILL_COMPLETE"
+    },
+    {
+      "model": "LSTM",
+      "model_exists": true,
+      "model_can_execute": true,
+      "forecast_regime_output": true,
+      "adapter": true,
+      "signal_registration": true,
+      "oos": true,
+      "cost_aware_backtest": true,
+      "candidate_handoff": true,
+      "unified_pipeline": true,
+      "pipeline_outcome": "FILL_COMPLETE"
+    },
+    {
+      "model": "Transformer_TiDE",
+      "model_exists": true,
+      "model_can_execute": true,
+      "forecast_regime_output": true,
+      "adapter": true,
+      "signal_registration": true,
+      "oos": true,
+      "cost_aware_backtest": true,
+      "candidate_handoff": true,
+      "unified_pipeline": true,
+      "pipeline_outcome": "FILL_COMPLETE"
+    },
+    {
+      "model": "HMM",
+      "model_exists": true,
+      "model_can_execute": true,
+      "forecast_regime_output": true,
+      "adapter": true,
+      "signal_registration": true,
+      "oos": true,
+      "cost_aware_backtest": true,
+      "candidate_handoff": true,
+      "unified_pipeline": true,
+      "pipeline_outcome": "FILL_COMPLETE"
+    }
+  ],
+  "profitability_claimed": false
+}

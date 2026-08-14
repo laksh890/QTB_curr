@@ -1,0 +1,66 @@
+{
+  "disclaimer": "UNIFIED TRADING PIPELINE \u2014 integration validation only. PIPELINE WORKS \u2260 STRATEGY WORKS \u2260 PROFITABLE \u2260 ROBUST \u2260 PRODUCTION READY.",
+  "dataset": "btcusdt_intraday_1h@1.0.0",
+  "n_bars": 400,
+  "rows": [
+    {
+      "model": "GARCH",
+      "adapter_id": "garch_volatility_v1_1h",
+      "adapter_status": "PASS",
+      "pipeline": "PASS",
+      "outcome": "FILL_COMPLETE",
+      "risk": "RISK_APPROVED",
+      "lineage_present": true
+    },
+    {
+      "model": "ARIMA",
+      "adapter_id": "arima_return_v1_1h",
+      "adapter_status": "PASS",
+      "pipeline": "PASS",
+      "outcome": "FILL_COMPLETE",
+      "risk": "RISK_APPROVED",
+      "lineage_present": true
+    },
+    {
+      "model": "XGBoost",
+      "adapter_id": "xgb_return_v1_1h",
+      "adapter_status": "PASS",
+      "pipeline": "PASS",
+      "outcome": "FILL_COMPLETE",
+      "risk": "RISK_APPROVED",
+      "lineage_present": true
+    },
+    {
+      "model": "LSTM",
+      "adapter_id": "lstm_return_v1_1h",
+      "adapter_status": "PASS",
+      "pipeline": "PASS",
+      "outcome": "FILL_COMPLETE",
+      "risk": "RISK_APPROVED",
+      "lineage_present": true
+    },
+    {
+      "model": "Transformer",
+      "adapter_id": "transformer_return_v1_1h",
+      "adapter_status": "PASS",
+      "pipeline": "PASS",
+      "outcome": "FILL_COMPLETE",
+      "risk": "RISK_APPROVED",
+      "lineage_present": true
+    },
+    {
+      "model": "HMM",
+      "adapter_id": "hmm_regime_v1_1h",
+      "adapter_status": "PASS",
+      "pipeline": "PASS",
+      "outcome": "FILL_COMPLETE",
+      "risk": "RISK_APPROVED",
+      "lineage_present": true
+    }
+  ],
+  "final_positions": {
+    "BTCUSDT": 26.18192668
+  },
+  "equity": 1000000.1255663829,
+  "status": "PASS"
+}

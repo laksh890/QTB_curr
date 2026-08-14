@@ -1,0 +1,44 @@
+{
+  "method": "merge_asof_backward",
+  "ok": true,
+  "hand_checks": [
+    {
+      "exec_index": 1234,
+      "exec_timestamp": "2019-01-05 06:50:00+00:00",
+      "last_completed_1h_index": 102,
+      "last_completed_1h_timestamp": "2019-01-05 06:00:00+00:00",
+      "expected_feature": 0.006348861601703559,
+      "aligned_feature": 0.006348861601703559,
+      "match": true
+    },
+    {
+      "exec_index": 5678,
+      "exec_timestamp": "2019-01-20 17:10:00+00:00",
+      "last_completed_1h_index": 473,
+      "last_completed_1h_timestamp": "2019-01-20 17:00:00+00:00",
+      "expected_feature": -0.04280619603390812,
+      "aligned_feature": -0.04280619603390812,
+      "match": true
+    },
+    {
+      "exec_index": 20000,
+      "exec_timestamp": "2019-03-11 10:40:00+00:00",
+      "last_completed_1h_index": 1666,
+      "last_completed_1h_timestamp": "2019-03-11 10:00:00+00:00",
+      "expected_feature": -0.008238217967599382,
+      "aligned_feature": -0.008238217967599382,
+      "match": true
+    },
+    {
+      "exec_index": 100000,
+      "exec_timestamp": "2019-12-15 10:40:00+00:00",
+      "last_completed_1h_index": 8334,
+      "last_completed_1h_timestamp": "2019-12-15 10:00:00+00:00",
+      "expected_feature": -0.007870779416863316,
+      "aligned_feature": -0.007870779416863316,
+      "match": true
+    }
+  ],
+  "note": "Execution timestamp receives last higher-TF feature with timestamp \u2264 t (completed bars only).",
+  "disclaimer": "Research evidence is not a profitability guarantee."
+}

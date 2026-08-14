@@ -1,0 +1,25 @@
+{
+  "group_key": "model_family",
+  "n_groups": 13,
+  "groups": {
+    "MTF": 45,
+    "XGBoost": 4,
+    "GRU": 3,
+    "LSTM": 3,
+    "Combination": 15,
+    "MLP": 1,
+    "Reference": 13,
+    "LightGBM": 11,
+    "CatBoost": 12,
+    "GARCH": 3,
+    "Transformer": 2,
+    "Ensemble": 15,
+    "HMM": 2
+  },
+  "median_within_abs_corr_val": 0.6961979797753759,
+  "median_across_abs_corr_val": 0.7514142990305349,
+  "mean_within_abs_corr_val": 0.6454792821162284,
+  "mean_across_abs_corr_val": 0.6866568624765966,
+  "diversified": false,
+  "note": "Diversified if across-group dependence meaningfully below within-group (validation)."
+}

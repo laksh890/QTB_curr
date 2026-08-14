@@ -1,0 +1,365 @@
+{
+  "disclaimer": "UNIFIED TRADING PIPELINE \u2014 integration validation only. PIPELINE WORKS \u2260 STRATEGY WORKS \u2260 PROFITABLE \u2260 ROBUST \u2260 PRODUCTION READY.",
+  "status": "PASS",
+  "candidate": {
+    "candidate_id": "momentum_signal:BTCUSDT:2022-01-08 11:00:00+00:00:-1.0",
+    "signal_id": "momentum_signal",
+    "instrument": "BTCUSDT",
+    "timestamp": "2022-01-08 11:00:00+00:00",
+    "direction": -1.0,
+    "signal_value": -1.0,
+    "confidence": null,
+    "expected_horizon": 5,
+    "signal_timeframe": "1h",
+    "execution_timeframe": "1h",
+    "source_model": "reference",
+    "source_model_version": "1.0.0",
+    "research_configuration": {
+      "classification": "SAMPLE_TOO_SHORT",
+      "research_status": "SAMPLE_INSUFFICIENT",
+      "score": {
+        "score": 0.7101489064865104,
+        "components": {
+          "net_sharpe": 0.9822561214692683,
+          "net_expectancy": 1.0,
+          "oos": 1.0,
+          "ic": 0.3069802746916347,
+          "ic_stability": 0.0,
+          "drawdown": 0.8650517165904595,
+          "turnover": 0.0,
+          "cost_sensitivity": 1.0,
+          "parameter_stability": 0.5,
+          "regime_stability": 0.5
+        },
+        "weights": {
+          "net_sharpe": 0.18,
+          "net_expectancy": 0.1,
+          "oos": 0.18,
+          "ic": 0.12,
+          "ic_stability": 0.08,
+          "drawdown": 0.1,
+          "turnover": 0.06,
+          "cost_sensitivity": 0.08,
+          "parameter_stability": 0.05,
+          "regime_stability": 0.05
+        },
+        "formula_doc": "\nscore = \u03a3 w_i * component_i\n\nComponents (higher better): net Sharpe, expectancy, OOS, IC, IC stability,\ndrawdown (inverted), turnover (inverted), cost sensitivity, parameter/regime stability.\nRaw return is NOT the sole ranking criterion.\n"
+      }
+    },
+    "data_version": "synthetic_ref@1",
+    "dataset_checksum": "refchk",
+    "oos_status": "EVALUATED",
+    "cost_model_id": "commission_spread_slippage_bps",
+    "experiment_id": "8adf8d6b-19a6-4b76-9b17-0473972f868e",
+    "requested_weight": -0.05,
+    "meta": {
+      "from": "evaluate_candidate"
+    },
+    "disclaimer": "ALPHA CANDIDATE \u2014 research wiring only, not a profitability claim."
+  },
+  "pipeline": {
+    "disclaimer": "UNIFIED TRADING PIPELINE \u2014 integration validation only. PIPELINE WORKS \u2260 STRATEGY WORKS \u2260 PROFITABLE \u2260 ROBUST \u2260 PRODUCTION READY.",
+    "asof": "2022-01-08 11:00:00+00:00",
+    "n_candidates": 1,
+    "results": [
+      {
+        "candidate_id": "momentum_signal:BTCUSDT:2022-01-08 11:00:00+00:00:-1.0",
+        "candidate": {
+          "candidate_id": "momentum_signal:BTCUSDT:2022-01-08 11:00:00+00:00:-1.0",
+          "signal_id": "momentum_signal",
+          "instrument": "BTCUSDT",
+          "timestamp": "2022-01-08 11:00:00+00:00",
+          "direction": -1.0,
+          "signal_value": -1.0,
+          "confidence": null,
+          "expected_horizon": 5,
+          "signal_timeframe": "1h",
+          "execution_timeframe": "1h",
+          "source_model": "reference",
+          "source_model_version": "1.0.0",
+          "research_configuration": {
+            "classification": "SAMPLE_TOO_SHORT",
+            "research_status": "SAMPLE_INSUFFICIENT",
+            "score": {
+              "score": 0.7101489064865104,
+              "components": {
+                "net_sharpe": 0.9822561214692683,
+                "net_expectancy": 1.0,
+                "oos": 1.0,
+                "ic": 0.3069802746916347,
+                "ic_stability": 0.0,
+                "drawdown": 0.8650517165904595,
+                "turnover": 0.0,
+                "cost_sensitivity": 1.0,
+                "parameter_stability": 0.5,
+                "regime_stability": 0.5
+              },
+              "weights": {
+                "net_sharpe": 0.18,
+                "net_expectancy": 0.1,
+                "oos": 0.18,
+                "ic": 0.12,
+                "ic_stability": 0.08,
+                "drawdown": 0.1,
+                "turnover": 0.06,
+                "cost_sensitivity": 0.08,
+                "parameter_stability": 0.05,
+                "regime_stability": 0.05
+              },
+              "formula_doc": "\nscore = \u03a3 w_i * component_i\n\nComponents (higher better): net Sharpe, expectancy, OOS, IC, IC stability,\ndrawdown (inverted), turnover (inverted), cost sensitivity, parameter/regime stability.\nRaw return is NOT the sole ranking criterion.\n"
+            }
+          },
+          "data_version": "synthetic_ref@1",
+          "dataset_checksum": "refchk",
+          "oos_status": "EVALUATED",
+          "cost_model_id": "commission_spread_slippage_bps",
+          "experiment_id": "8adf8d6b-19a6-4b76-9b17-0473972f868e",
+          "requested_weight": -0.05,
+          "meta": {
+            "from": "evaluate_candidate"
+          },
+          "disclaimer": "ALPHA CANDIDATE \u2014 research wiring only, not a profitability claim."
+        },
+        "risk": {
+          "risk_decision_id": "risk_01b1dc030e864c4d",
+          "outcome": "RISK_REJECTED",
+          "requested_exposure": -0.05,
+          "approved_exposure": 0.0,
+          "reason": "REJECTED: hard limit breach(es). max_drawdown: observed=0.280121 vs threshold=0.2 (HARD)",
+          "reason_codes": [
+            "max_herfindahl",
+            "max_drawdown"
+          ],
+          "limits_triggered": [
+            {
+              "limit_name": "max_herfindahl",
+              "severity": "SOFT",
+              "observed": 1.0,
+              "threshold": 0.3,
+              "reason": "max_herfindahl: observed=1 vs threshold=0.3 (SOFT)",
+              "scope": "portfolio",
+              "metadata": {}
+            },
+            {
+              "limit_name": "max_drawdown",
+              "severity": "HARD",
+              "observed": 0.2801214941408161,
+              "threshold": 0.2,
+              "reason": "max_drawdown: observed=0.280121 vs threshold=0.2 (HARD)",
+              "scope": "portfolio",
+              "metadata": {
+                "description": "Hard drawdown stop \u2014 not overridable by confidence"
+              }
+            }
+          ],
+          "recommended_size": 0.17933101306663476,
+          "audit": {
+            "timestamp": "2026-08-14T15:45:49.842272+00:00",
+            "proposed_weight": -0.05,
+            "asset_index": 0,
+            "forecast_confidence": 0.0,
+            "data_version": "1.0.0",
+            "model_version": "1.0.0",
+            "parameters": {
+              "limits": {
+                "max_position": 0.1,
+                "max_gross_exposure": 1.5,
+                "max_net_exposure": 1.0,
+                "max_concentration": 0.25,
+                "max_daily_loss": 0.03,
+                "max_leverage": 2.0,
+                "max_participation": 0.1,
+                "min_adv_coverage": 0.01
+              },
+              "drawdown": {
+                "caution": 0.05,
+                "reduced_risk": 0.1,
+                "capital_preservation": 0.15,
+                "trading_halt": 0.2
+              },
+              "leverage": {
+                "base_leverage": 1.0,
+                "max_leverage": 2.0,
+                "min_leverage": 0.0,
+                "vol_scalar": 1.0,
+                "confidence_cap": 1.25
+              }
+            },
+            "drawdown": {
+              "name": "drawdown_state",
+              "risk_state": "TRADING_HALT",
+              "current_drawdown": 0.2801214941408161,
+              "max_drawdown": 0.2878241328060437,
+              "peak_equity": 1.0029874553750848,
+              "drawdown_duration": 178,
+              "recovery_time": null,
+              "wealth": 0.7220291107709209,
+              "thresholds": {
+                "caution": 0.05,
+                "reduced_risk": 0.1,
+                "capital_preservation": 0.15,
+                "trading_halt": 0.2
+              },
+              "measures": {
+                "max_drawdown": {
+                  "name": "max_drawdown",
+                  "value": 0.2878241328060437,
+                  "unit": "fraction",
+                  "confidence": null,
+                  "horizon": null,
+                  "method": "peak_to_trough",
+                  "parameters": {
+                    "n_obs": 180
+                  },
+                  "metadata": {}
+                },
+                "expected_drawdown": {
+                  "name": "expected_drawdown",
+                  "value": 0.15924653331690877,
+                  "unit": "fraction",
+                  "confidence": null,
+                  "horizon": null,
+                  "method": "mean_drawdown",
+                  "parameters": {
+                    "n_obs": 180
+                  },
+                  "metadata": {}
+                },
+                "ulcer_index": {
+                  "name": "ulcer_index",
+                  "value": 0.17299339470927674,
+                  "unit": "fraction",
+                  "confidence": null,
+                  "horizon": null,
+                  "method": "rms_drawdown",
+                  "parameters": {
+                    "n_obs": 180
+                  },
+                  "metadata": {}
+                },
+                "downside_deviation": {
+                  "name": "downside_deviation",
+                  "value": 0.007205794401405654,
+                  "unit": "volatility",
+                  "confidence": null,
+                  "horizon": null,
+                  "method": "semideviation",
+                  "parameters": {
+                    "mar": 0.0,
+                    "n_obs": 180
+                  },
+                  "metadata": {}
+                }
+              }
+            },
+            "limits_checked": true
+          }
+        },
+        "outcome": "RISK_REJECTED"
+      }
+    ],
+    "positions": {},
+    "target_weights": {},
+    "equity": 500000.0,
+    "cash": 500000.0,
+    "gross_exposure_weights": 0,
+    "net_exposure_weights": 0,
+    "reconciliation": {
+      "ok": true,
+      "starting_capital": 500000.0,
+      "realized": 0.0,
+      "unrealized": 0.0,
+      "fees": 0.0,
+      "financing": 0.0,
+      "ending_equity": 500000.0,
+      "expected_equity": 500000.0,
+      "discrepancy": 0.0,
+      "tolerance": 0.0001,
+      "detail": "reconciled via equity = cash + position_market_value",
+      "cash": 500000.0,
+      "position_market_value": 0.0,
+      "cash_plus_mv_equity": 500000.0,
+      "checks": {
+        "cash_plus_mv": {
+          "ok": true,
+          "expected": 500000.0,
+          "gap": 0.0
+        },
+        "prompt_identity": {
+          "ok": true,
+          "expected": 500000.0,
+          "gap": 0.0
+        },
+        "cash_plus_unrealized": {
+          "ok": true,
+          "expected": 500000.0,
+          "gap": 0.0
+        }
+      },
+      "identity": "equity = cash + position_market_value; cash settles buys/sells/fees; Starting + Realized + Unrealized - Fees - Financing \u2248 Ending (or cash + unrealized when realized is settled into cash)",
+      "position_fill_replay": {
+        "ok": true,
+        "n_fills": 0,
+        "final_quantities": {},
+        "steps": [],
+        "matches_final_positions": true,
+        "final_mismatches": []
+      },
+      "cash_fill_replay": {
+        "ok": true,
+        "initial_cash": 500000.0,
+        "replayed_cash": 500000.0,
+        "n_events": 0,
+        "events": [],
+        "tolerance": 0.0001,
+        "matches_ledger": true,
+        "ledger_cash": 500000.0
+      },
+      "equity_snapshots": {
+        "ok": true,
+        "n_snapshots": 0,
+        "n_checked": 0,
+        "n_gaps": 0,
+        "gaps": [],
+        "tolerance": 0.0001
+      },
+      "capital_identity": {
+        "ok": true,
+        "starting_capital": 500000.0,
+        "realized": 0.0,
+        "unrealized": 0.0,
+        "fees": 0.0,
+        "financing": 0.0,
+        "ending_equity": 500000.0,
+        "expected_equity": 500000.0,
+        "discrepancy": 0.0,
+        "tolerance": 0.0001,
+        "detail": "reconciled via equity = cash + position_market_value",
+        "cash": 500000.0,
+        "position_market_value": 0.0,
+        "cash_plus_mv_equity": 500000.0,
+        "checks": {
+          "cash_plus_mv": {
+            "ok": true,
+            "expected": 500000.0,
+            "gap": 0.0
+          },
+          "prompt_identity": {
+            "ok": true,
+            "expected": 500000.0,
+            "gap": 0.0
+          },
+          "cash_plus_unrealized": {
+            "ok": true,
+            "expected": 500000.0,
+            "gap": 0.0
+          }
+        },
+        "identity": "equity = cash + position_market_value; cash settles buys/sells/fees; Starting + Realized + Unrealized - Fees - Financing \u2248 Ending (or cash + unrealized when realized is settled into cash)"
+      },
+      "outcome": "RECONCILIATION_OK"
+    },
+    "lineage": []
+  },
+  "prompt35_compatible": true
+}

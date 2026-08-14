@@ -1,0 +1,22 @@
+{
+  "n_clusters": 8,
+  "size_histogram": {
+    "61": 1,
+    "30": 1,
+    "20": 1,
+    "9": 1,
+    "6": 1,
+    "1": 3
+  },
+  "representatives": [
+    "mdc_801488267ad484dc",
+    "mdc_6f008c954ea26bf5",
+    "mdc_51a60a3264845365",
+    "mdc_678609c534d68189",
+    "mdc_99aa952c5d5f6ff7",
+    "mdc_3ed979ee7d9dabe6",
+    "mdc_4992167889db9b2e",
+    "mdc_a0f769fc20835273"
+  ],
+  "disclaimer": "CANDIDATE CONSOLIDATION RESEARCH \u2014 predefined protocol. Research evidence is not a profitability guarantee. DISTINCT_RESEARCH_CANDIDATE \u2260 PROFITABLE \u2260 PRODUCTION_READY \u2260 LIVE_READY. Prompt 39 artifacts are immutable inputs."
+}

@@ -1,0 +1,198 @@
+{
+  "audit_id": "alpha_research_btc_full_audit_v1",
+  "completed_at": "2026-08-14T15:03:04.578370+00:00",
+  "final_verdict": "CONDITIONALLY_VALID",
+  "explanation": "Implementation audits of data identity, causal timing, cost math, OOS/purge, Sharpe/drawdown, and gate reconstruction are consistent with the stored Prompt 35 outcomes: no experiment satisfied the documented CANDIDATE gates under the research return+cost model. However, statistical strength is limited by autocorrelated bars / overlapping forward returns (FDR IC p-values are optimistic), and the research path is not a full institutional fill ledger. Therefore the zero-candidate conclusion is trustworthy as a statement about this gated research pipeline on the registered reference universe, but not as a general proof that no exploitable BTC short-horizon edge exists outside this design.",
+  "software_correctness": "CORRECT_WITH_DOCUMENTED_LIMITATIONS",
+  "statistical_validity": "LIMITED",
+  "economic_cost_model_validity": "VALID_WITHIN_BPS_TURNOVER_MODEL",
+  "data_validity": "VALID",
+  "oos_validity": "VALID",
+  "leakage_verdict": "PASS",
+  "accounting_reconciliation_verdict": "PASS_SIMPLIFIED_MODEL",
+  "multiple_testing_verdict": "MATH_CORRECT_ASSUMPTIONS_LIMITED",
+  "autocorrelation_assessment": "STATISTICAL_LIMITATION",
+  "defects": [
+    {
+      "id": "STAT_AUTO_CORR",
+      "severity": "HIGH",
+      "area": "statistics",
+      "summary": "FDR/IC p-values treat bars as IID; autocorrelation + overlapping horizons inflate significance.",
+      "impact_on_zero_candidate": "Does not create false rejections of candidates; FDR survivors were not used as CANDIDATE promotions."
+    },
+    {
+      "id": "ACCT_SIMPLIFIED",
+      "severity": "MEDIUM",
+      "area": "accounting",
+      "summary": "Alpha research path uses lagged position \u00d7 returns, not a cash/fill equity ledger.",
+      "impact_on_zero_candidate": "Does not invalidate relative gate outcomes within this research model; institutional fill-level P&L not claimed."
+    },
+    {
+      "id": "HOLD_WINDOW_SEMANTICS",
+      "severity": "LOW",
+      "area": "signal\u2192trade",
+      "summary": "apply_holding fills fixed windows and ignores intra-window signal changes/zeros.",
+      "impact_on_zero_candidate": "Consistent across long/short; not an asymmetric rejection bug."
+    },
+    {
+      "id": "TRADE_DAY_POSTHOC",
+      "severity": "LOW",
+      "area": "trade_frequency",
+      "summary": "Initial trades/day used n_days=1 when trade timestamps missing; later corrected in artifacts.",
+      "impact_on_zero_candidate": "None \u2014 classifications/gates did not use trades/day."
+    },
+    {
+      "id": "REGIME_SKIP_LARGE",
+      "severity": "LOW",
+      "area": "regime",
+      "summary": "Regime analytics skipped on >250k-bar frames in base matrix.",
+      "impact_on_zero_candidate": "None for CANDIDATE gates (regime not a hard gate)."
+    },
+    {
+      "id": "DEEPDIVE_SCORE_SELECTION",
+      "severity": "LOW",
+      "area": "research_design",
+      "summary": "Deep-dive robustness/slippage selected top-K by full-sample research score.",
+      "impact_on_zero_candidate": "Diagnostic only; did not invent CANDIDATEs or retune OOS."
+    }
+  ],
+  "fixes_made": [],
+  "prompt35_artifacts_preserved": true,
+  "prompt35_original_results_remain_valid": true,
+  "zero_candidate_conclusion_trustworthy_under_stated_gates": true,
+  "zero_candidate_is_general_no_edge_proof": false,
+  "software_checks_passed": true,
+  "research_score_audit": {
+    "weights": {
+      "net_sharpe": 0.18,
+      "net_expectancy": 0.1,
+      "oos": 0.18,
+      "ic": 0.12,
+      "ic_stability": 0.08,
+      "drawdown": 0.1,
+      "turnover": 0.06,
+      "cost_sensitivity": 0.08,
+      "parameter_stability": 0.05,
+      "regime_stability": 0.05
+    },
+    "components": [
+      "net_sharpe",
+      "net_expectancy",
+      "oos",
+      "ic",
+      "ic_stability",
+      "drawdown",
+      "turnover",
+      "cost_sensitivity",
+      "parameter_stability",
+      "regime_stability"
+    ],
+    "normalization": "per-component clamp/affine; weights renormalized to sum 1",
+    "dominated_by_return_alone": false,
+    "highest_score_is_candidate": false,
+    "note": "Highest Alpha Research Score in Prompt 35 was UNSTABLE and did not pass CANDIDATE gates. Score ranks research interest; gates decide candidacy.",
+    "hand_recompute_example": {
+      "score": 0.5334,
+      "components": {
+        "net_sharpe": 0.375,
+        "net_expectancy": 0.5,
+        "oos": 0.275,
+        "ic": 0.52,
+        "ic_stability": 0.5,
+        "drawdown": 0.8,
+        "turnover": 0.9,
+        "cost_sensitivity": 1.0,
+        "parameter_stability": 0.5,
+        "regime_stability": 0.5
+      },
+      "weights": {
+        "net_sharpe": 0.18,
+        "net_expectancy": 0.1,
+        "oos": 0.18,
+        "ic": 0.12,
+        "ic_stability": 0.08,
+        "drawdown": 0.1,
+        "turnover": 0.06,
+        "cost_sensitivity": 0.08,
+        "parameter_stability": 0.05,
+        "regime_stability": 0.05
+      },
+      "formula_doc": "\nscore = \u03a3 w_i * component_i\n\nComponents (higher better): net Sharpe, expectancy, OOS, IC, IC stability,\ndrawdown (inverted), turnover (inverted), cost sensitivity, parameter/regime stability.\nRaw return is NOT the sole ranking criterion.\n"
+    },
+    "disclaimer": "Research evidence is not a profitability guarantee."
+  },
+  "gate_summary": {
+    "n_reconstructed_pool": 16,
+    "failed_gate_counts": {
+      "UNSTABLE/FRAGILE": 1,
+      "OOS_FAILED": 2,
+      "COST_INEFFICIENT": 13
+    }
+  },
+  "disclaimer": "Research evidence is not a profitability guarantee.",
+  "stop": "Prompt 36 complete \u2014 no alpha expansion / portfolio / optimization.",
+  "tests_executed": [
+    "iqrp/tests/unit/backtesting/test_alpha_research.py",
+    "iqrp/tests/unit/backtesting/test_alpha_campaign.py",
+    "iqrp/tests/integration/backtesting/test_alpha_research.py",
+    "iqrp/tests/unit/backtesting/test_horizon_research.py",
+    "iqrp/tests/integration/backtesting/test_horizon_research.py",
+    "iqrp/tests/integration/backtesting/test_e2e_operational.py",
+    "BTC registry checksum verify",
+    "NIFTY registry verify_checksum"
+  ],
+  "regression_status": "PASS (38 tests)",
+  "nifty_dataset_validation": [
+    {
+      "key": "nifty50_daily@1.0.0",
+      "verify_checksum": true,
+      "path_exists": true
+    },
+    {
+      "key": "nifty50_intraday_15m@1.0.0",
+      "verify_checksum": false,
+      "path_exists": true
+    },
+    {
+      "key": "nifty50_intraday_15m@1.0.1",
+      "verify_checksum": true,
+      "path_exists": true
+    },
+    {
+      "key": "nifty50_intraday_1h@1.0.0",
+      "verify_checksum": false,
+      "path_exists": true
+    },
+    {
+      "key": "nifty50_intraday_1h@1.0.1",
+      "verify_checksum": true,
+      "path_exists": true
+    },
+    {
+      "key": "nifty50_intraday_1m@1.0.0",
+      "verify_checksum": true,
+      "path_exists": true
+    },
+    {
+      "key": "nifty50_intraday_30m@1.0.0",
+      "verify_checksum": false,
+      "path_exists": true
+    },
+    {
+      "key": "nifty50_intraday_30m@1.0.1",
+      "verify_checksum": true,
+      "path_exists": true
+    },
+    {
+      "key": "nifty50_intraday_5m@1.0.0",
+      "verify_checksum": false,
+      "path_exists": true
+    },
+    {
+      "key": "nifty50_intraday_5m@1.0.1",
+      "verify_checksum": true,
+      "path_exists": true
+    }
+  ],
+  "btc_dataset_validation": "PASS checksums for Prompt 35 datasets"
+}

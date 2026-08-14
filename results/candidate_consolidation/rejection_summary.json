@@ -1,0 +1,15 @@
+{
+  "input_candidates": 129,
+  "analysis_unavailable": 0,
+  "redundancy_counts": {
+    "HIGHLY_REDUNDANT": 120,
+    "RELATED": 7,
+    "DISTINCT": 2
+  },
+  "overtrading_reps_rejected": 0,
+  "redundant_reps_rejected": 0,
+  "n_clusters": 8,
+  "n_distinct_research_candidates": 8,
+  "n_ensemble_base_pass": 10,
+  "disclaimer": "CANDIDATE CONSOLIDATION RESEARCH \u2014 predefined protocol. Research evidence is not a profitability guarantee. DISTINCT_RESEARCH_CANDIDATE \u2260 PROFITABLE \u2260 PRODUCTION_READY \u2260 LIVE_READY. Prompt 39 artifacts are immutable inputs."
+}

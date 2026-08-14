@@ -1,0 +1,57 @@
+{
+  "forward_return_checks": {
+    "1": {
+      "n": 52548,
+      "max_abs_diff": 0.0,
+      "formula": "price(t+h)/price(t)-1",
+      "ok": true
+    },
+    "2": {
+      "n": 52547,
+      "max_abs_diff": 0.0,
+      "formula": "price(t+h)/price(t)-1",
+      "ok": true
+    },
+    "3": {
+      "n": 52546,
+      "max_abs_diff": 0.0,
+      "formula": "price(t+h)/price(t)-1",
+      "ok": true
+    },
+    "5": {
+      "n": 52544,
+      "max_abs_diff": 0.0,
+      "formula": "price(t+h)/price(t)-1",
+      "ok": true
+    },
+    "10": {
+      "n": 52539,
+      "max_abs_diff": 0.0,
+      "formula": "price(t+h)/price(t)-1",
+      "ok": true
+    },
+    "20": {
+      "n": 52529,
+      "max_abs_diff": 0.0,
+      "formula": "price(t+h)/price(t)-1",
+      "ok": true
+    }
+  },
+  "all_horizons_ok": true,
+  "signal_execution_timing": {
+    "signal_generation": "causal features at bar t using close(t) and history \u2264 t",
+    "position_mapping": "apply_holding: non-zero signal at i fills positions[i:i+h]",
+    "return_attribution": "gross[t] = position[t-1] * close_to_close_return[t]",
+    "implication": "Position decided using information through close(t-1) earns the subsequent close(t-1)\u2192close(t) return. Equivalent to end-of-bar signal with next-bar realization. NOT same-bar close(t) fill of a signal that used close(t).",
+    "same_bar_lookahead": false,
+    "hand_check": {
+      "t_index": 100,
+      "position_t_minus_1": 1.0,
+      "return_t": 0.00018872870249020401,
+      "gross_t": 0.00018872870249020401,
+      "expected": 0.00018872870249020401,
+      "match": true
+    }
+  },
+  "disclaimer": "Research evidence is not a profitability guarantee."
+}

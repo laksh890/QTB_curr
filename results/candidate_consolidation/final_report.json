@@ -1,0 +1,320 @@
+{
+  "disclaimer": "CANDIDATE CONSOLIDATION RESEARCH \u2014 predefined protocol. Research evidence is not a profitability guarantee. DISTINCT_RESEARCH_CANDIDATE \u2260 PROFITABLE \u2260 PRODUCTION_READY \u2260 LIVE_READY. Prompt 39 artifacts are immutable inputs.",
+  "consolidation_id": "candidate_consolidation_v1",
+  "started_at": "2026-08-14T16:43:40.260880+00:00",
+  "status": "CONSOLIDATION_COMPLETE_RESEARCH_SET",
+  "n_input_candidates": 129,
+  "n_ok_reconstructed": 129,
+  "answers": {
+    "1_n_genuinely_distinct_class": 2,
+    "2_n_highly_redundant": 120,
+    "3_n_behavioral_clusters": 8,
+    "4_model_families_diversified": false,
+    "5_timeframes_diversified": false,
+    "6_horizons_diversified": false,
+    "7_long_short_diversified": true,
+    "8_clusters_fail_same_periods": [
+      {
+        "pair": [
+          "mdc_3ed979ee7d9dabe6",
+          "mdc_a0f769fc20835273"
+        ],
+        "drawdown_overlap_frac": 0.8088235294117647,
+        "downside_corr_daily_net": -0.4916010500616104,
+        "note": "Downside correlation proxy = corr on days where either return < 0"
+      },
+      {
+        "pair": [
+          "mdc_801488267ad484dc",
+          "mdc_3ed979ee7d9dabe6"
+        ],
+        "drawdown_overlap_frac": 0.648578811369509,
+        "downside_corr_daily_net": -0.09607274229825775,
+        "note": "Downside correlation proxy = corr on days where either return < 0"
+      },
+      {
+        "pair": [
+          "mdc_801488267ad484dc",
+          "mdc_a0f769fc20835273"
+        ],
+        "drawdown_overlap_frac": 0.648,
+        "downside_corr_daily_net": -0.27630987130389834,
+        "note": "Downside correlation proxy = corr on days where either return < 0"
+      },
+      {
+        "pair": [
+          "mdc_3ed979ee7d9dabe6",
+          "mdc_4992167889db9b2e"
+        ],
+        "drawdown_overlap_frac": 0.3967611336032389,
+        "downside_corr_daily_net": -0.5223144632284688,
+        "note": "Downside correlation proxy = corr on days where either return < 0"
+      },
+      {
+        "pair": [
+          "mdc_801488267ad484dc",
+          "mdc_4992167889db9b2e"
+        ],
+        "drawdown_overlap_frac": 0.32894736842105265,
+        "downside_corr_daily_net": -0.5068195171869188,
+        "note": "Downside correlation proxy = corr on days where either return < 0"
+      },
+      {
+        "pair": [
+          "mdc_4992167889db9b2e",
+          "mdc_a0f769fc20835273"
+        ],
+        "drawdown_overlap_frac": 0.2827868852459016,
+        "downside_corr_daily_net": -0.3458161054621009,
+        "note": "Downside correlation proxy = corr on days where either return < 0"
+      },
+      {
+        "pair": [
+          "mdc_6f008c954ea26bf5",
+          "mdc_99aa952c5d5f6ff7"
+        ],
+        "drawdown_overlap_frac": 0.10344827586206896,
+        "downside_corr_daily_net": 0.22599390023258786,
+        "note": "Downside correlation proxy = corr on days where either return < 0"
+      },
+      {
+        "pair": [
+          "mdc_6f008c954ea26bf5",
+          "mdc_a0f769fc20835273"
+        ],
+        "drawdown_overlap_frac": 0.09259259259259259,
+        "downside_corr_daily_net": -0.2615741295559364,
+        "note": "Downside correlation proxy = corr on days where either return < 0"
+      },
+      {
+        "pair": [
+          "mdc_801488267ad484dc",
+          "mdc_6f008c954ea26bf5"
+        ],
+        "drawdown_overlap_frac": 0.09178743961352658,
+        "downside_corr_daily_net": 0.03235928400270527,
+        "note": "Downside correlation proxy = corr on days where either return < 0"
+      },
+      {
+        "pair": [
+          "mdc_6f008c954ea26bf5",
+          "mdc_3ed979ee7d9dabe6"
+        ],
+        "drawdown_overlap_frac": 0.07630522088353414,
+        "downside_corr_daily_net": -0.23238292647316738,
+        "note": "Downside correlation proxy = corr on days where either return < 0"
+      }
+    ],
+    "9_excessive_turnover": [
+      "mdc_1361621b538bd930",
+      "mdc_1366eb063c96bd09",
+      "mdc_18a517e70fce1a2f",
+      "mdc_1a7ec2fadcbe5129",
+      "mdc_1a972c69566941d1",
+      "mdc_1dc3c9761e80f81c",
+      "mdc_37f41d7a7f1340c7",
+      "mdc_41a8bba213046a30",
+      "mdc_51a60a3264845365",
+      "mdc_61438f8a108ae268",
+      "mdc_621143441783762a",
+      "mdc_6528eee052f7feb1",
+      "mdc_678609c534d68189",
+      "mdc_953ada34cefc6465",
+      "mdc_97e5cdb98ab5a15d",
+      "mdc_9e477e1d1e8166cf",
+      "mdc_a627de466de38e08",
+      "mdc_ad786dac3c66daeb",
+      "mdc_bcab10034fd66fe3",
+      "mdc_bd0d2edb9c184cc8",
+      "mdc_be57ebb80c38d83e",
+      "mdc_c3f22a3b2320b02b",
+      "mdc_ff8260603405b20b"
+    ],
+    "10_most_cost_sensitive": [
+      {
+        "candidate_id": "mdc_621143441783762a",
+        "timeframe": "5m",
+        "trades_per_day": 10.607999999999999,
+        "base_net_sharpe": 7.4396090645074135,
+        "moderate_net_sharpe": 1.0097343442670048,
+        "adverse_net_sharpe": -10.373915382612289,
+        "sharpe_degradation_base_to_adverse": 17.813524447119704,
+        "adverse_survives": false,
+        "cost_per_trade_base": 0.000999546690843155
+      },
+      {
+        "candidate_id": "mdc_be57ebb80c38d83e",
+        "timeframe": "5m",
+        "trades_per_day": 10.607999999999999,
+        "base_net_sharpe": 7.4396090645074135,
+        "moderate_net_sharpe": 1.0097343442670048,
+        "adverse_net_sharpe": -10.373915382612289,
+        "sharpe_degradation_base_to_adverse": 17.813524447119704,
+        "adverse_survives": false,
+        "cost_per_trade_base": 0.000999546690843155
+      },
+      {
+        "candidate_id": "mdc_1a972c69566941d1",
+        "timeframe": "5m",
+        "trades_per_day": 10.607999999999999,
+        "base_net_sharpe": 3.4482446550740598,
+        "moderate_net_sharpe": -2.8553955779773768,
+        "adverse_net_sharpe": -13.895329746581387,
+        "sharpe_degradation_base_to_adverse": 17.343574401655445,
+        "adverse_survives": false,
+        "cost_per_trade_base": 0.000999546690843155
+      },
+      {
+        "candidate_id": "mdc_97e5cdb98ab5a15d",
+        "timeframe": "5m",
+        "trades_per_day": 10.5984,
+        "base_net_sharpe": 7.552805722749283,
+        "moderate_net_sharpe": 2.773481732321781,
+        "adverse_net_sharpe": -6.177860808231024,
+        "sharpe_degradation_base_to_adverse": 13.730666530980308,
+        "adverse_survives": false,
+        "cost_per_trade_base": 0.001
+      },
+      {
+        "candidate_id": "mdc_bcab10034fd66fe3",
+        "timeframe": "5m",
+        "trades_per_day": 10.5984,
+        "base_net_sharpe": 7.552805722749283,
+        "moderate_net_sharpe": 2.773481732321781,
+        "adverse_net_sharpe": -6.177860808231024,
+        "sharpe_degradation_base_to_adverse": 13.730666530980308,
+        "adverse_survives": false,
+        "cost_per_trade_base": 0.001
+      },
+      {
+        "candidate_id": "mdc_1dc3c9761e80f81c",
+        "timeframe": "5m",
+        "trades_per_day": 10.5984,
+        "base_net_sharpe": 5.853967153177877,
+        "moderate_net_sharpe": 1.1605088159332186,
+        "adverse_net_sharpe": -7.6045148354135765,
+        "sharpe_degradation_base_to_adverse": 13.458481988591455,
+        "adverse_survives": false,
+        "cost_per_trade_base": 0.001
+      },
+      {
+        "candidate_id": "mdc_6528eee052f7feb1",
+        "timeframe": "5m",
+        "trades_per_day": 10.5696,
+        "base_net_sharpe": 3.2093183830795544,
+        "moderate_net_sharpe": -1.18105294918263,
+        "adverse_net_sharpe": -9.40137806151297,
+        "sharpe_degradation_base_to_adverse": 12.610696444592524,
+        "adverse_survives": false,
+        "cost_per_trade_base": 0.000999092558983666
+      },
+      {
+        "candidate_id": "mdc_9e477e1d1e8166cf",
+        "timeframe": "5m",
+        "trades_per_day": 10.5696,
+        "base_net_sharpe": 3.2093183830795544,
+        "moderate_net_sharpe": -1.18105294918263,
+        "adverse_net_sharpe": -9.40137806151297,
+        "sharpe_degradation_base_to_adverse": 12.610696444592524,
+        "adverse_survives": false,
+        "cost_per_trade_base": 0.000999092558983666
+      },
+      {
+        "candidate_id": "mdc_1366eb063c96bd09",
+        "timeframe": "5m",
+        "trades_per_day": 10.5696,
+        "base_net_sharpe": 1.6296233982581079,
+        "moderate_net_sharpe": -2.6968458083428195,
+        "adverse_net_sharpe": -10.779705279496872,
+        "sharpe_degradation_base_to_adverse": 12.40932867775498,
+        "adverse_survives": false,
+        "cost_per_trade_base": 0.000999092558983666
+      },
+      {
+        "candidate_id": "mdc_51a60a3264845365",
+        "timeframe": "5m",
+        "trades_per_day": 5.5488,
+        "base_net_sharpe": 11.674465752742083,
+        "moderate_net_sharpe": 8.158447486666613,
+        "adverse_net_sharpe": 1.41997140382855,
+        "sharpe_degradation_base_to_adverse": 10.254494348913534,
+        "adverse_survives": true,
+        "cost_per_trade_base": 0.0009991349480968858
+      },
+      {
+        "candidate_id": "mdc_bd0d2edb9c184cc8",
+        "timeframe": "5m",
+        "trades_per_day": 5.5488,
+        "base_net_sharpe": 11.674465752742083,
+        "moderate_net_sharpe": 8.158447486666613,
+        "adverse_net_sharpe": 1.41997140382855,
+        "sharpe_degradation_base_to_adverse": 10.254494348913534,
+        "adverse_survives": true,
+        "cost_per_trade_base": 0.0009991349480968858
+      },
+      {
+        "candidate_id": "mdc_c3f22a3b2320b02b",
+        "timeframe": "5m",
+        "trades_per_day": 5.5488,
+        "base_net_sharpe": 11.674465752742083,
+        "moderate_net_sharpe": 8.158447486666613,
+        "adverse_net_sharpe": 1.41997140382855,
+        "sharpe_degradation_base_to_adverse": 10.254494348913534,
+        "adverse_survives": true,
+        "cost_per_trade_base": 0.0009991349480968858
+      },
+      {
+        "candidate_id": "mdc_41a8bba213046a30",
+        "timeframe": "5m",
+        "trades_per_day": 5.5488,
+        "base_net_sharpe": 5.415585690643289,
+        "moderate_net_sharpe": 2.001433780422179,
+        "adverse_net_sharpe": -4.42750359489241,
+        "sharpe_degradation_base_to_adverse": 9.843089285535699,
+        "adverse_survives": false,
+        "cost_per_trade_base": 0.0009991349480968858
+      },
+      {
+        "candidate_id": "mdc_37f41d7a7f1340c7",
+        "timeframe": "5m",
+        "trades_per_day": 7.8336,
+        "base_net_sharpe": 3.1310077135266186,
+        "moderate_net_sharpe": -0.11215842305458906,
+        "adverse_net_sharpe": -6.327253360901646,
+        "sharpe_degradation_base_to_adverse": 9.458261074428265,
+        "adverse_survives": false,
+        "cost_per_trade_base": 0.001
+      },
+      {
+        "candidate_id": "mdc_2e0b10ec18fb4d65",
+        "timeframe": "5m",
+        "trades_per_day": 4.2432,
+        "base_net_sharpe": 3.009153240494817,
+        "moderate_net_sharpe": 0.41102711267483066,
+        "adverse_net_sharpe": -4.5465583511463326,
+        "sharpe_degradation_base_to_adverse": 7.555711591641149,
+        "adverse_survives": false,
+        "cost_per_trade_base": 0.000998868778280543
+      }
+    ],
+    "11_diversification_reduces_drawdown": true,
+    "12_diversification_improves_net_risk_adjusted": true,
+    "13_ensemble_outperforms_components_oos": true,
+    "14_ensemble_survives_BASE": true,
+    "15_ensemble_survives_MODERATE": true,
+    "16_ensemble_survives_ADVERSE": true,
+    "17_ensemble_survives_robustness": true,
+    "18_n_distinct_research_candidates": 8,
+    "19_n_ensemble_candidates_remaining": 10,
+    "20_proven_profitability": false,
+    "proven_profitability_statement": "NO \u2014 research evidence is not proof of profitability."
+  },
+  "claim_distinctions": {
+    "PROMPT39_CANDIDATE": true,
+    "BEHAVIORALLY_DISTINCT": true,
+    "ENSEMBLE_RESEARCH_PASS": true,
+    "PROFITABLE": false,
+    "PRODUCTION_READY": false,
+    "LIVE_READY": false
+  }
+}

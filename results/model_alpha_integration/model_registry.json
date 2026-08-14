@@ -1,0 +1,149 @@
+{
+  "disclaimer": "MODEL\u2192ALPHA INTEGRATION VALIDATION \u2014 wiring only. Not a profitability claim. Research evidence is not a guarantee.",
+  "families": {
+    "volatility": {
+      "factory": "create_volatility_model",
+      "models": [
+        "aparch",
+        "arch",
+        "bekk",
+        "component_garch",
+        "dcc_garch",
+        "egarch",
+        "ewma",
+        "figarch",
+        "garch",
+        "gjr_garch",
+        "historical_volatility",
+        "rolling_volatility"
+      ],
+      "api": [
+        "fit(frame, target_column=...)",
+        "predict(frame)",
+        "forecast(frame, horizon=)"
+      ],
+      "output": "np.ndarray sigma / Forecast",
+      "frame": "polars"
+    },
+    "statistical": {
+      "factory": "create_statistical_model",
+      "models": [
+        "ar",
+        "arima",
+        "arma",
+        "holt",
+        "holt_winters",
+        "ma",
+        "sarima",
+        "ses",
+        "var",
+        "varmax",
+        "vecm"
+      ],
+      "api": [
+        "fit",
+        "predict",
+        "forecast"
+      ],
+      "output": "np.ndarray / Forecast",
+      "frame": "polars"
+    },
+    "tree_ml": {
+      "factory": "create_tree_model",
+      "models": [
+        "catboost",
+        "extra_trees",
+        "hist_gradient_boosting",
+        "lightgbm",
+        "random_forest",
+        "xgboost"
+      ],
+      "api": [
+        "fit(frame, feature_columns, target_column=)",
+        "predict",
+        "forecast"
+      ],
+      "output": "np.ndarray / Forecast",
+      "frame": "polars"
+    },
+    "neural": {
+      "factory": "create_neural_model",
+      "models": [
+        "attention_seq2seq",
+        "bidirectional_lstm",
+        "deepar",
+        "gru",
+        "lstm",
+        "mlp",
+        "nbeats",
+        "nhits",
+        "seq2seq",
+        "stacked_gru",
+        "stacked_lstm",
+        "tcn"
+      ],
+      "api": [
+        "fit",
+        "predict",
+        "forecast"
+      ],
+      "output": "np.ndarray / Forecast",
+      "frame": "polars",
+      "requires": "torch"
+    },
+    "transformers": {
+      "factory": "create_transformer_model",
+      "models": [
+        "autoformer",
+        "crossformer",
+        "fedformer",
+        "informer",
+        "itransformer",
+        "moe_transformer",
+        "patchtst",
+        "tft",
+        "tide",
+        "timemixer",
+        "timesnet"
+      ],
+      "api": [
+        "fit",
+        "predict",
+        "forecast"
+      ],
+      "output": "np.ndarray / Forecast",
+      "frame": "polars",
+      "requires": "torch"
+    },
+    "regimes": {
+      "factory": "get_registry().create",
+      "models": [
+        "hmm",
+        "markov_chain",
+        "mock_regime"
+      ],
+      "api": [
+        "fit",
+        "predict",
+        "predict_proba",
+        "forecast",
+        "detect"
+      ],
+      "output": "state ids / probabilities",
+      "frame": "polars",
+      "note": "default ensure_regime_models_loaded() is mock-only"
+    }
+  },
+  "forecast_object": {
+    "class": "iqrp.app.forecasting.base.forecast.Forecast",
+    "fields": [
+      "values",
+      "horizon",
+      "timestamps",
+      "probabilities",
+      "model_name",
+      "model_version",
+      "metadata"
+    ]
+  }
+}

@@ -1,0 +1,268 @@
+{
+  "Execution_engine": {
+    "status": "IMPLEMENTED",
+    "source": [
+      "iqrp/app/execution/engine.py"
+    ],
+    "tests": [
+      "iqrp/tests/integration/backtesting/test_alpha_research.py",
+      "iqrp/tests/integration/backtesting/test_e2e_operational.py",
+      "iqrp/tests/integration/test_simulation_pipeline.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps2.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps3.py",
+      "iqrp/tests/unit/backtesting/operational/test_nested_config.py",
+      "iqrp/tests/unit/backtesting/operational/test_runner_internals.py",
+      "iqrp/tests/unit/backtesting/test_coverage_gaps.py",
+      "iqrp/tests/unit/backtesting/test_engine.py",
+      "iqrp/tests/unit/backtesting/test_event_engine.py",
+      "iqrp/tests/unit/backtesting/test_performance.py",
+      "iqrp/tests/unit/backtesting/test_reports_serializer_registry.py",
+      "iqrp/tests/unit/execution/test_algorithms.py",
+      "iqrp/tests/unit/execution/test_coverage_final.py",
+      "iqrp/tests/unit/execution/test_coverage_final2.py",
+      "iqrp/tests/unit/execution/test_coverage_gaps.py",
+      "iqrp/tests/unit/execution/test_coverage_micro.py",
+      "iqrp/tests/unit/execution/test_engine_api.py",
+      "iqrp/tests/unit/execution/test_order_lifecycle.py"
+    ],
+    "docs": [],
+    "executable_smoke": null,
+    "integrated_into_alpha_research": false,
+    "integrated_into_backtest_runner": false,
+    "notes": "Execution platform code+tests exist; alpha_research uses simplified turnover\u00d7bps cost drag, not full OM lifecycle",
+    "evidence": {
+      "n_sources": 1,
+      "n_tests": 26,
+      "n_docs": 0
+    }
+  },
+  "Order_manager": {
+    "status": "IMPLEMENTED",
+    "source": [
+      "iqrp/app/execution/order_manager"
+    ],
+    "tests": [
+      "iqrp/tests/integration/backtesting/test_alpha_research.py",
+      "iqrp/tests/integration/backtesting/test_e2e_operational.py",
+      "iqrp/tests/integration/test_simulation_pipeline.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps2.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps3.py",
+      "iqrp/tests/unit/backtesting/operational/test_nested_config.py",
+      "iqrp/tests/unit/backtesting/operational/test_runner_internals.py",
+      "iqrp/tests/unit/backtesting/test_coverage_gaps.py",
+      "iqrp/tests/unit/backtesting/test_engine.py",
+      "iqrp/tests/unit/backtesting/test_event_engine.py",
+      "iqrp/tests/unit/backtesting/test_performance.py",
+      "iqrp/tests/unit/backtesting/test_reports_serializer_registry.py",
+      "iqrp/tests/unit/execution/test_algorithms.py",
+      "iqrp/tests/unit/execution/test_coverage_final.py",
+      "iqrp/tests/unit/execution/test_coverage_final2.py",
+      "iqrp/tests/unit/execution/test_coverage_gaps.py",
+      "iqrp/tests/unit/execution/test_coverage_micro.py",
+      "iqrp/tests/unit/execution/test_engine_api.py",
+      "iqrp/tests/unit/execution/test_order_lifecycle.py"
+    ],
+    "docs": [],
+    "executable_smoke": null,
+    "integrated_into_alpha_research": false,
+    "integrated_into_backtest_runner": false,
+    "notes": "Execution platform code+tests exist; alpha_research uses simplified turnover\u00d7bps cost drag, not full OM lifecycle",
+    "evidence": {
+      "n_sources": 1,
+      "n_tests": 26,
+      "n_docs": 0
+    }
+  },
+  "Algorithms_TWAP_VWAP_etc": {
+    "status": "IMPLEMENTED",
+    "source": [
+      "iqrp/app/execution/algorithms"
+    ],
+    "tests": [
+      "iqrp/tests/integration/backtesting/test_alpha_research.py",
+      "iqrp/tests/integration/backtesting/test_e2e_operational.py",
+      "iqrp/tests/integration/test_simulation_pipeline.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps2.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps3.py",
+      "iqrp/tests/unit/backtesting/operational/test_nested_config.py",
+      "iqrp/tests/unit/backtesting/operational/test_runner_internals.py",
+      "iqrp/tests/unit/backtesting/test_coverage_gaps.py",
+      "iqrp/tests/unit/backtesting/test_engine.py",
+      "iqrp/tests/unit/backtesting/test_event_engine.py",
+      "iqrp/tests/unit/backtesting/test_performance.py",
+      "iqrp/tests/unit/backtesting/test_reports_serializer_registry.py",
+      "iqrp/tests/unit/execution/test_algorithms.py",
+      "iqrp/tests/unit/execution/test_coverage_final.py",
+      "iqrp/tests/unit/execution/test_coverage_final2.py",
+      "iqrp/tests/unit/execution/test_coverage_gaps.py",
+      "iqrp/tests/unit/execution/test_coverage_micro.py",
+      "iqrp/tests/unit/execution/test_engine_api.py",
+      "iqrp/tests/unit/execution/test_order_lifecycle.py"
+    ],
+    "docs": [],
+    "executable_smoke": null,
+    "integrated_into_alpha_research": false,
+    "integrated_into_backtest_runner": false,
+    "notes": "Execution platform code+tests exist; alpha_research uses simplified turnover\u00d7bps cost drag, not full OM lifecycle",
+    "evidence": {
+      "n_sources": 1,
+      "n_tests": 26,
+      "n_docs": 0
+    }
+  },
+  "Slippage": {
+    "status": "IMPLEMENTED",
+    "source": [
+      "iqrp/app/execution/slippage"
+    ],
+    "tests": [
+      "iqrp/tests/integration/backtesting/test_alpha_research.py",
+      "iqrp/tests/integration/backtesting/test_e2e_operational.py",
+      "iqrp/tests/integration/test_simulation_pipeline.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps2.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps3.py",
+      "iqrp/tests/unit/backtesting/operational/test_nested_config.py",
+      "iqrp/tests/unit/backtesting/operational/test_runner_internals.py",
+      "iqrp/tests/unit/backtesting/test_coverage_gaps.py",
+      "iqrp/tests/unit/backtesting/test_engine.py",
+      "iqrp/tests/unit/backtesting/test_event_engine.py",
+      "iqrp/tests/unit/backtesting/test_performance.py",
+      "iqrp/tests/unit/backtesting/test_reports_serializer_registry.py",
+      "iqrp/tests/unit/execution/test_algorithms.py",
+      "iqrp/tests/unit/execution/test_coverage_final.py",
+      "iqrp/tests/unit/execution/test_coverage_final2.py",
+      "iqrp/tests/unit/execution/test_coverage_gaps.py",
+      "iqrp/tests/unit/execution/test_coverage_micro.py",
+      "iqrp/tests/unit/execution/test_engine_api.py",
+      "iqrp/tests/unit/execution/test_order_lifecycle.py"
+    ],
+    "docs": [],
+    "executable_smoke": null,
+    "integrated_into_alpha_research": false,
+    "integrated_into_backtest_runner": false,
+    "notes": "Execution platform code+tests exist; alpha_research uses simplified turnover\u00d7bps cost drag, not full OM lifecycle",
+    "evidence": {
+      "n_sources": 1,
+      "n_tests": 26,
+      "n_docs": 0
+    }
+  },
+  "Transaction_costs": {
+    "status": "IMPLEMENTED",
+    "source": [
+      "iqrp/app/execution/transaction_costs"
+    ],
+    "tests": [
+      "iqrp/tests/integration/backtesting/test_alpha_research.py",
+      "iqrp/tests/integration/backtesting/test_e2e_operational.py",
+      "iqrp/tests/integration/test_simulation_pipeline.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps2.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps3.py",
+      "iqrp/tests/unit/backtesting/operational/test_nested_config.py",
+      "iqrp/tests/unit/backtesting/operational/test_runner_internals.py",
+      "iqrp/tests/unit/backtesting/test_coverage_gaps.py",
+      "iqrp/tests/unit/backtesting/test_engine.py",
+      "iqrp/tests/unit/backtesting/test_event_engine.py",
+      "iqrp/tests/unit/backtesting/test_performance.py",
+      "iqrp/tests/unit/backtesting/test_reports_serializer_registry.py",
+      "iqrp/tests/unit/execution/test_algorithms.py",
+      "iqrp/tests/unit/execution/test_coverage_final.py",
+      "iqrp/tests/unit/execution/test_coverage_final2.py",
+      "iqrp/tests/unit/execution/test_coverage_gaps.py",
+      "iqrp/tests/unit/execution/test_coverage_micro.py",
+      "iqrp/tests/unit/execution/test_engine_api.py",
+      "iqrp/tests/unit/execution/test_order_lifecycle.py"
+    ],
+    "docs": [],
+    "executable_smoke": null,
+    "integrated_into_alpha_research": false,
+    "integrated_into_backtest_runner": false,
+    "notes": "Execution platform code+tests exist; alpha_research uses simplified turnover\u00d7bps cost drag, not full OM lifecycle",
+    "evidence": {
+      "n_sources": 1,
+      "n_tests": 26,
+      "n_docs": 0
+    }
+  },
+  "Smart_routing": {
+    "status": "IMPLEMENTED",
+    "source": [
+      "iqrp/app/execution/smart_routing"
+    ],
+    "tests": [
+      "iqrp/tests/integration/backtesting/test_alpha_research.py",
+      "iqrp/tests/integration/backtesting/test_e2e_operational.py",
+      "iqrp/tests/integration/test_simulation_pipeline.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps2.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps3.py",
+      "iqrp/tests/unit/backtesting/operational/test_nested_config.py",
+      "iqrp/tests/unit/backtesting/operational/test_runner_internals.py",
+      "iqrp/tests/unit/backtesting/test_coverage_gaps.py",
+      "iqrp/tests/unit/backtesting/test_engine.py",
+      "iqrp/tests/unit/backtesting/test_event_engine.py",
+      "iqrp/tests/unit/backtesting/test_performance.py",
+      "iqrp/tests/unit/backtesting/test_reports_serializer_registry.py",
+      "iqrp/tests/unit/execution/test_algorithms.py",
+      "iqrp/tests/unit/execution/test_coverage_final.py",
+      "iqrp/tests/unit/execution/test_coverage_final2.py",
+      "iqrp/tests/unit/execution/test_coverage_gaps.py",
+      "iqrp/tests/unit/execution/test_coverage_micro.py",
+      "iqrp/tests/unit/execution/test_engine_api.py",
+      "iqrp/tests/unit/execution/test_order_lifecycle.py"
+    ],
+    "docs": [],
+    "executable_smoke": null,
+    "integrated_into_alpha_research": false,
+    "integrated_into_backtest_runner": false,
+    "notes": "Execution platform code+tests exist; alpha_research uses simplified turnover\u00d7bps cost drag, not full OM lifecycle",
+    "evidence": {
+      "n_sources": 1,
+      "n_tests": 26,
+      "n_docs": 0
+    }
+  },
+  "Fill_simulation": {
+    "status": "IMPLEMENTED",
+    "source": [
+      "iqrp/app/execution/simulation.py"
+    ],
+    "tests": [
+      "iqrp/tests/integration/backtesting/test_alpha_research.py",
+      "iqrp/tests/integration/backtesting/test_e2e_operational.py",
+      "iqrp/tests/integration/test_simulation_pipeline.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps2.py",
+      "iqrp/tests/unit/backtesting/operational/test_coverage_gaps3.py",
+      "iqrp/tests/unit/backtesting/operational/test_nested_config.py",
+      "iqrp/tests/unit/backtesting/operational/test_runner_internals.py",
+      "iqrp/tests/unit/backtesting/test_coverage_gaps.py",
+      "iqrp/tests/unit/backtesting/test_engine.py",
+      "iqrp/tests/unit/backtesting/test_event_engine.py",
+      "iqrp/tests/unit/backtesting/test_performance.py",
+      "iqrp/tests/unit/backtesting/test_reports_serializer_registry.py",
+      "iqrp/tests/unit/execution/test_algorithms.py",
+      "iqrp/tests/unit/execution/test_coverage_final.py",
+      "iqrp/tests/unit/execution/test_coverage_final2.py",
+      "iqrp/tests/unit/execution/test_coverage_gaps.py",
+      "iqrp/tests/unit/execution/test_coverage_micro.py",
+      "iqrp/tests/unit/execution/test_engine_api.py",
+      "iqrp/tests/unit/execution/test_order_lifecycle.py"
+    ],
+    "docs": [],
+    "executable_smoke": null,
+    "integrated_into_alpha_research": false,
+    "integrated_into_backtest_runner": false,
+    "notes": "Execution platform code+tests exist; alpha_research uses simplified turnover\u00d7bps cost drag, not full OM lifecycle",
+    "evidence": {
+      "n_sources": 1,
+      "n_tests": 26,
+      "n_docs": 0
+    }
+  }
+}

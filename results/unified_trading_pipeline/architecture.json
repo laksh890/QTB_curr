@@ -1,0 +1,31 @@
+{
+  "disclaimer": "UNIFIED TRADING PIPELINE \u2014 integration validation only. PIPELINE WORKS \u2260 STRATEGY WORKS \u2260 PROFITABLE \u2260 ROBUST \u2260 PRODUCTION READY.",
+  "flow": [
+    "DATA",
+    "QUANTITATIVE_MODELS",
+    "FORECAST_REGIME",
+    "MODEL_SIGNAL_ADAPTER",
+    "SIGNAL_REGISTRY",
+    "ALPHA_RESEARCH",
+    "ALPHA_CANDIDATE",
+    "RISK_ENGINE",
+    "POSITION_SIZING",
+    "PORTFOLIO_CONSTRAINTS",
+    "EXECUTION_ENGINE",
+    "ORDERS",
+    "FILLS",
+    "POSITIONS",
+    "PORTFOLIO_STATE",
+    "RISK_STATE",
+    "PERFORMANCE_DIAGNOSTICS"
+  ],
+  "apis_reused": {
+    "alpha": "AlphaSignalResearchEngine.evaluate_candidate",
+    "risk": "RiskIntelligenceEngine.validate_position / position_size",
+    "portfolio": "PortfolioSettings + TargetWeights handoff (no optimize)",
+    "execution": "ExecutionEngine.plan_from_targets + execute + SimulatedVenue",
+    "accounting": "CapitalState / PositionBook / FillLog / full_accounting_audit",
+    "event_engine": "Compatible with existing EventPipeline lifecycle; this layer is the explicit handoff"
+  },
+  "horizon_limitation": "expected_horizon is retained on AlphaCandidate lineage; automatic horizon-expiry exits are not invented \u2014 FLAT/reduce candidates or existing holding_bars semantics apply."
+}

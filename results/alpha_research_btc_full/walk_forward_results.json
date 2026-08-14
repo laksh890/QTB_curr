@@ -1,0 +1,2955 @@
+{
+  "results": [
+    {
+      "experiment_id": "3845ba52-6f76-46ad-8225-e5abac69700d",
+      "signal_id": "trend_signal",
+      "timeframe": "1h",
+      "windows": [
+        {
+          "window": 0,
+          "end_index": 17516,
+          "train": {
+            "n": 8748,
+            "net_sharpe": 1.8812599275654323,
+            "gross_sharpe": 2.3204155532293926,
+            "total_return": 2.5951299650525645,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.2988615024575283,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 4369,
+            "net_sharpe": 1.1393336785914994,
+            "gross_sharpe": 1.4345479492457962,
+            "total_return": 0.518071728125594,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.4601188765186077,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 4369,
+            "net_sharpe": 1.0463583559245824,
+            "gross_sharpe": 1.6115385785911513,
+            "total_return": 0.3074029514673906,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.3013861508302498,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 10,
+          "embargo_bars": 10,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        },
+        {
+          "window": 1,
+          "end_index": 35032,
+          "train": {
+            "n": 17506,
+            "net_sharpe": 1.4375669457373206,
+            "gross_sharpe": 1.8475933097986557,
+            "total_return": 6.0059168379307515,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.4601188765186074,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 8748,
+            "net_sharpe": -0.513970535686453,
+            "gross_sharpe": -0.1504643641328215,
+            "total_return": -0.5944865310682218,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.7823354047116948,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 8748,
+            "net_sharpe": 0.625495770782631,
+            "gross_sharpe": 1.0903777730127608,
+            "total_return": 0.31887577357377594,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.48377453028198236,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 10,
+          "embargo_bars": 10,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        },
+        {
+          "window": 2,
+          "end_index": 52549,
+          "train": {
+            "n": 26264,
+            "net_sharpe": 0.695353767031155,
+            "gross_sharpe": 1.0859791891715471,
+            "total_return": 1.8461101104505317,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.7823354047116937,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 13127,
+            "net_sharpe": 0.7150225350654277,
+            "gross_sharpe": 1.2205834021741648,
+            "total_return": 0.6495538949704132,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.48377453028198236,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 13128,
+            "net_sharpe": -0.06095418217348988,
+            "gross_sharpe": 0.5570028943799725,
+            "total_return": -0.20209899363759765,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.3578358597425284,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 10,
+          "embargo_bars": 10,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        }
+      ]
+    },
+    {
+      "experiment_id": "3aa71d03-5ee5-4b56-88a7-56a10f894901",
+      "signal_id": "momentum_signal",
+      "timeframe": "1h",
+      "windows": [
+        {
+          "window": 0,
+          "end_index": 17516,
+          "train": {
+            "n": 8753,
+            "net_sharpe": 1.3138866410417223,
+            "gross_sharpe": 1.8741267925672398,
+            "total_return": 1.2894786008384584,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.2899178026218904,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 4374,
+            "net_sharpe": 0.9016901977824214,
+            "gross_sharpe": 1.3145456611888855,
+            "total_return": 0.3341992432237537,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.46253436793117164,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 4374,
+            "net_sharpe": 0.2721640057755966,
+            "gross_sharpe": 0.9572705148983554,
+            "total_return": 0.015005657563408326,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.38395656503711606,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 5,
+          "embargo_bars": 5,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        },
+        {
+          "window": 1,
+          "end_index": 35032,
+          "train": {
+            "n": 17511,
+            "net_sharpe": 0.9587384269330168,
+            "gross_sharpe": 1.4861804601463686,
+            "total_return": 2.107185926593142,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.5601860802860096,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 8753,
+            "net_sharpe": -0.1675392925708475,
+            "gross_sharpe": 0.22921498234285156,
+            "total_return": -0.4194556515267055,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.7264135404463383,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 8753,
+            "net_sharpe": 0.5760596789004759,
+            "gross_sharpe": 1.1189798700709286,
+            "total_return": 0.2696731609397305,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.3831531177065143,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 5,
+          "embargo_bars": 5,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        },
+        {
+          "window": 2,
+          "end_index": 52549,
+          "train": {
+            "n": 26269,
+            "net_sharpe": 0.5281614633624405,
+            "gross_sharpe": 1.003904886028632,
+            "total_return": 0.7968554453004231,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.7264135404463372,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 13132,
+            "net_sharpe": 0.7500663993542976,
+            "gross_sharpe": 1.336838530523437,
+            "total_return": 0.7124814284762502,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.3831531177065143,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 13133,
+            "net_sharpe": -0.5003601732110611,
+            "gross_sharpe": 0.2567347315185251,
+            "total_return": -0.4552574517488819,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.5511379541767767,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 5,
+          "embargo_bars": 5,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        }
+      ]
+    },
+    {
+      "experiment_id": "409e766a-7333-4382-8260-55521d6c7d21",
+      "signal_id": "momentum_signal",
+      "timeframe": "1h",
+      "windows": [
+        {
+          "window": 0,
+          "end_index": 17516,
+          "train": {
+            "n": 8748,
+            "net_sharpe": 1.1233475499192154,
+            "gross_sharpe": 1.5196926733568508,
+            "total_return": 0.9657789849200773,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.2661707373491924,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 4369,
+            "net_sharpe": 0.7090880152567685,
+            "gross_sharpe": 0.9998008951967242,
+            "total_return": 0.20079697873299351,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.4432266362175904,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 4369,
+            "net_sharpe": -0.08084508594206855,
+            "gross_sharpe": 0.376211003009101,
+            "total_return": -0.0955635990259035,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.4196479174880725,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 10,
+          "embargo_bars": 10,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        },
+        {
+          "window": 1,
+          "end_index": 35032,
+          "train": {
+            "n": 17506,
+            "net_sharpe": 0.7275250273343389,
+            "gross_sharpe": 1.0955880350568312,
+            "total_return": 1.0961914114885016,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.5421902479731742,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 8748,
+            "net_sharpe": -0.5835331681675895,
+            "gross_sharpe": -0.27591834904669055,
+            "total_return": -0.6224712760335132,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.7989150695286682,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 8748,
+            "net_sharpe": 0.17400412434968762,
+            "gross_sharpe": 0.539710243192862,
+            "total_return": -0.06764056959691167,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.41026567332557795,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 10,
+          "embargo_bars": 10,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        },
+        {
+          "window": 2,
+          "end_index": 52549,
+          "train": {
+            "n": 26264,
+            "net_sharpe": 0.23035063160437239,
+            "gross_sharpe": 0.5740809922608048,
+            "total_return": -0.20720231373082287,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.802870332434535,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 13127,
+            "net_sharpe": 0.3204842444102598,
+            "gross_sharpe": 0.7333733911835111,
+            "total_return": 0.08355954947625333,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.41026567332557795,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 13128,
+            "net_sharpe": 0.12310803513599074,
+            "gross_sharpe": 0.6721561213928641,
+            "total_return": -0.06378272847542343,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.440722852803343,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 10,
+          "embargo_bars": 10,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        }
+      ]
+    },
+    {
+      "experiment_id": "3fa01c99-3016-49b1-8517-ff56b0703f77",
+      "signal_id": "trend_signal",
+      "timeframe": "1h",
+      "windows": [
+        {
+          "window": 0,
+          "end_index": 17516,
+          "train": {
+            "n": 8753,
+            "net_sharpe": 0.5566398134888105,
+            "gross_sharpe": 1.1782184796749537,
+            "total_return": 0.25175138080768344,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.37671997000134816,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 4374,
+            "net_sharpe": -0.03928730585513887,
+            "gross_sharpe": 0.4120827143240952,
+            "total_return": -0.2021358327286552,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.6072008595725836,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 4374,
+            "net_sharpe": 0.9696090264418132,
+            "gross_sharpe": 1.7012618585902486,
+            "total_return": 0.27555364572790486,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.3242819136095555,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 5,
+          "embargo_bars": 5,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        },
+        {
+          "window": 1,
+          "end_index": 35032,
+          "train": {
+            "n": 17511,
+            "net_sharpe": 0.4361083494722699,
+            "gross_sharpe": 1.0132186670632797,
+            "total_return": 0.27669532498815785,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.6185725821585902,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 8753,
+            "net_sharpe": -0.41118916475154615,
+            "gross_sharpe": 0.07943122308043134,
+            "total_return": -0.5495671968212137,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.7575395048816708,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 8753,
+            "net_sharpe": 0.38066770222876195,
+            "gross_sharpe": 1.0334522202220648,
+            "total_return": 0.09261819906805036,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.46531337721610755,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 5,
+          "embargo_bars": 5,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        },
+        {
+          "window": 2,
+          "end_index": 52549,
+          "train": {
+            "n": 26269,
+            "net_sharpe": 0.11319421594629202,
+            "gross_sharpe": 0.6551449790650078,
+            "total_return": -0.42716733341007906,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.7793442290101487,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 13132,
+            "net_sharpe": 0.7317423336321672,
+            "gross_sharpe": 1.4344067751691465,
+            "total_return": 0.6800783760892122,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.46531337721610755,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 13133,
+            "net_sharpe": -0.5015344040437691,
+            "gross_sharpe": 0.3486138355349263,
+            "total_return": -0.45642313021783143,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.4781887036181124,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 5,
+          "embargo_bars": 5,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        }
+      ]
+    },
+    {
+      "experiment_id": "22560244-7726-47d3-aa90-092c8222e4a0",
+      "signal_id": "price_action_signal",
+      "timeframe": "1h",
+      "windows": [
+        {
+          "window": 0,
+          "end_index": 17516,
+          "train": {
+            "n": 8738,
+            "net_sharpe": -0.12957695554389229,
+            "gross_sharpe": 0.24131107524007847,
+            "total_return": -0.26494089661783726,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.7217792736434832,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 4359,
+            "net_sharpe": 0.3710346050974782,
+            "gross_sharpe": 0.6348446297059808,
+            "total_return": 0.0019691060069346733,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.5562679211773549,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 4359,
+            "net_sharpe": 0.9915730306069822,
+            "gross_sharpe": 1.4057613740841857,
+            "total_return": 0.2781443505475254,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.30757628322576613,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 20,
+          "embargo_bars": 20,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        },
+        {
+          "window": 1,
+          "end_index": 35032,
+          "train": {
+            "n": 17496,
+            "net_sharpe": 0.24041903302061463,
+            "gross_sharpe": 0.5781248569875705,
+            "total_return": -0.07301510271943534,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.7769158799263941,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 8738,
+            "net_sharpe": -0.0368374759423454,
+            "gross_sharpe": 0.21157230585717432,
+            "total_return": -0.33308180384353636,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.686339765401188,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 8738,
+            "net_sharpe": -0.04482673294926591,
+            "gross_sharpe": 0.3384959352844477,
+            "total_return": -0.20544104416301912,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.4767696188696239,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 20,
+          "embargo_bars": 20,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        },
+        {
+          "window": 2,
+          "end_index": 52549,
+          "train": {
+            "n": 26254,
+            "net_sharpe": 0.1492461841763632,
+            "gross_sharpe": 0.45076542271073194,
+            "total_return": -0.3549586567616332,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.7769158799263941,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 13117,
+            "net_sharpe": 0.1504287224703435,
+            "gross_sharpe": 0.5764001440007028,
+            "total_return": -0.08856038051849979,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.4937679070864155,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 13118,
+            "net_sharpe": -0.31818219133099856,
+            "gross_sharpe": 0.2064475964594182,
+            "total_return": -0.3445831778757249,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.4427382134046177,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 20,
+          "embargo_bars": 20,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        }
+      ]
+    },
+    {
+      "experiment_id": "570ed35b-f487-426a-803d-880683d145f0",
+      "signal_id": "volume_signal",
+      "timeframe": "1h",
+      "windows": [
+        {
+          "window": 0,
+          "end_index": 17516,
+          "train": {
+            "n": 8738,
+            "net_sharpe": -0.7721931300402308,
+            "gross_sharpe": -0.3662337285964983,
+            "total_return": -0.5507698402382568,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.6644211072408239,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 4359,
+            "net_sharpe": 0.26341478497964865,
+            "gross_sharpe": 0.5461692267727601,
+            "total_return": -0.05499084632273754,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.5169675896217638,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 4359,
+            "net_sharpe": 1.4509778441847123,
+            "gross_sharpe": 1.97227047373096,
+            "total_return": 0.46973374370205034,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.2592846036442581,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 20,
+          "embargo_bars": 20,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        },
+        {
+          "window": 1,
+          "end_index": 35032,
+          "train": {
+            "n": 17496,
+            "net_sharpe": 0.009107230476379886,
+            "gross_sharpe": 0.389397489771751,
+            "total_return": -0.36562632136478745,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.7298785070538334,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 8738,
+            "net_sharpe": 0.08776013959175473,
+            "gross_sharpe": 0.39636488891130234,
+            "total_return": -0.22635944845428757,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.8022166198322602,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 8738,
+            "net_sharpe": -0.26290283063284814,
+            "gross_sharpe": 0.14819996934697227,
+            "total_return": -0.31870486591436775,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.5591113086701438,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 20,
+          "embargo_bars": 20,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        },
+        {
+          "window": 2,
+          "end_index": 52549,
+          "train": {
+            "n": 26254,
+            "net_sharpe": 0.05592665674708576,
+            "gross_sharpe": 0.4074138369133505,
+            "total_return": -0.4863372518616621,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.8022166198322602,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 13117,
+            "net_sharpe": 0.4108846006173678,
+            "gross_sharpe": 0.8542137050325466,
+            "total_return": 0.19598816047831713,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.5591113086701438,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 13118,
+            "net_sharpe": -0.2799815555743919,
+            "gross_sharpe": 0.2794233820991946,
+            "total_return": -0.32208277205745783,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.5013950320719069,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 20,
+          "embargo_bars": 20,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        }
+      ]
+    },
+    {
+      "experiment_id": "6a02c521-5bd5-412c-9732-c7f5e65c26c7",
+      "signal_id": "trend_signal",
+      "timeframe": "1h",
+      "windows": [
+        {
+          "window": 0,
+          "end_index": 17516,
+          "train": {
+            "n": 8755,
+            "net_sharpe": 0.4834943022710286,
+            "gross_sharpe": 1.2769831784903918,
+            "total_return": 0.18103423798976204,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.4570928052299311,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 4376,
+            "net_sharpe": 0.0281491595596703,
+            "gross_sharpe": 0.6337519894599967,
+            "total_return": -0.17242836888308877,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.5463398315953885,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 4376,
+            "net_sharpe": -0.4530241272935921,
+            "gross_sharpe": 0.5586556791571174,
+            "total_return": -0.20025075742939802,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.381731545018565,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 3,
+          "embargo_bars": 3,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        },
+        {
+          "window": 1,
+          "end_index": 35032,
+          "train": {
+            "n": 17513,
+            "net_sharpe": 0.15813768121240432,
+            "gross_sharpe": 0.9196401898857158,
+            "total_return": -0.20534781919670608,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.6806671031972089,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 8755,
+            "net_sharpe": -0.46398672672015867,
+            "gross_sharpe": 0.16256917553148945,
+            "total_return": -0.5746148313154551,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.7051111753320034,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 8755,
+            "net_sharpe": -0.13729939356032064,
+            "gross_sharpe": 0.7268283266821465,
+            "total_return": -0.26759776437907346,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.48550480799706364,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 3,
+          "embargo_bars": 3,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        },
+        {
+          "window": 2,
+          "end_index": 52549,
+          "train": {
+            "n": 26271,
+            "net_sharpe": -0.07946728628303606,
+            "gross_sharpe": 0.6278525182623712,
+            "total_return": -0.6640545871841272,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.8501305009757002,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 13134,
+            "net_sharpe": 0.23721007270013753,
+            "gross_sharpe": 1.1434401207360605,
+            "total_return": -0.009410696159779075,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.48550480799706364,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 13135,
+            "net_sharpe": -0.61276737889263,
+            "gross_sharpe": 0.5057320976164864,
+            "total_return": -0.5076695457984699,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.5251129418355942,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 3,
+          "embargo_bars": 3,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        }
+      ]
+    },
+    {
+      "experiment_id": "a3cd34e4-74ea-41ad-bc42-e291ddf8660f",
+      "signal_id": "momentum_signal",
+      "timeframe": "30m",
+      "windows": [
+        {
+          "window": 0,
+          "end_index": 35028,
+          "train": {
+            "n": 17494,
+            "net_sharpe": 1.291808843501919,
+            "gross_sharpe": 1.850438952946361,
+            "total_return": 1.2590286536317614,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.4490886092822709,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 8737,
+            "net_sharpe": 0.7361484873446899,
+            "gross_sharpe": 1.144384712102531,
+            "total_return": 0.21689140702052967,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.49780374169690467,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 8737,
+            "net_sharpe": 0.9997622089847701,
+            "gross_sharpe": 1.6557932189862663,
+            "total_return": 0.29177671363225355,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.3120326968948397,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 20,
+          "embargo_bars": 20,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        },
+        {
+          "window": 1,
+          "end_index": 70057,
+          "train": {
+            "n": 35008,
+            "net_sharpe": 1.031795105504276,
+            "gross_sharpe": 1.5544574948912917,
+            "total_return": 2.5055125814929275,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.49780374169690544,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 17494,
+            "net_sharpe": -0.013711483147893761,
+            "gross_sharpe": 0.3954973624388766,
+            "total_return": -0.3390156132244314,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.5870605246613899,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 17495,
+            "net_sharpe": -0.3155885029351967,
+            "gross_sharpe": 0.27270900742638304,
+            "total_return": -0.3641090635475053,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.6481327022031466,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 20,
+          "embargo_bars": 20,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        },
+        {
+          "window": 2,
+          "end_index": 105086,
+          "train": {
+            "n": 52523,
+            "net_sharpe": 0.6245855379071652,
+            "gross_sharpe": 1.099872482171728,
+            "total_return": 1.3352429768161862,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.5870605246613874,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 26251,
+            "net_sharpe": -0.3617552875895927,
+            "gross_sharpe": 0.2720420136968871,
+            "total_return": -0.4785395256142504,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.7664024300331559,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 26252,
+            "net_sharpe": -0.06697448008676456,
+            "gross_sharpe": 0.6921459151437074,
+            "total_return": -0.2102285930134371,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.3801283336252379,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 20,
+          "embargo_bars": 20,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        }
+      ]
+    },
+    {
+      "experiment_id": "5258f347-3dbb-49bf-b3c0-c02e5a4720ce",
+      "signal_id": "momentum_signal",
+      "timeframe": "1h",
+      "windows": [
+        {
+          "window": 0,
+          "end_index": 17516,
+          "train": {
+            "n": 8756,
+            "net_sharpe": 0.9489009016209082,
+            "gross_sharpe": 1.8350859577265648,
+            "total_return": 0.7133753214372638,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.36130307402406814,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 4377,
+            "net_sharpe": 0.2589212546593669,
+            "gross_sharpe": 0.9534212227905686,
+            "total_return": -0.061004533387658766,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.582330820880728,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 4377,
+            "net_sharpe": -0.035932895846428205,
+            "gross_sharpe": 1.0155245639854324,
+            "total_return": -0.08277527743314417,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.3945061847805592,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 2,
+          "embargo_bars": 2,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        },
+        {
+          "window": 1,
+          "end_index": 35032,
+          "train": {
+            "n": 17514,
+            "net_sharpe": 0.5276204598801578,
+            "gross_sharpe": 1.3678522227593395,
+            "total_return": 0.4919283104948122,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.7035432511889474,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 8756,
+            "net_sharpe": -0.718390216651761,
+            "gross_sharpe": -0.08239747315647303,
+            "total_return": -0.6735833595743768,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.8182305758422344,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 8756,
+            "net_sharpe": -0.47658583396894627,
+            "gross_sharpe": 0.390333994223789,
+            "total_return": -0.43658798051459424,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.5941771829414533,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 2,
+          "embargo_bars": 2,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        },
+        {
+          "window": 2,
+          "end_index": 52549,
+          "train": {
+            "n": 26272,
+            "net_sharpe": 0.05253061856106492,
+            "gross_sharpe": 0.8115177949952804,
+            "total_return": -0.5167516925437159,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.8774981942528379,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 13135,
+            "net_sharpe": -0.0886829300830905,
+            "gross_sharpe": 0.8528063706943236,
+            "total_return": -0.301387164341402,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.5941771829414533,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 13136,
+            "net_sharpe": -0.663987282235885,
+            "gross_sharpe": 0.5775383622079356,
+            "total_return": -0.5293751606449573,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.5511907358301269,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 2,
+          "embargo_bars": 2,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        }
+      ]
+    },
+    {
+      "experiment_id": "c54cefc0-2fa4-4405-851b-26a9602abebb",
+      "signal_id": "momentum_signal",
+      "timeframe": "1h",
+      "windows": [
+        {
+          "window": 0,
+          "end_index": 17516,
+          "train": {
+            "n": 8748,
+            "net_sharpe": 1.53475258173384,
+            "gross_sharpe": 2.097287682426988,
+            "total_return": 1.7265130961278081,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.4468729004772758,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 4369,
+            "net_sharpe": 0.9557236152622071,
+            "gross_sharpe": 1.3573262886989657,
+            "total_return": 0.37357379923911704,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.44919408334975874,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 4369,
+            "net_sharpe": 0.35230735270782554,
+            "gross_sharpe": 1.0745596298312317,
+            "total_return": 0.04234905431432723,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.413328062514015,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 10,
+          "embargo_bars": 10,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        },
+        {
+          "window": 1,
+          "end_index": 35032,
+          "train": {
+            "n": 17506,
+            "net_sharpe": 1.081514870956306,
+            "gross_sharpe": 1.6133071112540542,
+            "total_return": 2.824960012158933,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.460520386918715,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 8748,
+            "net_sharpe": -0.9892943193807507,
+            "gross_sharpe": -0.5338416019152414,
+            "total_return": -0.7523220858209828,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.8547245050309101,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 8748,
+            "net_sharpe": 0.0188301957133949,
+            "gross_sharpe": 0.597116265605722,
+            "total_return": -0.17238277075898367,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.5402445874313138,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 10,
+          "embargo_bars": 10,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        },
+        {
+          "window": 2,
+          "end_index": 52549,
+          "train": {
+            "n": 26264,
+            "net_sharpe": 0.29975339603480283,
+            "gross_sharpe": 0.8004101411384436,
+            "total_return": -0.0411554236244045,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.8547245050309112,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 13127,
+            "net_sharpe": 0.2826332159377784,
+            "gross_sharpe": 0.9028272042907309,
+            "total_return": 0.04072107140160908,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.5402445874313138,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 13128,
+            "net_sharpe": -0.26448759246418047,
+            "gross_sharpe": 0.5334074290646672,
+            "total_return": -0.33099189378848826,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.4823215596019399,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 10,
+          "embargo_bars": 10,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        }
+      ]
+    },
+    {
+      "experiment_id": "3749dc63-667a-4dde-9afb-95f9490ac2e7",
+      "signal_id": "volatility_signal",
+      "timeframe": "1h",
+      "windows": [
+        {
+          "window": 0,
+          "end_index": 17516,
+          "train": {
+            "n": 8738,
+            "net_sharpe": -0.07178015213055731,
+            "gross_sharpe": 0.18593052210476313,
+            "total_return": -0.2402660399521136,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.6091972834384806,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 4359,
+            "net_sharpe": 0.39005088378629915,
+            "gross_sharpe": 0.5834185741770912,
+            "total_return": 0.0034311972397524926,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.49379020049129074,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 4359,
+            "net_sharpe": 0.26448335844439064,
+            "gross_sharpe": 0.5687789856280846,
+            "total_return": 0.012585552582448978,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.2617459016233874,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 20,
+          "embargo_bars": 20,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        },
+        {
+          "window": 1,
+          "end_index": 35032,
+          "train": {
+            "n": 17496,
+            "net_sharpe": 0.15557891703176574,
+            "gross_sharpe": 0.396685057048296,
+            "total_return": -0.2105641844383368,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.6454313008671548,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 8738,
+            "net_sharpe": 0.8440230443908538,
+            "gross_sharpe": 1.0550982634824613,
+            "total_return": 0.6549928164760723,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.641682834228086,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 8738,
+            "net_sharpe": -1.0332058861508557,
+            "gross_sharpe": -0.7562120514929817,
+            "total_return": -0.6298690665558278,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.7066943255962421,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 20,
+          "embargo_bars": 20,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        },
+        {
+          "window": 2,
+          "end_index": 52549,
+          "train": {
+            "n": 26254,
+            "net_sharpe": 0.42296552046344593,
+            "gross_sharpe": 0.651843921275401,
+            "total_return": 0.3378567600712139,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.7039853922230263,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 13117,
+            "net_sharpe": -0.6162134557662687,
+            "gross_sharpe": -0.31010782194452763,
+            "total_return": -0.5991767832785402,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.7344313864344505,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 13118,
+            "net_sharpe": -0.25949920880398986,
+            "gross_sharpe": 0.11443406933809218,
+            "total_return": -0.32721159192155813,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.5563194547564927,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 20,
+          "embargo_bars": 20,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        }
+      ]
+    },
+    {
+      "experiment_id": "f7166d2f-6fef-4573-a21a-3bb5eb7d7114",
+      "signal_id": "momentum_signal",
+      "timeframe": "1h",
+      "windows": [
+        {
+          "window": 0,
+          "end_index": 17516,
+          "train": {
+            "n": 8755,
+            "net_sharpe": 1.1771144986853146,
+            "gross_sharpe": 1.9000937810886351,
+            "total_return": 1.0542250908418955,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.3127910076804832,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 4376,
+            "net_sharpe": 0.9141736034026224,
+            "gross_sharpe": 1.4043792751225181,
+            "total_return": 0.34350317019461585,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.4493779616801412,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 4376,
+            "net_sharpe": -0.3714629256957582,
+            "gross_sharpe": 0.5434775318680087,
+            "total_return": -0.17811921115485352,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.4164098979111479,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 3,
+          "embargo_bars": 3,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        },
+        {
+          "window": 1,
+          "end_index": 35032,
+          "train": {
+            "n": 17513,
+            "net_sharpe": 0.7833766505165946,
+            "gross_sharpe": 1.4562092405138607,
+            "total_return": 1.305954392971385,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.586628089695885,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 8755,
+            "net_sharpe": -0.6129073653367505,
+            "gross_sharpe": -0.08921035315953751,
+            "total_return": -0.6347997818207376,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.8284273825861737,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 8755,
+            "net_sharpe": 0.563840646916537,
+            "gross_sharpe": 1.2710599673200926,
+            "total_return": 0.257987269247973,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.3653251166095832,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 3,
+          "embargo_bars": 3,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        },
+        {
+          "window": 2,
+          "end_index": 52549,
+          "train": {
+            "n": 26271,
+            "net_sharpe": 0.25008277190213174,
+            "gross_sharpe": 0.863185183591856,
+            "total_return": -0.165133281047941,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.8284273825861719,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 13134,
+            "net_sharpe": 0.6937292781951389,
+            "gross_sharpe": 1.4710476218415398,
+            "total_return": 0.6137506813305247,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.3653251166095832,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 13135,
+            "net_sharpe": -0.9393340427332125,
+            "gross_sharpe": 0.06397462438010196,
+            "total_return": -0.628675553900292,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.6376433992533826,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 3,
+          "embargo_bars": 3,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        }
+      ]
+    },
+    {
+      "experiment_id": "0d5f5a77-8c01-4978-b0c8-eecee9aad5ba",
+      "signal_id": "volume_signal",
+      "timeframe": "1h",
+      "windows": [
+        {
+          "window": 0,
+          "end_index": 17516,
+          "train": {
+            "n": 8748,
+            "net_sharpe": -0.3895000110120535,
+            "gross_sharpe": 0.40571313336917136,
+            "total_return": -0.3787728732013169,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.5342528782074101,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 4369,
+            "net_sharpe": -0.12646159084368488,
+            "gross_sharpe": 0.4474338711636966,
+            "total_return": -0.2107274695540401,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.6379980132527936,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 4369,
+            "net_sharpe": 0.20035074955007975,
+            "gross_sharpe": 1.1361337644305163,
+            "total_return": -0.0024372967944884527,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.3028962886974069,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 10,
+          "embargo_bars": 10,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        },
+        {
+          "window": 1,
+          "end_index": 35032,
+          "train": {
+            "n": 17506,
+            "net_sharpe": -0.1830776387351853,
+            "gross_sharpe": 0.5545247677314896,
+            "total_return": -0.5091987991378379,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.7155427878477452,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 8748,
+            "net_sharpe": -0.6871923956897011,
+            "gross_sharpe": -0.0618712669282268,
+            "total_return": -0.6167881886020716,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.7901676056666385,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 8748,
+            "net_sharpe": -0.9616565197209297,
+            "gross_sharpe": -0.15055709355929686,
+            "total_return": -0.5769712366128793,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.586648114746473,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 10,
+          "embargo_bars": 10,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        },
+        {
+          "window": 2,
+          "end_index": 52549,
+          "train": {
+            "n": 26264,
+            "net_sharpe": -0.3643548634854382,
+            "gross_sharpe": 0.3283759163304564,
+            "total_return": -0.8087105041987931,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.8735318092183882,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 13127,
+            "net_sharpe": -0.4327370921287984,
+            "gross_sharpe": 0.41568168931539196,
+            "total_return": -0.4793525631453549,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.5957315154477327,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 13128,
+            "net_sharpe": -0.37936136274363486,
+            "gross_sharpe": 0.6315465262719947,
+            "total_return": -0.3668755856699307,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.4306026449656025,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 10,
+          "embargo_bars": 10,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        }
+      ]
+    },
+    {
+      "experiment_id": "bc41f826-371e-4c65-9b41-c2be3165da32",
+      "signal_id": "volume_signal",
+      "timeframe": "1h",
+      "windows": [
+        {
+          "window": 0,
+          "end_index": 17516,
+          "train": {
+            "n": 8755,
+            "net_sharpe": 0.426464795862702,
+            "gross_sharpe": 1.94766334462859,
+            "total_return": 0.1391962320453024,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.39003238008566554,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 4376,
+            "net_sharpe": 0.6155846048461054,
+            "gross_sharpe": 1.6289771871930652,
+            "total_return": 0.14802072413408962,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.4772782210709894,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 4376,
+            "net_sharpe": -0.9017085509069008,
+            "gross_sharpe": 0.8246000553386097,
+            "total_return": -0.2641358293518722,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.4003348757134383,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 3,
+          "embargo_bars": 3,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        },
+        {
+          "window": 1,
+          "end_index": 35032,
+          "train": {
+            "n": 17513,
+            "net_sharpe": 0.23411381139564186,
+            "gross_sharpe": 1.6009863363619776,
+            "total_return": -0.02629641099057478,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.6236283333855015,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 8755,
+            "net_sharpe": -0.2020714499531116,
+            "gross_sharpe": 0.8990990867110765,
+            "total_return": -0.3535308075857573,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.6649944433442089,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 8755,
+            "net_sharpe": -1.2738154643860782,
+            "gross_sharpe": 0.2428439345668239,
+            "total_return": -0.6244180600640284,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.6722826030850787,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 3,
+          "embargo_bars": 3,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        },
+        {
+          "window": 2,
+          "end_index": 52549,
+          "train": {
+            "n": 26271,
+            "net_sharpe": 0.06847109753560195,
+            "gross_sharpe": 1.3322075714934316,
+            "total_return": -0.3749414354078743,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.7167898430711723,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 13134,
+            "net_sharpe": -0.8719383705115747,
+            "gross_sharpe": 0.7552156573811182,
+            "total_return": -0.6269754471845725,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.6722826030850787,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 13135,
+            "net_sharpe": -0.8637555634121609,
+            "gross_sharpe": 0.9616813705532326,
+            "total_return": -0.5412273682095479,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.5464747474899332,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 3,
+          "embargo_bars": 3,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        }
+      ]
+    },
+    {
+      "experiment_id": "9f35e263-4479-4aa8-9a9d-c40e55168892",
+      "signal_id": "volume_signal",
+      "timeframe": "1h",
+      "windows": [
+        {
+          "window": 0,
+          "end_index": 17516,
+          "train": {
+            "n": 8738,
+            "net_sharpe": 0.6217747343838853,
+            "gross_sharpe": 1.0736674357079061,
+            "total_return": 0.31406831747904107,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.45024330701620496,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 4359,
+            "net_sharpe": 0.028103310103593626,
+            "gross_sharpe": 0.33493751614868406,
+            "total_return": -0.15123931787193678,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.6134150479246596,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 4359,
+            "net_sharpe": 1.3948478807482096,
+            "gross_sharpe": 1.9073769328889791,
+            "total_return": 0.4398129253352867,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.29565902774857344,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 20,
+          "embargo_bars": 20,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        },
+        {
+          "window": 1,
+          "end_index": 35032,
+          "train": {
+            "n": 17496,
+            "net_sharpe": 0.568974755603056,
+            "gross_sharpe": 0.9800595671429456,
+            "total_return": 0.598787491987723,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.6335964652479334,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 8738,
+            "net_sharpe": -0.761554695964269,
+            "gross_sharpe": -0.4281750931433922,
+            "total_return": -0.6569920244882477,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.7717907106054946,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 8738,
+            "net_sharpe": -1.034334166670104,
+            "gross_sharpe": -0.5968023015332754,
+            "total_return": -0.6112588204402003,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.6821426165826538,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 20,
+          "embargo_bars": 20,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        },
+        {
+          "window": 2,
+          "end_index": 52549,
+          "train": {
+            "n": 26254,
+            "net_sharpe": 0.0879855199890505,
+            "gross_sharpe": 0.46830051641190323,
+            "total_return": -0.42086749254478806,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.771790710605495,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 13117,
+            "net_sharpe": -0.5605838716261787,
+            "gross_sharpe": -0.08419856672885889,
+            "total_return": -0.5550462276635952,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.6821426165826538,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 13118,
+            "net_sharpe": -0.7427408784683558,
+            "gross_sharpe": -0.17850089225653445,
+            "total_return": -0.5334973390007227,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.5577924074668632,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 20,
+          "embargo_bars": 20,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        }
+      ]
+    },
+    {
+      "experiment_id": "e50f1279-e3d8-464f-87ef-6fcc3bb04d80",
+      "signal_id": "price_action_signal",
+      "timeframe": "30m",
+      "windows": [
+        {
+          "window": 0,
+          "end_index": 35028,
+          "train": {
+            "n": 17494,
+            "net_sharpe": 0.0674115806414772,
+            "gross_sharpe": 0.7860705714085715,
+            "total_return": -0.1504983834289617,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.563043507341092,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 8737,
+            "net_sharpe": 0.993472519888689,
+            "gross_sharpe": 1.5006151123368692,
+            "total_return": 0.3951199440663842,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.49691095466282575,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 8737,
+            "net_sharpe": 0.3394015898314105,
+            "gross_sharpe": 1.153038335273189,
+            "total_return": 0.03784863607855504,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.3877888693010011,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 20,
+          "embargo_bars": 20,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        },
+        {
+          "window": 1,
+          "end_index": 70057,
+          "train": {
+            "n": 35008,
+            "net_sharpe": 0.41217988124072336,
+            "gross_sharpe": 1.071265068054436,
+            "total_return": 0.2293892082552762,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.5828508545731621,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 17494,
+            "net_sharpe": -0.11238231660637794,
+            "gross_sharpe": 0.35593151935005773,
+            "total_return": -0.403769179376696,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.7782515082601198,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 17495,
+            "net_sharpe": -1.1467033461689269,
+            "gross_sharpe": -0.4264919569687407,
+            "total_return": -0.6592905947674241,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.6766453727473027,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 20,
+          "embargo_bars": 20,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        },
+        {
+          "window": 2,
+          "end_index": 105086,
+          "train": {
+            "n": 52523,
+            "net_sharpe": 0.2070768087202202,
+            "gross_sharpe": 0.7872808699998939,
+            "total_return": -0.26462452643174594,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.7782515082601182,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 26251,
+            "net_sharpe": -0.4446503140828015,
+            "gross_sharpe": 0.3514814381473748,
+            "total_return": -0.5129263242861264,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.6892319499014175,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 26252,
+            "net_sharpe": -0.7427413981233332,
+            "gross_sharpe": 0.220092106135341,
+            "total_return": -0.5469203477313154,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.5606502964703289,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 20,
+          "embargo_bars": 20,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        }
+      ]
+    },
+    {
+      "experiment_id": "77f801f3-5b9a-4187-a174-cd3b132cb89a",
+      "signal_id": "trend_signal",
+      "timeframe": "1h",
+      "windows": [
+        {
+          "window": 0,
+          "end_index": 17516,
+          "train": {
+            "n": 8756,
+            "net_sharpe": 0.7917267923556932,
+            "gross_sharpe": 1.7565830923095678,
+            "total_return": 0.5122956897876945,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.32496220838770284,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 4377,
+            "net_sharpe": -0.6681171060633251,
+            "gross_sharpe": 0.043484834822527435,
+            "total_return": -0.4356471748476032,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.6473157277978769,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 4377,
+            "net_sharpe": 0.3157628777788117,
+            "gross_sharpe": 1.493807537573801,
+            "total_return": 0.029463182276109556,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.22763020391493105,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 2,
+          "embargo_bars": 2,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        },
+        {
+          "window": 1,
+          "end_index": 35032,
+          "train": {
+            "n": 17514,
+            "net_sharpe": 0.22430876748775835,
+            "gross_sharpe": 1.1305995197996357,
+            "total_return": -0.11171068683852992,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.6855770328292141,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 8756,
+            "net_sharpe": -0.6268527661768658,
+            "gross_sharpe": 0.13248900800354751,
+            "total_return": -0.6426851039396658,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.7562936290571163,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 8756,
+            "net_sharpe": -0.5981069728588897,
+            "gross_sharpe": 0.42491112734413966,
+            "total_return": -0.488586999754522,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.5538510196582638,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 2,
+          "embargo_bars": 2,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        },
+        {
+          "window": 2,
+          "end_index": 52549,
+          "train": {
+            "n": 26272,
+            "net_sharpe": -0.10068991527030502,
+            "gross_sharpe": 0.7461448909209636,
+            "total_return": -0.6852069514490322,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.8793886221251028,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 13135,
+            "net_sharpe": -0.2628216030219152,
+            "gross_sharpe": 0.8402526561678803,
+            "total_return": -0.42170303004225107,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.5629539580642433,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 13136,
+            "net_sharpe": -1.4560111425558113,
+            "gross_sharpe": -0.09054546307018392,
+            "total_return": -0.7658340860505384,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.7744537019766007,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 2,
+          "embargo_bars": 2,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        }
+      ]
+    },
+    {
+      "experiment_id": "3f4edfb4-9bac-423d-901a-6072b3acf934",
+      "signal_id": "trend_signal",
+      "timeframe": "1h",
+      "windows": [
+        {
+          "window": 0,
+          "end_index": 17516,
+          "train": {
+            "n": 8738,
+            "net_sharpe": 1.0848568580454858,
+            "gross_sharpe": 1.36512814744322,
+            "total_return": 0.9050349309565411,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.39115773034652834,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 4359,
+            "net_sharpe": 1.3316126637215697,
+            "gross_sharpe": 1.531079987854371,
+            "total_return": 0.6835456239269093,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.4768463656614711,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 4359,
+            "net_sharpe": 1.2941477044602678,
+            "gross_sharpe": 1.644428474538972,
+            "total_return": 0.41656213486529725,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.3107440956937366,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 20,
+          "embargo_bars": 20,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        },
+        {
+          "window": 1,
+          "end_index": 35032,
+          "train": {
+            "n": 17496,
+            "net_sharpe": 1.2010474540724867,
+            "gross_sharpe": 1.4634586654762642,
+            "total_return": 3.6780637150592614,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.476846365661471,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 8738,
+            "net_sharpe": -0.8608508347225653,
+            "gross_sharpe": -0.6342026263798655,
+            "total_return": -0.7163089072849972,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.8326394378816779,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 8738,
+            "net_sharpe": 0.34283738409723286,
+            "gross_sharpe": 0.6241180827078558,
+            "total_return": 0.061299089753813485,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.5756838073429171,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 20,
+          "embargo_bars": 20,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        },
+        {
+          "window": 2,
+          "end_index": 52549,
+          "train": {
+            "n": 26254,
+            "net_sharpe": 0.3954102878851288,
+            "gross_sharpe": 0.6427487396530169,
+            "total_return": 0.24685431981958494,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.8326394378816773,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 13117,
+            "net_sharpe": 0.3686669574198067,
+            "gross_sharpe": 0.6847626960720637,
+            "total_return": 0.14049897421960456,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.5756838073429171,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 13118,
+            "net_sharpe": -1.3709044382810143,
+            "gross_sharpe": -0.9651069387569602,
+            "total_return": -0.7427177022452589,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.7537934963334174,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 20,
+          "embargo_bars": 20,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        }
+      ]
+    },
+    {
+      "experiment_id": "7d3533f1-abbd-4efb-8a1d-ddf5176f6f39",
+      "signal_id": "momentum_signal",
+      "timeframe": "1h",
+      "windows": [
+        {
+          "window": 0,
+          "end_index": 17516,
+          "train": {
+            "n": 8738,
+            "net_sharpe": 0.1854214902370403,
+            "gross_sharpe": 0.49474738711941696,
+            "total_return": -0.06849365030934718,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.5075357482472639,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 4359,
+            "net_sharpe": 0.45093753615759047,
+            "gross_sharpe": 0.6589261120333185,
+            "total_return": 0.04274627211396531,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.5423922932633543,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 4359,
+            "net_sharpe": 0.070998759807735,
+            "gross_sharpe": 0.4306030067856674,
+            "total_return": -0.049419087070996515,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.4222720915672721,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 20,
+          "embargo_bars": 20,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        },
+        {
+          "window": 1,
+          "end_index": 35032,
+          "train": {
+            "n": 17496,
+            "net_sharpe": 0.26137583251642055,
+            "gross_sharpe": 0.5426664441598613,
+            "total_return": -0.05075416760957563,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.6680710597488564,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 8738,
+            "net_sharpe": -0.46377594299354374,
+            "gross_sharpe": -0.24256633175607195,
+            "total_return": -0.5720473529516807,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.7180971251891695,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 8738,
+            "net_sharpe": -0.03463580400876754,
+            "gross_sharpe": 0.24361551545435098,
+            "total_return": -0.20525143862166073,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.5950231880640082,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 20,
+          "embargo_bars": 20,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        },
+        {
+          "window": 2,
+          "end_index": 52549,
+          "train": {
+            "n": 26254,
+            "net_sharpe": -0.03566308962448769,
+            "gross_sharpe": 0.22144471761085813,
+            "total_return": -0.6183385484915261,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.833055345343226,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 13117,
+            "net_sharpe": 0.07284691162810665,
+            "gross_sharpe": 0.3875668813139712,
+            "total_return": -0.16720022651326427,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.5950231880640082,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 13118,
+            "net_sharpe": -0.7789052363405711,
+            "gross_sharpe": -0.38807886919524026,
+            "total_return": -0.5705331783049481,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.6638654370821446,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 20,
+          "embargo_bars": 20,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        }
+      ]
+    },
+    {
+      "experiment_id": "43699581-3e61-47b8-ab06-5904fdd9c5a6",
+      "signal_id": "price_action_signal",
+      "timeframe": "1h",
+      "windows": [
+        {
+          "window": 0,
+          "end_index": 17516,
+          "train": {
+            "n": 8738,
+            "net_sharpe": 1.049721297387958,
+            "gross_sharpe": 1.420443237462208,
+            "total_return": 0.831289258389529,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.3021869534583501,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 4359,
+            "net_sharpe": 0.4615410847652407,
+            "gross_sharpe": 0.719669501026869,
+            "total_return": 0.05177553328721163,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.5639606294857031,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 4359,
+            "net_sharpe": 1.0186082661111708,
+            "gross_sharpe": 1.4544854333566042,
+            "total_return": 0.28928263381168184,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.4017497968480611,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 20,
+          "embargo_bars": 20,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        },
+        {
+          "window": 1,
+          "end_index": 35032,
+          "train": {
+            "n": 17496,
+            "net_sharpe": 0.8501604408837751,
+            "gross_sharpe": 1.1900520645078192,
+            "total_return": 1.5533093935729858,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.6407580664854678,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 8738,
+            "net_sharpe": -1.2244378556036197,
+            "gross_sharpe": -0.9677451079970067,
+            "total_return": -0.8038775360894777,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.8763491247780728,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 8738,
+            "net_sharpe": -0.3994163799626163,
+            "gross_sharpe": -0.02559745368355473,
+            "total_return": -0.3917811101084415,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.5576663280527872,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 20,
+          "embargo_bars": 20,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        },
+        {
+          "window": 2,
+          "end_index": 52549,
+          "train": {
+            "n": 26254,
+            "net_sharpe": 0.07052337347914125,
+            "gross_sharpe": 0.37643352717833334,
+            "total_return": -0.47751586300430515,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.8760150062673122,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 13117,
+            "net_sharpe": -0.47018918115524366,
+            "gross_sharpe": -0.04949052061633987,
+            "total_return": -0.5221211334853031,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.5858745292148777,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 13118,
+            "net_sharpe": -0.7838326902937082,
+            "gross_sharpe": -0.25932629624799547,
+            "total_return": -0.5542980257028716,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.5639028731999376,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 20,
+          "embargo_bars": 20,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        }
+      ]
+    },
+    {
+      "experiment_id": "5b734dc6-519f-449a-8363-ddfa6198cf98",
+      "signal_id": "momentum_signal",
+      "timeframe": "1h",
+      "windows": [
+        {
+          "window": 0,
+          "end_index": 17516,
+          "train": {
+            "n": 8738,
+            "net_sharpe": 0.8633591706177607,
+            "gross_sharpe": 1.1520181158751124,
+            "total_return": 0.5965895496686604,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.365036926744815,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 4359,
+            "net_sharpe": 1.1571067415270173,
+            "gross_sharpe": 1.3711112649736177,
+            "total_return": 0.5311710884614977,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.47684636566147065,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 4359,
+            "net_sharpe": 0.22222533457050855,
+            "gross_sharpe": 0.5360777893019958,
+            "total_return": -0.001312082898523026,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.39338001177553383,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 20,
+          "embargo_bars": 20,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        },
+        {
+          "window": 1,
+          "end_index": 35032,
+          "train": {
+            "n": 17496,
+            "net_sharpe": 0.8198943765654486,
+            "gross_sharpe": 1.0852735275508678,
+            "total_return": 1.4489880351372553,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.4971595527358168,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 8738,
+            "net_sharpe": -0.5311432487805814,
+            "gross_sharpe": -0.3138809483887547,
+            "total_return": -0.6010045738519604,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.7255023334459452,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 8738,
+            "net_sharpe": 0.3770706286217985,
+            "gross_sharpe": 0.6426579330753325,
+            "total_return": 0.0894794794302638,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.5601737300928404,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 20,
+          "embargo_bars": 20,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        },
+        {
+          "window": 2,
+          "end_index": 52549,
+          "train": {
+            "n": 26254,
+            "net_sharpe": 0.2840730844805859,
+            "gross_sharpe": 0.5298107378686333,
+            "total_return": -0.0819666421206402,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.736656794884899,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 13117,
+            "net_sharpe": 0.3391806198490827,
+            "gross_sharpe": 0.6419694818240693,
+            "total_return": 0.10514077198552951,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.5601737300928404,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 13118,
+            "net_sharpe": -0.8058092613759091,
+            "gross_sharpe": -0.41325014220484124,
+            "total_return": -0.5806540424451792,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.6163911220552367,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 20,
+          "embargo_bars": 20,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        }
+      ]
+    },
+    {
+      "experiment_id": "27415442-5e8e-4191-84da-84e715a9c01f",
+      "signal_id": "momentum_signal",
+      "timeframe": "1h",
+      "windows": [
+        {
+          "window": 0,
+          "end_index": 17516,
+          "train": {
+            "n": 8757,
+            "net_sharpe": 0.3140562781097151,
+            "gross_sharpe": 1.6202295623561482,
+            "total_return": 0.030132676938792624,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.3868445163682216,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 4378,
+            "net_sharpe": -0.4439817648948007,
+            "gross_sharpe": 0.48100073354057504,
+            "total_return": -0.36348345640282453,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.6879119481631473,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 4378,
+            "net_sharpe": -0.3359807010362212,
+            "gross_sharpe": 1.1216263807791076,
+            "total_return": -0.1704200743849078,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.434520089381911,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 1,
+          "embargo_bars": 1,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        },
+        {
+          "window": 1,
+          "end_index": 35032,
+          "train": {
+            "n": 17515,
+            "net_sharpe": -0.05928368195483064,
+            "gross_sharpe": 1.1298993490528848,
+            "total_return": -0.4555675030242172,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.7996408174956784,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 8757,
+            "net_sharpe": -0.916580011545411,
+            "gross_sharpe": -0.03594914752344207,
+            "total_return": -0.736200716048079,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.8434744004713728,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 8757,
+            "net_sharpe": -0.9244549439115206,
+            "gross_sharpe": 0.3722907626381969,
+            "total_return": -0.6038453219731936,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.6310588796261133,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 1,
+          "embargo_bars": 1,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        },
+        {
+          "window": 2,
+          "end_index": 52549,
+          "train": {
+            "n": 26273,
+            "net_sharpe": -0.383162050158724,
+            "gross_sharpe": 0.6837693474791213,
+            "total_return": -0.8567915318367054,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.934172694731737,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 13136,
+            "net_sharpe": -0.2428863607888908,
+            "gross_sharpe": 1.1534589537991293,
+            "total_return": -0.4103688482279101,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.6310588796261133,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 13137,
+            "net_sharpe": -1.4406668586884552,
+            "gross_sharpe": 0.28411701401236356,
+            "total_return": -0.7640604562485416,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.7883091553451956,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 1,
+          "embargo_bars": 1,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        }
+      ]
+    },
+    {
+      "experiment_id": "e19f3a7f-5a82-413a-9678-f44173ffbcc2",
+      "signal_id": "price_action_signal",
+      "timeframe": "1h",
+      "windows": [
+        {
+          "window": 0,
+          "end_index": 17516,
+          "train": {
+            "n": 8748,
+            "net_sharpe": -0.2908995123524355,
+            "gross_sharpe": 0.39206765568896174,
+            "total_return": -0.3457469485252951,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.6213432778967921,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 4369,
+            "net_sharpe": 0.0004659869965850179,
+            "gross_sharpe": 0.4802458723765204,
+            "total_return": -0.17864720425757707,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.6041783610127213,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 4369,
+            "net_sharpe": 0.30241876123018036,
+            "gross_sharpe": 1.0992373910048936,
+            "total_return": 0.027094992515457994,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.3144257482520224,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 10,
+          "embargo_bars": 10,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        },
+        {
+          "window": 1,
+          "end_index": 35032,
+          "train": {
+            "n": 17506,
+            "net_sharpe": -0.08187768306448963,
+            "gross_sharpe": 0.5431464499833856,
+            "total_return": -0.451906853457957,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.7151010052752818,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 8748,
+            "net_sharpe": -0.1012272593162041,
+            "gross_sharpe": 0.3953657172077926,
+            "total_return": -0.3755731799511216,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.6956369952699526,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 8748,
+            "net_sharpe": 0.19302611971914554,
+            "gross_sharpe": 0.8629177055045094,
+            "total_return": -0.04660764416742813,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.4132940171361049,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 10,
+          "embargo_bars": 10,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        },
+        {
+          "window": 2,
+          "end_index": 52549,
+          "train": {
+            "n": 26264,
+            "net_sharpe": -0.08631211812388144,
+            "gross_sharpe": 0.48585513179821094,
+            "total_return": -0.6555372378765723,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.8390738274697017,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 13127,
+            "net_sharpe": 0.20978367743529922,
+            "gross_sharpe": 0.9402911433170071,
+            "total_return": -0.02482775260995873,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.4838650949682358,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 13128,
+            "net_sharpe": -1.4855319652492176,
+            "gross_sharpe": -0.579097378352104,
+            "total_return": -0.7385336823218311,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.7480867032192706,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 10,
+          "embargo_bars": 10,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        }
+      ]
+    },
+    {
+      "experiment_id": "144963be-6396-4ac7-8410-6e5d174e9686",
+      "signal_id": "volume_signal",
+      "timeframe": "1h",
+      "windows": [
+        {
+          "window": 0,
+          "end_index": 17516,
+          "train": {
+            "n": 8753,
+            "net_sharpe": 0.15488541138496892,
+            "gross_sharpe": 1.2777873106820477,
+            "total_return": -0.06385711951955564,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.35967220415463497,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 4374,
+            "net_sharpe": -0.003239768396628262,
+            "gross_sharpe": 0.779737499536913,
+            "total_return": -0.15227412821954267,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.5159177627670934,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 4374,
+            "net_sharpe": 0.06815627344439708,
+            "gross_sharpe": 1.3695997543284475,
+            "total_return": -0.03870826068186395,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.3946737212312028,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 5,
+          "embargo_bars": 5,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        },
+        {
+          "window": 1,
+          "end_index": 35032,
+          "train": {
+            "n": 17511,
+            "net_sharpe": 0.09023815387734543,
+            "gross_sharpe": 1.1191311199657599,
+            "total_return": -0.23075279350184463,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.6418003933641027,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 8753,
+            "net_sharpe": -0.4458301080403252,
+            "gross_sharpe": 0.38389500387329895,
+            "total_return": -0.49572923540812475,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.7536159203568299,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 8753,
+            "net_sharpe": -0.5927885743380039,
+            "gross_sharpe": 0.4817786607291435,
+            "total_return": -0.43214001898237786,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.6238982175679869,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 5,
+          "embargo_bars": 5,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        },
+        {
+          "window": 2,
+          "end_index": 52549,
+          "train": {
+            "n": 26269,
+            "net_sharpe": -0.11027062162561325,
+            "gross_sharpe": 0.8411961327638529,
+            "total_return": -0.613365803898522,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.7623057504919708,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 13132,
+            "net_sharpe": -0.3520482819009683,
+            "gross_sharpe": 0.8301198156650444,
+            "total_return": -0.4200490178413241,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.6238982175679869,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 13133,
+            "net_sharpe": -1.271029704055873,
+            "gross_sharpe": 0.14969642557238558,
+            "total_return": -0.674926454833388,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.6773604532670372,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 5,
+          "embargo_bars": 5,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        }
+      ]
+    },
+    {
+      "experiment_id": "c16922a4-5dd3-4d8e-89ed-ac104a0dbe85",
+      "signal_id": "volume_signal",
+      "timeframe": "30m",
+      "windows": [
+        {
+          "window": 0,
+          "end_index": 35028,
+          "train": {
+            "n": 17494,
+            "net_sharpe": 0.7853783648853395,
+            "gross_sharpe": 1.6207852168360468,
+            "total_return": 0.48951975009705384,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.4384203736851259,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 8737,
+            "net_sharpe": -0.051513679480681744,
+            "gross_sharpe": 0.5642465487110973,
+            "total_return": -0.18519489072090867,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.5902538386456754,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 8737,
+            "net_sharpe": -1.3186697256805124,
+            "gross_sharpe": -0.33881029740987134,
+            "total_return": -0.38066766328411283,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.39532650342580644,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 20,
+          "embargo_bars": 20,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        },
+        {
+          "window": 1,
+          "end_index": 70057,
+          "train": {
+            "n": 35008,
+            "net_sharpe": 0.09594465723211121,
+            "gross_sharpe": 0.876929932785427,
+            "total_return": -0.25311090804942427,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.7420477576951885,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 17494,
+            "net_sharpe": 0.011864911602691744,
+            "gross_sharpe": 0.624387243156435,
+            "total_return": -0.2915871470233413,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.7306007226429609,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 17495,
+            "net_sharpe": -0.3713833088133741,
+            "gross_sharpe": 0.4684810146295044,
+            "total_return": -0.36722651979032217,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.5225551632092251,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 20,
+          "embargo_bars": 20,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        },
+        {
+          "window": 2,
+          "end_index": 105086,
+          "train": {
+            "n": 52523,
+            "net_sharpe": 0.06534803481734876,
+            "gross_sharpe": 0.7764755728186661,
+            "total_return": -0.4675522840268119,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.8357020080309776,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "validation": {
+            "n": 26251,
+            "net_sharpe": -0.19595842868318009,
+            "gross_sharpe": 0.7125587882119263,
+            "total_return": -0.35334902979435046,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.5225551632092273,
+            "evaluated": true,
+            "result_type": "in_sample_research"
+          },
+          "oos": {
+            "n": 26252,
+            "net_sharpe": -1.1078791046890757,
+            "gross_sharpe": -0.02276271876736919,
+            "total_return": -0.665064193266419,
+            "expectancy_per_trade": 0.0,
+            "maximum_drawdown": 0.6885433363906113,
+            "evaluated": true,
+            "result_type": "out_of_sample_research"
+          },
+          "purge_bars": 20,
+          "embargo_bars": 20,
+          "note": "Horizon selection must not rely on full-period in-sample Sharpe alone. OOS metrics are research/simulated results, not live performance. Purge/embargo reduce label leakage across chronological splits when forward returns are used as targets."
+        }
+      ]
+    }
+  ],
+  "disclaimer": "Research evidence is not a profitability guarantee."
+}

@@ -1,0 +1,35 @@
+{
+  "disclaimer": "MODEL-DRIVEN ALPHA RESEARCH \u2014 predefined protocol. Research evidence is not a profitability guarantee. MODEL IMPLEMENTED \u2260 FORECAST \u2260 SIGNAL \u2260 OOS \u2260 COST-SURVIVAL \u2260 ROBUST \u2260 PROFITABLE \u2260 LIVE-READY.",
+  "by_holding_bars": {
+    "1": {
+      "experiments": 267,
+      "median_net_sharpe": -2.701314387918267,
+      "candidates": 13
+    },
+    "2": {
+      "experiments": 267,
+      "median_net_sharpe": -2.0553337000036533,
+      "candidates": 15
+    },
+    "3": {
+      "experiments": 267,
+      "median_net_sharpe": -1.8481242007726821,
+      "candidates": 17
+    },
+    "5": {
+      "experiments": 267,
+      "median_net_sharpe": -1.4821805513874027,
+      "candidates": 17
+    },
+    "10": {
+      "experiments": 267,
+      "median_net_sharpe": -1.1254639024868907,
+      "candidates": 25
+    },
+    "20": {
+      "experiments": 267,
+      "median_net_sharpe": -0.9289687029628894,
+      "candidates": 42
+    }
+  }
+}

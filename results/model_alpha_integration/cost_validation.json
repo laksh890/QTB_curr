@@ -1,0 +1,27 @@
+{
+  "disclaimer": "MODEL\u2192ALPHA INTEGRATION VALIDATION \u2014 wiring only. Not a profitability claim. Research evidence is not a guarantee.",
+  "status": "PASS",
+  "adapter_id": "garch_volatility_v1_1h",
+  "cost_keys": [
+    "gross_alpha",
+    "net_alpha",
+    "gross_pnl",
+    "net_pnl",
+    "commissions",
+    "spread_cost",
+    "slippage",
+    "transaction_costs",
+    "gross_sharpe",
+    "net_sharpe",
+    "gross_edge_per_trade",
+    "net_edge_per_trade",
+    "cost_per_trade",
+    "cost_as_pct_of_gross",
+    "alpha_survives_costs",
+    "alpha_collapses_after_costs",
+    "turnover",
+    "trade_frequency",
+    "side_counts"
+  ],
+  "commission_spread_slippage_framework": true
+}

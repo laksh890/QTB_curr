@@ -1,0 +1,80 @@
+{
+  "disclaimer": "FINAL SYSTEM ARCHITECTURE AUDIT \u2014 evidence only. PIPELINE WORKS \u2260 STRATEGY WORKS \u2260 PROFITABLE \u2260 PRODUCTION/LIVE READY. STATISTICAL VALIDITY remains LIMITED per Prompt 36.",
+  "generated_at": "2026-08-14T15:49:32.056487+00:00",
+  "architecture_verdict": "ARCHITECTURE COMPLETE",
+  "architecture_complete": true,
+  "boundaries": {
+    "RESEARCH_READY": true,
+    "PAPER_SIMULATION_READY": true,
+    "PRODUCTION_READY": false,
+    "LIVE_TRADING_READY": false
+  },
+  "answers": {
+    "1_complete_research_architecture_implemented": true,
+    "2_model_driven_alpha_operational": true,
+    "3_six_models_reach_unified_pipeline": true,
+    "4_can_research_multiple_horizons": true,
+    "5_supports_frequent_long_short": true,
+    "6_automatically_knows_profitable_horizon": false,
+    "7_has_proven_profitable_alpha": false,
+    "8_data_institutional_grade": false,
+    "9_risk_portfolio_execution_path_operational": true,
+    "10_ready_for_live_trading": false,
+    "11_remaining_before_architecture_complete": "None for research architecture layers \u2014 remaining work is data acquisition, research/strategy development, statistical validation, paper trading, broker integration, and production engineering \u2014 not another architecture platform."
+  },
+  "prompt36_statistical_validity": "LIMITED",
+  "prompt35_zero_candidates": true,
+  "prompt37_path_status": "PARTIALLY_COMPLETE",
+  "prompt38_pipeline_status": "OPERATIONAL",
+  "e2e_status": "PASS",
+  "tests": {
+    "passed": 39,
+    "failed": 0,
+    "skipped": 0,
+    "total": 39
+  },
+  "A_complete_components": [
+    "01 Data Platform",
+    "02 Feature / Signal Platform",
+    "03 Forecasting Platform",
+    "05 Alpha Research Platform",
+    "06 Time-Series Analytics Platform",
+    "07 Forecasting Models (GARCH/ARIMA/XGB/LSTM/TiDE/HMM)",
+    "11 Backtesting Platform",
+    "12 Unified Trading Pipeline"
+  ],
+  "B_partial_components": [
+    "04 Regime / State Detection",
+    "08 Risk Intelligence Platform",
+    "09 Portfolio Platform",
+    "10 Execution Platform",
+    "Research Validity (Prompt 36)"
+  ],
+  "C_missing_components": [],
+  "D_research_only_limitations": [
+    "STATISTICAL VALIDITY = LIMITED (autocorrelation / overlapping returns / FDR assumptions)",
+    "No proven profitable alpha under Prompt 35 gates (0 CANDIDATE)",
+    "Horizon research machinery exists; profitable horizon not discovered",
+    "Alpha research path uses simplified return\u00d7bps costs (not institutional fill ledger)",
+    "Default regime loader remains mock-only (HMM requires explicit module load)"
+  ],
+  "E_production_readiness_limitations": [
+    "Data is development/research grade, not institutional-grade market data",
+    "No live broker connectivity / OMS production deployment",
+    "Risk VaR/stress/MC and portfolio optimizers are parallel platforms \u2014 not fully mandatory in every unified step",
+    "No production monitoring, capital controls ops, or regulatory deployment evidence",
+    "Paper/sim ready \u2260 production ready \u2260 live trading ready"
+  ],
+  "post_architecture_work_classes": [
+    "data acquisition",
+    "research",
+    "strategy development",
+    "statistical validation",
+    "optimization",
+    "paper trading",
+    "broker integration",
+    "production engineering",
+    "live deployment"
+  ],
+  "diagram": "```\nDATA (registry, provenance, quality)\n  \u251c\u2500 historical providers (Yahoo, Binance Vision)\n  \u251c\u2500 resampling / calendars / validation\n  \u2514\u2500 registered BTCUSDT / NIFTY50 OHLCV\n        \u2193\nFEATURES / REFERENCE SIGNALS\n  \u251c\u2500 FeatureRegistry (momentum, RSI, volatility, volume, ...)\n  \u2514\u2500 SignalRegistry (reference OHLCV signals \u2014 Prompt 35 default)\n        \u2193\nFORECASTING / REGIME MODELS\n  \u251c\u2500 volatility (GARCH-family)\n  \u251c\u2500 statistical (ARIMA/VAR/VECM/...)\n  \u251c\u2500 tree_ml (XGBoost/LightGBM/CatBoost/...)\n  \u251c\u2500 neural (LSTM/GRU/MLP/...)\n  \u251c\u2500 transformers (TiDE/Informer/...)\n  \u2514\u2500 regimes (HMM/Markov/GMM; explicit load)\n        \u2193\nMODEL \u2192 SIGNAL ADAPTERS (Prompt 37)\n  \u251c\u2500 forecast_adapter / regime_adapter\n  \u251c\u2500 model_registry / OOS pipeline\n  \u2514\u2500 opt-in SignalRegistry registration\n        \u2193\nALPHA RESEARCH\n  \u251c\u2500 leakage / MTF / IC / costs / OOS / ranking / campaign\n  \u2514\u2500 AlphaCandidate handoff\n        \u2193\nUNIFIED TRADING PIPELINE (Prompt 38)\n  \u251c\u2500 RiskIntelligenceEngine.validate_position + position_size\n  \u251c\u2500 Portfolio constraints / TargetWeights (not full optimizer)\n  \u251c\u2500 ExecutionEngine + SimulatedVenue\n  \u251c\u2500 Orders \u2192 Fills\n  \u2514\u2500 Accounting ledgers + reconciliation + lineage\n        \u2193\nREPORTING / AUDIT ARTIFACTS\n  \u251c\u2500 alpha campaign results\n  \u251c\u2500 model_alpha_integration\n  \u2514\u2500 unified_trading_pipeline / this final audit\n```"
+}

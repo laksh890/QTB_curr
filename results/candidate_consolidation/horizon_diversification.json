@@ -1,0 +1,559 @@
+{
+  "n_same_signal_horizon_pairs": 190,
+  "n_highly_redundant_horizon_pairs": 160,
+  "median_abs_corr_val": 0.9457186525538657,
+  "horizons_diversified": false,
+  "note": "Different holding labels often produce near-identical returns for dense signals.",
+  "sample_pairs": [
+    {
+      "pair": [
+        "mdc_0069b1076c73906e",
+        "mdc_6cacbba19ad9b8d3"
+      ],
+      "holding_bars": [
+        20,
+        3
+      ],
+      "val_abs_corr": 0.8828739641565967
+    },
+    {
+      "pair": [
+        "mdc_0069b1076c73906e",
+        "mdc_6f008c954ea26bf5"
+      ],
+      "holding_bars": [
+        20,
+        1
+      ],
+      "val_abs_corr": 0.8783051463794372
+    },
+    {
+      "pair": [
+        "mdc_0069b1076c73906e",
+        "mdc_8cbf8475db61e0ec"
+      ],
+      "holding_bars": [
+        20,
+        2
+      ],
+      "val_abs_corr": 0.8783051463794372
+    },
+    {
+      "pair": [
+        "mdc_0069b1076c73906e",
+        "mdc_98600cc3f61ce0d1"
+      ],
+      "holding_bars": [
+        20,
+        10
+      ],
+      "val_abs_corr": 0.9163087133857766
+    },
+    {
+      "pair": [
+        "mdc_0069b1076c73906e",
+        "mdc_df580039cda31237"
+      ],
+      "holding_bars": [
+        20,
+        5
+      ],
+      "val_abs_corr": 0.9100235852872257
+    },
+    {
+      "pair": [
+        "mdc_6cacbba19ad9b8d3",
+        "mdc_6f008c954ea26bf5"
+      ],
+      "holding_bars": [
+        3,
+        1
+      ],
+      "val_abs_corr": 0.9758524807842403
+    },
+    {
+      "pair": [
+        "mdc_6cacbba19ad9b8d3",
+        "mdc_8cbf8475db61e0ec"
+      ],
+      "holding_bars": [
+        3,
+        2
+      ],
+      "val_abs_corr": 0.9758524807842403
+    },
+    {
+      "pair": [
+        "mdc_6cacbba19ad9b8d3",
+        "mdc_98600cc3f61ce0d1"
+      ],
+      "holding_bars": [
+        3,
+        10
+      ],
+      "val_abs_corr": 0.9283854048483212
+    },
+    {
+      "pair": [
+        "mdc_6cacbba19ad9b8d3",
+        "mdc_df580039cda31237"
+      ],
+      "holding_bars": [
+        3,
+        5
+      ],
+      "val_abs_corr": 0.9575162523729471
+    },
+    {
+      "pair": [
+        "mdc_6f008c954ea26bf5",
+        "mdc_8cbf8475db61e0ec"
+      ],
+      "holding_bars": [
+        1,
+        2
+      ],
+      "val_abs_corr": 1.0
+    },
+    {
+      "pair": [
+        "mdc_6f008c954ea26bf5",
+        "mdc_98600cc3f61ce0d1"
+      ],
+      "holding_bars": [
+        1,
+        10
+      ],
+      "val_abs_corr": 0.8884225310658134
+    },
+    {
+      "pair": [
+        "mdc_6f008c954ea26bf5",
+        "mdc_df580039cda31237"
+      ],
+      "holding_bars": [
+        1,
+        5
+      ],
+      "val_abs_corr": 0.9475267078993584
+    },
+    {
+      "pair": [
+        "mdc_8cbf8475db61e0ec",
+        "mdc_98600cc3f61ce0d1"
+      ],
+      "holding_bars": [
+        2,
+        10
+      ],
+      "val_abs_corr": 0.8884225310658134
+    },
+    {
+      "pair": [
+        "mdc_8cbf8475db61e0ec",
+        "mdc_df580039cda31237"
+      ],
+      "holding_bars": [
+        2,
+        5
+      ],
+      "val_abs_corr": 0.9475267078993584
+    },
+    {
+      "pair": [
+        "mdc_98600cc3f61ce0d1",
+        "mdc_df580039cda31237"
+      ],
+      "holding_bars": [
+        10,
+        5
+      ],
+      "val_abs_corr": 0.9503615545186049
+    },
+    {
+      "pair": [
+        "mdc_0196c8ad94f13c8c",
+        "mdc_05e99567b31e2127"
+      ],
+      "holding_bars": [
+        5,
+        10
+      ],
+      "val_abs_corr": 0.8815189547532958
+    },
+    {
+      "pair": [
+        "mdc_0196c8ad94f13c8c",
+        "mdc_d85f53e055270c7b"
+      ],
+      "holding_bars": [
+        5,
+        20
+      ],
+      "val_abs_corr": 0.8184434195105711
+    },
+    {
+      "pair": [
+        "mdc_05e99567b31e2127",
+        "mdc_d85f53e055270c7b"
+      ],
+      "holding_bars": [
+        10,
+        20
+      ],
+      "val_abs_corr": 0.867332451353818
+    },
+    {
+      "pair": [
+        "mdc_031f3155a31e7062",
+        "mdc_1361621b538bd930"
+      ],
+      "holding_bars": [
+        20,
+        3
+      ],
+      "val_abs_corr": 0.9492670709280102
+    },
+    {
+      "pair": [
+        "mdc_031f3155a31e7062",
+        "mdc_18a517e70fce1a2f"
+      ],
+      "holding_bars": [
+        20,
+        5
+      ],
+      "val_abs_corr": 0.958742232055828
+    },
+    {
+      "pair": [
+        "mdc_031f3155a31e7062",
+        "mdc_1a7ec2fadcbe5129"
+      ],
+      "holding_bars": [
+        20,
+        2
+      ],
+      "val_abs_corr": 0.9492670709280102
+    },
+    {
+      "pair": [
+        "mdc_031f3155a31e7062",
+        "mdc_61438f8a108ae268"
+      ],
+      "holding_bars": [
+        20,
+        1
+      ],
+      "val_abs_corr": 0.9492670709280102
+    },
+    {
+      "pair": [
+        "mdc_031f3155a31e7062",
+        "mdc_aa25caf5a0a04dc2"
+      ],
+      "holding_bars": [
+        20,
+        10
+      ],
+      "val_abs_corr": 0.9620276164789477
+    },
+    {
+      "pair": [
+        "mdc_1361621b538bd930",
+        "mdc_18a517e70fce1a2f"
+      ],
+      "holding_bars": [
+        3,
+        5
+      ],
+      "val_abs_corr": 0.9788419999307352
+    },
+    {
+      "pair": [
+        "mdc_1361621b538bd930",
+        "mdc_1a7ec2fadcbe5129"
+      ],
+      "holding_bars": [
+        3,
+        2
+      ],
+      "val_abs_corr": 1.0
+    },
+    {
+      "pair": [
+        "mdc_1361621b538bd930",
+        "mdc_61438f8a108ae268"
+      ],
+      "holding_bars": [
+        3,
+        1
+      ],
+      "val_abs_corr": 1.0
+    },
+    {
+      "pair": [
+        "mdc_1361621b538bd930",
+        "mdc_aa25caf5a0a04dc2"
+      ],
+      "holding_bars": [
+        3,
+        10
+      ],
+      "val_abs_corr": 0.9786066842966556
+    },
+    {
+      "pair": [
+        "mdc_18a517e70fce1a2f",
+        "mdc_1a7ec2fadcbe5129"
+      ],
+      "holding_bars": [
+        5,
+        2
+      ],
+      "val_abs_corr": 0.9788419999307351
+    },
+    {
+      "pair": [
+        "mdc_18a517e70fce1a2f",
+        "mdc_61438f8a108ae268"
+      ],
+      "holding_bars": [
+        5,
+        1
+      ],
+      "val_abs_corr": 0.9788419999307351
+    },
+    {
+      "pair": [
+        "mdc_18a517e70fce1a2f",
+        "mdc_aa25caf5a0a04dc2"
+      ],
+      "holding_bars": [
+        5,
+        10
+      ],
+      "val_abs_corr": 0.9900873983809029
+    },
+    {
+      "pair": [
+        "mdc_1a7ec2fadcbe5129",
+        "mdc_61438f8a108ae268"
+      ],
+      "holding_bars": [
+        2,
+        1
+      ],
+      "val_abs_corr": 1.0
+    },
+    {
+      "pair": [
+        "mdc_1a7ec2fadcbe5129",
+        "mdc_aa25caf5a0a04dc2"
+      ],
+      "holding_bars": [
+        2,
+        10
+      ],
+      "val_abs_corr": 0.9786066842966556
+    },
+    {
+      "pair": [
+        "mdc_61438f8a108ae268",
+        "mdc_aa25caf5a0a04dc2"
+      ],
+      "holding_bars": [
+        1,
+        10
+      ],
+      "val_abs_corr": 0.9786066842966556
+    },
+    {
+      "pair": [
+        "mdc_0797eb6c34ebdc60",
+        "mdc_e0e6217804293163"
+      ],
+      "holding_bars": [
+        20,
+        10
+      ],
+      "val_abs_corr": 0.9577399314646552
+    },
+    {
+      "pair": [
+        "mdc_0be4614eb2c8e446",
+        "mdc_391cba888651d8d3"
+      ],
+      "holding_bars": [
+        5,
+        3
+      ],
+      "val_abs_corr": 0.9008813730449761
+    },
+    {
+      "pair": [
+        "mdc_0be4614eb2c8e446",
+        "mdc_76477bceb0d8f4af"
+      ],
+      "holding_bars": [
+        5,
+        1
+      ],
+      "val_abs_corr": 0.8406597990902536
+    },
+    {
+      "pair": [
+        "mdc_0be4614eb2c8e446",
+        "mdc_79e791563e18827f"
+      ],
+      "holding_bars": [
+        5,
+        2
+      ],
+      "val_abs_corr": 0.8762439241870515
+    },
+    {
+      "pair": [
+        "mdc_0be4614eb2c8e446",
+        "mdc_8c4eb611f2281cb9"
+      ],
+      "holding_bars": [
+        5,
+        20
+      ],
+      "val_abs_corr": 0.8885846827894626
+    },
+    {
+      "pair": [
+        "mdc_0be4614eb2c8e446",
+        "mdc_dfd60d2f2c6863e5"
+      ],
+      "holding_bars": [
+        5,
+        10
+      ],
+      "val_abs_corr": 0.9449662914080278
+    },
+    {
+      "pair": [
+        "mdc_391cba888651d8d3",
+        "mdc_76477bceb0d8f4af"
+      ],
+      "holding_bars": [
+        3,
+        1
+      ],
+      "val_abs_corr": 0.950666715537078
+    },
+    {
+      "pair": [
+        "mdc_391cba888651d8d3",
+        "mdc_79e791563e18827f"
+      ],
+      "holding_bars": [
+        3,
+        2
+      ],
+      "val_abs_corr": 0.9744093913571135
+    },
+    {
+      "pair": [
+        "mdc_391cba888651d8d3",
+        "mdc_8c4eb611f2281cb9"
+      ],
+      "holding_bars": [
+        3,
+        20
+      ],
+      "val_abs_corr": 0.833938381525874
+    },
+    {
+      "pair": [
+        "mdc_391cba888651d8d3",
+        "mdc_dfd60d2f2c6863e5"
+      ],
+      "holding_bars": [
+        3,
+        10
+      ],
+      "val_abs_corr": 0.8714946360629127
+    },
+    {
+      "pair": [
+        "mdc_76477bceb0d8f4af",
+        "mdc_79e791563e18827f"
+      ],
+      "holding_bars": [
+        1,
+        2
+      ],
+      "val_abs_corr": 0.9569505156070853
+    },
+    {
+      "pair": [
+        "mdc_76477bceb0d8f4af",
+        "mdc_8c4eb611f2281cb9"
+      ],
+      "holding_bars": [
+        1,
+        20
+      ],
+      "val_abs_corr": 0.7864668262550754
+    },
+    {
+      "pair": [
+        "mdc_76477bceb0d8f4af",
+        "mdc_dfd60d2f2c6863e5"
+      ],
+      "holding_bars": [
+        1,
+        10
+      ],
+      "val_abs_corr": 0.8308261647676447
+    },
+    {
+      "pair": [
+        "mdc_79e791563e18827f",
+        "mdc_8c4eb611f2281cb9"
+      ],
+      "holding_bars": [
+        2,
+        20
+      ],
+      "val_abs_corr": 0.8140240687604754
+    },
+    {
+      "pair": [
+        "mdc_79e791563e18827f",
+        "mdc_dfd60d2f2c6863e5"
+      ],
+      "holding_bars": [
+        2,
+        10
+      ],
+      "val_abs_corr": 0.8567684429153726
+    },
+    {
+      "pair": [
+        "mdc_8c4eb611f2281cb9",
+        "mdc_dfd60d2f2c6863e5"
+      ],
+      "holding_bars": [
+        20,
+        10
+      ],
+      "val_abs_corr": 0.9292335057255673
+    },
+    {
+      "pair": [
+        "mdc_0f8ce9e4611fe036",
+        "mdc_2e0b10ec18fb4d65"
+      ],
+      "holding_bars": [
+        20,
+        10
+      ],
+      "val_abs_corr": 0.7955679067249362
+    }
+  ]
+}

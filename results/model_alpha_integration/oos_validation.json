@@ -1,0 +1,120 @@
+{
+  "disclaimer": "MODEL\u2192ALPHA INTEGRATION VALIDATION \u2014 wiring only. Not a profitability claim. Research evidence is not a guarantee.",
+  "policy": "train_only fit; train-region signal zeroed; alpha evaluate_oos chronological",
+  "rows": [
+    {
+      "adapter_id": "garch_volatility_v1_1h",
+      "oos": "PASS",
+      "slices": {
+        "train": [
+          0,
+          300
+        ],
+        "validation": [
+          300,
+          450
+        ],
+        "oos": [
+          450,
+          600
+        ]
+      },
+      "fit_note": "full-sample fit then fake OOS is forbidden unless labelled in-sample diagnostic"
+    },
+    {
+      "adapter_id": "arima_return_v1_1h",
+      "oos": "PASS",
+      "slices": {
+        "train": [
+          0,
+          300
+        ],
+        "validation": [
+          300,
+          450
+        ],
+        "oos": [
+          450,
+          600
+        ]
+      },
+      "fit_note": "full-sample fit then fake OOS is forbidden unless labelled in-sample diagnostic"
+    },
+    {
+      "adapter_id": "xgb_return_v1_1h",
+      "oos": "PASS",
+      "slices": {
+        "train": [
+          0,
+          300
+        ],
+        "validation": [
+          300,
+          450
+        ],
+        "oos": [
+          450,
+          600
+        ]
+      },
+      "fit_note": "full-sample fit then fake OOS is forbidden unless labelled in-sample diagnostic"
+    },
+    {
+      "adapter_id": "lstm_return_v1_1h",
+      "oos": "PASS",
+      "slices": {
+        "train": [
+          0,
+          300
+        ],
+        "validation": [
+          300,
+          450
+        ],
+        "oos": [
+          450,
+          600
+        ]
+      },
+      "fit_note": "full-sample fit then fake OOS is forbidden unless labelled in-sample diagnostic"
+    },
+    {
+      "adapter_id": "transformer_return_v1_1h",
+      "oos": "PASS",
+      "slices": {
+        "train": [
+          0,
+          300
+        ],
+        "validation": [
+          300,
+          450
+        ],
+        "oos": [
+          450,
+          600
+        ]
+      },
+      "fit_note": "full-sample fit then fake OOS is forbidden unless labelled in-sample diagnostic"
+    },
+    {
+      "adapter_id": "hmm_regime_v1_1h",
+      "oos": "PASS",
+      "slices": {
+        "train": [
+          0,
+          300
+        ],
+        "validation": [
+          300,
+          450
+        ],
+        "oos": [
+          450,
+          600
+        ]
+      },
+      "fit_note": "full-sample fit then fake OOS is forbidden unless labelled in-sample diagnostic"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "basis": "bar-level equity from compounding period returns",
+  "max_drawdown_hand": 0.747015463238524,
+  "max_drawdown_engine": 0.747015463238524,
+  "match": true,
+  "disclaimer": "Research evidence is not a profitability guarantee."
+}

@@ -1,0 +1,109 @@
+{
+  "disclaimer": "FINAL SYSTEM ARCHITECTURE AUDIT \u2014 evidence only. PIPELINE WORKS \u2260 STRATEGY WORKS \u2260 PROFITABLE \u2260 PRODUCTION/LIVE READY. STATISTICAL VALIDITY remains LIMITED per Prompt 36.",
+  "components": [
+    {
+      "Component": "01 Data Platform",
+      "Status": "COMPLETE",
+      "Evidence": "dataset_registry.json; BTC/NIFTY parquet + provenance/quality artifacts; providers present",
+      "Integrated?": "YES",
+      "Production Ready?": "NO \u2014 development/research data grade",
+      "classification": "IMPLEMENTED"
+    },
+    {
+      "Component": "02 Feature / Signal Platform",
+      "Status": "COMPLETE",
+      "Evidence": "FeatureRegistry + SignalRegistry; reference ids present=True",
+      "Integrated?": "YES",
+      "Production Ready?": "NO \u2014 research feature set",
+      "classification": "IMPLEMENTED"
+    },
+    {
+      "Component": "03 Forecasting Platform",
+      "Status": "COMPLETE",
+      "Evidence": "iqrp.app.forecasting.* factories + Forecast object; unit tests across families",
+      "Integrated?": "YES via adapters (Prompt 37)",
+      "Production Ready?": "NO",
+      "classification": "IMPLEMENTED"
+    },
+    {
+      "Component": "04 Regime / State Detection",
+      "Status": "PARTIAL",
+      "Evidence": "HMM/Markov/GMM implemented; default ensure_regime_models_loaded is mock-only; HMM wired via explicit load in adapters",
+      "Integrated?": "PARTIAL \u2014 HMM via adapter; default registry mock-only",
+      "Production Ready?": "NO",
+      "classification": "PARTIALLY_IMPLEMENTED"
+    },
+    {
+      "Component": "05 Alpha Research Platform",
+      "Status": "COMPLETE",
+      "Evidence": "AlphaSignalResearchEngine; Prompt 35 campaign + Prompt 36 CONDITIONALLY_VALID audit",
+      "Integrated?": "YES (reference + model precomputed signals)",
+      "Production Ready?": "NO \u2014 research gates; simplified cost accounting",
+      "classification": "IMPLEMENTED"
+    },
+    {
+      "Component": "06 Time-Series Analytics Platform",
+      "Status": "COMPLETE",
+      "Evidence": "iqrp.app.timeseries package + tests (stationarity, dependence, etc.)",
+      "Integrated?": "PARTIAL \u2014 available as analytics, not required on every alpha path",
+      "Production Ready?": "NO",
+      "classification": "IMPLEMENTED"
+    },
+    {
+      "Component": "07 Forecasting Models (GARCH/ARIMA/XGB/LSTM/TiDE/HMM)",
+      "Status": "COMPLETE",
+      "Evidence": "six-model audit all unified_pipeline=True",
+      "Integrated?": "YES via model\u2192signal adapters",
+      "Production Ready?": "NO",
+      "classification": "IMPLEMENTED"
+    },
+    {
+      "Component": "08 Risk Intelligence Platform",
+      "Status": "PARTIAL",
+      "Evidence": "Full risk package (VaR/CVaR/stress/ensemble/limits/sizing) exists; unified pipeline uses validate_position + position_size primarily",
+      "Integrated?": "PARTIAL \u2014 gate+sizing in cascade; VaR/stress/MC not mandatory per-candidate",
+      "Production Ready?": "NO",
+      "classification": "PARTIALLY_IMPLEMENTED"
+    },
+    {
+      "Component": "09 Portfolio Platform",
+      "Status": "PARTIAL",
+      "Evidence": "MV/BL/RiskParity/HRP optimizers exist; unified path enforces constraints/TargetWeights only (no optimizer objective)",
+      "Integrated?": "PARTIAL \u2014 constraints yes; optimization optional/parallel",
+      "Production Ready?": "NO",
+      "classification": "PARTIALLY_IMPLEMENTED"
+    },
+    {
+      "Component": "10 Execution Platform",
+      "Status": "PARTIAL",
+      "Evidence": "OrderManager/algos/slippage/routing/SimulatedVenue exist; research sim path operational; no live broker",
+      "Integrated?": "YES for simulation via UnifiedTradingOrchestrator",
+      "Production Ready?": "NO \u2014 no live brokerage",
+      "classification": "PARTIALLY_IMPLEMENTED"
+    },
+    {
+      "Component": "11 Backtesting Platform",
+      "Status": "COMPLETE",
+      "Evidence": "EventDrivenEngine + BacktestRunner + alpha cost-aware evaluate; synthetic/BTC pipeline validations present",
+      "Integrated?": "YES",
+      "Production Ready?": "NO \u2014 research/sim",
+      "classification": "IMPLEMENTED"
+    },
+    {
+      "Component": "12 Unified Trading Pipeline",
+      "Status": "COMPLETE",
+      "Evidence": "Prompt 38 OPERATIONAL; E2E audit status=PASS; answers={'1_operational_cascade': True, '2_multiple_long_short_same_state': True, '3_risk_reduce_or_reject': True, '4_portfolio_constraints_alter': True, '5_deltas_to_orders': True, '6_fills_update_positions': True, '7_lineage_traceable': True, '8_reconciliation_pass': True, '9_prompt37_compatible': True, '10_prompt35_compatible': True}",
+      "Integrated?": "YES",
+      "Production Ready?": "NO \u2014 research/simulation orchestration",
+      "classification": "IMPLEMENTED"
+    },
+    {
+      "Component": "Research Validity (Prompt 36)",
+      "Status": "PARTIAL",
+      "Evidence": "verdict=CONDITIONALLY_VALID; statistical_validity=LIMITED",
+      "Integrated?": "YES as audit constraints",
+      "Production Ready?": "NO",
+      "classification": "PARTIALLY_IMPLEMENTED"
+    }
+  ]
+}

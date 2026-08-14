@@ -1,0 +1,9 @@
+{
+  "disclaimer": "MODEL\u2192ALPHA INTEGRATION VALIDATION \u2014 wiring only. Not a profitability claim. Research evidence is not a guarantee.",
+  "reference_signals_present": true,
+  "missing_reference": [],
+  "model_adapters_auto_injected_into_global_registry": [],
+  "prompt35_reproducible_default_path": true,
+  "momentum_eval_ok": true,
+  "status": "PASS"
+}

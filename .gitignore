@@ -32,8 +32,30 @@ htmlcov/
 .tox/
 .nox/
 
-# Local backtest / experiment outputs
-results/
+# Local backtest / experiment outputs (ignore by default)
+results/*
+# Keep research campaign artifacts for handoff / reproducibility
+!results/AGENT_HANDOFF_MAP.md
+!results/alpha_research_btc_full/
+!results/alpha_research_btc_full/**
+!results/alpha_research_btc_full_audit/
+!results/alpha_research_btc_full_audit/**
+!results/architecture_implementation_audit/
+!results/architecture_implementation_audit/**
+!results/candidate_consolidation/
+!results/candidate_consolidation/**
+!results/final_system_architecture_audit/
+!results/final_system_architecture_audit/**
+!results/model_alpha_integration/
+!results/model_alpha_integration/**
+!results/model_driven_alpha_campaign/
+!results/model_driven_alpha_campaign/**
+!results/unified_trading_pipeline/
+!results/unified_trading_pipeline/**
+# Still ignore smoke runs and logs under results
+results/**/*_smoke*/
+results/**/*_smoke/
+results/**/*.log
 
 # Editors / OS
 .idea/

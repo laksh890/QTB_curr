@@ -1,0 +1,64 @@
+{
+  "model": "SIMPLIFIED_BAR_RETURN_ATTRIBUTION",
+  "not_full_ledger": true,
+  "cash_equity_objects": false,
+  "explanation": "Alpha research path does not simulate cash balances, share quantities, or fills. It attributes close-to-close returns to lagged positions and subtracts turnover\u00d7bps costs. Therefore classic cash+MTM equity reconciliation is N/A; return-path reconciliation is used.",
+  "independent_vs_engine": {
+    "gross_pnl_engine": 21.416462749049927,
+    "gross_pnl_hand": 21.416462749049927,
+    "gross_pnl_match": true,
+    "net_pnl_engine": 0.686362037609336,
+    "net_pnl_hand": 0.686362037609336,
+    "net_pnl_match": true,
+    "transaction_costs_engine": 2.5805000000000002,
+    "transaction_costs_hand": 2.5805000000000002,
+    "transaction_costs_match": true,
+    "net_sharpe_engine": 0.38287311772141297,
+    "net_sharpe_hand": 0.38287311772141297,
+    "net_sharpe_match": true,
+    "max_drawdown_hand": 0.7511867790505886
+  },
+  "phantom_positions": false,
+  "duplicate_fills": "N/A (no fill blotter)",
+  "disclaimer": "Research evidence is not a profitability guarantee.",
+  "signal_trade_conversion": {
+    "rules": {
+      "+1": "LONG exposure for holding_bars after signal observation",
+      "0": "FLAT / skip (does not force exit mid-hold; hold window runs to completion)",
+      "-1": "SHORT exposure for holding_bars (symmetric magnitude)",
+      "reverse": "Occurs when a new non-zero signal is read after prior hold expires",
+      "not": "Not a continuous mark-to-market of every bar's raw signal when holding>1"
+    },
+    "example_signal": [
+      0.0,
+      1.0,
+      1.0,
+      1.0,
+      0.0,
+      -1.0,
+      -1.0,
+      1.0,
+      0.0,
+      0.0
+    ],
+    "example_positions_hold3": [
+      0.0,
+      1.0,
+      1.0,
+      1.0,
+      0.0,
+      -1.0,
+      -1.0,
+      -1.0,
+      0.0,
+      0.0
+    ],
+    "long_short_symmetry": true,
+    "asymmetry_notes": [
+      "Magnitude is symmetric (\u00b11). Timing depends on when non-zero signals fall on hold boundaries.",
+      "Neutral bars do not interrupt an active hold window \u2014 HOLD through zeros until window ends."
+    ],
+    "engine_return_link": "gross[t]=pos[t-1]*r[t] \u2014 no explicit BUY/SELL order objects in alpha research path",
+    "disclaimer": "Research evidence is not a profitability guarantee."
+  }
+}

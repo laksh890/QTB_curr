@@ -1,0 +1,31 @@
+{
+  "disclaimer": "MODEL\u2192ALPHA INTEGRATION VALIDATION \u2014 wiring only. Not a profitability claim. Research evidence is not a guarantee.",
+  "risk": {
+    "status": "PASS",
+    "keys": [
+      "name",
+      "volatility",
+      "marginal_risk_contribution",
+      "component_risk_contribution",
+      "exposure",
+      "concentration",
+      "diversification_ratio"
+    ],
+    "position_side": 0.0
+  },
+  "portfolio": {
+    "status": "PASS",
+    "names": [
+      "BTCUSDT"
+    ],
+    "weights": [
+      1.0
+    ],
+    "note": "TargetWeights built from model-signal-derived side"
+  },
+  "execution": {
+    "status": "PASS",
+    "engine": "ExecutionEngine",
+    "note": "ExecutionEngine instantiable; full OM path not required for adapter wiring"
+  }
+}

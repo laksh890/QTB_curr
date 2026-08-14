@@ -1,0 +1,961 @@
+{
+  "base_pass": [
+    {
+      "ensemble_id": "cdc_3ead53d805422ea0",
+      "method": "equal_weight",
+      "timeframe": "1h",
+      "cost_scenario": "BASE",
+      "gross_return": 2.013975820664924,
+      "net_return": 1.1828597712996975,
+      "gross_Sharpe": 1.4813646146156858,
+      "net_Sharpe": 1.0834893840391824,
+      "max_drawdown": 0.24153991843712141,
+      "volatility": 0.24572834653522052,
+      "turnover": 195.048,
+      "trades_per_day": 0.3872901678657074,
+      "long_short_ratio": 1.90990990990991,
+      "cost_contribution": 0.3225,
+      "alpha_survives_costs": true,
+      "alpha_collapses_after_costs": false,
+      "period_metrics": {
+        "train": {
+          "net_sharpe": 0.0,
+          "net_return": 0.0
+        },
+        "validation": {
+          "net_sharpe": 1.2249986440866583,
+          "net_return": 0.3571971123970591
+        },
+        "oos": {
+          "net_sharpe": 1.8494170859431407,
+          "net_return": 0.5232615885930127
+        }
+      },
+      "members": [
+        "mdc_801488267ad484dc",
+        "mdc_3ed979ee7d9dabe6",
+        "mdc_a0f769fc20835273"
+      ],
+      "median_member_oos_sharpe": 0.6412204473358626,
+      "beats_median_member_oos": true,
+      "disclaimer": "CANDIDATE CONSOLIDATION RESEARCH \u2014 predefined protocol. Research evidence is not a profitability guarantee. DISTINCT_RESEARCH_CANDIDATE \u2260 PROFITABLE \u2260 PRODUCTION_READY \u2260 LIVE_READY. Prompt 39 artifacts are immutable inputs."
+    },
+    {
+      "ensemble_id": "cdc_4031d610033dcda6",
+      "method": "confidence_weighted",
+      "timeframe": "1h",
+      "cost_scenario": "BASE",
+      "gross_return": 1.804916823265009,
+      "net_return": 0.8566601168613006,
+      "gross_Sharpe": 1.1883333862053074,
+      "net_Sharpe": 0.7712909379816575,
+      "max_drawdown": 0.3219300058367711,
+      "volatility": 0.30150068689354215,
+      "turnover": 248.8752,
+      "trades_per_day": 0.4940047961630695,
+      "long_short_ratio": 1.0,
+      "cost_contribution": 0.41150000000000003,
+      "alpha_survives_costs": true,
+      "alpha_collapses_after_costs": false,
+      "period_metrics": {
+        "train": {
+          "net_sharpe": 0.0,
+          "net_return": 0.0
+        },
+        "validation": {
+          "net_sharpe": 1.6180305328617692,
+          "net_return": 0.5676174850135647
+        },
+        "oos": {
+          "net_sharpe": 0.5685891692182219,
+          "net_return": 0.20139892184140828
+        }
+      },
+      "members": [
+        "mdc_801488267ad484dc",
+        "mdc_3ed979ee7d9dabe6",
+        "mdc_a0f769fc20835273"
+      ],
+      "median_member_oos_sharpe": 0.6412204473358626,
+      "beats_median_member_oos": false,
+      "disclaimer": "CANDIDATE CONSOLIDATION RESEARCH \u2014 predefined protocol. Research evidence is not a profitability guarantee. DISTINCT_RESEARCH_CANDIDATE \u2260 PROFITABLE \u2260 PRODUCTION_READY \u2260 LIVE_READY. Prompt 39 artifacts are immutable inputs."
+    },
+    {
+      "ensemble_id": "cdc_2498c0dcea552c87",
+      "method": "majority_vote",
+      "timeframe": "1h",
+      "cost_scenario": "BASE",
+      "gross_return": 2.013975820664924,
+      "net_return": 1.1828597712996975,
+      "gross_Sharpe": 1.4813646146156858,
+      "net_Sharpe": 1.0834893840391824,
+      "max_drawdown": 0.24153991843712141,
+      "volatility": 0.24572834653522052,
+      "turnover": 195.048,
+      "trades_per_day": 0.3872901678657074,
+      "long_short_ratio": 1.90990990990991,
+      "cost_contribution": 0.3225,
+      "alpha_survives_costs": true,
+      "alpha_collapses_after_costs": false,
+      "period_metrics": {
+        "train": {
+          "net_sharpe": 0.0,
+          "net_return": 0.0
+        },
+        "validation": {
+          "net_sharpe": 1.2249986440866583,
+          "net_return": 0.3571971123970591
+        },
+        "oos": {
+          "net_sharpe": 1.8494170859431407,
+          "net_return": 0.5232615885930127
+        }
+      },
+      "members": [
+        "mdc_801488267ad484dc",
+        "mdc_3ed979ee7d9dabe6",
+        "mdc_a0f769fc20835273"
+      ],
+      "median_member_oos_sharpe": 0.6412204473358626,
+      "beats_median_member_oos": true,
+      "disclaimer": "CANDIDATE CONSOLIDATION RESEARCH \u2014 predefined protocol. Research evidence is not a profitability guarantee. DISTINCT_RESEARCH_CANDIDATE \u2260 PROFITABLE \u2260 PRODUCTION_READY \u2260 LIVE_READY. Prompt 39 artifacts are immutable inputs."
+    },
+    {
+      "ensemble_id": "cdc_c2e0f43310f1f23d",
+      "method": "equal_weight",
+      "timeframe": "15m",
+      "cost_scenario": "BASE",
+      "gross_return": 39.08962705708987,
+      "net_return": 20.667868958602295,
+      "gross_Sharpe": 9.37991981909507,
+      "net_Sharpe": 7.807545913750218,
+      "max_drawdown": 0.11112783519924019,
+      "volatility": 0.391013029293982,
+      "turnover": 1189.27872,
+      "trades_per_day": 2.3563218390804597,
+      "long_short_ratio": 1.1731448763250882,
+      "cost_contribution": 0.6145,
+      "alpha_survives_costs": true,
+      "alpha_collapses_after_costs": false,
+      "period_metrics": {
+        "train": {
+          "net_sharpe": 7.422148414860555,
+          "net_return": 1.6763458512267015
+        },
+        "validation": {
+          "net_sharpe": 8.674420912762763,
+          "net_return": 0.6265491553750218
+        },
+        "oos": {
+          "net_sharpe": 8.478031392471753,
+          "net_return": 0.8519839182108983
+        }
+      },
+      "members": [
+        "mdc_99aa952c5d5f6ff7",
+        "mdc_6f008c954ea26bf5",
+        "mdc_4992167889db9b2e"
+      ],
+      "median_member_oos_sharpe": 7.671105673598704,
+      "beats_median_member_oos": true,
+      "disclaimer": "CANDIDATE CONSOLIDATION RESEARCH \u2014 predefined protocol. Research evidence is not a profitability guarantee. DISTINCT_RESEARCH_CANDIDATE \u2260 PROFITABLE \u2260 PRODUCTION_READY \u2260 LIVE_READY. Prompt 39 artifacts are immutable inputs."
+    },
+    {
+      "ensemble_id": "cdc_ece32fb95dfb76eb",
+      "method": "confidence_weighted",
+      "timeframe": "15m",
+      "cost_scenario": "BASE",
+      "gross_return": 55.92105159098793,
+      "net_return": 28.285693628922797,
+      "gross_Sharpe": 9.524630436536825,
+      "net_Sharpe": 7.945088587980827,
+      "max_drawdown": 0.11112783519924019,
+      "volatility": 0.42255383366443866,
+      "turnover": 1284.1113599999999,
+      "trades_per_day": 2.5440613026819925,
+      "long_short_ratio": 1.0,
+      "cost_contribution": 0.6635,
+      "alpha_survives_costs": true,
+      "alpha_collapses_after_costs": false,
+      "period_metrics": {
+        "train": {
+          "net_sharpe": 7.422148414860555,
+          "net_return": 1.6763458512267015
+        },
+        "validation": {
+          "net_sharpe": 9.147652723744978,
+          "net_return": 0.8374048927776805
+        },
+        "oos": {
+          "net_sharpe": 8.138567461610174,
+          "net_return": 0.9556759137979043
+        }
+      },
+      "members": [
+        "mdc_99aa952c5d5f6ff7",
+        "mdc_6f008c954ea26bf5",
+        "mdc_4992167889db9b2e"
+      ],
+      "median_member_oos_sharpe": 7.671105673598704,
+      "beats_median_member_oos": true,
+      "disclaimer": "CANDIDATE CONSOLIDATION RESEARCH \u2014 predefined protocol. Research evidence is not a profitability guarantee. DISTINCT_RESEARCH_CANDIDATE \u2260 PROFITABLE \u2260 PRODUCTION_READY \u2260 LIVE_READY. Prompt 39 artifacts are immutable inputs."
+    },
+    {
+      "ensemble_id": "cdc_327c7fd269d45fd1",
+      "method": "majority_vote",
+      "timeframe": "15m",
+      "cost_scenario": "BASE",
+      "gross_return": 39.08962705708987,
+      "net_return": 20.667868958602295,
+      "gross_Sharpe": 9.37991981909507,
+      "net_Sharpe": 7.807545913750218,
+      "max_drawdown": 0.11112783519924019,
+      "volatility": 0.391013029293982,
+      "turnover": 1189.27872,
+      "trades_per_day": 2.3563218390804597,
+      "long_short_ratio": 1.1731448763250882,
+      "cost_contribution": 0.6145,
+      "alpha_survives_costs": true,
+      "alpha_collapses_after_costs": false,
+      "period_metrics": {
+        "train": {
+          "net_sharpe": 7.422148414860555,
+          "net_return": 1.6763458512267015
+        },
+        "validation": {
+          "net_sharpe": 8.674420912762763,
+          "net_return": 0.6265491553750218
+        },
+        "oos": {
+          "net_sharpe": 8.478031392471753,
+          "net_return": 0.8519839182108983
+        }
+      },
+      "members": [
+        "mdc_99aa952c5d5f6ff7",
+        "mdc_6f008c954ea26bf5",
+        "mdc_4992167889db9b2e"
+      ],
+      "median_member_oos_sharpe": 7.671105673598704,
+      "beats_median_member_oos": true,
+      "disclaimer": "CANDIDATE CONSOLIDATION RESEARCH \u2014 predefined protocol. Research evidence is not a profitability guarantee. DISTINCT_RESEARCH_CANDIDATE \u2260 PROFITABLE \u2260 PRODUCTION_READY \u2260 LIVE_READY. Prompt 39 artifacts are immutable inputs."
+    },
+    {
+      "ensemble_id": "cdc_d805c90442a7303e",
+      "method": "regime_conditioned",
+      "timeframe": "15m",
+      "cost_scenario": "BASE",
+      "gross_return": 1.122281332530343,
+      "net_return": 0.28936305641998716,
+      "gross_Sharpe": 5.253835144404133,
+      "net_Sharpe": 1.8335222293576237,
+      "max_drawdown": 0.0687279805178379,
+      "volatility": 0.13942969491927043,
+      "turnover": 964.7769599999999,
+      "trades_per_day": 1.9118773946360152,
+      "long_short_ratio": 2.5390070921985815,
+      "cost_contribution": 0.49850000000000005,
+      "alpha_survives_costs": true,
+      "alpha_collapses_after_costs": false,
+      "period_metrics": {
+        "train": {
+          "net_sharpe": 0.0,
+          "net_return": 0.0
+        },
+        "validation": {
+          "net_sharpe": 3.2523317945358157,
+          "net_return": 0.1567757821664736
+        },
+        "oos": {
+          "net_sharpe": 2.0062212533050374,
+          "net_return": 0.10741543617980719
+        }
+      },
+      "members": [
+        "mdc_99aa952c5d5f6ff7",
+        "mdc_6f008c954ea26bf5",
+        "mdc_4992167889db9b2e"
+      ],
+      "median_member_oos_sharpe": 7.671105673598704,
+      "beats_median_member_oos": false,
+      "disclaimer": "CANDIDATE CONSOLIDATION RESEARCH \u2014 predefined protocol. Research evidence is not a profitability guarantee. DISTINCT_RESEARCH_CANDIDATE \u2260 PROFITABLE \u2260 PRODUCTION_READY \u2260 LIVE_READY. Prompt 39 artifacts are immutable inputs."
+    },
+    {
+      "ensemble_id": "cdc_b6e48b107a26d65d",
+      "method": "equal_weight",
+      "timeframe": "5m",
+      "cost_scenario": "BASE",
+      "gross_return": 11.610994081921763,
+      "net_return": 6.0747818726647775,
+      "gross_Sharpe": 15.183772463738658,
+      "net_Sharpe": 11.674465752742083,
+      "max_drawdown": 0.06062427927782055,
+      "volatility": 0.4127326666501232,
+      "turnover": 2794.176,
+      "trades_per_day": 5.504761904761905,
+      "long_short_ratio": 1.0,
+      "cost_contribution": 0.5775,
+      "alpha_survives_costs": true,
+      "alpha_collapses_after_costs": false,
+      "period_metrics": {
+        "train": {
+          "net_sharpe": 11.081799024122635,
+          "net_return": 0.7821826638627685
+        },
+        "validation": {
+          "net_sharpe": 11.826009046179083,
+          "net_return": 0.6144984516420239
+        },
+        "oos": {
+          "net_sharpe": 13.029924308054001,
+          "net_return": 0.5950986840469379
+        }
+      },
+      "members": [
+        "mdc_51a60a3264845365",
+        "mdc_678609c534d68189"
+      ],
+      "median_member_oos_sharpe": 10.796874512556478,
+      "beats_median_member_oos": true,
+      "disclaimer": "CANDIDATE CONSOLIDATION RESEARCH \u2014 predefined protocol. Research evidence is not a profitability guarantee. DISTINCT_RESEARCH_CANDIDATE \u2260 PROFITABLE \u2260 PRODUCTION_READY \u2260 LIVE_READY. Prompt 39 artifacts are immutable inputs."
+    },
+    {
+      "ensemble_id": "cdc_568818239b45257e",
+      "method": "confidence_weighted",
+      "timeframe": "5m",
+      "cost_scenario": "BASE",
+      "gross_return": 11.610994081921763,
+      "net_return": 6.0747818726647775,
+      "gross_Sharpe": 15.183772463738658,
+      "net_Sharpe": 11.674465752742083,
+      "max_drawdown": 0.06062427927782055,
+      "volatility": 0.4127326666501232,
+      "turnover": 2794.176,
+      "trades_per_day": 5.504761904761905,
+      "long_short_ratio": 1.0,
+      "cost_contribution": 0.5775,
+      "alpha_survives_costs": true,
+      "alpha_collapses_after_costs": false,
+      "period_metrics": {
+        "train": {
+          "net_sharpe": 11.081799024122635,
+          "net_return": 0.7821826638627685
+        },
+        "validation": {
+          "net_sharpe": 11.826009046179083,
+          "net_return": 0.6144984516420239
+        },
+        "oos": {
+          "net_sharpe": 13.029924308054001,
+          "net_return": 0.5950986840469379
+        }
+      },
+      "members": [
+        "mdc_51a60a3264845365",
+        "mdc_678609c534d68189"
+      ],
+      "median_member_oos_sharpe": 10.796874512556478,
+      "beats_median_member_oos": true,
+      "disclaimer": "CANDIDATE CONSOLIDATION RESEARCH \u2014 predefined protocol. Research evidence is not a profitability guarantee. DISTINCT_RESEARCH_CANDIDATE \u2260 PROFITABLE \u2260 PRODUCTION_READY \u2260 LIVE_READY. Prompt 39 artifacts are immutable inputs."
+    },
+    {
+      "ensemble_id": "cdc_8b2e5cf5235a392b",
+      "method": "majority_vote",
+      "timeframe": "5m",
+      "cost_scenario": "BASE",
+      "gross_return": 11.610994081921763,
+      "net_return": 6.0747818726647775,
+      "gross_Sharpe": 15.183772463738658,
+      "net_Sharpe": 11.674465752742083,
+      "max_drawdown": 0.06062427927782055,
+      "volatility": 0.4127326666501232,
+      "turnover": 2794.176,
+      "trades_per_day": 5.504761904761905,
+      "long_short_ratio": 1.0,
+      "cost_contribution": 0.5775,
+      "alpha_survives_costs": true,
+      "alpha_collapses_after_costs": false,
+      "period_metrics": {
+        "train": {
+          "net_sharpe": 11.081799024122635,
+          "net_return": 0.7821826638627685
+        },
+        "validation": {
+          "net_sharpe": 11.826009046179083,
+          "net_return": 0.6144984516420239
+        },
+        "oos": {
+          "net_sharpe": 13.029924308054001,
+          "net_return": 0.5950986840469379
+        }
+      },
+      "members": [
+        "mdc_51a60a3264845365",
+        "mdc_678609c534d68189"
+      ],
+      "median_member_oos_sharpe": 10.796874512556478,
+      "beats_median_member_oos": true,
+      "disclaimer": "CANDIDATE CONSOLIDATION RESEARCH \u2014 predefined protocol. Research evidence is not a profitability guarantee. DISTINCT_RESEARCH_CANDIDATE \u2260 PROFITABLE \u2260 PRODUCTION_READY \u2260 LIVE_READY. Prompt 39 artifacts are immutable inputs."
+    }
+  ],
+  "moderate_pass": [
+    {
+      "ensemble_id": "cdc_3ead53d805422ea0",
+      "method": "equal_weight",
+      "timeframe": "1h",
+      "cost_scenario": "MODERATE",
+      "gross_return": 2.013975820664924,
+      "net_return": 0.5806238430084547,
+      "gross_Sharpe": 1.4813646146156858,
+      "net_Sharpe": 0.6855162212098325,
+      "max_drawdown": 0.3319088049453447,
+      "volatility": 0.2461247272327416,
+      "turnover": 195.048,
+      "trades_per_day": 0.3872901678657074,
+      "long_short_ratio": 1.90990990990991,
+      "cost_contribution": 0.645,
+      "alpha_survives_costs": true,
+      "alpha_collapses_after_costs": false,
+      "period_metrics": {
+        "train": {
+          "net_sharpe": 0.0,
+          "net_return": 0.0
+        },
+        "validation": {
+          "net_sharpe": 0.651050235984304,
+          "net_return": 0.19019711239705897
+        },
+        "oos": {
+          "net_sharpe": 1.2979427344243148,
+          "net_return": 0.36776158859301256
+        }
+      },
+      "members": [
+        "mdc_801488267ad484dc",
+        "mdc_3ed979ee7d9dabe6",
+        "mdc_a0f769fc20835273"
+      ],
+      "median_member_oos_sharpe": 0.6412204473358626,
+      "beats_median_member_oos": false,
+      "disclaimer": "CANDIDATE CONSOLIDATION RESEARCH \u2014 predefined protocol. Research evidence is not a profitability guarantee. DISTINCT_RESEARCH_CANDIDATE \u2260 PROFITABLE \u2260 PRODUCTION_READY \u2260 LIVE_READY. Prompt 39 artifacts are immutable inputs."
+    },
+    {
+      "ensemble_id": "cdc_2498c0dcea552c87",
+      "method": "majority_vote",
+      "timeframe": "1h",
+      "cost_scenario": "MODERATE",
+      "gross_return": 2.013975820664924,
+      "net_return": 0.5806238430084547,
+      "gross_Sharpe": 1.4813646146156858,
+      "net_Sharpe": 0.6855162212098325,
+      "max_drawdown": 0.3319088049453447,
+      "volatility": 0.2461247272327416,
+      "turnover": 195.048,
+      "trades_per_day": 0.3872901678657074,
+      "long_short_ratio": 1.90990990990991,
+      "cost_contribution": 0.645,
+      "alpha_survives_costs": true,
+      "alpha_collapses_after_costs": false,
+      "period_metrics": {
+        "train": {
+          "net_sharpe": 0.0,
+          "net_return": 0.0
+        },
+        "validation": {
+          "net_sharpe": 0.651050235984304,
+          "net_return": 0.19019711239705897
+        },
+        "oos": {
+          "net_sharpe": 1.2979427344243148,
+          "net_return": 0.36776158859301256
+        }
+      },
+      "members": [
+        "mdc_801488267ad484dc",
+        "mdc_3ed979ee7d9dabe6",
+        "mdc_a0f769fc20835273"
+      ],
+      "median_member_oos_sharpe": 0.6412204473358626,
+      "beats_median_member_oos": false,
+      "disclaimer": "CANDIDATE CONSOLIDATION RESEARCH \u2014 predefined protocol. Research evidence is not a profitability guarantee. DISTINCT_RESEARCH_CANDIDATE \u2260 PROFITABLE \u2260 PRODUCTION_READY \u2260 LIVE_READY. Prompt 39 artifacts are immutable inputs."
+    },
+    {
+      "ensemble_id": "cdc_c2e0f43310f1f23d",
+      "method": "equal_weight",
+      "timeframe": "15m",
+      "cost_scenario": "MODERATE",
+      "gross_return": 39.08962705708987,
+      "net_return": 10.704982628094028,
+      "gross_Sharpe": 9.37991981909507,
+      "net_Sharpe": 6.232644916470991,
+      "max_drawdown": 0.11201993868402915,
+      "volatility": 0.3944111600994805,
+      "turnover": 1189.27872,
+      "trades_per_day": 2.3563218390804597,
+      "long_short_ratio": 1.1731448763250882,
+      "cost_contribution": 1.229,
+      "alpha_survives_costs": true,
+      "alpha_collapses_after_costs": false,
+      "period_metrics": {
+        "train": {
+          "net_sharpe": 5.984736283731899,
+          "net_return": 1.3628458512267017
+        },
+        "validation": {
+          "net_sharpe": 6.534123461776169,
+          "net_return": 0.47754915537502185
+        },
+        "oos": {
+          "net_sharpe": 6.908999783114251,
+          "net_return": 0.6999839182108982
+        }
+      },
+      "members": [
+        "mdc_99aa952c5d5f6ff7",
+        "mdc_6f008c954ea26bf5",
+        "mdc_4992167889db9b2e"
+      ],
+      "median_member_oos_sharpe": 7.671105673598704,
+      "beats_median_member_oos": false,
+      "disclaimer": "CANDIDATE CONSOLIDATION RESEARCH \u2014 predefined protocol. Research evidence is not a profitability guarantee. DISTINCT_RESEARCH_CANDIDATE \u2260 PROFITABLE \u2260 PRODUCTION_READY \u2260 LIVE_READY. Prompt 39 artifacts are immutable inputs."
+    },
+    {
+      "ensemble_id": "cdc_ece32fb95dfb76eb",
+      "method": "confidence_weighted",
+      "timeframe": "15m",
+      "cost_scenario": "MODERATE",
+      "gross_return": 55.92105159098793,
+      "net_return": 14.057360570460126,
+      "gross_Sharpe": 9.524630436536825,
+      "net_Sharpe": 6.363656352702858,
+      "max_drawdown": 0.11201993868402915,
+      "volatility": 0.4266705573665467,
+      "turnover": 1284.1113599999999,
+      "trades_per_day": 2.5440613026819925,
+      "long_short_ratio": 1.0,
+      "cost_contribution": 1.327,
+      "alpha_survives_costs": true,
+      "alpha_collapses_after_costs": false,
+      "period_metrics": {
+        "train": {
+          "net_sharpe": 5.984736283731899,
+          "net_return": 1.3628458512267017
+        },
+        "validation": {
+          "net_sharpe": 7.170898042858871,
+          "net_return": 0.6654048927776804
+        },
+        "oos": {
+          "net_sharpe": 6.556297881052351,
+          "net_return": 0.7776759137979044
+        }
+      },
+      "members": [
+        "mdc_99aa952c5d5f6ff7",
+        "mdc_6f008c954ea26bf5",
+        "mdc_4992167889db9b2e"
+      ],
+      "median_member_oos_sharpe": 7.671105673598704,
+      "beats_median_member_oos": false,
+      "disclaimer": "CANDIDATE CONSOLIDATION RESEARCH \u2014 predefined protocol. Research evidence is not a profitability guarantee. DISTINCT_RESEARCH_CANDIDATE \u2260 PROFITABLE \u2260 PRODUCTION_READY \u2260 LIVE_READY. Prompt 39 artifacts are immutable inputs."
+    },
+    {
+      "ensemble_id": "cdc_327c7fd269d45fd1",
+      "method": "majority_vote",
+      "timeframe": "15m",
+      "cost_scenario": "MODERATE",
+      "gross_return": 39.08962705708987,
+      "net_return": 10.704982628094028,
+      "gross_Sharpe": 9.37991981909507,
+      "net_Sharpe": 6.232644916470991,
+      "max_drawdown": 0.11201993868402915,
+      "volatility": 0.3944111600994805,
+      "turnover": 1189.27872,
+      "trades_per_day": 2.3563218390804597,
+      "long_short_ratio": 1.1731448763250882,
+      "cost_contribution": 1.229,
+      "alpha_survives_costs": true,
+      "alpha_collapses_after_costs": false,
+      "period_metrics": {
+        "train": {
+          "net_sharpe": 5.984736283731899,
+          "net_return": 1.3628458512267017
+        },
+        "validation": {
+          "net_sharpe": 6.534123461776169,
+          "net_return": 0.47754915537502185
+        },
+        "oos": {
+          "net_sharpe": 6.908999783114251,
+          "net_return": 0.6999839182108982
+        }
+      },
+      "members": [
+        "mdc_99aa952c5d5f6ff7",
+        "mdc_6f008c954ea26bf5",
+        "mdc_4992167889db9b2e"
+      ],
+      "median_member_oos_sharpe": 7.671105673598704,
+      "beats_median_member_oos": false,
+      "disclaimer": "CANDIDATE CONSOLIDATION RESEARCH \u2014 predefined protocol. Research evidence is not a profitability guarantee. DISTINCT_RESEARCH_CANDIDATE \u2260 PROFITABLE \u2260 PRODUCTION_READY \u2260 LIVE_READY. Prompt 39 artifacts are immutable inputs."
+    },
+    {
+      "ensemble_id": "cdc_b6e48b107a26d65d",
+      "method": "equal_weight",
+      "timeframe": "5m",
+      "cost_scenario": "MODERATE",
+      "gross_return": 11.610994081921763,
+      "net_return": 2.966663643459934,
+      "gross_Sharpe": 15.183772463738658,
+      "net_Sharpe": 8.158447486666613,
+      "max_drawdown": 0.06686599138859062,
+      "volatility": 0.4193651638293169,
+      "turnover": 2794.176,
+      "trades_per_day": 5.504761904761905,
+      "long_short_ratio": 1.0,
+      "cost_contribution": 1.155,
+      "alpha_survives_costs": true,
+      "alpha_collapses_after_costs": false,
+      "period_metrics": {
+        "train": {
+          "net_sharpe": 6.7388966079146995,
+          "net_return": 0.48668266386276854
+        },
+        "validation": {
+          "net_sharpe": 9.069389736436037,
+          "net_return": 0.476498451642024
+        },
+        "oos": {
+          "net_sharpe": 9.741407948656814,
+          "net_return": 0.45109868404693787
+        }
+      },
+      "members": [
+        "mdc_51a60a3264845365",
+        "mdc_678609c534d68189"
+      ],
+      "median_member_oos_sharpe": 10.796874512556478,
+      "beats_median_member_oos": false,
+      "disclaimer": "CANDIDATE CONSOLIDATION RESEARCH \u2014 predefined protocol. Research evidence is not a profitability guarantee. DISTINCT_RESEARCH_CANDIDATE \u2260 PROFITABLE \u2260 PRODUCTION_READY \u2260 LIVE_READY. Prompt 39 artifacts are immutable inputs."
+    },
+    {
+      "ensemble_id": "cdc_568818239b45257e",
+      "method": "confidence_weighted",
+      "timeframe": "5m",
+      "cost_scenario": "MODERATE",
+      "gross_return": 11.610994081921763,
+      "net_return": 2.966663643459934,
+      "gross_Sharpe": 15.183772463738658,
+      "net_Sharpe": 8.158447486666613,
+      "max_drawdown": 0.06686599138859062,
+      "volatility": 0.4193651638293169,
+      "turnover": 2794.176,
+      "trades_per_day": 5.504761904761905,
+      "long_short_ratio": 1.0,
+      "cost_contribution": 1.155,
+      "alpha_survives_costs": true,
+      "alpha_collapses_after_costs": false,
+      "period_metrics": {
+        "train": {
+          "net_sharpe": 6.7388966079146995,
+          "net_return": 0.48668266386276854
+        },
+        "validation": {
+          "net_sharpe": 9.069389736436037,
+          "net_return": 0.476498451642024
+        },
+        "oos": {
+          "net_sharpe": 9.741407948656814,
+          "net_return": 0.45109868404693787
+        }
+      },
+      "members": [
+        "mdc_51a60a3264845365",
+        "mdc_678609c534d68189"
+      ],
+      "median_member_oos_sharpe": 10.796874512556478,
+      "beats_median_member_oos": false,
+      "disclaimer": "CANDIDATE CONSOLIDATION RESEARCH \u2014 predefined protocol. Research evidence is not a profitability guarantee. DISTINCT_RESEARCH_CANDIDATE \u2260 PROFITABLE \u2260 PRODUCTION_READY \u2260 LIVE_READY. Prompt 39 artifacts are immutable inputs."
+    },
+    {
+      "ensemble_id": "cdc_8b2e5cf5235a392b",
+      "method": "majority_vote",
+      "timeframe": "5m",
+      "cost_scenario": "MODERATE",
+      "gross_return": 11.610994081921763,
+      "net_return": 2.966663643459934,
+      "gross_Sharpe": 15.183772463738658,
+      "net_Sharpe": 8.158447486666613,
+      "max_drawdown": 0.06686599138859062,
+      "volatility": 0.4193651638293169,
+      "turnover": 2794.176,
+      "trades_per_day": 5.504761904761905,
+      "long_short_ratio": 1.0,
+      "cost_contribution": 1.155,
+      "alpha_survives_costs": true,
+      "alpha_collapses_after_costs": false,
+      "period_metrics": {
+        "train": {
+          "net_sharpe": 6.7388966079146995,
+          "net_return": 0.48668266386276854
+        },
+        "validation": {
+          "net_sharpe": 9.069389736436037,
+          "net_return": 0.476498451642024
+        },
+        "oos": {
+          "net_sharpe": 9.741407948656814,
+          "net_return": 0.45109868404693787
+        }
+      },
+      "members": [
+        "mdc_51a60a3264845365",
+        "mdc_678609c534d68189"
+      ],
+      "median_member_oos_sharpe": 10.796874512556478,
+      "beats_median_member_oos": false,
+      "disclaimer": "CANDIDATE CONSOLIDATION RESEARCH \u2014 predefined protocol. Research evidence is not a profitability guarantee. DISTINCT_RESEARCH_CANDIDATE \u2260 PROFITABLE \u2260 PRODUCTION_READY \u2260 LIVE_READY. Prompt 39 artifacts are immutable inputs."
+    }
+  ],
+  "adverse_pass": [
+    {
+      "ensemble_id": "cdc_c2e0f43310f1f23d",
+      "method": "equal_weight",
+      "timeframe": "15m",
+      "cost_scenario": "ADVERSE",
+      "gross_return": 39.08962705708987,
+      "net_return": 2.4102749486054234,
+      "gross_Sharpe": 9.37991981909507,
+      "net_Sharpe": 3.1347519869907687,
+      "max_drawdown": 0.20109173045207906,
+      "volatility": 0.4048070734373702,
+      "turnover": 1189.27872,
+      "trades_per_day": 2.3563218390804597,
+      "long_short_ratio": 1.1731448763250882,
+      "cost_contribution": 2.458,
+      "alpha_survives_costs": true,
+      "alpha_collapses_after_costs": false,
+      "period_metrics": {
+        "train": {
+          "net_sharpe": 3.1522067783771672,
+          "net_return": 0.7358458512267019
+        },
+        "validation": {
+          "net_sharpe": 2.369135657478924,
+          "net_return": 0.17954915537502186
+        },
+        "oos": {
+          "net_sharpe": 3.8169569315506933,
+          "net_return": 0.3959839182108983
+        }
+      },
+      "members": [
+        "mdc_99aa952c5d5f6ff7",
+        "mdc_6f008c954ea26bf5",
+        "mdc_4992167889db9b2e"
+      ],
+      "median_member_oos_sharpe": 7.671105673598704,
+      "beats_median_member_oos": false,
+      "disclaimer": "CANDIDATE CONSOLIDATION RESEARCH \u2014 predefined protocol. Research evidence is not a profitability guarantee. DISTINCT_RESEARCH_CANDIDATE \u2260 PROFITABLE \u2260 PRODUCTION_READY \u2260 LIVE_READY. Prompt 39 artifacts are immutable inputs."
+    },
+    {
+      "ensemble_id": "cdc_ece32fb95dfb76eb",
+      "method": "confidence_weighted",
+      "timeframe": "15m",
+      "cost_scenario": "ADVERSE",
+      "gross_return": 55.92105159098793,
+      "net_return": 2.9725137141808236,
+      "gross_Sharpe": 9.524630436536825,
+      "net_Sharpe": 3.2593365732117783,
+      "max_drawdown": 0.20109173045207906,
+      "volatility": 0.43907681616651933,
+      "turnover": 1284.1113599999999,
+      "trades_per_day": 2.5440613026819925,
+      "long_short_ratio": 1.0,
+      "cost_contribution": 2.654,
+      "alpha_survives_costs": true,
+      "alpha_collapses_after_costs": false,
+      "period_metrics": {
+        "train": {
+          "net_sharpe": 3.1522067783771672,
+          "net_return": 0.7358458512267019
+        },
+        "validation": {
+          "net_sharpe": 3.327394000011076,
+          "net_return": 0.32140489277768053
+        },
+        "oos": {
+          "net_sharpe": 3.4545966380203925,
+          "net_return": 0.4216759137979044
+        }
+      },
+      "members": [
+        "mdc_99aa952c5d5f6ff7",
+        "mdc_6f008c954ea26bf5",
+        "mdc_4992167889db9b2e"
+      ],
+      "median_member_oos_sharpe": 7.671105673598704,
+      "beats_median_member_oos": false,
+      "disclaimer": "CANDIDATE CONSOLIDATION RESEARCH \u2014 predefined protocol. Research evidence is not a profitability guarantee. DISTINCT_RESEARCH_CANDIDATE \u2260 PROFITABLE \u2260 PRODUCTION_READY \u2260 LIVE_READY. Prompt 39 artifacts are immutable inputs."
+    },
+    {
+      "ensemble_id": "cdc_327c7fd269d45fd1",
+      "method": "majority_vote",
+      "timeframe": "15m",
+      "cost_scenario": "ADVERSE",
+      "gross_return": 39.08962705708987,
+      "net_return": 2.4102749486054234,
+      "gross_Sharpe": 9.37991981909507,
+      "net_Sharpe": 3.1347519869907687,
+      "max_drawdown": 0.20109173045207906,
+      "volatility": 0.4048070734373702,
+      "turnover": 1189.27872,
+      "trades_per_day": 2.3563218390804597,
+      "long_short_ratio": 1.1731448763250882,
+      "cost_contribution": 2.458,
+      "alpha_survives_costs": true,
+      "alpha_collapses_after_costs": false,
+      "period_metrics": {
+        "train": {
+          "net_sharpe": 3.1522067783771672,
+          "net_return": 0.7358458512267019
+        },
+        "validation": {
+          "net_sharpe": 2.369135657478924,
+          "net_return": 0.17954915537502186
+        },
+        "oos": {
+          "net_sharpe": 3.8169569315506933,
+          "net_return": 0.3959839182108983
+        }
+      },
+      "members": [
+        "mdc_99aa952c5d5f6ff7",
+        "mdc_6f008c954ea26bf5",
+        "mdc_4992167889db9b2e"
+      ],
+      "median_member_oos_sharpe": 7.671105673598704,
+      "beats_median_member_oos": false,
+      "disclaimer": "CANDIDATE CONSOLIDATION RESEARCH \u2014 predefined protocol. Research evidence is not a profitability guarantee. DISTINCT_RESEARCH_CANDIDATE \u2260 PROFITABLE \u2260 PRODUCTION_READY \u2260 LIVE_READY. Prompt 39 artifacts are immutable inputs."
+    },
+    {
+      "ensemble_id": "cdc_b6e48b107a26d65d",
+      "method": "equal_weight",
+      "timeframe": "5m",
+      "cost_scenario": "ADVERSE",
+      "gross_return": 11.610994081921763,
+      "net_return": 0.24478333782851003,
+      "gross_Sharpe": 15.183772463738658,
+      "net_Sharpe": 1.41997140382855,
+      "max_drawdown": 0.17869780269132263,
+      "volatility": 0.44172666797073246,
+      "turnover": 2794.176,
+      "trades_per_day": 5.504761904761905,
+      "long_short_ratio": 1.0,
+      "cost_contribution": 2.31,
+      "alpha_survives_costs": true,
+      "alpha_collapses_after_costs": false,
+      "period_metrics": {
+        "train": {
+          "net_sharpe": -1.3420114369372398,
+          "net_return": -0.10431733613723146
+        },
+        "validation": {
+          "net_sharpe": 3.6820726280617766,
+          "net_return": 0.20049845164202398
+        },
+        "oos": {
+          "net_sharpe": 3.3652671725129113,
+          "net_return": 0.1630986840469379
+        }
+      },
+      "members": [
+        "mdc_51a60a3264845365",
+        "mdc_678609c534d68189"
+      ],
+      "median_member_oos_sharpe": 10.796874512556478,
+      "beats_median_member_oos": false,
+      "disclaimer": "CANDIDATE CONSOLIDATION RESEARCH \u2014 predefined protocol. Research evidence is not a profitability guarantee. DISTINCT_RESEARCH_CANDIDATE \u2260 PROFITABLE \u2260 PRODUCTION_READY \u2260 LIVE_READY. Prompt 39 artifacts are immutable inputs."
+    },
+    {
+      "ensemble_id": "cdc_568818239b45257e",
+      "method": "confidence_weighted",
+      "timeframe": "5m",
+      "cost_scenario": "ADVERSE",
+      "gross_return": 11.610994081921763,
+      "net_return": 0.24478333782851003,
+      "gross_Sharpe": 15.183772463738658,
+      "net_Sharpe": 1.41997140382855,
+      "max_drawdown": 0.17869780269132263,
+      "volatility": 0.44172666797073246,
+      "turnover": 2794.176,
+      "trades_per_day": 5.504761904761905,
+      "long_short_ratio": 1.0,
+      "cost_contribution": 2.31,
+      "alpha_survives_costs": true,
+      "alpha_collapses_after_costs": false,
+      "period_metrics": {
+        "train": {
+          "net_sharpe": -1.3420114369372398,
+          "net_return": -0.10431733613723146
+        },
+        "validation": {
+          "net_sharpe": 3.6820726280617766,
+          "net_return": 0.20049845164202398
+        },
+        "oos": {
+          "net_sharpe": 3.3652671725129113,
+          "net_return": 0.1630986840469379
+        }
+      },
+      "members": [
+        "mdc_51a60a3264845365",
+        "mdc_678609c534d68189"
+      ],
+      "median_member_oos_sharpe": 10.796874512556478,
+      "beats_median_member_oos": false,
+      "disclaimer": "CANDIDATE CONSOLIDATION RESEARCH \u2014 predefined protocol. Research evidence is not a profitability guarantee. DISTINCT_RESEARCH_CANDIDATE \u2260 PROFITABLE \u2260 PRODUCTION_READY \u2260 LIVE_READY. Prompt 39 artifacts are immutable inputs."
+    },
+    {
+      "ensemble_id": "cdc_8b2e5cf5235a392b",
+      "method": "majority_vote",
+      "timeframe": "5m",
+      "cost_scenario": "ADVERSE",
+      "gross_return": 11.610994081921763,
+      "net_return": 0.24478333782851003,
+      "gross_Sharpe": 15.183772463738658,
+      "net_Sharpe": 1.41997140382855,
+      "max_drawdown": 0.17869780269132263,
+      "volatility": 0.44172666797073246,
+      "turnover": 2794.176,
+      "trades_per_day": 5.504761904761905,
+      "long_short_ratio": 1.0,
+      "cost_contribution": 2.31,
+      "alpha_survives_costs": true,
+      "alpha_collapses_after_costs": false,
+      "period_metrics": {
+        "train": {
+          "net_sharpe": -1.3420114369372398,
+          "net_return": -0.10431733613723146
+        },
+        "validation": {
+          "net_sharpe": 3.6820726280617766,
+          "net_return": 0.20049845164202398
+        },
+        "oos": {
+          "net_sharpe": 3.3652671725129113,
+          "net_return": 0.1630986840469379
+        }
+      },
+      "members": [
+        "mdc_51a60a3264845365",
+        "mdc_678609c534d68189"
+      ],
+      "median_member_oos_sharpe": 10.796874512556478,
+      "beats_median_member_oos": false,
+      "disclaimer": "CANDIDATE CONSOLIDATION RESEARCH \u2014 predefined protocol. Research evidence is not a profitability guarantee. DISTINCT_RESEARCH_CANDIDATE \u2260 PROFITABLE \u2260 PRODUCTION_READY \u2260 LIVE_READY. Prompt 39 artifacts are immutable inputs."
+    }
+  ],
+  "improves_vs_median_member_oos": true,
+  "disclaimer": "CANDIDATE CONSOLIDATION RESEARCH \u2014 predefined protocol. Research evidence is not a profitability guarantee. DISTINCT_RESEARCH_CANDIDATE \u2260 PROFITABLE \u2260 PRODUCTION_READY \u2260 LIVE_READY. Prompt 39 artifacts are immutable inputs."
+}

@@ -1,0 +1,17 @@
+{
+  "definition": "completed_trades / UTC_calendar_days",
+  "calendar_days_used": 2192,
+  "nse_not_used": true,
+  "independent_average": 33.227338590545706,
+  "independent_median": 7.898038321167883,
+  "campaign_reported": {
+    "average_trades_per_day": 33.227338590545706,
+    "median_trades_per_day": 7.898038321167883,
+    "n": 420,
+    "calendar_days": 2192,
+    "method": "total_trades / n_calendar_days"
+  },
+  "match_average": true,
+  "post_hoc_note": "Prompt 35 initially used a degenerate trades/day when trade rows lacked timestamps; artifacts were corrected to trades/calendar_days without changing classifications.",
+  "disclaimer": "Research evidence is not a profitability guarantee."
+}

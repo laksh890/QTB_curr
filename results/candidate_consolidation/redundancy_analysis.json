@@ -1,0 +1,784 @@
+{
+  "rows": [
+    {
+      "candidate_id": "mdc_0069b1076c73906e",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9163087133857766,
+      "partner": "mdc_98600cc3f61ce0d1"
+    },
+    {
+      "candidate_id": "mdc_0166c26db49126b2",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9648126389618368,
+      "partner": "mdc_485790eb68bebcd9"
+    },
+    {
+      "candidate_id": "mdc_0196c8ad94f13c8c",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.8815189547532958,
+      "partner": "mdc_05e99567b31e2127"
+    },
+    {
+      "candidate_id": "mdc_031f3155a31e7062",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9620276164789477,
+      "partner": "mdc_aa25caf5a0a04dc2"
+    },
+    {
+      "candidate_id": "mdc_05e99567b31e2127",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.8815189547532958,
+      "partner": "mdc_0196c8ad94f13c8c"
+    },
+    {
+      "candidate_id": "mdc_0797eb6c34ebdc60",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9803172479142974,
+      "partner": "mdc_1fae6b535e8df13d"
+    },
+    {
+      "candidate_id": "mdc_0be4614eb2c8e446",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9999999999999999,
+      "partner": "mdc_cc8c77c2e4658747"
+    },
+    {
+      "candidate_id": "mdc_0d70e9dadeea2aa7",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9797472403568722,
+      "partner": "mdc_1fae6b535e8df13d"
+    },
+    {
+      "candidate_id": "mdc_0f8ce9e4611fe036",
+      "redundancy_class": "RELATED",
+      "max_val_abs_corr": 0.7955679067249362,
+      "partner": "mdc_2e0b10ec18fb4d65"
+    },
+    {
+      "candidate_id": "mdc_11261b4c8c37b3af",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9889950144605119,
+      "partner": "mdc_e62e894e452b0619"
+    },
+    {
+      "candidate_id": "mdc_1361621b538bd930",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 1.0,
+      "partner": "mdc_1a7ec2fadcbe5129"
+    },
+    {
+      "candidate_id": "mdc_1366eb063c96bd09",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9701991485093296,
+      "partner": "mdc_6528eee052f7feb1"
+    },
+    {
+      "candidate_id": "mdc_179d84172c9dbb2d",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9324480114253231,
+      "partner": "mdc_677e824ccda9c019"
+    },
+    {
+      "candidate_id": "mdc_17e3754562e88e01",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9995529273768439,
+      "partner": "mdc_e77699a8893a31cd"
+    },
+    {
+      "candidate_id": "mdc_18a517e70fce1a2f",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9900873983809029,
+      "partner": "mdc_aa25caf5a0a04dc2"
+    },
+    {
+      "candidate_id": "mdc_1a7ec2fadcbe5129",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 1.0,
+      "partner": "mdc_1361621b538bd930"
+    },
+    {
+      "candidate_id": "mdc_1a972c69566941d1",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9231759263585647,
+      "partner": "mdc_621143441783762a"
+    },
+    {
+      "candidate_id": "mdc_1dc3c9761e80f81c",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9900825683832628,
+      "partner": "mdc_97e5cdb98ab5a15d"
+    },
+    {
+      "candidate_id": "mdc_1fae6b535e8df13d",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9913945298322107,
+      "partner": "mdc_49cc9ddd19f8d982"
+    },
+    {
+      "candidate_id": "mdc_2107f1ec01dfce72",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9947139359827368,
+      "partner": "mdc_3e4fc9dc6dcf546a"
+    },
+    {
+      "candidate_id": "mdc_23468deffc77a94a",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9487295466090371,
+      "partner": "mdc_90044637c94671be"
+    },
+    {
+      "candidate_id": "mdc_251595cbee25d1fd",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9686415633105331,
+      "partner": "mdc_85674e81d3506a6c"
+    },
+    {
+      "candidate_id": "mdc_2b091782d352444b",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9530401449066412,
+      "partner": "mdc_90044637c94671be"
+    },
+    {
+      "candidate_id": "mdc_2c0edd3b5a69ca83",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9804299286424193,
+      "partner": "mdc_a627de466de38e08"
+    },
+    {
+      "candidate_id": "mdc_2e0b10ec18fb4d65",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9619244877077093,
+      "partner": "mdc_41a8bba213046a30"
+    },
+    {
+      "candidate_id": "mdc_36eb8ebeca066850",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 1.0,
+      "partner": "mdc_ce441f34fbac37a9"
+    },
+    {
+      "candidate_id": "mdc_37f41d7a7f1340c7",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9496507618307496,
+      "partner": "mdc_031f3155a31e7062"
+    },
+    {
+      "candidate_id": "mdc_391cba888651d8d3",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9999999999999999,
+      "partner": "mdc_a9c8937e1959621a"
+    },
+    {
+      "candidate_id": "mdc_3a857f4b8a3e3588",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.8649336975993122,
+      "partner": "mdc_44fec92ec4fa360c"
+    },
+    {
+      "candidate_id": "mdc_3bdd527ed80d98c6",
+      "redundancy_class": "RELATED",
+      "max_val_abs_corr": 0.8231773395419051,
+      "partner": "mdc_1fae6b535e8df13d"
+    },
+    {
+      "candidate_id": "mdc_3e4fc9dc6dcf546a",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9947139359827368,
+      "partner": "mdc_2107f1ec01dfce72"
+    },
+    {
+      "candidate_id": "mdc_3ed979ee7d9dabe6",
+      "redundancy_class": "RELATED",
+      "max_val_abs_corr": 0.5563200365958814,
+      "partner": "mdc_4b222749aeece7d2"
+    },
+    {
+      "candidate_id": "mdc_41a8bba213046a30",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9619244877077093,
+      "partner": "mdc_2e0b10ec18fb4d65"
+    },
+    {
+      "candidate_id": "mdc_44fec92ec4fa360c",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.8649336975993122,
+      "partner": "mdc_3a857f4b8a3e3588"
+    },
+    {
+      "candidate_id": "mdc_46d2c3136b8beeb4",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9891119795799436,
+      "partner": "mdc_816bddd1a301dac9"
+    },
+    {
+      "candidate_id": "mdc_477bddd87893a8d5",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9501053129319061,
+      "partner": "mdc_e9c74b43bf92a568"
+    },
+    {
+      "candidate_id": "mdc_485790eb68bebcd9",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.986620066856654,
+      "partner": "mdc_49cc9ddd19f8d982"
+    },
+    {
+      "candidate_id": "mdc_4992167889db9b2e",
+      "redundancy_class": "DISTINCT",
+      "max_val_abs_corr": 0.43061494220486213,
+      "partner": "mdc_6f008c954ea26bf5"
+    },
+    {
+      "candidate_id": "mdc_49cc9ddd19f8d982",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9913945298322107,
+      "partner": "mdc_1fae6b535e8df13d"
+    },
+    {
+      "candidate_id": "mdc_49f926d52969ca20",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9452159677200906,
+      "partner": "mdc_acce1385a9b57a3c"
+    },
+    {
+      "candidate_id": "mdc_4a9fea41ca5fb263",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.8661205035975506,
+      "partner": "mdc_477bddd87893a8d5"
+    },
+    {
+      "candidate_id": "mdc_4b222749aeece7d2",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9558405420096049,
+      "partner": "mdc_17e3754562e88e01"
+    },
+    {
+      "candidate_id": "mdc_4c6118b76af0f0c6",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9540683941383566,
+      "partner": "mdc_e9f1550d7cfae623"
+    },
+    {
+      "candidate_id": "mdc_4f37d90902a02fb0",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9719438604885355,
+      "partner": "mdc_816bddd1a301dac9"
+    },
+    {
+      "candidate_id": "mdc_50898bec5bf99099",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9769014304011552,
+      "partner": "mdc_2c0edd3b5a69ca83"
+    },
+    {
+      "candidate_id": "mdc_51a60a3264845365",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9999999999999999,
+      "partner": "mdc_bd0d2edb9c184cc8"
+    },
+    {
+      "candidate_id": "mdc_55704ef55a74b2cd",
+      "redundancy_class": "RELATED",
+      "max_val_abs_corr": 0.8383947228879255,
+      "partner": "mdc_f75b772be82c145f"
+    },
+    {
+      "candidate_id": "mdc_5e13b90555a693c9",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9733261449891711,
+      "partner": "mdc_a1d5ba23cce99ff9"
+    },
+    {
+      "candidate_id": "mdc_5f065ced36a26565",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 1.0,
+      "partner": "mdc_855778f6a4cdfa71"
+    },
+    {
+      "candidate_id": "mdc_61438f8a108ae268",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 1.0,
+      "partner": "mdc_1361621b538bd930"
+    },
+    {
+      "candidate_id": "mdc_621143441783762a",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 1.0,
+      "partner": "mdc_be57ebb80c38d83e"
+    },
+    {
+      "candidate_id": "mdc_6528eee052f7feb1",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 1.0,
+      "partner": "mdc_9e477e1d1e8166cf"
+    },
+    {
+      "candidate_id": "mdc_677e824ccda9c019",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 1.0,
+      "partner": "mdc_b51bdd16328fe2cc"
+    },
+    {
+      "candidate_id": "mdc_678609c534d68189",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 1.0,
+      "partner": "mdc_953ada34cefc6465"
+    },
+    {
+      "candidate_id": "mdc_6cacbba19ad9b8d3",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9758524807842403,
+      "partner": "mdc_6f008c954ea26bf5"
+    },
+    {
+      "candidate_id": "mdc_6f008c954ea26bf5",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 1.0,
+      "partner": "mdc_8cbf8475db61e0ec"
+    },
+    {
+      "candidate_id": "mdc_76477bceb0d8f4af",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9999999999999999,
+      "partner": "mdc_886edcbc5a858c56"
+    },
+    {
+      "candidate_id": "mdc_768a5c7e2b969a5c",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9562095183958962,
+      "partner": "mdc_8c0ec58523669f91"
+    },
+    {
+      "candidate_id": "mdc_79e791563e18827f",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 1.0,
+      "partner": "mdc_b6dfe91842845346"
+    },
+    {
+      "candidate_id": "mdc_7d14f841ef43cadf",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9886923687410266,
+      "partner": "mdc_46d2c3136b8beeb4"
+    },
+    {
+      "candidate_id": "mdc_7f69956dbd1c0013",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9899043654736367,
+      "partner": "mdc_1fae6b535e8df13d"
+    },
+    {
+      "candidate_id": "mdc_801488267ad484dc",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 1.0,
+      "partner": "mdc_dfd60d2f2c6863e5"
+    },
+    {
+      "candidate_id": "mdc_816bddd1a301dac9",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9891119795799436,
+      "partner": "mdc_46d2c3136b8beeb4"
+    },
+    {
+      "candidate_id": "mdc_846faa048a1022c9",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9560277916435761,
+      "partner": "mdc_a559a88331a8ceed"
+    },
+    {
+      "candidate_id": "mdc_855778f6a4cdfa71",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 1.0,
+      "partner": "mdc_5f065ced36a26565"
+    },
+    {
+      "candidate_id": "mdc_85674e81d3506a6c",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9686415633105331,
+      "partner": "mdc_251595cbee25d1fd"
+    },
+    {
+      "candidate_id": "mdc_886edcbc5a858c56",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9999999999999999,
+      "partner": "mdc_76477bceb0d8f4af"
+    },
+    {
+      "candidate_id": "mdc_8c0ec58523669f91",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9716460530557715,
+      "partner": "mdc_46d2c3136b8beeb4"
+    },
+    {
+      "candidate_id": "mdc_8c4eb611f2281cb9",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 1.0,
+      "partner": "mdc_8e8240d2bedb8e5b"
+    },
+    {
+      "candidate_id": "mdc_8cbf8475db61e0ec",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 1.0,
+      "partner": "mdc_6f008c954ea26bf5"
+    },
+    {
+      "candidate_id": "mdc_8de974a1ea5ca8c9",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.8999814530311978,
+      "partner": "mdc_a559a88331a8ceed"
+    },
+    {
+      "candidate_id": "mdc_8e573e8836b37473",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9232998011684331,
+      "partner": "mdc_abe08fe96756a464"
+    },
+    {
+      "candidate_id": "mdc_8e8240d2bedb8e5b",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 1.0,
+      "partner": "mdc_8c4eb611f2281cb9"
+    },
+    {
+      "candidate_id": "mdc_8f1dc634ad078b0f",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9305342944315,
+      "partner": "mdc_e9c74b43bf92a568"
+    },
+    {
+      "candidate_id": "mdc_90044637c94671be",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9530401449066412,
+      "partner": "mdc_2b091782d352444b"
+    },
+    {
+      "candidate_id": "mdc_953ada34cefc6465",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 1.0,
+      "partner": "mdc_678609c534d68189"
+    },
+    {
+      "candidate_id": "mdc_97e5cdb98ab5a15d",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 1.0,
+      "partner": "mdc_bcab10034fd66fe3"
+    },
+    {
+      "candidate_id": "mdc_98600cc3f61ce0d1",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9503615545186049,
+      "partner": "mdc_df580039cda31237"
+    },
+    {
+      "candidate_id": "mdc_99aa952c5d5f6ff7",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 1.0,
+      "partner": "mdc_e30c4fb0bbc963e6"
+    },
+    {
+      "candidate_id": "mdc_9a206dcb98dd1c00",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9599817508038218,
+      "partner": "mdc_9e12ffb84cd61f2b"
+    },
+    {
+      "candidate_id": "mdc_9e12ffb84cd61f2b",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9869460216763091,
+      "partner": "mdc_b3ce27310db4b598"
+    },
+    {
+      "candidate_id": "mdc_9e477e1d1e8166cf",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 1.0,
+      "partner": "mdc_6528eee052f7feb1"
+    },
+    {
+      "candidate_id": "mdc_a0f769fc20835273",
+      "redundancy_class": "DISTINCT",
+      "max_val_abs_corr": 0.4036057210288866,
+      "partner": "mdc_85674e81d3506a6c"
+    },
+    {
+      "candidate_id": "mdc_a1d5ba23cce99ff9",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9733261449891711,
+      "partner": "mdc_5e13b90555a693c9"
+    },
+    {
+      "candidate_id": "mdc_a559a88331a8ceed",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9560277916435761,
+      "partner": "mdc_846faa048a1022c9"
+    },
+    {
+      "candidate_id": "mdc_a627de466de38e08",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9804299286424193,
+      "partner": "mdc_2c0edd3b5a69ca83"
+    },
+    {
+      "candidate_id": "mdc_a9c8937e1959621a",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9999999999999999,
+      "partner": "mdc_391cba888651d8d3"
+    },
+    {
+      "candidate_id": "mdc_aa25caf5a0a04dc2",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9900873983809029,
+      "partner": "mdc_18a517e70fce1a2f"
+    },
+    {
+      "candidate_id": "mdc_abe08fe96756a464",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9386372596748519,
+      "partner": "mdc_9e12ffb84cd61f2b"
+    },
+    {
+      "candidate_id": "mdc_acce1385a9b57a3c",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9452159677200906,
+      "partner": "mdc_49f926d52969ca20"
+    },
+    {
+      "candidate_id": "mdc_ad786dac3c66daeb",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 1.0,
+      "partner": "mdc_678609c534d68189"
+    },
+    {
+      "candidate_id": "mdc_b096b26d1e958125",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9840250732609659,
+      "partner": "mdc_bc15e7fc4f2e7bff"
+    },
+    {
+      "candidate_id": "mdc_b3ce27310db4b598",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 1.0,
+      "partner": "mdc_e0df03299c6d576d"
+    },
+    {
+      "candidate_id": "mdc_b51bdd16328fe2cc",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 1.0,
+      "partner": "mdc_677e824ccda9c019"
+    },
+    {
+      "candidate_id": "mdc_b6dfe91842845346",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 1.0,
+      "partner": "mdc_79e791563e18827f"
+    },
+    {
+      "candidate_id": "mdc_b91907ea7dd79a88",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 1.0,
+      "partner": "mdc_e19c602426cbe9a2"
+    },
+    {
+      "candidate_id": "mdc_b92e8a4f0ef50e68",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.8586984845175251,
+      "partner": "mdc_3a857f4b8a3e3588"
+    },
+    {
+      "candidate_id": "mdc_ba43d333e738b158",
+      "redundancy_class": "RELATED",
+      "max_val_abs_corr": 0.8439218985477106,
+      "partner": "mdc_485790eb68bebcd9"
+    },
+    {
+      "candidate_id": "mdc_bc15e7fc4f2e7bff",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9881209343174208,
+      "partner": "mdc_1fae6b535e8df13d"
+    },
+    {
+      "candidate_id": "mdc_bcab10034fd66fe3",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 1.0,
+      "partner": "mdc_97e5cdb98ab5a15d"
+    },
+    {
+      "candidate_id": "mdc_bd0d2edb9c184cc8",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9999999999999999,
+      "partner": "mdc_51a60a3264845365"
+    },
+    {
+      "candidate_id": "mdc_be57ebb80c38d83e",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 1.0,
+      "partner": "mdc_621143441783762a"
+    },
+    {
+      "candidate_id": "mdc_be80cb247303bb8c",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9540372650008034,
+      "partner": "mdc_eb281f6d7961dd89"
+    },
+    {
+      "candidate_id": "mdc_c1bc70edae36a6d2",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9981571102964715,
+      "partner": "mdc_e62e894e452b0619"
+    },
+    {
+      "candidate_id": "mdc_c3f22a3b2320b02b",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9999999999999999,
+      "partner": "mdc_51a60a3264845365"
+    },
+    {
+      "candidate_id": "mdc_cc8c77c2e4658747",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9999999999999999,
+      "partner": "mdc_0be4614eb2c8e446"
+    },
+    {
+      "candidate_id": "mdc_ce441f34fbac37a9",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 1.0,
+      "partner": "mdc_36eb8ebeca066850"
+    },
+    {
+      "candidate_id": "mdc_d09458a4f96cd61b",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9238475271926966,
+      "partner": "mdc_1fae6b535e8df13d"
+    },
+    {
+      "candidate_id": "mdc_d14399299976220d",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9554672018236813,
+      "partner": "mdc_e32bb6929aef08f7"
+    },
+    {
+      "candidate_id": "mdc_d25a06f953e1cce2",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9241772853139707,
+      "partner": "mdc_846faa048a1022c9"
+    },
+    {
+      "candidate_id": "mdc_d277605e97c4c852",
+      "redundancy_class": "RELATED",
+      "max_val_abs_corr": 0.801155028781049,
+      "partner": "mdc_3a857f4b8a3e3588"
+    },
+    {
+      "candidate_id": "mdc_d85f53e055270c7b",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9382952011654851,
+      "partner": "mdc_1fae6b535e8df13d"
+    },
+    {
+      "candidate_id": "mdc_df580039cda31237",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9575162523729471,
+      "partner": "mdc_6cacbba19ad9b8d3"
+    },
+    {
+      "candidate_id": "mdc_dfd60d2f2c6863e5",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 1.0,
+      "partner": "mdc_801488267ad484dc"
+    },
+    {
+      "candidate_id": "mdc_e0df03299c6d576d",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 1.0,
+      "partner": "mdc_b3ce27310db4b598"
+    },
+    {
+      "candidate_id": "mdc_e0e6217804293163",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9655709157382392,
+      "partner": "mdc_1fae6b535e8df13d"
+    },
+    {
+      "candidate_id": "mdc_e19c602426cbe9a2",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 1.0,
+      "partner": "mdc_b91907ea7dd79a88"
+    },
+    {
+      "candidate_id": "mdc_e30c4fb0bbc963e6",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 1.0,
+      "partner": "mdc_99aa952c5d5f6ff7"
+    },
+    {
+      "candidate_id": "mdc_e32bb6929aef08f7",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9869713585951344,
+      "partner": "mdc_816bddd1a301dac9"
+    },
+    {
+      "candidate_id": "mdc_e62e894e452b0619",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9981571102964715,
+      "partner": "mdc_c1bc70edae36a6d2"
+    },
+    {
+      "candidate_id": "mdc_e77699a8893a31cd",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9995529273768439,
+      "partner": "mdc_17e3754562e88e01"
+    },
+    {
+      "candidate_id": "mdc_e9c74b43bf92a568",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9501053129319061,
+      "partner": "mdc_477bddd87893a8d5"
+    },
+    {
+      "candidate_id": "mdc_e9f1550d7cfae623",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.978157817252314,
+      "partner": "mdc_f626a0aebd084d8b"
+    },
+    {
+      "candidate_id": "mdc_eb281f6d7961dd89",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9810446061281473,
+      "partner": "mdc_36eb8ebeca066850"
+    },
+    {
+      "candidate_id": "mdc_f626a0aebd084d8b",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.978157817252314,
+      "partner": "mdc_e9f1550d7cfae623"
+    },
+    {
+      "candidate_id": "mdc_f75b772be82c145f",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.875457830910101,
+      "partner": "mdc_9e12ffb84cd61f2b"
+    },
+    {
+      "candidate_id": "mdc_f76d596406c0ea04",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9048910130838661,
+      "partner": "mdc_8f1dc634ad078b0f"
+    },
+    {
+      "candidate_id": "mdc_ff8260603405b20b",
+      "redundancy_class": "HIGHLY_REDUNDANT",
+      "max_val_abs_corr": 0.9453658289438591,
+      "partner": "mdc_37f41d7a7f1340c7"
+    },
+    {
+      "candidate_id": "mdc_ffec287b3c683df7",
+      "redundancy_class": "RELATED",
+      "max_val_abs_corr": 0.8272790444014559,
+      "partner": "mdc_251595cbee25d1fd"
+    }
+  ],
+  "counts": {
+    "HIGHLY_REDUNDANT": 120,
+    "RELATED": 7,
+    "DISTINCT": 2
+  },
+  "disclaimer": "CANDIDATE CONSOLIDATION RESEARCH \u2014 predefined protocol. Research evidence is not a profitability guarantee. DISTINCT_RESEARCH_CANDIDATE \u2260 PROFITABLE \u2260 PRODUCTION_READY \u2260 LIVE_READY. Prompt 39 artifacts are immutable inputs."
+}

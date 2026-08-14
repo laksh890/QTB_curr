@@ -1,0 +1,673 @@
+{
+  "disclaimer": "UNIFIED TRADING PIPELINE \u2014 integration validation only. PIPELINE WORKS \u2260 STRATEGY WORKS \u2260 PROFITABLE \u2260 ROBUST \u2260 PRODUCTION READY.",
+  "sample": [
+    {
+      "candidate_id": "cA",
+      "risk": {
+        "risk_decision_id": "risk_f98c17d071894034",
+        "outcome": "RISK_APPROVED",
+        "requested_exposure": 0.05,
+        "approved_exposure": 0.05,
+        "reason": "APPROVED_WITH_WARNINGS: max_herfindahl: observed=1 vs threshold=0.3 (SOFT)",
+        "reason_codes": [
+          "max_herfindahl"
+        ],
+        "limits_triggered": [
+          {
+            "limit_name": "max_herfindahl",
+            "severity": "SOFT",
+            "observed": 1.0,
+            "threshold": 0.3,
+            "reason": "max_herfindahl: observed=1 vs threshold=0.3 (SOFT)",
+            "scope": "portfolio",
+            "metadata": {}
+          }
+        ],
+        "recommended_size": 0.16992358246444395,
+        "audit": {
+          "timestamp": "2026-08-14T15:45:49.807859+00:00",
+          "proposed_weight": 0.05,
+          "asset_index": 0,
+          "forecast_confidence": 0.0,
+          "data_version": "1.0.0",
+          "model_version": "1.0.0",
+          "parameters": {
+            "limits": {
+              "max_position": 0.1,
+              "max_gross_exposure": 1.5,
+              "max_net_exposure": 1.0,
+              "max_concentration": 0.25,
+              "max_daily_loss": 0.03,
+              "max_leverage": 2.0,
+              "max_participation": 0.1,
+              "min_adv_coverage": 0.01
+            },
+            "drawdown": {
+              "caution": 0.05,
+              "reduced_risk": 0.1,
+              "capital_preservation": 0.15,
+              "trading_halt": 0.2
+            },
+            "leverage": {
+              "base_leverage": 1.0,
+              "max_leverage": 2.0,
+              "min_leverage": 0.0,
+              "vol_scalar": 1.0,
+              "confidence_cap": 1.25
+            }
+          },
+          "drawdown": {
+            "name": "drawdown_state",
+            "risk_state": "CAPITAL_PRESERVATION",
+            "current_drawdown": 0.16802020813731355,
+            "max_drawdown": 0.1752981132089041,
+            "peak_equity": 1.02839949982056,
+            "drawdown_duration": 188,
+            "recovery_time": 1,
+            "wealth": 0.8556076018124003,
+            "thresholds": {
+              "caution": 0.05,
+              "reduced_risk": 0.1,
+              "capital_preservation": 0.15,
+              "trading_halt": 0.2
+            },
+            "measures": {
+              "max_drawdown": {
+                "name": "max_drawdown",
+                "value": 0.1752981132089041,
+                "unit": "fraction",
+                "confidence": null,
+                "horizon": null,
+                "method": "peak_to_trough",
+                "parameters": {
+                  "n_obs": 200
+                },
+                "metadata": {}
+              },
+              "expected_drawdown": {
+                "name": "expected_drawdown",
+                "value": 0.09018152630498247,
+                "unit": "fraction",
+                "confidence": null,
+                "horizon": null,
+                "method": "mean_drawdown",
+                "parameters": {
+                  "n_obs": 200
+                },
+                "metadata": {}
+              },
+              "ulcer_index": {
+                "name": "ulcer_index",
+                "value": 0.10361378941213055,
+                "unit": "fraction",
+                "confidence": null,
+                "horizon": null,
+                "method": "rms_drawdown",
+                "parameters": {
+                  "n_obs": 200
+                },
+                "metadata": {}
+              },
+              "downside_deviation": {
+                "name": "downside_deviation",
+                "value": 0.007067085227329472,
+                "unit": "volatility",
+                "confidence": null,
+                "horizon": null,
+                "method": "semideviation",
+                "parameters": {
+                  "mar": 0.0,
+                  "n_obs": 200
+                },
+                "metadata": {}
+              }
+            }
+          },
+          "limits_checked": true
+        }
+      }
+    },
+    {
+      "candidate_id": "cB",
+      "risk": {
+        "risk_decision_id": "risk_feb315269743420e",
+        "outcome": "RISK_APPROVED",
+        "requested_exposure": -0.05,
+        "approved_exposure": -0.05,
+        "reason": "APPROVED_WITH_WARNINGS: max_herfindahl: observed=0.5 vs threshold=0.3 (SOFT)",
+        "reason_codes": [
+          "max_herfindahl"
+        ],
+        "limits_triggered": [
+          {
+            "limit_name": "max_herfindahl",
+            "severity": "SOFT",
+            "observed": 0.5000000000007813,
+            "threshold": 0.3,
+            "reason": "max_herfindahl: observed=0.5 vs threshold=0.3 (SOFT)",
+            "scope": "portfolio",
+            "metadata": {}
+          }
+        ],
+        "recommended_size": 0.16992358246444395,
+        "audit": {
+          "timestamp": "2026-08-14T15:45:49.809171+00:00",
+          "proposed_weight": -0.05,
+          "asset_index": 1,
+          "forecast_confidence": 0.0,
+          "data_version": "1.0.0",
+          "model_version": "1.0.0",
+          "parameters": {
+            "limits": {
+              "max_position": 0.1,
+              "max_gross_exposure": 1.5,
+              "max_net_exposure": 1.0,
+              "max_concentration": 0.25,
+              "max_daily_loss": 0.03,
+              "max_leverage": 2.0,
+              "max_participation": 0.1,
+              "min_adv_coverage": 0.01
+            },
+            "drawdown": {
+              "caution": 0.05,
+              "reduced_risk": 0.1,
+              "capital_preservation": 0.15,
+              "trading_halt": 0.2
+            },
+            "leverage": {
+              "base_leverage": 1.0,
+              "max_leverage": 2.0,
+              "min_leverage": 0.0,
+              "vol_scalar": 1.0,
+              "confidence_cap": 1.25
+            }
+          },
+          "drawdown": {
+            "name": "drawdown_state",
+            "risk_state": "CAPITAL_PRESERVATION",
+            "current_drawdown": 0.16802020813731355,
+            "max_drawdown": 0.1752981132089041,
+            "peak_equity": 1.02839949982056,
+            "drawdown_duration": 188,
+            "recovery_time": 1,
+            "wealth": 0.8556076018124003,
+            "thresholds": {
+              "caution": 0.05,
+              "reduced_risk": 0.1,
+              "capital_preservation": 0.15,
+              "trading_halt": 0.2
+            },
+            "measures": {
+              "max_drawdown": {
+                "name": "max_drawdown",
+                "value": 0.1752981132089041,
+                "unit": "fraction",
+                "confidence": null,
+                "horizon": null,
+                "method": "peak_to_trough",
+                "parameters": {
+                  "n_obs": 200
+                },
+                "metadata": {}
+              },
+              "expected_drawdown": {
+                "name": "expected_drawdown",
+                "value": 0.09018152630498247,
+                "unit": "fraction",
+                "confidence": null,
+                "horizon": null,
+                "method": "mean_drawdown",
+                "parameters": {
+                  "n_obs": 200
+                },
+                "metadata": {}
+              },
+              "ulcer_index": {
+                "name": "ulcer_index",
+                "value": 0.10361378941213055,
+                "unit": "fraction",
+                "confidence": null,
+                "horizon": null,
+                "method": "rms_drawdown",
+                "parameters": {
+                  "n_obs": 200
+                },
+                "metadata": {}
+              },
+              "downside_deviation": {
+                "name": "downside_deviation",
+                "value": 0.007067085227329472,
+                "unit": "volatility",
+                "confidence": null,
+                "horizon": null,
+                "method": "semideviation",
+                "parameters": {
+                  "mar": 0.0,
+                  "n_obs": 200
+                },
+                "metadata": {}
+              }
+            }
+          },
+          "limits_checked": true
+        }
+      }
+    },
+    {
+      "candidate_id": "cC",
+      "risk": {
+        "risk_decision_id": "risk_0ee1b09e660b41ea",
+        "outcome": "RISK_APPROVED",
+        "requested_exposure": 0.08,
+        "approved_exposure": 0.08,
+        "reason": "APPROVED_WITH_WARNINGS: max_herfindahl: observed=0.351852 vs threshold=0.3 (SOFT)",
+        "reason_codes": [
+          "max_herfindahl"
+        ],
+        "limits_triggered": [
+          {
+            "limit_name": "max_herfindahl",
+            "severity": "SOFT",
+            "observed": 0.35185216049543144,
+            "threshold": 0.3,
+            "reason": "max_herfindahl: observed=0.351852 vs threshold=0.3 (SOFT)",
+            "scope": "portfolio",
+            "metadata": {}
+          }
+        ],
+        "recommended_size": 0.16992358246444395,
+        "audit": {
+          "timestamp": "2026-08-14T15:45:49.810141+00:00",
+          "proposed_weight": 0.08,
+          "asset_index": 2,
+          "forecast_confidence": 0.0,
+          "data_version": "1.0.0",
+          "model_version": "1.0.0",
+          "parameters": {
+            "limits": {
+              "max_position": 0.1,
+              "max_gross_exposure": 1.5,
+              "max_net_exposure": 1.0,
+              "max_concentration": 0.25,
+              "max_daily_loss": 0.03,
+              "max_leverage": 2.0,
+              "max_participation": 0.1,
+              "min_adv_coverage": 0.01
+            },
+            "drawdown": {
+              "caution": 0.05,
+              "reduced_risk": 0.1,
+              "capital_preservation": 0.15,
+              "trading_halt": 0.2
+            },
+            "leverage": {
+              "base_leverage": 1.0,
+              "max_leverage": 2.0,
+              "min_leverage": 0.0,
+              "vol_scalar": 1.0,
+              "confidence_cap": 1.25
+            }
+          },
+          "drawdown": {
+            "name": "drawdown_state",
+            "risk_state": "CAPITAL_PRESERVATION",
+            "current_drawdown": 0.16802020813731355,
+            "max_drawdown": 0.1752981132089041,
+            "peak_equity": 1.02839949982056,
+            "drawdown_duration": 188,
+            "recovery_time": 1,
+            "wealth": 0.8556076018124003,
+            "thresholds": {
+              "caution": 0.05,
+              "reduced_risk": 0.1,
+              "capital_preservation": 0.15,
+              "trading_halt": 0.2
+            },
+            "measures": {
+              "max_drawdown": {
+                "name": "max_drawdown",
+                "value": 0.1752981132089041,
+                "unit": "fraction",
+                "confidence": null,
+                "horizon": null,
+                "method": "peak_to_trough",
+                "parameters": {
+                  "n_obs": 200
+                },
+                "metadata": {}
+              },
+              "expected_drawdown": {
+                "name": "expected_drawdown",
+                "value": 0.09018152630498247,
+                "unit": "fraction",
+                "confidence": null,
+                "horizon": null,
+                "method": "mean_drawdown",
+                "parameters": {
+                  "n_obs": 200
+                },
+                "metadata": {}
+              },
+              "ulcer_index": {
+                "name": "ulcer_index",
+                "value": 0.10361378941213055,
+                "unit": "fraction",
+                "confidence": null,
+                "horizon": null,
+                "method": "rms_drawdown",
+                "parameters": {
+                  "n_obs": 200
+                },
+                "metadata": {}
+              },
+              "downside_deviation": {
+                "name": "downside_deviation",
+                "value": 0.007067085227329472,
+                "unit": "volatility",
+                "confidence": null,
+                "horizon": null,
+                "method": "semideviation",
+                "parameters": {
+                  "mar": 0.0,
+                  "n_obs": 200
+                },
+                "metadata": {}
+              }
+            }
+          },
+          "limits_checked": true
+        }
+      }
+    },
+    {
+      "candidate_id": "cD",
+      "risk": {
+        "risk_decision_id": "risk_999d2e8219e64b55",
+        "outcome": "RISK_APPROVED",
+        "requested_exposure": -0.06,
+        "approved_exposure": -0.06,
+        "reason": "APPROVED_WITH_WARNINGS: max_herfindahl: observed=0.335277 vs threshold=0.3 (SOFT)",
+        "reason_codes": [
+          "max_herfindahl"
+        ],
+        "limits_triggered": [
+          {
+            "limit_name": "max_herfindahl",
+            "severity": "SOFT",
+            "observed": 0.3352767939629988,
+            "threshold": 0.3,
+            "reason": "max_herfindahl: observed=0.335277 vs threshold=0.3 (SOFT)",
+            "scope": "portfolio",
+            "metadata": {}
+          }
+        ],
+        "recommended_size": 0.16992358246444395,
+        "audit": {
+          "timestamp": "2026-08-14T15:45:49.810970+00:00",
+          "proposed_weight": -0.06,
+          "asset_index": 0,
+          "forecast_confidence": 0.0,
+          "data_version": "1.0.0",
+          "model_version": "1.0.0",
+          "parameters": {
+            "limits": {
+              "max_position": 0.1,
+              "max_gross_exposure": 1.5,
+              "max_net_exposure": 1.0,
+              "max_concentration": 0.25,
+              "max_daily_loss": 0.03,
+              "max_leverage": 2.0,
+              "max_participation": 0.1,
+              "min_adv_coverage": 0.01
+            },
+            "drawdown": {
+              "caution": 0.05,
+              "reduced_risk": 0.1,
+              "capital_preservation": 0.15,
+              "trading_halt": 0.2
+            },
+            "leverage": {
+              "base_leverage": 1.0,
+              "max_leverage": 2.0,
+              "min_leverage": 0.0,
+              "vol_scalar": 1.0,
+              "confidence_cap": 1.25
+            }
+          },
+          "drawdown": {
+            "name": "drawdown_state",
+            "risk_state": "CAPITAL_PRESERVATION",
+            "current_drawdown": 0.16802020813731355,
+            "max_drawdown": 0.1752981132089041,
+            "peak_equity": 1.02839949982056,
+            "drawdown_duration": 188,
+            "recovery_time": 1,
+            "wealth": 0.8556076018124003,
+            "thresholds": {
+              "caution": 0.05,
+              "reduced_risk": 0.1,
+              "capital_preservation": 0.15,
+              "trading_halt": 0.2
+            },
+            "measures": {
+              "max_drawdown": {
+                "name": "max_drawdown",
+                "value": 0.1752981132089041,
+                "unit": "fraction",
+                "confidence": null,
+                "horizon": null,
+                "method": "peak_to_trough",
+                "parameters": {
+                  "n_obs": 200
+                },
+                "metadata": {}
+              },
+              "expected_drawdown": {
+                "name": "expected_drawdown",
+                "value": 0.09018152630498247,
+                "unit": "fraction",
+                "confidence": null,
+                "horizon": null,
+                "method": "mean_drawdown",
+                "parameters": {
+                  "n_obs": 200
+                },
+                "metadata": {}
+              },
+              "ulcer_index": {
+                "name": "ulcer_index",
+                "value": 0.10361378941213055,
+                "unit": "fraction",
+                "confidence": null,
+                "horizon": null,
+                "method": "rms_drawdown",
+                "parameters": {
+                  "n_obs": 200
+                },
+                "metadata": {}
+              },
+              "downside_deviation": {
+                "name": "downside_deviation",
+                "value": 0.007067085227329472,
+                "unit": "volatility",
+                "confidence": null,
+                "horizon": null,
+                "method": "semideviation",
+                "parameters": {
+                  "mar": 0.0,
+                  "n_obs": 200
+                },
+                "metadata": {}
+              }
+            }
+          },
+          "limits_checked": true
+        }
+      }
+    },
+    {
+      "candidate_id": "cE_reject",
+      "risk": {
+        "risk_decision_id": "risk_45f0898497c84313",
+        "outcome": "RISK_REJECTED",
+        "requested_exposure": 0.95,
+        "approved_exposure": 0.14408151156379712,
+        "reason": "REJECTED: hard limit breach(es). max_position: observed=0.95 vs threshold=0.1 (HARD); max_net_exposure: observed=1.05333 vs threshold=1 (HARD); max_concentration: observed=0.95 vs threshold=0.25 (HARD)",
+        "reason_codes": [
+          "max_position",
+          "max_net_exposure",
+          "max_concentration",
+          "max_herfindahl"
+        ],
+        "limits_triggered": [
+          {
+            "limit_name": "max_position",
+            "severity": "HARD",
+            "observed": 0.95,
+            "threshold": 0.1,
+            "reason": "max_position: observed=0.95 vs threshold=0.1 (HARD)",
+            "scope": "position",
+            "metadata": {
+              "description": "Absolute position weight cap",
+              "index": 0
+            }
+          },
+          {
+            "limit_name": "max_net_exposure",
+            "severity": "HARD",
+            "observed": 1.053333810588403,
+            "threshold": 1.0,
+            "reason": "max_net_exposure: observed=1.05333 vs threshold=1 (HARD)",
+            "scope": "portfolio",
+            "metadata": {
+              "note": "Compared against abs(net exposure)"
+            }
+          },
+          {
+            "limit_name": "max_concentration",
+            "severity": "HARD",
+            "observed": 0.95,
+            "threshold": 0.25,
+            "reason": "max_concentration: observed=0.95 vs threshold=0.25 (HARD)",
+            "scope": "portfolio",
+            "metadata": {
+              "description": "Max absolute single weight"
+            }
+          },
+          {
+            "limit_name": "max_herfindahl",
+            "severity": "SOFT",
+            "observed": 0.8182375672212648,
+            "threshold": 0.3,
+            "reason": "max_herfindahl: observed=0.818238 vs threshold=0.3 (SOFT)",
+            "scope": "portfolio",
+            "metadata": {}
+          }
+        ],
+        "recommended_size": 0.16992358246444395,
+        "audit": {
+          "timestamp": "2026-08-14T15:45:49.811781+00:00",
+          "proposed_weight": 0.95,
+          "asset_index": 0,
+          "forecast_confidence": 0.0,
+          "data_version": "1.0.0",
+          "model_version": "1.0.0",
+          "parameters": {
+            "limits": {
+              "max_position": 0.1,
+              "max_gross_exposure": 1.5,
+              "max_net_exposure": 1.0,
+              "max_concentration": 0.25,
+              "max_daily_loss": 0.03,
+              "max_leverage": 2.0,
+              "max_participation": 0.1,
+              "min_adv_coverage": 0.01
+            },
+            "drawdown": {
+              "caution": 0.05,
+              "reduced_risk": 0.1,
+              "capital_preservation": 0.15,
+              "trading_halt": 0.2
+            },
+            "leverage": {
+              "base_leverage": 1.0,
+              "max_leverage": 2.0,
+              "min_leverage": 0.0,
+              "vol_scalar": 1.0,
+              "confidence_cap": 1.25
+            }
+          },
+          "drawdown": {
+            "name": "drawdown_state",
+            "risk_state": "CAPITAL_PRESERVATION",
+            "current_drawdown": 0.16802020813731355,
+            "max_drawdown": 0.1752981132089041,
+            "peak_equity": 1.02839949982056,
+            "drawdown_duration": 188,
+            "recovery_time": 1,
+            "wealth": 0.8556076018124003,
+            "thresholds": {
+              "caution": 0.05,
+              "reduced_risk": 0.1,
+              "capital_preservation": 0.15,
+              "trading_halt": 0.2
+            },
+            "measures": {
+              "max_drawdown": {
+                "name": "max_drawdown",
+                "value": 0.1752981132089041,
+                "unit": "fraction",
+                "confidence": null,
+                "horizon": null,
+                "method": "peak_to_trough",
+                "parameters": {
+                  "n_obs": 200
+                },
+                "metadata": {}
+              },
+              "expected_drawdown": {
+                "name": "expected_drawdown",
+                "value": 0.09018152630498247,
+                "unit": "fraction",
+                "confidence": null,
+                "horizon": null,
+                "method": "mean_drawdown",
+                "parameters": {
+                  "n_obs": 200
+                },
+                "metadata": {}
+              },
+              "ulcer_index": {
+                "name": "ulcer_index",
+                "value": 0.10361378941213055,
+                "unit": "fraction",
+                "confidence": null,
+                "horizon": null,
+                "method": "rms_drawdown",
+                "parameters": {
+                  "n_obs": 200
+                },
+                "metadata": {}
+              },
+              "downside_deviation": {
+                "name": "downside_deviation",
+                "value": 0.007067085227329472,
+                "unit": "volatility",
+                "confidence": null,
+                "horizon": null,
+                "method": "semideviation",
+                "parameters": {
+                  "mar": 0.0,
+                  "n_obs": 200
+                },
+                "metadata": {}
+              }
+            }
+          },
+          "limits_checked": true
+        }
+      }
+    }
+  ],
+  "status": "PASS"
+}

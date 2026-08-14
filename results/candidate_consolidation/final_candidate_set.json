@@ -1,0 +1,223 @@
+{
+  "DISTINCT_RESEARCH_CANDIDATES": [
+    {
+      "candidate_id": "mdc_51a60a3264845365",
+      "experiment_id": "mdc_51a60a3264845365",
+      "model_family": "MTF",
+      "signal_id": "momentum_signal:30m->5m",
+      "timeframe": "5m",
+      "holding_horizon": 2,
+      "direction": "LONG_SHORT",
+      "behavioral_family": "Multi-timeframe momentum family",
+      "validation_net_sharpe": 11.826009046179083,
+      "oos_net_sharpe": 13.029924308054001,
+      "oos_stability": "stable",
+      "trades_per_day": 5.5488,
+      "freq_bucket": "high-frequency",
+      "selection_basis": "cluster_representative_validation_sharpe_independence_turnover",
+      "oos_used_for_selection": false,
+      "disclaimer": "CANDIDATE CONSOLIDATION RESEARCH \u2014 predefined protocol. Research evidence is not a profitability guarantee. DISTINCT_RESEARCH_CANDIDATE \u2260 PROFITABLE \u2260 PRODUCTION_READY \u2260 LIVE_READY. Prompt 39 artifacts are immutable inputs."
+    },
+    {
+      "candidate_id": "mdc_99aa952c5d5f6ff7",
+      "experiment_id": "mdc_99aa952c5d5f6ff7",
+      "model_family": "MTF",
+      "signal_id": "momentum_signal:1h->15m",
+      "timeframe": "15m",
+      "holding_horizon": 2,
+      "direction": "LONG_SHORT",
+      "behavioral_family": "Multi-timeframe momentum family",
+      "validation_net_sharpe": 9.147652723744978,
+      "oos_net_sharpe": 8.138567461610174,
+      "oos_stability": "stable",
+      "trades_per_day": 2.54976,
+      "freq_bucket": "moderate-frequency",
+      "selection_basis": "cluster_representative_validation_sharpe_independence_turnover",
+      "oos_used_for_selection": false,
+      "disclaimer": "CANDIDATE CONSOLIDATION RESEARCH \u2014 predefined protocol. Research evidence is not a profitability guarantee. DISTINCT_RESEARCH_CANDIDATE \u2260 PROFITABLE \u2260 PRODUCTION_READY \u2260 LIVE_READY. Prompt 39 artifacts are immutable inputs."
+    },
+    {
+      "candidate_id": "mdc_6f008c954ea26bf5",
+      "experiment_id": "mdc_6f008c954ea26bf5",
+      "model_family": "MTF",
+      "signal_id": "momentum_signal:1h->15m",
+      "timeframe": "15m",
+      "holding_horizon": 1,
+      "direction": "LONG",
+      "behavioral_family": "Multi-timeframe momentum family",
+      "validation_net_sharpe": 7.680977301416949,
+      "oos_net_sharpe": 7.671105673598704,
+      "oos_stability": "stable",
+      "trades_per_day": 2.5459199999999997,
+      "freq_bucket": "moderate-frequency",
+      "selection_basis": "cluster_representative_validation_sharpe_independence_turnover",
+      "oos_used_for_selection": false,
+      "disclaimer": "CANDIDATE CONSOLIDATION RESEARCH \u2014 predefined protocol. Research evidence is not a profitability guarantee. DISTINCT_RESEARCH_CANDIDATE \u2260 PROFITABLE \u2260 PRODUCTION_READY \u2260 LIVE_READY. Prompt 39 artifacts are immutable inputs."
+    },
+    {
+      "candidate_id": "mdc_678609c534d68189",
+      "experiment_id": "mdc_678609c534d68189",
+      "model_family": "MTF",
+      "signal_id": "momentum_signal:30m->5m",
+      "timeframe": "5m",
+      "holding_horizon": 2,
+      "direction": "SHORT",
+      "behavioral_family": "Multi-timeframe momentum family",
+      "validation_net_sharpe": 5.0545658995470895,
+      "oos_net_sharpe": 8.563824717058953,
+      "oos_stability": "stable",
+      "trades_per_day": 5.5392,
+      "freq_bucket": "high-frequency",
+      "selection_basis": "cluster_representative_validation_sharpe_independence_turnover",
+      "oos_used_for_selection": false,
+      "disclaimer": "CANDIDATE CONSOLIDATION RESEARCH \u2014 predefined protocol. Research evidence is not a profitability guarantee. DISTINCT_RESEARCH_CANDIDATE \u2260 PROFITABLE \u2260 PRODUCTION_READY \u2260 LIVE_READY. Prompt 39 artifacts are immutable inputs."
+    },
+    {
+      "candidate_id": "mdc_801488267ad484dc",
+      "experiment_id": "mdc_801488267ad484dc",
+      "model_family": "Ensemble",
+      "signal_id": "regime_conditioned_mom_1h",
+      "timeframe": "1h",
+      "holding_horizon": 10,
+      "direction": "LONG",
+      "behavioral_family": "Regime-conditioned family",
+      "validation_net_sharpe": 2.2775623055868066,
+      "oos_net_sharpe": -0.05809390642482427,
+      "oos_stability": "unstable",
+      "trades_per_day": 0.3888,
+      "freq_bucket": "low-frequency",
+      "selection_basis": "cluster_representative_validation_sharpe_independence_turnover",
+      "oos_used_for_selection": false,
+      "disclaimer": "CANDIDATE CONSOLIDATION RESEARCH \u2014 predefined protocol. Research evidence is not a profitability guarantee. DISTINCT_RESEARCH_CANDIDATE \u2260 PROFITABLE \u2260 PRODUCTION_READY \u2260 LIVE_READY. Prompt 39 artifacts are immutable inputs."
+    },
+    {
+      "candidate_id": "mdc_3ed979ee7d9dabe6",
+      "experiment_id": "mdc_3ed979ee7d9dabe6",
+      "model_family": "Combination",
+      "signal_id": "xgb_x_price_action",
+      "timeframe": "1h",
+      "holding_horizon": 20,
+      "direction": "LONG_SHORT",
+      "behavioral_family": "ML directional family",
+      "validation_net_sharpe": 0.6337435518839297,
+      "oos_net_sharpe": 0.6412204473358626,
+      "oos_stability": "stable",
+      "trades_per_day": 0.7799999999999999,
+      "freq_bucket": "low-frequency",
+      "selection_basis": "cluster_representative_validation_sharpe_independence_turnover",
+      "oos_used_for_selection": false,
+      "disclaimer": "CANDIDATE CONSOLIDATION RESEARCH \u2014 predefined protocol. Research evidence is not a profitability guarantee. DISTINCT_RESEARCH_CANDIDATE \u2260 PROFITABLE \u2260 PRODUCTION_READY \u2260 LIVE_READY. Prompt 39 artifacts are immutable inputs."
+    },
+    {
+      "candidate_id": "mdc_4992167889db9b2e",
+      "experiment_id": "mdc_4992167889db9b2e",
+      "model_family": "CatBoost",
+      "signal_id": "cat_return_v1",
+      "timeframe": "15m",
+      "holding_horizon": 20,
+      "direction": "LONG_SHORT",
+      "behavioral_family": "ML directional family",
+      "validation_net_sharpe": -0.043305476696399794,
+      "oos_net_sharpe": 2.8242765469388735,
+      "oos_stability": "stable",
+      "trades_per_day": 1.1481599999999998,
+      "freq_bucket": "moderate-frequency",
+      "selection_basis": "cluster_representative_validation_sharpe_independence_turnover",
+      "oos_used_for_selection": false,
+      "disclaimer": "CANDIDATE CONSOLIDATION RESEARCH \u2014 predefined protocol. Research evidence is not a profitability guarantee. DISTINCT_RESEARCH_CANDIDATE \u2260 PROFITABLE \u2260 PRODUCTION_READY \u2260 LIVE_READY. Prompt 39 artifacts are immutable inputs."
+    },
+    {
+      "candidate_id": "mdc_a0f769fc20835273",
+      "experiment_id": "mdc_a0f769fc20835273",
+      "model_family": "CatBoost",
+      "signal_id": "cat_return_v1",
+      "timeframe": "1h",
+      "holding_horizon": 20,
+      "direction": "LONG_SHORT",
+      "behavioral_family": "ML directional family",
+      "validation_net_sharpe": -0.06710843327831668,
+      "oos_net_sharpe": 1.8649067000864614,
+      "oos_stability": "stable",
+      "trades_per_day": 0.252,
+      "freq_bucket": "low-frequency",
+      "selection_basis": "cluster_representative_validation_sharpe_independence_turnover",
+      "oos_used_for_selection": false,
+      "disclaimer": "CANDIDATE CONSOLIDATION RESEARCH \u2014 predefined protocol. Research evidence is not a profitability guarantee. DISTINCT_RESEARCH_CANDIDATE \u2260 PROFITABLE \u2260 PRODUCTION_READY \u2260 LIVE_READY. Prompt 39 artifacts are immutable inputs."
+    }
+  ],
+  "ENSEMBLE_CANDIDATES": [
+    {
+      "ensemble_id": "cdc_3ead53d805422ea0",
+      "method": "equal_weight",
+      "timeframe": "1h",
+      "oos_net_sharpe": 1.8494170859431407,
+      "net_Sharpe": 1.0834893840391824
+    },
+    {
+      "ensemble_id": "cdc_4031d610033dcda6",
+      "method": "confidence_weighted",
+      "timeframe": "1h",
+      "oos_net_sharpe": 0.5685891692182219,
+      "net_Sharpe": 0.7712909379816575
+    },
+    {
+      "ensemble_id": "cdc_2498c0dcea552c87",
+      "method": "majority_vote",
+      "timeframe": "1h",
+      "oos_net_sharpe": 1.8494170859431407,
+      "net_Sharpe": 1.0834893840391824
+    },
+    {
+      "ensemble_id": "cdc_c2e0f43310f1f23d",
+      "method": "equal_weight",
+      "timeframe": "15m",
+      "oos_net_sharpe": 8.478031392471753,
+      "net_Sharpe": 7.807545913750218
+    },
+    {
+      "ensemble_id": "cdc_ece32fb95dfb76eb",
+      "method": "confidence_weighted",
+      "timeframe": "15m",
+      "oos_net_sharpe": 8.138567461610174,
+      "net_Sharpe": 7.945088587980827
+    },
+    {
+      "ensemble_id": "cdc_327c7fd269d45fd1",
+      "method": "majority_vote",
+      "timeframe": "15m",
+      "oos_net_sharpe": 8.478031392471753,
+      "net_Sharpe": 7.807545913750218
+    },
+    {
+      "ensemble_id": "cdc_d805c90442a7303e",
+      "method": "regime_conditioned",
+      "timeframe": "15m",
+      "oos_net_sharpe": 2.0062212533050374,
+      "net_Sharpe": 1.8335222293576237
+    },
+    {
+      "ensemble_id": "cdc_b6e48b107a26d65d",
+      "method": "equal_weight",
+      "timeframe": "5m",
+      "oos_net_sharpe": 13.029924308054001,
+      "net_Sharpe": 11.674465752742083
+    },
+    {
+      "ensemble_id": "cdc_568818239b45257e",
+      "method": "confidence_weighted",
+      "timeframe": "5m",
+      "oos_net_sharpe": 13.029924308054001,
+      "net_Sharpe": 11.674465752742083
+    },
+    {
+      "ensemble_id": "cdc_8b2e5cf5235a392b",
+      "method": "majority_vote",
+      "timeframe": "5m",
+      "oos_net_sharpe": 13.029924308054001,
+      "net_Sharpe": 11.674465752742083
+    }
+  ],
+  "n_distinct": 8,
+  "n_ensemble": 10,
+  "disclaimer": "CANDIDATE CONSOLIDATION RESEARCH \u2014 predefined protocol. Research evidence is not a profitability guarantee. DISTINCT_RESEARCH_CANDIDATE \u2260 PROFITABLE \u2260 PRODUCTION_READY \u2260 LIVE_READY. Prompt 39 artifacts are immutable inputs."
+}

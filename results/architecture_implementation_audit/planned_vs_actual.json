@@ -1,0 +1,843 @@
+{
+  "rows": [
+    {
+      "Component": "time_series:AR",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/forecasting/statistical/ar",
+      "Evidence": "Statistical forecasting package; NOT wired to alpha_research"
+    },
+    {
+      "Component": "time_series:MA",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/forecasting/statistical/ma",
+      "Evidence": "Statistical forecasting package; NOT wired to alpha_research"
+    },
+    {
+      "Component": "time_series:ARMA",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/forecasting/statistical/arma",
+      "Evidence": "Statistical forecasting package; NOT wired to alpha_research"
+    },
+    {
+      "Component": "time_series:ARIMA",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/forecasting/statistical/arima/arima.py",
+      "Evidence": "fit/predict present; NOT wired to alpha_research"
+    },
+    {
+      "Component": "time_series:SARIMA",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/forecasting/statistical/sarima",
+      "Evidence": "NOT wired to alpha_research"
+    },
+    {
+      "Component": "time_series:VAR",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/forecasting/statistical/var",
+      "Evidence": "NOT wired to alpha_research"
+    },
+    {
+      "Component": "time_series:VARMAX",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/forecasting/statistical/varmax",
+      "Evidence": "NOT wired to alpha_research"
+    },
+    {
+      "Component": "time_series:VECM",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/forecasting/statistical/vecm",
+      "Evidence": "NOT wired to alpha_research"
+    },
+    {
+      "Component": "time_series:ExponentialSmoothing_ETS",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/forecasting/statistical/exponential",
+      "Evidence": "NOT wired to alpha_research"
+    },
+    {
+      "Component": "time_series:Kalman_state_space",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/state_space",
+      "Evidence": "Dedicated state_space package + tests; regime/kalman also exists; NOT wired to alpha_research campaign"
+    },
+    {
+      "Component": "time_series:Bayesian_time_series",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/regimes/bayesian,iqrp/app/forecasting",
+      "Evidence": "Bayesian regime model exists; general Bayesian TS forecasting partially via packages"
+    },
+    {
+      "Component": "volatility:historical_volatility",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/forecasting/volatility/historical,iqrp/app/backtesting/alpha_research/reference_features.py",
+      "Evidence": "Forecasting historical vol + alpha reference rolling volatility feature (OHLCV)"
+    },
+    {
+      "Component": "volatility:EWMA_volatility",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/forecasting/volatility/ewma",
+      "Evidence": "Executable in vol forecasting registry; NOT alpha campaign"
+    },
+    {
+      "Component": "volatility:GARCH",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/forecasting/volatility/garch/garch.py",
+      "Evidence": "fit+forecast smoke OK; NOT wired to alpha_research"
+    },
+    {
+      "Component": "volatility:EGARCH",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/forecasting/volatility/egarch",
+      "Evidence": "In vol registry; NOT alpha campaign"
+    },
+    {
+      "Component": "volatility:GJR_GARCH",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/forecasting/volatility/gjr",
+      "Evidence": "In vol registry; NOT alpha campaign"
+    },
+    {
+      "Component": "volatility:FIGARCH",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/forecasting/volatility/figarch",
+      "Evidence": "In vol registry"
+    },
+    {
+      "Component": "volatility:APARCH_ARCH",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/forecasting/volatility/aparch,iqrp/app/forecasting/volatility/arch",
+      "Evidence": "In vol registry"
+    },
+    {
+      "Component": "volatility:DCC_GARCH_BEKK",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/forecasting/volatility/multivariate",
+      "Evidence": "Multivariate vol models present"
+    },
+    {
+      "Component": "volatility:component_GARCH",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/forecasting/volatility/cgarch",
+      "Evidence": "In vol registry"
+    },
+    {
+      "Component": "volatility:stochastic_volatility",
+      "Planned": true,
+      "Implemented_status": "DOCUMENTATION_ONLY",
+      "Tested": false,
+      "Source": "",
+      "Evidence": "No dedicated stochastic volatility package found under forecasting/volatility"
+    },
+    {
+      "Component": "regime:HMM",
+      "Planned": true,
+      "Implemented_status": "PARTIALLY_IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/regimes/hmm",
+      "Evidence": "Full HMM package with tests; default ensure_regime_models_loaded() only imports mock_regime unless modules passed | PARTIAL: code+tests exist, but default regime loader is mock-only and alpha_research"
+    },
+    {
+      "Component": "regime:Markov_switching",
+      "Planned": true,
+      "Implemented_status": "PARTIALLY_IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/regimes/markov",
+      "Evidence": "Markov chain regime model registered when module imported | PARTIAL: code+tests exist, but default regime loader is mock-only and alpha_research is not wired."
+    },
+    {
+      "Component": "regime:GMM_regimes",
+      "Planned": true,
+      "Implemented_status": "PARTIALLY_IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/regimes/gmm",
+      "Evidence": "GMM regime model present | PARTIAL: code+tests exist, but default regime loader is mock-only and alpha_research is not wired."
+    },
+    {
+      "Component": "regime:Bayesian_regime",
+      "Planned": true,
+      "Implemented_status": "PARTIALLY_IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/regimes/bayesian",
+      "Evidence": "Bayesian regime model present | PARTIAL: code+tests exist, but default regime loader is mock-only and alpha_research is not wired."
+    },
+    {
+      "Component": "regime:Kalman_regime",
+      "Planned": true,
+      "Implemented_status": "PARTIALLY_IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/regimes/kalman",
+      "Evidence": "Kalman regime model present | PARTIAL: code+tests exist, but default regime loader is mock-only and alpha_research is not wired."
+    },
+    {
+      "Component": "regime:Particle_regime",
+      "Planned": true,
+      "Implemented_status": "PARTIALLY_IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/regimes/particle",
+      "Evidence": "Particle regime model present | PARTIAL: code+tests exist, but default regime loader is mock-only and alpha_research is not wired."
+    },
+    {
+      "Component": "regime:Ensemble_regime",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/regimes/ensemble",
+      "Evidence": "Ensemble regime model present"
+    },
+    {
+      "Component": "regime:Change_point",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/timeseries/change_points",
+      "Evidence": "Time-series change-point utilities"
+    },
+    {
+      "Component": "regime:Simple_backtest_regimes",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/backtesting/scenarios/regime.py",
+      "Evidence": "Heuristic high/low vol / trending labels used by alpha_research analytics \u2014 descriptive diagnostic, not HMM"
+    },
+    {
+      "Component": "stat_arb:Engle_Granger_cointegration",
+      "Planned": true,
+      "Implemented_status": "PARTIALLY_IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/timeseries/dependence/cointegration.py",
+      "Evidence": "Utility/analysis result; NOT a pairs-trading signal in alpha_research | PARTIAL: utilities/packages exist without pairs/alpha strategy wiring."
+    },
+    {
+      "Component": "stat_arb:Johansen",
+      "Planned": true,
+      "Implemented_status": "PARTIALLY_IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/timeseries/dependence/cointegration.py",
+      "Evidence": "johansen_trace exposed; not alpha signal | PARTIAL: utilities/packages exist without pairs/alpha strategy wiring."
+    },
+    {
+      "Component": "stat_arb:Granger_causality",
+      "Planned": true,
+      "Implemented_status": "PARTIALLY_IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/timeseries/dependence/granger.py",
+      "Evidence": "Dependence utility | PARTIAL: utilities/packages exist without pairs/alpha strategy wiring."
+    },
+    {
+      "Component": "stat_arb:Pairs_trading_strategy",
+      "Planned": true,
+      "Implemented_status": "NOT_IMPLEMENTED",
+      "Tested": true,
+      "Source": "",
+      "Evidence": "No pairs-trading strategy implementation located; cointegration exists as analysis utility only"
+    },
+    {
+      "Component": "stat_arb:Cross_sectional_mean_reversion",
+      "Planned": true,
+      "Implemented_status": "PARTIALLY_IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/alpha/cross_section",
+      "Evidence": "Alpha cross-section package exists separately from backtesting.alpha_research reference signals | PARTIAL: utilities/packages exist without pairs/alpha strategy wiring."
+    },
+    {
+      "Component": "ml:XGBoost",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/forecasting/tree_models/xgboost",
+      "Evidence": "Tree forecasting package; NOT alpha_research"
+    },
+    {
+      "Component": "ml:LightGBM",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/forecasting/tree_models/lightgbm",
+      "Evidence": "Tree forecasting package"
+    },
+    {
+      "Component": "ml:CatBoost",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/forecasting/tree_models/catboost",
+      "Evidence": "Tree forecasting package"
+    },
+    {
+      "Component": "ml:Sklearn_trees",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/forecasting/tree_models/sklearn",
+      "Evidence": "Sklearn tree wrappers in forecasting"
+    },
+    {
+      "Component": "ml:Linear_logistic_general_ML_pipeline",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/forecasting/tree_models,iqrp/app/features",
+      "Evidence": "No dedicated sklearn linear/logistic alpha training pipeline identified in alpha_research"
+    },
+    {
+      "Component": "deep_learning:MLP",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/forecasting/neural/mlp",
+      "Evidence": "Neural forecasting architecture; NOT wired to alpha_research campaign"
+    },
+    {
+      "Component": "deep_learning:LSTM",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/forecasting/neural/lstm",
+      "Evidence": "Neural forecasting architecture; NOT wired to alpha_research campaign"
+    },
+    {
+      "Component": "deep_learning:GRU",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/forecasting/neural/gru",
+      "Evidence": "Neural forecasting architecture; NOT wired to alpha_research campaign"
+    },
+    {
+      "Component": "deep_learning:TCN",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/forecasting/neural/tcn",
+      "Evidence": "Neural forecasting architecture; NOT wired to alpha_research campaign"
+    },
+    {
+      "Component": "deep_learning:DeepAR",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/forecasting/neural/deepar",
+      "Evidence": "Neural forecasting architecture; NOT wired to alpha_research campaign"
+    },
+    {
+      "Component": "deep_learning:NBEATS",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/forecasting/neural/nbeats",
+      "Evidence": "Neural forecasting architecture; NOT wired to alpha_research campaign"
+    },
+    {
+      "Component": "deep_learning:NHITS",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/forecasting/neural/nhits",
+      "Evidence": "Neural forecasting architecture; NOT wired to alpha_research campaign"
+    },
+    {
+      "Component": "deep_learning:Seq2Seq",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/forecasting/neural/seq2seq",
+      "Evidence": "Neural forecasting architecture; NOT wired to alpha_research campaign"
+    },
+    {
+      "Component": "transformers:informer",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/forecasting/transformers/architectures/informer",
+      "Evidence": "Transformer forecasting architecture present with tests/pipelines; NOT wired to alpha_research"
+    },
+    {
+      "Component": "transformers:autoformer",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/forecasting/transformers/architectures/autoformer",
+      "Evidence": "Transformer forecasting architecture present with tests/pipelines; NOT wired to alpha_research"
+    },
+    {
+      "Component": "transformers:fedformer",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/forecasting/transformers/architectures/fedformer",
+      "Evidence": "Transformer forecasting architecture present with tests/pipelines; NOT wired to alpha_research"
+    },
+    {
+      "Component": "transformers:crossformer",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/forecasting/transformers/architectures/crossformer",
+      "Evidence": "Transformer forecasting architecture present with tests/pipelines; NOT wired to alpha_research"
+    },
+    {
+      "Component": "transformers:patchtst",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/forecasting/transformers/architectures/patchtst",
+      "Evidence": "Transformer forecasting architecture present with tests/pipelines; NOT wired to alpha_research"
+    },
+    {
+      "Component": "transformers:tft",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/forecasting/transformers/architectures/tft",
+      "Evidence": "Transformer forecasting architecture present with tests/pipelines; NOT wired to alpha_research"
+    },
+    {
+      "Component": "transformers:itransformer",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/forecasting/transformers/architectures/itransformer",
+      "Evidence": "Transformer forecasting architecture present with tests/pipelines; NOT wired to alpha_research"
+    },
+    {
+      "Component": "transformers:timesnet",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/forecasting/transformers/architectures/timesnet",
+      "Evidence": "Transformer forecasting architecture present with tests/pipelines; NOT wired to alpha_research"
+    },
+    {
+      "Component": "transformers:timemixer",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/forecasting/transformers/architectures/timemixer",
+      "Evidence": "Transformer forecasting architecture present with tests/pipelines; NOT wired to alpha_research"
+    },
+    {
+      "Component": "transformers:tide",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/forecasting/transformers/architectures/tide",
+      "Evidence": "Transformer forecasting architecture present with tests/pipelines; NOT wired to alpha_research"
+    },
+    {
+      "Component": "transformers:moe_transformer",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/forecasting/transformers/architectures/moe_transformer",
+      "Evidence": "Transformer forecasting architecture present with tests/pipelines; NOT wired to alpha_research"
+    },
+    {
+      "Component": "ensembles:Forecast_intelligence_ensemble",
+      "Planned": true,
+      "Implemented_status": "PARTIALLY_IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/forecasting/intelligence",
+      "Evidence": "Forecast intelligence package exists | PARTIAL: ensemble packages exist; not used by Prompt 35 alpha campaign."
+    },
+    {
+      "Component": "ensembles:Regime_ensemble",
+      "Planned": true,
+      "Implemented_status": "PARTIALLY_IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/regimes/ensemble",
+      "Evidence": "Regime ensemble model | PARTIAL: ensemble packages exist; not used by Prompt 35 alpha campaign."
+    },
+    {
+      "Component": "ensembles:Risk_ensemble",
+      "Planned": true,
+      "Implemented_status": "PARTIALLY_IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/risk/ensemble",
+      "Evidence": "Risk ensemble package | PARTIAL: ensemble packages exist; not used by Prompt 35 alpha campaign."
+    },
+    {
+      "Component": "ensembles:Alpha_signal_ensemble",
+      "Planned": true,
+      "Implemented_status": "PARTIALLY_IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/alpha/ensemble",
+      "Evidence": "Alpha ensemble package exists under iqrp.app.alpha \u2014 separate from backtesting.alpha_research campaign used in Prompt 35 | PARTIAL: ensemble packages exist; not used by Prompt 35 alpha campaign."
+    },
+    {
+      "Component": "ensembles:Prompt35_campaign_ensemble",
+      "Planned": true,
+      "Implemented_status": "NOT_IMPLEMENTED",
+      "Tested": false,
+      "Source": "",
+      "Evidence": "Prompt 35 explicitly stopped before ensemble/portfolio; no campaign ensemble of reference signals"
+    },
+    {
+      "Component": "platform:alpha_research:FeatureRegistry",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/backtesting/alpha_research/features.py",
+      "Evidence": "Reference OHLCV features; causal"
+    },
+    {
+      "Component": "platform:alpha_research:SignalRegistry",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/backtesting/alpha_research/signals.py,iqrp/app/backtesting/alpha_research/reference_signals.py",
+      "Evidence": "7 reference signals: momentum/mean-reversion/breakout/vol/volume/trend/price_action"
+    },
+    {
+      "Component": "platform:alpha_research:Leakage_MTF_Analytics_Campaign",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/backtesting/alpha_research/__init__.py,iqrp/app/backtesting/alpha_research/reference_signals.py,iqrp/app/backte",
+      "Evidence": "Leakage suite, MTF merge_asof, IC/decay/TOD, OOS/purge, costs, ranking, BTC campaign runner"
+    },
+    {
+      "Component": "platform:alpha_research:Model_family_adapters_into_alpha",
+      "Planned": true,
+      "Implemented_status": "NOT_IMPLEMENTED",
+      "Tested": false,
+      "Source": "",
+      "Evidence": "No imports from forecasting/regimes/portfolio into backtesting.alpha_research"
+    },
+    {
+      "Component": "platform:horizon:Horizon_research_engine",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/backtesting/horizon/costs.py,iqrp/app/backtesting/horizon/availability.py,iqrp/app/backtesting/horizon/__init__",
+      "Evidence": "Holding horizons, costs, turnover, walk-forward helpers, capacity estimates; consumes positions/returns \u2014 typically reference signals via research engines"
+    },
+    {
+      "Component": "platform:forecasting:Forecasting_framework",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/forecasting",
+      "Evidence": "Large forecasting platform: statistical/vol/neural/transformers/trees + intelligence; produces Forecast objects; not feeding alpha_research"
+    },
+    {
+      "Component": "platform:forecasting:Point_and_probabilistic_forecasts",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/forecasting/base,iqrp/app/forecasting/neural/probabilistic,iqrp/app/forecasting/transformers/probabilistic",
+      "Evidence": "Forecast object + probabilistic modules exist in forecasting package"
+    },
+    {
+      "Component": "platform:risk:Risk_framework_package",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/risk",
+      "Evidence": "Risk package exists with tests; NOT consumed by Prompt 35 alpha campaign outputs"
+    },
+    {
+      "Component": "platform:risk:Position_sizing",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/risk/sizing",
+      "Evidence": "Risk package exists with tests; NOT consumed by Prompt 35 alpha campaign outputs"
+    },
+    {
+      "Component": "platform:risk:Portfolio_risk",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/risk/portfolio",
+      "Evidence": "Risk package exists with tests; NOT consumed by Prompt 35 alpha campaign outputs"
+    },
+    {
+      "Component": "platform:risk:VaR_tail",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/risk/tail",
+      "Evidence": "Risk package exists with tests; NOT consumed by Prompt 35 alpha campaign outputs"
+    },
+    {
+      "Component": "platform:risk:Stress",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/risk/stress",
+      "Evidence": "Risk package exists with tests; NOT consumed by Prompt 35 alpha campaign outputs"
+    },
+    {
+      "Component": "platform:risk:MonteCarlo_simulation",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/risk/simulation",
+      "Evidence": "Risk package exists with tests; NOT consumed by Prompt 35 alpha campaign outputs"
+    },
+    {
+      "Component": "platform:risk:Kelly_capital",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/risk/capital",
+      "Evidence": "Risk package exists with tests; NOT consumed by Prompt 35 alpha campaign outputs"
+    },
+    {
+      "Component": "platform:risk:Leverage",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/risk/leverage",
+      "Evidence": "Risk package exists with tests; NOT consumed by Prompt 35 alpha campaign outputs"
+    },
+    {
+      "Component": "platform:risk:Limits",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/risk/limits",
+      "Evidence": "Risk package exists with tests; NOT consumed by Prompt 35 alpha campaign outputs"
+    },
+    {
+      "Component": "platform:risk:Risk_ensemble",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/risk/ensemble",
+      "Evidence": "Risk package exists with tests; NOT consumed by Prompt 35 alpha campaign outputs"
+    },
+    {
+      "Component": "platform:risk:Correlation_dependency",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/timeseries/dependence",
+      "Evidence": "Risk package exists with tests; NOT consumed by Prompt 35 alpha campaign outputs"
+    },
+    {
+      "Component": "platform:portfolio:Mean_Variance",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/portfolio/optimization/mean_variance.py",
+      "Evidence": "Portfolio optimization module present; not integrated with alpha_research candidate pipeline (Prompt 35 stopped before portfolio)"
+    },
+    {
+      "Component": "platform:portfolio:Black_Litterman",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/portfolio/optimization/black_litterman.py",
+      "Evidence": "Portfolio optimization module present; not integrated with alpha_research candidate pipeline (Prompt 35 stopped before portfolio)"
+    },
+    {
+      "Component": "platform:portfolio:Risk_Parity",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/portfolio/optimization/risk_parity.py",
+      "Evidence": "Portfolio optimization module present; not integrated with alpha_research candidate pipeline (Prompt 35 stopped before portfolio)"
+    },
+    {
+      "Component": "platform:portfolio:HRP_hierarchical",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/portfolio/optimization/hierarchical.py",
+      "Evidence": "Portfolio optimization module present; not integrated with alpha_research candidate pipeline (Prompt 35 stopped before portfolio)"
+    },
+    {
+      "Component": "platform:portfolio:CVaR_opt",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/portfolio/optimization/cvar.py",
+      "Evidence": "Portfolio optimization module present; not integrated with alpha_research candidate pipeline (Prompt 35 stopped before portfolio)"
+    },
+    {
+      "Component": "platform:portfolio:Constraints",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/portfolio/constraints",
+      "Evidence": "Portfolio optimization module present; not integrated with alpha_research candidate pipeline (Prompt 35 stopped before portfolio)"
+    },
+    {
+      "Component": "platform:portfolio:Covariance_models",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/portfolio/covariance",
+      "Evidence": "Portfolio optimization module present; not integrated with alpha_research candidate pipeline (Prompt 35 stopped before portfolio)"
+    },
+    {
+      "Component": "platform:execution:Execution_engine",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/execution/engine.py",
+      "Evidence": "Execution platform code+tests exist; alpha_research uses simplified turnover\u00d7bps cost drag, not full OM lifecycle"
+    },
+    {
+      "Component": "platform:execution:Order_manager",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/execution/order_manager",
+      "Evidence": "Execution platform code+tests exist; alpha_research uses simplified turnover\u00d7bps cost drag, not full OM lifecycle"
+    },
+    {
+      "Component": "platform:execution:Algorithms_TWAP_VWAP_etc",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/execution/algorithms",
+      "Evidence": "Execution platform code+tests exist; alpha_research uses simplified turnover\u00d7bps cost drag, not full OM lifecycle"
+    },
+    {
+      "Component": "platform:execution:Slippage",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/execution/slippage",
+      "Evidence": "Execution platform code+tests exist; alpha_research uses simplified turnover\u00d7bps cost drag, not full OM lifecycle"
+    },
+    {
+      "Component": "platform:execution:Transaction_costs",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/execution/transaction_costs",
+      "Evidence": "Execution platform code+tests exist; alpha_research uses simplified turnover\u00d7bps cost drag, not full OM lifecycle"
+    },
+    {
+      "Component": "platform:execution:Smart_routing",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/execution/smart_routing",
+      "Evidence": "Execution platform code+tests exist; alpha_research uses simplified turnover\u00d7bps cost drag, not full OM lifecycle"
+    },
+    {
+      "Component": "platform:execution:Fill_simulation",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/execution/simulation.py",
+      "Evidence": "Execution platform code+tests exist; alpha_research uses simplified turnover\u00d7bps cost drag, not full OM lifecycle"
+    },
+    {
+      "Component": "platform:data:Historical_providers_Yahoo_Binance",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/data/historical",
+      "Evidence": "Yahoo equity + Binance Vision crypto providers; DEVELOPMENT/RESEARCH tier BTC/NIFTY data \u2014 not institutional-grade claim"
+    },
+    {
+      "Component": "platform:data:Dataset_registry_checksums",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/backtesting/data/dataset_registry.py",
+      "Evidence": "Immutable registry with checksums used by Prompt 34/35"
+    },
+    {
+      "Component": "platform:data:Calendars_resampling_validation",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/data/historical",
+      "Evidence": "NSE + crypto 24x7 calendars; session-aware resample; quality validation"
+    },
+    {
+      "Component": "platform:data:Order_book_PIT_continuous_futures",
+      "Planned": true,
+      "Implemented_status": "NOT_IMPLEMENTED",
+      "Tested": false,
+      "Source": "",
+      "Evidence": "No institutional order-book/PIT/continuous-futures production feed identified; microstructure features are Polars feature defs requiring richer inputs"
+    },
+    {
+      "Component": "platform:backtesting:EventDrivenEngine",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/backtesting/event_engine",
+      "Evidence": "Event engine package present"
+    },
+    {
+      "Component": "platform:backtesting:BacktestRunner",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/backtesting/runner",
+      "Evidence": "BacktestRunner pipeline with synthetic E2E tests"
+    },
+    {
+      "Component": "platform:backtesting:Accounting_reconciliation",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/backtesting/accounting",
+      "Evidence": "Accounting/reconciliation modules exist for runner path; alpha_research uses simplified return attribution"
+    },
+    {
+      "Component": "platform:backtesting:Walk_forward_scenarios_reporting",
+      "Planned": true,
+      "Implemented_status": "IMPLEMENTED",
+      "Tested": true,
+      "Source": "iqrp/app/backtesting/walk_forward,iqrp/app/backtesting/scenarios,iqrp/app/backtesting/reports.py",
+      "Evidence": "Present in backtesting platform"
+    }
+  ],
+  "status_counts": {
+    "IMPLEMENTED": 85,
+    "DOCUMENTATION_ONLY": 1,
+    "PARTIALLY_IMPLEMENTED": 14,
+    "NOT_IMPLEMENTED": 4
+  },
+  "n_components": 104
+}

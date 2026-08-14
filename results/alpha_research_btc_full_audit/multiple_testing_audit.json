@@ -1,0 +1,12 @@
+{
+  "method": "fdr_bh",
+  "alpha": 0.05,
+  "n_tests": 420,
+  "family": "all BASE experiments (signal\u00d7tf\u00d7lookback\u00d7holding) via IC p-values",
+  "includes_timeframe_signal_horizon_params": true,
+  "bh_math_ok": true,
+  "n_surviving_campaign": 237,
+  "n_surviving_recompute": 237,
+  "assumption_limitation": "p-values approximate under autocorrelation (see autocorrelation_audit)",
+  "disclaimer": "Research evidence is not a profitability guarantee."
+}

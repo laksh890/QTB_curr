@@ -1,0 +1,134 @@
+{
+  "disclaimer": "UNIFIED TRADING PIPELINE \u2014 integration validation only. PIPELINE WORKS \u2260 STRATEGY WORKS \u2260 PROFITABLE \u2260 ROBUST \u2260 PRODUCTION READY.",
+  "generated_at": "2026-08-14T15:45:53.169410+00:00",
+  "pipeline_status": "OPERATIONAL",
+  "claim_distinctions": {
+    "PIPELINE_WORKS": true,
+    "STRATEGY_WORKS": null,
+    "STRATEGY_IS_PROFITABLE": null,
+    "STRATEGY_IS_ROBUST": null,
+    "STRATEGY_IS_PRODUCTION_READY": null
+  },
+  "answers": {
+    "1_operational_cascade": true,
+    "2_multiple_long_short_same_state": true,
+    "3_risk_reduce_or_reject": true,
+    "4_portfolio_constraints_alter": true,
+    "5_deltas_to_orders": true,
+    "6_fills_update_positions": true,
+    "7_lineage_traceable": true,
+    "8_reconciliation_pass": true,
+    "9_prompt37_compatible": true,
+    "10_prompt35_compatible": true
+  },
+  "matrix": [
+    {
+      "Stage": "Data",
+      "Reference Signal": "PASS",
+      "Model Signal": "PASS",
+      "Status": "PASS"
+    },
+    {
+      "Stage": "Model",
+      "Reference Signal": "NOT_SUPPORTED",
+      "Model Signal": "PASS",
+      "Status": "PASS"
+    },
+    {
+      "Stage": "Forecast/Regime",
+      "Reference Signal": "NOT_SUPPORTED",
+      "Model Signal": "PASS",
+      "Status": "PASS"
+    },
+    {
+      "Stage": "Adapter",
+      "Reference Signal": "NOT_SUPPORTED",
+      "Model Signal": "PASS",
+      "Status": "PASS"
+    },
+    {
+      "Stage": "SignalRegistry",
+      "Reference Signal": "NOT_SUPPORTED",
+      "Model Signal": "PASS",
+      "Status": "PASS"
+    },
+    {
+      "Stage": "Alpha Research",
+      "Reference Signal": "PASS",
+      "Model Signal": "PASS",
+      "Status": "PASS"
+    },
+    {
+      "Stage": "Candidate",
+      "Reference Signal": "PASS",
+      "Model Signal": "PASS",
+      "Status": "PASS"
+    },
+    {
+      "Stage": "Risk",
+      "Reference Signal": "PASS",
+      "Model Signal": "PASS",
+      "Status": "PASS"
+    },
+    {
+      "Stage": "Position Sizing",
+      "Reference Signal": "PASS",
+      "Model Signal": "PASS",
+      "Status": "PASS"
+    },
+    {
+      "Stage": "Portfolio",
+      "Reference Signal": "PASS",
+      "Model Signal": "PASS",
+      "Status": "PASS"
+    },
+    {
+      "Stage": "Orders",
+      "Reference Signal": "PASS",
+      "Model Signal": "PASS",
+      "Status": "PASS"
+    },
+    {
+      "Stage": "Execution",
+      "Reference Signal": "PASS",
+      "Model Signal": "PASS",
+      "Status": "PASS"
+    },
+    {
+      "Stage": "Fills",
+      "Reference Signal": "PASS",
+      "Model Signal": "PASS",
+      "Status": "PASS"
+    },
+    {
+      "Stage": "Positions",
+      "Reference Signal": "PASS",
+      "Model Signal": "PASS",
+      "Status": "PASS"
+    },
+    {
+      "Stage": "Accounting",
+      "Reference Signal": "PASS",
+      "Model Signal": "PASS",
+      "Status": "PASS"
+    },
+    {
+      "Stage": "Reconciliation",
+      "Reference Signal": "PASS",
+      "Model Signal": "PASS",
+      "Status": "PASS"
+    },
+    {
+      "Stage": "Performance",
+      "Reference Signal": "PASS",
+      "Model Signal": "PASS",
+      "Status": "PASS"
+    }
+  ],
+  "limitations": [
+    "expected_horizon is retained on AlphaCandidate lineage; automatic horizon-expiry exits are not invented \u2014 FLAT/reduce candidates or existing holding_bars semantics apply.",
+    "EventDrivenEngine remains available; this package is the explicit AlphaCandidate handoff layer used for research/backtest orchestration.",
+    "No live broker connectivity.",
+    "Portfolio step enforces constraints; does not run PortfolioOptimizer objectives."
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "disclaimer": "MODEL\u2192ALPHA INTEGRATION VALIDATION \u2014 wiring only. Not a profitability claim. Research evidence is not a guarantee.",
+  "generated_at": "2026-08-14T15:30:39.628713+00:00",
+  "path_status": "PARTIALLY_COMPLETE",
+  "stops_at": "All validation-matrix models produced signals into Alpha Research. Full Risk\u2192Portfolio\u2192Execution OMS cascade from alpha candidates is smoke-only (platforms exist; not a single orchestrated production path).",
+  "counts": {
+    "PASS": 6,
+    "UNAVAILABLE": 0,
+    "FAIL": 0
+  },
+  "matrix": [
+    {
+      "Model": "GARCH",
+      "Forecast": "PASS",
+      "Adapter": "PASS",
+      "SignalRegistry": "PASS",
+      "Alpha": "PASS",
+      "OOS": "PASS",
+      "Backtest": "PASS"
+    },
+    {
+      "Model": "ARIMA",
+      "Forecast": "PASS",
+      "Adapter": "PASS",
+      "SignalRegistry": "PASS",
+      "Alpha": "PASS",
+      "OOS": "PASS",
+      "Backtest": "PASS"
+    },
+    {
+      "Model": "XGBoost",
+      "Forecast": "PASS",
+      "Adapter": "PASS",
+      "SignalRegistry": "PASS",
+      "Alpha": "PASS",
+      "OOS": "PASS",
+      "Backtest": "PASS"
+    },
+    {
+      "Model": "LSTM",
+      "Forecast": "PASS",
+      "Adapter": "PASS",
+      "SignalRegistry": "PASS",
+      "Alpha": "PASS",
+      "OOS": "PASS",
+      "Backtest": "PASS"
+    },
+    {
+      "Model": "Transformer_TiDE",
+      "Forecast": "PASS",
+      "Adapter": "PASS",
+      "SignalRegistry": "PASS",
+      "Alpha": "PASS",
+      "OOS": "PASS",
+      "Backtest": "PASS"
+    },
+    {
+      "Model": "HMM",
+      "Forecast": "PASS",
+      "Adapter": "PASS",
+      "SignalRegistry": "PASS",
+      "Alpha": "PASS",
+      "OOS": "PASS",
+      "Backtest": "PASS"
+    }
+  ],
+  "distinctions": {
+    "MODEL_EXISTS_vs_CAN_FORECAST_vs_SIGNAL_vs_ALPHA_vs_BACKTEST_vs_POSITIVE_PERF": "Reported per row under claims; positive performance is NEVER asserted."
+  },
+  "reference_regression": "PASS",
+  "leakage": "PASS",
+  "mtf": "PASS",
+  "cost": "PASS",
+  "downstream": {
+    "risk": "PASS",
+    "portfolio": "PASS",
+    "execution": "PASS"
+  }
+}

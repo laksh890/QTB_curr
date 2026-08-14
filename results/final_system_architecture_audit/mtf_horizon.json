@@ -1,0 +1,15 @@
+{
+  "disclaimer": "FINAL SYSTEM ARCHITECTURE AUDIT \u2014 evidence only. PIPELINE WORKS \u2260 STRATEGY WORKS \u2260 PROFITABLE \u2260 PRODUCTION/LIVE READY. STATISTICAL VALIDITY remains LIMITED per Prompt 36.",
+  "timeframe_context_fields": [
+    "feature_timeframe",
+    "signal_timeframe",
+    "execution_timeframe"
+  ],
+  "causal_mtf_alignment": "merge_asof_backward",
+  "aligned_len": 20,
+  "holding_clock_minutes_1h_5bars": 300.0,
+  "can_research_horizons": true,
+  "has_discovered_profitable_horizon": false,
+  "finer_than_native_policy": "UNAVAILABLE / do not fabricate (campaign/data layer)",
+  "status": "PASS"
+}

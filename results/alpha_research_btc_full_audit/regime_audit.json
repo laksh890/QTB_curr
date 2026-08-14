@@ -1,0 +1,14 @@
+{
+  "classifier": "classify_simple_regimes on strategy/net or return series",
+  "labels": {
+    "mean_reverting": 14332,
+    "regime_transition": 3484,
+    "high_volatility": 15063,
+    "low_volatility": 15018,
+    "trending": 4652
+  },
+  "causal_construction": "Uses rolling past windows of the labeled return series (vol_window/trend_window). Does not peek future bars for the label at t beyond rolling endpoint t.",
+  "campaign_note": "Base matrix skipped regime on frames >250k bars; deep-dive used regime where run.",
+  "unsupported_regimes": [],
+  "disclaimer": "Research evidence is not a profitability guarantee."
+}

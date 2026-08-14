@@ -1,0 +1,9 @@
+{
+  "audit_id": "alpha_research_btc_full_audit_v1",
+  "source_campaign": "alpha_research_btc_full_v1",
+  "source_dir": "results/alpha_research_btc_full",
+  "started_at": "2026-08-14T15:03:02.029937+00:00",
+  "no_retune": true,
+  "no_overwrite_prompt35": true,
+  "disclaimer": "Research evidence is not a profitability guarantee."
+}

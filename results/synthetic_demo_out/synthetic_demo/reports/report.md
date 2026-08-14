@@ -1,0 +1,151 @@
+# Backtest Report — synthetic_demo
+
+## Executive Summary
+
+- Status: `COMPLETED`
+- Initial capital: 1000000.0
+- Ending equity: 891403.1944439674
+- Total return (simulated): -10.8597%
+- Bars: 43 | Orders: 2 | Fills: 2
+
+> Reference / research output only. Figures describe this run's simulated path under the stated assumptions; they are not a profitability claim or recommendation.
+
+## Performance
+
+```json
+{
+  "n_obs": 43.0,
+  "total_return": -0.10859680555603235,
+  "compounded_return": -0.10859680555603235,
+  "cagr": -0.4901862914071621,
+  "annualized_return": -0.6691000455494491,
+  "annualized_volatility": 0.08703099447201681,
+  "mean": -0.0026551589109105123,
+  "std": 0.005482437326847467,
+  "sharpe": -7.6880661838764315
+}
+```
+
+## Risk
+
+```json
+{
+  "max_drawdown": 0.11532492310116671,
+  "gross": 1.0,
+  "net": 1.0,
+  "max_gross_leverage": 1.0,
+  "asof": "2020-02-28T00:00:00+00:00",
+  "equity": 891403.1944439674,
+  "drawdown": 0.10859680555603257,
+  "leverage": 0.9999750719400627,
+  "volatility": 0.07685914443101909,
+  "var": 0.008983007901871343,
+  "cvar": 0.009353067254031455
+}
+```
+
+## Drawdown
+
+```json
+{
+  "max_drawdown": 0.11532492310116671,
+  "end_drawdown": 0.10859680555603257
+}
+```
+
+## Trading
+
+```json
+{
+  "orders": 2,
+  "fills": 2,
+  "trades": 2,
+  "final_positions": {
+    "timestamp": "2020-02-28T00:00:00+00:00",
+    "positions": {
+      "AAA": 9999.0,
+      "BBB": 8391.0
+    },
+    "equity": 891403.1944439674
+  }
+}
+```
+
+## Execution
+
+```json
+{
+  "backend": "iqrp.app.execution.ExecutionEngine",
+  "n_orders": 2,
+  "n_fills": 2
+}
+```
+
+## Costs
+
+```json
+{
+  "fees_paid": 0.0,
+  "financing_paid": 0.0
+}
+```
+
+## Walk-Forward
+
+```json
+{}
+```
+
+## Scenarios
+
+```json
+{}
+```
+
+## Reproducibility
+
+```json
+{
+  "seed": 7,
+  "strategy": {
+    "id": "buy_and_hold",
+    "version": "1.0.0"
+  },
+  "dataset": {
+    "path": "iqrp/tests/fixtures/backtesting/synthetic_bars.parquet",
+    "id": "synthetic_demo",
+    "version": "1.0.0"
+  },
+  "backends": {
+    "portfolio": "iqrp.app.portfolio",
+    "execution": "iqrp.app.execution.ExecutionEngine"
+  }
+}
+```
+
+## Limitations
+
+- Simulated fills and costs are model-based approximations.
+- Results are path-dependent on the supplied dataset and configuration.
+- Reference strategies (e.g. buy_and_hold) are for pipeline validation only.
+- No claim is made that historical simulated returns will persist.
+- User must supply validated historical data; this platform does not download markets.
+
+## Reconciliation
+
+```json
+{
+  "ok": true,
+  "starting_capital": 1000000.0,
+  "realized": 0.0,
+  "unrealized": -108596.80555603246,
+  "fees": 0.0,
+  "financing": 0.0,
+  "ending_equity": 891403.1944439674,
+  "expected_equity": 891403.1944439675,
+  "discrepancy": -1.1641532182693481e-10,
+  "tolerance": 0.0001,
+  "detail": "",
+  "identity": "Starting Capital + Realized + Unrealized - Fees - Financing = Ending Equity"
+}
+```

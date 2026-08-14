@@ -23,11 +23,7 @@ poetry.toml
 .coverage
 .coverage.*
 coverage.xml
-coverage.json
 htmlcov/
-
-# Local backtest outputs
-results/
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/

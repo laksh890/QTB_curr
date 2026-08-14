@@ -1,0 +1,44 @@
+{
+  "backtest_id": "synthetic_demo",
+  "strategy_id": "buy_and_hold",
+  "strategy_version": "1.0.0",
+  "dataset_id": "synthetic_demo",
+  "dataset_version": "1.0.0",
+  "dataset_path": "iqrp/tests/fixtures/backtesting/synthetic_bars.parquet",
+  "adapter": "parquet",
+  "universe": [],
+  "start": "2020-01-01",
+  "end": "2020-03-01",
+  "frequency": "daily",
+  "initial_capital": 1000000.0,
+  "currency": "USD",
+  "timezone": "UTC",
+  "seed": 7,
+  "output_dir": "results/synthetic_demo_out",
+  "commission_bps": 0.0,
+  "spread_bps": 1.0,
+  "slippage_bps": 0.0,
+  "financing_bps": 0.0,
+  "risk_config": {
+    "max_gross_leverage": 1.0
+  },
+  "portfolio_config": {},
+  "execution_config": {},
+  "tcost_config": {},
+  "slippage_config": {},
+  "model_config": {},
+  "walk_forward_config": {},
+  "scenario_config": {},
+  "strategy_params": {
+    "mode": "equal_weight"
+  },
+  "checkpoint_dir": null,
+  "resume_from": null,
+  "parallel": {},
+  "enforce_pit": true,
+  "reconciliation_tolerance": 0.0001,
+  "meta": {
+    "purpose": "synthetic_pipeline_demo",
+    "disclaimer": "Synthetic fixture path for smoke / demo only. Not real market data."
+  }
+}

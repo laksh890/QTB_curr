@@ -1,0 +1,3 @@
+trade_id,instrument,side,quantity,entry_time,entry_price,exit_time,exit_price,realized_pnl,fees,status,meta
+a61a2b9e6fcf4befabf1b4ef5ade760d,AAA,BUY,9999.0,2020-01-01T00:00:00+00:00,50.003498987388866,,,0.0,0.0,open,{}
+278252be321b4b65b6a05ab89ad1c16c,BBB,BUY,8391.0,2020-01-01T00:00:00+00:00,59.586794502781466,,,0.0,0.0,open,{}

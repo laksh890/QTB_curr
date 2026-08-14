@@ -1,0 +1,15 @@
+{
+  "initial_capital": 1000000.0,
+  "currency": "USD",
+  "cash": 22.220952259434853,
+  "available_cash": 22.220952259434853,
+  "free_cash": 22.220952259434853,
+  "margin": 0.0,
+  "margin_used": 0.0,
+  "equity": 891403.1944439674,
+  "position_market_value": 891380.973491708,
+  "realized_pnl": 0.0,
+  "unrealized_pnl": -108596.80555603246,
+  "fees_paid": 0.0,
+  "financing_paid": 0.0
+}

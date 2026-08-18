@@ -1,10 +1,10 @@
-# IQRP Research Handoff Map (Prompts 35–40)
+# IQRP Research Handoff Map (Prompts 35–42)
 
 **Purpose:** Give a new agent (or human) a single entry point: what to read first, what is authoritative, what is immutable, and what the next authorized phase may use.
 
-**Last research status:** Prompt 40 `CONSOLIDATION_COMPLETE_RESEARCH_SET`  
-**Proven profitability:** NO  
-**Production / live ready:** NO  
+**Last research status:** Frozen 2024→2025 holdout `PROVEN_RESEARCH_PROFITABILITY` for 2 MTF evidence candidates (full calendar 2025; firewall PASS).  
+**LIVE_READY:** NO  
+**Paper trading (research gate):** YES for listed PAPER/PROVEN IDs — still not live.
 
 ---
 
@@ -12,123 +12,138 @@
 
 | Priority | File | Why |
 |----------|------|-----|
-| **1** | `results/candidate_consolidation/final_report.md` | **Current frontier.** Reduced research set after consolidation. |
-| **2** | `results/candidate_consolidation/final_candidate_set.json` | The **8** `DISTINCT_RESEARCH_CANDIDATES` + **10** ensemble IDs to carry forward. |
-| **3** | `results/candidate_consolidation/consolidation_config.json` | Frozen thresholds, weighting formulas, selection rules (no OOS tuning). |
-| **4** | `results/model_driven_alpha_campaign/campaign_report.md` | Prompt 39 model→alpha campaign outcome (129 CANDIDATEs from 4806 exps). |
-| **5** | `results/final_system_architecture_audit/` | Architecture complete for research/sim; not production/live. |
-| **6** | `results/alpha_research_btc_full_audit/` | Prompt 36 validity: **CONDITIONALLY_VALID**, statistical validity **LIMITED**. |
-| **7** | `results/alpha_research_btc_full/final_report.md` | Prompt 35 reference-signal campaign (0 CANDIDATE). Historical baseline only. |
-
-**Do not start from Prompt 35/39 candidate rankings alone** if continuing research — they are upstream. **Prompt 40 final set is the working universe.**
+| **1** | `results/frozen_2024_2025_holdout/final_report.md` | **Current frontier.** True 2025 OOS after ≤2024 freeze. |
+| **2** | `results/frozen_2024_2025_holdout/decision_matrix.json` | Per-candidate gate outcomes. |
+| **3** | `results/frozen_2024_2025_holdout/firewall_audit.json` | Hard temporal firewall evidence. |
+| **4** | `results/frozen_2024_2025_holdout/sharpe_independent_recalculation.json` | Sharpe methodology audit. |
 
 ---
 
-## Authoritative “weights” / configs for next work
+## Frozen 2024 → Independent 2025 holdout (CURRENT)
 
-Use these as frozen inputs unless a later prompt explicitly authorizes changes:
+Directory: `results/frozen_2024_2025_holdout/`
 
-| Asset | Path | Role |
-|-------|------|------|
-| Distinct research candidates | `results/candidate_consolidation/final_candidate_set.json` → `DISTINCT_RESEARCH_CANDIDATES` | Primary carry-forward set (8) |
-| Ensemble research candidates | same file → `ENSEMBLE_CANDIDATES` | Secondary (10); not independent discoveries |
-| Consolidation thresholds | `results/candidate_consolidation/consolidation_config.json` | Corr/redundancy/cluster/turnover/weight formulas |
-| P39 campaign protocol | `results/model_driven_alpha_campaign/campaign.json` | Datasets, MAX_BARS, horizons, costs, model specs |
-| Cost scenarios | `campaign.json` → `cost_scenario_defs` (BASE/MODERATE/ADVERSE) | Same accounting everywhere |
-| Dataset registry | `dataset_registry.json` | BTCUSDT registered datasets `@1.0.0` (history ends 2024-12-31) |
-| Ensemble registry | `results/candidate_consolidation/ensemble_registry.json` | Methods + member IDs + validation-only weights |
-
-**Selection note:** Prompt 40 representatives were chosen with **validation** Sharpe + independence/turnover rules. OOS was evaluation-only. Do not re-rank by OOS Sharpe unless a new protocol says so.
-
----
-
-## Immutable vs writable
-
-| Path | Rule |
+| File | Role |
 |------|------|
-| `results/alpha_research_btc_full/` | **IMMUTABLE** (Prompt 35) |
-| `results/alpha_research_btc_full_audit/` | **IMMUTABLE** (Prompt 36) |
-| `results/model_driven_alpha_campaign/` | **IMMUTABLE** (Prompt 39) |
-| `results/candidate_consolidation/` | Latest consolidation; treat as **source of truth** until a later prompt supersedes |
-| `results/model_alpha_integration/` | Prompt 37 adapter validation (wiring only) |
-| `results/unified_trading_pipeline/` | Prompt 38 Alpha→Risk→Portfolio→Execution research path |
+| `final_report.md` / `.json` | Status + required answers |
+| `firewall_audit.json` | Research ≤2024 / holdout=2025 hard split |
+| `dataset_provenance.json` / `dataset_quality.json` | Immutable 2025 slice (complete 525,600×1m) |
+| `frozen_candidate_manifest.json` | P40/P39 definition checksums |
+| `holdout_results.json` / `decision_matrix.json` | Full-year 2025 metrics + gates |
+| `sharpe_independent_recalculation.json` | Engine vs independent Sharpe |
+| `quarterly_analysis.json` / `cost_analysis.json` / `statistical_validation.json` | Diagnostics |
+| `portfolio_comparison.json` | Pre-2025 weights → 2025 eval |
+| `reproducibility_report.json` | Dual-run PASS |
+
+Code: `iqrp/app/backtesting/frozen_2025_holdout/`  
+Run: `.venv/bin/python -m iqrp.app.backtesting.frozen_2025_holdout`
+
+### Evidence focus (2025)
+
+| Candidate | Status | 2025 net Sharpe | ADVERSE |
+|-----------|--------|----------------:|---------|
+| `mdc_99aa952c5d5f6ff7` | PROVEN_RESEARCH_PROFITABILITY | ~7.03 | survives |
+| `mdc_6f008c954ea26bf5` | PROVEN_RESEARCH_PROFITABILITY | ~5.37 | survives |
+| `mdc_678609c534d68189` | PAPER_TRADING_CANDIDATE | ~6.23 | fails |
+
+**LIVE_READY:** NO. ML controls (CatBoost/XGB combo) largely **REJECTED** on 2025.
 
 ---
 
-## Artifact maps by campaign
+## Independent candidate validation
 
-### A. Prompt 40 — Candidate consolidation (CURRENT)
+Directory: `results/independent_candidate_validation/`
 
-Directory: `results/candidate_consolidation/`
+| File | Role |
+|------|------|
+| `final_report.md` / `.json` | **INVALID_HOLDOUT** + 11 required answers |
+| `data_provenance.json` | Temporal firewall; 1-day local Vision remnant; network FAIL |
+| `holdout_results.json` | Frozen primary + negative control diagnostics |
+| `walk_forward_results.json` / `regime_results.json` / `cost_results.json` | Diagnostics only |
+| `statistical_results.json` / `bootstrap_results.json` | Dependence-aware; insufficient sample |
+| `capacity_results.json` | `ESTIMATE_ONLY` (OHLCV) |
+| `negative_control_results.json` | `mdc_6f008c954ea26bf5` |
+| `reproducibility_report.json` / `test_summary.json` | Dual-run + pytest |
 
-| File | Contents |
-|------|----------|
-| `final_report.md` / `.json` | Status + 20 required answers |
-| `final_candidate_set.json` | Reduced universe (8 + 10 ensembles) |
-| `consolidation_config.json` | Protocol / thresholds |
-| `candidate_clusters.json` | 8 behavioral clusters + representatives |
-| `candidate_cluster_summary.json` | Size histogram |
-| `candidate_dependency_matrix.json` / `.csv` | Pairwise dependence |
-| `redundancy_analysis.json` | DISTINCT / RELATED / HIGHLY_REDUNDANT |
-| `model_diversification.json` | Model-family dependence |
-| `timeframe_diversification.json` | TF dependence |
-| `horizon_diversification.json` | Holding-horizon clones |
-| `direction_diversification.json` | LONG vs SHORT |
-| `drawdown_dependence.json` | Simultaneous loss / DD overlap |
-| `cost_dependence.json` | BASE→ADVERSE sensitivity |
-| `ensemble_registry.json` | Predeclared ensembles A–D |
-| `ensemble_results.json` | Metrics by cost scenario |
-| `ensemble_comparison.json` | Gate survivors |
-| `rejection_summary.json` | What was dropped and why |
-| `reproducibility_report.json` | Deterministic rerun + defect fix note |
-| `candidate_universe.json` | All 129 with reconstructed metrics |
+Code: `iqrp/app/backtesting/independent_validation/`  
+Run: `.venv/bin/python -m iqrp.app.backtesting.independent_validation`
 
-Code: `iqrp/app/backtesting/alpha_research/consolidation/`  
-Run: `python -m iqrp.app.backtesting.alpha_research.consolidation`
+**Verdict:** Only **1** calendar day after P42 firewall is available free/local; Binance network acquisition failed. Protocol ⇒ **INVALID_HOLDOUT**. Short-window Sharpes are **not** replication. **NO_PAPER_TRADING_CANDIDATE**. **LIVE_READY: NO**. Paid L2/tick → **STOP_BEFORE_PURCHASE**.
 
-### B. Prompt 39 — Model-driven alpha campaign
+---
 
-Directory: `results/model_driven_alpha_campaign/`
+## Prompt final holdout — Independent frozen-alpha holdout
+
+Directory: `results/final_holdout_validation/`
 
 | File | Contents |
 |------|----------|
-| `campaign_report.md` / `.json` | Campaign status + answers |
-| `campaign.json` | Frozen protocol |
-| `experiment_registry.json` | All experiments (incl. 129 BASE CANDIDATE) |
-| `candidate_rankings.json` | Top rankings (cap; use registry for full 129) |
-| `model_family_summary.json` | Per-family gate counts |
-| `timeframe_summary.json` / `horizon_summary.json` | TF × horizon grid |
-| `cost_summary.json` / `trade_frequency_summary.json` | Costs & trading intensity |
-| `multiple_testing.json` | FDR on BASE LONG_SHORT |
-| `model_fit_log.json` / `unavailable_log.json` | Fits & UNAVAILABLE reasons |
+| `final_report.md` / `.json` | Status + 19 required answers |
+| `data_provenance.json` / `.md` | Registered vs holdout independence |
+| `candidate_freeze.json` | Exact P39/P42 definition checksums |
+| `causality_audit.json` | Next-bar / lag checks |
+| `holdout_results.json` | Per-candidate holdout metrics |
+| `cost_stress.json` | BASE / MODERATE / ADVERSE |
+| `regime_results.json` | Causal regime slices |
+| `statistical_validation.json` | n_eff / HAC — generally INSUFFICIENT (1 day) |
+| `degradation_analysis.json` | vs Prompt 42 |
+| `reconciliation.json` / `reproducibility.json` | Dual-run + cascade recon |
 
-Code: `iqrp/app/backtesting/alpha_research/model_campaign/`  
-Run: `python -m iqrp.app.backtesting.alpha_research.model_campaign`
+Code: `iqrp/app/backtesting/final_holdout/`  
+Run: `.venv/bin/python -m iqrp.app.backtesting.final_holdout`
 
-### C. Prompt 37–38 — Wiring (not alpha discovery)
+### Holdout outcome (do not retune)
 
-| Dir | Role |
-|-----|------|
-| `results/model_alpha_integration/` | Model → adapter → SignalRegistry → Alpha path validation |
-| `results/unified_trading_pipeline/` | Candidate → Risk → Portfolio constraints → Execution sim |
+| Candidate | Holdout class | Notes |
+|-----------|---------------|-------|
+| `mdc_99aa952c5d5f6ff7` | WEAK_EVIDENCE | Positive BASE/MODERATE; sample too short |
+| `mdc_678609c534d68189` | WEAK_EVIDENCE | Positive BASE/MODERATE; sample too short |
+| `mdc_6f008c954ea26bf5` | REJECTED | Failed holdout replication (LONG 15m) |
 
-Code:  
-- `iqrp/app/backtesting/alpha_research/adapters/`  
-- `iqrp/app/backtesting/unified_pipeline/`
+**PAPER_TRADING_CANDIDATE:** none  
+**LIVE_READY:** NO  
 
-### D. Prompt 35–36 — Reference baseline + validity
+Holdout source: Binance Vision July 2026 ZIP bars after registered `@1.0.1` truncation at `2026-07-31 00:00:00` (~1 calendar day). Not manufactured from pre-P42 history.
 
-| Dir | Role |
-|-----|------|
-| `results/alpha_research_btc_full/` | Reference signals only; **0 CANDIDATE** |
-| `results/alpha_research_btc_full_audit/` | Validity audit; statistical validity LIMITED |
+---
 
-### E. Architecture audit
+## Prompt 42 — Final trading validation (immutable)
 
-| Dir | Role |
-|-----|------|
-| `results/final_system_architecture_audit/` | RESEARCH_READY / PAPER-SIM yes; PRODUCTION/LIVE no |
-| `results/architecture_implementation_audit/` | Models existed but were unwired before P37 |
+Directory: `results/final_trading_validation/`
+
+| File | Contents |
+|------|----------|
+| `final_report.md` / `.json` | Status + decision matrix + required answers |
+| `profitability_gate.json` | Frozen gate outcomes |
+| `candidate_results.json` | Per-candidate deep validation |
+| `trading_behavior.json` | Trades/day, behavior class, long/short |
+| `cost_analysis.json` | BASE / MODERATE / ADVERSE |
+| `execution_realism.json` | Next-bar / no lookahead notes |
+| `regime_analysis.json` | Causal vol/trend regime survival |
+| `walk_forward_results.json` | Rolling folds |
+| `statistical_validation.json` | n_eff, HAC/Newey-West, overlap adj. |
+| `portfolio_comparison.json` | MV / RP / BL / HRP / constraints vs equal |
+| `data_provenance.json` | Free-source survey + `@1.0.1` extended BTC |
+| `experiment_registry.json` | Validation experiment IDs |
+| `reproducibility_report.json` | Deterministic rerun |
+| `test_summary.json` | Pytest evidence |
+| `validation_config.json` | Frozen gates/grids |
+
+Code: `iqrp/app/backtesting/final_validation/`  
+Run: `.venv/bin/python -m iqrp.app.backtesting.final_validation`  
+Smoke: `.venv/bin/python -m iqrp.app.backtesting.final_validation --smoke`
+
+### Outcome summary (do not re-rank by OOS)
+
+| Status | Count | Notes |
+|--------|------:|-------|
+| `PROFITABILITY_EVIDENCE` | 3 | MTF momentum family (15m L/S, 15m LONG, 5m SHORT) |
+| `RESEARCH_ONLY` | 1 | 5m L/S — fails non-catastrophic ADVERSE |
+| `FRAGILE` / `OOS_FAILED` | 4 | Ensemble, combo, CatBoost variants |
+
+**Best diagnostic family:** MTF (multi-timeframe momentum)  
+**Best diagnostic TF / holding:** 5m / 2 bars (diagnostic medians only — not selection)  
+**Data:** Binance Vision `BTCUSDT` `@1.0.1` (2019-01 → 2026-07), **RESEARCH_GRADE** (OHLCV-only; no bid/ask/depth). Paid tick/L2 identified → **STOP_BEFORE_PURCHASE**.
 
 ---
 
@@ -143,34 +158,64 @@ MODEL IMPLEMENTED
 ≠ SURVIVES COSTS
 ≠ ROBUST
 ≠ DISTINCT AFTER CONSOLIDATION
-≠ PROFITABLE STRATEGY
-≠ PRODUCTION / LIVE READY
+≠ PROFITABILITY_EVIDENCE   ← Prompt 42 (3 candidates)
+≠ HOLDOUT REPLICATED       ← final holdout (weak / partial)
+≠ PROVEN PROFITABILITY (absolute)
+≠ PAPER-READY / PAPER_TRADING_CANDIDATE
+≠ LIVE_READY
 ```
 
-Current position: **distinct research candidates + ensembles exist; profitability not proven; live not authorized.**
+---
+
+## Authoritative frozen inputs
+
+| Asset | Path | Role |
+|-------|------|------|
+| Distinct research candidates | `results/candidate_consolidation/final_candidate_set.json` | P42 validation universe (8) |
+| P42 gate protocol | `iqrp/app/backtesting/final_validation/protocol.py` | Do not relax after results |
+| Extended datasets | `dataset_registry.json` → `btcusdt_intraday_*@1.0.1` | Prefer over `@1.0.0` |
+| Cost scenarios | `iqrp.app.backtesting.alpha_research.types.COST_SCENARIOS` | BASE/MODERATE/ADVERSE |
+
+**Note:** `@1.0.0` and `@1.0.1` share parquet paths (in-place extension). Treat `@1.0.1` checksums as current; do not silently fill gaps.
+
+---
+
+## Immutable vs writable
+
+| Path | Rule |
+|------|------|
+| `results/alpha_research_btc_full/` | **IMMUTABLE** (Prompt 35) |
+| `results/alpha_research_btc_full_audit/` | **IMMUTABLE** (Prompt 36) |
+| `results/model_driven_alpha_campaign/` | **IMMUTABLE** (Prompt 39) |
+| `results/candidate_consolidation/` | **IMMUTABLE** input to P42 |
+| `results/portfolio_construction_integration/` | **IMMUTABLE** (Prompt 41) |
+| `results/final_trading_validation/` | **IMMUTABLE** (Prompt 42) |
+| `results/final_holdout_validation/` | Final holdout outputs (current frontier) |
 
 ---
 
 ## Data constraints
 
-- Symbol: **BTCUSDT**
-- Datasets: `btcusdt_intraday_{1m,5m,15m,30m,1h}@1.0.0` via `dataset_registry.json`
-- Available history ends **2024-12-31** (no fabricated 2025/2026)
-- Prompt 39 used `MAX_BARS` subsample (see `campaign.json`)
+- Symbol: **BTCUSDT** (single-market; no external second-market transfer test in P42)
+- Datasets: prefer `btcusdt_intraday_{1m,5m,15m,30m,1h}@1.0.1`
+- History: **2019-01-01 → 2026-07-31** (~3.98M 1m bars); quality MINOR_GAPS
+- Grade: **RESEARCH_GRADE** — not institutional (no L2/bid-ask)
+- Holdout: Vision July ZIP bars after `@1.0.1` truncation (`data/btcusdt/holdout/`)
 
 ---
 
-## Code map (for implementation follow-ons)
+## Code map
 
 | Concern | Location |
 |---------|----------|
-| Reference signals | `iqrp/app/backtesting/alpha_research/signals.py`, `reference_signals.py` |
-| Alpha engine / gates | `iqrp/app/backtesting/alpha_research/engine.py`, `types.py` |
-| Model→signal adapters | `iqrp/app/backtesting/alpha_research/adapters/` |
-| P39 campaign | `iqrp/app/backtesting/alpha_research/model_campaign/` |
+| Final holdout | `iqrp/app/backtesting/final_holdout/` |
+| P42 final validation | `iqrp/app/backtesting/final_validation/` |
+| P41 portfolio integration | `iqrp/app/backtesting/portfolio_integration/` |
 | P40 consolidation | `iqrp/app/backtesting/alpha_research/consolidation/` |
-| Unified Risk/Portfolio/Exec | `iqrp/app/backtesting/unified_pipeline/` |
-| Tests | `iqrp/tests/unit/backtesting/test_model_driven_campaign.py`, `test_candidate_consolidation.py`, `test_model_alpha_adapters.py`, `test_unified_trading_pipeline.py` |
+| P39 campaign | `iqrp/app/backtesting/alpha_research/model_campaign/` |
+| Unified cascade | `iqrp/app/backtesting/unified_pipeline/` |
+| Binance Vision timestamps | `iqrp/app/data/historical/binance_vision.py` |
+| Tests | `iqrp/tests/unit/backtesting/test_final_holdout_validation.py`, `test_final_trading_validation.py` |
 
 Env: prefer `.venv/bin/python`.
 
@@ -180,23 +225,23 @@ Env: prefer `.venv/bin/python`.
 
 **Should (only if a new prompt authorizes):**
 
-- Load `final_candidate_set.json` as the research universe
-- Reuse P39/P40 protocols, costs, datasets, adapters
-- Keep claim distinctions and immutability of P35–P39 dirs
+- Longer post-P42 holdout once August+ Vision/REST data is available
+- Keep claim distinctions; do not promote to LIVE_READY or PAPER_TRADING_CANDIDATE without adequate sample
 
 **Should not (until explicitly authorized):**
 
-- Paper trading / broker / live
-- Portfolio-weight optimization against OOS
-- New models or datasets
-- Architecture redesign
-- Overwriting Prompt 35/36/39 artifacts
-- Claiming profitability from research Sharpes
+- Broker / live orders
+- Retuning frozen candidates after holdout
+- Relaxing gates because the holdout was short
+- Overwriting Prompt 35–42 artifacts
+- Claiming absolute proven profitability
 
 ---
 
-## One-line pointer for prompts
+## One-line pointer
 
-> **Resume from:** `results/candidate_consolidation/final_report.md` + `final_candidate_set.json`.  
-> **Context map:** this file (`results/AGENT_HANDOFF_MAP.md`).  
-> **Upstream campaign:** `results/model_driven_alpha_campaign/campaign_report.md` (immutable).
+> **Resume from:** `results/frozen_2024_2025_holdout/final_report.md`.  
+> **Freeze:** research ≤2024-12-31; holdout = calendar 2025.  
+> **Strongest:** `mdc_99aa952c5d5f6ff7` (`PROVEN_RESEARCH_PROFITABILITY`).  
+> **LIVE_READY:** NO.
+

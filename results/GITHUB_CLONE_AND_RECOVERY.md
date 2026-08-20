@@ -154,33 +154,17 @@ Known research-venv reference versions (informational; lock may resolve slightly
 
 ## Push checklist (human or agent with push rights)
 
+Local recovery commit (example): `bcf2fb6` on `main` — **ahead of origin until pushed**.
+
 ```bash
-git status
+git status   # expect: ahead of origin/main by N
 git check-ignore -v iqrp/app/data/__init__.py iqrp/app/backtesting/data/dataset_registry.py
-# both should be untracked/tracked, NOT ignored
-
-git add .gitignore pyproject.toml \
-  iqrp/app/data iqrp/app/backtesting/data \
-  results/GITHUB_CLONE_AND_RECOVERY.md \
-  results/ARCHITECTURAL_ROADMAP_AND_HANDOVER.md \
-  results/AGENT_HANDOFF_MAP.md
-
-# optional but recommended for handoff completeness:
-git add results/paper_trading_validation results/frozen_2024_2025_holdout \
-  results/final_trading_validation results/portfolio_construction_integration
-
-git commit -m "$(cat <<'EOF'
-Recover iqrp data packages for GitHub clones and document blockers.
-
-Anchor /data/ ignore so DatasetRegistry and iqrp.app.data are tracked;
-add ML Poetry group and clone recovery guide for the next agent.
-EOF
-)"
+# both should NOT be ignored for staging purposes (negation rules OK)
 
 git push -u origin HEAD
 ```
 
-Then re-clone into a clean directory and run the verify commands above.
+If HTTPS auth fails (`could not read Username`), use SSH remote or `gh auth login`, then push.
 
 ---
 

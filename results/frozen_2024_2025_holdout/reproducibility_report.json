@@ -1,0 +1,14 @@
+{
+  "disclaimer": "FROZEN 2024\u21922025 HOLDOUT \u2014 research \u22642024-12-31; validation = calendar 2025. No retuning on 2025. PROVEN_RESEARCH_PROFITABILITY \u2260 LIVE_READY. Do not modify Prompt 35\u201342 artifacts.",
+  "run_a": "963e84aa0c1859f8b148c8134828c7ee9ca9e1c46a38c1907900d185c3847da1",
+  "run_b": "963e84aa0c1859f8b148c8134828c7ee9ca9e1c46a38c1907900d185c3847da1",
+  "identical": true,
+  "status": "PASS",
+  "manifest_checksum": "14ab2e49b567772dbf547f355096c79a7bf350b256e2deb9cca2dbb0be4d1287",
+  "holdout_checksums": {
+    "5m": "3e2ba81cf1eb5918ea127555e8c0cba4dc716651a124a17ccc3201a2f5752d74",
+    "15m": "d9c5811f6ad404e2fb0869f78d9223a8279431b831eafbf33f9f35bb57a59813",
+    "30m": "d96b22021083e308f26e4b3712df0a7a6f18310b819f386344210a1ecd630155",
+    "1h": "2760b7484d443642cf0c0f1e29103c05bd2cb31f5cbff5769d98bbc8838370a3"
+  }
+}

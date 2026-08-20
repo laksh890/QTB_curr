@@ -1,0 +1,157 @@
+{
+  "causality": {
+    "mdc_51a60a3264845365": {
+      "disclaimer": "FINAL HOLDOUT VALIDATION \u2014 independent chronological holdout of frozen Prompt-42 alphas. HOLDOUT REPLICATED \u2260 PROVEN PROFITABLE \u2260 PAPER READY \u2260 LIVE READY. Do not modify P35\u2013P42 artifacts. Do not retune after observing holdout results.",
+      "status": "PASS",
+      "checks": {
+        "position_lag_pos_tm1_times_ret_t": true,
+        "accounting_not_same_bar": true,
+        "holdout_mask_aligned": true,
+        "signal_index_aligned": true,
+        "returns_use_close_t_over_t_minus_1": true,
+        "holding_bars_applied": true
+      },
+      "notes": [
+        "Bar returns use close[t]/close[t-1]-1 (available at bar close t).",
+        "Execution realism: next-bar style via pos[t-1]*ret[t] (existing evaluate_cost_aware).",
+        "MTF: higher-TF signal aligned to execution timestamps via align_feature_to_execution (causal merge).",
+        "Regime labels for analysis use shift(1) past windows only."
+      ],
+      "holdout_bars": 105120
+    },
+    "mdc_99aa952c5d5f6ff7": {
+      "disclaimer": "FINAL HOLDOUT VALIDATION \u2014 independent chronological holdout of frozen Prompt-42 alphas. HOLDOUT REPLICATED \u2260 PROVEN PROFITABLE \u2260 PAPER READY \u2260 LIVE READY. Do not modify P35\u2013P42 artifacts. Do not retune after observing holdout results.",
+      "status": "PASS",
+      "checks": {
+        "position_lag_pos_tm1_times_ret_t": true,
+        "accounting_not_same_bar": true,
+        "holdout_mask_aligned": true,
+        "signal_index_aligned": true,
+        "returns_use_close_t_over_t_minus_1": true,
+        "holding_bars_applied": true
+      },
+      "notes": [
+        "Bar returns use close[t]/close[t-1]-1 (available at bar close t).",
+        "Execution realism: next-bar style via pos[t-1]*ret[t] (existing evaluate_cost_aware).",
+        "MTF: higher-TF signal aligned to execution timestamps via align_feature_to_execution (causal merge).",
+        "Regime labels for analysis use shift(1) past windows only."
+      ],
+      "holdout_bars": 35040
+    },
+    "mdc_6f008c954ea26bf5": {
+      "disclaimer": "FINAL HOLDOUT VALIDATION \u2014 independent chronological holdout of frozen Prompt-42 alphas. HOLDOUT REPLICATED \u2260 PROVEN PROFITABLE \u2260 PAPER READY \u2260 LIVE READY. Do not modify P35\u2013P42 artifacts. Do not retune after observing holdout results.",
+      "status": "PASS",
+      "checks": {
+        "position_lag_pos_tm1_times_ret_t": true,
+        "accounting_not_same_bar": true,
+        "holdout_mask_aligned": true,
+        "signal_index_aligned": true,
+        "returns_use_close_t_over_t_minus_1": true,
+        "holding_bars_applied": true
+      },
+      "notes": [
+        "Bar returns use close[t]/close[t-1]-1 (available at bar close t).",
+        "Execution realism: next-bar style via pos[t-1]*ret[t] (existing evaluate_cost_aware).",
+        "MTF: higher-TF signal aligned to execution timestamps via align_feature_to_execution (causal merge).",
+        "Regime labels for analysis use shift(1) past windows only."
+      ],
+      "holdout_bars": 35040
+    },
+    "mdc_678609c534d68189": {
+      "disclaimer": "FINAL HOLDOUT VALIDATION \u2014 independent chronological holdout of frozen Prompt-42 alphas. HOLDOUT REPLICATED \u2260 PROVEN PROFITABLE \u2260 PAPER READY \u2260 LIVE READY. Do not modify P35\u2013P42 artifacts. Do not retune after observing holdout results.",
+      "status": "PASS",
+      "checks": {
+        "position_lag_pos_tm1_times_ret_t": true,
+        "accounting_not_same_bar": true,
+        "holdout_mask_aligned": true,
+        "signal_index_aligned": true,
+        "returns_use_close_t_over_t_minus_1": true,
+        "holding_bars_applied": true
+      },
+      "notes": [
+        "Bar returns use close[t]/close[t-1]-1 (available at bar close t).",
+        "Execution realism: next-bar style via pos[t-1]*ret[t] (existing evaluate_cost_aware).",
+        "MTF: higher-TF signal aligned to execution timestamps via align_feature_to_execution (causal merge).",
+        "Regime labels for analysis use shift(1) past windows only."
+      ],
+      "holdout_bars": 105120
+    },
+    "mdc_801488267ad484dc": {
+      "disclaimer": "FINAL HOLDOUT VALIDATION \u2014 independent chronological holdout of frozen Prompt-42 alphas. HOLDOUT REPLICATED \u2260 PROVEN PROFITABLE \u2260 PAPER READY \u2260 LIVE READY. Do not modify P35\u2013P42 artifacts. Do not retune after observing holdout results.",
+      "status": "PASS",
+      "checks": {
+        "position_lag_pos_tm1_times_ret_t": true,
+        "accounting_not_same_bar": true,
+        "holdout_mask_aligned": true,
+        "signal_index_aligned": true,
+        "returns_use_close_t_over_t_minus_1": true,
+        "holding_bars_applied": true
+      },
+      "notes": [
+        "Bar returns use close[t]/close[t-1]-1 (available at bar close t).",
+        "Execution realism: next-bar style via pos[t-1]*ret[t] (existing evaluate_cost_aware).",
+        "MTF: higher-TF signal aligned to execution timestamps via align_feature_to_execution (causal merge).",
+        "Regime labels for analysis use shift(1) past windows only."
+      ],
+      "holdout_bars": 8760
+    },
+    "mdc_3ed979ee7d9dabe6": {
+      "disclaimer": "FINAL HOLDOUT VALIDATION \u2014 independent chronological holdout of frozen Prompt-42 alphas. HOLDOUT REPLICATED \u2260 PROVEN PROFITABLE \u2260 PAPER READY \u2260 LIVE READY. Do not modify P35\u2013P42 artifacts. Do not retune after observing holdout results.",
+      "status": "PASS",
+      "checks": {
+        "position_lag_pos_tm1_times_ret_t": true,
+        "accounting_not_same_bar": true,
+        "holdout_mask_aligned": true,
+        "signal_index_aligned": true,
+        "returns_use_close_t_over_t_minus_1": true,
+        "holding_bars_applied": true
+      },
+      "notes": [
+        "Bar returns use close[t]/close[t-1]-1 (available at bar close t).",
+        "Execution realism: next-bar style via pos[t-1]*ret[t] (existing evaluate_cost_aware).",
+        "MTF: higher-TF signal aligned to execution timestamps via align_feature_to_execution (causal merge).",
+        "Regime labels for analysis use shift(1) past windows only."
+      ],
+      "holdout_bars": 8760
+    },
+    "mdc_4992167889db9b2e": {
+      "disclaimer": "FINAL HOLDOUT VALIDATION \u2014 independent chronological holdout of frozen Prompt-42 alphas. HOLDOUT REPLICATED \u2260 PROVEN PROFITABLE \u2260 PAPER READY \u2260 LIVE READY. Do not modify P35\u2013P42 artifacts. Do not retune after observing holdout results.",
+      "status": "PASS",
+      "checks": {
+        "position_lag_pos_tm1_times_ret_t": true,
+        "accounting_not_same_bar": true,
+        "holdout_mask_aligned": true,
+        "signal_index_aligned": true,
+        "returns_use_close_t_over_t_minus_1": true,
+        "holding_bars_applied": true
+      },
+      "notes": [
+        "Bar returns use close[t]/close[t-1]-1 (available at bar close t).",
+        "Execution realism: next-bar style via pos[t-1]*ret[t] (existing evaluate_cost_aware).",
+        "MTF: higher-TF signal aligned to execution timestamps via align_feature_to_execution (causal merge).",
+        "Regime labels for analysis use shift(1) past windows only."
+      ],
+      "holdout_bars": 35040
+    },
+    "mdc_a0f769fc20835273": {
+      "disclaimer": "FINAL HOLDOUT VALIDATION \u2014 independent chronological holdout of frozen Prompt-42 alphas. HOLDOUT REPLICATED \u2260 PROVEN PROFITABLE \u2260 PAPER READY \u2260 LIVE READY. Do not modify P35\u2013P42 artifacts. Do not retune after observing holdout results.",
+      "status": "PASS",
+      "checks": {
+        "position_lag_pos_tm1_times_ret_t": true,
+        "accounting_not_same_bar": true,
+        "holdout_mask_aligned": true,
+        "signal_index_aligned": true,
+        "returns_use_close_t_over_t_minus_1": true,
+        "holding_bars_applied": true
+      },
+      "notes": [
+        "Bar returns use close[t]/close[t-1]-1 (available at bar close t).",
+        "Execution realism: next-bar style via pos[t-1]*ret[t] (existing evaluate_cost_aware).",
+        "MTF: higher-TF signal aligned to execution timestamps via align_feature_to_execution (causal merge).",
+        "Regime labels for analysis use shift(1) past windows only."
+      ],
+      "holdout_bars": 8760
+    }
+  },
+  "disclaimer": "FROZEN 2024\u21922025 HOLDOUT \u2014 research \u22642024-12-31; validation = calendar 2025. No retuning on 2025. PROVEN_RESEARCH_PROFITABILITY \u2260 LIVE_READY. Do not modify Prompt 35\u201342 artifacts."
+}

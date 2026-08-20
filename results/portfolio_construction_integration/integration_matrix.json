@@ -1,0 +1,82 @@
+{
+  "rows": [
+    {
+      "method": "mean_variance",
+      "implemented": true,
+      "optimizer_api_success": true,
+      "integrated_with_alpha_pipeline": true,
+      "supports_long_short_sleeves": true,
+      "native_long_short_sleeve_attempt": {
+        "success": true,
+        "status": "optimal",
+        "failure_reason": null,
+        "budget_mode": "dollar_neutral_0",
+        "note": "Native L/S sleeve path (budget=0). Primary cascade uses long-only sleeves + direction map."
+      },
+      "supports_long_short_trading_via_direction": true,
+      "survives_constraints": true,
+      "survives_cost_aware_oos_base": false,
+      "cascade_operational": true,
+      "rp_hrp_limitation": null
+    },
+    {
+      "method": "risk_parity",
+      "implemented": true,
+      "optimizer_api_success": true,
+      "integrated_with_alpha_pipeline": true,
+      "supports_long_short_sleeves": false,
+      "native_long_short_sleeve_attempt": null,
+      "supports_long_short_trading_via_direction": true,
+      "survives_constraints": true,
+      "survives_cost_aware_oos_base": false,
+      "cascade_operational": true,
+      "rp_hrp_limitation": "Long-only sleeve budgets; signed exposure from candidate direction/signal"
+    },
+    {
+      "method": "black_litterman",
+      "implemented": true,
+      "optimizer_api_success": true,
+      "integrated_with_alpha_pipeline": true,
+      "supports_long_short_sleeves": true,
+      "native_long_short_sleeve_attempt": {
+        "success": true,
+        "status": "optimal",
+        "failure_reason": null,
+        "budget_mode": "dollar_neutral_0",
+        "note": "Native L/S sleeve path (budget=0). Primary cascade uses long-only sleeves + direction map."
+      },
+      "supports_long_short_trading_via_direction": true,
+      "survives_constraints": true,
+      "survives_cost_aware_oos_base": false,
+      "cascade_operational": true,
+      "rp_hrp_limitation": null
+    },
+    {
+      "method": "hrp",
+      "implemented": true,
+      "optimizer_api_success": true,
+      "integrated_with_alpha_pipeline": true,
+      "supports_long_short_sleeves": false,
+      "native_long_short_sleeve_attempt": null,
+      "supports_long_short_trading_via_direction": true,
+      "survives_constraints": true,
+      "survives_cost_aware_oos_base": false,
+      "cascade_operational": true,
+      "rp_hrp_limitation": "Long-only sleeve budgets; signed exposure from candidate direction/signal"
+    },
+    {
+      "method": "constraints_only",
+      "implemented": true,
+      "optimizer_api_success": true,
+      "integrated_with_alpha_pipeline": true,
+      "supports_long_short_sleeves": false,
+      "native_long_short_sleeve_attempt": null,
+      "supports_long_short_trading_via_direction": true,
+      "survives_constraints": true,
+      "survives_cost_aware_oos_base": false,
+      "cascade_operational": true,
+      "rp_hrp_limitation": null
+    }
+  ],
+  "disclaimer": "PORTFOLIO CONSTRUCTION INTEGRATION \u2014 wiring/validation only. PORTFOLIO IMPLEMENTED \u2260 INTEGRATED \u2260 ROBUST \u2260 PROFITABLE \u2260 LIVE READY. Prompt 35/36/39/40 artifacts are immutable."
+}

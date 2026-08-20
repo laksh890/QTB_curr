@@ -1,0 +1,75 @@
+{
+  "rows": [
+    {
+      "combo": "A",
+      "kill": {
+        "halted": false,
+        "reasons": [],
+        "n_events": 0,
+        "events": []
+      },
+      "n_risk_events": 35040
+    },
+    {
+      "combo": "B",
+      "kill": {
+        "halted": false,
+        "reasons": [],
+        "n_events": 0,
+        "events": []
+      },
+      "n_risk_events": 18100
+    },
+    {
+      "combo": "C",
+      "kill": {
+        "halted": false,
+        "reasons": [],
+        "n_events": 0,
+        "events": []
+      },
+      "n_risk_events": 51240
+    },
+    {
+      "combo": "A+B",
+      "kill": {
+        "halted": false,
+        "reasons": [],
+        "n_events": 0,
+        "events": []
+      },
+      "n_risk_events": 35040
+    },
+    {
+      "combo": "A+C",
+      "kill": {
+        "halted": false,
+        "reasons": [],
+        "n_events": 0,
+        "events": []
+      },
+      "n_risk_events": 30300
+    },
+    {
+      "combo": "B+C",
+      "kill": {
+        "halted": false,
+        "reasons": [],
+        "n_events": 0,
+        "events": []
+      },
+      "n_risk_events": 25700
+    },
+    {
+      "combo": "A+B+C",
+      "kill": {
+        "halted": false,
+        "reasons": [],
+        "n_events": 0,
+        "events": []
+      },
+      "n_risk_events": 35040
+    }
+  ],
+  "disclaimer": "PAPER TRADING VALIDATION \u2014 sequential simulated execution only. PAPER_TRADING_CANDIDATE \u2260 PROVEN PROFITABLE \u2260 LIVE_READY \u2260 PRODUCTION_READY. Costs/spreads are ASSUMED when bid/ask unavailable. No broker connection."
+}

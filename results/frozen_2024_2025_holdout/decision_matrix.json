@@ -1,0 +1,119 @@
+{
+  "rows": [
+    {
+      "candidate_id": "mdc_51a60a3264845365",
+      "is_evidence_focus": false,
+      "net_sharpe": 9.429079464975777,
+      "max_drawdown": 0.09567388496923246,
+      "survives_BASE": true,
+      "survives_MODERATE": true,
+      "survives_ADVERSE": false,
+      "status": "PAPER_TRADING_CANDIDATE",
+      "failed_checks": []
+    },
+    {
+      "candidate_id": "mdc_99aa952c5d5f6ff7",
+      "is_evidence_focus": true,
+      "net_sharpe": 7.030677628891678,
+      "max_drawdown": 0.08335973749600833,
+      "survives_BASE": true,
+      "survives_MODERATE": true,
+      "survives_ADVERSE": true,
+      "status": "PROVEN_RESEARCH_PROFITABILITY",
+      "failed_checks": []
+    },
+    {
+      "candidate_id": "mdc_6f008c954ea26bf5",
+      "is_evidence_focus": true,
+      "net_sharpe": 5.368918394697802,
+      "max_drawdown": 0.08021471608879993,
+      "survives_BASE": true,
+      "survives_MODERATE": true,
+      "survives_ADVERSE": true,
+      "status": "PROVEN_RESEARCH_PROFITABILITY",
+      "failed_checks": []
+    },
+    {
+      "candidate_id": "mdc_678609c534d68189",
+      "is_evidence_focus": true,
+      "net_sharpe": 6.227890047581503,
+      "max_drawdown": 0.09567388496923235,
+      "survives_BASE": true,
+      "survives_MODERATE": true,
+      "survives_ADVERSE": false,
+      "status": "PAPER_TRADING_CANDIDATE",
+      "failed_checks": []
+    },
+    {
+      "candidate_id": "mdc_801488267ad484dc",
+      "is_evidence_focus": false,
+      "net_sharpe": 0.0749341799896102,
+      "max_drawdown": 0.15986508759346474,
+      "survives_BASE": true,
+      "survives_MODERATE": false,
+      "survives_ADVERSE": false,
+      "status": "WEAK_EVIDENCE",
+      "failed_checks": [
+        "survives_MODERATE",
+        "statistically_meaningful",
+        "stable_through_2025"
+      ]
+    },
+    {
+      "candidate_id": "mdc_3ed979ee7d9dabe6",
+      "is_evidence_focus": false,
+      "net_sharpe": -0.8144482961361361,
+      "max_drawdown": 0.47427350762512854,
+      "survives_BASE": false,
+      "survives_MODERATE": false,
+      "survives_ADVERSE": false,
+      "status": "REJECTED",
+      "failed_checks": [
+        "positive_net",
+        "survives_BASE",
+        "survives_MODERATE",
+        "statistically_meaningful",
+        "stable_through_2025",
+        "not_single_period"
+      ]
+    },
+    {
+      "candidate_id": "mdc_4992167889db9b2e",
+      "is_evidence_focus": false,
+      "net_sharpe": -0.8088759959899617,
+      "max_drawdown": 0.6269694932062129,
+      "survives_BASE": false,
+      "survives_MODERATE": false,
+      "survives_ADVERSE": false,
+      "status": "REJECTED",
+      "failed_checks": [
+        "positive_net",
+        "survives_BASE",
+        "survives_MODERATE",
+        "acceptable_drawdown",
+        "statistically_meaningful",
+        "stable_through_2025"
+      ]
+    },
+    {
+      "candidate_id": "mdc_a0f769fc20835273",
+      "is_evidence_focus": false,
+      "net_sharpe": -1.1559872705569865,
+      "max_drawdown": 0.7093215670253805,
+      "survives_BASE": false,
+      "survives_MODERATE": false,
+      "survives_ADVERSE": false,
+      "status": "REJECTED",
+      "failed_checks": [
+        "positive_net",
+        "survives_BASE",
+        "survives_MODERATE",
+        "acceptable_drawdown",
+        "statistically_meaningful",
+        "stable_through_2025",
+        "not_single_period"
+      ]
+    }
+  ],
+  "disclaimer": "FROZEN 2024\u21922025 HOLDOUT \u2014 research \u22642024-12-31; validation = calendar 2025. No retuning on 2025. PROVEN_RESEARCH_PROFITABILITY \u2260 LIVE_READY. Do not modify Prompt 35\u201342 artifacts."
+}

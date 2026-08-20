@@ -1,0 +1,245 @@
+{
+  "gates": [
+    {
+      "candidate_id": "mdc_51a60a3264845365",
+      "status": "RESEARCH_ONLY",
+      "checks": {
+        "positive_oos_net_return": true,
+        "positive_oos_sharpe": true,
+        "positive_expectancy_after_costs": true,
+        "survives_BASE": true,
+        "survives_MODERATE": true,
+        "not_catastrophic_ADVERSE": false,
+        "leakage_ok": true,
+        "recon_ok": true,
+        "execution_timing_ok": true,
+        "walk_forward_ok": true,
+        "not_tiny_window": true,
+        "acceptable_drawdown": true,
+        "acceptable_turnover": true,
+        "sufficient_trades": true,
+        "no_oos_contamination_in_selection": true,
+        "parameter_perturbation_ok": true,
+        "regime_ok": true,
+        "reproducible": true
+      },
+      "failed_checks": [
+        "not_catastrophic_ADVERSE"
+      ]
+    },
+    {
+      "candidate_id": "mdc_99aa952c5d5f6ff7",
+      "status": "PROFITABILITY_EVIDENCE",
+      "checks": {
+        "positive_oos_net_return": true,
+        "positive_oos_sharpe": true,
+        "positive_expectancy_after_costs": true,
+        "survives_BASE": true,
+        "survives_MODERATE": true,
+        "not_catastrophic_ADVERSE": true,
+        "leakage_ok": true,
+        "recon_ok": true,
+        "execution_timing_ok": true,
+        "walk_forward_ok": true,
+        "not_tiny_window": true,
+        "acceptable_drawdown": true,
+        "acceptable_turnover": true,
+        "sufficient_trades": true,
+        "no_oos_contamination_in_selection": true,
+        "parameter_perturbation_ok": true,
+        "regime_ok": true,
+        "reproducible": true
+      },
+      "failed_checks": []
+    },
+    {
+      "candidate_id": "mdc_6f008c954ea26bf5",
+      "status": "PROFITABILITY_EVIDENCE",
+      "checks": {
+        "positive_oos_net_return": true,
+        "positive_oos_sharpe": true,
+        "positive_expectancy_after_costs": true,
+        "survives_BASE": true,
+        "survives_MODERATE": true,
+        "not_catastrophic_ADVERSE": true,
+        "leakage_ok": true,
+        "recon_ok": true,
+        "execution_timing_ok": true,
+        "walk_forward_ok": true,
+        "not_tiny_window": true,
+        "acceptable_drawdown": true,
+        "acceptable_turnover": true,
+        "sufficient_trades": true,
+        "no_oos_contamination_in_selection": true,
+        "parameter_perturbation_ok": true,
+        "regime_ok": true,
+        "reproducible": true
+      },
+      "failed_checks": []
+    },
+    {
+      "candidate_id": "mdc_678609c534d68189",
+      "status": "PROFITABILITY_EVIDENCE",
+      "checks": {
+        "positive_oos_net_return": true,
+        "positive_oos_sharpe": true,
+        "positive_expectancy_after_costs": true,
+        "survives_BASE": true,
+        "survives_MODERATE": true,
+        "not_catastrophic_ADVERSE": true,
+        "leakage_ok": true,
+        "recon_ok": true,
+        "execution_timing_ok": true,
+        "walk_forward_ok": true,
+        "not_tiny_window": true,
+        "acceptable_drawdown": true,
+        "acceptable_turnover": true,
+        "sufficient_trades": true,
+        "no_oos_contamination_in_selection": true,
+        "parameter_perturbation_ok": true,
+        "regime_ok": true,
+        "reproducible": true
+      },
+      "failed_checks": []
+    },
+    {
+      "candidate_id": "mdc_801488267ad484dc",
+      "status": "OOS_FAILED",
+      "checks": {
+        "positive_oos_net_return": false,
+        "positive_oos_sharpe": false,
+        "positive_expectancy_after_costs": true,
+        "survives_BASE": false,
+        "survives_MODERATE": false,
+        "not_catastrophic_ADVERSE": false,
+        "leakage_ok": true,
+        "recon_ok": true,
+        "execution_timing_ok": true,
+        "walk_forward_ok": false,
+        "not_tiny_window": true,
+        "acceptable_drawdown": true,
+        "acceptable_turnover": true,
+        "sufficient_trades": true,
+        "no_oos_contamination_in_selection": true,
+        "parameter_perturbation_ok": false,
+        "regime_ok": false,
+        "reproducible": true
+      },
+      "failed_checks": [
+        "positive_oos_net_return",
+        "positive_oos_sharpe",
+        "survives_BASE",
+        "survives_MODERATE",
+        "not_catastrophic_ADVERSE",
+        "walk_forward_ok",
+        "parameter_perturbation_ok",
+        "regime_ok"
+      ]
+    },
+    {
+      "candidate_id": "mdc_3ed979ee7d9dabe6",
+      "status": "OOS_FAILED",
+      "checks": {
+        "positive_oos_net_return": false,
+        "positive_oos_sharpe": false,
+        "positive_expectancy_after_costs": true,
+        "survives_BASE": false,
+        "survives_MODERATE": false,
+        "not_catastrophic_ADVERSE": false,
+        "leakage_ok": true,
+        "recon_ok": true,
+        "execution_timing_ok": true,
+        "walk_forward_ok": true,
+        "not_tiny_window": true,
+        "acceptable_drawdown": true,
+        "acceptable_turnover": true,
+        "sufficient_trades": true,
+        "no_oos_contamination_in_selection": true,
+        "parameter_perturbation_ok": false,
+        "regime_ok": false,
+        "reproducible": true
+      },
+      "failed_checks": [
+        "positive_oos_net_return",
+        "positive_oos_sharpe",
+        "survives_BASE",
+        "survives_MODERATE",
+        "not_catastrophic_ADVERSE",
+        "parameter_perturbation_ok",
+        "regime_ok"
+      ]
+    },
+    {
+      "candidate_id": "mdc_4992167889db9b2e",
+      "status": "FRAGILE",
+      "checks": {
+        "positive_oos_net_return": true,
+        "positive_oos_sharpe": true,
+        "positive_expectancy_after_costs": false,
+        "survives_BASE": false,
+        "survives_MODERATE": false,
+        "not_catastrophic_ADVERSE": false,
+        "leakage_ok": true,
+        "recon_ok": true,
+        "execution_timing_ok": true,
+        "walk_forward_ok": false,
+        "not_tiny_window": true,
+        "acceptable_drawdown": true,
+        "acceptable_turnover": true,
+        "sufficient_trades": true,
+        "no_oos_contamination_in_selection": true,
+        "parameter_perturbation_ok": true,
+        "regime_ok": true,
+        "reproducible": true
+      },
+      "failed_checks": [
+        "positive_expectancy_after_costs",
+        "survives_BASE",
+        "survives_MODERATE",
+        "not_catastrophic_ADVERSE",
+        "walk_forward_ok"
+      ]
+    },
+    {
+      "candidate_id": "mdc_a0f769fc20835273",
+      "status": "OOS_FAILED",
+      "checks": {
+        "positive_oos_net_return": false,
+        "positive_oos_sharpe": false,
+        "positive_expectancy_after_costs": false,
+        "survives_BASE": false,
+        "survives_MODERATE": false,
+        "not_catastrophic_ADVERSE": true,
+        "leakage_ok": true,
+        "recon_ok": true,
+        "execution_timing_ok": true,
+        "walk_forward_ok": true,
+        "not_tiny_window": true,
+        "acceptable_drawdown": false,
+        "acceptable_turnover": true,
+        "sufficient_trades": true,
+        "no_oos_contamination_in_selection": true,
+        "parameter_perturbation_ok": false,
+        "regime_ok": false,
+        "reproducible": true
+      },
+      "failed_checks": [
+        "positive_oos_net_return",
+        "positive_oos_sharpe",
+        "positive_expectancy_after_costs",
+        "survives_BASE",
+        "survives_MODERATE",
+        "acceptable_drawdown",
+        "parameter_perturbation_ok",
+        "regime_ok"
+      ]
+    }
+  ],
+  "status_counts": {
+    "RESEARCH_ONLY": 1,
+    "PROFITABILITY_EVIDENCE": 3,
+    "OOS_FAILED": 3,
+    "FRAGILE": 1
+  },
+  "disclaimer": "FINAL TRADING VALIDATION \u2014 research evidence only. PROFITABILITY_EVIDENCE \u2260 PROVEN PROFITABILITY \u2260 PAPER-READY \u2260 LIVE_READY. Do not p-hack: gates and grids are predefined. Prompt 35/36/39/40 artifacts immutable."
+}

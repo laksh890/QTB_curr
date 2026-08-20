@@ -1,0 +1,93 @@
+{
+  "validation_id": "paper_trading_validation_v1",
+  "output_dir": "results/paper_trading_validation",
+  "prompt39_dir": "results/model_driven_alpha_campaign",
+  "frozen_2025_dir": "results/frozen_2024_2025_holdout",
+  "data_dir": "data/btcusdt/firewall_2024_2025",
+  "random_seed": 43,
+  "software_version": "iqrp-paper-trading-validation-0.1.0",
+  "initial_capital": 100000.0,
+  "max_position": 0.2,
+  "max_gross": 1.0,
+  "max_net": 1.0,
+  "max_daily_loss": 0.05,
+  "max_drawdown": 0.25,
+  "max_turnover_per_bar": 0.5,
+  "sleeve_weight": 0.33,
+  "exec_scenario": "BASE",
+  "smoke": false,
+  "smoke_bars": 500,
+  "run_failure_injection": true,
+  "market_type": "crypto",
+  "disclaimer": "PAPER TRADING VALIDATION \u2014 sequential simulated execution only. PAPER_TRADING_CANDIDATE \u2260 PROVEN PROFITABLE \u2260 LIVE_READY \u2260 PRODUCTION_READY. Costs/spreads are ASSUMED when bid/ask unavailable. No broker connection.",
+  "frozen_candidates": {
+    "A": "mdc_99aa952c5d5f6ff7",
+    "B": "mdc_6f008c954ea26bf5",
+    "C": "mdc_678609c534d68189"
+  },
+  "research_end": "2024-12-31 23:59:59+00:00",
+  "holdout": [
+    "2025-01-01 00:00:00+00:00",
+    "2025-12-31 23:59:59+00:00"
+  ],
+  "exec_scenarios": {
+    "BASE": {
+      "commission_bps": 1.0,
+      "half_spread_bps": 1.0,
+      "slippage_bps": 2.0,
+      "latency_bars": 1.0,
+      "partial_fill_prob": 0.02,
+      "reject_prob": 0.005,
+      "variable_spread_bps": 0.5
+    },
+    "MODERATE": {
+      "commission_bps": 2.0,
+      "half_spread_bps": 2.0,
+      "slippage_bps": 4.0,
+      "latency_bars": 1.0,
+      "partial_fill_prob": 0.05,
+      "reject_prob": 0.01,
+      "variable_spread_bps": 1.0
+    },
+    "ADVERSE": {
+      "commission_bps": 4.0,
+      "half_spread_bps": 4.0,
+      "slippage_bps": 8.0,
+      "latency_bars": 2.0,
+      "partial_fill_prob": 0.1,
+      "reject_prob": 0.03,
+      "variable_spread_bps": 2.0
+    }
+  },
+  "combos": [
+    [
+      "A"
+    ],
+    [
+      "B"
+    ],
+    [
+      "C"
+    ],
+    [
+      "A",
+      "B"
+    ],
+    [
+      "A",
+      "C"
+    ],
+    [
+      "B",
+      "C"
+    ],
+    [
+      "A",
+      "B",
+      "C"
+    ]
+  ],
+  "live_ready": false,
+  "bid_ask_label": "ASSUMED_OHLCV_MICROSTRUCTURE",
+  "started_at": "2026-08-19T08:47:26.651889+00:00"
+}

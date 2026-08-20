@@ -1,0 +1,85 @@
+{
+  "rows": [
+    {
+      "candidate_id": "mdc_51a60a3264845365",
+      "n_holdout_bars": 105120,
+      "independent_trading_days": 365,
+      "acf1": -0.02025454721135826,
+      "n_eff_overlap_adj": 54733.17467184744,
+      "newey_west_se": 3.877120847979509e-06,
+      "t_hac": 12.839715826836958,
+      "statistically_meaningful": true
+    },
+    {
+      "candidate_id": "mdc_99aa952c5d5f6ff7",
+      "n_holdout_bars": 35040,
+      "independent_trading_days": 365,
+      "acf1": -0.00874211967289909,
+      "n_eff_overlap_adj": 17829.02541045858,
+      "newey_west_se": 1.1816189887078246e-05,
+      "t_hac": 9.167870410023077,
+      "statistically_meaningful": true
+    },
+    {
+      "candidate_id": "mdc_6f008c954ea26bf5",
+      "n_holdout_bars": 35040,
+      "independent_trading_days": 365,
+      "acf1": 0.0011506439166398467,
+      "n_eff_overlap_adj": 34959.45555230064,
+      "newey_west_se": 8.19645171164046e-06,
+      "t_hac": 6.667723279130852,
+      "statistically_meaningful": true
+    },
+    {
+      "candidate_id": "mdc_678609c534d68189",
+      "n_holdout_bars": 105120,
+      "independent_trading_days": 365,
+      "acf1": -0.03240410640118667,
+      "n_eff_overlap_adj": 56080.394916335885,
+      "newey_west_se": 2.916676020964397e-06,
+      "t_hac": 8.468358138743705,
+      "statistically_meaningful": true
+    },
+    {
+      "candidate_id": "mdc_801488267ad484dc",
+      "n_holdout_bars": 8760,
+      "independent_trading_days": 365,
+      "acf1": -0.030736194615254196,
+      "n_eff_overlap_adj": 931.5574371670157,
+      "newey_west_se": 2.49274851889371e-05,
+      "t_hac": 0.0927204315815403,
+      "statistically_meaningful": false
+    },
+    {
+      "candidate_id": "mdc_3ed979ee7d9dabe6",
+      "n_holdout_bars": 8760,
+      "independent_trading_days": 365,
+      "acf1": -0.010246620646377548,
+      "n_eff_overlap_adj": 447.0689659398675,
+      "newey_west_se": 4.36825833718862e-05,
+      "t_hac": -1.0694021817643287,
+      "statistically_meaningful": false
+    },
+    {
+      "candidate_id": "mdc_4992167889db9b2e",
+      "n_holdout_bars": 35040,
+      "independent_trading_days": 365,
+      "acf1": -0.0019095019274111423,
+      "n_eff_overlap_adj": 1758.7036954730752,
+      "newey_west_se": 1.2641649491612964e-05,
+      "t_hac": -0.982584176137493,
+      "statistically_meaningful": false
+    },
+    {
+      "candidate_id": "mdc_a0f769fc20835273",
+      "n_holdout_bars": 8760,
+      "independent_trading_days": 365,
+      "acf1": -0.01495033415100168,
+      "n_eff_overlap_adj": 451.29526131557014,
+      "newey_west_se": 5.069613971966425e-05,
+      "t_hac": -1.3921738001071695,
+      "statistically_meaningful": false
+    }
+  ],
+  "disclaimer": "FROZEN 2024\u21922025 HOLDOUT \u2014 research \u22642024-12-31; validation = calendar 2025. No retuning on 2025. PROVEN_RESEARCH_PROFITABILITY \u2260 LIVE_READY. Do not modify Prompt 35\u201342 artifacts."
+}

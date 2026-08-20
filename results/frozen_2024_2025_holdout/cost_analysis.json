@@ -1,0 +1,253 @@
+{
+  "rows": [
+    {
+      "candidate_id": "mdc_51a60a3264845365",
+      "BASE": {
+        "net_sharpe": 9.429079464975777,
+        "survives": true,
+        "components": {
+          "commission_bps": 1.0,
+          "spread_bps": 2.0,
+          "slippage_bps": 2.0
+        }
+      },
+      "MODERATE": {
+        "net_sharpe": 5.785366349896143,
+        "survives": true,
+        "components": {
+          "commission_bps": 2.0,
+          "spread_bps": 4.0,
+          "slippage_bps": 4.0
+        }
+      },
+      "ADVERSE": {
+        "net_sharpe": -1.0887804428266166,
+        "survives": false,
+        "components": {
+          "commission_bps": 4.0,
+          "spread_bps": 8.0,
+          "slippage_bps": 8.0
+        }
+      },
+      "cost_pct_gross": 0.3529538138580825
+    },
+    {
+      "candidate_id": "mdc_99aa952c5d5f6ff7",
+      "BASE": {
+        "net_sharpe": 7.030677628891678,
+        "survives": true,
+        "components": {
+          "commission_bps": 1.0,
+          "spread_bps": 2.0,
+          "slippage_bps": 2.0
+        }
+      },
+      "MODERATE": {
+        "net_sharpe": 5.157739025481052,
+        "survives": true,
+        "components": {
+          "commission_bps": 2.0,
+          "spread_bps": 4.0,
+          "slippage_bps": 4.0
+        }
+      },
+      "ADVERSE": {
+        "net_sharpe": 1.5180211510879094,
+        "survives": true,
+        "components": {
+          "commission_bps": 4.0,
+          "spread_bps": 8.0,
+          "slippage_bps": 8.0
+        }
+      },
+      "cost_pct_gross": 0.34398924480403636
+    },
+    {
+      "candidate_id": "mdc_6f008c954ea26bf5",
+      "BASE": {
+        "net_sharpe": 5.368918394697802,
+        "survives": true,
+        "components": {
+          "commission_bps": 1.0,
+          "spread_bps": 2.0,
+          "slippage_bps": 2.0
+        }
+      },
+      "MODERATE": {
+        "net_sharpe": 3.969785172562911,
+        "survives": true,
+        "components": {
+          "commission_bps": 2.0,
+          "spread_bps": 4.0,
+          "slippage_bps": 4.0
+        }
+      },
+      "ADVERSE": {
+        "net_sharpe": 1.217676100640335,
+        "survives": true,
+        "components": {
+          "commission_bps": 4.0,
+          "spread_bps": 8.0,
+          "slippage_bps": 8.0
+        }
+      },
+      "cost_pct_gross": 0.3414438967206936
+    },
+    {
+      "candidate_id": "mdc_678609c534d68189",
+      "BASE": {
+        "net_sharpe": 6.227890047581503,
+        "survives": true,
+        "components": {
+          "commission_bps": 1.0,
+          "spread_bps": 2.0,
+          "slippage_bps": 2.0
+        }
+      },
+      "MODERATE": {
+        "net_sharpe": 3.8432587367292004,
+        "survives": true,
+        "components": {
+          "commission_bps": 2.0,
+          "spread_bps": 4.0,
+          "slippage_bps": 4.0
+        }
+      },
+      "ADVERSE": {
+        "net_sharpe": -0.8023841479705112,
+        "survives": false,
+        "components": {
+          "commission_bps": 4.0,
+          "spread_bps": 8.0,
+          "slippage_bps": 8.0
+        }
+      },
+      "cost_pct_gross": 0.3548659752613303
+    },
+    {
+      "candidate_id": "mdc_801488267ad484dc",
+      "BASE": {
+        "net_sharpe": 0.0749341799896102,
+        "survives": true,
+        "components": {
+          "commission_bps": 1.0,
+          "spread_bps": 2.0,
+          "slippage_bps": 2.0
+        }
+      },
+      "MODERATE": {
+        "net_sharpe": -0.23572360205409454,
+        "survives": false,
+        "components": {
+          "commission_bps": 2.0,
+          "spread_bps": 4.0,
+          "slippage_bps": 4.0
+        }
+      },
+      "ADVERSE": {
+        "net_sharpe": -0.8531643705985336,
+        "survives": false,
+        "components": {
+          "commission_bps": 4.0,
+          "spread_bps": 8.0,
+          "slippage_bps": 8.0
+        }
+      },
+      "cost_pct_gross": 2.3597829503585306
+    },
+    {
+      "candidate_id": "mdc_3ed979ee7d9dabe6",
+      "BASE": {
+        "net_sharpe": -0.8144482961361361,
+        "survives": false,
+        "components": {
+          "commission_bps": 1.0,
+          "spread_bps": 2.0,
+          "slippage_bps": 2.0
+        }
+      },
+      "MODERATE": {
+        "net_sharpe": -1.3993839264603742,
+        "survives": false,
+        "components": {
+          "commission_bps": 2.0,
+          "spread_bps": 4.0,
+          "slippage_bps": 4.0
+        }
+      },
+      "ADVERSE": {
+        "net_sharpe": -2.556855458303081,
+        "survives": false,
+        "components": {
+          "commission_bps": 4.0,
+          "spread_bps": 8.0,
+          "slippage_bps": 8.0
+        }
+      },
+      "cost_pct_gross": 5.598999742987807
+    },
+    {
+      "candidate_id": "mdc_4992167889db9b2e",
+      "BASE": {
+        "net_sharpe": -0.8088759959899617,
+        "survives": false,
+        "components": {
+          "commission_bps": 1.0,
+          "spread_bps": 2.0,
+          "slippage_bps": 2.0
+        }
+      },
+      "MODERATE": {
+        "net_sharpe": -2.2895949638591846,
+        "survives": false,
+        "components": {
+          "commission_bps": 2.0,
+          "spread_bps": 4.0,
+          "slippage_bps": 4.0
+        }
+      },
+      "ADVERSE": {
+        "net_sharpe": -5.1420365771199625,
+        "survives": false,
+        "components": {
+          "commission_bps": 4.0,
+          "spread_bps": 8.0,
+          "slippage_bps": 8.0
+        }
+      },
+      "cost_pct_gross": 2.989820986985424
+    },
+    {
+      "candidate_id": "mdc_a0f769fc20835273",
+      "BASE": {
+        "net_sharpe": -1.1559872705569865,
+        "survives": false,
+        "components": {
+          "commission_bps": 1.0,
+          "spread_bps": 2.0,
+          "slippage_bps": 2.0
+        }
+      },
+      "MODERATE": {
+        "net_sharpe": -1.5114712033765318,
+        "survives": false,
+        "components": {
+          "commission_bps": 2.0,
+          "spread_bps": 4.0,
+          "slippage_bps": 4.0
+        }
+      },
+      "ADVERSE": {
+        "net_sharpe": -2.2139110403668294,
+        "survives": false,
+        "components": {
+          "commission_bps": 4.0,
+          "spread_bps": 8.0,
+          "slippage_bps": 8.0
+        }
+      },
+      "cost_pct_gross": 0.9373642744751033
+    }
+  ],
+  "disclaimer": "FROZEN 2024\u21922025 HOLDOUT \u2014 research \u22642024-12-31; validation = calendar 2025. No retuning on 2025. PROVEN_RESEARCH_PROFITABILITY \u2260 LIVE_READY. Do not modify Prompt 35\u201342 artifacts."
+}

@@ -1,0 +1,137 @@
+{
+  "disclaimer": "PORTFOLIO CONSTRUCTION INTEGRATION \u2014 wiring/validation only. PORTFOLIO IMPLEMENTED \u2260 INTEGRATED \u2260 ROBUST \u2260 PROFITABLE \u2260 LIVE READY. Prompt 35/36/39/40 artifacts are immutable.",
+  "integration_id": "portfolio_construction_integration_v1",
+  "started_at": "2026-08-17T11:12:12.000752+00:00",
+  "status": "PORTFOLIO_INTEGRATION_COMPLETE",
+  "n_candidates": 8,
+  "candidate_ids": [
+    "mdc_51a60a3264845365",
+    "mdc_99aa952c5d5f6ff7",
+    "mdc_6f008c954ea26bf5",
+    "mdc_678609c534d68189",
+    "mdc_801488267ad484dc",
+    "mdc_3ed979ee7d9dabe6",
+    "mdc_4992167889db9b2e",
+    "mdc_a0f769fc20835273"
+  ],
+  "causal_estimation": {
+    "n_obs": 78,
+    "cov_method": "ledoit_wolf",
+    "degenerate_before_ridge": false,
+    "min_eigenvalue": 0.0002009539749639269,
+    "estimation_window": "pre_oos_train_plus_validation",
+    "n_dates": 78
+  },
+  "answers": {
+    "1_methods_implemented": [
+      "mean_variance",
+      "risk_parity",
+      "black_litterman",
+      "hrp",
+      "constraints_only"
+    ],
+    "2_mathematically_validated": [
+      "mean_variance",
+      "risk_parity",
+      "black_litterman",
+      "hrp",
+      "constraints_only"
+    ],
+    "3_integrated_with_model_driven_pipeline": [
+      "mean_variance",
+      "risk_parity",
+      "black_litterman",
+      "hrp",
+      "constraints_only"
+    ],
+    "4_support_long_short": {
+      "mean_variance": "YES native L/S sleeves (budget=0 dollar-neutral path validated); primary cascade uses long-only sleeves + direction map",
+      "black_litterman": "YES native L/S sleeves (budget=0 path validated); primary cascade uses long-only sleeves + direction map",
+      "risk_parity": "NO native L/S sleeves (existing solver long-only; rejection exercised); YES trading via candidate direction map",
+      "hrp": "NO native L/S sleeves (existing solver long-only); YES trading via candidate direction map",
+      "constraints_only": "YES via direction map (no optimizer)"
+    },
+    "5_survive_constraints": [
+      "mean_variance",
+      "risk_parity",
+      "black_litterman",
+      "hrp",
+      "constraints_only"
+    ],
+    "6_survive_cost_aware_oos": {
+      "BASE": [],
+      "MODERATE": [],
+      "ADVERSE": []
+    },
+    "7_vs_constraints_only": [
+      {
+        "method": "mean_variance",
+        "dd_vs_baseline": 0.058002171320272855,
+        "turnover_vs_baseline": 0.0,
+        "gross_vs_baseline": 0.0,
+        "net_sharpe_base_method": -0.8675741003002662,
+        "net_sharpe_base_baseline": 0.22913400793221908,
+        "note": "Diagnostic vs constraints-only \u2014 not a profitability ranking."
+      },
+      {
+        "method": "risk_parity",
+        "dd_vs_baseline": 0.01596388470012644,
+        "turnover_vs_baseline": 0.0,
+        "gross_vs_baseline": 0.0,
+        "net_sharpe_base_method": -5.247794871241022,
+        "net_sharpe_base_baseline": 0.22913400793221908,
+        "note": "Diagnostic vs constraints-only \u2014 not a profitability ranking."
+      },
+      {
+        "method": "black_litterman",
+        "dd_vs_baseline": 0.058002171320189366,
+        "turnover_vs_baseline": 0.0,
+        "gross_vs_baseline": 0.0,
+        "net_sharpe_base_method": -0.8675741002956109,
+        "net_sharpe_base_baseline": 0.22913400793221908,
+        "note": "Diagnostic vs constraints-only \u2014 not a profitability ranking."
+      },
+      {
+        "method": "hrp",
+        "dd_vs_baseline": 0.024083747389278876,
+        "turnover_vs_baseline": 0.0,
+        "gross_vs_baseline": 0.0,
+        "net_sharpe_base_method": -6.243183970070911,
+        "net_sharpe_base_baseline": 0.22913400793221908,
+        "note": "Diagnostic vs constraints-only \u2014 not a profitability ranking."
+      }
+    ],
+    "8_full_cascade_operational": true,
+    "proven_profitability": false,
+    "live_ready": false,
+    "6_note": "No method met alpha_survives_costs on the OOS portfolio proxy under BASE/MODERATE/ADVERSE in this integration run; cascade still operational. Not a profitability claim."
+  },
+  "claim_distinctions": {
+    "PORTFOLIO_IMPLEMENTED": true,
+    "PORTFOLIO_INTEGRATED": true,
+    "PORTFOLIO_ROBUST": false,
+    "PROFITABLE": false,
+    "LIVE_READY": false
+  },
+  "rejection_exercises": [
+    {
+      "case": "risk_parity_long_short_request",
+      "success": false,
+      "status": "infeasible",
+      "failure_reason": "risk parity requires long_only / non-negative weights",
+      "note": "Existing RP solver requires long-only sleeves."
+    },
+    {
+      "case": "degenerate_covariance_mean_variance",
+      "success": true,
+      "status": "optimal",
+      "note": "Exercises ridge/stabilization inside existing MV optimizer"
+    },
+    {
+      "case": "tight_constraints_mean_variance",
+      "success": false,
+      "status": "infeasible",
+      "failure_reason": "n * max_weight < budget; max_gross < |budget|; max_gross < budget under long_only"
+    }
+  ]
+}

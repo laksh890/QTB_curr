@@ -1,0 +1,140 @@
+{
+  "status": "PASS",
+  "scenarios": [
+    {
+      "name": "reject_orders",
+      "passed": true,
+      "halted": false,
+      "reasons": [],
+      "n_rejects": 799,
+      "n_partials": 0,
+      "recon_ok": true,
+      "detail": "",
+      "expect_halt": false
+    },
+    {
+      "name": "partial_orders",
+      "passed": true,
+      "halted": false,
+      "reasons": [],
+      "n_rejects": 0,
+      "n_partials": 796,
+      "recon_ok": true,
+      "detail": "",
+      "expect_halt": false
+    },
+    {
+      "name": "model_failure",
+      "passed": true,
+      "halted": true,
+      "reasons": [
+        "MODEL_FAILURE"
+      ],
+      "n_rejects": 0,
+      "n_partials": 2,
+      "recon_ok": true,
+      "detail": "",
+      "expect_halt": true
+    },
+    {
+      "name": "recon_failure",
+      "passed": true,
+      "halted": true,
+      "reasons": [
+        "RECONCILIATION_FAILURE"
+      ],
+      "n_rejects": 0,
+      "n_partials": 1,
+      "recon_ok": true,
+      "detail": "",
+      "expect_halt": true
+    },
+    {
+      "name": "exchange_timeout",
+      "passed": true,
+      "halted": true,
+      "reasons": [
+        "EXCHANGE_TIMEOUT"
+      ],
+      "n_rejects": 2,
+      "n_partials": 2,
+      "recon_ok": true,
+      "detail": "",
+      "expect_halt": true
+    },
+    {
+      "name": "exec_failure",
+      "passed": true,
+      "halted": true,
+      "reasons": [
+        "EXECUTION_FAILURE"
+      ],
+      "n_rejects": 0,
+      "n_partials": 1,
+      "recon_ok": true,
+      "detail": "",
+      "expect_halt": true
+    },
+    {
+      "name": "duplicate_halt",
+      "passed": true,
+      "halted": false,
+      "reasons": [],
+      "n_rejects": 5,
+      "n_partials": 25,
+      "recon_ok": true,
+      "detail": "",
+      "expect_halt": false
+    },
+    {
+      "name": "duplicate_candle",
+      "passed": true,
+      "halted": true,
+      "reasons": [
+        "DUPLICATE_CANDLE"
+      ],
+      "data_events_sample": [
+        {
+          "i": 400,
+          "event": "duplicate_candle"
+        }
+      ]
+    },
+    {
+      "name": "simulator_restart",
+      "passed": true,
+      "equity_after_a": 100557.8293104409,
+      "equity_after_b": 100132.9742391292,
+      "recon_a": {
+        "ok": true,
+        "drift": 0.0,
+        "equity": 100557.8293104409,
+        "cash": 80406.5194213102,
+        "qty": 0.20777658642197325,
+        "fees_paid": 10.478143947223906
+      },
+      "recon_b": {
+        "ok": true,
+        "drift": 0.0,
+        "equity": 100132.9742391292,
+        "cash": 120181.11962216157,
+        "qty": -0.20418130067100249,
+        "fees_paid": 46.50985850056666
+      }
+    },
+    {
+      "name": "risk_max_drawdown",
+      "passed": true,
+      "halted": false,
+      "reasons": [],
+      "n_rejects": 4,
+      "n_partials": 17,
+      "recon_ok": true,
+      "detail": "",
+      "expect_halt": null,
+      "note": "tight limits available; trip depends on path"
+    }
+  ],
+  "n_pass": 10,
+  "n_total": 10
+}

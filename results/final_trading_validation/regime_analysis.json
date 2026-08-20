@@ -1,0 +1,85 @@
+{
+  "rows": [
+    {
+      "candidate_id": "mdc_51a60a3264845365",
+      "label": "WORKS_ACROSS_REGIMES",
+      "by_regime_oos_sharpe": {
+        "high_vol": 5.398358255501702,
+        "low_vol": 7.708946655971553,
+        "bullish": 3.9183688293332324,
+        "bearish": 8.28685621873952
+      }
+    },
+    {
+      "candidate_id": "mdc_99aa952c5d5f6ff7",
+      "label": "WORKS_ACROSS_REGIMES",
+      "by_regime_oos_sharpe": {
+        "high_vol": 5.936989114414647,
+        "low_vol": 4.6239051349212605,
+        "bullish": 5.691564916295839,
+        "bearish": 4.845425661470247
+      }
+    },
+    {
+      "candidate_id": "mdc_6f008c954ea26bf5",
+      "label": "WORKS_ACROSS_REGIMES",
+      "by_regime_oos_sharpe": {
+        "high_vol": 7.50454740231593,
+        "low_vol": 4.744395313912077,
+        "bullish": 5.157193678978094,
+        "bearish": 9.482436034115526
+      }
+    },
+    {
+      "candidate_id": "mdc_678609c534d68189",
+      "label": "WORKS_ACROSS_REGIMES",
+      "by_regime_oos_sharpe": {
+        "high_vol": 6.573682859732801,
+        "low_vol": 9.18730018058596,
+        "bullish": 7.507743905471376,
+        "bearish": 8.331074644658576
+      }
+    },
+    {
+      "candidate_id": "mdc_801488267ad484dc",
+      "label": "COMPLETELY_FAILS",
+      "by_regime_oos_sharpe": {
+        "high_vol": -0.6623617590987911,
+        "low_vol": -0.430639269984664,
+        "bullish": -0.21524396342609323,
+        "bearish": -0.9095109755539269
+      }
+    },
+    {
+      "candidate_id": "mdc_3ed979ee7d9dabe6",
+      "label": "COMPLETELY_FAILS",
+      "by_regime_oos_sharpe": {
+        "high_vol": -0.5220279591810506,
+        "low_vol": -0.22394525762594564,
+        "bullish": -0.3546282236740362,
+        "bearish": -0.3791321634122514
+      }
+    },
+    {
+      "candidate_id": "mdc_4992167889db9b2e",
+      "label": "DEGRADES_GRACEFULLY",
+      "by_regime_oos_sharpe": {
+        "high_vol": 2.464550494130174,
+        "low_vol": -3.163331523300207,
+        "bullish": -0.19040398780898887,
+        "bearish": 0.2798674943421176
+      }
+    },
+    {
+      "candidate_id": "mdc_a0f769fc20835273",
+      "label": "COMPLETELY_FAILS",
+      "by_regime_oos_sharpe": {
+        "high_vol": -0.6448113304254139,
+        "low_vol": -1.270073697999331,
+        "bullish": -1.8355060217179309,
+        "bearish": -0.19307435923366356
+      }
+    }
+  ],
+  "disclaimer": "FINAL TRADING VALIDATION \u2014 research evidence only. PROFITABILITY_EVIDENCE \u2260 PROVEN PROFITABILITY \u2260 PAPER-READY \u2260 LIVE_READY. Do not p-hack: gates and grids are predefined. Prompt 35/36/39/40 artifacts immutable."
+}

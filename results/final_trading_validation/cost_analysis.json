@@ -1,0 +1,165 @@
+{
+  "rows": [
+    {
+      "candidate_id": "mdc_51a60a3264845365",
+      "BASE": {
+        "net_sharpe_oos": 6.329245371398349,
+        "gross_sharpe_oos": 10.122962799845691,
+        "transaction_costs": 1.4665,
+        "survives": true,
+        "cost_as_pct_of_gross": 0.0218229847838907
+      },
+      "MODERATE": {
+        "net_sharpe_oos": 2.587570730023228,
+        "survives": true,
+        "transaction_costs": 2.933
+      },
+      "ADVERSE": {
+        "net_sharpe_oos": -4.357609270976474,
+        "transaction_costs": 5.866,
+        "catastrophic": true
+      }
+    },
+    {
+      "candidate_id": "mdc_99aa952c5d5f6ff7",
+      "BASE": {
+        "net_sharpe_oos": 5.239070799148286,
+        "gross_sharpe_oos": 7.258259978568067,
+        "transaction_costs": 1.3555,
+        "survives": true,
+        "cost_as_pct_of_gross": 0.01052045530970686
+      },
+      "MODERATE": {
+        "net_sharpe_oos": 3.2340246056553723,
+        "survives": true,
+        "transaction_costs": 2.711
+      },
+      "ADVERSE": {
+        "net_sharpe_oos": -0.6112302547989387,
+        "transaction_costs": 5.422,
+        "catastrophic": false
+      }
+    },
+    {
+      "candidate_id": "mdc_6f008c954ea26bf5",
+      "BASE": {
+        "net_sharpe_oos": 6.1568118004576275,
+        "gross_sharpe_oos": 7.666542712386827,
+        "transaction_costs": 0.6775,
+        "survives": true,
+        "cost_as_pct_of_gross": 0.023376497661032968
+      },
+      "MODERATE": {
+        "net_sharpe_oos": 4.643959347714229,
+        "survives": true,
+        "transaction_costs": 1.355
+      },
+      "ADVERSE": {
+        "net_sharpe_oos": 1.6656540371376112,
+        "transaction_costs": 2.71,
+        "catastrophic": false
+      }
+    },
+    {
+      "candidate_id": "mdc_678609c534d68189",
+      "BASE": {
+        "net_sharpe_oos": 7.4918983930805645,
+        "gross_sharpe_oos": 9.996416195261972,
+        "transaction_costs": 0.734,
+        "survives": true,
+        "cost_as_pct_of_gross": 0.03949279445719
+      },
+      "MODERATE": {
+        "net_sharpe_oos": 4.989582988436411,
+        "survives": true,
+        "transaction_costs": 1.468
+      },
+      "ADVERSE": {
+        "net_sharpe_oos": 0.11873522241255824,
+        "transaction_costs": 2.936,
+        "catastrophic": false
+      }
+    },
+    {
+      "candidate_id": "mdc_801488267ad484dc",
+      "BASE": {
+        "net_sharpe_oos": -0.4970142325059521,
+        "gross_sharpe_oos": 0.32428638037945695,
+        "transaction_costs": 0.4745,
+        "survives": false,
+        "cost_as_pct_of_gross": 2.591429397036658
+      },
+      "MODERATE": {
+        "net_sharpe_oos": -1.3121257699895466,
+        "survives": false,
+        "transaction_costs": 0.949
+      },
+      "ADVERSE": {
+        "net_sharpe_oos": -2.9039557625188577,
+        "transaction_costs": 1.898,
+        "catastrophic": true
+      }
+    },
+    {
+      "candidate_id": "mdc_3ed979ee7d9dabe6",
+      "BASE": {
+        "net_sharpe_oos": -0.3658690448479371,
+        "gross_sharpe_oos": 0.26907873995554826,
+        "transaction_costs": 0.6925,
+        "survives": false,
+        "cost_as_pct_of_gross": 4.294193719645048
+      },
+      "MODERATE": {
+        "net_sharpe_oos": -0.9986429537016204,
+        "survives": false,
+        "transaction_costs": 1.385
+      },
+      "ADVERSE": {
+        "net_sharpe_oos": -2.250066870584339,
+        "transaction_costs": 2.77,
+        "catastrophic": true
+      }
+    },
+    {
+      "candidate_id": "mdc_4992167889db9b2e",
+      "BASE": {
+        "net_sharpe_oos": 0.051822819852444336,
+        "gross_sharpe_oos": 1.8138767001491634,
+        "transaction_costs": 0.6055,
+        "survives": false,
+        "cost_as_pct_of_gross": 1.4486957247713936
+      },
+      "MODERATE": {
+        "net_sharpe_oos": -1.7072301994656622,
+        "survives": false,
+        "transaction_costs": 1.211
+      },
+      "ADVERSE": {
+        "net_sharpe_oos": -5.112526025709375,
+        "transaction_costs": 2.422,
+        "catastrophic": true
+      }
+    },
+    {
+      "candidate_id": "mdc_a0f769fc20835273",
+      "BASE": {
+        "net_sharpe_oos": -0.9421675386103209,
+        "gross_sharpe_oos": -0.6265044143925456,
+        "transaction_costs": 0.3895,
+        "survives": false,
+        "cost_as_pct_of_gross": 0.5911355157324463
+      },
+      "MODERATE": {
+        "net_sharpe_oos": -1.2565049884885093,
+        "survives": false,
+        "transaction_costs": 0.779
+      },
+      "ADVERSE": {
+        "net_sharpe_oos": -1.8779246127817466,
+        "transaction_costs": 1.558,
+        "catastrophic": false
+      }
+    }
+  ],
+  "disclaimer": "FINAL TRADING VALIDATION \u2014 research evidence only. PROFITABILITY_EVIDENCE \u2260 PROVEN PROFITABILITY \u2260 PAPER-READY \u2260 LIVE_READY. Do not p-hack: gates and grids are predefined. Prompt 35/36/39/40 artifacts immutable."
+}

@@ -1,0 +1,110 @@
+{
+  "disclaimer": "FINAL TRADING VALIDATION \u2014 research evidence only. PROFITABILITY_EVIDENCE \u2260 PROVEN PROFITABILITY \u2260 PAPER-READY \u2260 LIVE_READY. Do not p-hack: gates and grids are predefined. Prompt 35/36/39/40 artifacts immutable.",
+  "prompt41_reference": {
+    "source": "results/portfolio_construction_integration/portfolio_method_results.json",
+    "note": "Prompt 41 artifacts immutable; referenced for consistency, not re-tuned."
+  },
+  "methods": {
+    "equal_sleeve_baseline": {
+      "weights": {
+        "mdc_51a60a3264845365": 0.25,
+        "mdc_99aa952c5d5f6ff7": 0.25,
+        "mdc_6f008c954ea26bf5": 0.25,
+        "mdc_678609c534d68189": 0.25
+      },
+      "status": "OK",
+      "oos_net_sharpe": 11.88834260396467,
+      "oos_net_return": 0.5428378778849606,
+      "oos_max_dd": 0.010553018941845238,
+      "gross_exposure": 1.0,
+      "net_exposure": 1.0
+    },
+    "mean_variance": {
+      "weights": {
+        "mdc_51a60a3264845365": 0.25000000000000033,
+        "mdc_99aa952c5d5f6ff7": -0.24999999999999972,
+        "mdc_6f008c954ea26bf5": -0.2500000000000003,
+        "mdc_678609c534d68189": 0.24999999999999967
+      },
+      "status": "OK",
+      "oos_net_sharpe": 11.888342603964672,
+      "oos_net_return": 0.5428378778849606,
+      "oos_max_dd": 0.010553018941845238,
+      "concentration_hhi": 0.25,
+      "gross_exposure": 0.9999999999999999,
+      "net_exposure": 0.0
+    },
+    "risk_parity": {
+      "weights": {
+        "mdc_51a60a3264845365": 0.15275454942499817,
+        "mdc_99aa952c5d5f6ff7": 0.14949261183503298,
+        "mdc_6f008c954ea26bf5": 0.49999999999987477,
+        "mdc_678609c534d68189": 0.19775283874009408
+      },
+      "status": "OK",
+      "oos_net_sharpe": 12.792204605865457,
+      "oos_net_return": 0.4939459038607777,
+      "oos_max_dd": 0.009560435090291919,
+      "concentration_hhi": 0.33478817859293447,
+      "gross_exposure": 1.0,
+      "net_exposure": 1.0
+    },
+    "black_litterman": {
+      "weights": {
+        "mdc_51a60a3264845365": 0.24999999999999994,
+        "mdc_99aa952c5d5f6ff7": 0.2500000000000004,
+        "mdc_6f008c954ea26bf5": -0.2500000000000004,
+        "mdc_678609c534d68189": -0.2499999999999994
+      },
+      "status": "OK",
+      "oos_net_sharpe": 11.888342603964666,
+      "oos_net_return": 0.5428378778849606,
+      "oos_max_dd": 0.010553018941845238,
+      "concentration_hhi": 0.25000000000000006,
+      "gross_exposure": 1.0,
+      "net_exposure": 5.551115123125783e-16
+    },
+    "hrp": {
+      "weights": {
+        "mdc_51a60a3264845365": 0.19254458108354655,
+        "mdc_99aa952c5d5f6ff7": 0.1930317635476951,
+        "mdc_6f008c954ea26bf5": 0.3763601746209741,
+        "mdc_678609c534d68189": 0.2380634807477841
+      },
+      "status": "OK",
+      "oos_net_sharpe": 12.604637066957597,
+      "oos_net_return": 0.5169343177264398,
+      "oos_max_dd": 0.00967174844525065,
+      "concentration_hhi": 0.2726558793494524,
+      "gross_exposure": 1.0,
+      "net_exposure": 1.0
+    },
+    "constraints_only": {
+      "weights": {
+        "mdc_51a60a3264845365": 0.25,
+        "mdc_99aa952c5d5f6ff7": 0.25,
+        "mdc_6f008c954ea26bf5": 0.25,
+        "mdc_678609c534d68189": 0.25
+      },
+      "status": "OK",
+      "oos_net_sharpe": 11.88834260396467,
+      "oos_net_return": 0.5428378778849606,
+      "oos_max_dd": 0.010553018941845238,
+      "concentration_hhi": 0.25,
+      "gross_exposure": 1.0,
+      "net_exposure": 1.0
+    }
+  },
+  "note": "Weights estimated on pre-OOS intersection; OOS evaluation only. Not optimized for final OOS.",
+  "sleeves": [
+    "mdc_51a60a3264845365",
+    "mdc_99aa952c5d5f6ff7",
+    "mdc_6f008c954ea26bf5",
+    "mdc_678609c534d68189"
+  ],
+  "estimation": {
+    "n_obs": 148,
+    "cov_method": "ledoit_wolf",
+    "estimation_window": "pre_oos_train_plus_validation"
+  }
+}

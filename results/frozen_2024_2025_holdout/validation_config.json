@@ -1,0 +1,34 @@
+{
+  "validation_id": "frozen_2024_2025_holdout_v1",
+  "output_dir": "results/frozen_2024_2025_holdout",
+  "prompt39_dir": "results/model_driven_alpha_campaign",
+  "prompt40_dir": "results/candidate_consolidation",
+  "prompt41_dir": "results/portfolio_construction_integration",
+  "prompt42_dir": "results/final_trading_validation",
+  "registry_path": "dataset_registry.json",
+  "data_dir": "data/btcusdt/firewall_2024_2025",
+  "random_seed": 42,
+  "software_version": "iqrp-frozen-2024-2025-holdout-0.1.0",
+  "market_type": "crypto",
+  "evidence_ids": [
+    "mdc_99aa952c5d5f6ff7",
+    "mdc_678609c534d68189",
+    "mdc_6f008c954ea26bf5"
+  ],
+  "max_bars_research": {
+    "1m": 40000,
+    "5m": 30000,
+    "15m": 25000,
+    "30m": 20000,
+    "1h": 20000
+  },
+  "run_portfolio": true,
+  "smoke": false,
+  "disclaimer": "FROZEN 2024\u21922025 HOLDOUT \u2014 research \u22642024-12-31; validation = calendar 2025. No retuning on 2025. PROVEN_RESEARCH_PROFITABILITY \u2260 LIVE_READY. Do not modify Prompt 35\u201342 artifacts.",
+  "research_end": "2024-12-31 23:59:59+00:00",
+  "holdout_start": "2025-01-01 00:00:00+00:00",
+  "holdout_end": "2025-12-31 23:59:59+00:00",
+  "live_ready": false,
+  "anti_post_hoc": "No parameter/timeframe/holding changes after seeing 2025 results.",
+  "started_at": "2026-08-17T12:22:11.422979+00:00"
+}

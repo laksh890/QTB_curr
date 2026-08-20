@@ -1,0 +1,16 @@
+{
+  "disclaimer": "PORTFOLIO CONSTRUCTION INTEGRATION \u2014 wiring/validation only. PORTFOLIO IMPLEMENTED \u2260 INTEGRATED \u2260 ROBUST \u2260 PROFITABLE \u2260 LIVE READY. Prompt 35/36/39/40 artifacts are immutable.",
+  "pytest_summary": [
+    ".............................................................            [100%]",
+    "61 passed in 4.47s"
+  ],
+  "passed": 61,
+  "suites": [
+    "test_portfolio_construction_integration",
+    "test_optimization (portfolio unit)",
+    "test_unified_trading_pipeline",
+    "test_candidate_consolidation",
+    "test_model_alpha_adapters"
+  ],
+  "status": "PASS"
+}

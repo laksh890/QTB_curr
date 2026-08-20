@@ -1,0 +1,101 @@
+{
+  "rows": [
+    {
+      "candidate_id": "mdc_51a60a3264845365",
+      "n_oos_bars": 20000,
+      "acf1": -0.029286007206598116,
+      "n_eff_ar1": 21206.782118070532,
+      "n_eff_overlap_adj": 10603.391059035266,
+      "newey_west_se_mean": 8.39370607169236e-06,
+      "t_hac_mean": 3.719629031620481,
+      "holding_bars": 2,
+      "statistical_evidence": "SUFFICIENT_FOR_RESEARCH",
+      "note": "Time-series overlapping returns; not cross-sectional IC."
+    },
+    {
+      "candidate_id": "mdc_99aa952c5d5f6ff7",
+      "n_oos_bars": 12500,
+      "acf1": -0.039226732400721304,
+      "n_eff_ar1": 13520.707323038314,
+      "n_eff_overlap_adj": 6760.353661519157,
+      "newey_west_se_mean": 1.6687001517605667e-05,
+      "t_hac_mean": 4.3920723313819865,
+      "holding_bars": 2,
+      "statistical_evidence": "SUFFICIENT_FOR_RESEARCH",
+      "note": "Time-series overlapping returns; not cross-sectional IC."
+    },
+    {
+      "candidate_id": "mdc_6f008c954ea26bf5",
+      "n_oos_bars": 12500,
+      "acf1": -0.021038910999988156,
+      "n_eff_ar1": 13037.276487196212,
+      "n_eff_overlap_adj": 13037.276487196212,
+      "newey_west_se_mean": 1.1505993617526313e-05,
+      "t_hac_mean": 4.959772423035914,
+      "holding_bars": 1,
+      "statistical_evidence": "SUFFICIENT_FOR_RESEARCH",
+      "note": "Time-series overlapping returns; not cross-sectional IC."
+    },
+    {
+      "candidate_id": "mdc_678609c534d68189",
+      "n_oos_bars": 20000,
+      "acf1": -0.01400411222612497,
+      "n_eff_ar1": 20568.12051245944,
+      "n_eff_overlap_adj": 10284.06025622972,
+      "newey_west_se_mean": 6.771587678841843e-06,
+      "t_hac_mean": 4.110408562651035,
+      "holding_bars": 2,
+      "statistical_evidence": "SUFFICIENT_FOR_RESEARCH",
+      "note": "Time-series overlapping returns; not cross-sectional IC."
+    },
+    {
+      "candidate_id": "mdc_801488267ad484dc",
+      "n_oos_bars": 10000,
+      "acf1": 0.022222263165771396,
+      "n_eff_ar1": 9565.216607649492,
+      "n_eff_overlap_adj": 956.5216607649493,
+      "newey_west_se_mean": 2.4338763738852705e-05,
+      "t_hac_mean": -0.6121496076271649,
+      "holding_bars": 10,
+      "statistical_evidence": "STATISTICAL_EVIDENCE_INSUFFICIENT",
+      "note": "Time-series overlapping returns; not cross-sectional IC."
+    },
+    {
+      "candidate_id": "mdc_3ed979ee7d9dabe6",
+      "n_oos_bars": 10000,
+      "acf1": -0.014780643713553483,
+      "n_eff_ar1": 10300.047773508342,
+      "n_eff_overlap_adj": 515.0023886754171,
+      "newey_west_se_mean": 4.046529362802648e-05,
+      "t_hac_mean": -0.4864771990931668,
+      "holding_bars": 20,
+      "statistical_evidence": "STATISTICAL_EVIDENCE_INSUFFICIENT",
+      "note": "Time-series overlapping returns; not cross-sectional IC."
+    },
+    {
+      "candidate_id": "mdc_4992167889db9b2e",
+      "n_oos_bars": 12500,
+      "acf1": -0.02276031885547105,
+      "n_eff_ar1": 13082.260403834975,
+      "n_eff_overlap_adj": 654.1130201917488,
+      "newey_west_se_mean": 1.7609490106963802e-05,
+      "t_hac_mean": 0.04081664471563356,
+      "holding_bars": 20,
+      "statistical_evidence": "STATISTICAL_EVIDENCE_INSUFFICIENT",
+      "note": "Time-series overlapping returns; not cross-sectional IC."
+    },
+    {
+      "candidate_id": "mdc_a0f769fc20835273",
+      "n_oos_bars": 10000,
+      "acf1": 0.006863853567690875,
+      "n_eff_ar1": 9863.658754987187,
+      "n_eff_overlap_adj": 493.1829377493594,
+      "newey_west_se_mean": 4.3314804562371525e-05,
+      "t_hac_mean": -1.2532979632370078,
+      "holding_bars": 20,
+      "statistical_evidence": "STATISTICAL_EVIDENCE_INSUFFICIENT",
+      "note": "Time-series overlapping returns; not cross-sectional IC."
+    }
+  ],
+  "disclaimer": "FINAL TRADING VALIDATION \u2014 research evidence only. PROFITABILITY_EVIDENCE \u2260 PROVEN PROFITABILITY \u2260 PAPER-READY \u2260 LIVE_READY. Do not p-hack: gates and grids are predefined. Prompt 35/36/39/40 artifacts immutable."
+}

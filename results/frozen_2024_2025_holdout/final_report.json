@@ -1,0 +1,190 @@
+{
+  "disclaimer": "FROZEN 2024\u21922025 HOLDOUT \u2014 research \u22642024-12-31; validation = calendar 2025. No retuning on 2025. PROVEN_RESEARCH_PROFITABILITY \u2260 LIVE_READY. Do not modify Prompt 35\u201342 artifacts.",
+  "validation_id": "frozen_2024_2025_holdout_v1",
+  "started_at": "2026-08-17T12:22:11.422979+00:00",
+  "final_status": "PROVEN_RESEARCH_PROFITABILITY",
+  "answers": {
+    "1_reproduced_in_2025": true,
+    "2_profitable_after_costs": [
+      "mdc_99aa952c5d5f6ff7",
+      "mdc_6f008c954ea26bf5",
+      "mdc_678609c534d68189"
+    ],
+    "3_net_sharpe": {
+      "mdc_99aa952c5d5f6ff7": 7.030677628891678,
+      "mdc_6f008c954ea26bf5": 5.368918394697802,
+      "mdc_678609c534d68189": 6.227890047581503
+    },
+    "4_max_drawdown": {
+      "mdc_99aa952c5d5f6ff7": 0.08335973749600833,
+      "mdc_6f008c954ea26bf5": 0.08021471608879993,
+      "mdc_678609c534d68189": 0.09567388496923235
+    },
+    "5_cost_survival": {
+      "mdc_99aa952c5d5f6ff7": {
+        "BASE": true,
+        "MODERATE": true,
+        "ADVERSE": true
+      },
+      "mdc_6f008c954ea26bf5": {
+        "BASE": true,
+        "MODERATE": true,
+        "ADVERSE": true
+      },
+      "mdc_678609c534d68189": {
+        "BASE": true,
+        "MODERATE": true,
+        "ADVERSE": false
+      }
+    },
+    "6_persist_Q1_Q4": {
+      "mdc_99aa952c5d5f6ff7": [
+        "Q1",
+        "Q2",
+        "Q3",
+        "Q4"
+      ],
+      "mdc_6f008c954ea26bf5": [
+        "Q1",
+        "Q2",
+        "Q3",
+        "Q4"
+      ],
+      "mdc_678609c534d68189": [
+        "Q1",
+        "Q2",
+        "Q3",
+        "Q4"
+      ]
+    },
+    "7_dependence_aware_stats": {
+      "mdc_99aa952c5d5f6ff7": true,
+      "mdc_6f008c954ea26bf5": true,
+      "mdc_678609c534d68189": true
+    },
+    "8_sharpe_genuine_or_inflated": {
+      "mdc_99aa952c5d5f6ff7": {
+        "engine": 7.030677628891678,
+        "independent": 7.030677628891678,
+        "not_inflated_flag": true,
+        "n_eff": 17829.02541045858,
+        "acf1": -0.00874211967289909
+      },
+      "mdc_6f008c954ea26bf5": {
+        "engine": 5.368918394697802,
+        "independent": 5.368918394697802,
+        "not_inflated_flag": true,
+        "n_eff": 34959.45555230064,
+        "acf1": 0.0011506439166398467
+      },
+      "mdc_678609c534d68189": {
+        "engine": 6.227890047581503,
+        "independent": 6.227890047581503,
+        "not_inflated_flag": true,
+        "n_eff": 56080.394916335885,
+        "acf1": -0.03240410640118667
+      }
+    },
+    "9_portfolio_improved": {
+      "equal_sleeve_baseline": {
+        "weights": {
+          "mdc_99aa952c5d5f6ff7": 0.3333333333333333,
+          "mdc_678609c534d68189": 0.3333333333333333,
+          "mdc_6f008c954ea26bf5": 0.3333333333333333
+        },
+        "oos_2025_net_sharpe": 10.003804839025664,
+        "oos_2025_net_return": 2.7690867013566125,
+        "oos_2025_max_dd": 0.024793335770391223,
+        "gross_exposure": 1.0,
+        "concentration_hhi": 0.3333333333333333
+      },
+      "mean_variance": {
+        "weights": {
+          "mdc_99aa952c5d5f6ff7": 0.49999999999999967,
+          "mdc_678609c534d68189": -0.49999999999999967,
+          "mdc_6f008c954ea26bf5": 3.7007434154171886e-16
+        },
+        "oos_2025_net_sharpe": 9.751010859533425,
+        "oos_2025_net_return": 3.19613276062764,
+        "oos_2025_max_dd": 0.025522997487890664,
+        "gross_exposure": 0.9999999999999997,
+        "concentration_hhi": 0.49999999999999933
+      },
+      "risk_parity": {
+        "weights": {
+          "mdc_99aa952c5d5f6ff7": 0.24999999999994316,
+          "mdc_678609c534d68189": 0.5,
+          "mdc_6f008c954ea26bf5": 0.24999999999994316
+        },
+        "oos_2025_net_sharpe": 10.567709602553915,
+        "oos_2025_net_return": 2.7259167591363185,
+        "oos_2025_max_dd": 0.02073118780127292,
+        "gross_exposure": 0.9999999999998863,
+        "concentration_hhi": 0.37499999999994316
+      },
+      "black_litterman": {
+        "weights": {
+          "mdc_99aa952c5d5f6ff7": 0.49999999999999994,
+          "mdc_678609c534d68189": -0.4999999999999999,
+          "mdc_6f008c954ea26bf5": 4.0708177569589076e-16
+        },
+        "oos_2025_net_sharpe": 9.751010859533428,
+        "oos_2025_net_return": 3.196132760627642,
+        "oos_2025_max_dd": 0.025522997487890664,
+        "gross_exposure": 1.0000000000000002,
+        "concentration_hhi": 0.49999999999999983
+      },
+      "hrp": {
+        "weights": {
+          "mdc_99aa952c5d5f6ff7": 0.23547482388715463,
+          "mdc_678609c534d68189": 0.49999999999999867,
+          "mdc_6f008c954ea26bf5": 0.2645251761128467
+        },
+        "oos_2025_net_sharpe": 10.617585010768925,
+        "oos_2025_net_return": 2.698596878205703,
+        "oos_2025_max_dd": 0.020452780282885663,
+        "gross_exposure": 1.0,
+        "concentration_hhi": 0.37542196148221774
+      },
+      "constraints_only": {
+        "weights": {
+          "mdc_99aa952c5d5f6ff7": 0.3333333333333333,
+          "mdc_678609c534d68189": 0.3333333333333333,
+          "mdc_6f008c954ea26bf5": 0.3333333333333333
+        },
+        "oos_2025_net_sharpe": 10.003804839025664,
+        "oos_2025_net_return": 2.7690867013566125,
+        "oos_2025_max_dd": 0.024793335770391223,
+        "gross_exposure": 1.0,
+        "concentration_hhi": 0.3333333333333333
+      }
+    },
+    "10_strongest_under_gate": {
+      "candidate_id": "mdc_99aa952c5d5f6ff7",
+      "status": "PROVEN_RESEARCH_PROFITABILITY",
+      "net_sharpe": 7.030677628891678
+    },
+    "11_statistically_credible_independent_evidence": true,
+    "12_paper_trading": true,
+    "12_ids": [
+      "mdc_51a60a3264845365",
+      "mdc_678609c534d68189",
+      "mdc_99aa952c5d5f6ff7",
+      "mdc_6f008c954ea26bf5"
+    ],
+    "13_live_trading": false,
+    "14_unsatisfied_gates": {
+      "mdc_99aa952c5d5f6ff7": [],
+      "mdc_6f008c954ea26bf5": [],
+      "mdc_678609c534d68189": [
+        "survives_ADVERSE"
+      ]
+    }
+  },
+  "live_ready": false,
+  "claim_distinctions": {
+    "PROVEN_RESEARCH_PROFITABILITY": true,
+    "PAPER_TRADING_CANDIDATE": true,
+    "LIVE_READY": false
+  }
+}

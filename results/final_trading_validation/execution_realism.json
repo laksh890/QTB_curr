@@ -1,0 +1,12 @@
+{
+  "disclaimer": "FINAL TRADING VALIDATION \u2014 research evidence only. PROFITABILITY_EVIDENCE \u2260 PROVEN PROFITABILITY \u2260 PAPER-READY \u2260 LIVE_READY. Do not p-hack: gates and grids are predefined. Prompt 35/36/39/40 artifacts immutable.",
+  "next_bar_execution": true,
+  "mechanism": "evaluate_cost_aware uses pos[t-1]*ret[t] (no same-bar lookahead)",
+  "cost_components": [
+    "commission_bps",
+    "spread_bps",
+    "slippage_bps"
+  ],
+  "long_short_transitions": "supported via signed positions",
+  "unified_cascade_smoke": "per-candidate UnifiedTradingOrchestrator fill simulation"
+}

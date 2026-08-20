@@ -1,0 +1,50 @@
+{
+  "disclaimer": "FROZEN 2024\u21922025 HOLDOUT \u2014 research \u22642024-12-31; validation = calendar 2025. No retuning on 2025. PROVEN_RESEARCH_PROFITABILITY \u2260 LIVE_READY. Do not modify Prompt 35\u201342 artifacts.",
+  "status": "PASS",
+  "hard_stop": false,
+  "checks": {
+    "research_5m_no_holdout_rows": true,
+    "research_15m_no_holdout_rows": true,
+    "research_30m_no_holdout_rows": true,
+    "research_1h_no_holdout_rows": true,
+    "holdout_5m_no_research_rows": true,
+    "holdout_15m_no_research_rows": true,
+    "holdout_30m_no_research_rows": true,
+    "holdout_1h_no_research_rows": true,
+    "concat_5m_monotonic": true,
+    "concat_5m_research_before_holdout": true,
+    "concat_15m_monotonic": true,
+    "concat_15m_research_before_holdout": true,
+    "concat_30m_monotonic": true,
+    "concat_30m_research_before_holdout": true,
+    "concat_1h_monotonic": true,
+    "concat_1h_research_before_holdout": true,
+    "no_timestamp_intersection_5m": true,
+    "no_timestamp_intersection_15m": true,
+    "no_timestamp_intersection_30m": true,
+    "no_timestamp_intersection_1h": true
+  },
+  "details": {
+    "research_5m_max": "2024-12-31 23:55:00+00:00",
+    "research_15m_max": "2024-12-31 23:45:00+00:00",
+    "research_30m_max": "2024-12-31 23:30:00+00:00",
+    "research_1h_max": "2024-12-31 23:00:00+00:00",
+    "holdout_5m_min": "2025-01-01 00:00:00+00:00",
+    "holdout_5m_max": "2025-12-31 23:55:00+00:00",
+    "holdout_15m_min": "2025-01-01 00:00:00+00:00",
+    "holdout_15m_max": "2025-12-31 23:45:00+00:00",
+    "holdout_30m_min": "2025-01-01 00:00:00+00:00",
+    "holdout_30m_max": "2025-12-31 23:30:00+00:00",
+    "holdout_1h_min": "2025-01-01 00:00:00+00:00",
+    "holdout_1h_max": "2025-12-31 23:00:00+00:00"
+  },
+  "policy": {
+    "research_may_consume": "timestamps <= 2024-12-31 only",
+    "holdout_may_consume": "2025 calendar only for evaluation",
+    "forbidden": [
+      "holdout in feature fit",
+      "holdout in scaler/cov/vol estimates used for selection",
+      "holdout in parameter/threshold selection"
+    ]
+  }
+}

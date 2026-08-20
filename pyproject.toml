@@ -30,6 +30,8 @@ duckdb = "^1.1.0"
 pyarrow = "^19.0.0"
 httpx = "^0.28.0"
 websockets = "^14.0"
+# Used widely by research/paper paths; pin via poetry.lock once generated
+pandas = "^2.2.0"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.3.0"
@@ -42,6 +44,17 @@ black = "^24.10.0"
 pre-commit = "^4.0.0"
 types-pyyaml = "^6.0.12"
 hypothesis = "^6.122.0"
+
+# Optional ML stack used by forecasting/tree/neural code paths.
+# NOT in core deps historically — clones without this group + poetry.lock
+# cannot reproduce ML campaigns. Install: poetry install --with ml
+# Versions matched to a known working research venv (2026-08); regenerate lock.
+[tool.poetry.group.ml.dependencies]
+scikit-learn = "^1.6.0"
+xgboost = "^3.0.0"
+lightgbm = "^4.5.0"
+catboost = "^1.2.7"
+torch = { version = "^2.5.0", optional = false }
 
 [tool.poetry.scripts]
 iqrp = "iqrp.app.cli:app"

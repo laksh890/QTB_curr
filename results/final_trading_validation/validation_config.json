@@ -1,0 +1,181 @@
+{
+  "validation_id": "final_trading_validation_v1",
+  "output_dir": "results/final_trading_validation",
+  "prompt40_dir": "results/candidate_consolidation",
+  "prompt39_dir": "results/model_driven_alpha_campaign",
+  "prompt41_dir": "results/portfolio_construction_integration",
+  "registry_path": "dataset_registry.json",
+  "random_seed": 42,
+  "software_version": "iqrp-final-trading-validation-0.1.0",
+  "timeframes": [
+    "5m",
+    "15m",
+    "30m",
+    "1h"
+  ],
+  "holding_bars": [
+    1,
+    2,
+    3,
+    5,
+    10,
+    20,
+    30,
+    60
+  ],
+  "directions": [
+    "LONG",
+    "SHORT",
+    "LONG_SHORT"
+  ],
+  "cost_scenarios": [
+    "BASE",
+    "MODERATE",
+    "ADVERSE"
+  ],
+  "max_bars": {
+    "1m": 120000,
+    "5m": 80000,
+    "15m": 50000,
+    "30m": 40000,
+    "1h": 40000,
+    "4h": 20000
+  },
+  "train_frac": 0.5,
+  "validation_frac": 0.25,
+  "market_type": "crypto",
+  "smoke": false,
+  "validate_p40_candidates": true,
+  "run_predeclared_grid": false,
+  "disclaimer": "FINAL TRADING VALIDATION \u2014 research evidence only. PROFITABILITY_EVIDENCE \u2260 PROVEN PROFITABILITY \u2260 PAPER-READY \u2260 LIVE_READY. Do not p-hack: gates and grids are predefined. Prompt 35/36/39/40 artifacts immutable.",
+  "profitability_gate": {
+    "min_oos_net_return": 0.0,
+    "min_oos_sharpe": 0.0,
+    "min_expectancy": 0.0,
+    "min_trades": 30,
+    "max_drawdown": 0.5,
+    "min_perturb_survival": 0.5,
+    "adverse_catastrophic_sharpe": -2.0,
+    "required_all": [
+      "positive_oos_net_return",
+      "positive_oos_sharpe",
+      "positive_expectancy_after_costs",
+      "survives_BASE",
+      "survives_MODERATE",
+      "not_catastrophic_ADVERSE",
+      "leakage_ok",
+      "recon_ok",
+      "execution_timing_ok",
+      "walk_forward_ok",
+      "not_tiny_window",
+      "acceptable_drawdown",
+      "acceptable_turnover",
+      "sufficient_trades",
+      "no_oos_contamination_in_selection",
+      "parameter_perturbation_ok",
+      "regime_ok",
+      "reproducible"
+    ]
+  },
+  "anti_p_hacking": "P40 candidates were selected without OOS Sharpe maximization. This validation reuses that set and a predeclared grid. Gates frozen before evaluation. No cost/gate relaxation after results.",
+  "free_source_survey": [
+    {
+      "provider": "Binance Vision",
+      "url": "https://data.binance.vision/",
+      "asset_class": "crypto_spot",
+      "resolution": "1m+",
+      "bid_ask": false,
+      "depth": false,
+      "license": "UNKNOWN (public CDN; verify ToS independently)",
+      "grade_preliminary": "RESEARCH_GRADE",
+      "notes": "Official exchange historical monthly klines; best free crypto OHLCV in-repo."
+    },
+    {
+      "provider": "Binance REST /api/v3/klines",
+      "url": "https://api.binance.com",
+      "asset_class": "crypto_spot",
+      "resolution": "1m+",
+      "bid_ask": false,
+      "depth": false,
+      "license": "UNKNOWN",
+      "grade_preliminary": "RESEARCH_GRADE",
+      "notes": "Useful for incomplete current month; not a full historical archive replacement."
+    },
+    {
+      "provider": "Yahoo Finance / yfinance",
+      "url": "https://finance.yahoo.com/",
+      "asset_class": "equities/indices/crypto_spot_proxy",
+      "resolution": "1m limited (~7d), daily long",
+      "bid_ask": false,
+      "depth": false,
+      "license": "UNKNOWN",
+      "grade_preliminary": "DEVELOPMENT_GRADE",
+      "notes": "Already in-repo for NIFTY; not suitable as primary BTC intraday research source."
+    },
+    {
+      "provider": "Stooq",
+      "url": "https://stooq.com/",
+      "asset_class": "equities/fx/crypto_limited",
+      "resolution": "mostly daily",
+      "bid_ask": false,
+      "depth": false,
+      "license": "UNKNOWN",
+      "grade_preliminary": "DEVELOPMENT_GRADE",
+      "notes": "Investigated; no superior free BTC 1m archive vs Binance Vision."
+    },
+    {
+      "provider": "Alpha Vantage",
+      "url": "https://www.alphavantage.co/",
+      "asset_class": "equities/fx/crypto",
+      "resolution": "intraday with rate limits",
+      "bid_ask": false,
+      "depth": false,
+      "license": "API ToS; free tier limited",
+      "grade_preliminary": "DEVELOPMENT_GRADE",
+      "notes": "Rate limits / history depth inferior for multi-year BTC 1m research."
+    },
+    {
+      "provider": "Nasdaq Data Link",
+      "url": "https://data.nasdaq.com/",
+      "asset_class": "mixed",
+      "resolution": "varies",
+      "bid_ask": "varies",
+      "depth": false,
+      "license": "mixed free/paid",
+      "grade_preliminary": "UNKNOWN",
+      "notes": "Free datasets do not clearly dominate Binance Vision for BTC spot 1m OHLCV."
+    },
+    {
+      "provider": "CME public / sample datasets",
+      "url": "https://www.cmegroup.com/",
+      "asset_class": "futures",
+      "resolution": "varies",
+      "bid_ask": "sometimes",
+      "depth": false,
+      "license": "restrictive; often paid for full history",
+      "grade_preliminary": "PROFESSIONAL_GRADE",
+      "notes": "Potentially higher grade for futures; full tick/depth typically paid. Not auto-purchased."
+    },
+    {
+      "provider": "FRED",
+      "url": "https://fred.stlouisfed.org/",
+      "asset_class": "macro",
+      "resolution": "daily/monthly",
+      "bid_ask": false,
+      "depth": false,
+      "license": "public domain / FRED terms",
+      "grade_preliminary": "INSTITUTIONAL_GRADE",
+      "notes": "Macro only \u2014 not a substitute for BTC OHLCV trading bars."
+    }
+  ],
+  "paid_upgrade_candidates": [
+    {
+      "provider": "Tardis.dev / Kaiko / CryptoTick",
+      "what_adds": "Tick trades, L2 order book, true bid/ask, point-in-time depth",
+      "approximate_cost": "Typically subscription; report before purchase \u2014 NOT purchased in Prompt 42",
+      "limitation_solved": "OHLCV-only cost model; no authentic spread path; no market-depth realism",
+      "action": "STOP_BEFORE_PURCHASE"
+    }
+  ],
+  "started_at": "2026-08-17T11:39:20.640271+00:00"
+}

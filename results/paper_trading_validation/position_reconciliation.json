@@ -1,0 +1,33 @@
+{
+  "by_combo": {
+    "A": {
+      "ok": true,
+      "drift": 0.0
+    },
+    "B": {
+      "ok": true,
+      "drift": 0.0
+    },
+    "C": {
+      "ok": true,
+      "drift": 0.0
+    },
+    "A+B": {
+      "ok": true,
+      "drift": 0.0
+    },
+    "A+C": {
+      "ok": true,
+      "drift": 0.0
+    },
+    "B+C": {
+      "ok": true,
+      "drift": 0.0
+    },
+    "A+B+C": {
+      "ok": true,
+      "drift": 0.0
+    }
+  },
+  "disclaimer": "PAPER TRADING VALIDATION \u2014 sequential simulated execution only. PAPER_TRADING_CANDIDATE \u2260 PROVEN PROFITABLE \u2260 LIVE_READY \u2260 PRODUCTION_READY. Costs/spreads are ASSUMED when bid/ask unavailable. No broker connection."
+}

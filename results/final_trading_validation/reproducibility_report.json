@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "seed": 42,
+  "dataset_keys": {
+    "1m": "btcusdt_intraday_1m@1.0.1",
+    "5m": "btcusdt_intraday_5m@1.0.1",
+    "15m": "btcusdt_intraday_15m@1.0.1",
+    "30m": "btcusdt_intraday_30m@1.0.1",
+    "1h": "btcusdt_intraday_1h@1.0.1"
+  },
+  "using_extended_v101": true,
+  "n_candidates": 8,
+  "disclaimer": "FINAL TRADING VALIDATION \u2014 research evidence only. PROFITABILITY_EVIDENCE \u2260 PROVEN PROFITABILITY \u2260 PAPER-READY \u2260 LIVE_READY. Do not p-hack: gates and grids are predefined. Prompt 35/36/39/40 artifacts immutable."
+}

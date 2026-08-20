@@ -36,6 +36,8 @@ htmlcov/
 results/*
 # Keep research campaign artifacts for handoff / reproducibility
 !results/AGENT_HANDOFF_MAP.md
+!results/ARCHITECTURAL_ROADMAP_AND_HANDOVER.md
+!results/GITHUB_CLONE_AND_RECOVERY.md
 !results/alpha_research_btc_full/
 !results/alpha_research_btc_full/**
 !results/alpha_research_btc_full_audit/
@@ -52,6 +54,14 @@ results/*
 !results/model_driven_alpha_campaign/**
 !results/unified_trading_pipeline/
 !results/unified_trading_pipeline/**
+!results/portfolio_construction_integration/
+!results/portfolio_construction_integration/**
+!results/final_trading_validation/
+!results/final_trading_validation/**
+!results/frozen_2024_2025_holdout/
+!results/frozen_2024_2025_holdout/**
+!results/paper_trading_validation/
+!results/paper_trading_validation/**
 # Still ignore smoke runs and logs under results
 results/**/*_smoke*/
 results/**/*_smoke/
@@ -65,12 +75,22 @@ results/**/*.log
 .DS_Store
 Thumbs.db
 
-# Logs and local data
+# Logs and local market/binary data ONLY at repo root.
+# CRITICAL: use /data/ (anchored). A bare `data/` also matched and excluded
+# Python packages iqrp/app/data and iqrp/app/backtesting/data from GitHub clones.
 logs/
-data/
+/data/
 *.log
 *.duckdb
 *.duckdb.wal
+# Never ignore the Python source packages named "data"
+!iqrp/app/data/
+!iqrp/app/data/**
+!iqrp/app/backtesting/data/
+!iqrp/app/backtesting/data/**
+# Still ignore caches inside those packages
+iqrp/app/data/**/__pycache__/
+iqrp/app/backtesting/data/**/__pycache__/
 
 # Environment / secrets
 .env

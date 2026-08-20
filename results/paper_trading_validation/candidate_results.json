@@ -1,0 +1,230 @@
+{
+  "results": [
+    {
+      "combo": "A",
+      "candidate_ids": [
+        "mdc_99aa952c5d5f6ff7"
+      ],
+      "labels": [
+        "A"
+      ],
+      "scenario": "BASE",
+      "net_return": 0.6076869925122712,
+      "sharpe": 19.90019959016499,
+      "max_drawdown": 0.018897716313534964,
+      "n_fills": 34745,
+      "n_rejects": 178,
+      "n_partials": 727,
+      "fees_paid": 5257.710926687353,
+      "cost_drag_fees": 0.052577109266873534,
+      "recon_ok": true,
+      "recon_drift": 0.0,
+      "kill_switch": {
+        "halted": false,
+        "reasons": [],
+        "n_events": 0,
+        "events": []
+      },
+      "cost_model_label": "ASSUMED_OHLCV_MICROSTRUCTURE",
+      "frozen_checksums": {
+        "A": "8f587b5c83816066434858663063f6d47179524034f8dc846ba5ce319892509d"
+      }
+    },
+    {
+      "combo": "B",
+      "candidate_ids": [
+        "mdc_6f008c954ea26bf5"
+      ],
+      "labels": [
+        "B"
+      ],
+      "scenario": "BASE",
+      "net_return": 0.2745836445344325,
+      "sharpe": 14.556654381021595,
+      "max_drawdown": 0.02296696442454511,
+      "n_fills": 18430,
+      "n_rejects": 95,
+      "n_partials": 371,
+      "fees_paid": 2312.288922591051,
+      "cost_drag_fees": 0.023122889225910506,
+      "recon_ok": true,
+      "recon_drift": 0.0,
+      "kill_switch": {
+        "halted": false,
+        "reasons": [],
+        "n_events": 0,
+        "events": []
+      },
+      "cost_model_label": "ASSUMED_OHLCV_MICROSTRUCTURE",
+      "frozen_checksums": {
+        "B": "2d184b0bcc7a8b617a2ad1d60f464dd9920a401c14028e6f52ca4ad32c70d8e9"
+      }
+    },
+    {
+      "combo": "C",
+      "candidate_ids": [
+        "mdc_678609c534d68189"
+      ],
+      "labels": [
+        "C"
+      ],
+      "scenario": "BASE",
+      "net_return": 0.5093334803869467,
+      "sharpe": 39.914649560395205,
+      "max_drawdown": 0.018987206424380784,
+      "n_fills": 51512,
+      "n_rejects": 265,
+      "n_partials": 1041,
+      "fees_paid": 5097.3299445104,
+      "cost_drag_fees": 0.050973299445104,
+      "recon_ok": true,
+      "recon_drift": 0.0,
+      "kill_switch": {
+        "halted": false,
+        "reasons": [],
+        "n_events": 0,
+        "events": []
+      },
+      "cost_model_label": "ASSUMED_OHLCV_MICROSTRUCTURE",
+      "frozen_checksums": {
+        "C": "7749011e88cd2536fb88aba46b24396ada436546871961d2365d648ec33bc5f8"
+      }
+    },
+    {
+      "combo": "A+B",
+      "candidate_ids": [
+        "mdc_99aa952c5d5f6ff7",
+        "mdc_6f008c954ea26bf5"
+      ],
+      "labels": [
+        "A",
+        "B"
+      ],
+      "scenario": "BASE",
+      "net_return": 0.6081352449794375,
+      "sharpe": 19.977211724722554,
+      "max_drawdown": 0.018955212739539935,
+      "n_fills": 34767,
+      "n_rejects": 155,
+      "n_partials": 647,
+      "fees_paid": 5260.526256261698,
+      "cost_drag_fees": 0.05260526256261698,
+      "recon_ok": true,
+      "recon_drift": 0.0,
+      "kill_switch": {
+        "halted": false,
+        "reasons": [],
+        "n_events": 0,
+        "events": []
+      },
+      "cost_model_label": "ASSUMED_OHLCV_MICROSTRUCTURE",
+      "frozen_checksums": {
+        "A": "8f587b5c83816066434858663063f6d47179524034f8dc846ba5ce319892509d",
+        "B": "2d184b0bcc7a8b617a2ad1d60f464dd9920a401c14028e6f52ca4ad32c70d8e9"
+      }
+    },
+    {
+      "combo": "A+C",
+      "candidate_ids": [
+        "mdc_99aa952c5d5f6ff7",
+        "mdc_678609c534d68189"
+      ],
+      "labels": [
+        "A",
+        "C"
+      ],
+      "scenario": "BASE",
+      "net_return": 0.28215479212894823,
+      "sharpe": 10.894919939584549,
+      "max_drawdown": 0.026898089967585175,
+      "n_fills": 30773,
+      "n_rejects": 153,
+      "n_partials": 616,
+      "fees_paid": 5915.979168217172,
+      "cost_drag_fees": 0.05915979168217172,
+      "recon_ok": true,
+      "recon_drift": 0.0,
+      "kill_switch": {
+        "halted": false,
+        "reasons": [],
+        "n_events": 0,
+        "events": []
+      },
+      "cost_model_label": "ASSUMED_OHLCV_MICROSTRUCTURE",
+      "frozen_checksums": {
+        "A": "8f587b5c83816066434858663063f6d47179524034f8dc846ba5ce319892509d",
+        "C": "7749011e88cd2536fb88aba46b24396ada436546871961d2365d648ec33bc5f8"
+      }
+    },
+    {
+      "combo": "B+C",
+      "candidate_ids": [
+        "mdc_6f008c954ea26bf5",
+        "mdc_678609c534d68189"
+      ],
+      "labels": [
+        "B",
+        "C"
+      ],
+      "scenario": "BASE",
+      "net_return": 0.08680048208710223,
+      "sharpe": 3.972711348420794,
+      "max_drawdown": 0.051578882389322185,
+      "n_fills": 26853,
+      "n_rejects": 136,
+      "n_partials": 538,
+      "fees_paid": 6237.360342243649,
+      "cost_drag_fees": 0.06237360342243649,
+      "recon_ok": true,
+      "recon_drift": 0.0,
+      "kill_switch": {
+        "halted": false,
+        "reasons": [],
+        "n_events": 0,
+        "events": []
+      },
+      "cost_model_label": "ASSUMED_OHLCV_MICROSTRUCTURE",
+      "frozen_checksums": {
+        "B": "2d184b0bcc7a8b617a2ad1d60f464dd9920a401c14028e6f52ca4ad32c70d8e9",
+        "C": "7749011e88cd2536fb88aba46b24396ada436546871961d2365d648ec33bc5f8"
+      }
+    },
+    {
+      "combo": "A+B+C",
+      "candidate_ids": [
+        "mdc_99aa952c5d5f6ff7",
+        "mdc_6f008c954ea26bf5",
+        "mdc_678609c534d68189"
+      ],
+      "labels": [
+        "A",
+        "B",
+        "C"
+      ],
+      "scenario": "BASE",
+      "net_return": 0.6069905786745748,
+      "sharpe": 19.92393033290854,
+      "max_drawdown": 0.018915733419938532,
+      "n_fills": 34758,
+      "n_rejects": 169,
+      "n_partials": 655,
+      "fees_paid": 5246.718518181534,
+      "cost_drag_fees": 0.05246718518181534,
+      "recon_ok": true,
+      "recon_drift": 0.0,
+      "kill_switch": {
+        "halted": false,
+        "reasons": [],
+        "n_events": 0,
+        "events": []
+      },
+      "cost_model_label": "ASSUMED_OHLCV_MICROSTRUCTURE",
+      "frozen_checksums": {
+        "A": "8f587b5c83816066434858663063f6d47179524034f8dc846ba5ce319892509d",
+        "B": "2d184b0bcc7a8b617a2ad1d60f464dd9920a401c14028e6f52ca4ad32c70d8e9",
+        "C": "7749011e88cd2536fb88aba46b24396ada436546871961d2365d648ec33bc5f8"
+      }
+    }
+  ],
+  "disclaimer": "PAPER TRADING VALIDATION \u2014 sequential simulated execution only. PAPER_TRADING_CANDIDATE \u2260 PROVEN PROFITABLE \u2260 LIVE_READY \u2260 PRODUCTION_READY. Costs/spreads are ASSUMED when bid/ask unavailable. No broker connection."
+}

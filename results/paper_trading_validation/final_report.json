@@ -1,0 +1,176 @@
+{
+  "disclaimer": "PAPER TRADING VALIDATION \u2014 sequential simulated execution only. PAPER_TRADING_CANDIDATE \u2260 PROVEN PROFITABLE \u2260 LIVE_READY \u2260 PRODUCTION_READY. Costs/spreads are ASSUMED when bid/ask unavailable. No broker connection.",
+  "validation_id": "paper_trading_validation_v1",
+  "started_at": "2026-08-19T08:47:26.651889+00:00",
+  "status": "PAPER_TRADING_CANDIDATE",
+  "gates": {
+    "candidates_frozen": true,
+    "no_lookahead": true,
+    "sequential_ok": true,
+    "execution_model_ok": true,
+    "recon_zero_drift": true,
+    "fills_to_positions_ok": true,
+    "fees_accounted": true,
+    "risk_limits_enforced": true,
+    "kill_switches_ok": true,
+    "rejected_orders_handled": true,
+    "failure_injection_ok": true,
+    "restart_ok": true,
+    "no_2025_retune": true,
+    "reproducible": true,
+    "paper_pnl_positive_base": true,
+    "survivors_exist": true
+  },
+  "failed_gates": [],
+  "answers": {
+    "1_operate_sequentially": true,
+    "2_full_cascade_operational": true,
+    "3_fills_positions_reconciled": true,
+    "4_cost_slippage_sensitivity": [
+      {
+        "combo": "A",
+        "scenario": "BASE",
+        "net_return": 0.612377094253644,
+        "sharpe": 20.046829951016687,
+        "max_drawdown": 0.01884417731163575,
+        "fees_paid": 5266.578505571912
+      },
+      {
+        "combo": "A",
+        "scenario": "MODERATE",
+        "net_return": 0.347328346234794,
+        "sharpe": 12.501229929685937,
+        "max_drawdown": 0.03289468138786644,
+        "fees_paid": 9546.340734323578
+      },
+      {
+        "combo": "A",
+        "scenario": "ADVERSE",
+        "net_return": -0.22835895029851494,
+        "sharpe": -6.014131152403736,
+        "max_drawdown": 0.3173797533128161,
+        "fees_paid": 6198.911388078609
+      }
+    ],
+    "5_performance_after_realistic_exec": {
+      "A": 0.6076869925122712,
+      "B": 0.2745836445344325,
+      "C": 0.5093334803869467,
+      "A+B": 0.6081352449794375,
+      "A+C": 0.28215479212894823,
+      "B+C": 0.08680048208710223,
+      "A+B+C": 0.6069905786745748
+    },
+    "6_profitable_after_sim_exec": {
+      "A": true,
+      "B": true,
+      "C": true
+    },
+    "7_combo_improves_risk_adjusted": {
+      "disclaimer": "PAPER TRADING VALIDATION \u2014 sequential simulated execution only. PAPER_TRADING_CANDIDATE \u2260 PROVEN PROFITABLE \u2260 LIVE_READY \u2260 PRODUCTION_READY. Costs/spreads are ASSUMED when bid/ask unavailable. No broker connection.",
+      "rows": [
+        {
+          "combo": "A",
+          "net_return": 0.6076869925122712,
+          "sharpe": 19.90019959016499,
+          "max_drawdown": 0.018897716313534964,
+          "fees_paid": 5257.710926687353,
+          "n_fills": 34745
+        },
+        {
+          "combo": "B",
+          "net_return": 0.2745836445344325,
+          "sharpe": 14.556654381021595,
+          "max_drawdown": 0.02296696442454511,
+          "fees_paid": 2312.288922591051,
+          "n_fills": 18430
+        },
+        {
+          "combo": "C",
+          "net_return": 0.5093334803869467,
+          "sharpe": 39.914649560395205,
+          "max_drawdown": 0.018987206424380784,
+          "fees_paid": 5097.3299445104,
+          "n_fills": 51512
+        },
+        {
+          "combo": "A+B",
+          "net_return": 0.6081352449794375,
+          "sharpe": 19.977211724722554,
+          "max_drawdown": 0.018955212739539935,
+          "fees_paid": 5260.526256261698,
+          "n_fills": 34767
+        },
+        {
+          "combo": "A+C",
+          "net_return": 0.28215479212894823,
+          "sharpe": 10.894919939584549,
+          "max_drawdown": 0.026898089967585175,
+          "fees_paid": 5915.979168217172,
+          "n_fills": 30773
+        },
+        {
+          "combo": "B+C",
+          "net_return": 0.08680048208710223,
+          "sharpe": 3.972711348420794,
+          "max_drawdown": 0.051578882389322185,
+          "fees_paid": 6237.360342243649,
+          "n_fills": 26853
+        },
+        {
+          "combo": "A+B+C",
+          "net_return": 0.6069905786745748,
+          "sharpe": 19.92393033290854,
+          "max_drawdown": 0.018915733419938532,
+          "fees_paid": 5246.718518181534,
+          "n_fills": 34758
+        }
+      ],
+      "note": "Combinations sum frozen sleeve weights with gross clip; candidates unmodified. Mixed-TF sleeves are causally asof-aligned onto the primary (first) timeframe."
+    },
+    "8_risk_limits_kill_switches": true,
+    "9_recovery_from_failures": true,
+    "10_suitable_for_paper_trading": true,
+    "11_blocks_broker_integration": [
+      "No live broker adapter",
+      "ASSUMED_OHLCV_MICROSTRUCTURE (no observed bid/ask)",
+      "Not LIVE_READY by policy"
+    ],
+    "status": "PAPER_TRADING_CANDIDATE",
+    "survivors": [
+      "A",
+      "B",
+      "C"
+    ]
+  },
+  "live_ready": false,
+  "claim_distinctions": {
+    "PAPER_SIMULATION_OPERATIONAL": true,
+    "PAPER_VALIDATION_PASS": true,
+    "PAPER_TRADING_CANDIDATE": true,
+    "PROVEN_PROFITABLE": false,
+    "LIVE_READY": false,
+    "PRODUCTION_READY": false
+  },
+  "signal_meta": {
+    "train_frac": 0.20819453697534976,
+    "A": {
+      "tf": "15m",
+      "n_holdout": 35040,
+      "checksum": "8f587b5c83816066434858663063f6d47179524034f8dc846ba5ce319892509d",
+      "candidate_id": "mdc_99aa952c5d5f6ff7"
+    },
+    "B": {
+      "tf": "15m",
+      "n_holdout": 35040,
+      "checksum": "2d184b0bcc7a8b617a2ad1d60f464dd9920a401c14028e6f52ca4ad32c70d8e9",
+      "candidate_id": "mdc_6f008c954ea26bf5"
+    },
+    "C": {
+      "tf": "5m",
+      "n_holdout": 105120,
+      "checksum": "7749011e88cd2536fb88aba46b24396ada436546871961d2365d648ec33bc5f8",
+      "candidate_id": "mdc_678609c534d68189"
+    }
+  }
+}

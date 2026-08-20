@@ -1,0 +1,62 @@
+{
+  "disclaimer": "PAPER TRADING VALIDATION \u2014 sequential simulated execution only. PAPER_TRADING_CANDIDATE \u2260 PROVEN PROFITABLE \u2260 LIVE_READY \u2260 PRODUCTION_READY. Costs/spreads are ASSUMED when bid/ask unavailable. No broker connection.",
+  "rows": [
+    {
+      "combo": "A",
+      "net_return": 0.6076869925122712,
+      "sharpe": 19.90019959016499,
+      "max_drawdown": 0.018897716313534964,
+      "fees_paid": 5257.710926687353,
+      "n_fills": 34745
+    },
+    {
+      "combo": "B",
+      "net_return": 0.2745836445344325,
+      "sharpe": 14.556654381021595,
+      "max_drawdown": 0.02296696442454511,
+      "fees_paid": 2312.288922591051,
+      "n_fills": 18430
+    },
+    {
+      "combo": "C",
+      "net_return": 0.5093334803869467,
+      "sharpe": 39.914649560395205,
+      "max_drawdown": 0.018987206424380784,
+      "fees_paid": 5097.3299445104,
+      "n_fills": 51512
+    },
+    {
+      "combo": "A+B",
+      "net_return": 0.6081352449794375,
+      "sharpe": 19.977211724722554,
+      "max_drawdown": 0.018955212739539935,
+      "fees_paid": 5260.526256261698,
+      "n_fills": 34767
+    },
+    {
+      "combo": "A+C",
+      "net_return": 0.28215479212894823,
+      "sharpe": 10.894919939584549,
+      "max_drawdown": 0.026898089967585175,
+      "fees_paid": 5915.979168217172,
+      "n_fills": 30773
+    },
+    {
+      "combo": "B+C",
+      "net_return": 0.08680048208710223,
+      "sharpe": 3.972711348420794,
+      "max_drawdown": 0.051578882389322185,
+      "fees_paid": 6237.360342243649,
+      "n_fills": 26853
+    },
+    {
+      "combo": "A+B+C",
+      "net_return": 0.6069905786745748,
+      "sharpe": 19.92393033290854,
+      "max_drawdown": 0.018915733419938532,
+      "fees_paid": 5246.718518181534,
+      "n_fills": 34758
+    }
+  ],
+  "note": "Combinations sum frozen sleeve weights with gross clip; candidates unmodified. Mixed-TF sleeves are causally asof-aligned onto the primary (first) timeframe."
+}

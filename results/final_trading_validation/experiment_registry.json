@@ -1,0 +1,245 @@
+{
+  "experiments": [
+    {
+      "experiment_id": "ftv_16b93afba4fcd8da",
+      "candidate_id": "mdc_51a60a3264845365",
+      "dataset": "btcusdt_intraday_5m@1.0.1",
+      "model": "MTF",
+      "signal": "momentum_signal:30m->5m",
+      "timeframe": "5m",
+      "holding_period": 2,
+      "direction": "LONG_SHORT",
+      "cost_model": "BASE",
+      "train": [
+        0,
+        40000
+      ],
+      "validation": [
+        40000,
+        60000
+      ],
+      "oos": [
+        60000,
+        80000
+      ],
+      "result": {
+        "oos_net_sharpe": 6.329245371398349,
+        "oos_net_return": 0.6244294557431201,
+        "gate_status": "RESEARCH_ONLY"
+      },
+      "status": "RESEARCH_ONLY",
+      "seed": 42
+    },
+    {
+      "experiment_id": "ftv_bfed6dfdd0ca4795",
+      "candidate_id": "mdc_99aa952c5d5f6ff7",
+      "dataset": "btcusdt_intraday_15m@1.0.1",
+      "model": "MTF",
+      "signal": "momentum_signal:1h->15m",
+      "timeframe": "15m",
+      "holding_period": 2,
+      "direction": "LONG_SHORT",
+      "cost_model": "BASE",
+      "train": [
+        0,
+        25000
+      ],
+      "validation": [
+        25000,
+        37500
+      ],
+      "oos": [
+        37500,
+        50000
+      ],
+      "result": {
+        "oos_net_sharpe": 5.239070799148286,
+        "oos_net_return": 0.9161314707400633,
+        "gate_status": "PROFITABILITY_EVIDENCE"
+      },
+      "status": "PROFITABILITY_EVIDENCE",
+      "seed": 42
+    },
+    {
+      "experiment_id": "ftv_10e4a524bfccf6f1",
+      "candidate_id": "mdc_6f008c954ea26bf5",
+      "dataset": "btcusdt_intraday_15m@1.0.1",
+      "model": "MTF",
+      "signal": "momentum_signal:1h->15m",
+      "timeframe": "15m",
+      "holding_period": 1,
+      "direction": "LONG",
+      "cost_model": "BASE",
+      "train": [
+        0,
+        25000
+      ],
+      "validation": [
+        25000,
+        37500
+      ],
+      "oos": [
+        37500,
+        50000
+      ],
+      "result": {
+        "oos_net_sharpe": 6.1568118004576275,
+        "oos_net_return": 0.713338873047928,
+        "gate_status": "PROFITABILITY_EVIDENCE"
+      },
+      "status": "PROFITABILITY_EVIDENCE",
+      "seed": 42
+    },
+    {
+      "experiment_id": "ftv_fff6a5e61581cc96",
+      "candidate_id": "mdc_678609c534d68189",
+      "dataset": "btcusdt_intraday_5m@1.0.1",
+      "model": "MTF",
+      "signal": "momentum_signal:30m->5m",
+      "timeframe": "5m",
+      "holding_period": 2,
+      "direction": "SHORT",
+      "cost_model": "BASE",
+      "train": [
+        0,
+        40000
+      ],
+      "validation": [
+        40000,
+        60000
+      ],
+      "oos": [
+        60000,
+        80000
+      ],
+      "result": {
+        "oos_net_sharpe": 7.4918983930805645,
+        "oos_net_return": 0.5566798395570751,
+        "gate_status": "PROFITABILITY_EVIDENCE"
+      },
+      "status": "PROFITABILITY_EVIDENCE",
+      "seed": 42
+    },
+    {
+      "experiment_id": "ftv_503a652fcb729000",
+      "candidate_id": "mdc_801488267ad484dc",
+      "dataset": "btcusdt_intraday_1h@1.0.1",
+      "model": "Ensemble",
+      "signal": "regime_conditioned_mom_1h",
+      "timeframe": "1h",
+      "holding_period": 10,
+      "direction": "LONG",
+      "cost_model": "BASE",
+      "train": [
+        0,
+        20000
+      ],
+      "validation": [
+        20000,
+        30000
+      ],
+      "oos": [
+        30000,
+        40000
+      ],
+      "result": {
+        "oos_net_sharpe": -0.4970142325059521,
+        "oos_net_return": -0.14898964672868953,
+        "gate_status": "OOS_FAILED"
+      },
+      "status": "OOS_FAILED",
+      "seed": 42
+    },
+    {
+      "experiment_id": "ftv_88e683ab7314f2d5",
+      "candidate_id": "mdc_3ed979ee7d9dabe6",
+      "dataset": "btcusdt_intraday_1h@1.0.1",
+      "model": "Combination",
+      "signal": "xgb_x_price_action",
+      "timeframe": "1h",
+      "holding_period": 20,
+      "direction": "LONG_SHORT",
+      "cost_model": "BASE",
+      "train": [
+        0,
+        20000
+      ],
+      "validation": [
+        20000,
+        30000
+      ],
+      "oos": [
+        30000,
+        40000
+      ],
+      "result": {
+        "oos_net_sharpe": -0.3658690448479371,
+        "oos_net_return": -0.1968544270464489,
+        "gate_status": "OOS_FAILED"
+      },
+      "status": "OOS_FAILED",
+      "seed": 42
+    },
+    {
+      "experiment_id": "ftv_24c67cfdbdbb05fe",
+      "candidate_id": "mdc_4992167889db9b2e",
+      "dataset": "btcusdt_intraday_15m@1.0.1",
+      "model": "CatBoost",
+      "signal": "cat_return_v1",
+      "timeframe": "15m",
+      "holding_period": 20,
+      "direction": "LONG_SHORT",
+      "cost_model": "BASE",
+      "train": [
+        0,
+        25000
+      ],
+      "validation": [
+        25000,
+        37500
+      ],
+      "oos": [
+        37500,
+        50000
+      ],
+      "result": {
+        "oos_net_sharpe": 0.051822819852444336,
+        "oos_net_return": 0.008984503766492569,
+        "gate_status": "FRAGILE"
+      },
+      "status": "FRAGILE",
+      "seed": 42
+    },
+    {
+      "experiment_id": "ftv_073d2686b30f2ffe",
+      "candidate_id": "mdc_a0f769fc20835273",
+      "dataset": "btcusdt_intraday_1h@1.0.1",
+      "model": "CatBoost",
+      "signal": "cat_return_v1",
+      "timeframe": "1h",
+      "holding_period": 20,
+      "direction": "LONG_SHORT",
+      "cost_model": "BASE",
+      "train": [
+        0,
+        20000
+      ],
+      "validation": [
+        20000,
+        30000
+      ],
+      "oos": [
+        30000,
+        40000
+      ],
+      "result": {
+        "oos_net_sharpe": -0.9421675386103209,
+        "oos_net_return": -0.5428635633602928,
+        "gate_status": "OOS_FAILED"
+      },
+      "status": "OOS_FAILED",
+      "seed": 42
+    }
+  ],
+  "n": 8
+}

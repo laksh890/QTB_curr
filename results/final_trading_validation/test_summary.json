@@ -1,0 +1,17 @@
+{
+  "disclaimer": "FINAL TRADING VALIDATION — research evidence only. PROFITABILITY_EVIDENCE ≠ PROVEN PROFITABILITY ≠ PAPER-READY ≠ LIVE_READY.",
+  "unit_tests": {
+    "command": "pytest iqrp/tests/unit/backtesting/test_final_trading_validation.py iqrp/tests/unit/backtesting/test_candidate_consolidation.py iqrp/tests/unit/backtesting/test_portfolio_construction_integration.py iqrp/tests/unit/backtesting/test_unified_trading_pipeline.py iqrp/tests/unit/data/test_binance_vision_timestamps.py --no-cov",
+    "passed": 29,
+    "failed": 0,
+    "status": "PASS"
+  },
+  "validation_run": {
+    "log": "results/final_trading_validation_run.log",
+    "final_status": "PROFITABILITY_EVIDENCE",
+    "n_profitability_evidence": 3,
+    "n_candidates": 8
+  },
+  "live_trading": false,
+  "broker_connection": false
+}

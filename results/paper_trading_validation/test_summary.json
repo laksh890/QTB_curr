@@ -1,0 +1,22 @@
+{
+  "unit_tests": "iqrp/tests/unit/backtesting/test_paper_trading_validation.py",
+  "expected": "run pytest separately; smoke CLI validates end-to-end path",
+  "disclaimer": "PAPER TRADING VALIDATION \u2014 sequential simulated execution only. PAPER_TRADING_CANDIDATE \u2260 PROVEN PROFITABLE \u2260 LIVE_READY \u2260 PRODUCTION_READY. Costs/spreads are ASSUMED when bid/ask unavailable. No broker connection.",
+  "status": "PAPER_TRADING_CANDIDATE",
+  "gates_passed": 16,
+  "gates_total": 16,
+  "pytest": {
+    "path": "iqrp/tests/unit/backtesting/test_paper_trading_validation.py",
+    "passed": 5,
+    "failed": 0,
+    "status": "PASS"
+  },
+  "cli_full": {
+    "command": "python -m iqrp.app.paper_trading",
+    "status": "PASS"
+  },
+  "cli_smoke": {
+    "command": "python -m iqrp.app.paper_trading --smoke",
+    "status": "PASS"
+  }
+}

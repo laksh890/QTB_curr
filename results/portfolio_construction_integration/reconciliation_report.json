@@ -1,0 +1,916 @@
+{
+  "rows": [
+    {
+      "method": "mean_variance",
+      "cascade_complete": true,
+      "reconciliation": {
+        "ok": true,
+        "starting_capital": 1000000.0,
+        "realized": 0.0,
+        "unrealized": 0.0,
+        "fees": 0.0,
+        "financing": 0.0,
+        "ending_equity": 1000000.0,
+        "expected_equity": 1000000.0,
+        "discrepancy": 0.0,
+        "tolerance": 0.0001,
+        "detail": "reconciled via equity = cash + position_market_value",
+        "cash": 1000000.0,
+        "position_market_value": 0.0,
+        "cash_plus_mv_equity": 1000000.0,
+        "checks": {
+          "cash_plus_mv": {
+            "ok": true,
+            "expected": 1000000.0,
+            "gap": 0.0
+          },
+          "prompt_identity": {
+            "ok": true,
+            "expected": 1000000.0,
+            "gap": 0.0
+          },
+          "cash_plus_unrealized": {
+            "ok": true,
+            "expected": 1000000.0,
+            "gap": 0.0
+          }
+        },
+        "identity": "equity = cash + position_market_value; cash settles buys/sells/fees; Starting + Realized + Unrealized - Fees - Financing \u2248 Ending (or cash + unrealized when realized is settled into cash)",
+        "position_fill_replay": {
+          "ok": true,
+          "n_fills": 0,
+          "final_quantities": {},
+          "steps": [],
+          "matches_final_positions": true,
+          "final_mismatches": []
+        },
+        "cash_fill_replay": {
+          "ok": true,
+          "initial_cash": 1000000.0,
+          "replayed_cash": 1000000.0,
+          "n_events": 0,
+          "events": [],
+          "tolerance": 0.0001,
+          "matches_ledger": true,
+          "ledger_cash": 1000000.0
+        },
+        "equity_snapshots": {
+          "ok": true,
+          "n_snapshots": 0,
+          "n_checked": 0,
+          "n_gaps": 0,
+          "gaps": [],
+          "tolerance": 0.0001
+        },
+        "capital_identity": {
+          "ok": true,
+          "starting_capital": 1000000.0,
+          "realized": 0.0,
+          "unrealized": 0.0,
+          "fees": 0.0,
+          "financing": 0.0,
+          "ending_equity": 1000000.0,
+          "expected_equity": 1000000.0,
+          "discrepancy": 0.0,
+          "tolerance": 0.0001,
+          "detail": "reconciled via equity = cash + position_market_value",
+          "cash": 1000000.0,
+          "position_market_value": 0.0,
+          "cash_plus_mv_equity": 1000000.0,
+          "checks": {
+            "cash_plus_mv": {
+              "ok": true,
+              "expected": 1000000.0,
+              "gap": 0.0
+            },
+            "prompt_identity": {
+              "ok": true,
+              "expected": 1000000.0,
+              "gap": 0.0
+            },
+            "cash_plus_unrealized": {
+              "ok": true,
+              "expected": 1000000.0,
+              "gap": 0.0
+            }
+          },
+          "identity": "equity = cash + position_market_value; cash settles buys/sells/fees; Starting + Realized + Unrealized - Fees - Financing \u2248 Ending (or cash + unrealized when realized is settled into cash)"
+        },
+        "outcome": "RECONCILIATION_OK"
+      },
+      "reconciliation_ok": true,
+      "equity": 1000000.0,
+      "positions": {},
+      "gross_exposure_weights": 3.186340080673387e-14,
+      "n_results": 8,
+      "result_outcomes": [
+        "SKIPPED_FLAT",
+        "SKIPPED_FLAT",
+        "RISK_REJECTED",
+        "SKIPPED_FLAT",
+        "RISK_REJECTED",
+        "SKIPPED_FLAT",
+        "RISK_REJECTED",
+        "SKIPPED_FLAT"
+      ]
+    },
+    {
+      "method": "risk_parity",
+      "cascade_complete": true,
+      "reconciliation": {
+        "ok": true,
+        "starting_capital": 1000000.0,
+        "realized": 0.0,
+        "unrealized": 0.2880345866331298,
+        "fees": 0.0,
+        "financing": 0.0,
+        "ending_equity": 1000000.2880345862,
+        "expected_equity": 1000000.2880345862,
+        "discrepancy": 0.0,
+        "tolerance": 0.0001,
+        "detail": "reconciled via equity = cash + position_market_value",
+        "cash": -4609374.600302214,
+        "position_market_value": 5609374.8883368,
+        "cash_plus_mv_equity": 1000000.2880345862,
+        "checks": {
+          "cash_plus_mv": {
+            "ok": true,
+            "expected": 1000000.2880345862,
+            "gap": 0.0
+          },
+          "prompt_identity": {
+            "ok": true,
+            "expected": 1000000.2880345866,
+            "gap": -3.4924596548080444e-10
+          },
+          "cash_plus_unrealized": {
+            "ok": false,
+            "expected": -4609374.312267628,
+            "gap": 5609374.600302214
+          }
+        },
+        "identity": "equity = cash + position_market_value; cash settles buys/sells/fees; Starting + Realized + Unrealized - Fees - Financing \u2248 Ending (or cash + unrealized when realized is settled into cash)",
+        "position_fill_replay": {
+          "ok": true,
+          "n_fills": 6,
+          "final_quantities": {
+            "BTCUSDT": 59.944589300000004
+          },
+          "steps": [
+            {
+              "instrument": "BTCUSDT",
+              "side": "buy",
+              "quantity": 1.16883602,
+              "position_before": 0.0,
+              "position_after": 1.16883602,
+              "expected_after": 1.16883602,
+              "ok": true
+            },
+            {
+              "instrument": "BTCUSDT",
+              "side": "buy",
+              "quantity": 3.67348463,
+              "position_before": 1.16883602,
+              "position_after": 4.84232065,
+              "expected_after": 4.84232065,
+              "ok": true
+            },
+            {
+              "instrument": "BTCUSDT",
+              "side": "buy",
+              "quantity": 3.6734846,
+              "position_before": 4.84232065,
+              "position_after": 8.51580525,
+              "expected_after": 8.51580525,
+              "ok": true
+            },
+            {
+              "instrument": "BTCUSDT",
+              "side": "buy",
+              "quantity": 7.34696918,
+              "position_before": 8.51580525,
+              "position_after": 15.86277443,
+              "expected_after": 15.86277443,
+              "ok": true
+            },
+            {
+              "instrument": "BTCUSDT",
+              "side": "buy",
+              "quantity": 14.69393832,
+              "position_before": 15.86277443,
+              "position_after": 30.556712750000003,
+              "expected_after": 30.556712750000003,
+              "ok": true
+            },
+            {
+              "instrument": "BTCUSDT",
+              "side": "buy",
+              "quantity": 29.38787655,
+              "position_before": 30.556712750000003,
+              "position_after": 59.944589300000004,
+              "expected_after": 59.944589300000004,
+              "ok": true
+            }
+          ],
+          "matches_final_positions": true,
+          "final_mismatches": []
+        },
+        "cash_fill_replay": {
+          "ok": true,
+          "initial_cash": 1000000.0,
+          "replayed_cash": -4609374.600302214,
+          "n_events": 6,
+          "events": [
+            {
+              "instrument": "BTCUSDT",
+              "side": "buy",
+              "notional": 109375.00525170012,
+              "fee": 0.0,
+              "cash_before": 1000000.0,
+              "cash_after": 890624.9947482999
+            },
+            {
+              "instrument": "BTCUSDT",
+              "side": "buy",
+              "notional": 343749.9793694568,
+              "fee": 0.0,
+              "cash_before": 890624.9947482999,
+              "cash_after": 546875.0153788431
+            },
+            {
+              "instrument": "BTCUSDT",
+              "side": "buy",
+              "notional": 343749.976562177,
+              "fee": 0.0,
+              "cash_before": 546875.0153788431,
+              "cash_after": 203125.03881666606
+            },
+            {
+              "instrument": "BTCUSDT",
+              "side": "buy",
+              "notional": 687499.951252834,
+              "fee": 0.0,
+              "cash_before": 203125.03881666606,
+              "cash_after": -484374.912436168
+            },
+            {
+              "instrument": "BTCUSDT",
+              "side": "buy",
+              "notional": 1374999.8987626284,
+              "fee": 0.0,
+              "cash_before": -484374.912436168,
+              "cash_after": -1859374.8111987964
+            },
+            {
+              "instrument": "BTCUSDT",
+              "side": "buy",
+              "notional": 2749999.789103417,
+              "fee": 0.0,
+              "cash_before": -1859374.8111987964,
+              "cash_after": -4609374.600302214
+            }
+          ],
+          "tolerance": 0.0001,
+          "matches_ledger": true,
+          "ledger_cash": -4609374.600302214
+        },
+        "equity_snapshots": {
+          "ok": true,
+          "n_snapshots": 0,
+          "n_checked": 0,
+          "n_gaps": 0,
+          "gaps": [],
+          "tolerance": 0.0001
+        },
+        "capital_identity": {
+          "ok": true,
+          "starting_capital": 1000000.0,
+          "realized": 0.0,
+          "unrealized": 0.2880345866331298,
+          "fees": 0.0,
+          "financing": 0.0,
+          "ending_equity": 1000000.2880345862,
+          "expected_equity": 1000000.2880345862,
+          "discrepancy": 0.0,
+          "tolerance": 0.0001,
+          "detail": "reconciled via equity = cash + position_market_value",
+          "cash": -4609374.600302214,
+          "position_market_value": 5609374.8883368,
+          "cash_plus_mv_equity": 1000000.2880345862,
+          "checks": {
+            "cash_plus_mv": {
+              "ok": true,
+              "expected": 1000000.2880345862,
+              "gap": 0.0
+            },
+            "prompt_identity": {
+              "ok": true,
+              "expected": 1000000.2880345866,
+              "gap": -3.4924596548080444e-10
+            },
+            "cash_plus_unrealized": {
+              "ok": false,
+              "expected": -4609374.312267628,
+              "gap": 5609374.600302214
+            }
+          },
+          "identity": "equity = cash + position_market_value; cash settles buys/sells/fees; Starting + Realized + Unrealized - Fees - Financing \u2248 Ending (or cash + unrealized when realized is settled into cash)"
+        },
+        "outcome": "RECONCILIATION_OK"
+      },
+      "reconciliation_ok": true,
+      "equity": 1000000.2880345862,
+      "positions": {
+        "BTCUSDT": 59.944589300000004
+      },
+      "gross_exposure_weights": 5.609373272643291,
+      "n_results": 8,
+      "result_outcomes": [
+        "FILL_COMPLETE",
+        "SKIPPED_FLAT",
+        "SKIPPED_FLAT",
+        "FILL_COMPLETE",
+        "FILL_COMPLETE",
+        "FILL_COMPLETE",
+        "FILL_COMPLETE",
+        "FILL_COMPLETE"
+      ]
+    },
+    {
+      "method": "black_litterman",
+      "cascade_complete": true,
+      "reconciliation": {
+        "ok": true,
+        "starting_capital": 1000000.0,
+        "realized": 0.0,
+        "unrealized": 0.0,
+        "fees": 0.0,
+        "financing": 0.0,
+        "ending_equity": 1000000.0,
+        "expected_equity": 1000000.0,
+        "discrepancy": 0.0,
+        "tolerance": 0.0001,
+        "detail": "reconciled via equity = cash + position_market_value",
+        "cash": 1000000.0,
+        "position_market_value": 0.0,
+        "cash_plus_mv_equity": 1000000.0,
+        "checks": {
+          "cash_plus_mv": {
+            "ok": true,
+            "expected": 1000000.0,
+            "gap": 0.0
+          },
+          "prompt_identity": {
+            "ok": true,
+            "expected": 1000000.0,
+            "gap": 0.0
+          },
+          "cash_plus_unrealized": {
+            "ok": true,
+            "expected": 1000000.0,
+            "gap": 0.0
+          }
+        },
+        "identity": "equity = cash + position_market_value; cash settles buys/sells/fees; Starting + Realized + Unrealized - Fees - Financing \u2248 Ending (or cash + unrealized when realized is settled into cash)",
+        "position_fill_replay": {
+          "ok": true,
+          "n_fills": 0,
+          "final_quantities": {},
+          "steps": [],
+          "matches_final_positions": true,
+          "final_mismatches": []
+        },
+        "cash_fill_replay": {
+          "ok": true,
+          "initial_cash": 1000000.0,
+          "replayed_cash": 1000000.0,
+          "n_events": 0,
+          "events": [],
+          "tolerance": 0.0001,
+          "matches_ledger": true,
+          "ledger_cash": 1000000.0
+        },
+        "equity_snapshots": {
+          "ok": true,
+          "n_snapshots": 0,
+          "n_checked": 0,
+          "n_gaps": 0,
+          "gaps": [],
+          "tolerance": 0.0001
+        },
+        "capital_identity": {
+          "ok": true,
+          "starting_capital": 1000000.0,
+          "realized": 0.0,
+          "unrealized": 0.0,
+          "fees": 0.0,
+          "financing": 0.0,
+          "ending_equity": 1000000.0,
+          "expected_equity": 1000000.0,
+          "discrepancy": 0.0,
+          "tolerance": 0.0001,
+          "detail": "reconciled via equity = cash + position_market_value",
+          "cash": 1000000.0,
+          "position_market_value": 0.0,
+          "cash_plus_mv_equity": 1000000.0,
+          "checks": {
+            "cash_plus_mv": {
+              "ok": true,
+              "expected": 1000000.0,
+              "gap": 0.0
+            },
+            "prompt_identity": {
+              "ok": true,
+              "expected": 1000000.0,
+              "gap": 0.0
+            },
+            "cash_plus_unrealized": {
+              "ok": true,
+              "expected": 1000000.0,
+              "gap": 0.0
+            }
+          },
+          "identity": "equity = cash + position_market_value; cash settles buys/sells/fees; Starting + Realized + Unrealized - Fees - Financing \u2248 Ending (or cash + unrealized when realized is settled into cash)"
+        },
+        "outcome": "RECONCILIATION_OK"
+      },
+      "reconciliation_ok": true,
+      "equity": 1000000.0,
+      "positions": {},
+      "gross_exposure_weights": 7.860379014341166e-14,
+      "n_results": 8,
+      "result_outcomes": [
+        "SKIPPED_FLAT",
+        "SKIPPED_FLAT",
+        "RISK_REJECTED",
+        "SKIPPED_FLAT",
+        "RISK_REJECTED",
+        "SKIPPED_FLAT",
+        "RISK_REJECTED",
+        "SKIPPED_FLAT"
+      ]
+    },
+    {
+      "method": "hrp",
+      "cascade_complete": true,
+      "reconciliation": {
+        "ok": true,
+        "starting_capital": 1000000.0,
+        "realized": 0.0,
+        "unrealized": 0.045732042851290636,
+        "fees": 0.0,
+        "financing": 0.0,
+        "ending_equity": 1000000.0457320428,
+        "expected_equity": 1000000.0457320428,
+        "discrepancy": 0.0,
+        "tolerance": 0.0001,
+        "detail": "reconciled via equity = cash + position_market_value",
+        "cash": -164327.17967979732,
+        "position_market_value": 1164327.22541184,
+        "cash_plus_mv_equity": 1000000.0457320428,
+        "checks": {
+          "cash_plus_mv": {
+            "ok": true,
+            "expected": 1000000.0457320428,
+            "gap": 0.0
+          },
+          "prompt_identity": {
+            "ok": true,
+            "expected": 1000000.0457320429,
+            "gap": -1.1641532182693481e-10
+          },
+          "cash_plus_unrealized": {
+            "ok": false,
+            "expected": -164327.13394775448,
+            "gap": 1164327.1796797973
+          }
+        },
+        "identity": "equity = cash + position_market_value; cash settles buys/sells/fees; Starting + Realized + Unrealized - Fees - Financing \u2248 Ending (or cash + unrealized when realized is settled into cash)",
+        "position_fill_replay": {
+          "ok": true,
+          "n_fills": 7,
+          "final_quantities": {
+            "BTCUSDT": 12.442583840000001
+          },
+          "steps": [
+            {
+              "instrument": "BTCUSDT",
+              "side": "buy",
+              "quantity": 0.77215031,
+              "position_before": 0.0,
+              "position_after": 0.77215031,
+              "expected_after": 0.77215031,
+              "ok": true
+            },
+            {
+              "instrument": "BTCUSDT",
+              "side": "buy",
+              "quantity": 0.52591783,
+              "position_before": 0.77215031,
+              "position_after": 1.29806814,
+              "expected_after": 1.29806814,
+              "ok": true
+            },
+            {
+              "instrument": "BTCUSDT",
+              "side": "buy",
+              "quantity": 0.35001952000000003,
+              "position_before": 1.29806814,
+              "position_after": 1.64808766,
+              "expected_after": 1.64808766,
+              "ok": true
+            },
+            {
+              "instrument": "BTCUSDT",
+              "side": "buy",
+              "quantity": 0.78856505,
+              "position_before": 1.64808766,
+              "position_after": 2.43665271,
+              "expected_after": 2.43665271,
+              "ok": true
+            },
+            {
+              "instrument": "BTCUSDT",
+              "side": "buy",
+              "quantity": 1.40282375,
+              "position_before": 2.43665271,
+              "position_after": 3.83947646,
+              "expected_after": 3.83947646,
+              "ok": true
+            },
+            {
+              "instrument": "BTCUSDT",
+              "side": "buy",
+              "quantity": 3.09909112,
+              "position_before": 3.83947646,
+              "position_after": 6.938567580000001,
+              "expected_after": 6.938567580000001,
+              "ok": true
+            },
+            {
+              "instrument": "BTCUSDT",
+              "side": "buy",
+              "quantity": 5.50401626,
+              "position_before": 6.938567580000001,
+              "position_after": 12.442583840000001,
+              "expected_after": 12.442583840000001,
+              "ok": true
+            }
+          ],
+          "matches_final_positions": true,
+          "final_mismatches": []
+        },
+        "cash_fill_replay": {
+          "ok": true,
+          "initial_cash": 1000000.0,
+          "replayed_cash": -164327.17967979732,
+          "n_events": 7,
+          "events": [
+            {
+              "instrument": "BTCUSDT",
+              "side": "buy",
+              "notional": 72254.74126931155,
+              "fee": 0.0,
+              "cash_before": 1000000.0,
+              "cash_after": 927745.2587306885
+            },
+            {
+              "instrument": "BTCUSDT",
+              "side": "buy",
+              "notional": 49213.28948966916,
+              "fee": 0.0,
+              "cash_before": 927745.2587306885,
+              "cash_after": 878531.9692410193
+            },
+            {
+              "instrument": "BTCUSDT",
+              "side": "buy",
+              "notional": 32753.428353617604,
+              "fee": 0.0,
+              "cash_before": 878531.9692410193,
+              "cash_after": 845778.5408874018
+            },
+            {
+              "instrument": "BTCUSDT",
+              "side": "buy",
+              "notional": 73790.75917597474,
+              "fee": 0.0,
+              "cash_before": 845778.5408874018,
+              "cash_after": 771987.781711427
+            },
+            {
+              "instrument": "BTCUSDT",
+              "side": "buy",
+              "notional": 131270.62821588124,
+              "fee": 0.0,
+              "cash_before": 771987.781711427,
+              "cash_after": 640717.1534955457
+            },
+            {
+              "instrument": "BTCUSDT",
+              "side": "buy",
+              "notional": 290000.5351496644,
+              "fee": 0.0,
+              "cash_before": 640717.1534955457,
+              "cash_after": 350716.61834588135
+            },
+            {
+              "instrument": "BTCUSDT",
+              "side": "buy",
+              "notional": 515043.79802567867,
+              "fee": 0.0,
+              "cash_before": 350716.61834588135,
+              "cash_after": -164327.17967979732
+            }
+          ],
+          "tolerance": 0.0001,
+          "matches_ledger": true,
+          "ledger_cash": -164327.17967979732
+        },
+        "equity_snapshots": {
+          "ok": true,
+          "n_snapshots": 0,
+          "n_checked": 0,
+          "n_gaps": 0,
+          "gaps": [],
+          "tolerance": 0.0001
+        },
+        "capital_identity": {
+          "ok": true,
+          "starting_capital": 1000000.0,
+          "realized": 0.0,
+          "unrealized": 0.045732042851290636,
+          "fees": 0.0,
+          "financing": 0.0,
+          "ending_equity": 1000000.0457320428,
+          "expected_equity": 1000000.0457320428,
+          "discrepancy": 0.0,
+          "tolerance": 0.0001,
+          "detail": "reconciled via equity = cash + position_market_value",
+          "cash": -164327.17967979732,
+          "position_market_value": 1164327.22541184,
+          "cash_plus_mv_equity": 1000000.0457320428,
+          "checks": {
+            "cash_plus_mv": {
+              "ok": true,
+              "expected": 1000000.0457320428,
+              "gap": 0.0
+            },
+            "prompt_identity": {
+              "ok": true,
+              "expected": 1000000.0457320429,
+              "gap": -1.1641532182693481e-10
+            },
+            "cash_plus_unrealized": {
+              "ok": false,
+              "expected": -164327.13394775448,
+              "gap": 1164327.1796797973
+            }
+          },
+          "identity": "equity = cash + position_market_value; cash settles buys/sells/fees; Starting + Realized + Unrealized - Fees - Financing \u2248 Ending (or cash + unrealized when realized is settled into cash)"
+        },
+        "outcome": "RECONCILIATION_OK"
+      },
+      "reconciliation_ok": true,
+      "equity": 1000000.0457320428,
+      "positions": {
+        "BTCUSDT": 12.442583840000001
+      },
+      "gross_exposure_weights": 1.16432717216478,
+      "n_results": 8,
+      "result_outcomes": [
+        "FILL_COMPLETE",
+        "FILL_COMPLETE",
+        "FILL_COMPLETE",
+        "RISK_REJECTED",
+        "FILL_COMPLETE",
+        "FILL_COMPLETE",
+        "FILL_COMPLETE",
+        "FILL_COMPLETE"
+      ]
+    },
+    {
+      "method": "constraints_only",
+      "cascade_complete": true,
+      "reconciliation": {
+        "ok": true,
+        "starting_capital": 1000000.0,
+        "realized": 0.0,
+        "unrealized": 0.20705094909178368,
+        "fees": 0.0,
+        "financing": 0.0,
+        "ending_equity": 1000000.2070509493,
+        "expected_equity": 1000000.2070509493,
+        "discrepancy": 0.0,
+        "tolerance": 0.0001,
+        "detail": "reconciled via equity = cash + position_market_value",
+        "cash": -3124999.7208751305,
+        "position_market_value": 4124999.92792608,
+        "cash_plus_mv_equity": 1000000.2070509493,
+        "checks": {
+          "cash_plus_mv": {
+            "ok": true,
+            "expected": 1000000.2070509493,
+            "gap": 0.0
+          },
+          "prompt_identity": {
+            "ok": true,
+            "expected": 1000000.2070509491,
+            "gap": 2.3283064365386963e-10
+          },
+          "cash_plus_unrealized": {
+            "ok": false,
+            "expected": -3124999.5138241816,
+            "gap": 4124999.720875131
+          }
+        },
+        "identity": "equity = cash + position_market_value; cash settles buys/sells/fees; Starting + Realized + Unrealized - Fees - Financing \u2248 Ending (or cash + unrealized when realized is settled into cash)",
+        "position_fill_replay": {
+          "ok": true,
+          "n_fills": 6,
+          "final_quantities": {
+            "BTCUSDT": 44.08181508
+          },
+          "steps": [
+            {
+              "instrument": "BTCUSDT",
+              "side": "buy",
+              "quantity": 1.3358126000000001,
+              "position_before": 0.0,
+              "position_after": 1.3358126000000001,
+              "expected_after": 1.3358126000000001,
+              "ok": true
+            },
+            {
+              "instrument": "BTCUSDT",
+              "side": "buy",
+              "quantity": 2.67162519,
+              "position_before": 1.3358126000000001,
+              "position_after": 4.00743779,
+              "expected_after": 4.00743779,
+              "ok": true
+            },
+            {
+              "instrument": "BTCUSDT",
+              "side": "buy",
+              "quantity": 2.67162517,
+              "position_before": 4.00743779,
+              "position_after": 6.6790629599999995,
+              "expected_after": 6.6790629599999995,
+              "ok": true
+            },
+            {
+              "instrument": "BTCUSDT",
+              "side": "buy",
+              "quantity": 5.34325033,
+              "position_before": 6.6790629599999995,
+              "position_after": 12.02231329,
+              "expected_after": 12.02231329,
+              "ok": true
+            },
+            {
+              "instrument": "BTCUSDT",
+              "side": "buy",
+              "quantity": 10.68650062,
+              "position_before": 12.02231329,
+              "position_after": 22.70881391,
+              "expected_after": 22.70881391,
+              "ok": true
+            },
+            {
+              "instrument": "BTCUSDT",
+              "side": "buy",
+              "quantity": 21.373001170000002,
+              "position_before": 22.70881391,
+              "position_after": 44.08181508,
+              "expected_after": 44.08181508,
+              "ok": true
+            }
+          ],
+          "matches_final_positions": true,
+          "final_mismatches": []
+        },
+        "cash_fill_replay": {
+          "ok": true,
+          "initial_cash": 1000000.0,
+          "replayed_cash": -3124999.7208751305,
+          "n_events": 6,
+          "events": [
+            {
+              "instrument": "BTCUSDT",
+              "side": "buy",
+              "notional": 125000.00653666302,
+              "fee": 0.0,
+              "cash_before": 1000000.0,
+              "cash_after": 874999.993463337
+            },
+            {
+              "instrument": "BTCUSDT",
+              "side": "buy",
+              "notional": 249999.98542131402,
+              "fee": 0.0,
+              "cash_before": 874999.993463337,
+              "cash_after": 625000.0080420229
+            },
+            {
+              "instrument": "BTCUSDT",
+              "side": "buy",
+              "notional": 249999.98354979412,
+              "fee": 0.0,
+              "cash_before": 625000.0080420229,
+              "cash_after": 375000.0244922288
+            },
+            {
+              "instrument": "BTCUSDT",
+              "side": "buy",
+              "notional": 499999.9661638283,
+              "fee": 0.0,
+              "cash_before": 375000.0244922288,
+              "cash_after": -124999.94167159952
+            },
+            {
+              "instrument": "BTCUSDT",
+              "side": "buy",
+              "notional": 999999.9285846169,
+              "fee": 0.0,
+              "cash_before": -124999.94167159952,
+              "cash_after": -1124999.8702562163
+            },
+            {
+              "instrument": "BTCUSDT",
+              "side": "buy",
+              "notional": 1999999.8506189142,
+              "fee": 0.0,
+              "cash_before": -1124999.8702562163,
+              "cash_after": -3124999.7208751305
+            }
+          ],
+          "tolerance": 0.0001,
+          "matches_ledger": true,
+          "ledger_cash": -3124999.7208751305
+        },
+        "equity_snapshots": {
+          "ok": true,
+          "n_snapshots": 0,
+          "n_checked": 0,
+          "n_gaps": 0,
+          "gaps": [],
+          "tolerance": 0.0001
+        },
+        "capital_identity": {
+          "ok": true,
+          "starting_capital": 1000000.0,
+          "realized": 0.0,
+          "unrealized": 0.20705094909178368,
+          "fees": 0.0,
+          "financing": 0.0,
+          "ending_equity": 1000000.2070509493,
+          "expected_equity": 1000000.2070509493,
+          "discrepancy": 0.0,
+          "tolerance": 0.0001,
+          "detail": "reconciled via equity = cash + position_market_value",
+          "cash": -3124999.7208751305,
+          "position_market_value": 4124999.92792608,
+          "cash_plus_mv_equity": 1000000.2070509493,
+          "checks": {
+            "cash_plus_mv": {
+              "ok": true,
+              "expected": 1000000.2070509493,
+              "gap": 0.0
+            },
+            "prompt_identity": {
+              "ok": true,
+              "expected": 1000000.2070509491,
+              "gap": 2.3283064365386963e-10
+            },
+            "cash_plus_unrealized": {
+              "ok": false,
+              "expected": -3124999.5138241816,
+              "gap": 4124999.720875131
+            }
+          },
+          "identity": "equity = cash + position_market_value; cash settles buys/sells/fees; Starting + Realized + Unrealized - Fees - Financing \u2248 Ending (or cash + unrealized when realized is settled into cash)"
+        },
+        "outcome": "RECONCILIATION_OK"
+      },
+      "reconciliation_ok": true,
+      "equity": 1000000.2070509493,
+      "positions": {
+        "BTCUSDT": 44.08181508
+      },
+      "gross_exposure_weights": 4.1249990738411055,
+      "n_results": 8,
+      "result_outcomes": [
+        "FILL_COMPLETE",
+        "SKIPPED_FLAT",
+        "SKIPPED_FLAT",
+        "FILL_COMPLETE",
+        "FILL_COMPLETE",
+        "FILL_COMPLETE",
+        "FILL_COMPLETE",
+        "FILL_COMPLETE"
+      ]
+    }
+  ],
+  "disclaimer": "PORTFOLIO CONSTRUCTION INTEGRATION \u2014 wiring/validation only. PORTFOLIO IMPLEMENTED \u2260 INTEGRATED \u2260 ROBUST \u2260 PROFITABLE \u2260 LIVE READY. Prompt 35/36/39/40 artifacts are immutable."
+}

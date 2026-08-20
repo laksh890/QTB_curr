@@ -1,0 +1,35 @@
+{
+  "integration_id": "portfolio_construction_integration_v1",
+  "prompt40_dir": "results/candidate_consolidation",
+  "prompt39_dir": "results/model_driven_alpha_campaign",
+  "output_dir": "results/portfolio_construction_integration",
+  "registry_path": "dataset_registry.json",
+  "random_seed": 41,
+  "software_version": "iqrp-portfolio-construction-integration-0.1.0",
+  "methods": [
+    "mean_variance",
+    "risk_parity",
+    "black_litterman",
+    "hrp",
+    "constraints_only"
+  ],
+  "train_frac": 0.5,
+  "validation_frac": 0.25,
+  "max_weight": 0.35,
+  "max_gross": 1.0,
+  "max_net": 1.0,
+  "max_turnover": 0.75,
+  "risk_aversion": 1.0,
+  "budget": 1.0,
+  "market_type": "crypto",
+  "smoke": false,
+  "disclaimer": "PORTFOLIO CONSTRUCTION INTEGRATION \u2014 wiring/validation only. PORTFOLIO IMPLEMENTED \u2260 INTEGRATED \u2260 ROBUST \u2260 PROFITABLE \u2260 LIVE READY. Prompt 35/36/39/40 artifacts are immutable.",
+  "causal_policy": "mu and cov estimated from train+validation daily candidate net returns only. OOS returns used solely for evaluation. Future realized returns never enter weight construction at the decision timestamp.",
+  "signed_exposure_policy": "Optimizer sleeve weights (often non-negative for RP/HRP) are multiplied by each candidate's directional signal sign to form signed trading exposure. RP/HRP remain long-only on sleeve budgets; they are NOT converted into directional long-only trading by silently dropping shorts.",
+  "cost_names": [
+    "BASE",
+    "MODERATE",
+    "ADVERSE"
+  ],
+  "started_at": "2026-08-17T11:12:12.000752+00:00"
+}

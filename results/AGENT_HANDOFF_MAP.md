@@ -4,9 +4,19 @@
 
 > **`results/ARCHITECTURAL_ROADMAP_AND_HANDOVER.md`** (authoritative long-form handover)
 
+For **GitHub clone / missing packages / Poetry lock**, read first:
+
+> **`results/GITHUB_CLONE_AND_RECOVERY.md`**
+
 **Last research status:** Prompt 43 paper sim = `PAPER_TRADING_CANDIDATE` (sequential assumed-microstructure execution on frozen A/B/C). Prior: frozen 2024→2025 holdout `PROVEN_RESEARCH_PROFITABILITY` for 2 MTF evidence candidates.  
 **LIVE_READY:** NO  
 **Broker / live orders:** STOP — not authorized.
+
+### Board blockers (do these before new research)
+
+1. **Recover `iqrp/app/data` + `iqrp/app/backtesting/data` on GitHub** (was broken by bare `data/` gitignore)  
+2. **Commit `poetry.lock`** (missing)  
+3. **Pin/install ML group** (`poetry install --with ml`) — libs used in code were not in Poetry core  
 
 ---
 
@@ -14,7 +24,8 @@
 
 | Priority | File | Why |
 |----------|------|-----|
-| **0** | `results/ARCHITECTURAL_ROADMAP_AND_HANDOVER.md` | **Complete architecture + progress + roadmap** for agent handover. |
+| **0a** | `results/GITHUB_CLONE_AND_RECOVERY.md` | **Clone readiness** — data packages + Poetry blockers. |
+| **0b** | `results/ARCHITECTURAL_ROADMAP_AND_HANDOVER.md` | **Complete architecture + progress + roadmap**. |
 | **1** | `results/paper_trading_validation/final_report.md` | **Current frontier.** Sequential paper sim + realistic assumed fills. |
 | **2** | `results/paper_trading_validation/paper_trading_status.json` | Gates, status, reproducibility. |
 | **3** | `results/frozen_2024_2025_holdout/final_report.md` | Research freeze + 2025 independent holdout evidence. |
@@ -241,38 +252,51 @@ MODEL IMPLEMENTED
 
 | Concern | Location |
 |---------|----------|
-| Final holdout | `iqrp/app/backtesting/final_holdout/` |
+| GitHub clone recovery | `results/GITHUB_CLONE_AND_RECOVERY.md` |
+| App data platform | `iqrp/app/data/` |
+| DatasetRegistry / adapters | `iqrp/app/backtesting/data/` |
+| Paper trading P43 | `iqrp/app/paper_trading/` |
+| Frozen 2025 holdout | `iqrp/app/backtesting/frozen_2025_holdout/` |
+| Final holdout (short remnant) | `iqrp/app/backtesting/final_holdout/` |
 | P42 final validation | `iqrp/app/backtesting/final_validation/` |
 | P41 portfolio integration | `iqrp/app/backtesting/portfolio_integration/` |
 | P40 consolidation | `iqrp/app/backtesting/alpha_research/consolidation/` |
 | P39 campaign | `iqrp/app/backtesting/alpha_research/model_campaign/` |
 | Unified cascade | `iqrp/app/backtesting/unified_pipeline/` |
 | Binance Vision timestamps | `iqrp/app/data/historical/binance_vision.py` |
-| Tests | `iqrp/tests/unit/backtesting/test_final_holdout_validation.py`, `test_final_trading_validation.py` |
+| Tests | `iqrp/tests/unit/backtesting/test_paper_trading_validation.py`, `test_final_trading_validation.py` |
 
-Env: prefer `.venv/bin/python`.
+Env: prefer `.venv/bin/python` or `poetry install --with dev,ml`.
 
 ---
 
 ## What a next agent should / should not do
 
-**Should (only if a new prompt authorizes):**
+**Should (first — clone readiness):**
 
-- Longer post-P42 holdout once August+ Vision/REST data is available
-- Keep claim distinctions; do not promote to LIVE_READY or PAPER_TRADING_CANDIDATE without adequate sample
+- Verify `iqrp/app/data` and `iqrp/app/backtesting/data` exist after pull
+- If missing, follow `results/GITHUB_CLONE_AND_RECOVERY.md` (do not invent DatasetRegistry)
+- Generate and commit `poetry.lock` if still absent; install `--with ml` for ML paths
+
+**Should (only if a new prompt authorizes research):**
+
+- Longer post-2025 holdout once data is available
+- Keep claim distinctions; do not promote to LIVE_READY from paper sim alone
 
 **Should not (until explicitly authorized):**
 
 - Broker / live orders
-- Retuning frozen candidates after holdout
-- Relaxing gates because the holdout was short
+- Retuning frozen candidates after holdout / paper
+- Starting Prompt 44+ while data packages or lockfile blockers remain unresolved (unless user overrides)
 - Overwriting Prompt 35–42 artifacts
 - Claiming absolute proven profitability
+- Committing root `/data/` market parquets or secrets
 
 ---
 
 ## One-line pointer
 
+> **Clone first:** `results/GITHUB_CLONE_AND_RECOVERY.md` (data packages + poetry.lock).  
 > **Full handover:** `results/ARCHITECTURAL_ROADMAP_AND_HANDOVER.md`.  
 > **Resume frontier:** `results/paper_trading_validation/final_report.md`.  
 > **Freeze:** research ≤2024-12-31; candidates A/B/C immutable; no paper-driven retune.  

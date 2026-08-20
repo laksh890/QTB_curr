@@ -1,0 +1,473 @@
+{
+  "results": [
+    {
+      "method": "mean_variance",
+      "optimizer_success": true,
+      "optimizer_status": "optimal",
+      "failure_reason": null,
+      "sleeve_weights": {
+        "mdc_51a60a3264845365": 0.34999999999987896,
+        "mdc_99aa952c5d5f6ff7": 0.34999999999987896,
+        "mdc_6f008c954ea26bf5": 0.3000000000000827,
+        "mdc_678609c534d68189": 3.186340080673387e-14,
+        "mdc_801488267ad484dc": 3.186340080673387e-14,
+        "mdc_3ed979ee7d9dabe6": 3.186340080673387e-14,
+        "mdc_4992167889db9b2e": 3.186340080673387e-14,
+        "mdc_a0f769fc20835273": 3.186340080673387e-14
+      },
+      "static_signed_exposure": {
+        "mdc_51a60a3264845365": 0.34999999999987896,
+        "mdc_99aa952c5d5f6ff7": 0.34999999999987896,
+        "mdc_6f008c954ea26bf5": 0.3000000000000827,
+        "mdc_678609c534d68189": -3.186340080673387e-14,
+        "mdc_801488267ad484dc": 3.186340080673387e-14,
+        "mdc_3ed979ee7d9dabe6": 3.186340080673387e-14,
+        "mdc_4992167889db9b2e": 3.186340080673387e-14,
+        "mdc_a0f769fc20835273": 3.186340080673387e-14
+      },
+      "long_only_sleeve_optimizer": false,
+      "long_short_trading_via_direction_map": true,
+      "n_active_positions": 3,
+      "long_exposure": 0.999999999999968,
+      "short_exposure": -3.186340080673387e-14,
+      "gross_exposure": 1.0,
+      "net_exposure": 0.9999999999999363,
+      "turnover": 0.5,
+      "concentration": {
+        "max_weight": 0.34999999999987896,
+        "hhi": 0.33499999999988017,
+        "effective_n": 2.9850746268667394,
+        "n_assets": 8.0
+      },
+      "constraint_violations": 0,
+      "oos_sharpe_gross_proxy": 19.032329272001416,
+      "cost_scenarios": {
+        "BASE": {
+          "net_sharpe": -0.8675741003002662,
+          "gross_sharpe": -0.22971074622468313,
+          "net_pnl": -0.015480422011437955,
+          "gross_pnl": -0.005320535319037534,
+          "transaction_costs": 0.010249999999997228,
+          "alpha_survives_costs": false,
+          "alpha_collapses_after_costs": false,
+          "max_drawdown": 0.07449563273600801,
+          "volatility": 0.21290039845282382
+        },
+        "MODERATE": {
+          "net_sharpe": -1.4998649215111488,
+          "gross_sharpe": -0.22971074622468313,
+          "net_pnl": -0.025542741560006244,
+          "gross_pnl": -0.005320535319037534,
+          "transaction_costs": 0.020499999999994457,
+          "alpha_survives_costs": false,
+          "alpha_collapses_after_costs": false,
+          "max_drawdown": 0.0770250736708743,
+          "volatility": 0.21380689482318038
+        },
+        "ADVERSE": {
+          "net_sharpe": -2.7427836185792662,
+          "gross_sharpe": -0.22971074622468313,
+          "net_pnl": -0.045378183671265004,
+          "gross_pnl": -0.005320535319037534,
+          "transaction_costs": 0.04099999999998891,
+          "alpha_survives_costs": false,
+          "alpha_collapses_after_costs": false,
+          "max_drawdown": 0.08270665578679348,
+          "volatility": 0.21606904652287476
+        }
+      },
+      "oos_survives_base": false,
+      "oos_survives_moderate": false,
+      "oos_survives_adverse": false,
+      "max_drawdown_base": 0.07449563273600801,
+      "volatility_base": 0.21290039845282382,
+      "portfolio_stability": "stable",
+      "cascade_complete": true,
+      "reconciliation_status": "PASS",
+      "disclaimer": "PORTFOLIO CONSTRUCTION INTEGRATION \u2014 wiring/validation only. PORTFOLIO IMPLEMENTED \u2260 INTEGRATED \u2260 ROBUST \u2260 PROFITABLE \u2260 LIVE READY. Prompt 35/36/39/40 artifacts are immutable."
+    },
+    {
+      "method": "risk_parity",
+      "optimizer_success": true,
+      "optimizer_status": "fallback",
+      "failure_reason": null,
+      "sleeve_weights": {
+        "mdc_51a60a3264845365": 0.10937500000001209,
+        "mdc_99aa952c5d5f6ff7": 0.10937500000001209,
+        "mdc_6f008c954ea26bf5": 0.10937500000001209,
+        "mdc_678609c534d68189": 0.2343749999999154,
+        "mdc_801488267ad484dc": 0.10937500000001209,
+        "mdc_3ed979ee7d9dabe6": 0.10937500000001209,
+        "mdc_4992167889db9b2e": 0.10937500000001209,
+        "mdc_a0f769fc20835273": 0.10937500000001209
+      },
+      "static_signed_exposure": {
+        "mdc_51a60a3264845365": 0.10937500000001209,
+        "mdc_99aa952c5d5f6ff7": 0.10937500000001209,
+        "mdc_6f008c954ea26bf5": 0.10937500000001209,
+        "mdc_678609c534d68189": -0.2343749999999154,
+        "mdc_801488267ad484dc": 0.10937500000001209,
+        "mdc_3ed979ee7d9dabe6": 0.10937500000001209,
+        "mdc_4992167889db9b2e": 0.10937500000001209,
+        "mdc_a0f769fc20835273": 0.10937500000001209
+      },
+      "long_only_sleeve_optimizer": true,
+      "long_short_trading_via_direction_map": true,
+      "n_active_positions": 8,
+      "long_exposure": 1.0,
+      "short_exposure": 0.0,
+      "gross_exposure": 1.0,
+      "net_exposure": 1.0,
+      "turnover": 0.5,
+      "concentration": {
+        "max_weight": 0.2343749999999154,
+        "hhi": 0.13867187499997885,
+        "effective_n": 7.2112676056349025,
+        "n_assets": 8.0
+      },
+      "constraint_violations": 0,
+      "oos_sharpe_gross_proxy": 16.75468768167162,
+      "cost_scenarios": {
+        "BASE": {
+          "net_sharpe": -5.247794871241022,
+          "gross_sharpe": -4.104348300996359,
+          "net_pnl": -0.021553044083632344,
+          "gross_pnl": -0.016641458585709312,
+          "transaction_costs": 0.005000000000000387,
+          "alpha_survives_costs": false,
+          "alpha_collapses_after_costs": false,
+          "max_drawdown": 0.032457346115861596,
+          "volatility": 0.05477606916620939
+        },
+        "MODERATE": {
+          "net_sharpe": -6.343371482354724,
+          "gross_sharpe": -4.104348300996359,
+          "net_pnl": -0.026441445965736943,
+          "gross_pnl": -0.016641458585709312,
+          "transaction_costs": 0.010000000000000774,
+          "alpha_survives_costs": false,
+          "alpha_collapses_after_costs": false,
+          "max_drawdown": 0.03521335292689243,
+          "volatility": 0.05577202029804842
+        },
+        "ADVERSE": {
+          "net_sharpe": -8.382512713470527,
+          "gross_sharpe": -4.104348300996359,
+          "net_pnl": -0.0361491111099318,
+          "gross_pnl": -0.016641458585709312,
+          "transaction_costs": 0.020000000000001548,
+          "alpha_survives_costs": false,
+          "alpha_collapses_after_costs": false,
+          "max_drawdown": 0.041027363177822185,
+          "volatility": 0.05803042550234279
+        }
+      },
+      "oos_survives_base": false,
+      "oos_survives_moderate": false,
+      "oos_survives_adverse": false,
+      "max_drawdown_base": 0.032457346115861596,
+      "volatility_base": 0.05477606916620939,
+      "portfolio_stability": "stable",
+      "cascade_complete": true,
+      "reconciliation_status": "PASS",
+      "disclaimer": "PORTFOLIO CONSTRUCTION INTEGRATION \u2014 wiring/validation only. PORTFOLIO IMPLEMENTED \u2260 INTEGRATED \u2260 ROBUST \u2260 PROFITABLE \u2260 LIVE READY. Prompt 35/36/39/40 artifacts are immutable."
+    },
+    {
+      "method": "black_litterman",
+      "optimizer_success": true,
+      "optimizer_status": "optimal",
+      "failure_reason": null,
+      "sleeve_weights": {
+        "mdc_51a60a3264845365": 0.3499999999997013,
+        "mdc_99aa952c5d5f6ff7": 0.3499999999997013,
+        "mdc_6f008c954ea26bf5": 0.30000000000020444,
+        "mdc_678609c534d68189": 7.860379014341166e-14,
+        "mdc_801488267ad484dc": 7.860379014341166e-14,
+        "mdc_3ed979ee7d9dabe6": 7.860379014341166e-14,
+        "mdc_4992167889db9b2e": 7.860379014341166e-14,
+        "mdc_a0f769fc20835273": 7.860379014341166e-14
+      },
+      "static_signed_exposure": {
+        "mdc_51a60a3264845365": 0.3499999999997013,
+        "mdc_99aa952c5d5f6ff7": 0.3499999999997013,
+        "mdc_6f008c954ea26bf5": 0.30000000000020444,
+        "mdc_678609c534d68189": -7.860379014341166e-14,
+        "mdc_801488267ad484dc": 7.860379014341166e-14,
+        "mdc_3ed979ee7d9dabe6": 7.860379014341166e-14,
+        "mdc_4992167889db9b2e": 7.860379014341166e-14,
+        "mdc_a0f769fc20835273": 7.860379014341166e-14
+      },
+      "long_only_sleeve_optimizer": false,
+      "long_short_trading_via_direction_map": true,
+      "n_active_positions": 3,
+      "long_exposure": 0.9999999999999214,
+      "short_exposure": -7.860379014341166e-14,
+      "gross_exposure": 1.0,
+      "net_exposure": 0.9999999999998428,
+      "turnover": 0.5,
+      "concentration": {
+        "max_weight": 0.3499999999997013,
+        "hhi": 0.3349999999997044,
+        "effective_n": 2.9850746268683053,
+        "n_assets": 8.0
+      },
+      "constraint_violations": 0,
+      "oos_sharpe_gross_proxy": 19.032329272000055,
+      "cost_scenarios": {
+        "BASE": {
+          "net_sharpe": -0.8675741002956109,
+          "gross_sharpe": -0.22971074621966767,
+          "net_pnl": -0.01548042201134825,
+          "gross_pnl": -0.0053205353189516025,
+          "transaction_costs": 0.01024999999999316,
+          "alpha_survives_costs": false,
+          "alpha_collapses_after_costs": false,
+          "max_drawdown": 0.07449563273592452,
+          "volatility": 0.2129003984526249
+        },
+        "MODERATE": {
+          "net_sharpe": -1.499864921506846,
+          "gross_sharpe": -0.22971074621966767,
+          "net_pnl": -0.025542741559914095,
+          "gross_pnl": -0.0053205353189516025,
+          "transaction_costs": 0.02049999999998632,
+          "alpha_survives_costs": false,
+          "alpha_collapses_after_costs": false,
+          "max_drawdown": 0.07702507367079026,
+          "volatility": 0.21380689482298187
+        },
+        "ADVERSE": {
+          "net_sharpe": -2.74278361857564,
+          "gross_sharpe": -0.22971074621966767,
+          "net_pnl": -0.04537818367116642,
+          "gross_pnl": -0.0053205353189516025,
+          "transaction_costs": 0.04099999999997264,
+          "alpha_survives_costs": false,
+          "alpha_collapses_after_costs": false,
+          "max_drawdown": 0.0827066557866808,
+          "volatility": 0.2160690465226771
+        }
+      },
+      "oos_survives_base": false,
+      "oos_survives_moderate": false,
+      "oos_survives_adverse": false,
+      "max_drawdown_base": 0.07449563273592452,
+      "volatility_base": 0.2129003984526249,
+      "portfolio_stability": "stable",
+      "cascade_complete": true,
+      "reconciliation_status": "PASS",
+      "disclaimer": "PORTFOLIO CONSTRUCTION INTEGRATION \u2014 wiring/validation only. PORTFOLIO IMPLEMENTED \u2260 INTEGRATED \u2260 ROBUST \u2260 PROFITABLE \u2260 LIVE READY. Prompt 35/36/39/40 artifacts are immutable."
+    },
+    {
+      "method": "hrp",
+      "optimizer_success": true,
+      "optimizer_status": "optimal",
+      "failure_reason": null,
+      "sleeve_weights": {
+        "mdc_51a60a3264845365": 0.1542214521911003,
+        "mdc_99aa952c5d5f6ff7": 0.06928229828226952,
+        "mdc_6f008c954ea26bf5": 0.0804306882636723,
+        "mdc_678609c534d68189": 0.271361647845929,
+        "mdc_801488267ad484dc": 0.09674157840121338,
+        "mdc_3ed979ee7d9dabe6": 0.07225473808767624,
+        "mdc_4992167889db9b2e": 0.12146802553879767,
+        "mdc_a0f769fc20835273": 0.13423957138934176
+      },
+      "static_signed_exposure": {
+        "mdc_51a60a3264845365": 0.1542214521911003,
+        "mdc_99aa952c5d5f6ff7": 0.06928229828226952,
+        "mdc_6f008c954ea26bf5": 0.0804306882636723,
+        "mdc_678609c534d68189": -0.271361647845929,
+        "mdc_801488267ad484dc": 0.09674157840121338,
+        "mdc_3ed979ee7d9dabe6": 0.07225473808767624,
+        "mdc_4992167889db9b2e": 0.12146802553879767,
+        "mdc_a0f769fc20835273": 0.13423957138934176
+      },
+      "long_only_sleeve_optimizer": true,
+      "long_short_trading_via_direction_map": true,
+      "n_active_positions": 8,
+      "long_exposure": 1.0,
+      "short_exposure": 0.0,
+      "gross_exposure": 1.0,
+      "net_exposure": 1.0,
+      "turnover": 0.5,
+      "concentration": {
+        "max_weight": 0.271361647845929,
+        "hhi": 0.15604495663019619,
+        "effective_n": 6.408409612172563,
+        "n_assets": 8.0
+      },
+      "constraint_violations": 0,
+      "oos_sharpe_gross_proxy": 17.102959182153985,
+      "cost_scenarios": {
+        "BASE": {
+          "net_sharpe": -6.243183970070911,
+          "gross_sharpe": -5.262302333878519,
+          "net_pnl": -0.030077542455543393,
+          "gross_pnl": -0.02519215818910181,
+          "transaction_costs": 0.005016049223103229,
+          "alpha_survives_costs": false,
+          "alpha_collapses_after_costs": false,
+          "max_drawdown": 0.04057720880501403,
+          "volatility": 0.06452621132845904
+        },
+        "MODERATE": {
+          "net_sharpe": -7.19510261940507,
+          "gross_sharpe": -5.262302333878519,
+          "net_pnl": -0.034939812082539934,
+          "gross_pnl": -0.02519215818910181,
+          "transaction_costs": 0.010032098446206459,
+          "alpha_survives_costs": false,
+          "alpha_collapses_after_costs": false,
+          "max_drawdown": 0.0430783175678916,
+          "volatility": 0.0652375660615231
+        },
+        "ADVERSE": {
+          "net_sharpe": -9.001632926868808,
+          "gross_sharpe": -5.262302333878519,
+          "net_pnl": -0.044595418958350064,
+          "gross_pnl": -0.02519215818910181,
+          "transaction_costs": 0.020064196892412917,
+          "alpha_survives_costs": false,
+          "alpha_collapses_after_costs": false,
+          "max_drawdown": 0.05025999964319705,
+          "volatility": 0.06692951554709868
+        }
+      },
+      "oos_survives_base": false,
+      "oos_survives_moderate": false,
+      "oos_survives_adverse": false,
+      "max_drawdown_base": 0.04057720880501403,
+      "volatility_base": 0.06452621132845904,
+      "portfolio_stability": "stable",
+      "cascade_complete": true,
+      "reconciliation_status": "PASS",
+      "disclaimer": "PORTFOLIO CONSTRUCTION INTEGRATION \u2014 wiring/validation only. PORTFOLIO IMPLEMENTED \u2260 INTEGRATED \u2260 ROBUST \u2260 PROFITABLE \u2260 LIVE READY. Prompt 35/36/39/40 artifacts are immutable."
+    },
+    {
+      "method": "constraints_only",
+      "optimizer_success": true,
+      "optimizer_status": "OK",
+      "failure_reason": null,
+      "sleeve_weights": {
+        "mdc_51a60a3264845365": 0.125,
+        "mdc_99aa952c5d5f6ff7": 0.125,
+        "mdc_6f008c954ea26bf5": 0.125,
+        "mdc_678609c534d68189": 0.125,
+        "mdc_801488267ad484dc": 0.125,
+        "mdc_3ed979ee7d9dabe6": 0.125,
+        "mdc_4992167889db9b2e": 0.125,
+        "mdc_a0f769fc20835273": 0.125
+      },
+      "static_signed_exposure": {
+        "mdc_51a60a3264845365": 0.125,
+        "mdc_99aa952c5d5f6ff7": 0.125,
+        "mdc_6f008c954ea26bf5": 0.125,
+        "mdc_678609c534d68189": -0.125,
+        "mdc_801488267ad484dc": 0.125,
+        "mdc_3ed979ee7d9dabe6": 0.125,
+        "mdc_4992167889db9b2e": 0.125,
+        "mdc_a0f769fc20835273": 0.125
+      },
+      "long_only_sleeve_optimizer": true,
+      "long_short_trading_via_direction_map": true,
+      "n_active_positions": 8,
+      "long_exposure": 1.0,
+      "short_exposure": 0.0,
+      "gross_exposure": 1.0,
+      "net_exposure": 1.0,
+      "turnover": 0.5,
+      "concentration": {
+        "max_weight": 0.125,
+        "hhi": 0.125,
+        "effective_n": 8.0,
+        "n_assets": 8.0
+      },
+      "constraint_violations": 0,
+      "oos_sharpe_gross_proxy": 15.373390430279562,
+      "cost_scenarios": {
+        "BASE": {
+          "net_sharpe": 0.22913400793221908,
+          "gross_sharpe": 1.7711461103228894,
+          "net_pnl": 0.0007685529572636352,
+          "gross_pnl": 0.0064174419631801705,
+          "transaction_costs": 0.005625000000000001,
+          "alpha_survives_costs": false,
+          "alpha_collapses_after_costs": true,
+          "max_drawdown": 0.016493461415735156,
+          "volatility": 0.049784840211793045
+        },
+        "MODERATE": {
+          "net_sharpe": -1.2365537435897904,
+          "gross_sharpe": 1.7711461103228894,
+          "net_pnl": -0.004850367496391006,
+          "gross_pnl": 0.0064174419631801705,
+          "transaction_costs": 0.011250000000000001,
+          "alpha_survives_costs": false,
+          "alpha_collapses_after_costs": true,
+          "max_drawdown": 0.01969097860639868,
+          "volatility": 0.05112014105315694
+        },
+        "ADVERSE": {
+          "net_sharpe": -3.9255748918483517,
+          "gross_sharpe": 1.7711461103228894,
+          "net_pnl": -0.01599890175969787,
+          "gross_pnl": 0.0064174419631801705,
+          "transaction_costs": 0.022500000000000003,
+          "alpha_survives_costs": false,
+          "alpha_collapses_after_costs": true,
+          "max_drawdown": 0.02626566635977523,
+          "volatility": 0.05412027822001663
+        }
+      },
+      "oos_survives_base": false,
+      "oos_survives_moderate": false,
+      "oos_survives_adverse": false,
+      "max_drawdown_base": 0.016493461415735156,
+      "volatility_base": 0.049784840211793045,
+      "portfolio_stability": "stable",
+      "cascade_complete": true,
+      "reconciliation_status": "PASS",
+      "disclaimer": "PORTFOLIO CONSTRUCTION INTEGRATION \u2014 wiring/validation only. PORTFOLIO IMPLEMENTED \u2260 INTEGRATED \u2260 ROBUST \u2260 PROFITABLE \u2260 LIVE READY. Prompt 35/36/39/40 artifacts are immutable."
+    }
+  ],
+  "comparisons_vs_baseline": [
+    {
+      "method": "mean_variance",
+      "dd_vs_baseline": 0.058002171320272855,
+      "turnover_vs_baseline": 0.0,
+      "gross_vs_baseline": 0.0,
+      "net_sharpe_base_method": -0.8675741003002662,
+      "net_sharpe_base_baseline": 0.22913400793221908,
+      "note": "Diagnostic vs constraints-only \u2014 not a profitability ranking."
+    },
+    {
+      "method": "risk_parity",
+      "dd_vs_baseline": 0.01596388470012644,
+      "turnover_vs_baseline": 0.0,
+      "gross_vs_baseline": 0.0,
+      "net_sharpe_base_method": -5.247794871241022,
+      "net_sharpe_base_baseline": 0.22913400793221908,
+      "note": "Diagnostic vs constraints-only \u2014 not a profitability ranking."
+    },
+    {
+      "method": "black_litterman",
+      "dd_vs_baseline": 0.058002171320189366,
+      "turnover_vs_baseline": 0.0,
+      "gross_vs_baseline": 0.0,
+      "net_sharpe_base_method": -0.8675741002956109,
+      "net_sharpe_base_baseline": 0.22913400793221908,
+      "note": "Diagnostic vs constraints-only \u2014 not a profitability ranking."
+    },
+    {
+      "method": "hrp",
+      "dd_vs_baseline": 0.024083747389278876,
+      "turnover_vs_baseline": 0.0,
+      "gross_vs_baseline": 0.0,
+      "net_sharpe_base_method": -6.243183970070911,
+      "net_sharpe_base_baseline": 0.22913400793221908,
+      "note": "Diagnostic vs constraints-only \u2014 not a profitability ranking."
+    }
+  ],
+  "disclaimer": "PORTFOLIO CONSTRUCTION INTEGRATION \u2014 wiring/validation only. PORTFOLIO IMPLEMENTED \u2260 INTEGRATED \u2260 ROBUST \u2260 PROFITABLE \u2260 LIVE READY. Prompt 35/36/39/40 artifacts are immutable."
+}

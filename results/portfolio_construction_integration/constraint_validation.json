@@ -1,0 +1,146 @@
+{
+  "rows": [
+    {
+      "method": "mean_variance",
+      "optimizer_success": true,
+      "violations": [],
+      "n_violations": 0,
+      "exposure": {
+        "gross": 1.0,
+        "net": 0.9999999999999363,
+        "long": 0.999999999999968,
+        "short": 3.186340080673387e-14
+      },
+      "concentration": {
+        "max_weight": 0.34999999999987896,
+        "hhi": 0.33499999999988017,
+        "effective_n": 2.9850746268667394,
+        "n_assets": 8.0
+      },
+      "turnover_vs_previous": 0.5,
+      "active_positions": 3,
+      "long_exposure": 0.999999999999968,
+      "short_exposure": -3.186340080673387e-14,
+      "gross_exposure": 1.0,
+      "net_exposure": 0.9999999999999363
+    },
+    {
+      "method": "risk_parity",
+      "optimizer_success": true,
+      "violations": [],
+      "n_violations": 0,
+      "exposure": {
+        "gross": 1.0,
+        "net": 1.0,
+        "long": 1.0,
+        "short": 0.0
+      },
+      "concentration": {
+        "max_weight": 0.2343749999999154,
+        "hhi": 0.13867187499997885,
+        "effective_n": 7.2112676056349025,
+        "n_assets": 8.0
+      },
+      "turnover_vs_previous": 0.5,
+      "active_positions": 8,
+      "long_exposure": 1.0,
+      "short_exposure": 0.0,
+      "gross_exposure": 1.0,
+      "net_exposure": 1.0
+    },
+    {
+      "method": "black_litterman",
+      "optimizer_success": true,
+      "violations": [],
+      "n_violations": 0,
+      "exposure": {
+        "gross": 1.0,
+        "net": 0.9999999999998428,
+        "long": 0.9999999999999214,
+        "short": 7.860379014341166e-14
+      },
+      "concentration": {
+        "max_weight": 0.3499999999997013,
+        "hhi": 0.3349999999997044,
+        "effective_n": 2.9850746268683053,
+        "n_assets": 8.0
+      },
+      "turnover_vs_previous": 0.5,
+      "active_positions": 3,
+      "long_exposure": 0.9999999999999214,
+      "short_exposure": -7.860379014341166e-14,
+      "gross_exposure": 1.0,
+      "net_exposure": 0.9999999999998428
+    },
+    {
+      "method": "hrp",
+      "optimizer_success": true,
+      "violations": [],
+      "n_violations": 0,
+      "exposure": {
+        "gross": 1.0,
+        "net": 1.0,
+        "long": 1.0,
+        "short": 0.0
+      },
+      "concentration": {
+        "max_weight": 0.271361647845929,
+        "hhi": 0.15604495663019619,
+        "effective_n": 6.408409612172563,
+        "n_assets": 8.0
+      },
+      "turnover_vs_previous": 0.5,
+      "active_positions": 8,
+      "long_exposure": 1.0,
+      "short_exposure": 0.0,
+      "gross_exposure": 1.0,
+      "net_exposure": 1.0
+    },
+    {
+      "method": "constraints_only",
+      "optimizer_success": true,
+      "violations": [],
+      "n_violations": 0,
+      "exposure": {
+        "gross": 1.0,
+        "net": 1.0,
+        "long": 1.0,
+        "short": 0.0
+      },
+      "concentration": {
+        "max_weight": 0.125,
+        "hhi": 0.125,
+        "effective_n": 8.0,
+        "n_assets": 8.0
+      },
+      "turnover_vs_previous": 0.5,
+      "active_positions": 8,
+      "long_exposure": 1.0,
+      "short_exposure": 0.0,
+      "gross_exposure": 1.0,
+      "net_exposure": 1.0
+    }
+  ],
+  "rejection_exercises": [
+    {
+      "case": "risk_parity_long_short_request",
+      "success": false,
+      "status": "infeasible",
+      "failure_reason": "risk parity requires long_only / non-negative weights",
+      "note": "Existing RP solver requires long-only sleeves."
+    },
+    {
+      "case": "degenerate_covariance_mean_variance",
+      "success": true,
+      "status": "optimal",
+      "note": "Exercises ridge/stabilization inside existing MV optimizer"
+    },
+    {
+      "case": "tight_constraints_mean_variance",
+      "success": false,
+      "status": "infeasible",
+      "failure_reason": "n * max_weight < budget; max_gross < |budget|; max_gross < budget under long_only"
+    }
+  ],
+  "disclaimer": "PORTFOLIO CONSTRUCTION INTEGRATION \u2014 wiring/validation only. PORTFOLIO IMPLEMENTED \u2260 INTEGRATED \u2260 ROBUST \u2260 PROFITABLE \u2260 LIVE READY. Prompt 35/36/39/40 artifacts are immutable."
+}

@@ -1,0 +1,100 @@
+{
+  "status": "PAPER_TRADING_CANDIDATE",
+  "gates": {
+    "candidates_frozen": true,
+    "no_lookahead": true,
+    "sequential_ok": true,
+    "execution_model_ok": true,
+    "recon_zero_drift": true,
+    "fills_to_positions_ok": true,
+    "fees_accounted": true,
+    "risk_limits_enforced": true,
+    "kill_switches_ok": true,
+    "rejected_orders_handled": true,
+    "failure_injection_ok": true,
+    "restart_ok": true,
+    "no_2025_retune": true,
+    "reproducible": true,
+    "paper_pnl_positive_base": true,
+    "survivors_exist": true
+  },
+  "frozen": {
+    "A": {
+      "candidate_id": "mdc_99aa952c5d5f6ff7",
+      "label": "A",
+      "definition": {
+        "experiment_id": "mdc_99aa952c5d5f6ff7",
+        "kind": "mtf",
+        "source_id": "momentum_signal:1h->15m",
+        "timeframe": "15m",
+        "holding_bars": 2,
+        "direction": "LONG_SHORT",
+        "family": "MTF",
+        "cost_scenario": "BASE",
+        "train_frac": 0.5,
+        "validation_frac": 0.25,
+        "purge_bars": 2,
+        "embargo_bars": 2,
+        "random_seed": 39,
+        "software_version": "iqrp-model-driven-alpha-0.1.0"
+      },
+      "definition_checksum": "8f587b5c83816066434858663063f6d47179524034f8dc846ba5ce319892509d"
+    },
+    "B": {
+      "candidate_id": "mdc_6f008c954ea26bf5",
+      "label": "B",
+      "definition": {
+        "experiment_id": "mdc_6f008c954ea26bf5",
+        "kind": "mtf",
+        "source_id": "momentum_signal:1h->15m",
+        "timeframe": "15m",
+        "holding_bars": 1,
+        "direction": "LONG",
+        "family": "MTF",
+        "cost_scenario": "BASE",
+        "train_frac": 0.5,
+        "validation_frac": 0.25,
+        "purge_bars": 1,
+        "embargo_bars": 1,
+        "random_seed": 39,
+        "software_version": "iqrp-model-driven-alpha-0.1.0"
+      },
+      "definition_checksum": "2d184b0bcc7a8b617a2ad1d60f464dd9920a401c14028e6f52ca4ad32c70d8e9"
+    },
+    "C": {
+      "candidate_id": "mdc_678609c534d68189",
+      "label": "C",
+      "definition": {
+        "experiment_id": "mdc_678609c534d68189",
+        "kind": "mtf",
+        "source_id": "momentum_signal:30m->5m",
+        "timeframe": "5m",
+        "holding_bars": 2,
+        "direction": "SHORT",
+        "family": "MTF",
+        "cost_scenario": "BASE",
+        "train_frac": 0.5,
+        "validation_frac": 0.25,
+        "purge_bars": 2,
+        "embargo_bars": 2,
+        "random_seed": 39,
+        "software_version": "iqrp-model-driven-alpha-0.1.0"
+      },
+      "definition_checksum": "7749011e88cd2536fb88aba46b24396ada436546871961d2365d648ec33bc5f8"
+    }
+  },
+  "reproducibility": {
+    "status": "PASS",
+    "net_return": [
+      0.6076869925122712,
+      0.6076869925122712
+    ],
+    "n_fills": [
+      34745,
+      34745
+    ],
+    "fingerprint": "22304b7f78935e90497e0a3637f6ed6051fffcb62a28f608a6f584e252e3677f"
+  },
+  "live_ready": false,
+  "disclaimer": "PAPER TRADING VALIDATION \u2014 sequential simulated execution only. PAPER_TRADING_CANDIDATE \u2260 PROVEN PROFITABLE \u2260 LIVE_READY \u2260 PRODUCTION_READY. Costs/spreads are ASSUMED when bid/ask unavailable. No broker connection."
+}

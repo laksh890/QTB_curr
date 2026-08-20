@@ -1,0 +1,189 @@
+{
+  "rows": [
+    {
+      "candidate_id": "mdc_51a60a3264845365",
+      "method": "independent_pos_tm1_times_ret_t_minus_cost_on_turnover",
+      "bars_per_day": 288.0,
+      "periods_per_year": 72576.0,
+      "annualization": "sharpe = mean(net)/std(net) * sqrt(252 * bars_per_day)",
+      "cost_total_bps_per_unit_turnover": 5.0,
+      "holdout_net_sharpe": 9.429079464975777,
+      "holdout_gross_sharpe": 13.094257406929803,
+      "holdout_net_return": 5.232992376597737,
+      "acf1_net": -0.02025454721135826,
+      "n_eff_ar1": 109466.34934369488,
+      "fraction_bars_in_position": 0.9999429223744293,
+      "n_holdout_bars": 105120,
+      "inflation_risk_flags": {
+        "high_signal_persistence": false,
+        "dense_position_coverage": true,
+        "n_eff_much_smaller_than_n": false,
+        "note": "High annualized Sharpe can be mathematically correct under this formula while still reflecting overlapping holdings / autocorrelation; n_eff and quarterly stability must be considered before economic claims."
+      },
+      "engine_net_sharpe": 9.429079464975777,
+      "reconcile_ok": true
+    },
+    {
+      "candidate_id": "mdc_99aa952c5d5f6ff7",
+      "method": "independent_pos_tm1_times_ret_t_minus_cost_on_turnover",
+      "bars_per_day": 96.0,
+      "periods_per_year": 24192.0,
+      "annualization": "sharpe = mean(net)/std(net) * sqrt(252 * bars_per_day)",
+      "cost_total_bps_per_unit_turnover": 5.0,
+      "holdout_net_sharpe": 7.030677628891678,
+      "holdout_gross_sharpe": 8.90564791573868,
+      "holdout_net_return": 3.7958585887785485,
+      "acf1_net": -0.00874211967289909,
+      "n_eff_ar1": 35658.05082091716,
+      "fraction_bars_in_position": 1.0,
+      "n_holdout_bars": 35040,
+      "inflation_risk_flags": {
+        "high_signal_persistence": false,
+        "dense_position_coverage": true,
+        "n_eff_much_smaller_than_n": false,
+        "note": "High annualized Sharpe can be mathematically correct under this formula while still reflecting overlapping holdings / autocorrelation; n_eff and quarterly stability must be considered before economic claims."
+      },
+      "engine_net_sharpe": 7.030677628891678,
+      "reconcile_ok": true
+    },
+    {
+      "candidate_id": "mdc_6f008c954ea26bf5",
+      "method": "independent_pos_tm1_times_ret_t_minus_cost_on_turnover",
+      "bars_per_day": 96.0,
+      "periods_per_year": 24192.0,
+      "annualization": "sharpe = mean(net)/std(net) * sqrt(252 * bars_per_day)",
+      "cost_total_bps_per_unit_turnover": 5.0,
+      "holdout_net_sharpe": 5.368918394697802,
+      "holdout_gross_sharpe": 6.7687952688849995,
+      "holdout_net_return": 1.9149945828145545,
+      "acf1_net": 0.0011506439166398467,
+      "n_eff_ar1": 34959.45555230064,
+      "fraction_bars_in_position": 0.5165525114155252,
+      "n_holdout_bars": 35040,
+      "inflation_risk_flags": {
+        "high_signal_persistence": false,
+        "dense_position_coverage": false,
+        "n_eff_much_smaller_than_n": false,
+        "note": "High annualized Sharpe can be mathematically correct under this formula while still reflecting overlapping holdings / autocorrelation; n_eff and quarterly stability must be considered before economic claims."
+      },
+      "engine_net_sharpe": 5.368918394697802,
+      "reconcile_ok": true
+    },
+    {
+      "candidate_id": "mdc_678609c534d68189",
+      "method": "independent_pos_tm1_times_ret_t_minus_cost_on_turnover",
+      "bars_per_day": 288.0,
+      "periods_per_year": 72576.0,
+      "annualization": "sharpe = mean(net)/std(net) * sqrt(252 * bars_per_day)",
+      "cost_total_bps_per_unit_turnover": 5.0,
+      "holdout_net_sharpe": 6.227890047581503,
+      "holdout_gross_sharpe": 8.61751243163801,
+      "holdout_net_return": 2.5964069324767336,
+      "acf1_net": -0.03240410640118667,
+      "n_eff_ar1": 112160.78983267177,
+      "fraction_bars_in_position": 0.4874429223744292,
+      "n_holdout_bars": 105120,
+      "inflation_risk_flags": {
+        "high_signal_persistence": false,
+        "dense_position_coverage": false,
+        "n_eff_much_smaller_than_n": false,
+        "note": "High annualized Sharpe can be mathematically correct under this formula while still reflecting overlapping holdings / autocorrelation; n_eff and quarterly stability must be considered before economic claims."
+      },
+      "engine_net_sharpe": 6.227890047581503,
+      "reconcile_ok": true
+    },
+    {
+      "candidate_id": "mdc_801488267ad484dc",
+      "method": "independent_pos_tm1_times_ret_t_minus_cost_on_turnover",
+      "bars_per_day": 24.0,
+      "periods_per_year": 6048.0,
+      "annualization": "sharpe = mean(net)/std(net) * sqrt(252 * bars_per_day)",
+      "cost_total_bps_per_unit_turnover": 5.0,
+      "holdout_net_sharpe": 0.0749341799896102,
+      "holdout_gross_sharpe": 0.38587866511292057,
+      "holdout_net_return": 0.020246875740255743,
+      "acf1_net": -0.030736194615254196,
+      "n_eff_ar1": 9315.574371670156,
+      "fraction_bars_in_position": 0.12100456621004566,
+      "n_holdout_bars": 8760,
+      "inflation_risk_flags": {
+        "high_signal_persistence": false,
+        "dense_position_coverage": false,
+        "n_eff_much_smaller_than_n": false,
+        "note": "High annualized Sharpe can be mathematically correct under this formula while still reflecting overlapping holdings / autocorrelation; n_eff and quarterly stability must be considered before economic claims."
+      },
+      "engine_net_sharpe": 0.0749341799896102,
+      "reconcile_ok": true
+    },
+    {
+      "candidate_id": "mdc_3ed979ee7d9dabe6",
+      "method": "independent_pos_tm1_times_ret_t_minus_cost_on_turnover",
+      "bars_per_day": 24.0,
+      "periods_per_year": 6048.0,
+      "annualization": "sharpe = mean(net)/std(net) * sqrt(252 * bars_per_day)",
+      "cost_total_bps_per_unit_turnover": 5.0,
+      "holdout_net_sharpe": -0.8144482961361361,
+      "holdout_gross_sharpe": -0.2274695655296955,
+      "holdout_net_return": -0.40921682967585626,
+      "acf1_net": -0.010246620646377548,
+      "n_eff_ar1": 8941.37931879735,
+      "fraction_bars_in_position": 0.7671232876712328,
+      "n_holdout_bars": 8760,
+      "inflation_risk_flags": {
+        "high_signal_persistence": false,
+        "dense_position_coverage": false,
+        "n_eff_much_smaller_than_n": false,
+        "note": "High annualized Sharpe can be mathematically correct under this formula while still reflecting overlapping holdings / autocorrelation; n_eff and quarterly stability must be considered before economic claims."
+      },
+      "engine_net_sharpe": -0.8144482961361361,
+      "reconcile_ok": true
+    },
+    {
+      "candidate_id": "mdc_4992167889db9b2e",
+      "method": "independent_pos_tm1_times_ret_t_minus_cost_on_turnover",
+      "bars_per_day": 96.0,
+      "periods_per_year": 24192.0,
+      "annualization": "sharpe = mean(net)/std(net) * sqrt(252 * bars_per_day)",
+      "cost_total_bps_per_unit_turnover": 5.0,
+      "holdout_net_sharpe": -0.8088759959899617,
+      "holdout_gross_sharpe": 0.6866444345531838,
+      "holdout_net_return": -0.4352488256657713,
+      "acf1_net": -0.0019095019274111423,
+      "n_eff_ar1": 35174.073909461506,
+      "fraction_bars_in_position": 1.0,
+      "n_holdout_bars": 35040,
+      "inflation_risk_flags": {
+        "high_signal_persistence": false,
+        "dense_position_coverage": true,
+        "n_eff_much_smaller_than_n": false,
+        "note": "High annualized Sharpe can be mathematically correct under this formula while still reflecting overlapping holdings / autocorrelation; n_eff and quarterly stability must be considered before economic claims."
+      },
+      "engine_net_sharpe": -0.8088759959899617,
+      "reconcile_ok": true
+    },
+    {
+      "candidate_id": "mdc_a0f769fc20835273",
+      "method": "independent_pos_tm1_times_ret_t_minus_cost_on_turnover",
+      "bars_per_day": 24.0,
+      "periods_per_year": 6048.0,
+      "annualization": "sharpe = mean(net)/std(net) * sqrt(252 * bars_per_day)",
+      "cost_total_bps_per_unit_turnover": 5.0,
+      "holdout_net_sharpe": -1.1559872705569865,
+      "holdout_gross_sharpe": -0.7989767094443659,
+      "holdout_net_return": -0.6182618563623715,
+      "acf1_net": -0.01495033415100168,
+      "n_eff_ar1": 9025.905226311403,
+      "fraction_bars_in_position": 1.0,
+      "n_holdout_bars": 8760,
+      "inflation_risk_flags": {
+        "high_signal_persistence": false,
+        "dense_position_coverage": true,
+        "n_eff_much_smaller_than_n": false,
+        "note": "High annualized Sharpe can be mathematically correct under this formula while still reflecting overlapping holdings / autocorrelation; n_eff and quarterly stability must be considered before economic claims."
+      },
+      "engine_net_sharpe": -1.1559872705569865,
+      "reconcile_ok": true
+    }
+  ],
+  "disclaimer": "FROZEN 2024\u21922025 HOLDOUT \u2014 research \u22642024-12-31; validation = calendar 2025. No retuning on 2025. PROVEN_RESEARCH_PROFITABILITY \u2260 LIVE_READY. Do not modify Prompt 35\u201342 artifacts."
+}

@@ -1,0 +1,172 @@
+{
+  "rows": [
+    {
+      "combo": "A",
+      "scenario": "BASE",
+      "components": {
+        "commission_bps": 1.0,
+        "half_spread_bps": 1.0,
+        "slippage_bps": 2.0,
+        "latency_bars": 1.0,
+        "partial_fill_prob": 0.02,
+        "reject_prob": 0.005,
+        "variable_spread_bps": 0.5
+      },
+      "fees_paid": 5257.710926687353,
+      "net_return": 0.6076869925122712,
+      "label": "ASSUMED_OHLCV_MICROSTRUCTURE"
+    },
+    {
+      "combo": "B",
+      "scenario": "BASE",
+      "components": {
+        "commission_bps": 1.0,
+        "half_spread_bps": 1.0,
+        "slippage_bps": 2.0,
+        "latency_bars": 1.0,
+        "partial_fill_prob": 0.02,
+        "reject_prob": 0.005,
+        "variable_spread_bps": 0.5
+      },
+      "fees_paid": 2312.288922591051,
+      "net_return": 0.2745836445344325,
+      "label": "ASSUMED_OHLCV_MICROSTRUCTURE"
+    },
+    {
+      "combo": "C",
+      "scenario": "BASE",
+      "components": {
+        "commission_bps": 1.0,
+        "half_spread_bps": 1.0,
+        "slippage_bps": 2.0,
+        "latency_bars": 1.0,
+        "partial_fill_prob": 0.02,
+        "reject_prob": 0.005,
+        "variable_spread_bps": 0.5
+      },
+      "fees_paid": 5097.3299445104,
+      "net_return": 0.5093334803869467,
+      "label": "ASSUMED_OHLCV_MICROSTRUCTURE"
+    },
+    {
+      "combo": "A+B",
+      "scenario": "BASE",
+      "components": {
+        "commission_bps": 1.0,
+        "half_spread_bps": 1.0,
+        "slippage_bps": 2.0,
+        "latency_bars": 1.0,
+        "partial_fill_prob": 0.02,
+        "reject_prob": 0.005,
+        "variable_spread_bps": 0.5
+      },
+      "fees_paid": 5260.526256261698,
+      "net_return": 0.6081352449794375,
+      "label": "ASSUMED_OHLCV_MICROSTRUCTURE"
+    },
+    {
+      "combo": "A+C",
+      "scenario": "BASE",
+      "components": {
+        "commission_bps": 1.0,
+        "half_spread_bps": 1.0,
+        "slippage_bps": 2.0,
+        "latency_bars": 1.0,
+        "partial_fill_prob": 0.02,
+        "reject_prob": 0.005,
+        "variable_spread_bps": 0.5
+      },
+      "fees_paid": 5915.979168217172,
+      "net_return": 0.28215479212894823,
+      "label": "ASSUMED_OHLCV_MICROSTRUCTURE"
+    },
+    {
+      "combo": "B+C",
+      "scenario": "BASE",
+      "components": {
+        "commission_bps": 1.0,
+        "half_spread_bps": 1.0,
+        "slippage_bps": 2.0,
+        "latency_bars": 1.0,
+        "partial_fill_prob": 0.02,
+        "reject_prob": 0.005,
+        "variable_spread_bps": 0.5
+      },
+      "fees_paid": 6237.360342243649,
+      "net_return": 0.08680048208710223,
+      "label": "ASSUMED_OHLCV_MICROSTRUCTURE"
+    },
+    {
+      "combo": "A+B+C",
+      "scenario": "BASE",
+      "components": {
+        "commission_bps": 1.0,
+        "half_spread_bps": 1.0,
+        "slippage_bps": 2.0,
+        "latency_bars": 1.0,
+        "partial_fill_prob": 0.02,
+        "reject_prob": 0.005,
+        "variable_spread_bps": 0.5
+      },
+      "fees_paid": 5246.718518181534,
+      "net_return": 0.6069905786745748,
+      "label": "ASSUMED_OHLCV_MICROSTRUCTURE"
+    }
+  ],
+  "sensitivity": [
+    {
+      "combo": "A",
+      "scenario": "BASE",
+      "net_return": 0.612377094253644,
+      "sharpe": 20.046829951016687,
+      "max_drawdown": 0.01884417731163575,
+      "fees_paid": 5266.578505571912
+    },
+    {
+      "combo": "A",
+      "scenario": "MODERATE",
+      "net_return": 0.347328346234794,
+      "sharpe": 12.501229929685937,
+      "max_drawdown": 0.03289468138786644,
+      "fees_paid": 9546.340734323578
+    },
+    {
+      "combo": "A",
+      "scenario": "ADVERSE",
+      "net_return": -0.22835895029851494,
+      "sharpe": -6.014131152403736,
+      "max_drawdown": 0.3173797533128161,
+      "fees_paid": 6198.911388078609
+    }
+  ],
+  "scenarios": {
+    "BASE": {
+      "commission_bps": 1.0,
+      "half_spread_bps": 1.0,
+      "slippage_bps": 2.0,
+      "latency_bars": 1.0,
+      "partial_fill_prob": 0.02,
+      "reject_prob": 0.005,
+      "variable_spread_bps": 0.5
+    },
+    "MODERATE": {
+      "commission_bps": 2.0,
+      "half_spread_bps": 2.0,
+      "slippage_bps": 4.0,
+      "latency_bars": 1.0,
+      "partial_fill_prob": 0.05,
+      "reject_prob": 0.01,
+      "variable_spread_bps": 1.0
+    },
+    "ADVERSE": {
+      "commission_bps": 4.0,
+      "half_spread_bps": 4.0,
+      "slippage_bps": 8.0,
+      "latency_bars": 2.0,
+      "partial_fill_prob": 0.1,
+      "reject_prob": 0.03,
+      "variable_spread_bps": 2.0
+    }
+  },
+  "disclaimer": "PAPER TRADING VALIDATION \u2014 sequential simulated execution only. PAPER_TRADING_CANDIDATE \u2260 PROVEN PROFITABLE \u2260 LIVE_READY \u2260 PRODUCTION_READY. Costs/spreads are ASSUMED when bid/ask unavailable. No broker connection."
+}

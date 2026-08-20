@@ -1,0 +1,20 @@
+{
+  "disclaimer": "FROZEN 2024→2025 HOLDOUT. LIVE_READY=false.",
+  "unit_tests": {
+    "command": "pytest iqrp/tests/unit/backtesting/test_frozen_2024_2025_holdout.py --no-cov",
+    "passed": 4,
+    "failed": 0,
+    "status": "PASS"
+  },
+  "validation_run": {
+    "log": "results/frozen_2024_2025_holdout_run.log",
+    "final_status": "PROVEN_RESEARCH_PROFITABILITY",
+    "firewall": "PASS",
+    "complete_2025": true,
+    "reproducibility": "PASS",
+    "live_ready": false
+  },
+  "broker_connection": false,
+  "live_trading": false,
+  "purchase": false
+}

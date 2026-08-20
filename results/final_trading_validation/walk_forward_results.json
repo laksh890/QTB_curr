@@ -1,0 +1,341 @@
+{
+  "folds": [
+    {
+      "candidate_id": "mdc_51a60a3264845365",
+      "fold": 0,
+      "train": [
+        0,
+        15000
+      ],
+      "test": [
+        15000,
+        30000
+      ],
+      "test_net_sharpe": 8.070393837613716,
+      "test_net_return": 0.7178047501699474
+    },
+    {
+      "candidate_id": "mdc_51a60a3264845365",
+      "fold": 1,
+      "train": [
+        0,
+        30000
+      ],
+      "test": [
+        30000,
+        45000
+      ],
+      "test_net_sharpe": 6.173635777666602,
+      "test_net_return": 0.5841927833126861
+    },
+    {
+      "candidate_id": "mdc_51a60a3264845365",
+      "fold": 2,
+      "train": [
+        0,
+        45000
+      ],
+      "test": [
+        45000,
+        60000
+      ],
+      "test_net_sharpe": 5.4570847904027024,
+      "test_net_return": 0.3378200237716836
+    },
+    {
+      "candidate_id": "mdc_99aa952c5d5f6ff7",
+      "fold": 0,
+      "train": [
+        0,
+        9375
+      ],
+      "test": [
+        9375,
+        18750
+      ],
+      "test_net_sharpe": 4.074332525715801,
+      "test_net_return": 0.4282308116316085
+    },
+    {
+      "candidate_id": "mdc_99aa952c5d5f6ff7",
+      "fold": 1,
+      "train": [
+        0,
+        18750
+      ],
+      "test": [
+        18750,
+        28125
+      ],
+      "test_net_sharpe": 4.791252535203218,
+      "test_net_return": 0.6903901599489695
+    },
+    {
+      "candidate_id": "mdc_99aa952c5d5f6ff7",
+      "fold": 2,
+      "train": [
+        0,
+        28125
+      ],
+      "test": [
+        28125,
+        37500
+      ],
+      "test_net_sharpe": 5.397988431205967,
+      "test_net_return": 0.9286138305025253
+    },
+    {
+      "candidate_id": "mdc_6f008c954ea26bf5",
+      "fold": 0,
+      "train": [
+        0,
+        9375
+      ],
+      "test": [
+        9375,
+        18750
+      ],
+      "test_net_sharpe": 5.0690181873752564,
+      "test_net_return": 0.3790350050753632
+    },
+    {
+      "candidate_id": "mdc_6f008c954ea26bf5",
+      "fold": 1,
+      "train": [
+        0,
+        18750
+      ],
+      "test": [
+        18750,
+        28125
+      ],
+      "test_net_sharpe": 5.087711262771839,
+      "test_net_return": 0.43893070651900445
+    },
+    {
+      "candidate_id": "mdc_6f008c954ea26bf5",
+      "fold": 2,
+      "train": [
+        0,
+        28125
+      ],
+      "test": [
+        28125,
+        37500
+      ],
+      "test_net_sharpe": 5.282713437424455,
+      "test_net_return": 0.5596770327568723
+    },
+    {
+      "candidate_id": "mdc_678609c534d68189",
+      "fold": 0,
+      "train": [
+        0,
+        15000
+      ],
+      "test": [
+        15000,
+        30000
+      ],
+      "test_net_sharpe": 8.035458843118558,
+      "test_net_return": 0.5758169549676597
+    },
+    {
+      "candidate_id": "mdc_678609c534d68189",
+      "fold": 1,
+      "train": [
+        0,
+        30000
+      ],
+      "test": [
+        30000,
+        45000
+      ],
+      "test_net_sharpe": 6.711211949276165,
+      "test_net_return": 0.45608455521120705
+    },
+    {
+      "candidate_id": "mdc_678609c534d68189",
+      "fold": 2,
+      "train": [
+        0,
+        45000
+      ],
+      "test": [
+        45000,
+        60000
+      ],
+      "test_net_sharpe": 5.148275704847226,
+      "test_net_return": 0.20862953191006756
+    },
+    {
+      "candidate_id": "mdc_801488267ad484dc",
+      "fold": 0,
+      "train": [
+        0,
+        7500
+      ],
+      "test": [
+        7500,
+        15000
+      ],
+      "test_net_sharpe": 0.0,
+      "test_net_return": 0.0
+    },
+    {
+      "candidate_id": "mdc_801488267ad484dc",
+      "fold": 1,
+      "train": [
+        0,
+        15000
+      ],
+      "test": [
+        15000,
+        22500
+      ],
+      "test_net_sharpe": -0.9802013745264195,
+      "test_net_return": -0.12660541319128182
+    },
+    {
+      "candidate_id": "mdc_801488267ad484dc",
+      "fold": 2,
+      "train": [
+        0,
+        22500
+      ],
+      "test": [
+        22500,
+        30000
+      ],
+      "test_net_sharpe": -1.5034532354559096,
+      "test_net_return": -0.3461324880680468
+    },
+    {
+      "candidate_id": "mdc_3ed979ee7d9dabe6",
+      "fold": 0,
+      "train": [
+        0,
+        7500
+      ],
+      "test": [
+        7500,
+        15000
+      ],
+      "test_net_sharpe": 0.0,
+      "test_net_return": 0.0
+    },
+    {
+      "candidate_id": "mdc_3ed979ee7d9dabe6",
+      "fold": 1,
+      "train": [
+        0,
+        15000
+      ],
+      "test": [
+        15000,
+        22500
+      ],
+      "test_net_sharpe": 1.1992638752289306,
+      "test_net_return": 0.3090558958735325
+    },
+    {
+      "candidate_id": "mdc_3ed979ee7d9dabe6",
+      "fold": 2,
+      "train": [
+        0,
+        22500
+      ],
+      "test": [
+        22500,
+        30000
+      ],
+      "test_net_sharpe": -1.464932824670685,
+      "test_net_return": -0.7583528749961104
+    },
+    {
+      "candidate_id": "mdc_4992167889db9b2e",
+      "fold": 0,
+      "train": [
+        0,
+        9375
+      ],
+      "test": [
+        9375,
+        18750
+      ],
+      "test_net_sharpe": 0.0,
+      "test_net_return": 0.0
+    },
+    {
+      "candidate_id": "mdc_4992167889db9b2e",
+      "fold": 1,
+      "train": [
+        0,
+        18750
+      ],
+      "test": [
+        18750,
+        28125
+      ],
+      "test_net_sharpe": -1.8520953518377878,
+      "test_net_return": -0.18180814126913464
+    },
+    {
+      "candidate_id": "mdc_4992167889db9b2e",
+      "fold": 2,
+      "train": [
+        0,
+        28125
+      ],
+      "test": [
+        28125,
+        37500
+      ],
+      "test_net_sharpe": -0.023205387444062992,
+      "test_net_return": -0.00397675429115614
+    },
+    {
+      "candidate_id": "mdc_a0f769fc20835273",
+      "fold": 0,
+      "train": [
+        0,
+        7500
+      ],
+      "test": [
+        7500,
+        15000
+      ],
+      "test_net_sharpe": 0.0,
+      "test_net_return": 0.0
+    },
+    {
+      "candidate_id": "mdc_a0f769fc20835273",
+      "fold": 1,
+      "train": [
+        0,
+        15000
+      ],
+      "test": [
+        15000,
+        22500
+      ],
+      "test_net_sharpe": 0.21413738748247163,
+      "test_net_return": 0.05857598278040649
+    },
+    {
+      "candidate_id": "mdc_a0f769fc20835273",
+      "fold": 2,
+      "train": [
+        0,
+        22500
+      ],
+      "test": [
+        22500,
+        30000
+      ],
+      "test_net_sharpe": -1.362458160970926,
+      "test_net_return": -0.7331053999296855
+    }
+  ],
+  "disclaimer": "FINAL TRADING VALIDATION \u2014 research evidence only. PROFITABILITY_EVIDENCE \u2260 PROVEN PROFITABILITY \u2260 PAPER-READY \u2260 LIVE_READY. Do not p-hack: gates and grids are predefined. Prompt 35/36/39/40 artifacts immutable."
+}

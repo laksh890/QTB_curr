@@ -1,10 +1,12 @@
-# IQRP Research Handoff Map (Prompts 35–42)
+# IQRP Research Handoff Map (Prompts 35–43)
 
-**Purpose:** Give a new agent (or human) a single entry point: what to read first, what is authoritative, what is immutable, and what the next authorized phase may use.
+**Purpose:** Short entry point for a new agent. For the **full architectural roadmap, feature inventory, prompt history, and next-phase plan**, read:
 
-**Last research status:** Frozen 2024→2025 holdout `PROVEN_RESEARCH_PROFITABILITY` for 2 MTF evidence candidates (full calendar 2025; firewall PASS).  
+> **`results/ARCHITECTURAL_ROADMAP_AND_HANDOVER.md`** (authoritative long-form handover)
+
+**Last research status:** Prompt 43 paper sim = `PAPER_TRADING_CANDIDATE` (sequential assumed-microstructure execution on frozen A/B/C). Prior: frozen 2024→2025 holdout `PROVEN_RESEARCH_PROFITABILITY` for 2 MTF evidence candidates.  
 **LIVE_READY:** NO  
-**Paper trading (research gate):** YES for listed PAPER/PROVEN IDs — still not live.
+**Broker / live orders:** STOP — not authorized.
 
 ---
 
@@ -12,14 +14,45 @@
 
 | Priority | File | Why |
 |----------|------|-----|
-| **1** | `results/frozen_2024_2025_holdout/final_report.md` | **Current frontier.** True 2025 OOS after ≤2024 freeze. |
-| **2** | `results/frozen_2024_2025_holdout/decision_matrix.json` | Per-candidate gate outcomes. |
-| **3** | `results/frozen_2024_2025_holdout/firewall_audit.json` | Hard temporal firewall evidence. |
-| **4** | `results/frozen_2024_2025_holdout/sharpe_independent_recalculation.json` | Sharpe methodology audit. |
+| **0** | `results/ARCHITECTURAL_ROADMAP_AND_HANDOVER.md` | **Complete architecture + progress + roadmap** for agent handover. |
+| **1** | `results/paper_trading_validation/final_report.md` | **Current frontier.** Sequential paper sim + realistic assumed fills. |
+| **2** | `results/paper_trading_validation/paper_trading_status.json` | Gates, status, reproducibility. |
+| **3** | `results/frozen_2024_2025_holdout/final_report.md` | Research freeze + 2025 independent holdout evidence. |
+| **4** | `results/frozen_2024_2025_holdout/firewall_audit.json` | Hard temporal firewall evidence. |
 
 ---
 
-## Frozen 2024 → Independent 2025 holdout (CURRENT)
+## Prompt 43 — Paper trading & realistic execution (CURRENT)
+
+Directory: `results/paper_trading_validation/`
+
+| File | Role |
+|------|------|
+| `final_report.md` / `.json` | Status + required answers |
+| `candidate_results.json` | A/B/C + combos under BASE assumed costs |
+| `execution_results.json` / `fill_analysis.json` | Order/fill samples (ASSUMED_OHLCV_MICROSTRUCTURE) |
+| `cost_analysis.json` | BASE / MODERATE / ADVERSE sensitivity |
+| `failure_injection.json` | Operational failure + kill-switch tests |
+| `position_reconciliation.json` | Zero unexplained drift |
+| `portfolio_comparison.json` | Combo diversification |
+| `risk_events.json` / `paper_trading_status.json` / `test_summary.json` | Risk + status + tests |
+
+Code: `iqrp/app/paper_trading/`  
+Run: `.venv/bin/python -m iqrp.app.paper_trading` (add `--smoke` for short path)
+
+### Frozen sleeves (immutable; no 2025 retune)
+
+| Label | Candidate |
+|-------|-----------|
+| A | `mdc_99aa952c5d5f6ff7` |
+| B | `mdc_6f008c954ea26bf5` |
+| C | `mdc_678609c534d68189` |
+
+**Status:** `PAPER_TRADING_CANDIDATE` — **not** `PROVEN PROFITABLE`, **not** `LIVE_READY`. Costs are assumed (no observed bid/ask). ADVERSE scenario can erase A’s paper P&L.
+
+---
+
+## Frozen 2024 → Independent 2025 holdout
 
 Directory: `results/frozen_2024_2025_holdout/`
 
@@ -240,8 +273,9 @@ Env: prefer `.venv/bin/python`.
 
 ## One-line pointer
 
-> **Resume from:** `results/frozen_2024_2025_holdout/final_report.md`.  
-> **Freeze:** research ≤2024-12-31; holdout = calendar 2025.  
-> **Strongest:** `mdc_99aa952c5d5f6ff7` (`PROVEN_RESEARCH_PROFITABILITY`).  
-> **LIVE_READY:** NO.
+> **Full handover:** `results/ARCHITECTURAL_ROADMAP_AND_HANDOVER.md`.  
+> **Resume frontier:** `results/paper_trading_validation/final_report.md`.  
+> **Freeze:** research ≤2024-12-31; candidates A/B/C immutable; no paper-driven retune.  
+> **Paper status:** `PAPER_TRADING_CANDIDATE` (assumed microstructure).  
+> **LIVE_READY:** NO. **No broker.**
 
